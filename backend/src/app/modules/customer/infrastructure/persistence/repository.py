@@ -1,6 +1,8 @@
+from datetime import datetime
 from uuid import UUID, uuid4
 
-from sqlalchemy import select
+from sqlalchemy import delete, select, update
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.customer.domain.entities import ChannelIdentity, Customer
@@ -69,6 +71,50 @@ class CustomerRepository:
         await self._s.flush()
         await self._s.refresh(m)
         return _identity(m)
+
+    async def add_identity_if_absent(
+        self,
+        ctx: TenantContext,
+        customer_id: UUID,
+        connection_id: UUID,
+        provider: str,
+        scoped_external_id: str,
+        at: datetime,
+    ) -> ChannelIdentity | None:
+        """None nếu identity đã tồn tại (thua race). Không làm hỏng transaction."""
+        stmt = (
+            pg_insert(ChannelIdentityModel)
+            .values(
+                id=uuid4(),
+                tenant_id=ctx.tenant_id,
+                customer_id=customer_id,
+                channel_connection_id=connection_id,
+                provider=provider,
+                scoped_external_id=scoped_external_id,
+                last_inbound_at=at,
+            )
+            .on_conflict_do_nothing(constraint="uq_channel_identity")
+            .returning(ChannelIdentityModel)
+        )
+        m = (await self._s.execute(stmt)).scalar_one_or_none()
+        return _identity(m) if m else None
+
+    async def delete_customer(self, ctx: TenantContext, customer_id: UUID) -> None:
+        await self._s.execute(
+            delete(CustomerModel).where(
+                CustomerModel.tenant_id == ctx.tenant_id, CustomerModel.id == customer_id
+            )
+        )
+
+    async def touch_inbound(self, ctx: TenantContext, identity_id: UUID, at: datetime) -> None:
+        await self._s.execute(
+            update(ChannelIdentityModel)
+            .where(
+                ChannelIdentityModel.tenant_id == ctx.tenant_id,
+                ChannelIdentityModel.id == identity_id,
+            )
+            .values(last_inbound_at=at)
+        )
 
     async def get_identity(
         self, ctx: TenantContext, connection_id: UUID, scoped_external_id: str

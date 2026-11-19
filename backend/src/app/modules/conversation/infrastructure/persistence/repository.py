@@ -1,7 +1,7 @@
 from datetime import datetime
 from uuid import UUID, uuid4
 
-from sqlalchemy import select
+from sqlalchemy import func, select, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -65,6 +65,57 @@ class ConversationRepository:
         await self._s.flush()
         await self._s.refresh(m)
         return _conversation(m)
+
+    async def add_if_no_open(
+        self, ctx: TenantContext, customer_id: UUID, connection_id: UUID
+    ) -> Conversation | None:
+        """None nếu đã có conversation đang mở (uq_conversation_one_open). Không làm hỏng tx."""
+        stmt = (
+            pg_insert(ConversationModel)
+            .values(
+                id=uuid4(),
+                tenant_id=ctx.tenant_id,
+                customer_id=customer_id,
+                channel_connection_id=connection_id,
+            )
+            .on_conflict_do_nothing(
+                index_elements=[
+                    ConversationModel.tenant_id,
+                    ConversationModel.customer_id,
+                    ConversationModel.channel_connection_id,
+                ],
+                index_where=ConversationModel.status == "open",
+            )
+            .returning(ConversationModel)
+        )
+        m = (await self._s.execute(stmt)).scalar_one_or_none()
+        return _conversation(m) if m else None
+
+    async def record_message(
+        self,
+        ctx: TenantContext,
+        conversation_id: UUID,
+        *,
+        sequence: int,
+        at: datetime,
+        preview: str,
+        inbound: bool,
+    ) -> None:
+        await self._s.execute(
+            update(ConversationModel)
+            .where(
+                ConversationModel.tenant_id == ctx.tenant_id,
+                ConversationModel.id == conversation_id,
+            )
+            .values(
+                last_sequence=sequence,
+                last_message_at=at,
+                last_message_preview=preview,
+                unread_count=ConversationModel.unread_count + (1 if inbound else 0),
+                version=ConversationModel.version + 1,
+                updated_at=func.now(),
+            )
+        )
 
     async def get(self, ctx: TenantContext, conversation_id: UUID) -> Conversation | None:
         q = select(ConversationModel).where(
