@@ -96,10 +96,10 @@ Dùng template `.github/pull_request_template.md`: Summary, Changes, Test plan, 
 
 ## 6. Kiểm tra trước khi commit
 
-Cần Docker (test chạy trên PostgreSQL thật, cổng host `54329`).
+Cần Docker (test chạy trên PostgreSQL thật ở cổng host `54329` và Redis ở `6379`).
 
 ```powershell
-docker compose up -d postgres
+docker compose up -d postgres redis
 cd backend
 uv sync --extra dev
 uv run ruff check .
