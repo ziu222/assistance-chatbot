@@ -5,13 +5,14 @@ Bước 1 chạy đúng MỘT instance (xem docs/design/01-webchat-inbound-pipel
 
 import asyncio
 import contextlib
-import logging
 import signal
 
 import redis.asyncio as aioredis
+from prometheus_client import start_http_server
 
 from app.config.settings import get_settings
 from app.shared.infrastructure.db import create_engine, create_session_factory
+from app.shared.infrastructure.logging import configure_logging
 from app.workers.outbox_relay import OutboxRelay, RedisPublisher
 
 
@@ -20,6 +21,7 @@ async def main() -> None:
     engine = create_engine(settings.database_url)
     client = aioredis.from_url(settings.redis_url)
     relay = OutboxRelay(create_session_factory(engine), RedisPublisher(client))
+    start_http_server(settings.worker_metrics_port)  # /metrics nội bộ của relay (lag, ...)
 
     stop = asyncio.Event()
     loop = asyncio.get_running_loop()
@@ -36,6 +38,6 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    configure_logging()
     with contextlib.suppress(KeyboardInterrupt):
         asyncio.run(main())
