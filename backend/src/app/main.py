@@ -16,6 +16,7 @@ from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.rate_limit import RateLimiter
 from app.shared.infrastructure.sse_hub import SignalHub
 from app.shared.presentation import http_errors
+from app.shared.presentation.widget_static import WidgetStatic
 
 log = logging.getLogger(__name__)
 
@@ -56,6 +57,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(staff_auth)
     app.include_router(staff_inbox)
     app.include_router(staff_events)
+    # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
+    app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 
     @app.get("/health")
     def health() -> dict[str, str]:

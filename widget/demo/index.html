@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trang mẫu nhúng widget</title>
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+      /* CSS "xấu" của trang host: widget (Shadow DOM + iframe) không được bị ảnh hưởng */
+      button { background: hotpink !important; border-radius: 0 !important; }
+      * { font-family: "Comic Sans MS", cursive; }
+    </style>
+  </head>
+  <body>
+    <h1>Shop mẫu</h1>
+    <p>Trang host giả lập để kiểm thử widget. Mở bằng <code>?key=wpk_...</code> (lấy từ seed CLI).</p>
+    <p>Chạy: API ở <code>http://localhost:8000</code>, trang này ở <code>http://localhost:5500</code>
+      (origin này phải nằm trong <code>allowed_origins</code>).</p>
+    <button type="button">Nút của trang host</button>
+    <script>
+      // Chỉ dành cho demo: snippet thật là thẻ <script src=... data-key=...> viết cứng.
+      const key = new URLSearchParams(location.search).get("key");
+      if (key) {
+        const s = document.createElement("script");
+        s.src = "http://localhost:8000/widget/loader.js";
+        s.dataset.key = key;
+        s.async = true;
+        document.body.appendChild(s);
+      }
+    </script>
+  </body>
+</html>

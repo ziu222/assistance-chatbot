@@ -355,3 +355,27 @@ async def test_transient_db_error_maps_to_503(client, session_factory, monkeypat
     r = await send(client, token)
     assert r.status_code == 503
     assert r.headers["retry-after"] == "1"
+
+
+# ---------- bundle widget ----------
+
+
+async def test_iframe_page_loads_same_origin_bundle_only(client, session_factory):
+    _, _, key = await connection(session_factory)
+    r = await client.get(f"/w/{key}")
+    assert 'src="/widget/app.js"' in r.text
+    assert 'href="/widget/app.css"' in r.text
+    assert "<script>" not in r.text  # không script inline (CSP không có 'unsafe-inline')
+
+
+async def test_widget_bundle_served_with_revalidation(client_for, tmp_path):
+    (tmp_path / "loader.js").write_text("/*loader*/", encoding="utf-8")
+    client = await client_for(widget_dist_dir=str(tmp_path))
+    r = await client.get("/widget/loader.js")
+    assert r.status_code == 200
+    assert "javascript" in r.headers["content-type"]
+    assert r.headers["cache-control"] == "no-cache"
+    assert r.headers["x-content-type-options"] == "nosniff"
+    assert "etag" in r.headers
+    assert (await client.get("/widget/../.env")).status_code == 404
+    assert (await client.get("/widget/missing.js")).status_code == 404

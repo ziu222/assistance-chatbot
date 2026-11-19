@@ -1,4 +1,5 @@
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -15,6 +16,9 @@ class Settings(BaseSettings):
     webchat_token_secrets: dict[str, str] = {}
     webchat_token_kid: str = "k1"
     webchat_token_ttl_seconds: int = 7 * 24 * 3600
+
+    # Bundle widget đã build (loader.js, app.js, app.css), phục vụ tại /widget/.
+    widget_dist_dir: str = str(Path(__file__).resolve().parents[4] / "widget" / "dist")
 
     # Origin của admin inbox; dùng kiểm tra CSRF cho method không an toàn.
     staff_origin: str = "http://localhost:5173"
