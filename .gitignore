@@ -1,0 +1,49 @@
+# --- AI tooling / agent context & plugins (never commit) ---
+.claude/
+.agents/
+.codex/
+.cursor/
+.windsurf/
+.gemini/
+.opencode/
+.aider*
+.superpowers/
+.impeccable/
+.playwright-mcp/
+.mcp.json
+.continue/
+.github/copilot-instructions.md
+plugins/
+CLAUDE.local.md
+
+# --- Secrets / env ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+.vite/
+*.tsbuildinfo
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

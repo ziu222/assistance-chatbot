@@ -1,0 +1,22 @@
+[project]
+name = "assistance-chatbot-backend"
+version = "0.0.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi", "uvicorn[standard]", "pydantic-settings"]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx", "ruff"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
