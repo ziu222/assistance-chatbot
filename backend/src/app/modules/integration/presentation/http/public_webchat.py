@@ -49,11 +49,14 @@ MESSAGES_PER_IP = 120
 MESSAGES_PER_CONNECTION = 1000
 STREAMS_PER_VISITOR = 3  # kết nối SSE đồng thời
 
+# Chỉ tham chiếu file cùng origin: hợp với CSP default-src 'self', không cần 'unsafe-inline'.
 IFRAME_HTML = (
     '<!doctype html><html lang="vi"><head><meta charset="utf-8">'
     '<meta name="viewport" content="width=device-width, initial-scale=1">'
-    '<title>Chat</title></head><body><div id="root"></div></body></html>'
-)  # ponytail: khung rỗng; bundle widget gắn vào ở bước 1.8
+    '<title>Chat</title><link rel="stylesheet" href="/widget/app.css">'
+    '<script type="module" src="/widget/app.js"></script>'
+    '</head><body><div id="root"></div></body></html>'
+)
 
 
 class SessionIn(BaseModel):

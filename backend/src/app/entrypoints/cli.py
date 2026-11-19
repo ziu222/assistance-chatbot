@@ -7,6 +7,7 @@ import base64
 import json
 import re
 import secrets
+import sys
 from dataclasses import dataclass
 from uuid import UUID, uuid4
 
@@ -78,6 +79,9 @@ async def _main(args: argparse.Namespace) -> None:
 
 
 if __name__ == "__main__":
+    # Windows + stdout chuyển hướng => cp1252; in tiếng Việt sẽ crash SAU khi đã commit,
+    # làm mất mật khẩu chỉ hiện một lần.
+    sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(prog="app.entrypoints.cli")
     sub = parser.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("seed", help="tạo tenant + owner + widget webchat")

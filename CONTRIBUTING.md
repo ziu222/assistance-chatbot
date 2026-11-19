@@ -106,3 +106,12 @@ uv run ruff check .
 uv run ruff format --check .
 uv run pytest
 ```
+
+Widget (khi đổi `widget/`):
+
+```powershell
+cd widget
+npm ci
+npm test
+npm run build
+```
