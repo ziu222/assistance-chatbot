@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     webchat_token_kid: str = "k1"
     webchat_token_ttl_seconds: int = 7 * 24 * 3600
 
+    # Origin của admin inbox; dùng kiểm tra CSRF cho method không an toàn.
+    staff_origin: str = "http://localhost:5173"
+    staff_session_ttl_seconds: int = 12 * 3600  # hết hạn tuyệt đối
+
 
 @lru_cache
 def get_settings() -> Settings:

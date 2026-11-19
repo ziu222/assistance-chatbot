@@ -11,6 +11,7 @@ dependencies = [
   "alembic",
   "redis>=8.1.0",
   "pyjwt>=2.15.1",
+  "argon2-cffi>=25.1.0",
 ]
 
 [project.optional-dependencies]

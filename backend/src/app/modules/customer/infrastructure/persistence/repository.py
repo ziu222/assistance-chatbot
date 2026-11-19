@@ -116,6 +116,23 @@ class CustomerRepository:
             .values(last_inbound_at=at)
         )
 
+    async def identity_for_customer(
+        self, ctx: TenantContext, customer_id: UUID, connection_id: UUID
+    ) -> ChannelIdentity | None:
+        """Định danh của khách trên một kênh (để gửi tín hiệu tới đúng visitor)."""
+        q = (
+            select(ChannelIdentityModel)
+            .where(
+                ChannelIdentityModel.tenant_id == ctx.tenant_id,
+                ChannelIdentityModel.customer_id == customer_id,
+                ChannelIdentityModel.channel_connection_id == connection_id,
+            )
+            .order_by(ChannelIdentityModel.first_seen_at)
+            .limit(1)
+        )
+        m = (await self._s.execute(q)).scalar_one_or_none()
+        return _identity(m) if m else None
+
     async def get_identity(
         self, ctx: TenantContext, connection_id: UUID, scoped_external_id: str
     ) -> ChannelIdentity | None:
