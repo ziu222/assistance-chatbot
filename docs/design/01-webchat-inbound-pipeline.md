@@ -386,7 +386,7 @@ Tất cả lỗi trả JSON `{ "error": { "code": "...", "message": "..." }, "tr
 | Method & path | Auth | Mô tả |
 |---|---|---|
 | `GET /w/{public_key}` | Origin | HTML của iframe; header `Content-Security-Policy: frame-ancestors <allowed_origins>` động theo connection |
-| `POST /public/webchat/v1/sessions` | Origin + rate limit | Body `{public_key, token?}` → verify origin; nếu có token hợp lệ thì gia hạn và giữ `visitor_id`, nếu không thì sinh `visitor_id` mới. Trả `{token, expires_at, config}`. **Không ghi DB** |
+| `POST /public/webchat/v1/sessions` | Origin + rate limit | Body `{public_key, token?}` → `Origin` phải là origin của chính iframe (`PUBLIC_ORIGIN`, xem 8.2); nếu có token hợp lệ **của cùng connection** thì gia hạn và giữ `visitor_id`, nếu không thì sinh `visitor_id` mới. Trả `{token, expires_at, config}`. **Không ghi DB** |
 | `POST /public/webchat/v1/messages` | Bearer | Body `{client_message_id, text}` → `201 {message_id, sequence, conversation_id}`; replay cùng `client_message_id` → `200` cùng body |
 | `GET /public/webchat/v1/messages?after_sequence=&limit=` | Bearer | Tin của conversation hiện tại của khách; `{conversation_id, messages[], has_more}`; chưa có tin → danh sách rỗng |
 | `GET /public/webchat/v1/events` | Bearer | SSE tín hiệu cho khách |
@@ -480,7 +480,9 @@ COMMIT
 | `client_message_id` | UUID v4 hợp lệ |
 | `text` | NFC; loại ký tự điều khiển (trừ `\n`); trim; 1–4000 ký tự sau chuẩn hóa; chuỗi rỗng sau trim → 422 |
 | Token | chữ ký, `exp`, `kid`, `alg=HS256` cố định, connection còn `active`, tenant còn `active` |
-| Origin | khớp `config.allowed_origins` của connection; `allowed_origins` rỗng ⇒ **từ chối** (fail closed) |
+| Origin | `config.allowed_origins` của connection ép bằng `frame-ancestors` ở `GET /w/{key}`; chỉ nhận đúng dạng `scheme://host[:port]` (chặn chèn directive CSP); rỗng ⇒ **404** (fail closed). API public nhận `Origin` = `PUBLIC_ORIGIN` |
+
+Ghi chú (sửa trong lúc làm 1.5): widget chạy trong iframe do backend phục vụ, nên request API mang `Origin` của **iframe**, không phải của site khách. Vì vậy allowlist của tenant chỉ có hiệu lực qua `frame-ancestors`; kiểm tra `Origin` ở API chỉ chặn site khác gọi thẳng API từ trình duyệt.
 
 Origin **không phải ranh giới bảo mật** (client không phải trình duyệt có thể giả header). Vai trò: chống nhúng trái phép và giảm lạm dụng; ranh giới thật là token + rate limit.
 

@@ -138,6 +138,23 @@ class ConversationRepository:
         m = (await self._s.execute(q)).scalar_one_or_none()
         return _conversation(m) if m else None
 
+    async def latest_for_customer(
+        self, ctx: TenantContext, customer_id: UUID, connection_id: UUID
+    ) -> Conversation | None:
+        """Conversation hiện tại của khách: bản mới nhất (đang mở hoặc vừa đóng)."""
+        q = (
+            select(ConversationModel)
+            .where(
+                ConversationModel.tenant_id == ctx.tenant_id,
+                ConversationModel.customer_id == customer_id,
+                ConversationModel.channel_connection_id == connection_id,
+            )
+            .order_by(ConversationModel.created_at.desc(), ConversationModel.id.desc())
+            .limit(1)
+        )
+        m = (await self._s.execute(q)).scalar_one_or_none()
+        return _conversation(m) if m else None
+
 
 class MessageRepository:
     def __init__(self, session: AsyncSession) -> None:
