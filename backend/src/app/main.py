@@ -8,11 +8,13 @@ from sqlalchemy import text
 
 from app.config.settings import Settings, get_settings
 from app.modules.identity.presentation.http.auth import router as staff_auth
+from app.modules.inbox.presentation.http.events import router as staff_events
 from app.modules.inbox.presentation.http.staff_inbox import router as staff_inbox
 from app.modules.integration.infrastructure.webchat.token import TokenSigner
 from app.modules.integration.presentation.http.public_webchat import router as public_webchat
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.rate_limit import RateLimiter
+from app.shared.infrastructure.sse_hub import SignalHub
 from app.shared.presentation import http_errors
 
 log = logging.getLogger(__name__)
@@ -31,6 +33,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.engine = engine
         app.state.session_factory = create_session_factory(engine)
         app.state.rate_limiter = RateLimiter(redis)
+        app.state.signal_hub = SignalHub(settings.redis_url)
+        app.state.signal_hub.start()  # Redis chết lúc khởi động: hub tự thử lại ở nền
         app.state.token_signer = None
         if settings.webchat_token_secrets:
             # Secret sai (ngắn, thiếu kid) => không khởi động được, thay vì chạy với khóa yếu.
@@ -42,6 +46,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         else:
             log.warning("WEBCHAT_TOKEN_SECRETS not set: public webchat API returns 503")
         yield
+        await app.state.signal_hub.stop()
         await redis.aclose()
         await engine.dispose()
 
@@ -50,6 +55,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(public_webchat)
     app.include_router(staff_auth)
     app.include_router(staff_inbox)
+    app.include_router(staff_events)
 
     @app.get("/health")
     def health() -> dict[str, str]:
