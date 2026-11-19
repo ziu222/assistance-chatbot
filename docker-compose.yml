@@ -5,7 +5,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-atlas}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-atlas}
       POSTGRES_DB: ${POSTGRES_DB:-atlas}
-    ports: ["5432:5432"]
+    ports: ["${POSTGRES_PORT:-54329}:5432"]
     volumes: [pgdata:/var/lib/postgresql/data]
   redis:
     image: redis:7
