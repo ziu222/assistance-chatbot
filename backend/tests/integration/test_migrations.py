@@ -22,14 +22,43 @@ async def _has_citext(url: str) -> bool:
         await engine.dispose()
 
 
+async def _tables(url: str) -> set[str]:
+    engine = create_async_engine(url)
+    try:
+        async with engine.connect() as conn:
+            rows = await conn.execute(
+                text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'")
+            )
+            return {r[0] for r in rows} - {"alembic_version"}
+    finally:
+        await engine.dispose()
+
+
+CORE_TABLES = {
+    "tenants",
+    "users",
+    "tenant_memberships",
+    "staff_sessions",
+    "channel_connections",
+    "customers",
+    "channel_identities",
+    "conversations",
+    "messages",
+    "outbox_events",
+}
+
+
 async def test_upgrade_downgrade_upgrade():
     await recreate_database(MIGRATIONS_DB_URL)
 
     await run_alembic(command.upgrade, MIGRATIONS_DB_URL, "head")
     assert await _has_citext(MIGRATIONS_DB_URL)
+    assert await _tables(MIGRATIONS_DB_URL) == CORE_TABLES
 
     await run_alembic(command.downgrade, MIGRATIONS_DB_URL, "base")
     assert not await _has_citext(MIGRATIONS_DB_URL)
+    assert await _tables(MIGRATIONS_DB_URL) == set()
 
     await run_alembic(command.upgrade, MIGRATIONS_DB_URL, "head")
     assert await _has_citext(MIGRATIONS_DB_URL)
+    assert await _tables(MIGRATIONS_DB_URL) == CORE_TABLES
