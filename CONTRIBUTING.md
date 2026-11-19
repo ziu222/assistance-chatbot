@@ -115,3 +115,12 @@ npm ci
 npm test
 npm run build
 ```
+
+Admin inbox (khi đổi `frontend/`; `npm run dev` chạy ở `http://localhost:5173`, proxy `/api` sang backend `:8000`):
+
+```powershell
+cd frontend
+npm ci
+npm test
+npm run build
+```
