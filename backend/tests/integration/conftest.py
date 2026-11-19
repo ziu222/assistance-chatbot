@@ -10,7 +10,7 @@ from sqlalchemy import text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, create_async_engine
 
-from app.shared.infrastructure.db import Base, create_session_factory
+from app.shared.infrastructure.db import create_session_factory
 
 # Test chạy trên PostgreSQL thật (các bất biến nằm ở index/lock, không mock được).
 TEST_DATABASE_URL = os.environ.get(
@@ -61,7 +61,13 @@ def session_factory(engine: AsyncEngine) -> async_sessionmaker:
 @pytest_asyncio.fixture(autouse=True)
 async def _clean_tables(engine: AsyncEngine):
     yield
-    tables = [t.name for t in Base.metadata.sorted_tables]
-    if tables:
-        async with engine.begin() as conn:
-            await conn.execute(text(f"TRUNCATE {', '.join(tables)} RESTART IDENTITY CASCADE"))
+    async with engine.begin() as conn:
+        rows = await conn.execute(
+            text(
+                "SELECT tablename FROM pg_tables "
+                "WHERE schemaname = 'public' AND tablename <> 'alembic_version'"
+            )
+        )
+        names = [r[0] for r in rows]
+        if names:
+            await conn.execute(text(f"TRUNCATE {', '.join(names)} RESTART IDENTITY CASCADE"))
