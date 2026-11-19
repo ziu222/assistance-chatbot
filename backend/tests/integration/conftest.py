@@ -71,3 +71,42 @@ async def _clean_tables(engine: AsyncEngine):
         names = [r[0] for r in rows]
         if names:
             await conn.execute(text(f"TRUNCATE {', '.join(names)} RESTART IDENTITY CASCADE"))
+
+
+TEST_REDIS_URL = os.environ.get("TEST_REDIS_URL", "redis://localhost:6379/15")
+TEST_SETTINGS = {
+    "redis_url": TEST_REDIS_URL,
+    "public_origin": "http://widget.test",
+    "staff_origin": "https://inbox.test",
+    "webchat_token_secrets": {"k1": "s" * 32},
+    "webchat_token_kid": "k1",
+}
+
+
+@pytest_asyncio.fixture
+async def app_client(migrated_db_url):
+    """Factory: app chạy lifespan thật trong cùng event loop, gọi qua ASGI (không mở cổng)."""
+    import httpx
+    import redis.asyncio as aioredis
+
+    from app.config.settings import Settings
+    from app.main import create_app
+
+    r = aioredis.from_url(TEST_REDIS_URL)
+    await r.flushdb()  # bộ đếm rate limit không rò giữa các test
+    await r.aclose()
+    opened = []
+
+    async def factory(base_url: str, **over):
+        settings = Settings(**({"database_url": migrated_db_url} | TEST_SETTINGS | over))
+        app = create_app(settings)
+        lifespan = app.router.lifespan_context(app)
+        await lifespan.__aenter__()
+        client = httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url=base_url)
+        opened.append((client, lifespan))
+        return client
+
+    yield factory
+    for client, lifespan in opened:
+        await client.aclose()
+        await lifespan.__aexit__(None, None, None)

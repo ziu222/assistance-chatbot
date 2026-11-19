@@ -30,6 +30,10 @@ class CustomerStore(Protocol):
 
     async def touch_inbound(self, ctx: TenantContext, identity_id: UUID, at: datetime) -> None: ...
 
+    async def identity_for_customer(
+        self, ctx: TenantContext, customer_id: UUID, connection_id: UUID
+    ) -> ChannelIdentity | None: ...
+
 
 @dataclass(frozen=True)
 class ResolvedCustomer:

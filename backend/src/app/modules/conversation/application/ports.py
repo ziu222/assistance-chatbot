@@ -8,6 +8,12 @@ from app.shared.domain.tenant import TenantContext
 
 
 class ConversationStore(Protocol):
+    async def get(
+        self, ctx: TenantContext, conversation_id: UUID, *, lock: bool = False
+    ) -> Conversation | None: ...
+
+    async def mark_read(self, ctx: TenantContext, conversation_id: UUID) -> None: ...
+
     async def find_open(
         self, ctx: TenantContext, customer_id: UUID, connection_id: UUID, *, lock: bool = False
     ) -> Conversation | None: ...

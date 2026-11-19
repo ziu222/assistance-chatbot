@@ -1,7 +1,7 @@
 from datetime import datetime
 from uuid import UUID, uuid4
 
-from sqlalchemy import func, select, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -84,7 +84,9 @@ class ConversationRepository:
                     ConversationModel.customer_id,
                     ConversationModel.channel_connection_id,
                 ],
-                index_where=ConversationModel.status == "open",
+                # Literal, không bind param: với prepared statement, sau vài lần Postgres dùng
+                # generic plan và không suy ra được partial index từ "status = $n".
+                index_where=text("status = 'open'"),
             )
             .returning(ConversationModel)
         )
@@ -117,12 +119,26 @@ class ConversationRepository:
             )
         )
 
-    async def get(self, ctx: TenantContext, conversation_id: UUID) -> Conversation | None:
+    async def get(
+        self, ctx: TenantContext, conversation_id: UUID, *, lock: bool = False
+    ) -> Conversation | None:
         q = select(ConversationModel).where(
             ConversationModel.tenant_id == ctx.tenant_id, ConversationModel.id == conversation_id
         )
+        if lock:
+            q = q.with_for_update()
         m = (await self._s.execute(q)).scalar_one_or_none()
         return _conversation(m) if m else None
+
+    async def mark_read(self, ctx: TenantContext, conversation_id: UUID) -> None:
+        await self._s.execute(
+            update(ConversationModel)
+            .where(
+                ConversationModel.tenant_id == ctx.tenant_id,
+                ConversationModel.id == conversation_id,
+            )
+            .values(unread_count=0, version=ConversationModel.version + 1, updated_at=func.now())
+        )
 
     async def find_open(
         self, ctx: TenantContext, customer_id: UUID, connection_id: UUID, *, lock: bool = False

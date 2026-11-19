@@ -241,3 +241,15 @@ async def test_connection_of_other_tenant_is_rejected(receive, channel, session_
 
     for table in ("customers", "conversations", "messages", "outbox_events"):
         assert await scalar(session_factory, f"SELECT count(*) FROM {table}") == 0, table
+
+
+async def test_many_new_conversations_survive_generic_plan(receive, channel, session_factory):
+    """Hồi quy: ON CONFLICT với partial index phải dùng literal, không bind param.
+
+    Prepared statement chạy > 5 lần thì Postgres chuyển sang generic plan; khi đó
+    "WHERE status = $n" không còn suy ra được uq_conversation_one_open.
+    """
+    ctx, conn = channel
+    for i in range(12):  # tuần tự: dồn lên cùng một connection trong pool
+        await receive(event(ctx, conn, visitor=f"v-{i}"))
+    assert await scalar(session_factory, "SELECT count(*) FROM conversations") == 12

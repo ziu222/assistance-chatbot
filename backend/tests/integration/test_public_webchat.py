@@ -1,57 +1,24 @@
 """API public của widget: token, origin, rate limit, cô lập visitor, idempotency qua HTTP."""
 
 import json
-import os
 from uuid import uuid4
 
-import httpx
 import jwt
 import pytest
-import redis.asyncio as aioredis
 from sqlalchemy import text
 
-from app.config.settings import Settings
-from app.main import create_app
 from app.shared.application.errors import TransientDatabaseError
 
+from .conftest import TEST_SETTINGS
 from .factories import make_connection, make_tenant
 
-TEST_REDIS_URL = os.environ.get("TEST_REDIS_URL", "redis://localhost:6379/15")
-WIDGET_ORIGIN = "http://widget.test"
+WIDGET_ORIGIN = TEST_SETTINGS["public_origin"]
 HOST_SITE = "https://shop.vn"
-SECRETS = {"k1": "s" * 32}
-
-
-def make_settings(db_url: str, **over) -> Settings:
-    defaults = {
-        "database_url": db_url,
-        "redis_url": TEST_REDIS_URL,
-        "public_origin": WIDGET_ORIGIN,
-        "webchat_token_secrets": SECRETS,
-        "webchat_token_kid": "k1",
-    }
-    return Settings(**(defaults | over))
 
 
 @pytest.fixture
-async def client_for(migrated_db_url):
-    r = aioredis.from_url(TEST_REDIS_URL)
-    await r.flushdb()
-    await r.aclose()
-    opened = []
-
-    async def factory(**over):
-        app = create_app(make_settings(migrated_db_url, **over))
-        lifespan = app.router.lifespan_context(app)
-        await lifespan.__aenter__()
-        c = httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url=WIDGET_ORIGIN)
-        opened.append((c, lifespan))
-        return c
-
-    yield factory
-    for c, lifespan in opened:
-        await c.aclose()
-        await lifespan.__aexit__(None, None, None)
+def client_for(app_client):
+    return lambda **over: app_client(WIDGET_ORIGIN, **over)
 
 
 @pytest.fixture

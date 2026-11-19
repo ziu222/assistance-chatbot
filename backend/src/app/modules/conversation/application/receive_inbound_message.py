@@ -1,5 +1,3 @@
-import asyncio
-import random
 from collections.abc import Callable
 from dataclasses import dataclass
 from uuid import UUID
@@ -11,10 +9,10 @@ from app.modules.customer.application.resolve_customer import (
     resolve_customer_for_channel_identity,
 )
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent
-from app.shared.application.errors import RetryableConflict, TransientDatabaseError
+from app.shared.application.errors import RetryableConflict
+from app.shared.application.retry import retry_conflicts
 from app.shared.domain.tenant import TenantContext
 
-MAX_ATTEMPTS = 3
 PREVIEW_LENGTH = 120
 EVENT_SCHEMA_VERSION = 1
 
@@ -59,14 +57,7 @@ class ReceiveInboundMessage:
         if existing is not None:
             return _result(existing, created=False)
 
-        for attempt in range(1, MAX_ATTEMPTS + 1):
-            try:
-                return await self._attempt(ctx, event)
-            except RetryableConflict as exc:
-                if attempt == MAX_ATTEMPTS:
-                    raise TransientDatabaseError("conflict persisted after retries") from exc
-                await asyncio.sleep(random.uniform(0, 0.02 * 2**attempt))
-        raise AssertionError("unreachable")
+        return await retry_conflicts(lambda: self._attempt(ctx, event))
 
     async def _attempt(self, ctx: TenantContext, event: NormalizedChannelEvent) -> ReceiveResult:
         async with self._uow() as uow:

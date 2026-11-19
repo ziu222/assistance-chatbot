@@ -8,6 +8,8 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 MAX_PUBLIC_BODY_BYTES = 16 * 1024
+# Endpoint ai cũng gọi được: chặn body trước khi đọc.
+UNAUTHENTICATED_POSTS = ("/public/", "/api/v1/auth/login")
 
 
 class ApiError(Exception):
@@ -33,7 +35,7 @@ def install(app: FastAPI) -> None:
     async def trace_and_guard_body(request: Request, call_next):
         request.state.trace_id = uuid4().hex
         # Chặn trước khi đọc body: Starlette sẽ đọc cả body vào bộ nhớ nếu để tới route.
-        if request.method == "POST" and request.url.path.startswith("/public/"):
+        if request.method == "POST" and request.url.path.startswith(UNAUTHENTICATED_POSTS):
             ctype = request.headers.get("content-type", "")
             length = request.headers.get("content-length")
             if not ctype.lower().startswith("application/json"):
