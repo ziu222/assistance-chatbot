@@ -9,6 +9,13 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://atlas:atlas@localhost:54329/atlas"
     redis_url: str = "redis://localhost:6379/0"
 
+    # Origin phục vụ trang iframe /w/{key}; widget gọi API từ chính origin này.
+    public_origin: str = "http://localhost:8000"
+    # JSON {"kid": "secret"}; không có mặc định để không bao giờ chạy với secret mẫu.
+    webchat_token_secrets: dict[str, str] = {}
+    webchat_token_kid: str = "k1"
+    webchat_token_ttl_seconds: int = 7 * 24 * 3600
+
 
 @lru_cache
 def get_settings() -> Settings:

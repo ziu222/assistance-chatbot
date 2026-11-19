@@ -10,6 +10,7 @@ dependencies = [
   "asyncpg",
   "alembic",
   "redis>=8.1.0",
+  "pyjwt>=2.15.1",
 ]
 
 [project.optional-dependencies]
