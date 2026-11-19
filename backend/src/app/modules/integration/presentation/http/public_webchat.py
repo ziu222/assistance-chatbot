@@ -38,6 +38,7 @@ from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
 from app.shared.infrastructure.rate_limit import RateLimitUnavailable, hashed
 from app.shared.presentation.http_errors import ApiError
+from app.shared.presentation.sse import sse_response
 
 router = APIRouter()
 
@@ -46,6 +47,7 @@ SESSIONS_PER_IP = 10
 MESSAGES_PER_VISITOR = 20
 MESSAGES_PER_IP = 120
 MESSAGES_PER_CONNECTION = 1000
+STREAMS_PER_VISITOR = 3  # kết nối SSE đồng thời
 
 IFRAME_HTML = (
     '<!doctype html><html lang="vi"><head><meta charset="utf-8">'
@@ -215,6 +217,13 @@ async def post_message(body: MessageIn, request: Request, visitor: CurrentVisito
         },
         status_code=201 if result.created else 200,
     )
+
+
+@router.get("/public/webchat/v1/events")
+async def visitor_events(request: Request, visitor: CurrentVisitor):
+    # Kênh lấy thẳng từ token, không tra DB: đăng ký được trước cả tin đầu tiên (§8.5).
+    key = f"{visitor.connection.id}:{visitor.claims.visitor_id}"
+    return sse_response(request, f"evt:v:{key}", limit_key=f"v:{key}", limit=STREAMS_PER_VISITOR)
 
 
 @router.get("/public/webchat/v1/messages")
