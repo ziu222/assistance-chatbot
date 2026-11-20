@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     staff_origin: str = "http://localhost:5173"
     staff_session_ttl_seconds: int = 12 * 3600  # hết hạn tuyệt đối
 
+    # Cổng /metrics nội bộ của relay worker (không mở ra Internet).
+    worker_metrics_port: int = 9101
+
 
 @lru_cache
 def get_settings() -> Settings:

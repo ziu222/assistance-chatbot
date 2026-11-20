@@ -8,6 +8,7 @@ from uuid import uuid4
 
 import pytest
 import redis.asyncio as aioredis
+from prometheus_client import REGISTRY
 from sqlalchemy import text
 
 from app.shared.domain.tenant import TenantContext
@@ -78,10 +79,12 @@ async def unpublished(session_factory) -> int:
 async def test_publishes_in_id_order_and_marks_published(session_factory):
     _, ids = await seed(session_factory, 5)
     pub = RecordingPublisher()
+    lag_before = REGISTRY.get_sample_value("outbox_publish_lag_seconds_count") or 0
 
     published = await OutboxRelay(session_factory, pub).run_once()
 
     assert published == 5
+    assert REGISTRY.get_sample_value("outbox_publish_lag_seconds_count") == lag_before + 5
     assert pub.ids() == ids
     assert len(pub.sent) == 10  # tenant + visitor channel cho mỗi event
     assert await unpublished(session_factory) == 0

@@ -3,7 +3,8 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 import redis.asyncio as aioredis
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from sqlalchemy import text
 
 from app.config.settings import Settings, get_settings
@@ -13,10 +14,12 @@ from app.modules.inbox.presentation.http.staff_inbox import router as staff_inbo
 from app.modules.integration.infrastructure.webchat.token import TokenSigner
 from app.modules.integration.presentation.http.public_webchat import router as public_webchat
 from app.shared.infrastructure.db import create_engine, create_session_factory
+from app.shared.infrastructure.metrics import OUTBOX_OLDEST_AGE, OUTBOX_UNPUBLISHED
 from app.shared.infrastructure.rate_limit import RateLimiter
 from app.shared.infrastructure.sse_hub import SignalHub
 from app.shared.presentation import http_errors
 from app.shared.presentation.widget_static import WidgetStatic
+from app.workers.outbox_relay import outbox_backlog
 
 log = logging.getLogger(__name__)
 
@@ -31,6 +34,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             settings.redis_url, socket_connect_timeout=1, socket_timeout=1, retry=None
         )
         app.state.settings = settings
+        app.state.redis = redis
         app.state.engine = engine
         app.state.session_factory = create_session_factory(engine)
         app.state.rate_limiter = RateLimiter(redis)
@@ -60,6 +64,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
     app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 
+    @app.get("/metrics", include_in_schema=False)
+    async def metrics(request: Request) -> Response:
+        # ponytail: endpoint nội bộ; reverse proxy KHÔNG được mở /metrics ra Internet (runbook).
+        try:
+            async with request.app.state.session_factory() as s:
+                count, age = await outbox_backlog(s)
+            OUTBOX_UNPUBLISHED.set(count)
+            OUTBOX_OLDEST_AGE.set(age)
+        except Exception:
+            log.warning("metrics: outbox backlog unavailable")
+        return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
+
     @app.get("/health")
     def health() -> dict[str, str]:
         return {"status": "ok"}
@@ -71,7 +87,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 await conn.execute(text("SELECT 1"))
         except Exception as exc:
             raise HTTPException(status_code=503, detail="database unavailable") from exc
-        return {"status": "ready"}
+        # Redis chỉ báo, không làm fail: mất Redis vẫn phải nhận/lưu tin (thiết kế §16.6);
+        # nếu fail thì load balancer gỡ mọi instance và chat sập theo Redis.
+        try:
+            await request.app.state.redis.ping()
+            redis_state = "ok"
+        except Exception:
+            redis_state = "down"
+        return {"status": "ready", "redis": redis_state}
 
     return app
 

@@ -14,6 +14,8 @@ from collections.abc import AsyncIterator
 
 import redis.asyncio as aioredis
 
+from app.shared.infrastructure.metrics import SSE_CONNECTIONS, SSE_RESYNC
+
 log = logging.getLogger(__name__)
 
 RESYNC = object()  # có thể đã lỡ tín hiệu: client refetch, giữ kết nối
@@ -30,6 +32,7 @@ class Subscription:
         self.limit_key = limit_key
         self.queue: asyncio.Queue = asyncio.Queue(queue_size)
         self.closed = False
+        self.audience = "staff" if channel.startswith("evt:t:") else "visitor"
 
 
 class SignalHub:
@@ -61,6 +64,7 @@ class SignalHub:
             raise TooManyStreams
         sub = Subscription(channel, limit_key, self._queue_size)
         self.counts[limit_key] += 1
+        SSE_CONNECTIONS.labels(audience=sub.audience).inc()
         self._subs[channel].add(sub)
         return sub
 
@@ -72,6 +76,7 @@ class SignalHub:
         if not self._subs[sub.channel]:
             del self._subs[sub.channel]
         self.counts[sub.limit_key] -= 1
+        SSE_CONNECTIONS.labels(audience=sub.audience).dec()
         if self.counts[sub.limit_key] <= 0:
             del self.counts[sub.limit_key]
 
@@ -83,11 +88,13 @@ class SignalHub:
             while not sub.queue.empty():
                 sub.queue.get_nowait()
             sub.queue.put_nowait(OVERFLOW)
+            SSE_RESYNC.inc()
 
     def _broadcast_resync(self) -> None:
         for subs in self._subs.values():
             for sub in subs:
                 self._put(sub, RESYNC)
+                SSE_RESYNC.inc()
 
     async def _run(self) -> None:
         backoff, had_failure = 0.2, False

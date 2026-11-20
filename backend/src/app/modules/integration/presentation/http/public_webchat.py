@@ -36,8 +36,10 @@ from app.modules.integration.infrastructure.webchat.token import (
 )
 from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
-from app.shared.infrastructure.rate_limit import RateLimitUnavailable, hashed
+from app.shared.infrastructure.metrics import INBOUND_MESSAGES
+from app.shared.infrastructure.rate_limit import hashed
 from app.shared.presentation.http_errors import ApiError
+from app.shared.presentation.rate_limit import enforce_rate_limit
 from app.shared.presentation.sse import sse_response
 
 router = APIRouter()
@@ -93,17 +95,6 @@ def _client_ip(request: Request) -> str:
     return request.client.host if request.client else "unknown"
 
 
-async def _limit(request: Request, key: str, limit: int, *, fail_open: bool) -> None:
-    try:
-        retry_after = await request.app.state.rate_limiter.hit(key, limit, fail_open=fail_open)
-    except RateLimitUnavailable as exc:
-        raise ApiError(
-            503, "rate_limit_unavailable", "Try again later", {"Retry-After": "5"}
-        ) from exc
-    if retry_after is not None:
-        raise ApiError(429, "rate_limited", "Too many requests", {"Retry-After": str(retry_after)})
-
-
 async def current_visitor(
     request: Request, authorization: Annotated[str | None, Header()] = None
 ) -> Visitor:
@@ -150,7 +141,9 @@ async def iframe_page(public_key: str, request: Request) -> HTMLResponse:
 @router.post("/public/webchat/v1/sessions")
 async def create_session(body: SessionIn, request: Request) -> dict:
     ip = hashed(_client_ip(request))
-    await _limit(request, f"sess:ip:{ip}", SESSIONS_PER_IP, fail_open=False)
+    await enforce_rate_limit(
+        request, f"sess:ip:{ip}", SESSIONS_PER_IP, scope="sessions_ip", fail_open=False
+    )
 
     origin = (request.headers.get("origin") or "").lower().removesuffix("/")
     if origin != request.app.state.settings.public_origin.lower().removesuffix("/"):
@@ -180,17 +173,18 @@ async def create_session(body: SessionIn, request: Request) -> dict:
 async def post_message(body: MessageIn, request: Request, visitor: CurrentVisitor) -> JSONResponse:
     ip = hashed(_client_ip(request))
     # Redis lỗi => fail open có giới hạn cục bộ: không làm sập chat vì Redis.
-    for key, limit in (
-        (f"msg:v:{visitor.claims.visitor_id}", MESSAGES_PER_VISITOR),
-        (f"msg:ip:{ip}", MESSAGES_PER_IP),
-        (f"msg:c:{visitor.connection.id}", MESSAGES_PER_CONNECTION),
+    for key, limit, scope in (
+        (f"msg:v:{visitor.claims.visitor_id}", MESSAGES_PER_VISITOR, "messages_visitor"),
+        (f"msg:ip:{ip}", MESSAGES_PER_IP, "messages_ip"),
+        (f"msg:c:{visitor.connection.id}", MESSAGES_PER_CONNECTION, "messages_connection"),
     ):
-        await _limit(request, key, limit, fail_open=True)
+        await enforce_rate_limit(request, key, limit, scope=scope, fail_open=True)
 
     try:
         client_message_id = validate_client_message_id(body.client_message_id)
         text = normalize_text(body.text)
     except InvalidInboundMessage as exc:
+        INBOUND_MESSAGES.labels(result="rejected", reason="invalid_request").inc()
         raise ApiError(422, "invalid_request", str(exc)) from exc
 
     # tenant/connection/visitor chỉ lấy từ token đã verify, không từ body (thiết kế §6.1).
@@ -212,6 +206,7 @@ async def post_message(body: MessageIn, request: Request, visitor: CurrentVisito
     except TransientDatabaseError as exc:
         raise ApiError(503, "busy", "Please retry", {"Retry-After": "1"}) from exc
 
+    INBOUND_MESSAGES.labels(result="created" if result.created else "duplicate", reason="").inc()
     return JSONResponse(
         {
             "message_id": str(result.message_id),

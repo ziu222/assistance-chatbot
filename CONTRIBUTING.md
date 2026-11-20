@@ -124,3 +124,11 @@ npm ci
 npm test
 npm run build
 ```
+
+E2E (khi đổi luồng widget ↔ inbox; cần Postgres + Redis đang chạy và widget đã build):
+
+```powershell
+cd e2e
+npm ci
+npx playwright test
+```

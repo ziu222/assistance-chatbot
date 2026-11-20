@@ -17,6 +17,7 @@ from typing import Any, Protocol
 from sqlalchemy import delete, func, select, text, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from app.shared.infrastructure.metrics import OUTBOX_PUBLISH_LAG
 from app.shared.infrastructure.outbox import OutboxEventModel
 
 log = logging.getLogger(__name__)
@@ -120,8 +121,11 @@ class OutboxRelay:
 
         if done:
             now = datetime.now(UTC)
+            lags = [(now - r.created_at).total_seconds() for r in done]
+            for lag in lags:
+                OUTBOX_PUBLISH_LAG.observe(lag)
             self.stats.published += len(done)
-            self.stats.last_lag_seconds = max((now - r.created_at).total_seconds() for r in done)
+            self.stats.last_lag_seconds = max(lags)
             log.info(
                 "outbox published",
                 extra={"count": len(done), "max_lag_seconds": self.stats.last_lag_seconds},

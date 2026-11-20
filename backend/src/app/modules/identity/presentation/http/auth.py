@@ -8,8 +8,9 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.identity.domain.authorization import StaffActor
 from app.modules.identity.infrastructure import staff_sessions
-from app.shared.infrastructure.rate_limit import RateLimitUnavailable, hashed
+from app.shared.infrastructure.rate_limit import hashed
 from app.shared.presentation.http_errors import ApiError
+from app.shared.presentation.rate_limit import enforce_rate_limit
 
 COOKIE = "__Host-sid"
 LOGIN_PER_IP = 20  # / phút
@@ -65,22 +66,16 @@ def _me(actor: StaffActor) -> dict:
     }
 
 
-async def _limit(request: Request, key: str, limit: int) -> None:
-    try:
-        retry_after = await request.app.state.rate_limiter.hit(key, limit, fail_open=False)
-    except RateLimitUnavailable as exc:
-        raise ApiError(503, "rate_limit_unavailable", "Try again later") from exc
-    if retry_after is not None:
-        raise ApiError(429, "rate_limited", "Too many attempts", {"Retry-After": str(retry_after)})
-
-
 @router.post("/login", dependencies=[Csrf])
 async def login(body: LoginIn, request: Request, response: Response) -> dict:
     email = body.email.strip().lower()
     ip = request.client.host if request.client else "unknown"
     # Đếm trước khi verify: brute-force bị chặn kể cả khi đoán trúng ở lượt vượt ngưỡng.
-    await _limit(request, f"login:ip:{hashed(ip)}", LOGIN_PER_IP)
-    await _limit(request, f"login:email:{hashed(email)}", LOGIN_PER_EMAIL)
+    for key, limit, scope in (
+        (f"login:ip:{hashed(ip)}", LOGIN_PER_IP, "login_ip"),
+        (f"login:email:{hashed(email)}", LOGIN_PER_EMAIL, "login_email"),
+    ):
+        await enforce_rate_limit(request, key, limit, scope=scope, fail_open=False)
 
     ttl = request.app.state.settings.staff_session_ttl_seconds
     async with request.app.state.session_factory() as s:
