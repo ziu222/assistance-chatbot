@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/header.svg" width="100%" alt="Atlas: the AI support agent that learns your business, trained by your team until it answers on its own.">
+  <img src="docs/assets/header.webp" width="100%" alt="Atlas: Learn. Support. Grow. A titan holds up a glass globe with a chat typing indicator on a sky-blue background.">
 </p>
 
 AI customer-support agents with human-in-the-loop cho doanh nghiệp nhỏ: khách nhắn qua widget, nhân viên trả lời trong inbox; các bước sau thêm agent AI theo thang **Manual → Shadow → Learning → Autopilot**.
