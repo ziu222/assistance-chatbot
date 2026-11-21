@@ -1,0 +1,27 @@
+# Route LLM (ADR-0015): tên logic -> danh sách đích THEO THỨ TỰ ưu tiên.
+# Đổi thứ tự, thêm/bớt đích = sửa file này qua PR. Một đích chỉ nên vào route sau khi qua eval
+# (bước 2.7); nếu không, failover sẽ âm thầm hạ chất lượng câu trả lời.
+#
+# effort chỉ áp dụng cho Anthropic. max_tokens gồm cả token suy nghĩ của model.
+
+[[routes.classify.targets]]
+provider = "anthropic"
+model = "claude-sonnet-5"
+effort = "low"
+max_tokens = 2048
+
+[[routes.classify.targets]]
+provider = "openai"
+model = "gpt-4.1-mini"
+max_tokens = 512
+
+[[routes.draft.targets]]
+provider = "anthropic"
+model = "claude-sonnet-5"
+effort = "medium"
+max_tokens = 4096
+
+[[routes.draft.targets]]
+provider = "openai"
+model = "gpt-4.1"
+max_tokens = 2048
