@@ -35,3 +35,22 @@ DEBOUNCE_COALESCED = Histogram(
     "Customer messages handled by one run",
     buckets=(1, 2, 3, 5, 8, 13),
 )
+
+# Lớp provider LLM (ADR-0015)
+LLM_REQUESTS = Counter(
+    "llm_requests_total", "LLM calls by outcome", ["provider", "model", "outcome"]
+)
+LLM_FAILOVER = Counter(
+    "llm_failover_total",
+    "Requests served by a later target after an earlier one failed",
+    ["from_provider", "to_provider", "reason"],
+)
+LLM_CIRCUIT_OPEN = Gauge(
+    "llm_circuit_open", "1 if the provider circuit is not closed", ["provider"]
+)
+LLM_LATENCY = Histogram(
+    "llm_request_duration_seconds",
+    "Latency of successful LLM calls",
+    ["provider"],
+    buckets=(0.25, 0.5, 1, 2, 4, 8, 16, 30, 60),
+)
