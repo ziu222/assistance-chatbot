@@ -46,6 +46,9 @@ CORE_TABLES = {
     "messages",
     "outbox_events",
     "conversation_run_requests",
+    "tenant_ai_settings",
+    "agents",
+    "agent_versions",
 }
 
 

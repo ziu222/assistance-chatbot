@@ -50,7 +50,7 @@ Gửi câu trả lời AI cho khách (Autopilot), hiển thị nháp cho nhân v
 | E6 | **`LLMPort` mỏng** + adapter Claude; `FakeLLM` cho CI | Test xác định, không tốn tiền; đổi provider không đổi runtime | 0015 |
 | E7 | **Prompt bố cục cho caching**: phần ổn định trước, thay đổi sau | §9.5; giảm chi phí phần lặp | 0028 |
 | E8 | **Provenance bắt buộc**: nháp phải trích nguồn mà backend kiểm được (FAQ ID, doc ID, product ID đã được tool trả về) | Chống bịa; điều kiện cho Autopilot sau này | 0021 |
-| E9 | **Template là file YAML có version trong repo**; agent lưu bản chụp cấu hình (agent version bất biến) | Review được qua PR; không cần UI quản lý template | 0009 |
+| E9 | **Template là file TOML có version trong repo** (đọc bằng `tomllib` của thư viện chuẩn); agent lưu bản chụp cấu hình (agent version bất biến) | Review được qua PR; không cần UI quản lý template | 0009 |
 | E10 | **Mode bước 2 chỉ `manual`/`shadow`**; kiểm tra mode khi bắt đầu **và** trước khi lưu nháp | Bậc an toàn nhất của mode ladder; đổi mode giữa chừng không để lọt run cũ | 0009 |
 
 **Về Managed Agents của Anthropic:** đó là cách mặc định để có agent mà không phải tự host vòng lặp. Dự án không chọn vì (1) `PROJECT_CONTEXT` §3.4.1 yêu cầu tự viết vòng agent để học và kiểm soát, (2) hội thoại/tenant/audit phải nằm trong DB của mình, (3) vấn đề dữ liệu xuyên biên giới (§16.6) cần quyết định riêng. Ghi trong ADR-0010.
@@ -121,7 +121,7 @@ Kết quả: **một** run cho ba tin (debounce tiết kiệm 2 run), nháp *"D�
 
 | Thực thể | Vai trò | Module |
 |---|---|---|
-| `AgentTemplate` (file YAML) | intents, hướng dẫn, tools, budget, eval seeds, mode khởi điểm | `agent_management` |
+| `AgentTemplate` (file TOML) | intents, hướng dẫn, tools, budget, eval seeds, mode khởi điểm | `agent_management` |
 | `Agent` | thuộc tenant, gắn một channel connection, mode hiện tại | `agent_management` |
 | `AgentVersion` | ảnh chụp cấu hình **bất biến**; run luôn tham chiếu version | `agent_management` |
 | `RunRequest` | "hội thoại này cần agent chạy", có `due_at` và lease | `agent_runtime` |
@@ -289,34 +289,9 @@ Ghi chú:
 
 ## 6. Hợp đồng nội bộ
 
-### 6.1. Template (file `backend/src/app/modules/agent_management/templates/faq_sales_quote.v1.yaml`)
+### 6.1. Template (file `backend/src/app/modules/agent_management/templates/faq_sales_quote.v1.toml`)
 
-```yaml
-key: faq_sales_quote
-version: 1
-default_mode: shadow
-intents:                       # nhãn phân loại, mô tả ngắn cho model
-  greeting: Chào hỏi, alo, cảm ơn
-  faq: Hỏi giờ mở cửa, địa chỉ, ship, đổi trả, thanh toán
-  product_info: Hỏi sản phẩm có không, size, màu, chất liệu, còn hàng
-  price_quote: Hỏi giá, báo giá nhiều món
-  discount_request: Xin giảm giá, khuyến mãi
-  order_intent: Muốn đặt / chốt đơn
-  complaint: Phàn nàn, hàng lỗi, giao chậm
-  human_request: Muốn gặp người thật
-  other: Không thuộc các nhãn trên
-handoff_intents: [complaint, human_request, discount_request, order_intent]
-tools: [search_products, get_product]
-models:
-  classify: { model: claude-opus-5-5, effort: low, max_tokens: 512 }
-  draft:    { model: claude-opus-5-5, effort: medium, max_tokens: 2048 }
-budget: { max_model_calls: 3, max_tool_calls: 5, wall_clock_s: 60, max_cost_micro: 50000 }
-instructions: |
-  Bạn là trợ lý bán hàng của {shop_name}. Trả lời ngắn, lịch sự, xưng "em", gọi khách "anh/chị".
-  Chỉ dùng thông tin trong FAQ, tài liệu chính sách và kết quả tool. Không có nguồn thì nói sẽ
-  nhờ nhân viên hỗ trợ. Không hứa giảm giá, không tự chốt đơn.
-eval_seeds: evals/faq_sales_quote.v1.yaml
-```
+Đã implement ở 2.2 — nội dung xem thẳng file TOML trên (nguồn sự thật duy nhất). Gồm: `key`, `version`, `default_mode` (`manual`|`shadow`), `intents` (nhãn → mô tả), `handoff_intents` (phải là tập con của `intents`), `tools` (chỉ tool read-only đã đăng ký), `models.classify` / `models.draft` (model, effort, max_tokens), `budget`, `instructions` (bắt buộc chứa `{shop_name}`), `eval_seeds`. File được validate bằng Pydantic khi nạp; file sai ⇒ lỗi ngay.
 
 Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`. Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
 
@@ -544,7 +519,7 @@ flowchart TD
 | Bước | Nội dung | Điều kiện xong |
 |---|---|---|
 | 2.1 | ADR-0008; dispatcher upsert run request; worker claim/lease/backoff (run rỗng) | test debounce, 2 worker, lease hết hạn xanh |
-| 2.2 | Template YAML, `agents`/`agent_versions`, API, kill switch | test tạo agent, đổi mode có version check, cross-tenant |
+| 2.2 | Template TOML, `agents`/`agent_versions`, API, kill switch | test tạo agent, đổi mode có version check, cross-tenant |
 | 2.3 | FAQ/docs CRUD, import CSV, `search_products`/`get_product` | test tìm không dấu ("ao khoac gio"), tenant filter |
 | 2.4 | `LLMPort`, adapter Claude, `FakeLLM`, `usage_events` + pricing | test FakeLLM; 1 lần gọi thật ghi đúng usage |
 | 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh |
