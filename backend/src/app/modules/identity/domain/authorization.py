@@ -5,6 +5,8 @@ from uuid import UUID
 _ALLOWED_ROLES = {
     "conversation.read": {"owner", "admin", "agent"},
     "conversation.reply": {"owner", "admin", "agent"},
+    "agent.read": {"owner", "admin", "agent"},
+    "agent.manage": {"owner", "admin"},  # tạo agent, đổi mode, bật/tắt AI
 }
 
 
