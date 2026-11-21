@@ -47,7 +47,7 @@ Gửi câu trả lời AI cho khách (Autopilot), hiển thị nháp cho nhân v
 | E3 | **Vòng agent tự viết** (Messages API, manual loop), không framework | §3.4.1: cần thấy prompt, token, lý do gọi tool; nghiệp vụ không bị trói vào state của framework | 0010 / 0022 |
 | E4 | **Workflow xác định, LLM chỉ ở chỗ cần**: rule (không gọi LLM) → phân loại (structured output) → soạn nháp (tool + structured output) | §9.1; rẻ, test được, dễ giải thích | 0010 |
 | E5 | **Knowledge router đơn giản**: catalog qua tool (chiến lược 1), FAQ + chính sách đưa **nguyên** vào context (4); chưa RAG chunk | §11.0: SMB nhỏ, không lỗi retrieval, prompt caching rẻ phần lặp | 0021 |
-| E6 | **`LLMPort` mỏng** + adapter Claude; `FakeLLM` cho CI | Test xác định, không tốn tiền; đổi provider không đổi runtime | 0015 |
+| E6 | **`LLMPort` trung lập + nhiều adapter (Claude qua gateway, OpenAI) + `FailoverLLM`**; `FakeLLM` cho CI | Một provider sập vẫn chạy; đổi/thêm provider bằng cấu hình + một adapter; test xác định, không tốn tiền | 0015 |
 | E7 | **Prompt bố cục cho caching**: phần ổn định trước, thay đổi sau | §9.5; giảm chi phí phần lặp | 0028 |
 | E8 | **Provenance bắt buộc**: nháp phải trích nguồn mà backend kiểm được (FAQ ID, doc ID, product ID đã được tool trả về) | Chống bịa; điều kiện cho Autopilot sau này | 0021 |
 | E9 | **Template là file TOML có version trong repo** (đọc bằng `tomllib` của thư viện chuẩn); agent lưu bản chụp cấu hình (agent version bất biến) | Review được qua PR; không cần UI quản lý template | 0009 |
@@ -292,34 +292,62 @@ Ghi chú:
 
 Đã implement ở 2.2 — nội dung xem thẳng file TOML trên (nguồn sự thật duy nhất). Gồm: `key`, `version`, `default_mode` (`manual`|`shadow`), `intents` (nhãn → mô tả), `handoff_intents` (phải là tập con của `intents`), `tools` (chỉ tool read-only đã đăng ký), `models.classify` / `models.draft` (model, effort, max_tokens), `budget`, `instructions` (bắt buộc chứa `{shop_name}`), `eval_seeds`. File được validate bằng Pydantic khi nạp; file sai ⇒ lỗi ngay.
 
-Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`. Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
+Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`.
 
-### 6.2. `LLMPort`
+> Template hiện còn ghi `model`/`effort` của Claude trực tiếp trong `[models.*]`; ở 2.4 chuyển thành tên route (`classify`, `draft`) theo ADR-0015.
+ Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
+
+### 6.2. Lớp provider LLM (nhiều provider + failover) — chi tiết: ADR-0015
+
+```mermaid
+flowchart LR
+    RT[Agent runtime] -- LLMRequest trung lập --> FO[FailoverLLM<br/>route + circuit breaker]
+    FO -- đích 1 --> AA[AnthropicAdapter] -- x-api-key --> GW[Gateway chỉ lúc test<br/>production: API chính thức] --> C[Claude]
+    FO -- đích 2 khi đích 1 lỗi --> OA[OpenAIAdapter] -- Bearer --> O[OpenAI]
+    FO -. test .-> FK[FakeLLM]
+    FO -- served_by, usage --> DB[(agent_runs / usage_events)]
+```
 
 ```python
 class LLMPort(Protocol):
     async def complete(self, req: LLMRequest) -> LLMResult: ...
 
 @dataclass(frozen=True)
-class LLMRequest:
-    purpose: Literal["classify", "draft", "eval"]
-    model: str; effort: str; max_tokens: int
-    system_blocks: list[str]          # theo thứ tự ổn định → thay đổi (6.4)
-    messages: list[dict]              # lượt chat + tool_result
+class LLMRequest:                     # TRUNG LẬP: không có trường riêng của provider nào
+    route: Literal["classify", "draft", "eval"]
+    system_blocks: list[str]          # ổn định → thay đổi (6.4); adapter tự đặt điểm cache
+    turns: list[Turn]                 # user | assistant(text, tool_calls) | tool_result
     tools: list[ToolSpec]             # strict JSON schema, thứ tự cố định
     output_schema: type[BaseModel] | None
+    deadline: float                   # thời điểm hết ngân sách của run (monotonic)
 
 @dataclass(frozen=True)
 class LLMResult:
-    stop_reason: str                  # end_turn | tool_use | max_tokens | refusal
+    stop_reason: Literal["end_turn", "tool_use", "max_tokens", "refusal"]
     text: str | None; parsed: BaseModel | None; tool_calls: list[ToolCall]
-    usage: Usage                      # input, cache_read, cache_write, output
-    raw_assistant_content: list       # để nối lại vào messages ở lượt sau
+    usage: Usage                      # input, cache_read, cache_write, output (chuẩn hóa)
+    served_by: Target                 # provider + model thực sự phục vụ
+    failover_from: list[Target]       # các đích đã thử và lỗi trước đó (có lý do)
 ```
 
-- **Adapter Claude** dùng SDK chính thức `anthropic` (async client): `output_config.format` cho structured output, tool với `strict: true`, `cache_control` cho prefix, đọc `usage.cache_read_input_tokens` / `cache_creation_input_tokens`. Claude Opus 5.5 **không tắt được thinking** — điều chỉnh độ sâu bằng `effort`; `tool_choice` bắt buộc (`any`/`tool`) bị từ chối ⇒ dùng `auto` + hướng dẫn rõ.
-- `stop_reason == "refusal"` ⇒ run `failed` với `error_code = refusal`, gợi ý chuyển người. Bật `fallbacks` phía server (beta) theo khuyến nghị của tài liệu Claude cho model này; ghi vào ADR-0015.
-- **`FakeLLM`**: trả kịch bản theo tên test (phân loại X, gọi tool Y, trả nháp Z). Mọi test runtime trong CI dùng `FakeLLM` ⇒ **không gọi mạng, không tốn tiền**.
+- **Route thay cho tên model trong template**: `models.classify` / `models.draft` trỏ tới route trong `agent_runtime/llm/routes.toml` (danh sách đích theo thứ tự). Mặc định: **Claude Sonnet 5, effort `medium`** cho soạn nháp (`low` cho phân loại), dự phòng OpenAI (`gpt-4.1-mini` cho phân loại, `gpt-4.1` cho soạn nháp). Đích chỉ vào route khi đã qua eval.
+- **Failover**: timeout / 5xx / 429 / key hỏng ⇒ thử đích kế; lỗi do chính yêu cầu (400, vượt context) và **refusal** ⇒ không failover. Circuit breaker theo provider. `LLM_DISABLED_PROVIDERS` tắt khẩn cấp.
+- **Một bước = một provider**: lỗi giữa vòng tool ⇒ chạy lại bước đó trên đích kế từ lịch sử trung lập.
+- **Cấu hình**: `CLAUDE_API_KEY` + `LLM_BASE_URL` cho Anthropic (gateway UniversalAI chỉ dùng lúc test; production bỏ `LLM_BASE_URL` và đổi key sang API chính thức, không đổi code), `OPENAI_API_KEY` cho OpenAI — chỉ ở agent worker. Provider thiếu key bị loại khỏi route lúc khởi động.
+- **`FakeLLM`**: kịch bản theo test, mô phỏng được lỗi để test failover. CI không gọi mạng.
+
+Cấu trúc:
+
+```text
+agent_runtime/llm/
+├── port.py        # LLMRequest, LLMResult, Turn, ToolCall, Usage, Target, lỗi chuẩn hóa
+├── anthropic.py   # AnthropicAdapter (base_url cấu hình được ⇒ gateway)
+├── openai.py      # OpenAIAdapter
+├── fake.py        # FakeLLM
+├── failover.py    # FailoverLLM + CircuitBreaker + phân loại lỗi
+├── routes.toml    # route → danh sách đích
+└── pricing.py     # giá theo (provider, model), price_version
+```
 
 ### 6.3. Tool
 
@@ -520,7 +548,7 @@ flowchart TD
 | 2.1 | ADR-0008; dispatcher upsert run request; worker claim/lease/backoff (run rỗng) | test debounce, 2 worker, lease hết hạn xanh |
 | 2.2 | Template TOML, `agents`/`agent_versions`, API, kill switch | test tạo agent, đổi mode có version check, cross-tenant |
 | 2.3 | FAQ/docs CRUD, import CSV, `search_products`/`get_product` | test tìm không dấu ("ao khoac gio"), tenant filter |
-| 2.4 | `LLMPort`, adapter Claude, `FakeLLM`, `usage_events` + pricing | test FakeLLM; 1 lần gọi thật ghi đúng usage |
+| 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage |
 | 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh |
 | 2.6 | UI agent/knowledge/trace | kiểm thủ công + E2E: khách nhắn ⇒ trace hiện nháp |
 | 2.7 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028 | báo cáo eval có số đo thật |
