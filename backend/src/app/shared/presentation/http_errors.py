@@ -24,17 +24,31 @@ UNAUTHENTICATED_POSTS = ("/public/", "/api/v1/auth/login")
 
 class ApiError(Exception):
     def __init__(
-        self, status: int, code: str, message: str, headers: dict[str, str] | None = None
+        self,
+        status: int,
+        code: str,
+        message: str,
+        headers: dict[str, str] | None = None,
+        details: list[str] | None = None,  # vd lỗi từng dòng CSV; không chứa dữ liệu nhạy cảm
     ) -> None:
         self.status, self.code, self.message, self.headers = status, code, message, headers
+        self.details = details
 
 
 def error_response(
-    request: Request, status: int, code: str, message: str, headers: dict[str, str] | None = None
+    request: Request,
+    status: int,
+    code: str,
+    message: str,
+    headers: dict[str, str] | None = None,
+    details: list[str] | None = None,
 ) -> JSONResponse:
     trace_id = getattr(request.state, "trace_id", None) or uuid4().hex
+    error: dict = {"code": code, "message": message}
+    if details:
+        error["details"] = details
     return JSONResponse(
-        {"error": {"code": code, "message": message}, "trace_id": trace_id},
+        {"error": error, "trace_id": trace_id},
         status_code=status,
         headers={**(headers or {}), "X-Trace-Id": trace_id},
     )
@@ -90,7 +104,7 @@ def install(app: FastAPI) -> None:
 
     @app.exception_handler(ApiError)
     async def _api_error(request: Request, exc: ApiError):
-        return error_response(request, exc.status, exc.code, exc.message, exc.headers)
+        return error_response(request, exc.status, exc.code, exc.message, exc.headers, exc.details)
 
     @app.exception_handler(StarletteHTTPException)
     async def _http_error(request: Request, exc: StarletteHTTPException):
