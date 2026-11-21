@@ -35,6 +35,14 @@ class Settings(BaseSettings):
     agent_worker_concurrency: int = 4
     agent_worker_metrics_port: int = 9102
 
+    # LLM (ADR-0015). Thiếu key thì provider đó rời khỏi route; thiếu cả hai thì lỗi lúc khởi động.
+    claude_api_key: str = ""
+    openai_api_key: str = ""
+    # Rỗng = API chính thức. Gateway thử nghiệm chỉ khác giá trị này, không có code riêng.
+    llm_base_url: str = ""
+    # Tắt tạm một provider khi nó sập kéo dài, vd "anthropic" (phân tách bằng dấu phẩy).
+    llm_disabled_providers: str = ""
+
 
 @lru_cache
 def get_settings() -> Settings:
