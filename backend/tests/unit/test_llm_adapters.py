@@ -7,7 +7,7 @@ import dataclasses
 
 import httpx2 as httpx
 import pytest
-from llm_harness import HARNESSES, AnthropicHarness, body_of, flat_text
+from llm_harness import HARNESSES, AnthropicHarness, OpenAIHarness, body_of, flat_text
 from pydantic import BaseModel
 
 from app.modules.agent_runtime.llm.port import (
@@ -264,3 +264,110 @@ async def test_tool_results_become_a_user_turn_with_error_flag(h):
     assert last["content"] == [
         {"type": "tool_result", "tool_use_id": "c1", "content": "not_found", "is_error": True}
     ]
+
+
+# ---------- riêng OpenAI ----------
+
+openai_only = pytest.mark.parametrize("h", [OpenAIHarness()], ids=["openai"])
+
+
+@openai_only
+async def test_system_blocks_become_one_leading_system_message(h):
+    _, rec = await run(h, h.text("ok"))
+    messages = body_of(rec.requests[0])["messages"]
+    assert messages[0]["role"] == "system"
+    assert messages[0]["content"].count("FAQ-7") == 1 and "DOC-3" in messages[0]["content"]
+    assert messages[1] == {"role": "user", "content": "áo khoác gió size M còn không?"}
+
+
+@openai_only
+async def test_only_supported_parameters_are_sent(h):
+    _, rec = await run(h, h.text("ok"))
+    body = body_of(rec.requests[0])
+    assert body["max_completion_tokens"] == 512 and body["model"] == "gpt-4.1-mini"
+    for unsupported in ("effort", "reasoning_effort", "temperature", "tool_choice", "max_tokens"):
+        assert unsupported not in body
+
+
+@openai_only
+async def test_optional_tool_properties_are_nullable_and_all_required_on_the_wire(h):
+    _, rec = await run(h, h.text("ok"), request(tools=tuple(TOOLS)))
+    search = next(s for n, _, s in h.wire_tools(rec.requests[0]) if n == "search_products")
+    assert search["required"] == ["query", "limit"]  # OpenAI strict: mọi thuộc tính bắt buộc
+    assert {"type": "null"} in search["properties"]["limit"]["anyOf"]  # tùy chọn ⇒ cho phép null
+
+
+@openai_only
+async def test_null_for_an_optional_argument_is_dropped_on_the_way_back(h):
+    args = {"query": "áo khoác", "limit": None}
+    result, _ = await run(
+        h, h.tool_call("c1", "search_products", args), request(tools=tuple(TOOLS))
+    )
+    assert result.tool_calls[0].arguments == {"query": "áo khoác"}  # runtime không thấy null
+
+
+@openai_only
+async def test_null_for_a_required_argument_is_kept_so_validation_can_reject_it(h):
+    result, _ = await run(
+        h, h.tool_call("c1", "get_product", {"product_id": None}), request(tools=tuple(TOOLS))
+    )
+    assert result.tool_calls[0].arguments == {"product_id": None}
+
+
+@openai_only
+@pytest.mark.parametrize("raw", ["{not json", "[1, 2]"])
+async def test_malformed_tool_arguments_are_invalid_output(h, raw):
+    with pytest.raises(InvalidOutput):
+        await run(h, h.tool_call("c1", "search_products", {}, raw_arguments=raw))
+
+
+@openai_only
+async def test_exhausted_quota_is_persistent_not_a_rate_limit(h):
+    with pytest.raises(ProviderUnavailable) as e:
+        await run(h, h.error(429, "You exceeded your current quota", code="insufficient_quota"))
+    assert e.value.reason == "quota"  # mở circuit lâu: hết tiền không tự hết sau vài giây
+
+
+@openai_only
+async def test_turns_become_openai_tool_messages(h):
+    turns = (
+        Turn("user", "x"),
+        Turn("assistant", tool_calls=(ToolCall("c1", "search_products", {"query": "áo"}),)),
+        Turn("tool_results", tool_results=(ToolResult("c1", "[]"), ToolResult("c2", "{}"))),
+    )
+    _, rec = await run(h, h.text("ok"), request(turns=turns))
+    messages = body_of(rec.requests[0])["messages"]
+    assistant = messages[2]
+    assert assistant["content"] is None
+    assert assistant["tool_calls"] == [
+        {
+            "id": "c1",
+            "type": "function",
+            "function": {"name": "search_products", "arguments": '{"query": "áo"}'},
+        }
+    ]
+    assert messages[3:] == [
+        {"role": "tool", "tool_call_id": "c1", "content": "[]"},
+        {"role": "tool", "tool_call_id": "c2", "content": "{}"},
+    ]
+
+
+@openai_only
+async def test_structured_output_uses_strict_json_schema(h):
+    _, rec = await run(
+        h, h.text('{"reply": "a", "needs_human": false}'), request(output_schema=Draft)
+    )
+    fmt = body_of(rec.requests[0])["response_format"]
+    assert fmt["type"] == "json_schema" and fmt["json_schema"]["strict"] is True
+    assert fmt["json_schema"]["name"] == "Draft"
+    assert fmt["json_schema"]["schema"]["required"] == ["reply", "needs_human"]
+
+
+@openai_only
+async def test_missing_usage_details_mean_no_cache(h):
+    # một số endpoint tương thích OpenAI không trả prompt_tokens_details
+    response = h.text("ok")
+    payload = response.json()
+    del payload["usage"]["prompt_tokens_details"]
+    result, _ = await run(h, httpx.Response(200, json=payload))
+    assert result.usage == Usage(input=10, cache_read=0, cache_write=0, output=5)

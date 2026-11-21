@@ -10,6 +10,7 @@ from collections.abc import Callable
 import httpx2 as httpx
 
 from app.modules.agent_runtime.llm.anthropic import AnthropicBackend
+from app.modules.agent_runtime.llm.openai import OpenAIBackend
 from app.modules.agent_runtime.llm.port import Backend, Target
 
 Handler = Callable[[httpx.Request], httpx.Response]
@@ -86,4 +87,78 @@ class AnthropicHarness:
         ]
 
 
-HARNESSES = [AnthropicHarness()]
+class OpenAIHarness:
+    name = "openai"
+    target = Target("openai", "gpt-4.1-mini", max_tokens=512)
+
+    def backend(self, handler: Handler) -> Backend:
+        client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+        return OpenAIBackend("test-key", base_url="https://llm.test/v1", http_client=client)
+
+    def _completion(self, message: dict, finish: str, usage: dict) -> httpx.Response:
+        return json_response(
+            200,
+            {
+                "id": "chatcmpl-1",
+                "object": "chat.completion",
+                "created": 1,
+                "model": self.target.model,
+                "choices": [{"index": 0, "message": message, "finish_reason": finish}],
+                "usage": usage,
+            },
+        )
+
+    def text(self, text: str, *, input=10, cache_read=0, cache_write=0, output=5, stop="end_turn"):
+        # OpenAI báo tổng token vào (đã gồm phần cache); cache_write không tồn tại
+        total = input + cache_read
+        return self._completion(
+            {"role": "assistant", "content": text, "refusal": None},
+            {"end_turn": "stop", "max_tokens": "length"}[stop],
+            {
+                "prompt_tokens": total,
+                "completion_tokens": output,
+                "total_tokens": total + output,
+                "prompt_tokens_details": {"cached_tokens": cache_read},
+            },
+        )
+
+    def tool_call(self, call_id: str, name: str, args: dict, *, raw_arguments: str | None = None):
+        arguments = raw_arguments if raw_arguments is not None else json.dumps(args)
+        return self._completion(
+            {
+                "role": "assistant",
+                "content": None,
+                "refusal": None,
+                "tool_calls": [
+                    {
+                        "id": call_id,
+                        "type": "function",
+                        "function": {"name": name, "arguments": arguments},
+                    }
+                ],
+            },
+            "tool_calls",
+            {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15},
+        )
+
+    def refusal(self) -> httpx.Response:
+        return self._completion(
+            {"role": "assistant", "content": None, "refusal": "I can't help with that."},
+            "stop",
+            {"prompt_tokens": 10, "completion_tokens": 0, "total_tokens": 10},
+        )
+
+    def error(self, status: int, message: str = "boom", code: str | None = None) -> httpx.Response:
+        return json_response(
+            status,
+            {"error": {"message": message, "type": "api_error", "param": None, "code": code}},
+        )
+
+    def wire_tools(self, request: httpx.Request) -> list[tuple[str, bool, dict]]:
+        return [
+            (t["function"]["name"], t["function"].get("strict", False), t["function"]["parameters"])
+            for t in body_of(request).get("tools", [])
+        ]
+
+
+HARNESSES = [AnthropicHarness(), OpenAIHarness()]
