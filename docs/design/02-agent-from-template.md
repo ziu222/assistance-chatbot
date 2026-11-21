@@ -222,12 +222,13 @@ CREATE TABLE catalog_items (                       -- dữ liệu có cấu trú
 );
 CREATE INDEX ix_catalog_search ON catalog_items USING gin (search_text gin_trgm_ops);
 
-CREATE TABLE conversation_run_requests (
+CREATE TABLE conversation_run_requests (          -- đã implement ở 2.1 (migration 0003)
   conversation_id uuid PRIMARY KEY,
-  tenant_id uuid NOT NULL, agent_id uuid NOT NULL,
+  tenant_id uuid NOT NULL,                         -- không lưu agent: worker xác định lúc claim
   from_sequence bigint NOT NULL, to_sequence bigint NOT NULL,
   first_seen_at timestamptz NOT NULL, due_at timestamptz NOT NULL,
   lease_until timestamptz,                         -- đang có worker xử lý
+  lease_token uuid,                                -- fencing: chỉ chủ lease hiện tại được ghi
   attempts int NOT NULL DEFAULT 0,
   FOREIGN KEY (tenant_id, conversation_id) REFERENCES conversations(tenant_id, id)
 );
@@ -387,13 +388,15 @@ class DraftOut(BaseModel):
 ```text
 cho mỗi outbox row đã claim (cùng transaction):
   publish tín hiệu Redis (như cũ)
+hook on_published cho các row đã publish (vẫn cùng transaction):
   nếu event_type = message.created và direction = inbound:
-    agent = agent đang bật cho connection (cache 30 s)
-    nếu có: INSERT conversation_run_requests ... ON CONFLICT (conversation_id) DO UPDATE SET
-              to_sequence = GREATEST(to_sequence, EXCLUDED.to_sequence),
-              due_at = LEAST(now() + window, first_seen_at + max_wait)
-  đánh dấu published_at; COMMIT
+    INSERT conversation_run_requests ... ON CONFLICT (conversation_id) DO UPDATE SET
+      to_sequence = GREATEST(to_sequence, EXCLUDED.to_sequence),
+      due_at = LEAST(now() + window, first_seen_at + max_wait)
+đánh dấu published_at; COMMIT
 ```
+
+Thay đổi khi implement (2.1): dispatcher **không** tra agent — mọi tin khách đều enqueue; worker xác định agent/mode lúc claim và bỏ nhanh nếu tenant chưa bật AI. Đơn giản hơn và dùng cấu hình mới nhất nếu admin đổi trong lúc chờ debounce (ADR-0008).
 
 Khởi điểm: `window = 6 s`, `max_wait = 20 s` (đo: số run tiết kiệm, độ trễ tới khi có nháp).
 
@@ -401,7 +404,8 @@ Khởi điểm: `window = 6 s`, `max_wait = 20 s` (đo: số run tiết kiệm, 
 
 ```text
 loop:
-  claim: UPDATE conversation_run_requests SET lease_until = now()+120s, attempts = attempts+1
+  claim: UPDATE conversation_run_requests
+         SET lease_until = now()+120s, lease_token = <uuid mới>, attempts = attempts+1
          WHERE conversation_id = (SELECT … WHERE due_at <= now()
                                   AND (lease_until IS NULL OR lease_until < now())
                                   ORDER BY due_at LIMIT 1 FOR UPDATE SKIP LOCKED)
@@ -412,7 +416,7 @@ loop:
   lỗi tạm thời: xóa lease, due_at = now() + backoff(attempts); attempts > 3 ⇒ run failed + xóa hàng
 ```
 
-Lease hết hạn (worker chết) ⇒ worker khác claim lại; run cũ còn `running` được đánh `timed_out` khi phát hiện.
+Lease hết hạn (worker chết) ⇒ worker khác claim lại; run cũ còn `running` được đánh `timed_out` khi phát hiện. Mọi lệnh kết thúc đều kèm điều kiện `lease_token` (fencing): worker cũ có quay lại cũng không ghi được. Khi `complete` thấy có tin mới, hàng được giữ với `from_sequence = to_cũ + 1` và cửa sổ gom mới.
 
 ### 7.3. Một run
 
