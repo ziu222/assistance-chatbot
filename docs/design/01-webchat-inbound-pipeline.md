@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 1: Webchat → Inbound → Persist + Outbox → Inbox realtime
 
-- Trạng thái: **đề xuất thiết kế, chưa implement** (repo mới có khung, xem `backend/`).
+- Trạng thái: **đã implement** (PR #1–#10). Review so với code và hướng dẫn tự test: [docs/guides/01-test-pipeline.md](../guides/01-test-pipeline.md).
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §9.2, §12.2–12.8, §13, §14, §16, §22.4 bước 1.
 - Không có deadline. Thứ tự ở Mục 14 chỉ là quan hệ phụ thuộc kỹ thuật.
 - Con số trong tài liệu (rate limit, kích thước, TTL) là **giá trị khởi điểm cần hiệu chỉnh bằng đo đạc**, không phải SLO cam kết (§20.1).
@@ -97,7 +97,7 @@ sequenceDiagram
     participant S as Staff UI
 
     W->>A: POST /public/webchat/v1/messages {client_message_id, text} + Bearer
-    A->>A: verify token, origin, rate limit, validate body
+    A->>A: verify token, rate limit, validate body (Origin chỉ kiểm ở sessions, xem 8.2)
     A->>DB: BEGIN
     A->>DB: upsert channel_identity (+customer)
     A->>DB: find/create open conversation, lock row
