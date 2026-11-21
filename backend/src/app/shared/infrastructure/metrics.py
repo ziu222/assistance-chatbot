@@ -20,3 +20,18 @@ OUTBOX_PUBLISH_LAG = Histogram(
     "published_at - created_at",
     buckets=(0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 30, 60),
 )
+
+# Bước 2: hàng đợi agent (ADR-0008)
+AGENT_RUN_REQUESTS = Counter(
+    "agent_run_requests_total", "Agent run requests processed by outcome", ["outcome"]
+)
+AGENT_RUN_REQUEST_LAG = Histogram(
+    "agent_run_request_lag_seconds",
+    "Delay between due_at and claim",
+    buckets=(0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 30),
+)
+DEBOUNCE_COALESCED = Histogram(
+    "agent_debounce_coalesced_messages",
+    "Customer messages handled by one run",
+    buckets=(1, 2, 3, 5, 8, 13),
+)

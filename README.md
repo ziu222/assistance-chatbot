@@ -66,6 +66,10 @@ cd backend; uv run python -m app.entrypoints.worker
 ```
 
 ```powershell
+cd backend; uv run python -m app.entrypoints.agent_worker   # bước 2: hàng đợi agent (hiện chỉ ghi log)
+```
+
+```powershell
 cd widget; npm ci; npm run build
 ```
 

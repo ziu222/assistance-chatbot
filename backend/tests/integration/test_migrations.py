@@ -45,6 +45,7 @@ CORE_TABLES = {
     "conversations",
     "messages",
     "outbox_events",
+    "conversation_run_requests",
 }
 
 

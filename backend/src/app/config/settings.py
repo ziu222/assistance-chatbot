@@ -27,6 +27,14 @@ class Settings(BaseSettings):
     # Cổng /metrics nội bộ của relay worker (không mở ra Internet).
     worker_metrics_port: int = 9101
 
+    # Hàng đợi agent (ADR-0008). Giá trị khởi điểm, hiệu chỉnh bằng đo đạc.
+    agent_debounce_window_seconds: float = 6.0  # chờ thêm sau mỗi tin khách
+    agent_debounce_max_wait_seconds: float = 20.0  # trần tính từ tin đầu của cụm
+    agent_lease_seconds: float = 120.0
+    agent_max_attempts: int = 3
+    agent_worker_concurrency: int = 4
+    agent_worker_metrics_port: int = 9102
+
 
 @lru_cache
 def get_settings() -> Settings:

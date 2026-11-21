@@ -10,6 +10,7 @@ import asyncio
 import json
 import logging
 import random
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Any, Protocol
@@ -21,6 +22,10 @@ from app.shared.infrastructure.metrics import OUTBOX_PUBLISH_LAG
 from app.shared.infrastructure.outbox import OutboxEventModel
 
 log = logging.getLogger(__name__)
+
+
+# Hook chạy trong transaction của relay cho mỗi event đã publish.
+OnPublished = Callable[[AsyncSession, OutboxEventModel], Awaitable[object]]
 
 
 class EventPublisher(Protocol):
@@ -68,9 +73,11 @@ class OutboxRelay:
         batch_size: int = 100,
         idle_sleep: float = 0.2,
         max_backoff: float = 5.0,
+        on_published: OnPublished | None = None,
     ) -> None:
         self._factory = session_factory
         self._publisher = publisher
+        self._on_published = on_published
         self._batch_size = batch_size
         self._idle_sleep = idle_sleep
         self._max_backoff = max_backoff
@@ -112,6 +119,11 @@ class OutboxRelay:
                 done.append(row)
 
             if done:
+                if self._on_published:
+                    # Consumer bền (vd hàng đợi agent): cùng transaction với published_at ⇒
+                    # không bao giờ đánh dấu đã publish mà consumer chưa nhận (ADR-0008).
+                    for row in done:
+                        await self._on_published(session, row)
                 await session.execute(
                     update(OutboxEventModel)
                     .where(OutboxEventModel.id.in_([r.id for r in done]))
