@@ -624,7 +624,7 @@ flowchart TD
 | 2.2 | Template TOML, `agents`/`agent_versions`, API, kill switch | test tạo agent, đổi mode có version check, cross-tenant |
 | 2.3 | FAQ/docs CRUD, import CSV, `search_products`/`get_product` | test tìm không dấu ("ao khoac gio"), tenant filter |
 | 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage | **Đã làm.** Bảng giá OpenAI (`pricing.py`) lấy từ nhiều nguồn tìm kiếm, chưa đối chiếu trang giá chính thức: kiểm lại trước khi dùng chi phí cho quyết định thật. Số token đo qua gateway thử nghiệm không phản ánh API chính thức (gateway chèn thêm token ẩn); đo lại khi đổi sang key chính thức.
-| 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh |
+| 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh | **Đã làm.** Quyết định khi cài: `refusal` ⇒ `handoff_suggested` (không phải `failed`); lỗi provider ⇒ run `failed:llm_unavailable` rồi ném lại để worker retry; số tiền hợp lệ = giá tool đã trả + số tiền có trong FAQ/tài liệu, tổng nhiều món chưa được chấp nhận (an toàn hơn báo sai giá); câu chào/cảm ơn dùng câu mẫu cố định trong code, chưa nằm trong template. |
 | 2.6 | UI agent/knowledge/trace | kiểm thủ công + E2E: khách nhắn ⇒ trace hiện nháp |
 | 2.7 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028 | báo cáo eval có số đo thật |
 | 2.8 | Sync Google Sheets bằng service account read-only | test sync idempotent theo `sku` |

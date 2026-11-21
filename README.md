@@ -68,7 +68,7 @@ cd backend; uv run python -m app.entrypoints.worker
 ```
 
 ```powershell
-cd backend; uv run python -m app.entrypoints.agent_worker   # bước 2: hàng đợi agent (hiện chỉ ghi log)
+cd backend; uv run python -m app.entrypoints.agent_worker   # bước 2: hàng đợi agent (chạy runtime của agent: nháp chỉ lưu DB, không gửi tới khách)
 ```
 
 ```powershell
