@@ -36,6 +36,16 @@ DEBOUNCE_COALESCED = Histogram(
     buckets=(1, 2, 3, 5, 8, 13),
 )
 
+# Agent runtime (bước 2.5)
+AGENT_RUNS = Counter("agent_runs_total", "Agent runs by status", ["status", "skip_reason"])
+AGENT_RUN_DURATION = Histogram(
+    "agent_run_duration_seconds",
+    "Wall time of one agent run",
+    buckets=(0.05, 0.25, 1, 2, 5, 10, 20, 40, 60),
+)
+AGENT_DRAFTS = Counter("agent_drafts_total", "Drafts saved", ["grounded", "needs_human"])
+AGENT_NO_LLM = Counter("agent_no_llm_total", "Runs finished without calling an LLM")
+
 # Lớp provider LLM (ADR-0015)
 LLM_REQUESTS = Counter(
     "llm_requests_total", "LLM calls by outcome", ["provider", "model", "outcome"]

@@ -1,6 +1,7 @@
 """Chạy agent worker: `uv run python -m app.entrypoints.agent_worker`.
 
-Bước 2.1: handler chỉ ghi log (chưa gọi model). Agent runtime thật thay vào ở bước 2.5.
+Handler là agent runtime (bước 2.5). Thiếu route hoặc giá cho model trong route ⇒ dừng ngay lúc
+khởi động, không đợi khách đầu tiên nhắn tin.
 """
 
 import asyncio
@@ -12,8 +13,10 @@ from datetime import timedelta
 from prometheus_client import start_http_server
 
 from app.config.settings import get_settings
+from app.modules.agent_management.infrastructure.templates import load_templates
 from app.modules.agent_runtime.infrastructure.config import debounce_window
-from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
+from app.modules.agent_runtime.llm.factory import build_llm
+from app.modules.agent_runtime.runner import AgentRunner
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
 from app.workers.agent_worker import AgentWorker
@@ -21,24 +24,18 @@ from app.workers.agent_worker import AgentWorker
 log = logging.getLogger(__name__)
 
 
-async def log_only_handler(req: RunRequest) -> None:
-    log.info(
-        "agent run (no-op)",
-        extra={
-            "conversation_id": str(req.conversation_id),
-            "from_sequence": req.from_sequence,
-            "to_sequence": req.to_sequence,
-            "attempts": req.attempts,
-        },
-    )
-
-
 async def main() -> None:
     settings = get_settings()
+    used_routes = {
+        f"{t.key}.v{t.version}": {t.routes.classify, t.routes.draft}
+        for t in load_templates().values()
+    }
+    llm, _ = build_llm(settings, used_routes)
     engine = create_engine(settings.database_url)
+    factory = create_session_factory(engine)
     worker = AgentWorker(
-        create_session_factory(engine),
-        log_only_handler,
+        factory,
+        AgentRunner(factory, llm).handle,
         window=debounce_window(settings),
         lease=timedelta(seconds=settings.agent_lease_seconds),
         max_attempts=settings.agent_max_attempts,
