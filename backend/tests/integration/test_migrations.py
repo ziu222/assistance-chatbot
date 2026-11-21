@@ -52,6 +52,7 @@ CORE_TABLES = {
     "faq_entries",
     "knowledge_docs",
     "catalog_items",
+    "usage_events",
 }
 
 

@@ -11,6 +11,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.agent_runtime.llm.port import ToolSpec
 from app.modules.knowledge.infrastructure.catalog import (
     CatalogItem,
     get_catalog_item,
@@ -101,3 +102,9 @@ async def run_tool(s: AsyncSession, tenant_id: UUID, name: str, args: dict[str, 
     except ValidationError:
         return ToolResult(ok=False, error="invalid_arguments")
     return ToolResult(ok=False, error="unknown_tool")
+
+
+# Dạng trung lập của TOOL_SPECS cho LLMPort (strict luôn bật; adapter tự dịch).
+TOOLS: list[ToolSpec] = [
+    ToolSpec(s["name"], s["description"], s["input_schema"]) for s in TOOL_SPECS
+]

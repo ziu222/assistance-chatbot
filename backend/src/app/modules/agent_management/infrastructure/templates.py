@@ -21,15 +21,11 @@ class _Strict(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
 
-class ModelConfig(_Strict):
-    model: str = Field(min_length=1)
-    effort: Literal["low", "medium", "high", "xhigh", "max"]
-    max_tokens: int = Field(ge=64, le=16_000)
+class RouteNames(_Strict):
+    """Tên route LLM cho từng bước; provider/model nằm ở `routes.toml` (ADR-0015)."""
 
-
-class Models(_Strict):
-    classify: ModelConfig
-    draft: ModelConfig
+    classify: str = Field(pattern=r"^[a-z][a-z0-9_]{1,30}$")
+    draft: str = Field(pattern=r"^[a-z][a-z0-9_]{1,30}$")
 
 
 class Budget(_Strict):
@@ -46,7 +42,7 @@ class AgentTemplate(_Strict):
     intents: dict[str, str] = Field(min_length=1)
     handoff_intents: list[str]
     tools: list[str]
-    models: Models
+    routes: RouteNames
     budget: Budget
     instructions: str = Field(min_length=1)
     eval_seeds: str | None = None

@@ -294,7 +294,7 @@ Ghi chú:
 
 Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`. Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
 
-> Template hiện còn ghi `model`/`effort` của Claude trực tiếp trong `[models.*]`; ở 2.4 chuyển thành tên route (`classify`, `draft`) theo ADR-0015.
+> Template tham chiếu route (`classify`, `draft`) thay vì tên model (ADR-0015, đã làm ở 2.4).
 
 ### 6.2. Lớp provider LLM (nhiều provider + failover) — chi tiết: ADR-0015
 
@@ -623,7 +623,7 @@ flowchart TD
 | 2.1 | ADR-0008; dispatcher upsert run request; worker claim/lease/backoff (run rỗng) | test debounce, 2 worker, lease hết hạn xanh |
 | 2.2 | Template TOML, `agents`/`agent_versions`, API, kill switch | test tạo agent, đổi mode có version check, cross-tenant |
 | 2.3 | FAQ/docs CRUD, import CSV, `search_products`/`get_product` | test tìm không dấu ("ao khoac gio"), tenant filter |
-| 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage |
+| 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage | **Đã làm.** Bảng giá OpenAI (`pricing.py`) lấy từ nhiều nguồn tìm kiếm, chưa đối chiếu trang giá chính thức: kiểm lại trước khi dùng chi phí cho quyết định thật. Số token đo qua gateway thử nghiệm không phản ánh API chính thức (gateway chèn thêm token ẩn); đo lại khi đổi sang key chính thức.
 | 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh |
 | 2.6 | UI agent/knowledge/trace | kiểm thủ công + E2E: khách nhắn ⇒ trace hiện nháp |
 | 2.7 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028 | báo cáo eval có số đo thật |

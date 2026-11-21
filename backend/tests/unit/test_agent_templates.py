@@ -31,10 +31,7 @@ def base(**over) -> dict:
         "intents": {"faq": "Hỏi đáp", "complaint": "Phàn nàn"},
         "handoff_intents": ["complaint"],
         "tools": ["search_products"],
-        "models": {
-            "classify": {"model": "claude-opus-5-5", "effort": "low", "max_tokens": 512},
-            "draft": {"model": "claude-opus-5-5", "effort": "medium", "max_tokens": 2048},
-        },
+        "routes": {"classify": "classify", "draft": "draft"},
         "budget": {
             "max_model_calls": 3,
             "max_tool_calls": 5,
@@ -64,6 +61,8 @@ def base(**over) -> dict:
             }
         },
         {"extra_field": 1},
+        {"routes": {"classify": "classify"}},  # thiếu route draft
+        {"routes": {"classify": "Bad Name", "draft": "draft"}},
     ],
 )
 def test_invalid_templates_are_rejected(over):
