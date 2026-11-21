@@ -1,4 +1,6 @@
-# assistance-chatbot
+<p align="center">
+  <img src="docs/assets/header.svg" width="100%" alt="Assistance Chatbot: three short customer messages are coalesced into one run; the agent infers the need, searches the catalog, verifies price, stock and sources, and writes a grounded draft that is not sent in shadow mode.">
+</p>
 
 AI customer-support agents with human-in-the-loop cho doanh nghiệp nhỏ: khách nhắn qua widget, nhân viên trả lời trong inbox; các bước sau thêm agent AI theo thang **Manual → Shadow → Learning → Autopilot**.
 

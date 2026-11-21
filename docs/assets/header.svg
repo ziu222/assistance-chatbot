@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-labelledby="t d">
+  <title id="t">Assistance Chatbot</title>
+  <desc id="d">Three short customer messages are coalesced into one run. The agent infers the need (a rain jacket for an 8-year-old under 400k), searches the catalog with a tool, verifies price, stock and sources, and writes a grounded recommendation with a follow-up question. In shadow mode the draft is never sent.</desc>
+  <style>
+    .bg { fill: #f6f8f7; }
+    .grid { stroke: #e3e8e5; }
+    .ink { fill: #17201c; }
+    .muted { fill: #5b6661; }
+    .card { fill: #ffffff; stroke: #dfe5e2; }
+    .bubble-in { fill: #eef1ef; }
+    .accent { fill: #0b6e4f; }
+    .accent-ink { fill: #0b6e4f; }
+    .accent-stroke { stroke: #0b6e4f; }
+    .soft { fill: #e3f1ec; }
+    .on-accent { fill: #ffffff; }
+    .pipe { stroke: #c9d3ce; }
+    .chip { fill: #ffffff; stroke: #d5ddd9; }
+    .warn { fill: #fff4dc; }
+    .warn-ink { fill: #7a5300; }
+    text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0d1512; }
+      .grid { stroke: #17221e; }
+      .ink { fill: #e7efeb; }
+      .muted { fill: #93a39b; }
+      .card { fill: #121d19; stroke: #22302a; }
+      .bubble-in { fill: #1b2823; }
+      .accent { fill: #3ecf8e; }
+      .accent-ink { fill: #3ecf8e; }
+      .accent-stroke { stroke: #3ecf8e; }
+      .soft { fill: #143328; }
+      .on-accent { fill: #062017; }
+      .pipe { stroke: #2a3a33; }
+      .chip { fill: #121d19; stroke: #2a3a33; }
+      .warn { fill: #3a2e12; }
+      .warn-ink { fill: #f2c66d; }
+    }
+  </style>
+
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" class="grid" stroke-width="1.2"/>
+    </pattern>
+    <path id="flow" d="M 346 214 H 892"/>
+  </defs>
+
+  <rect class="bg" width="1280" height="340"/>
+  <rect width="1280" height="340" fill="url(#dots)"/>
+
+  <!-- Title -->
+  <rect x="48" y="38" width="8" height="34" rx="4" class="accent"/>
+  <text x="70" y="66" class="ink" font-size="32" font-weight="700" letter-spacing="-0.6">Assistance Chatbot</text>
+  <text x="48" y="100" class="muted" font-size="17">Support agents that understand the request, ground every claim, and keep a human in the loop.</text>
+
+  <!-- Stack chips -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="964" y="40" width="80" height="28" rx="14" class="chip" stroke-width="1.2"/>
+    <text x="1004" y="59" class="muted">FastAPI</text>
+    <rect x="1052" y="40" width="88" height="28" rx="14" class="chip" stroke-width="1.2"/>
+    <text x="1096" y="59" class="muted">pgvector</text>
+    <rect x="1148" y="40" width="84" height="28" rx="14" class="chip" stroke-width="1.2"/>
+    <text x="1190" y="59" class="muted">React</text>
+  </g>
+
+  <!-- Customer: three fragmented messages -->
+  <text x="48" y="142" class="muted" font-size="13" font-weight="600" letter-spacing="1">CUSTOMER · WEB WIDGET</text>
+  <g font-size="15">
+    <rect x="48" y="154" width="92" height="34" rx="14" class="bubble-in"/>
+    <text x="64" y="176" class="ink">hi there</text>
+    <rect x="48" y="196" width="282" height="34" rx="14" class="bubble-in"/>
+    <text x="64" y="218" class="ink">need a rain jacket for my son, he's 8</text>
+    <rect x="48" y="238" width="184" height="34" rx="14" class="bubble-in"/>
+    <text x="64" y="260" class="ink">under 400k if possible?</text>
+  </g>
+  <text x="48" y="296" class="muted" font-size="12.5">3 messages in 6 seconds</text>
+
+  <!-- Pipeline -->
+  <use href="#flow" class="pipe" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <use href="#flow" class="accent-stroke" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="6 14" opacity="0.55">
+    <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.6s" repeatCount="indefinite"/>
+  </use>
+  <circle r="5" class="accent">
+    <animateMotion dur="3.2s" repeatCount="indefinite" calcMode="linear"><mpath href="#flow"/></animateMotion>
+  </circle>
+  <circle r="5" class="accent" opacity="0.6">
+    <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" calcMode="linear"><mpath href="#flow"/></animateMotion>
+  </circle>
+
+  <!-- Stations: what the agent actually does -->
+  <g font-size="15" text-anchor="middle">
+    <g transform="translate(410 214)">
+      <circle r="17" class="card" stroke-width="2"/>
+      <text y="5" class="accent-ink" font-size="13" font-weight="700">1</text>
+      <text y="44" class="ink" font-weight="600">Coalesce</text>
+      <text y="64" class="muted" font-size="13">3 messages</text>
+      <text y="82" class="muted" font-size="13">→ 1 run</text>
+    </g>
+    <g transform="translate(560 214)">
+      <circle r="17" class="card" stroke-width="2"/>
+      <text y="5" class="accent-ink" font-size="13" font-weight="700">2</text>
+      <text y="44" class="ink" font-weight="600">Understand</text>
+      <text y="64" class="muted" font-size="13">recommend</text>
+      <text y="82" class="muted" font-size="13">age 8 · ≤ 400k</text>
+    </g>
+    <g transform="translate(710 214)">
+      <circle r="17" class="card" stroke-width="2"/>
+      <text y="5" class="accent-ink" font-size="13" font-weight="700">3</text>
+      <text y="44" class="ink" font-weight="600">Ground</text>
+      <text y="64" class="muted mono" font-size="12.5">search_products</text>
+      <text y="82" class="muted" font-size="13">3 found · 1 fits</text>
+    </g>
+    <g transform="translate(860 214)">
+      <circle r="17" class="card" stroke-width="2"/>
+      <text y="5" class="accent-ink" font-size="13" font-weight="700">4</text>
+      <text y="44" class="ink" font-weight="600">Verify</text>
+      <text y="64" class="muted" font-size="13">price ✓ stock ✓</text>
+      <text y="82" class="muted" font-size="13">source ✓</text>
+    </g>
+  </g>
+
+  <!-- Staff inbox -->
+  <rect x="920" y="122" width="312" height="196" rx="14" class="card" stroke-width="1.5"/>
+  <text x="940" y="150" class="muted" font-size="13" font-weight="600" letter-spacing="1">AGENT INBOX</text>
+  <rect x="1108" y="134" width="108" height="24" rx="12" class="warn"/>
+  <text x="1162" y="150" class="warn-ink" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.6">SHADOW</text>
+
+  <rect x="940" y="166" width="276" height="96" rx="14" class="soft"/>
+  <g font-size="14" class="ink">
+    <text x="954" y="189">For an 8-year-old, I'd recommend the</text>
+    <text x="954" y="209">Kids' Rain Shell (fully waterproof).</text>
+    <text x="954" y="229">Size 130 is in stock at 320,000 VND.</text>
+    <text x="954" y="249">Would you prefer navy or yellow?</text>
+  </g>
+
+  <rect x="940" y="272" width="126" height="26" rx="13" class="accent"/>
+  <text x="1003" y="289" class="on-accent mono" font-size="12" text-anchor="middle">catalog/RS-08</text>
+  <rect x="1074" y="272" width="104" height="26" rx="13" class="chip" stroke-width="1.2"/>
+  <text x="1126" y="289" class="muted mono" font-size="12" text-anchor="middle">size-guide</text>
+  <text x="940" y="312" class="muted" font-size="12">grounded draft · not sent to the customer</text>
+</svg>
