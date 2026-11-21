@@ -292,10 +292,9 @@ Ghi chú:
 
 Đã implement ở 2.2 — nội dung xem thẳng file TOML trên (nguồn sự thật duy nhất). Gồm: `key`, `version`, `default_mode` (`manual`|`shadow`), `intents` (nhãn → mô tả), `handoff_intents` (phải là tập con của `intents`), `tools` (chỉ tool read-only đã đăng ký), `models.classify` / `models.draft` (model, effort, max_tokens), `budget`, `instructions` (bắt buộc chứa `{shop_name}`), `eval_seeds`. File được validate bằng Pydantic khi nạp; file sai ⇒ lỗi ngay.
 
-Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`.
+Khi tạo agent: backend đọc file, **chụp** nội dung vào `agent_versions.config`. Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
 
 > Template hiện còn ghi `model`/`effort` của Claude trực tiếp trong `[models.*]`; ở 2.4 chuyển thành tên route (`classify`, `draft`) theo ADR-0015.
- Template đổi sang v2 không ảnh hưởng agent cũ (§6.5.1).
 
 ### 6.2. Lớp provider LLM (nhiều provider + failover) — chi tiết: ADR-0015
 
