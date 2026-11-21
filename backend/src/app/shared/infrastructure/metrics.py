@@ -54,3 +54,5 @@ LLM_LATENCY = Histogram(
     ["provider"],
     buckets=(0.25, 0.5, 1, 2, 4, 8, 16, 30, 60),
 )
+LLM_TOKENS = Counter("llm_tokens_total", "LLM tokens by kind", ["provider", "kind"])
+LLM_COST_MICRO = Counter("llm_cost_micro_total", "LLM cost in micro-USD", ["provider"])
