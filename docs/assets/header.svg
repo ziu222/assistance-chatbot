@@ -1,60 +1,124 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="t d">
   <title id="t">Atlas</title>
-  <desc id="d">Atlas logo, a chat bubble drawn as a globe, with the tagline: AI customer-support agents with a human in the loop. Autonomy grows from Manual to Shadow to Learning to Autopilot.</desc>
-  <style>
-    .bg { fill: #f6f8f7; }
-    .globe { stroke: #dde4e0; }
-    .ink { fill: #17201c; }
-    .muted { fill: #4f5b56; }
-    .accent { fill: #0b6e4f; }
-    .chip { fill: #ffffff; stroke: #cfd8d3; }
-    .chip-on { fill: #0b6e4f; }
-    .on-accent { fill: #ffffff; }
-    text { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-    @media (prefers-color-scheme: dark) {
-      .bg { fill: #0d1512; }
-      .globe { stroke: #1b2a24; }
-      .ink { fill: #eef4f1; }
-      .muted { fill: #a3b3ab; }
-      .accent { fill: #3ecf9a; }
-      .chip { fill: #121d19; stroke: #2a3b34; }
-      .chip-on { fill: #3ecf9a; }
-      .on-accent { fill: #0d1512; }
-    }
-  </style>
-  <rect class="bg" width="1280" height="400"/>
-
-  <!-- decorative globe, cropped on the right -->
-  <g class="globe" fill="none" stroke-width="2">
-    <circle cx="1120" cy="190" r="250"/>
-    <ellipse cx="1120" cy="190" rx="120" ry="250"/>
-    <ellipse cx="1120" cy="190" rx="215" ry="250"/>
-    <line x1="870" y1="190" x2="1370" y2="190"/>
-    <path d="M888 100 H1352 M888 280 H1352"/>
-  </g>
-
-  <!-- logo mark -->
-  <g transform="translate(80 64)">
-    <rect class="accent" width="144" height="144" rx="36"/>
-    <g stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
-      <circle cx="72" cy="66" r="38" stroke="#fff"/>
-      <ellipse cx="72" cy="66" rx="16" ry="38" stroke="#fff"/>
-      <line x1="34" y1="66" x2="110" y2="66" stroke="#fff"/>
-      <path d="M44 42 H100 M44 90 H100" stroke="#fff" stroke-width="5"/>
+  <desc id="d">Atlas logo, a titan holding up a globe whose equator is a chat typing indicator, on a frosted glass card over a sky-blue background. Tagline: the AI support agent that learns your business, trained by your team until it answers on its own.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c2d6b"/>
+      <stop offset="0.5" stop-color="#0369a1"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
+    <filter id="frost" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+    <filter id="lift" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+    <linearGradient id="glass-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.32"/>
+      <stop offset="0.45" stop-color="#fff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="glass-edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.75"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.5"/>
+    </linearGradient>
+    <clipPath id="card"><rect x="60" y="48" width="1160" height="304" rx="40"/></clipPath>
+    <g id="orbs">
+      <circle cx="1080" cy="70" r="190" fill="#7dd3fc"/>
+      <circle cx="230" cy="390" r="210" fill="#2563eb"/>
+      <circle cx="660" cy="-10" r="150" fill="#0ea5e9"/>
+      <circle cx="840" cy="380" r="140" fill="#a5f3fc" fill-opacity="0.7"/>
     </g>
-    <path d="M44 98 L30 124 L62 106 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  </defs>
+
+  <rect width="1280" height="400" fill="url(#sky)"/>
+  <use href="#orbs" filter="url(#soft)"/>
+
+  <!-- star field: the sky Atlas carries -->
+  <g fill="#fff">
+    <circle cx="40" cy="30" r="1.6" opacity="0.8"/><circle cx="140" cy="22" r="1.2" opacity="0.6"/>
+    <circle cx="420" cy="26" r="1.4" opacity="0.7"/><circle cx="560" cy="380" r="1.3" opacity="0.6"/>
+    <circle cx="1250" cy="40" r="1.8" opacity="0.8"/><circle cx="1240" cy="370" r="1.3" opacity="0.6"/>
+    <circle cx="30" cy="250" r="1.4" opacity="0.6"/><circle cx="980" cy="382" r="1.6" opacity="0.7"/>
   </g>
 
-  <text class="ink" x="260" y="190" font-size="140" font-weight="800" letter-spacing="-4">Atlas</text>
-  <text class="ink" x="84" y="268" font-size="42" font-weight="600">AI customer-support agents with a human in the loop</text>
-  <text class="muted" x="84" y="316" font-size="30">Manual  →  Shadow  →  Learning  →  Autopilot</text>
+  <!-- frosted glass card: the background blurred again inside the card -->
+  <g clip-path="url(#card)">
+    <rect width="1280" height="400" fill="url(#sky)"/>
+    <use href="#orbs" filter="url(#frost)"/>
+    <rect width="1280" height="400" fill="#fff" fill-opacity="0.1"/>
+    <rect x="60" y="48" width="1160" height="304" fill="url(#glass-sheen)"/>
+    <!-- large faint globe inside the glass, right side -->
+    <g fill="none" stroke="#fff" stroke-opacity="0.18" stroke-width="2">
+      <circle cx="1080" cy="200" r="210"/>
+      <ellipse cx="1080" cy="200" rx="95" ry="210"/>
+      <ellipse cx="1080" cy="200" rx="170" ry="210"/>
+      <path d="M870 200 H1290 M892 110 H1268 M892 290 H1268"/>
+    </g>
+  </g>
+  <rect x="61" y="49" width="1158" height="302" rx="39" fill="none" stroke="url(#glass-edge)" stroke-width="2"/>
 
-  <g font-size="24" font-weight="600" text-anchor="middle">
-    <rect class="chip" x="80" y="344" width="330" height="40" rx="20" stroke-width="1.5"/>
-    <text class="ink" x="245" y="371">Grounded in your catalog</text>
-    <rect class="chip" x="430" y="344" width="330" height="40" rx="20" stroke-width="1.5"/>
-    <text class="ink" x="595" y="371">Shadow mode first</text>
-    <rect class="chip" x="780" y="344" width="330" height="40" rx="20" stroke-width="1.5"/>
-    <text class="ink" x="945" y="371">Claude + OpenAI failover</text>
+  <!-- logo, with a soft shadow so it lifts off the glass -->
+  <rect x="116" y="124" width="180" height="180" rx="45" fill="#0c2d6b" fill-opacity="0.45" filter="url(#lift)"/>
+  <g transform="translate(110 110) scale(1.125)">
+  <defs>
+    <linearGradient id="l-tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.55" stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="l-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="l-halo">
+      <stop offset="0.55" stop-color="#e0f2fe" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="l-globe" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#bae6fd"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" rx="40" fill="url(#l-tile)"/>
+  <rect width="160" height="160" rx="40" fill="url(#l-sheen)"/>
+  <rect x="1" y="1" width="158" height="158" rx="39" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="2"/>
+
+  <circle cx="80" cy="62" r="50" fill="url(#l-halo)"/>
+  <!-- orbit, back half -->
+  <path d="M34 62 A46 12 0 0 1 126 62" transform="rotate(-16 80 62)" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2.5"/>
+  <!-- globe -->
+  <circle cx="80" cy="62" r="32" fill="url(#l-globe)"/>
+  <g fill="none" stroke="#0369a1" stroke-opacity="0.5" stroke-width="2.2">
+    <ellipse cx="80" cy="62" rx="13" ry="32"/>
+    <ellipse cx="80" cy="62" rx="25" ry="32"/>
+    <path d="M52.3 46 H107.7 M52.3 78 H107.7"/>
+  </g>
+  <circle cx="80" cy="62" r="32" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <!-- equator = typing indicator -->
+  <g fill="#0c4a6e">
+    <circle cx="67" cy="62" r="4"/>
+    <circle cx="80" cy="62" r="4"/>
+    <circle cx="93" cy="62" r="4"/>
+  </g>
+  <!-- orbit, front half with a satellite -->
+  <g transform="rotate(-16 80 62)">
+    <path d="M34 62 A46 12 0 0 0 126 62" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <circle cx="112" cy="70.5" r="4.5" fill="#fff"/>
+  </g>
+  <!-- the titan -->
+  <g fill="#fff">
+    <circle cx="80" cy="106" r="8"/>
+    <path d="M42 146 C46 128 61 118 80 118 C99 118 114 128 118 146 Z"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
+    <path d="M60 124 C53 112 51 99 55 87"/>
+    <path d="M100 124 C107 112 109 99 105 87"/>
+  </g>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" fill="#fff">
+    <text x="340" y="198" font-size="128" font-weight="800" letter-spacing="-3">Atlas</text>
+    <text x="344" y="256" font-size="36" font-weight="600">The AI support agent that learns your business</text>
+    <text x="344" y="302" font-size="28" fill-opacity="0.85">Trained by your team, until it answers on its own.</text>
   </g>
 </svg>

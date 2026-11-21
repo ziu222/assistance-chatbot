@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/header.svg" width="100%" alt="Atlas: AI customer-support agents with a human in the loop. Autonomy grows from Manual to Shadow to Learning to Autopilot.">
+  <img src="docs/assets/header.svg" width="100%" alt="Atlas: the AI support agent that learns your business, trained by your team until it answers on its own.">
 </p>
 
 AI customer-support agents with human-in-the-loop cho doanh nghiệp nhỏ: khách nhắn qua widget, nhân viên trả lời trong inbox; các bước sau thêm agent AI theo thang **Manual → Shadow → Learning → Autopilot**.

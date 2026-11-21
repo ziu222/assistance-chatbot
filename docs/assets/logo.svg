@@ -1,10 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 144 144" role="img" aria-label="Atlas logo">
-  <rect width="144" height="144" rx="36" fill="#0b6e4f"/>
-  <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="72" cy="66" r="38"/>
-    <ellipse cx="72" cy="66" rx="16" ry="38"/>
-    <line x1="34" y1="66" x2="110" y2="66"/>
-    <path d="M44 42 H100 M44 90 H100" stroke-width="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 160 160" role="img" aria-label="Atlas logo: a titan holding up a globe whose equator is a chat typing indicator">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.55" stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0.55" stop-color="#e0f2fe" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#e0f2fe" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="globe" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#bae6fd"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" rx="40" fill="url(#tile)"/>
+  <rect width="160" height="160" rx="40" fill="url(#sheen)"/>
+  <rect x="1" y="1" width="158" height="158" rx="39" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="2"/>
+
+  <circle cx="80" cy="62" r="50" fill="url(#halo)"/>
+  <!-- orbit, back half -->
+  <path d="M34 62 A46 12 0 0 1 126 62" transform="rotate(-16 80 62)" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2.5"/>
+  <!-- globe -->
+  <circle cx="80" cy="62" r="32" fill="url(#globe)"/>
+  <g fill="none" stroke="#0369a1" stroke-opacity="0.5" stroke-width="2.2">
+    <ellipse cx="80" cy="62" rx="13" ry="32"/>
+    <ellipse cx="80" cy="62" rx="25" ry="32"/>
+    <path d="M52.3 46 H107.7 M52.3 78 H107.7"/>
   </g>
-  <path d="M44 98 L30 124 L62 106 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="80" cy="62" r="32" fill="none" stroke="#fff" stroke-width="2.5"/>
+  <!-- equator = typing indicator -->
+  <g fill="#0c4a6e">
+    <circle cx="67" cy="62" r="4"/>
+    <circle cx="80" cy="62" r="4"/>
+    <circle cx="93" cy="62" r="4"/>
+  </g>
+  <!-- orbit, front half with a satellite -->
+  <g transform="rotate(-16 80 62)">
+    <path d="M34 62 A46 12 0 0 0 126 62" fill="none" stroke="#fff" stroke-width="2.5"/>
+    <circle cx="112" cy="70.5" r="4.5" fill="#fff"/>
+  </g>
+  <!-- the titan -->
+  <g fill="#fff">
+    <circle cx="80" cy="106" r="8"/>
+    <path d="M42 146 C46 128 61 118 80 118 C99 118 114 128 118 146 Z"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
+    <path d="M60 124 C53 112 51 99 55 87"/>
+    <path d="M100 124 C107 112 109 99 105 87"/>
+  </g>
 </svg>
