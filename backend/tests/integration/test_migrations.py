@@ -53,6 +53,9 @@ CORE_TABLES = {
     "knowledge_docs",
     "catalog_items",
     "usage_events",
+    "agent_runs",
+    "agent_run_steps",
+    "agent_drafts",
 }
 
 
