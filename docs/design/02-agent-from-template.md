@@ -209,14 +209,13 @@ CREATE TABLE knowledge_docs (                      -- tài liệu nhỏ, đưa n
 );
 
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
-CREATE EXTENSION IF NOT EXISTS unaccent;
 CREATE TABLE catalog_items (                       -- dữ liệu có cấu trúc, KHÔNG phải chunk (§11.0)
   id uuid PRIMARY KEY, tenant_id uuid NOT NULL REFERENCES tenants(id),
   sku text NOT NULL, name text NOT NULL, description text,
   price_vnd bigint NOT NULL CHECK (price_vnd >= 0),
   variants jsonb NOT NULL DEFAULT '[]',            -- [{"size":"M","stock":5}, ...]
   active boolean NOT NULL DEFAULT true,
-  search_text text NOT NULL,                       -- unaccent(lower(name || ' ' || description))
+  search_text text NOT NULL,                       -- tên + mô tả đã bỏ dấu ở Python (fold())
   synced_at timestamptz NOT NULL DEFAULT now(),
   UNIQUE (tenant_id, sku), UNIQUE (tenant_id, id)
 );
@@ -326,7 +325,7 @@ class LLMResult:
 
 | Tool | Input (strict) | Output (đã chiếu) | Ghi chú |
 |---|---|---|---|
-| `search_products` | `{query: string ≤100, limit: int 1..5}` | `[{id, sku, name, price_vnd, variants:[{size,color,stock}]}]` | tìm bằng `pg_trgm` trên `unaccent(lower(...))`, **luôn** lọc `tenant_id`, `active` |
+| `search_products` | `{query: string ≤100, limit: int 1..5}` | `[{id, sku, name, price_vnd, variants:[{size,color,stock}]}]` | tìm bằng `pg_trgm` (`word_similarity`) trên chuỗi đã bỏ dấu ở Python — `unaccent` của Postgres không IMMUTABLE nên không index được; **luôn** lọc `tenant_id`, `active` |
 | `get_product` | `{product_id: uuid}` | như trên + `description` cắt 500 ký tự | ID lạ / tenant khác ⇒ `not_found` |
 
 Model **đề xuất** tên tool + tham số; backend validate schema, ép `tenant_id` từ run (không từ model), giới hạn số bản ghi, ghi step (§9.8). Kết quả tool được bọc như dữ liệu (`tool_result`), không bao giờ ghép vào system prompt.
@@ -430,9 +429,9 @@ Admin chuyển `shadow → manual` khi run đang chạy: run vẫn chạy nốt 
 | `GET /api/v1/agent-templates` | Danh sách template (đọc từ file) |
 | `POST /api/v1/agents` | `{template_key, channel_connection_id, name}` → tạo agent + version 1, mode `manual` |
 | `PATCH /api/v1/agents/{id}` | đổi `mode`, `shadow_sample_rate` (kèm `version` để chống ghi đè) |
-| `GET/POST/PATCH/DELETE /api/v1/knowledge/faqs` | CRUD FAQ |
+| `GET/POST/PATCH/DELETE /api/v1/knowledge/faqs` | CRUD FAQ; DELETE = chuyển `archived` (nháp cũ vẫn trích nguồn tới id) |
 | `GET/POST/PATCH/DELETE /api/v1/knowledge/docs` | CRUD tài liệu nhỏ |
-| `POST /api/v1/catalog/import` | CSV `sku,name,description,price_vnd,size,color,stock` (≤ 2 MB), upsert theo `sku` |
+| `POST /api/v1/catalog/import` | body `text/csv` thô `sku,name,description,price_vnd,size,color,stock` (≤ 2 MB, UTF-8), upsert theo `sku`; một dòng lỗi ⇒ từ chối cả file, trả lỗi kèm số dòng |
 | `GET /api/v1/catalog/search?q=` | thử tìm như tool |
 | `PATCH /api/v1/ai-settings` | kill switch, trần chi phí ngày |
 | `GET /api/v1/agent-runs?conversation_id=&status=&cursor=` | danh sách run |

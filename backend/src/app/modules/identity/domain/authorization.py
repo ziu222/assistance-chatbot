@@ -7,6 +7,8 @@ _ALLOWED_ROLES = {
     "conversation.reply": {"owner", "admin", "agent"},
     "agent.read": {"owner", "admin", "agent"},
     "agent.manage": {"owner", "admin"},  # tạo agent, đổi mode, bật/tắt AI
+    "knowledge.read": {"owner", "admin", "agent"},
+    "knowledge.manage": {"owner", "admin"},  # FAQ, tài liệu, import catalog
 }
 
 

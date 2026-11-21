@@ -49,6 +49,9 @@ CORE_TABLES = {
     "tenant_ai_settings",
     "agents",
     "agent_versions",
+    "faq_entries",
+    "knowledge_docs",
+    "catalog_items",
 }
 
 
