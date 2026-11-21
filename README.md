@@ -4,7 +4,7 @@
 
 AI customer-support agents with human-in-the-loop cho doanh nghiệp nhỏ: khách nhắn qua widget, nhân viên trả lời trong inbox; các bước sau thêm agent AI theo thang **Manual → Shadow → Learning → Autopilot**.
 
-Bối cảnh: [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) · Quy tắc làm việc: [CONTRIBUTING.md](CONTRIBUTING.md) · Thiết kế bước 1: [docs/design/01-webchat-inbound-pipeline.md](docs/design/01-webchat-inbound-pipeline.md)
+Thiết kế: [bước 1 — webchat ↔ inbox](docs/design/01-webchat-inbound-pipeline.md) · [bước 2 — agent từ template](docs/design/02-agent-from-template.md) · Tự test: [hướng dẫn](docs/guides/01-test-pipeline.md)
 
 ## Kiến trúc (bước 1)
 
