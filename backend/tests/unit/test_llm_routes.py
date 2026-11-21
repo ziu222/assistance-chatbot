@@ -100,3 +100,21 @@ def test_validate_prices_names_the_missing_model():
     data["routes"]["draft"]["targets"][1]["model"] = "gpt-9-imaginary"
     with pytest.raises(UnknownPrice, match="gpt-9-imaginary"):
         validate_prices(parse_routes(data))
+
+
+def test_every_shipped_template_uses_existing_routes():
+    from app.modules.agent_management.infrastructure.templates import load_templates
+    from app.modules.agent_runtime.llm.routes import validate_route_names
+
+    used = {
+        f"{t.key} v{t.version}": [t.routes.classify, t.routes.draft]
+        for t in load_templates().values()
+    }
+    validate_route_names(used, load_routes())  # không ném
+
+
+def test_missing_route_is_reported_with_its_owner():
+    from app.modules.agent_runtime.llm.routes import validate_route_names
+
+    with pytest.raises(NoTargetAvailable, match="faq_sales_quote v1 needs route 'vip'"):
+        validate_route_names({"faq_sales_quote v1": ["classify", "vip"]}, load_routes())

@@ -23,15 +23,9 @@ complaint = "Phàn nàn, hàng lỗi, giao chậm"
 human_request = "Muốn gặp người thật"
 other = "Không thuộc các nhãn trên"
 
-[models.classify]
-model = "claude-opus-5-5"
-effort = "low"
-max_tokens = 512
-
-[models.draft]
-model = "claude-opus-5-5"
-effort = "medium"
-max_tokens = 2048
+[routes]
+classify = "classify"
+draft = "draft"
 
 [budget]
 max_model_calls = 3

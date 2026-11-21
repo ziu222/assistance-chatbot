@@ -96,3 +96,16 @@ def validate_prices(routes: Routes) -> None:
     )
     if missing:
         raise UnknownPrice(f"no price for: {', '.join(missing)}")
+
+
+def validate_route_names(used: dict[str, Collection[str]], routes: Routes) -> None:
+    """`used`: nguồn dùng route -> các tên route nó cần (vd mỗi template). Thiếu route ⇒ lỗi
+    ngay lúc khởi động, thay vì khi khách đầu tiên nhắn tin."""
+    problems = [
+        f"{owner} needs route '{name}'"
+        for owner, names in used.items()
+        for name in names
+        if name not in routes
+    ]
+    if problems:
+        raise NoTargetAvailable("; ".join(problems))
