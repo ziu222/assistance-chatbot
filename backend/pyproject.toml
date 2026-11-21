@@ -13,6 +13,8 @@ dependencies = [
   "pyjwt>=2.15.1",
   "argon2-cffi>=25.1.0",
   "prometheus-client>=0.26.0",
+  "anthropic>=2.12.0",
+  "openai>=3.57.0",
 ]
 
 [project.optional-dependencies]
@@ -31,6 +33,8 @@ pythonpath = ["src"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
+addopts = "-m 'not live'"
+markers = ["live: gọi API provider thật (tốn tiền, cần key); chạy bằng `pytest -m live`"]
 
 [tool.ruff]
 line-length = 100
