@@ -114,6 +114,9 @@ class ConversationRepository:
                 last_message_at=at,
                 last_message_preview=preview,
                 unread_count=ConversationModel.unread_count + (1 if inbound else 0),
+                # Tin outbound duy nhất ghi qua đây là tin của nhân viên ⇒ hội thoại thuộc người,
+                # cùng transaction với tin (bước 2 §12.3). Bot chỉ trả lại khi nhân viên bấm nút.
+                handling=ConversationModel.handling if inbound else "human",
                 version=ConversationModel.version + 1,
                 updated_at=func.now(),
             )

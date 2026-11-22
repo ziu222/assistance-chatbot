@@ -11,7 +11,7 @@ from app.shared.domain.tenant import TenantContext
 
 _SELECT = (
     "SELECT c.id, c.status, c.last_sequence, c.last_message_at, c.last_message_preview, "
-    "c.unread_count, c.version, c.created_at, c.closed_at, "
+    "c.unread_count, c.version, c.handling, c.created_at, c.closed_at, "
     "cu.id AS customer_id, cu.display_name AS customer_name, "
     "ch.id AS connection_id, ch.provider "
     "FROM conversations c "
@@ -46,6 +46,7 @@ def conversation_json(r) -> dict:
         "last_message_preview": r.last_message_preview,
         "unread_count": r.unread_count,
         "version": r.version,
+        "handling": r.handling,
         "created_at": r.created_at.isoformat(),
         "closed_at": r.closed_at.isoformat() if r.closed_at else None,
         "customer": {"id": str(r.customer_id), "display_name": r.customer_name},
