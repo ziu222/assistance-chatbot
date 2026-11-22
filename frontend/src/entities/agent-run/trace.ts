@@ -37,7 +37,7 @@ export type Totals = {
 
 export type Step = {
   index: number;
-  kind: "rule" | "classify" | "llm" | "tool" | "validate";
+  kind: "rule" | "classify" | "llm" | "tool" | "validate" | "signal";
   name: string | null;
   status: string;
   latency_ms: number | null;
@@ -158,6 +158,18 @@ const KIND: Record<Step["kind"], string> = {
   llm: "Soạn nháp",
   tool: "Tool",
   validate: "Kiểm tra",
+  signal: "Tín hiệu (chỉ ghi)",
+};
+
+const SIGNAL: Record<string, string> = {
+  repeat: "hỏi lặp lại",
+  negation: "phủ nhận câu trả lời",
+  burst: "nhắn dồn",
+  long_unresolved: "nhiều lượt chưa xong",
+  shouting: "dấu !!/??",
+  frustration_mild: "hơi bực",
+  frustration_high: "rất bực",
+  human_decision: "cần người quyết",
 };
 
 export function stepTitle(s: Step): string {
@@ -181,6 +193,11 @@ export function stepSummary(s: Step): string {
     ]
       .filter(Boolean)
       .join(" · ");
+  }
+  if (s.kind === "signal") {
+    const found = Array.isArray(d.signals) ? (d.signals as string[]) : [];
+    const labels = found.map((x) => SIGNAL[x] ?? x).join(", ");
+    return `${labels || "không có"} · điểm ${d.score ?? 0}`;
   }
   if (s.kind === "validate") {
     const problems = Array.isArray(d.problems) ? (d.problems as string[]) : [];

@@ -17,6 +17,7 @@ export type PolicyConfig = {
   after_hours: SituationConfig;
   welcome: SituationConfig & { gap_hours: number };
   handoff_topics: string[];
+  escalation_sensitivity: "low" | "medium" | "high";
 };
 export type Release = { id: string; number: number; created_at: string; current: boolean; config: PolicyConfig };
 export type Simulation = {
@@ -58,6 +59,25 @@ export function useSavePolicy() {
     onSuccess: done,
   });
 }
+
+export type ConfusionRow = {
+  threshold: number;
+  tp: number;
+  fp: number;
+  fn: number;
+  tn: number;
+  precision: number | null;
+  recall: number | null;
+};
+export type EscalationReport = {
+  days: number;
+  conversations: number;
+  needed_human: number;
+  current: PolicyConfig["escalation_sensitivity"];
+  by_sensitivity: Record<PolicyConfig["escalation_sensitivity"], ConfusionRow>;
+};
+export const useEscalationReport = () =>
+  useQuery({ queryKey: ["escalation-report"], queryFn: () => apiFetch<EscalationReport>("/api/v1/escalation/report") });
 
 export function useAutoSend() {
   const done = useInvalidate();

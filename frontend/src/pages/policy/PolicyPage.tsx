@@ -5,6 +5,7 @@ import {
   useRestoreRelease,
   useSavePolicy,
   useAutoSend,
+  useEscalationReport,
   useSimulation,
   type BusinessHours,
   type Day,
@@ -21,7 +22,11 @@ import { formatTime } from "../../shared/lib/format";
 const EMPTY_HOURS: BusinessHours = { timezone: "Asia/Ho_Chi_Minh", weekly: {}, closed_days: [], pause_until: null };
 
 function normalize(raw: PolicyConfig): PolicyConfig {
-  const c = { ...raw, handoff_topics: raw.handoff_topics ?? [] };
+  const c = {
+    ...raw,
+    handoff_topics: raw.handoff_topics ?? [],
+    escalation_sensitivity: raw.escalation_sensitivity ?? "low",
+  };
   if (!c.hours) return c;
   const weekly: BusinessHours["weekly"] = {};
   for (const { id } of DAYS) if (c.hours.weekly[id]?.length) weekly[id] = normalizeSpans(c.hours.weekly[id]);
@@ -258,6 +263,40 @@ function Preview({ config }: { config: PolicyConfig }) {
   );
 }
 
+const pct = (v: number | null) => (v === null ? "—" : `${Math.round(v * 100)}%`);
+
+function EscalationNumbers() {
+  const report = useEscalationReport();
+  if (!report.data) return null;
+  const r = report.data;
+  if (r.conversations === 0) return <p className="muted">Chưa có hội thoại nào được chấm trong {r.days} ngày qua.</p>;
+  return (
+    <>
+      <p className="muted">
+        {r.days} ngày qua: {r.conversations} hội thoại được chấm, {r.needed_human} hội thoại thật sự cần nhân viên.
+      </p>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Độ nhạy</th>
+            <th>Báo đúng (precision)</th>
+            <th>Bắt được (recall)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {(["low", "medium", "high"] as const).map((k) => (
+            <tr key={k}>
+              <td>{{ low: "Thấp", medium: "Vừa", high: "Cao" }[k]}</td>
+              <td>{pct(r.by_sensitivity[k].precision)}</td>
+              <td>{pct(r.by_sensitivity[k].recall)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
 function Editor({ initial, canManage, currentNumber }: { initial: PolicyConfig; canManage: boolean; currentNumber: number | null }) {
   const [draft, setDraft] = useState(initial);
   const [topicsText, setTopicsText] = useState((initial.handoff_topics ?? []).join("\n"));
@@ -329,6 +368,26 @@ function Editor({ initial, canManage, currentNumber }: { initial: PolicyConfig; 
             );
           }}
         />
+      </section>
+
+      <section className="card stack" aria-labelledby="escalation">
+        <h2 id="escalation">Phát hiện khách cần người (đang đo)</h2>
+        <p className="muted">
+          Bot ghi lại dấu hiệu khách mất kiên nhẫn hoặc cần người quyết định, rồi so với các ticket thật. Hiện chưa tự
+          chuyển người: chỉ để bạn xem độ chính xác trước khi bật.
+        </p>
+        <label className="row">
+          Độ nhạy{" "}
+          <select
+            value={draft.escalation_sensitivity}
+            onChange={(e) => set("escalation_sensitivity", e.target.value as PolicyConfig["escalation_sensitivity"])}
+          >
+            <option value="low">Thấp (ít báo nhầm)</option>
+            <option value="medium">Vừa</option>
+            <option value="high">Cao (ít bỏ sót)</option>
+          </select>
+        </label>
+        <EscalationNumbers />
       </section>
 
       <Preview config={draft} />

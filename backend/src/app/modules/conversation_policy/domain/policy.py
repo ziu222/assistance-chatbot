@@ -14,6 +14,7 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.modules.agent_runtime.rules import HANDOFF_PHRASES
+from app.modules.agent_runtime.signals import Sensitivity
 from app.modules.conversation_policy.domain.hours import (
     BusinessHours,
     format_next_open,
@@ -61,6 +62,8 @@ class PolicyConfig(BaseModel):
     handoff_topics: list[Annotated[str, Field(min_length=2, max_length=50)]] = Field(
         default_factory=list, max_length=30
     )
+    # Độ nhạy phát hiện khách cần người (2.10). Hiện CHỈ dùng để xem số đo, chưa điều khiển gì.
+    escalation_sensitivity: Sensitivity = "low"
 
 
 @dataclass(frozen=True)

@@ -86,8 +86,15 @@ def calls(*tool_calls: ToolCall, usage: Usage = USAGE):
     return dataclasses.replace(tool_call_result(*tool_calls), served_by=SONNET, usage=usage)
 
 
-def classify(*intents: str):
-    return result(ClassifyOut(intents=list(intents), confidence_note=""))
+def classify(*intents: str, frustration="none", human_decision=False):
+    return result(
+        ClassifyOut(
+            intents=list(intents),
+            confidence_note="",
+            frustration=frustration,
+            human_decision=human_decision,
+        )
+    )
 
 
 def draft_out(reply: str, sources=(), needs_human=False, reason=""):
@@ -244,10 +251,12 @@ async def test_steps_are_a_redacted_trace(world, session_factory):
             )
         ).all()
     assert [k for k, *_ in steps] == [
-        "rule",
-        "rule",
-        "rule",
+        "rule",  # gate
+        "rule",  # context
+        "signal",  # hành vi (2.10, chỉ ghi)
+        "rule",  # router
         "classify",
+        "signal",  # ngữ nghĩa (2.10, chỉ ghi)
         "llm",
         "tool",
         "llm",
@@ -593,3 +602,39 @@ async def test_conversation_without_agent_is_ignored(session_factory):
     await runner.handle(await request_for(session_factory, w, ("alo",)))
 
     assert await runs(session_factory) == [] and llm.requests == []
+
+
+# ---------- 2.10: tín hiệu leo thang chỉ ghi ----------
+
+
+async def test_escalation_signals_are_recorded_not_acted_on(world, session_factory):
+    # Đủ 4 lượt để tính tín hiệu ngữ nghĩa; câu cuối lặp lại câu đầu và phủ nhận câu trả lời.
+    history = ("áo khoác gió size M còn hàng không", "alo", "cảm ơn")
+    await request_for(session_factory, world, history)
+    runner, _ = make_runner(
+        session_factory,
+        [classify("product_info", frustration="high"), search(), quote_draft()],
+    )
+    req = await request_for(
+        session_factory, world, ("không phải, ao khoac gio size M con hang khong??",)
+    )
+    req = dataclasses.replace(req, from_sequence=len(history) + 1)
+    await runner.handle(req)
+
+    async with session_factory() as s:
+        rows = (
+            await s.execute(
+                text(
+                    "SELECT name, detail FROM agent_run_steps WHERE kind = 'signal' "
+                    "ORDER BY step_index"
+                )
+            )
+        ).all()
+    signals = {name: detail for name, detail in rows}
+    assert signals["behavior"]["signals"] == ["repeat", "negation", "shouting"]
+    assert signals["semantic"]["signals"] == ["frustration_high"]
+    assert signals["behavior"]["score"] + signals["semantic"]["score"] == 7
+    # Chỉ ghi: run vẫn soạn nháp như thường, không mở ticket, không đổi handling.
+    assert (await one_run(session_factory))["status"] == "completed"
+    async with session_factory() as s:
+        assert (await s.execute(text("SELECT count(*) FROM handoff_requests"))).scalar_one() == 0

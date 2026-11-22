@@ -9,6 +9,9 @@ class ClassifyOut(BaseModel):
     model_config = ConfigDict(extra="forbid")
     intents: list[str] = Field(max_length=5)
     confidence_note: str = Field(max_length=300)
+    # Tín hiệu leo thang (2.10): chỉ GHI vào trace để đo, không điều khiển gì (§12.7).
+    frustration: Literal["none", "mild", "high"]
+    human_decision: bool  # cần người quyết: ngoại lệ chính sách, giảm giá riêng, khiếu nại…
 
 
 class Source(BaseModel):

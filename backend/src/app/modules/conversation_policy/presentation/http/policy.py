@@ -1,21 +1,22 @@
 """REST chính sách hội thoại: giờ làm việc, tin tự động, mô phỏng (thiết kế bước 2 §12.10)."""
 
 from datetime import datetime, timedelta
-from typing import Literal
+from typing import Annotated, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Query, Request
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field
 from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
 
+from app.modules.conversation_policy.domain.escalation import report
 from app.modules.conversation_policy.domain.policy import (
     PolicyConfig,
     PolicyState,
     decide,
     suggested_config,
 )
-from app.modules.conversation_policy.infrastructure import handoffs
+from app.modules.conversation_policy.infrastructure import escalation, handoffs
 from app.modules.conversation_policy.infrastructure import repository as repo
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
@@ -213,3 +214,19 @@ async def open_handoff_by_staff(
             s, tenant_id, conversation_id, source="staff"
         )
     return {"id": str(handoff_id), "created": created}
+
+
+# ---------- đo tín hiệu leo thang (§12.7) ----------
+
+
+@router.get("/escalation/report")
+async def escalation_report(
+    request: Request, actor: CurrentStaff, days: Annotated[int, Query(ge=1, le=90)] = 30
+) -> dict:
+    """Precision/recall của điểm leo thang so với ticket thật, cho từng độ nhạy."""
+    tenant_id = _require(actor, "agent.read")
+    async with request.app.state.session_factory() as s:
+        rows = await escalation.scored_conversations(s, tenant_id, days)
+        release = await repo.current_release(s, tenant_id)
+    current = release.config.escalation_sensitivity if release else "low"
+    return report(rows) | {"days": days, "current": current}
