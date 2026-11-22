@@ -88,6 +88,13 @@ async def list_templates(actor: CurrentStaff) -> dict:
     }
 
 
+@router.get("/channel-connections")
+async def list_connections(request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "agent.read")
+    async with request.app.state.session_factory() as s:
+        return {"items": await repo.list_connections(s, tenant_id)}
+
+
 @router.get("/agents")
 async def list_agents(request: Request, actor: CurrentStaff) -> dict:
     tenant_id = _require(actor, "agent.read")
