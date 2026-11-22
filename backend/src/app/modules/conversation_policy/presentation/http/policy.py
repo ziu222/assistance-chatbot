@@ -61,8 +61,26 @@ async def get_policy(request: Request, actor: CurrentStaff) -> dict:
         release = await repo.current_release(s, tenant_id)
     return {
         "release": _release_json(release) if release else None,
+        "auto_send": release.auto_send if release else False,
         "suggested": repo.config_json(suggested_config()),
     }
+
+
+class PolicySettingsIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    auto_send: bool
+
+
+@router.patch("/policy/settings", dependencies=[Csrf])
+async def update_policy_settings(
+    body: PolicySettingsIn, request: Request, actor: CurrentStaff
+) -> dict:
+    """Bật/tắt gửi tin tự động cho khách. Tắt có hiệu lực ngay với lượt kế tiếp."""
+    tenant_id = _require(actor, "agent.manage")
+    async with request.app.state.session_factory() as s, s.begin():
+        if not await repo.set_auto_send(s, tenant_id, body.auto_send):
+            raise ApiError(409, "no_policy", "Save the auto messages first")
+    return {"auto_send": body.auto_send}
 
 
 @router.put("/policy", dependencies=[Csrf])

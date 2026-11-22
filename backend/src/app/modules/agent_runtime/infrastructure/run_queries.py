@@ -159,7 +159,8 @@ async def get_run(s: AsyncSession, tenant_id: UUID, run_id: UUID) -> dict[str, A
             await s.execute(
                 text(
                     "SELECT d.situation, d.canned_text, d.handling_before, d.set_handling, "
-                    "d.run_agent, d.sent, r.number AS release_number FROM policy_decisions d "
+                    "d.run_agent, d.sent, d.send_block, r.number AS release_number "
+                    "FROM policy_decisions d "
                     "JOIN policy_releases r ON r.tenant_id = d.tenant_id "
                     "  AND r.id = d.policy_release_id "
                     "WHERE d.tenant_id = :t AND d.conversation_id = :c AND d.to_sequence = :q"
