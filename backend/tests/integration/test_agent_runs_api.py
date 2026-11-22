@@ -100,7 +100,8 @@ async def test_run_detail_is_a_full_redacted_trace(new_client, session_factory):
     assert r.status_code == 200
     run = r.json()
     assert [m["content"] for m in run["input_messages"]] == ["áo khoác gió giá bao nhiêu"]
-    assert [s["kind"] for s in run["steps"]][3:] == ["classify", "llm", "tool", "llm", "validate"]
+    kinds = [s["kind"] for s in run["steps"]][4:]
+    assert kinds == ["classify", "signal", "llm", "tool", "llm", "validate"]
     assert run["draft"]["grounded"] and run["draft"]["sources"][0]["type"] == "product"
     assert run["agent_version"]["number"] == 1
     assert len(run["knowledge_hash"]) == 64 and run["prompt_version"]
@@ -147,3 +148,29 @@ async def test_catalog_item_for_source_link(new_client, session_factory):
     r = await client.get(f"/api/v1/catalog/items/{p['id']}")
     assert r.status_code == 200 and r.json()["price_vnd"] == 350000
     assert (await client.get(f"/api/v1/catalog/items/{uuid4()}")).status_code == 404
+
+
+async def test_escalation_report_compares_scores_with_tickets(new_client, session_factory):
+    client, ctx, conn, req = await setup(new_client, session_factory)
+    url = "/api/v1/escalation/report"
+    body = (await client.get(url)).json()
+    assert body["conversations"] == 1 and body["needed_human"] == 0
+    assert body["by_sensitivity"]["low"]["precision"] is None  # chưa có dự đoán dương
+    assert body["current"] == "low"
+
+    # Giả lập một run có điểm cao rồi mở ticket thật cho hội thoại đó.
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE agent_run_steps SET detail = jsonb_set(detail, '{score}', '6') "
+                "WHERE kind = 'signal' AND name = 'behavior'"
+            )
+        )
+    opened = await client.post(f"/api/v1/conversations/{req.conversation_id}/handoff", headers=CSRF)
+    low = (await client.get(url)).json()["by_sensitivity"]["low"]
+    assert (low["tp"], low["fp"], low["precision"], low["recall"]) == (1, 0, 1.0, 1.0)
+
+    # Nhân viên đánh dấu "không cần" ⇒ thành dương tính giả.
+    await client.post(f"/api/v1/handoffs/{opened.json()['id']}/dismiss", headers=CSRF)
+    low = (await client.get(url)).json()["by_sensitivity"]["low"]
+    assert (low["tp"], low["fp"], low["precision"]) == (0, 1, 0.0)
