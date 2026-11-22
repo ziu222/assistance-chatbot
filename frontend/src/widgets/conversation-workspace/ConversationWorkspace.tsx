@@ -1,6 +1,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { useConversation } from "../../entities/conversation/api";
 import { useTimeline } from "../../entities/message/api";
+import { useReturnToBot } from "../../entities/policy/api";
+import { handlingLabel } from "../../entities/policy/form";
 import { visiblePending, type PendingReply } from "../../entities/message/timeline";
 import { useMarkRead } from "../../features/mark-conversation-read/useMarkRead";
 import { Composer } from "../../features/send-message/Composer";
@@ -9,6 +11,7 @@ import { formatTime } from "../../shared/lib/format";
 export function ConversationWorkspace({ conversationId }: { conversationId: string }) {
   const conversation = useConversation(conversationId);
   const timeline = useTimeline(conversationId);
+  const returnToBot = useReturnToBot(conversationId);
   const [pending, setPending] = useState<PendingReply[]>([]);
   const logRef = useRef<HTMLOListElement>(null);
   const atBottom = useRef(true);
@@ -46,6 +49,17 @@ export function ConversationWorkspace({ conversationId }: { conversationId: stri
         <h2>{c.customer.display_name}</h2>
         <span className={`status ${c.status}`}>{c.status === "open" ? "Đang mở" : "Đã đóng"}</span>
         <span className="channel">{c.connection.provider}</span>
+        <span className={`handling ${c.handling}`}>Đang: {handlingLabel(c.handling)}</span>
+        {c.handling !== "bot" && c.status === "open" && (
+          <button
+            type="button"
+            className="link"
+            disabled={returnToBot.isPending}
+            onClick={() => returnToBot.mutate(c.version)}
+          >
+            Trả lại cho bot
+          </button>
+        )}
       </header>
       <ol
         ref={logRef}

@@ -22,6 +22,7 @@ class AgentForRun:
     sample_rate: Decimal
     shop_name: str
     template: AgentTemplate
+    handling: str = "bot"  # bot | waiting_human | human (tầng chính sách, §12.3)
 
 
 @dataclass
@@ -58,7 +59,8 @@ async def load_agent(s: AsyncSession, tenant_id: UUID, conversation_id: UUID) ->
     row = (
         await s.execute(
             text(
-                "SELECT a.id, a.current_version_id, a.mode, a.shadow_sample_rate, t.name, v.config "
+                "SELECT a.id, a.current_version_id, a.mode, a.shadow_sample_rate, t.name, "
+                "v.config, c.handling "
                 "FROM conversations c "
                 "JOIN agents a ON a.tenant_id = c.tenant_id "
                 "  AND a.channel_connection_id = c.channel_connection_id "
@@ -72,7 +74,9 @@ async def load_agent(s: AsyncSession, tenant_id: UUID, conversation_id: UUID) ->
     ).first()
     if row is None:
         return None
-    return AgentForRun(row[0], row[1], row[2], row[3], row[4], AgentTemplate.model_validate(row[5]))
+    return AgentForRun(
+        row[0], row[1], row[2], row[3], row[4], AgentTemplate.model_validate(row[5]), row[6]
+    )
 
 
 async def start_run(

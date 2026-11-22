@@ -20,6 +20,7 @@ class ConversationModel(Base):
     last_message_preview: Mapped[str | None]
     unread_count: Mapped[int] = mapped_column(server_default="0")
     version: Mapped[int] = mapped_column(server_default="1")
+    handling: Mapped[str] = mapped_column(server_default="bot")  # bot|waiting_human|human
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now())
     closed_at: Mapped[datetime | None]

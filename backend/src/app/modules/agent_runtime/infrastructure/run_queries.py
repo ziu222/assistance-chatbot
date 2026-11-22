@@ -152,9 +152,30 @@ async def get_run(s: AsyncSession, tenant_id: UUID, run_id: UUID) -> dict[str, A
             },
         )
     ).all()
+    # Quyết định của tầng chính sách cho cùng cụm tin (2.7). SQL thẳng thay vì import module
+    # chính sách: hướng phụ thuộc là chính sách → runtime, không ngược lại.
+    policy = (
+        (
+            await s.execute(
+                text(
+                    "SELECT d.situation, d.canned_text, d.handling_before, d.set_handling, "
+                    "d.run_agent, d.sent, r.number AS release_number FROM policy_decisions d "
+                    "JOIN policy_releases r ON r.tenant_id = d.tenant_id "
+                    "  AND r.id = d.policy_release_id "
+                    "WHERE d.tenant_id = :t AND d.conversation_id = :c AND d.to_sequence = :q"
+                ),
+                {"t": tenant_id, "c": run["conversation_id"], "q": run["to_sequence"]},
+            )
+        )
+        .mappings()
+        .first()
+    )
     return {
         "id": str(run["id"]),
         "conversation_id": str(run["conversation_id"]),
+        "policy": dict(policy)
+        if policy
+        else None,  # quyết định của tầng chính sách cho cụm tin này (2.7), có thể None
         "agent_id": str(run["agent_id"]),
         "agent_version": {"id": str(run["agent_version_id"]), "number": run["version_number"]},
         "status": run["status"],

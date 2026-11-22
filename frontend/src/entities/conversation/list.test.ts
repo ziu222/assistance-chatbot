@@ -9,6 +9,7 @@ const c = (id: string, at: string): Conversation => ({
   last_message_preview: "x",
   unread_count: 0,
   version: 1,
+  handling: "bot",
   created_at: at,
   closed_at: null,
   customer: { id: "cu", display_name: "Khách #A1B2" },

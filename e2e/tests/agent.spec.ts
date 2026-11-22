@@ -19,6 +19,12 @@ test("khách chào ⇒ trace hiện nháp có căn cứ và nháp không tới k
   await staff.getByRole("checkbox").first().click();
   await expect(staff.getByText("AI đang bật")).toBeVisible();
 
+  // Tin tự động (2.7): lưu bản gợi ý. Bản gợi ý bật cả chào khách, ngoài giờ và tạm nghỉ, nên dù
+  // test chạy lúc nào thì hội thoại mới cũng rơi vào đúng một tình huống.
+  await staff.getByRole("navigation", { name: "Màn hình" }).getByRole("button", { name: "Tin tự động" }).click();
+  await staff.getByRole("button", { name: "Lưu" }).click();
+  await expect(staff.getByText("Đang dùng phiên bản #1")).toBeVisible();
+
   // Khách chào.
   const { widget } = await openWidget(browser);
   await customerSays(widget, "alo shop");
@@ -36,6 +42,9 @@ test("khách chào ⇒ trace hiện nháp có căn cứ và nháp không tới k
   await expect(staff.getByText("Dạ em chào anh/chị")).toBeVisible();
   await expect(staff.getByText("Có căn cứ", { exact: true })).toBeVisible();
   await expect(staff.getByText("Nháp chỉ hiện ở đây")).toBeVisible();
+  // Tin tự động chỉ được ghi lại ở bước này, chưa gửi cho khách.
+  await expect(staff.getByText(/Lẽ ra sẽ gửi/)).toBeVisible();
+  await expect(widget.getByRole("log").getByText(/tạm nghỉ|chào bạn/)).toHaveCount(0);
 
   // Bất biến an toàn: nháp không xuất hiện ở phía khách.
   await expect(widget.getByRole("log").getByText("Dạ em chào anh/chị")).toHaveCount(0);

@@ -173,7 +173,9 @@ class AgentRunner:
         tpl, agent = run.agent.template, run.agent
         # 0. Cổng: không gọi LLM, không đọc dữ liệu khách.
         gate = None
-        if not settings.ai_enabled:
+        if agent.handling != "bot":  # người đang/sắp xử lý: bot im (§12.3)
+            gate = "handling_human" if agent.handling == "human" else "handling_waiting"
+        elif not settings.ai_enabled:
             gate = "kill_switch"
         elif agent.mode != "shadow":
             gate = "mode_manual"
