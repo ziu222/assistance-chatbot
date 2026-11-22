@@ -57,7 +57,7 @@ targets = [
 
 - Provider không có key ⇒ bị loại khỏi mọi route lúc khởi động (log cảnh báo).
 - `LLM_DISABLED_PROVIDERS=anthropic` ⇒ tắt khẩn cấp một provider, không cần sửa file hay deploy.
-- **Một đích chỉ được vào route sau khi qua eval suite** (bước 2.7) — nếu không, fallback là hạ chất lượng âm thầm.
+- **Một đích chỉ được vào route sau khi qua eval suite** (bước 2.12) — nếu không, fallback là hạ chất lượng âm thầm.
 
 ### 4. `FailoverLLM`: một `LLMPort` bọc nhiều adapter
 
@@ -117,7 +117,7 @@ Vòng tool của bước soạn nháp chạy trọn trên **một** provider (đ
 - Circuit breaker theo process: N worker cần N lần lỗi để cùng nhận ra một provider sập.
 
 ### Neutral
-- Mặc định ban đầu: **Claude Sonnet 5, effort `medium`** cho soạn nháp (phân loại dùng `low` vì chỉ chọn nhãn; đổi một dòng trong `routes.toml` nếu muốn `medium` cả hai) là đích chính; OpenAI `gpt-4.1` / `gpt-4.1-mini` là dự phòng. Sonnet 5 rẻ hơn Opus 5.5 (giá niêm yết $2 / $10 so với $4 / $20 mỗi triệu token vào/ra). Thứ tự thật chốt bằng số liệu eval ở bước 2.7.
+- Mặc định ban đầu: **Claude Sonnet 5, effort `medium`** cho soạn nháp (phân loại dùng `low` vì chỉ chọn nhãn; đổi một dòng trong `routes.toml` nếu muốn `medium` cả hai) là đích chính; OpenAI `gpt-4.1` / `gpt-4.1-mini` là dự phòng. Sonnet 5 rẻ hơn Opus 5.5 (giá niêm yết $2 / $10 so với $4 / $20 mỗi triệu token vào/ra). Thứ tự thật chốt bằng số liệu eval ở bước 2.12.
 - Key mỗi môi trường một bộ (dev/test dùng gateway, production dùng API chính thức); xoay key không cần deploy lại code.
 
 ## Conditions to revisit
