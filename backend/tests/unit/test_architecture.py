@@ -12,6 +12,7 @@ FORBIDDEN_IMPORTS = (
     "app.modules.conversation",
     "app.modules.integration",
     "app.modules.inbox",
+    "app.modules.outbound",  # cổng gửi tin tự động (2.9): agent không được gọi
 )
 FORBIDDEN_SQL = ("insert into messages", "update messages", "delete from messages")
 
@@ -67,3 +68,23 @@ def test_policy_domain_is_pure():
                 names = [node.module]
             offenders += [f"{path.name}: {n}" for n in names if n.startswith(IO_IMPORTS)]
     assert offenders == []
+
+
+MODULES = RUNTIME.parent
+
+
+def test_only_outbound_writes_messages_with_raw_sql():
+    """§12.6: một cổng gửi duy nhất. Use case nhận tin/nhân viên trả lời ghi qua ORM của module
+    `conversation`; mọi câu SQL thô ghi `messages` chỉ được nằm trong `outbound`."""
+    offenders = [
+        f"{p.relative_to(MODULES)}"
+        for p in sorted(MODULES.rglob("*.py"))
+        if "outbound" not in p.parts
+        and "insert into messages" in " ".join(p.read_text(encoding="utf-8").lower().split())
+    ]
+    assert offenders == []
+
+
+def test_outbound_sends_only_system_messages():
+    src = (MODULES / "outbound" / "canned.py").read_text(encoding="utf-8")
+    assert "'outbound', 'system'" in src and "'bot'" not in src

@@ -18,13 +18,14 @@ class Release:
     config: PolicyConfig
     created_at: datetime
     current: bool
+    auto_send: bool = False  # công tắc gửi tin tự động của tenant (2.9), chỉ có ở release hiện hành
 
 
 async def current_release(s: AsyncSession, tenant_id: UUID) -> Release | None:
     row = (
         await s.execute(
             text(
-                "SELECT r.id, r.number, r.config, r.created_at FROM tenant_policy p "
+                "SELECT r.id, r.number, r.config, r.created_at, p.auto_send FROM tenant_policy p "
                 "JOIN policy_releases r ON r.tenant_id = p.tenant_id "
                 "  AND r.id = p.current_release_id "
                 "WHERE p.tenant_id = :t"
@@ -34,7 +35,7 @@ async def current_release(s: AsyncSession, tenant_id: UUID) -> Release | None:
     ).first()
     if row is None:
         return None
-    return Release(row[0], row[1], PolicyConfig.model_validate(row[2]), row[3], True)
+    return Release(row[0], row[1], PolicyConfig.model_validate(row[2]), row[3], True, row[4])
 
 
 async def list_releases(s: AsyncSession, tenant_id: UUID, limit: int = 20) -> list[Release]:
@@ -85,6 +86,33 @@ async def publish(
     return Release(rid, row[0], config, row[1], True)
 
 
+async def set_auto_send(s: AsyncSession, tenant_id: UUID, on: bool) -> bool:
+    """False nếu shop chưa lưu cấu hình nào (chưa có gì để gửi)."""
+    result = await s.execute(
+        text("UPDATE tenant_policy SET auto_send = :on, updated_at = now() WHERE tenant_id = :t"),
+        {"on": on, "t": tenant_id},
+    )
+    return result.rowcount == 1
+
+
+async def mark_send(
+    s: AsyncSession,
+    tenant_id: UUID,
+    conversation_id: UUID,
+    to_sequence: int,
+    *,
+    sent: bool,
+    block: str | None,
+) -> None:
+    await s.execute(
+        text(
+            "UPDATE policy_decisions SET sent = :sent, send_block = :b "
+            "WHERE tenant_id = :t AND conversation_id = :c AND to_sequence = :q"
+        ),
+        {"sent": sent, "b": block, "t": tenant_id, "c": conversation_id, "q": to_sequence},
+    )
+
+
 async def restore(s: AsyncSession, tenant_id: UUID, release_id: UUID) -> bool:
     exists = (
         await s.execute(
@@ -103,6 +131,7 @@ class ConversationForPolicy:
     handling: str
     status: str
     shop_name: str
+    provider: str
 
 
 async def lock_conversation(
@@ -113,8 +142,10 @@ async def lock_conversation(
     row = (
         await s.execute(
             text(
-                "SELECT c.handling, c.status, t.name FROM conversations c "
+                "SELECT c.handling, c.status, t.name, cc.provider FROM conversations c "
                 "JOIN tenants t ON t.id = c.tenant_id "
+                "JOIN channel_connections cc ON cc.tenant_id = c.tenant_id "
+                "  AND cc.id = c.channel_connection_id "
                 "WHERE c.tenant_id = :t AND c.id = :c FOR UPDATE OF c"
             ),
             {"t": tenant_id, "c": conversation_id},

@@ -2,8 +2,8 @@
 
 Thứ tự trong worker: chính sách (một transaction: ghi quyết định + đổi `handling`) ⇒ agent runtime.
 Agent runtime tự đọc `handling` ở cổng nên quyết định "không chạy agent" luôn để lại một run
-`skipped` trong trace. Bước 2.7 chỉ GHI tin tự động (`sent=false`); gửi là việc của `outbound`
-ở 2.9.
+`skipped` trong trace. Tin tự động đi qua `SendGate` của module `outbound` (2.9): shop chưa
+bật công tắc gửi thì chỉ được ghi lại (`sent=false`, kèm lý do).
 """
 
 import logging
@@ -16,6 +16,7 @@ from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
 from app.modules.conversation_policy.domain.policy import PolicyConfig, decide, detect_handoff
 from app.modules.conversation_policy.infrastructure import repository as repo
 from app.modules.conversation_policy.infrastructure.handoffs import open_handoff
+from app.modules.outbound.canned import GateInput, send_block, send_canned
 
 log = logging.getLogger(__name__)
 
@@ -74,6 +75,20 @@ class PolicyStage:
             handling_before=handling,
             decision=decision,
         )
+        if decision.text is not None:
+            block = send_block(GateInput(release.auto_send, conv.provider, conv.status, handling))
+            sent = block is None and await send_canned(
+                s,
+                tenant_id=req.tenant_id,
+                conversation_id=req.conversation_id,
+                to_sequence=req.to_sequence,
+                situation=decision.situation or "",
+                release_id=release.id,
+                content=decision.text,
+            )
+            await repo.mark_send(
+                s, req.tenant_id, req.conversation_id, req.to_sequence, sent=sent, block=block
+            )
         log.info(
             "policy decision",
             extra={

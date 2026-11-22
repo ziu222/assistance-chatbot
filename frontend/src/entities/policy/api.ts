@@ -37,7 +37,7 @@ const keys = { policy: ["policy"] as const, releases: ["policy-releases"] as con
 export const usePolicy = () =>
   useQuery({
     queryKey: keys.policy,
-    queryFn: () => apiFetch<{ release: Release | null; suggested: PolicyConfig }>("/api/v1/policy"),
+    queryFn: () => apiFetch<{ release: Release | null; auto_send: boolean; suggested: PolicyConfig }>("/api/v1/policy"),
   });
 
 export const useReleases = () =>
@@ -56,6 +56,15 @@ export function useSavePolicy() {
   return useMutation({
     mutationFn: (config: PolicyConfig) => apiFetch<Release>("/api/v1/policy", { method: "PUT", body: config }),
     onSuccess: done,
+  });
+}
+
+export function useAutoSend() {
+  const done = useInvalidate();
+  return useMutation({
+    mutationFn: (auto_send: boolean) =>
+      apiFetch<{ auto_send: boolean }>("/api/v1/policy/settings", { method: "PATCH", body: { auto_send } }),
+    onSettled: done,
   });
 }
 

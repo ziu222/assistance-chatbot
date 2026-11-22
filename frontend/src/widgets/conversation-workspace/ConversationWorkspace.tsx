@@ -80,11 +80,19 @@ export function ConversationWorkspace({ conversationId }: { conversationId: stri
         }}
       >
         {messages.map((m) => (
-          <li key={m.id} className={`bubble ${m.direction === "inbound" ? "in" : "out"}`}>
-            <span className="sr-only">{m.direction === "inbound" ? "Khách" : "Nhân viên"}: </span>
+          <li
+            key={m.id}
+            className={`bubble ${m.direction === "inbound" ? "in" : "out"} ${m.sender_type === "system" ? "auto" : ""}`}
+          >
+            <span className="sr-only">
+              {m.direction === "inbound" ? "Khách" : m.sender_type === "system" ? "Tin tự động" : "Nhân viên"}:{" "}
+            </span>
             {/* chỉ text: React escape; không HTML/markdown (chống stored XSS) */}
             <span className="text">{m.text}</span>
-            <time dateTime={m.occurred_at}>{formatTime(m.occurred_at)}</time>
+            <time dateTime={m.occurred_at}>
+              {m.sender_type === "system" && "Tin tự động · "}
+              {formatTime(m.occurred_at)}
+            </time>
           </li>
         ))}
         {shownPending.map((p) => (

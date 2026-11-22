@@ -741,3 +741,13 @@ textarea {
   font-size: 0.75rem;
   text-align: center;
 }
+
+.bubble.out.auto {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+  color: var(--text);
+}
+
+.bubble.out.auto time {
+  color: var(--muted);
+}

@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { expect, type Browser, type Frame, type Page } from "@playwright/test";
+import { expect, type Browser, type BrowserContext, type Frame, type Page } from "@playwright/test";
 
 // Dùng chung cho các spec e2e: dữ liệu seed, widget của khách, đăng nhập nhân viên.
 export const seed = JSON.parse(readFileSync(".seed.json", "utf-8")) as {
@@ -25,13 +25,21 @@ export async function openWidget(browser: Browser): Promise<{ page: Page; widget
   return { page, widget: await clickLauncher(page) };
 }
 
+// Đăng nhập bằng form một lần mỗi worker rồi dùng lại cookie phiên: backend giới hạn 5 lần
+// đăng nhập/phút cho mỗi email (chống dò mật khẩu), mà bộ e2e có nhiều spec cần nhân viên.
+let staffState: Awaited<ReturnType<BrowserContext["storageState"]>> | null = null;
+
 export async function staffLogin(browser: Browser): Promise<Page> {
-  const page = await (await browser.newContext()).newPage();
+  const context = await browser.newContext(staffState ? { storageState: staffState } : {});
+  const page = await context.newPage();
   await page.goto("http://localhost:5173/");
-  await page.getByLabel("Email").fill(seed.email);
-  await page.getByLabel("Mật khẩu").fill(seed.password);
-  await page.getByRole("button", { name: "Đăng nhập" }).click();
+  if (!staffState) {
+    await page.getByLabel("Email").fill(seed.email);
+    await page.getByLabel("Mật khẩu").fill(seed.password);
+    await page.getByRole("button", { name: "Đăng nhập" }).click();
+  }
   await expect(page.getByRole("status").filter({ hasText: "Trực tuyến" })).toBeVisible();
+  staffState ??= await context.storageState();
   return page;
 }
 
