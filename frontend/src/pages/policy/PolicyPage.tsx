@@ -19,7 +19,8 @@ import { formatTime } from "../../shared/lib/format";
 // (shop Việt Nam). Thêm chọn múi giờ khi có shop ở múi khác.
 const EMPTY_HOURS: BusinessHours = { timezone: "Asia/Ho_Chi_Minh", weekly: {}, closed_days: [], pause_until: null };
 
-function normalize(c: PolicyConfig): PolicyConfig {
+function normalize(raw: PolicyConfig): PolicyConfig {
+  const c = { ...raw, handoff_topics: raw.handoff_topics ?? [] };
   if (!c.hours) return c;
   const weekly: BusinessHours["weekly"] = {};
   for (const { id } of DAYS) if (c.hours.weekly[id]?.length) weekly[id] = normalizeSpans(c.hours.weekly[id]);
@@ -259,6 +260,7 @@ function Preview({ config }: { config: PolicyConfig }) {
 
 function Editor({ initial, canManage, currentNumber }: { initial: PolicyConfig; canManage: boolean; currentNumber: number | null }) {
   const [draft, setDraft] = useState(initial);
+  const [topicsText, setTopicsText] = useState((initial.handoff_topics ?? []).join("\n"));
   const save = useSavePolicy();
   const set = <K extends keyof PolicyConfig>(k: K, v: PolicyConfig[K]) => setDraft((d) => ({ ...d, [k]: v }));
 
@@ -302,6 +304,31 @@ function Editor({ initial, canManage, currentNumber }: { initial: PolicyConfig; 
             />
           ))}
         </div>
+      </section>
+
+      <section className="card stack" aria-labelledby="topics">
+        <h2 id="topics">Chủ đề luôn cần nhân viên</h2>
+        <p className="muted">
+          Khách nhắc tới một trong các cụm này (không cần dấu) thì bot dừng và báo nhân viên trong tab "Cần xử lý". Khách
+          đòi gặp người ("gặp nhân viên", "khiếu nại"…) luôn được chuyển, không cần thêm ở đây.
+        </p>
+        <textarea
+          aria-label="Chủ đề luôn cần nhân viên, mỗi dòng một cụm"
+          rows={4}
+          placeholder={"đổi size\nbảo hành\nđơn sỉ"}
+          value={topicsText}
+          onChange={(e) => {
+            setTopicsText(e.target.value);
+            set(
+              "handoff_topics",
+              e.target.value
+                .split("\n")
+                .map((x) => x.trim())
+                .filter((x) => x.length >= 2)
+                .slice(0, 30),
+            );
+          }}
+        />
       </section>
 
       <Preview config={draft} />

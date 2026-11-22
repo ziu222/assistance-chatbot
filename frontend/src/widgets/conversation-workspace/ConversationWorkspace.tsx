@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { useConversation } from "../../entities/conversation/api";
 import { useTimeline } from "../../entities/message/api";
+import { useOpenHandoff } from "../../entities/handoff/api";
 import { useReturnToBot } from "../../entities/policy/api";
 import { handlingLabel } from "../../entities/policy/form";
 import { visiblePending, type PendingReply } from "../../entities/message/timeline";
@@ -12,6 +13,7 @@ export function ConversationWorkspace({ conversationId }: { conversationId: stri
   const conversation = useConversation(conversationId);
   const timeline = useTimeline(conversationId);
   const returnToBot = useReturnToBot(conversationId);
+  const flag = useOpenHandoff(conversationId);
   const [pending, setPending] = useState<PendingReply[]>([]);
   const logRef = useRef<HTMLOListElement>(null);
   const atBottom = useRef(true);
@@ -50,6 +52,11 @@ export function ConversationWorkspace({ conversationId }: { conversationId: stri
         <span className={`status ${c.status}`}>{c.status === "open" ? "Đang mở" : "Đã đóng"}</span>
         <span className="channel">{c.connection.provider}</span>
         <span className={`handling ${c.handling}`}>Đang: {handlingLabel(c.handling)}</span>
+        {c.handling === "bot" && c.status === "open" && (
+          <button type="button" className="link" disabled={flag.isPending} onClick={() => flag.mutate()}>
+            Đánh dấu cần xử lý
+          </button>
+        )}
         {c.handling !== "bot" && c.status === "open" && (
           <button
             type="button"

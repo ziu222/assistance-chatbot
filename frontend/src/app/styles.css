@@ -729,3 +729,15 @@ textarea {
   gap: 8px;
   font-weight: 400;
 }
+
+.nav .count {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-left: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center;
+}
