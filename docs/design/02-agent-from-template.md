@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **2.1–2.6 đã implement**; 2.7–2.13 (chính sách hội thoại, chuyển người, tin tự động, trợ lý viết, eval, Sheets) là thiết kế, chưa implement — chi tiết ở §12.
+- Trạng thái: **2.1–2.7 đã implement**; 2.8–2.13 (chuyển người, gửi tin tự động, tín hiệu leo thang, trợ lý viết, eval, Sheets) là thiết kế, chưa implement — chi tiết ở §12.
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
@@ -650,7 +650,7 @@ Lý do thứ tự: 2.7 và 2.8 là lưới an toàn. Khách phải có lối tho
 | 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage | **Đã làm.** Bảng giá OpenAI (`pricing.py`) lấy từ nhiều nguồn tìm kiếm, chưa đối chiếu trang giá chính thức: kiểm lại trước khi dùng chi phí cho quyết định thật. Số token đo qua gateway thử nghiệm không phản ánh API chính thức (gateway chèn thêm token ẩn); đo lại khi đổi sang key chính thức.
 | 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh | **Đã làm.** Quyết định khi cài: `refusal` ⇒ `handoff_suggested` (không phải `failed`); lỗi provider ⇒ run `failed:llm_unavailable` rồi ném lại để worker retry; số tiền hợp lệ = giá tool đã trả + số tiền có trong FAQ/tài liệu, tổng nhiều món chưa được chấp nhận (an toàn hơn báo sai giá); câu chào/cảm ơn dùng câu mẫu cố định trong code, chưa nằm trong template. |
 | 2.6 | UI agent/knowledge/trace | kiểm thủ công + E2E: khách nhắn ⇒ trace hiện nháp | **Đã làm.** E2E đi đường rule (câu chào) nên CI không cần API key; đường có LLM được kiểm bằng test tích hợp FakeLLM của 2.5. Thêm `GET /channel-connections` và `GET /catalog/items/{id}` (mở nguồn sản phẩm). Danh sách run tự tải lại mỗi 15 giây, chưa realtime. |
-| 2.7 | `conversations.handling`, `business_hours`, bộ tình huống, `policy_releases`, `decide` + executor trước `AgentRunner`, `POST /policy/simulate`, màn hình "Giờ làm việc" + "Tin tự động" (chỉ ghi, chưa gửi), ADR-0031 | test bảng `decide` + `business_hours` (nửa đêm, lễ, Tết) xanh; trace hiện "lẽ ra gửi"; run bị chặn khi `handling≠bot` |
+| 2.7 | `conversations.handling`, `business_hours`, bộ tình huống, `policy_releases`, `decide` + executor trước `AgentRunner`, `POST /policy/simulate`, màn hình "Giờ làm việc" + "Tin tự động" (chỉ ghi, chưa gửi), ADR-0031 | test bảng `decide` + `business_hours` (nửa đêm, lễ, Tết) xanh; trace hiện "lẽ ra gửi"; run bị chặn khi `handling≠bot` | **Đã làm.** Khác thiết kế: giờ làm việc nằm trong `config` của release (không có bảng `business_hours` riêng); con trỏ release là bảng `tenant_policy` (không phải cột của `tenant_ai_settings`, vì hàng đó có thể chưa tồn tại); quyết định không có action `RunAgent` riêng mà agent runtime tự đọc `handling` ở cổng, nên lượt nào cũng để lại một run trong trace. Thêm gói `tzdata` cho `zoneinfo`. Giờ trong giao diện nhập theo giờ máy người dùng. |
 | 2.8 | `handoff_requests`, nút widget, tab "Cần xử lý", nhân viên gửi tin ⇒ `human`, "Trả lại cho bot", tóm tắt bất đồng bộ, `learning_signals` | bấm nút 5 lần ⇒ 1 ticket; bot và người không trả lời đồng thời; E2E nút ⇒ ticket |
 | 2.9 | Module `outbound` + `SendGate`, công tắc "gửi tin tự động" (mặc định tắt), test kiến trúc mới, ADR-0033 | tin tự động gửi đúng một lần mỗi phiên; E2E khách nhận câu ngoài giờ |
 | 2.10 | Tín hiệu hành vi + mở rộng `ClassifyOut` (chỉ ghi), step `signal` trong trace, nhãn "không cần", ADR-0032 | có precision/recall trên dữ liệu thật hoặc demo có nhãn, ghi vào báo cáo eval |
@@ -744,12 +744,12 @@ stateDiagram-v2
 
 ### 12.4. Giờ làm việc, tình huống, phát hành
 
-**Giờ làm việc** (`business_hours`, một hàng mỗi tenant):
+**Giờ làm việc** (trường `hours` trong cấu hình của release; `null` = luôn mở):
 
 ```json
 { "timezone": "Asia/Ho_Chi_Minh",
   "weekly": { "mon": [["08:00","12:00"],["13:30","21:00"]], "sun": [] },
-  "exceptions": [ { "date": "2027-02-17", "closed": true, "note": "Mùng 1 Tết" } ],
+  "closed_days": [ { "date": "2027-02-17", "note": "Mùng 1 Tết" } ],
   "pause_until": null }
 ```
 
@@ -866,8 +866,9 @@ Bước 2 chỉ ghi. Bước 4 dựng ứng viên (FAQ/câu mẫu) **chỉ từ 
 Migration mới (một cho mỗi bước 2.7/2.8/2.11):
 
 - `conversations.handling text NOT NULL DEFAULT 'bot' CHECK (handling IN ('bot','waiting_human','human'))`.
-- `business_hours`, `policy_releases (id, tenant_id, number, config jsonb, created_by, created_at, UNIQUE(tenant_id, number))`, `tenant_ai_settings.current_policy_release_id`, `tenant_ai_settings.auto_messages_enabled boolean DEFAULT false`.
-- `policy_decisions (id, tenant_id, conversation_id, run_request_seq, policy_release_id, actions jsonb, sent boolean, created_at)`.
+- (đã làm, migration 0008) `policy_releases (id, tenant_id, number, config jsonb, created_by, created_at, UNIQUE(tenant_id, number))`, trong đó `config` gồm cả giờ làm việc; `tenant_policy (tenant_id, current_release_id)`.
+- (đã làm) `policy_decisions (id, tenant_id, conversation_id, to_sequence, policy_release_id, situation, canned_text, handling_before, set_handling, run_agent, sent, created_at, UNIQUE(tenant_id, conversation_id, to_sequence))`.
+- (2.9) `tenant_ai_settings.auto_messages_enabled boolean DEFAULT false`.
 - `handoff_requests` (12.5), `learning_signals` (12.9), `brand_profiles`.
 
 | Method & path | Mô tả |
