@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **đề xuất thiết kế, chưa implement**.
+- Trạng thái: **2.1–2.6 đã implement**; 2.7–2.13 (chính sách hội thoại, chuyển người, tin tự động, trợ lý viết, eval, Sheets) là thiết kế, chưa implement — chi tiết ở §12.
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
@@ -12,6 +12,8 @@
 ### 1.1. Mục tiêu
 
 Admin tạo một agent từ template **"FAQ + Sales & Quote"**, nạp FAQ đã duyệt, vài trang chính sách và catalog sản phẩm. Mỗi khi khách nhắn (sau khi gom các tin liên tiếp), agent chạy **ở chế độ Shadow**: hiểu ý, tra catalog bằng tool, soạn **bản nháp có nguồn**, lưu lại cùng trace đầy đủ (bước nào, tool nào, bao nhiêu token, bao nhiêu tiền). **Không có gì được gửi cho khách.** Admin xem được từng lần chạy để đánh giá chất lượng trước khi bước 3 (so sánh shadow) và bước 4 (Learning) dùng các bản nháp này.
+
+Phần mở rộng (2.7–2.11, §12): chủ shop tự cấu hình **giờ làm việc** và **tin tự động** (chào, ngoài giờ, tạm nghỉ) bằng lời của mình; hội thoại có **trạng thái xử lý** (bot / chờ người / người) để bot và nhân viên không cùng trả lời; khách bấm **"Nhờ nhân viên"** hoặc hệ thống phát hiện ca cần người thì tạo **một ticket** hiện ở inbox; dấu hiệu khách mất kiên nhẫn được **ghi và đo trước khi được điều khiển gì**; chủ shop có **trợ lý viết** theo giọng thương hiệu. Tất cả là cấu hình có kiểu, không có rule engine hiện ra cho người dùng non-tech.
 
 ### 1.2. Trong phạm vi
 
@@ -27,14 +29,21 @@ Admin tạo một agent từ template **"FAQ + Sales & Quote"**, nạp FAQ đã 
 | 8 | Budget mỗi run + trần chi phí ngày theo tenant; ghi usage/cost |
 | 9 | Trang admin: cấu hình agent, knowledge, catalog; **trace view** từng run |
 | 10 | Bộ eval khởi điểm từ template + runner offline; ADR liên quan |
+| 11 | Chính sách hội thoại: trạng thái xử lý, giờ làm việc, bộ tình huống cố định, `policy_release` có version, hàm thuần `decide` + trình mô phỏng (§12.2–12.4) |
+| 12 | Ticket "Nhờ nhân viên": nút trong widget, tab "Cần xử lý", nhân viên trả lời ⇒ hội thoại thuộc người (§12.5) |
+| 13 | Gửi tin tự động **do chủ shop viết** qua module `outbound` và `SendGate` (§12.6); không gửi output của LLM |
+| 14 | Tín hiệu leo thang ở chế độ chỉ ghi + nhãn "ticket không cần" để đo; `learning_signals` append-only (§12.7, §12.9) |
+| 15 | Trợ lý viết: gợi ý chỉnh câu chữ nhiều mức, kiểm tra giữ sự thật bằng code, chủ shop luôn duyệt (§12.8) |
 
 ### 1.3. Ngoài phạm vi (có chủ đích)
 
-Gửi câu trả lời AI cho khách (Autopilot), hiển thị nháp cho nhân viên (Learning — bước 4), so sánh shadow + LLM-judge (bước 3), approval request, tool có side-effect, RAG chunk + embedding, intent-level mode, credit ledger thương mại, Google Sheets OAuth (để sau, xem 2.8), LangGraph.
+Gửi câu trả lời AI cho khách (Autopilot, bước 5: `SendGate` mở cho nháp `grounded` theo intent), hiển thị nháp cho nhân viên (Learning — bước 4), so sánh shadow + LLM-judge (bước 3), ứng viên học tự động + duyệt một chạm (bước 4, dùng `learning_signals` ghi từ 2.8), tín hiệu leo thang **tự** chuyển người (chỉ sau khi 2.10 có số đo), approval request, tool có side-effect, RAG chunk + embedding, intent-level mode, credit ledger thương mại, Google Sheets OAuth (để sau, xem 2.13), LangGraph, rule engine/DSL do người dùng tự viết.
 
 ### 1.4. Bất biến an toàn của bước này
 
-> **Không tồn tại đường code nào đưa output của agent tới khách.** Bản nháp nằm ở bảng `agent_drafts`, không bao giờ ở `messages`. Có test kiến trúc chặn module `agent_runtime` import use case gửi tin (§26.4: draft ≠ sent message).
+> **Không tồn tại đường code nào đưa output của LLM tới khách.** Bản nháp nằm ở bảng `agent_drafts`, không bao giờ ở `messages`. Có test kiến trúc chặn module `agent_runtime` import use case gửi tin (§26.4: draft ≠ sent message).
+>
+> Từ 2.9, khách chỉ có thể nhận **tin tự động nguyên văn do chủ shop viết** (thay biến `{shop_name}`, `{next_open}`), qua một cổng duy nhất `SendGate` ở module `outbound`. Nội dung do trợ lý viết gợi ý chỉ thành tin mẫu sau khi chủ shop bấm "Dùng" và lưu.
 
 ---
 
@@ -52,6 +61,13 @@ Gửi câu trả lời AI cho khách (Autopilot), hiển thị nháp cho nhân v
 | E8 | **Provenance bắt buộc**: nháp phải trích nguồn mà backend kiểm được (FAQ ID, doc ID, product ID đã được tool trả về) | Chống bịa; điều kiện cho Autopilot sau này | 0021 |
 | E9 | **Template là file TOML có version trong repo** (đọc bằng `tomllib` của thư viện chuẩn); agent lưu bản chụp cấu hình (agent version bất biến) | Review được qua PR; không cần UI quản lý template | 0009 |
 | E10 | **Mode bước 2 chỉ `manual`/`shadow`**; kiểm tra mode khi bắt đầu **và** trước khi lưu nháp | Bậc an toàn nhất của mode ladder; đổi mode giữa chừng không để lọt run cũ | 0009 |
+| E11 | **Tầng chính sách chạy trước `AgentRunner`**: `decide(state, config, now) -> list[Action]` là hàm thuần, executor thực thi trong một transaction | Quyết định "ai được nói, nói gì" là code xác định, test bằng bảng; trình mô phỏng gọi lại đúng hàm này | 0031 |
+| E12 | **Bộ tình huống cố định, ưu tiên cố định trong code** (tạm nghỉ > ngoài giờ > mở đầu > tư vấn); chủ shop chỉ bật/tắt, viết nội dung, chỉnh vài tham số | Non-tech dùng được; không có xung đột rule do người dùng tạo; mở rộng = thêm tình huống bằng PR | 0031 |
+| E13 | **`conversations.handling ∈ {bot, waiting_human, human}`**, đổi bằng compare-and-set; nhân viên gửi tin ⇒ `human` **trong cùng transaction** với tin nhắn | Không có khoảng hở bot và người cùng trả lời | 0031 |
+| E14 | **Chuyển cứng chỉ do tín hiệu xác định** (nút, cụm từ đòi gặp người, chủ đề "luôn cần người"); tín hiệu hành vi/ngữ nghĩa chỉ nâng ưu tiên hoặc gợi nút, và chỉ ghi cho tới khi có số đo | Bằng chứng: LLM phát hiện leo thang precision ~0,7, kappa người gán nhãn 0,48; escalate rộng làm resolution tụt (COLING 2025; tài liệu Intercom Fin) | 0032 |
+| E15 | **Một cổng gửi duy nhất `SendGate`** trong module `outbound`; 2.9 chỉ mở cho tin mẫu do người viết | Mở dần theo rủi ro; `agent_runtime` vẫn bị test kiến trúc cấm gửi | 0033 |
+| E16 | **Trợ lý viết: LLM gợi ý, code kiểm sự thật, người duyệt** (route `authoring` riêng) | Không để model đổi "7 ngày" thành "30 ngày" hay thêm lời hứa | 0033 |
+| E17 | **Tín hiệu học append-only từ đầu; ứng viên học chỉ dựng từ chữ của nhân viên/dữ liệu shop**, không bao giờ từ chữ của khách | Dữ liệu không bổ sung ngược được; chống đầu độc tri thức (PoisonedRAG) | 0030 |
 
 **Về Managed Agents của Anthropic:** đó là cách mặc định để có agent mà không phải tự host vòng lặp. Dự án không chọn vì (1) `PROJECT_CONTEXT` §3.4.1 yêu cầu tự viết vòng agent để học và kiểm soát, (2) hội thoại/tenant/audit phải nằm trong DB của mình, (3) vấn đề dữ liệu xuyên biên giới (§16.6) cần quyết định riêng. Ghi trong ADR-0010.
 
@@ -423,7 +439,7 @@ Lease hết hạn (worker chết) ⇒ worker khác claim lại; run cũ còn `ru
 
 | Bước | Làm gì | Gọi LLM? | Kết thúc sớm khi |
 |---|---|---|---|
-| 0. Cổng | kill switch, mode, sampling, trần chi phí ngày, budget | không | `skipped` |
+| 0. Cổng | (từ 2.7) tầng chính sách §12.2 đã cho `RunAgent` và `handling = bot`; kill switch, mode, sampling, trần chi phí ngày, budget | không | `skipped` |
 | 1. Ngữ cảnh | lấy tin `from..to` + 10 lượt trước; chỉ text; không tên thật/SĐT | không | — |
 | 2. Rule | từ khóa "gặp người", "nhân viên", khiếu nại khẩn; câu chỉ chào/cảm ơn | không | `handoff_suggested` / nháp mẫu cho lời chào |
 | 3. Phân loại | structured output `{intents[], confidence_note}` | 1 | intent ∈ `handoff_intents` ⇒ `handoff_suggested` |
@@ -614,9 +630,17 @@ flowchart TD
     C[2.3 Knowledge: FAQ, docs, catalog import + tool] --> E
     D[2.4 LLMPort + adapter Claude + FakeLLM + usage] --> E
     E --> F[2.6 Admin UI + trace view]
-    E --> G[2.7 Eval runner + red-team + ADR]
-    C --> H[2.8 Google Sheets sync, tùy chọn]
+    F --> P[2.7 Chính sách hội thoại: handling, giờ, tình huống, release, mô phỏng]
+    P --> T[2.8 Ticket nhờ nhân viên + tab Cần xử lý]
+    T --> S[2.9 Gửi tin tự động do chủ shop viết]
+    T --> X[2.10 Tín hiệu leo thang chỉ ghi + nhãn]
+    P --> W[2.11 Trợ lý viết + hồ sơ thương hiệu]
+    E --> G[2.12 Eval runner + red-team + ADR]
+    X --> G
+    C --> H[2.13 Google Sheets sync, tùy chọn]
 ```
+
+Lý do thứ tự: 2.7 và 2.8 là lưới an toàn. Khách phải có lối thoát tới người (ticket) và bot phải biết im khi người đã nhận, **trước khi** hệ thống gửi bất cứ gì tự động (2.9).
 
 | Bước | Nội dung | Điều kiện xong |
 |---|---|---|
@@ -626,8 +650,13 @@ flowchart TD
 | 2.4 | `LLMPort` trung lập, adapter Claude + OpenAI, `FailoverLLM` + circuit breaker, `routes.toml`, `FakeLLM`, `usage_events` + pricing (ADR-0015) | contract test chung cho 2 adapter; test failover bằng FakeLLM; `pytest -m live` gọi thật mỗi provider 1 lần ghi đúng usage | **Đã làm.** Bảng giá OpenAI (`pricing.py`) lấy từ nhiều nguồn tìm kiếm, chưa đối chiếu trang giá chính thức: kiểm lại trước khi dùng chi phí cho quyết định thật. Số token đo qua gateway thử nghiệm không phản ánh API chính thức (gateway chèn thêm token ẩn); đo lại khi đổi sang key chính thức.
 | 2.5 | Runtime 7.3 đầy đủ | toàn bộ test runtime (FakeLLM) + test kiến trúc xanh | **Đã làm.** Quyết định khi cài: `refusal` ⇒ `handoff_suggested` (không phải `failed`); lỗi provider ⇒ run `failed:llm_unavailable` rồi ném lại để worker retry; số tiền hợp lệ = giá tool đã trả + số tiền có trong FAQ/tài liệu, tổng nhiều món chưa được chấp nhận (an toàn hơn báo sai giá); câu chào/cảm ơn dùng câu mẫu cố định trong code, chưa nằm trong template. |
 | 2.6 | UI agent/knowledge/trace | kiểm thủ công + E2E: khách nhắn ⇒ trace hiện nháp | **Đã làm.** E2E đi đường rule (câu chào) nên CI không cần API key; đường có LLM được kiểm bằng test tích hợp FakeLLM của 2.5. Thêm `GET /channel-connections` và `GET /catalog/items/{id}` (mở nguồn sản phẩm). Danh sách run tự tải lại mỗi 15 giây, chưa realtime. |
-| 2.7 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028 | báo cáo eval có số đo thật |
-| 2.8 | Sync Google Sheets bằng service account read-only | test sync idempotent theo `sku` |
+| 2.7 | `conversations.handling`, `business_hours`, bộ tình huống, `policy_releases`, `decide` + executor trước `AgentRunner`, `POST /policy/simulate`, màn hình "Giờ làm việc" + "Tin tự động" (chỉ ghi, chưa gửi), ADR-0031 | test bảng `decide` + `business_hours` (nửa đêm, lễ, Tết) xanh; trace hiện "lẽ ra gửi"; run bị chặn khi `handling≠bot` |
+| 2.8 | `handoff_requests`, nút widget, tab "Cần xử lý", nhân viên gửi tin ⇒ `human`, "Trả lại cho bot", tóm tắt bất đồng bộ, `learning_signals` | bấm nút 5 lần ⇒ 1 ticket; bot và người không trả lời đồng thời; E2E nút ⇒ ticket |
+| 2.9 | Module `outbound` + `SendGate`, công tắc "gửi tin tự động" (mặc định tắt), test kiến trúc mới, ADR-0033 | tin tự động gửi đúng một lần mỗi phiên; E2E khách nhận câu ngoài giờ |
+| 2.10 | Tín hiệu hành vi + mở rộng `ClassifyOut` (chỉ ghi), step `signal` trong trace, nhãn "không cần", ADR-0032 | có precision/recall trên dữ liệu thật hoặc demo có nhãn, ghi vào báo cáo eval |
+| 2.11 | `POST /writing/suggest`, route `authoring`, kiểm tra giữ sự thật, `brand_profiles`, nút "Gợi ý" | kiểm tra chặn "7 ngày → 30 ngày" và "freeship"; chi phí authoring ghi `usage_events` |
+| 2.12 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028; thêm ca chính sách và ca leo thang | báo cáo eval có số đo thật |
+| 2.13 | Sync Google Sheets bằng service account read-only | test sync idempotent theo `sku` |
 
 ### 11.3. Tiêu chí chấp nhận bước 2
 
@@ -639,6 +668,9 @@ flowchart TD
 6. Mỗi run truy ngược được agent version, prompt version, knowledge hash, token theo loại, chi phí.
 7. CI chạy toàn bộ test runtime bằng `FakeLLM`, không cần API key.
 8. Báo cáo eval ~40 ca có số đo thật (độ chính xác intent, tool, grounded, cache hit, chi phí/run) và mô tả môi trường.
+9. Chủ shop cấu hình giờ làm việc và tin tự động **không cần đọc tài liệu**: thử với một người non-tech, hoàn thành trong 5 phút bằng trình mô phỏng.
+10. Khách luôn có lối tới người: nút "Nhờ nhân viên" tạo đúng một ticket; khi hội thoại thuộc người, bot không chạy.
+11. Mọi tin tự động gửi tới khách là nguyên văn chủ shop đã lưu, truy ngược được `policy_release_id`; không có tin nào là output của LLM.
 
 ### 11.4. Câu hỏi mở (mặc định nếu chưa quyết)
 
@@ -649,9 +681,220 @@ flowchart TD
 | Cửa sổ debounce | 6 s / tối đa 20 s, hiệu chỉnh bằng số liệu |
 | Ngưỡng FAQ+tài liệu để chuyển sang RAG chunk | > ~30k token knowledge ⇒ xem lại (ADR-0021) |
 | Giữ prompt/response đầy đủ để debug? | Không lưu mặc định; bật tạm theo tenant với TTL 7 ngày nếu cần |
+| Messenger/Zalo: gửi tin tự động ngoài cửa sổ 24 giờ? | Chỉ gửi trong cửa sổ cho phép của nền tảng; chính sách hiện hành **chưa kiểm lại**, phải kiểm trước khi bật cho kênh đó |
+| Bot chờ nhân viên N giây rồi mới tư vấn? | Tắt; thêm khi có shop yêu cầu |
+| "Bot tiếp tục khi không ai nhận ticket" | Tắt mặc định; T = 10 phút khi bật |
+| Trọng số điểm leo thang | Chọn sau khi có nhãn từ 2.8–2.10; không đoán trước |
 
 ---
 
-## 12. Tóm tắt một dòng
+## 12. Chính sách hội thoại, chuyển người, tin tự động (2.7–2.11)
 
-Tin khách → outbox → dispatcher gom tin vào **một hàng run request có `due_at`** → worker claim bằng SKIP LOCKED → rule rẻ → phân loại → vòng tool read-only trên catalog → **nháp có nguồn được backend kiểm tra** → lưu cùng trace và chi phí; Shadow nên khách không bao giờ thấy, và không có đường code nào để thấy.
+Phần này lồng vào bước 2 thiết kế đã chốt sau khảo sát thị trường (báo cáo nội bộ, không nằm trong repo — Intercom Fin, Zendesk, Agentforce, Sierra, Decagon, các nền tảng Việt Nam). Các nền tảng Việt Nam được khảo sát không có tài liệu công khai về cấu hình giờ làm việc hay phát hiện khách bực tức; các nền tảng lớn đều tách **quyết định xác định** (ai nói, khi nào chuyển người) khỏi **phần LLM viết chữ**. Atlas làm theo cách đó.
+
+### 12.1. Nguyên tắc
+
+1. **Code quyết định, LLM chỉ đề nghị hoặc viết chữ.** Chuyển người, giờ làm việc, quyền gửi tin đều là hàm thuần có test.
+2. **Mọi thứ tự động là dữ liệu có version.** Mỗi quyết định ghi bản cấu hình đã dùng; rollback là đổi con trỏ.
+3. **Một cổng gửi duy nhất** (`SendGate`, module `outbound`).
+4. **Ghi tín hiệu ngay từ đầu, dùng sau.**
+5. **Chủ shop không bao giờ thấy chữ "rule".** Họ thấy: "Khi khách nhắn ngoài giờ, gửi câu này".
+
+### 12.2. Tầng chính sách trước `AgentRunner`
+
+```text
+RunRequest (đã gom tin)
+  → PolicyState.load(conv)            # handling, giờ hiện tại, tin mới, ticket mở, lần chào gần nhất
+  → decide(state, release, now) -> [Action]       # hàm thuần, không I/O
+        Action = SendCanned(kind) | SetHandling(to) | OpenHandoff(source, reason) | RunAgent
+  → Executor: một transaction ghi trạng thái + policy_decisions + outbox
+  → nếu có RunAgent: AgentRunner.handle(req)   # 2.5 như cũ
+```
+
+- `decide` và `business_hours` nằm ở module mới `conversation_policy` (domain thuần). Test kiến trúc: domain không import SQLAlchemy/HTTP.
+- `AgentRunner` thêm hai `skip_reason`: `handling_human`, `handling_waiting` (cổng bước 0). Không đổi phần còn lại của 7.3.
+- Trước 2.9, `SendCanned` **chỉ được ghi** vào `policy_decisions` (hiện trong trace: "lẽ ra sẽ gửi: …"), không gửi.
+
+Ví dụ: khách nhắn "shop ơi còn áo M không" lúc 22:10 thứ Bảy, giờ mở cửa 8:00–21:00, hội thoại mới:
+
+```text
+state: handling=bot, open=False, next_open=CN 08:00, is_new=True
+decide ⇒ [SendCanned(after_hours), RunAgent]
+         (một tin: câu ngoài giờ đã có lời chào; KHÔNG gửi thêm câu chào riêng)
+```
+
+Nếu tình huống ngoài giờ đặt "chế độ tiếp theo = chờ người" thì kết quả là `[SendCanned(after_hours), SetHandling(waiting_human)]`, không có `RunAgent`.
+
+### 12.3. Trạng thái xử lý
+
+```mermaid
+stateDiagram-v2
+    [*] --> bot
+    bot --> waiting_human: nút "Nhờ nhân viên" / cụm từ đòi gặp người / chủ đề luôn cần người
+    waiting_human --> human: nhân viên gửi tin hoặc nhận ticket
+    bot --> human: nhân viên gửi tin
+    human --> bot: nhân viên bấm "Trả lại cho bot"
+    waiting_human --> bot: hết thời gian chờ và shop bật "bot tiếp tục khi không ai nhận"
+```
+
+- Cột `conversations.handling` + dùng lại `conversations.version` có sẵn cho compare-and-set: `UPDATE … SET handling=:to, version=version+1 WHERE id=:id AND version=:v`.
+- Hook "nhân viên gửi tin ⇒ `human`" nằm trong use case gửi tin của `conversation`, cùng transaction với tin nhắn. Run đang chạy sẽ bị chặn ở bước lưu vì `last_sequence` đã đổi (7.3 bước 6) — không cần cơ chế mới.
+- `waiting_human`: bot không tư vấn; chỉ gửi tin giữ chân (`handoff_ack`) đúng một lần cho mỗi ticket.
+- Không tự trả về bot sau khi người nhận, kể cả hội thoại im lặng lâu: chỉ nút tường minh. Hội thoại đóng rồi mở lại (khách nhắn sau khi đóng) bắt đầu lại ở `bot`.
+
+### 12.4. Giờ làm việc, tình huống, phát hành
+
+**Giờ làm việc** (`business_hours`, một hàng mỗi tenant):
+
+```json
+{ "timezone": "Asia/Ho_Chi_Minh",
+  "weekly": { "mon": [["08:00","12:00"],["13:30","21:00"]], "sun": [] },
+  "exceptions": [ { "date": "2027-02-17", "closed": true, "note": "Mùng 1 Tết" } ],
+  "pause_until": null }
+```
+
+- Hàm thuần `is_open(hours, now)` và `next_open(hours, now)` dùng `zoneinfo` của thư viện chuẩn. Khoảng vắt qua nửa đêm (`["20:00","02:00"]`) được hỗ trợ. `pause_until` là "tạm nghỉ" có giờ tự hết (không ai phải nhớ tắt).
+- Giá trị khởi đầu lấy từ khảo sát onboarding; chủ shop sửa ở màn hình "Giờ làm việc".
+
+**Bộ tình huống cố định** (ưu tiên từ cao xuống, quyết định trong code):
+
+| Tình huống | Khi nào | Tham số chủ shop chỉnh | Chế độ tiếp theo mặc định |
+|---|---|---|---|
+| `paused` (tạm nghỉ) | `pause_until > now` | nội dung | `bot` tư vấn (có thể đổi `chờ người`) |
+| `after_hours` (ngoài giờ) | `not is_open` | nội dung | `bot` tư vấn |
+| `welcome` (mở đầu) | tin đầu của hội thoại, hoặc khách quay lại sau ≥ N giờ im lặng | nội dung, N (mặc định 24) | `bot` tư vấn |
+| `handoff_ack` (đã nhờ nhân viên) | vừa mở ticket | nội dung | `waiting_human` |
+| tư vấn thường | còn lại | — | `RunAgent` |
+
+- Mỗi tình huống: `enabled`, `text` (≤ 500 ký tự), `next` (`bot` \| `waiting_human`), tham số riêng. Biến cho phép: `{shop_name}`, `{next_open}`; biến lạ ⇒ lỗi khi lưu.
+- **Gộp:** mỗi lượt tối đa **một** tin tự động — tình huống ưu tiên cao nhất đang bật thắng. `after_hours` và `paused` chỉ gửi một lần mỗi phiên (lần kế khi đã qua `next_open` hoặc ≥ N giờ).
+- **Mặc định:** `welcome` bật rồi bot tư vấn ngay. Không mặc định câu "nhân viên sẽ hỗ trợ ngay" vì shop một người không giữ được lời hứa đó; tùy chọn "chờ nhân viên X giây rồi bot mới vào" để sau.
+
+**Phát hành:** giờ làm việc + tình huống + độ nhạy leo thang gộp thành `policy_releases` (bất biến, có số thứ tự); tenant có con trỏ `current_policy_release_id`. Lưu ở UI = tạo release mới + đổi con trỏ; "khôi phục" = trỏ về release cũ. Mỗi `policy_decisions` ghi `policy_release_id`.
+
+**Trình mô phỏng:** `POST /api/v1/policy/simulate {release?, at, is_new_conversation, handling}` gọi đúng `decide` và trả các action + nội dung đã thay biến. UI: khung điện thoại + thanh trượt ngày giờ. Không ghi gì.
+
+### 12.5. Ticket "Nhờ nhân viên"
+
+```sql
+CREATE TABLE handoff_requests (
+  id uuid PRIMARY KEY, tenant_id uuid NOT NULL, conversation_id uuid NOT NULL,
+  status text NOT NULL CHECK (status IN ('open','claimed','resolved','dismissed')),
+  source text NOT NULL CHECK (source IN ('customer_button','phrase','topic','staff','signal')),
+  reason text, priority smallint NOT NULL DEFAULT 0,
+  signals jsonb NOT NULL DEFAULT '[]',          -- tín hiệu đã thấy lúc mở (2.10)
+  summary text,                                 -- 3 dòng, sinh bất đồng bộ; thiếu vẫn hiển thị
+  claimed_by uuid, opened_at timestamptz NOT NULL DEFAULT now(), closed_at timestamptz,
+  not_needed boolean,                           -- nhãn của nhân viên: "ticket này không cần"
+  UNIQUE (tenant_id, id),
+  FOREIGN KEY (tenant_id, conversation_id) REFERENCES conversations(tenant_id, id)
+);
+CREATE UNIQUE INDEX uq_handoff_one_open ON handoff_requests (conversation_id)
+  WHERE status IN ('open','claimed');
+```
+
+- Khách bấm nút 5 lần ⇒ `INSERT … ON CONFLICT DO NOTHING` trên partial unique index ⇒ **một** ticket.
+- Nguồn mở ticket ở 2.8: nút widget (`POST /widget/v1/handoff`), cụm từ đòi gặp người (rule có sẵn của 2.5, chuyển sang tầng chính sách), chủ đề shop đánh dấu "luôn cần người", nhân viên tự mở. `handoff_suggested` của AI **chỉ ghi**, không mở ticket ở bước 2.
+- Mở ticket cùng transaction với `SetHandling(waiting_human)` + outbox `handoff.opened` ⇒ SSE báo inbox. Inbox thêm tab **"Cần xử lý"** sắp theo `priority DESC, opened_at`, hiển thị "đang chờ X phút".
+- Tóm tắt: job sau commit gọi LLM (route `classify`) trên tin gốc; LLM lỗi không chặn việc báo cho người.
+- Nhân viên trả lời hoặc bấm "Nhận" ⇒ `claimed` + `handling=human`. "Xong" ⇒ `resolved`. "Không cần" ⇒ `dismissed` + `not_needed=true` (nhãn đo cho 2.10).
+- Không ai nhận sau T phút (mặc định tắt): nếu shop bật "bot tiếp tục khi không ai nhận" ⇒ `handling=bot` với ngữ cảnh cũ, ticket vẫn mở. Học từ Salesforce: không bỏ rơi khách.
+
+### 12.6. Gửi tin tự động: module `outbound` và `SendGate`
+
+```text
+outbound.send_canned(conv, kind, release_id):
+  SendGate.check(conv, kind) phải đủ:
+    - tenant bật "gửi tin tự động" (mặc định TẮT, giống kill switch AI)
+    - tình huống `kind` đang bật trong release hiện hành
+    - chưa gửi `kind` này trong phiên (idempotency key = conv + kind + phiên)
+    - kênh hỗ trợ gửi chủ động (webchat: có; kênh khác: theo chính sách nền tảng)
+  ⇒ ghi messages(direction=outbound, sender_type='system', sender_ref='policy:<kind>:<release>')
+     + outbox, cùng transaction với policy_decisions
+```
+
+- Dùng giá trị `system` đã có trong `messages.sender_type` ⇒ **không cần migration nới CHECK**. Giá trị cho AI (`bot`) vẫn để bước 5.
+- Test kiến trúc mới: chỉ `outbound` được ghi `messages` với `sender_type='system'`; `agent_runtime` vẫn không import `outbound`.
+- Bước 5 mới mở `SendGate` cho nháp `grounded` theo intent chủ shop bật (bắt đầu: giờ mở cửa, địa chỉ, ship), có giáng cấp tự động khi tỉ lệ nhân viên sửa nháp tăng.
+
+### 12.7. Tín hiệu leo thang (chỉ ghi ở bước 2)
+
+| Lớp | Tín hiệu | Cách tính | Ở bước 2 |
+|---|---|---|---|
+| Xác định | nút, cụm từ đòi gặp người, chủ đề luôn cần người | rule trên văn bản đã `fold()` | **mở ticket** (2.8) |
+| Hành vi | lặp ý (độ giống trigram giữa 2 tin khách), phủ định "không phải / không hiểu / sai rồi", hỏi lại sau ≥ 3 lượt bot, nhắn dồn ≥ 4 tin/30 s, chờ lâu | hàm thuần trên lịch sử | ghi |
+| Ngữ nghĩa | `frustration: none\|mild\|high`, `human_decision: bool` | thêm 2 trường vào `ClassifyOut`, **không thêm lần gọi LLM**; tăng `PROMPT_VERSION` | ghi, chỉ khi hội thoại ≥ 4 lượt |
+
+- Điểm = tổng có trọng số; độ nhạy Thấp/Vừa/Cao theo tenant, mặc định **Thấp**; hysteresis: đã có ticket mở thì không đánh giá lại.
+- Mọi tín hiệu ghi vào `agent_run_steps` (kind mới `signal`) ⇒ trace giải thích được.
+- Đo: precision/recall của điểm so với nhãn (ticket thật + `not_needed`) trên hội thoại thật. **Chỉ khi có số đo** mới cho điểm nâng ưu tiên ticket hoặc hiện nút gợi ý cho khách. Tự chuyển người bằng điểm không nằm trong bước 2.
+- Rủi ro đã biết: chat tiếng Việt ngắn, thiếu dấu có thể làm tín hiệu kém; đây là lý do phải đo trước.
+
+### 12.8. Trợ lý viết theo giọng thương hiệu
+
+`POST /api/v1/writing/suggest {kind, text, level}` → `{suggestions: [{text, changes, fact_check}]}`
+
+| Mức | Làm gì |
+|---|---|
+| `fix` | chỉ sửa chính tả, dấu, ngắt câu |
+| `polish` | trau chuốt, giữ cấu trúc |
+| `brand` | viết lại theo hồ sơ thương hiệu |
+| `alternatives` | 2–3 phương án khác nhau |
+
+- Route `authoring` trong `routes.toml` (model rẻ), `usage_events.purpose='authoring'`, trần chi phí riêng mỗi tenant/ngày.
+- **Kiểm tra giữ sự thật bằng code** (tái dùng `extract_amounts` của 2.5, thêm giờ, số ngày, SĐT, URL): mọi giá trị trong gợi ý phải có trong bản gốc và ngược lại. Lệch ⇒ gợi ý vẫn hiện nhưng nút "Dùng" bị khóa, chỉ rõ giá trị lệch. Cụm từ hứa hẹn mới ("freeship", "tặng", "hoàn tiền 100%") không có trong bản gốc ⇒ cảnh báo.
+- **Hồ sơ thương hiệu** (`brand_profiles`, có version): xưng hô (em/shop/mình — anh/chị/bạn), thuật ngữ ưa dùng/cấm, 3–10 câu mẫu **do chủ shop chọn** (không tự hút từ lịch sử vì câu cũ có thể mang chính sách lỗi thời). Hồ sơ cũng đi vào khối 3 (cache) của prompt runtime, nên nháp của agent dùng cùng giọng.
+- Gợi ý không bao giờ tự lưu; chủ shop bấm "Dùng" rồi "Lưu" ⇒ tạo `policy_release` mới như mọi thay đổi khác. Bấm "Dùng"/"Bỏ" ghi `learning_signals`.
+
+### 12.9. Tín hiệu học
+
+```sql
+CREATE TABLE learning_signals (                   -- append-only, không UPDATE/DELETE trừ xóa theo yêu cầu khách
+  id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  tenant_id uuid NOT NULL, conversation_id uuid, run_id uuid,
+  kind text NOT NULL,   -- handoff_opened | handoff_not_needed | suggestion_used | suggestion_dismissed
+                        -- | staff_replied_after_draft | repeated_escalation
+  payload jsonb NOT NULL DEFAULT '{}',            -- đã chiếu: id, nhãn, không chép nội dung khách
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+```
+
+Bước 2 chỉ ghi. Bước 4 dựng ứng viên (FAQ/câu mẫu) **chỉ từ chữ nhân viên đã gửi và dữ liệu shop**, chủ shop duyệt một chạm, qua eval gate, phát hành bằng đổi con trỏ, mỗi bài học thành một ca hồi quy.
+
+### 12.10. Dữ liệu, API, màn hình bổ sung
+
+Migration mới (một cho mỗi bước 2.7/2.8/2.11):
+
+- `conversations.handling text NOT NULL DEFAULT 'bot' CHECK (handling IN ('bot','waiting_human','human'))`.
+- `business_hours`, `policy_releases (id, tenant_id, number, config jsonb, created_by, created_at, UNIQUE(tenant_id, number))`, `tenant_ai_settings.current_policy_release_id`, `tenant_ai_settings.auto_messages_enabled boolean DEFAULT false`.
+- `policy_decisions (id, tenant_id, conversation_id, run_request_seq, policy_release_id, actions jsonb, sent boolean, created_at)`.
+- `handoff_requests` (12.5), `learning_signals` (12.9), `brand_profiles`.
+
+| Method & path | Mô tả |
+|---|---|
+| `GET/PUT /api/v1/policy` | đọc release hiện hành / lưu ⇒ release mới |
+| `GET /api/v1/policy/releases`, `POST /api/v1/policy/releases/{id}/restore` | lịch sử + khôi phục |
+| `POST /api/v1/policy/simulate` | trình mô phỏng (12.4) |
+| `POST /widget/v1/handoff` | khách bấm "Nhờ nhân viên" (token widget) |
+| `GET /api/v1/handoffs?status=`, `POST /api/v1/handoffs/{id}/claim\|resolve\|dismiss` | tab "Cần xử lý" |
+| `POST /api/v1/conversations/{id}/return-to-bot` | trả hội thoại cho bot (CAS theo `version`) |
+| `POST /api/v1/writing/suggest`, `GET/PUT /api/v1/brand-profile` | trợ lý viết |
+
+Màn hình: **"Tin tự động"** (mỗi tình huống một thẻ: công tắc, ô nội dung có nút "Gợi ý", chọn chế độ tiếp theo; khung xem thử điện thoại + thanh trượt giờ), **"Giờ làm việc"** (lịch tuần, ngày nghỉ, nút "Tạm nghỉ đến…"), **"Giọng thương hiệu"**, tab inbox **"Cần xử lý"**, nút widget **"Nhờ nhân viên"**, badge trạng thái xử lý trên hội thoại. Onboarding hỏi giờ mở cửa và điền sẵn.
+
+### 12.11. Kiểm thử bổ sung
+
+| Nhóm | Ca bắt buộc |
+|---|---|
+| Unit — `business_hours` | trong/ngoài giờ, hai khoảng một ngày, vắt nửa đêm, ngoại lệ ngày lễ, `pause_until` hết hạn, `next_open` qua cuối tuần và qua Tết |
+| Unit — `decide` (bảng) | mọi tổ hợp tình huống × handling × mới/quay lại; tối đa một tin tự động mỗi lượt; `waiting_human` không có `RunAgent` |
+| Unit — trợ lý viết | "7 ngày" → "30 ngày" bị khóa; thêm "freeship" bị cảnh báo; đổi câu chữ giữ nguyên số được phép |
+| Integration | bấm nút 5 lần ⇒ 1 ticket; nhân viên gửi tin trong lúc run chạy ⇒ run `superseded`, handling `human`; khôi phục release ⇒ quyết định kế dùng release cũ; tin tự động gửi đúng một lần mỗi phiên |
+| Kiến trúc | `conversation_policy.domain` không I/O; chỉ `outbound` ghi tin `system`; `agent_runtime` không import `outbound` |
+| E2E | cấu hình giờ đóng ⇒ khách nhắn ⇒ (trước 2.9) trace hiện "lẽ ra gửi: câu ngoài giờ"; (sau 2.9) khách nhận đúng câu đó; khách bấm "Nhờ nhân viên" ⇒ tab "Cần xử lý" có ticket |
+
+---
+
+## 13. Tóm tắt một dòng
+
+Tin khách → outbox → dispatcher gom tin vào **một hàng run request có `due_at`** → worker claim → **tầng chính sách xác định** (giờ làm việc, trạng thái xử lý, tình huống do chủ shop cấu hình, ticket nhờ nhân viên) → nếu tới lượt bot: rule rẻ → phân loại → vòng tool read-only → **nháp có nguồn được backend kiểm tra** → lưu cùng trace và chi phí. Khách chỉ có thể nhận tin tự động nguyên văn do chủ shop viết, qua một cổng duy nhất; output của LLM không có đường tới khách.
