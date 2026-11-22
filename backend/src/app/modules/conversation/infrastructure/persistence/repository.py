@@ -122,6 +122,16 @@ class ConversationRepository:
             )
         )
 
+    async def claim_handoff(self, ctx: TenantContext, conversation_id: UUID, user_id: UUID) -> None:
+        await self._s.execute(
+            text(
+                "UPDATE handoff_requests SET status = 'claimed', claimed_by = :u, "
+                "claimed_at = now() "
+                "WHERE tenant_id = :t AND conversation_id = :c AND status = 'open'"
+            ),
+            {"t": ctx.tenant_id, "c": conversation_id, "u": user_id},
+        )
+
     async def get(
         self, ctx: TenantContext, conversation_id: UUID, *, lock: bool = False
     ) -> Conversation | None:

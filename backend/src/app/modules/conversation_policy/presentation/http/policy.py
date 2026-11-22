@@ -15,6 +15,7 @@ from app.modules.conversation_policy.domain.policy import (
     decide,
     suggested_config,
 )
+from app.modules.conversation_policy.infrastructure import handoffs
 from app.modules.conversation_policy.infrastructure import repository as repo
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
@@ -131,3 +132,66 @@ async def return_to_bot(
     if not ok:
         raise ApiError(409, "conflict", "Conversation changed or not found; reload")
     return {"handling": "bot"}
+
+
+# ---------- ticket "Nhờ nhân viên" (§12.5) ----------
+
+
+def _ticket_json(t: handoffs.Ticket) -> dict:
+    return {
+        "id": str(t.id),
+        "conversation_id": str(t.conversation_id),
+        "status": t.status,
+        "source": t.source,
+        "reason": t.reason,
+        "priority": t.priority,
+        "opened_at": t.opened_at.isoformat(),
+        "claimed_by": str(t.claimed_by) if t.claimed_by else None,
+        "customer_name": t.customer_name,
+        "last_message_preview": t.last_message_preview,
+        "handling": t.handling,
+    }
+
+
+@router.get("/handoffs")
+async def list_handoffs(request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "conversation.read")
+    async with request.app.state.session_factory() as s:
+        tickets = await handoffs.list_active(s, tenant_id)
+    return {"items": [_ticket_json(t) for t in tickets]}
+
+
+@router.post("/handoffs/{handoff_id}/{action}", dependencies=[Csrf])
+async def act_on_handoff(
+    handoff_id: UUID,
+    action: Literal["claim", "resolve", "dismiss"],
+    request: Request,
+    actor: CurrentStaff,
+) -> dict:
+    tenant_id = _require(actor, "conversation.reply")
+    async with request.app.state.session_factory() as s, s.begin():
+        ok = await handoffs.transition(s, tenant_id, handoff_id, action, actor.user_id)
+    if not ok:
+        raise ApiError(409, "conflict", "Ticket not found or already handled; reload")
+    return {"ok": True}
+
+
+@router.post("/conversations/{conversation_id}/handoff", dependencies=[Csrf])
+async def open_handoff_by_staff(
+    conversation_id: UUID, request: Request, actor: CurrentStaff
+) -> dict:
+    """Nhân viên tự đánh dấu hội thoại cần xử lý (vd đồng nghiệp nhờ xem giúp)."""
+    tenant_id = _require(actor, "conversation.reply")
+    async with request.app.state.session_factory() as s, s.begin():
+        exists = (
+            await s.execute(
+                text("SELECT 1 FROM conversations WHERE tenant_id = :t AND id = :c"),
+                {"t": tenant_id, "c": conversation_id},
+            )
+        ).first()
+        if exists is None:
+            raise ApiError(404, "not_found", "Conversation not found")
+        handoff_id, created = await handoffs.open_handoff(
+            s, tenant_id, conversation_id, source="staff"
+        )
+    return {"id": str(handoff_id), "created": created}

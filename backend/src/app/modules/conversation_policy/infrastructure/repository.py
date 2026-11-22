@@ -123,6 +123,19 @@ async def lock_conversation(
     return ConversationForPolicy(*row) if row else None
 
 
+async def customer_texts(
+    s: AsyncSession, tenant_id: UUID, conversation_id: UUID, from_sequence: int, to_sequence: int
+) -> list[str]:
+    rows = await s.execute(
+        text(
+            "SELECT content FROM messages WHERE tenant_id = :t AND conversation_id = :c "
+            "AND sequence BETWEEN :f AND :to AND sender_type = 'customer' ORDER BY sequence"
+        ),
+        {"t": tenant_id, "c": conversation_id, "f": from_sequence, "to": to_sequence},
+    )
+    return [r[0] for r in rows]
+
+
 async def decision_exists(
     s: AsyncSession, tenant_id: UUID, conversation_id: UUID, to_sequence: int
 ) -> bool:

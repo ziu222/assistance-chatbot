@@ -102,6 +102,7 @@ class SendStaffMessage:
                 preview=text[:PREVIEW_LENGTH],
                 inbound=False,
             )
+            await uow.conversations.claim_handoff(ctx, conv.id, user_id)
             identity = await uow.customers.identity_for_customer(
                 ctx, conv.customer_id, conv.channel_connection_id
             )
