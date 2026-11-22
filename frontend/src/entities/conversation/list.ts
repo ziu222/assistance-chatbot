@@ -6,6 +6,7 @@ export type Conversation = {
   last_message_preview: string | null;
   unread_count: number;
   version: number;
+  handling: "bot" | "waiting_human" | "human";
   created_at: string;
   closed_at: string | null;
   customer: { id: string; display_name: string };

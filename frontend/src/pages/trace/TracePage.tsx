@@ -12,6 +12,7 @@ import {
   type RunStatus,
   type Source,
 } from "../../entities/agent-run/trace";
+import { handlingLabel } from "../../entities/policy/form";
 import { useEntries, useProduct, type DocEntry, type FaqEntry } from "../../entities/knowledge/api";
 import { formatTime } from "../../shared/lib/format";
 
@@ -92,6 +93,25 @@ function RunView({ run }: { run: RunDetail }) {
         </h2>
         {why && <p className="muted">Lý do: {why}</p>}
       </header>
+
+      {run.policy && (
+        <section aria-labelledby="t-policy">
+          <h3 id="t-policy">Tin tự động (phiên bản #{run.policy.release_number})</h3>
+          {run.policy.canned_text ? (
+            <div className="card">
+              <p className="pre">{run.policy.canned_text}</p>
+              <small className="muted">
+                {run.policy.sent ? "Đã gửi cho khách." : "Lẽ ra sẽ gửi: bước này chỉ ghi lại, chưa gửi cho khách."}
+              </small>
+            </div>
+          ) : (
+            <p className="muted">Không có tin tự động cho lượt này.</p>
+          )}
+          {run.policy.set_handling && (
+            <p className="muted">Hội thoại chuyển sang: {handlingLabel(run.policy.set_handling)}.</p>
+          )}
+        </section>
+      )}
 
       <section aria-labelledby="t-in">
         <h3 id="t-in">1. Tin khách (đầu vào)</h3>

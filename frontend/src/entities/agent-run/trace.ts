@@ -46,6 +46,17 @@ export type Step = {
 
 export type Source = { type: "faq" | "doc" | "product"; id: string };
 
+export type Handling = "bot" | "waiting_human" | "human";
+export type PolicyDecision = {
+  situation: "paused" | "after_hours" | "welcome" | null;
+  canned_text: string | null;
+  handling_before: Handling;
+  set_handling: Handling | null;
+  run_agent: boolean;
+  sent: boolean;
+  release_number: number;
+};
+
 export type RunDetail = {
   id: string;
   conversation_id: string;
@@ -61,6 +72,7 @@ export type RunDetail = {
   totals: Totals;
   input_messages: { sequence: number; from: string; content: string }[];
   steps: Step[];
+  policy: PolicyDecision | null;
   draft: {
     id: string;
     text: string;
@@ -104,6 +116,8 @@ const REASON: Record<string, string> = {
   empty_reply: "Model trả nháp rỗng",
   max_tokens: "Hết giới hạn token",
   wall_clock: "Quá thời gian chạy",
+  handling_human: "Nhân viên đang xử lý hội thoại",
+  handling_waiting: "Đang chờ nhân viên",
 };
 
 export function statusLabel(status: RunStatus): string {

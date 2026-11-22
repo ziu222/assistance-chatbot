@@ -653,3 +653,79 @@ textarea {
     border-bottom: 1px solid var(--line);
   }
 }
+
+/* --- Giờ làm việc và tin tự động (2.7) --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.grid textarea {
+  width: 100%;
+  font: inherit;
+  resize: vertical;
+}
+
+.table.hours th,
+.table.hours td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.table.hours .span {
+  margin-bottom: 4px;
+}
+
+.phone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 340px;
+  min-height: 120px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--bg);
+}
+
+.phone .bubble {
+  max-width: 85%;
+  white-space: pre-wrap;
+}
+
+.save-bar {
+  position: sticky;
+  bottom: 0;
+  padding: 10px 0;
+  background: var(--bg);
+}
+
+.handling {
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.handling.waiting_human {
+  background: #fff4e5;
+}
+
+/* Thẻ trong trang quản trị rộng theo trang (bỏ bề rộng của thẻ đăng nhập). */
+.admin-page .card {
+  width: auto;
+}
+
+.admin-page .card input {
+  padding: 6px 8px;
+  border-color: var(--line);
+}
+
+.admin-page label.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}

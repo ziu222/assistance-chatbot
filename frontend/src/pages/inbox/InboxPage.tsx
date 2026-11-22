@@ -6,13 +6,15 @@ import { ConversationList } from "../../widgets/inbox-layout/ConversationList";
 import { useEventSignals } from "../../shared/lib/useEventSignals";
 import { AgentPage } from "../agent/AgentPage";
 import { KnowledgePage } from "../knowledge/KnowledgePage";
+import { PolicyPage } from "../policy/PolicyPage";
 import { TracePage } from "../trace/TracePage";
 
 // Màn hình, hội thoại và run đang chọn nằm trên URL để reload/chia sẻ link giữ nguyên chỗ.
-type View = "inbox" | "agent" | "knowledge" | "trace";
+type View = "inbox" | "agent" | "policy" | "knowledge" | "trace";
 const VIEWS: { id: View; label: string }[] = [
   { id: "inbox", label: "Hộp thư" },
   { id: "agent", label: "Agent" },
+  { id: "policy", label: "Tin tự động" },
   { id: "knowledge", label: "Kiến thức" },
   { id: "trace", label: "Trace" },
 ];
@@ -94,6 +96,11 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
       {view === "agent" && (
         <main className="admin-main">
           <AgentPage canManage={canManage} />
+        </main>
+      )}
+      {view === "policy" && (
+        <main className="admin-main">
+          <PolicyPage canManage={canManage} />
         </main>
       )}
       {view === "knowledge" && (
