@@ -9,10 +9,11 @@ import re
 from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import datetime, time, timedelta
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from app.modules.agent_runtime.rules import HANDOFF_PHRASES
 from app.modules.conversation_policy.domain.hours import (
     BusinessHours,
     format_next_open,
@@ -20,6 +21,7 @@ from app.modules.conversation_policy.domain.hours import (
     is_paused,
     next_open,
 )
+from app.modules.knowledge.domain.text import fold
 
 Handling = Literal["bot", "waiting_human", "human"]
 Situation = Literal["paused", "after_hours", "welcome"]
@@ -55,6 +57,10 @@ class PolicyConfig(BaseModel):
     paused: SituationConfig = Field(default_factory=SituationConfig)
     after_hours: SituationConfig = Field(default_factory=SituationConfig)
     welcome: WelcomeConfig = Field(default_factory=WelcomeConfig)
+    # Chủ đề shop đánh dấu "luôn cần nhân viên" (vd "đổi size", "bảo hành"): khớp ⇒ mở ticket.
+    handoff_topics: list[Annotated[str, Field(min_length=2, max_length=50)]] = Field(
+        default_factory=list, max_length=30
+    )
 
 
 @dataclass(frozen=True)
@@ -136,3 +142,21 @@ def suggested_config() -> PolicyConfig:
             enabled=True, text="Dạ {shop_name} chào bạn ạ! Bạn cần shop hỗ trợ gì ạ?"
         ),
     )
+
+
+HandoffSource = Literal["phrase", "topic"]
+
+
+def detect_handoff(
+    cfg: PolicyConfig, customer_texts: list[str]
+) -> tuple[HandoffSource, str] | None:
+    """Tín hiệu XÁC ĐỊNH đòi gặp người (§12.7): cụm từ cố định, rồi chủ đề shop đánh dấu.
+    Trả (nguồn, cụm đã khớp). Tín hiệu hành vi/ngữ nghĩa không nằm ở đây (2.10, chỉ ghi)."""
+    text = " ".join(fold(t) for t in customer_texts)
+    for phrase in HANDOFF_PHRASES:
+        if phrase in text:
+            return "phrase", phrase
+    for topic in cfg.handoff_topics:
+        if fold(topic) in text:
+            return "topic", topic
+    return None

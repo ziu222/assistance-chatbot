@@ -27,6 +27,7 @@ export function App({ publicKey }: { publicKey: string }) {
   const [frozen, setFrozen] = useState(false);
   const [waitSeconds, setWaitSeconds] = useState(0);
   const [draft, setDraft] = useState("");
+  const [handoff, setHandoff] = useState<"idle" | "sending" | "done" | "failed">("idle");
 
   const chatRef = useRef(chat);
   chatRef.current = chat;
@@ -191,6 +192,26 @@ export function App({ publicKey }: { publicKey: string }) {
 
   const canSend = phase === "ready" && !frozen && waitSeconds <= 0;
 
+  // Bấm nhiều lần vẫn một ticket (server bảo đảm); nút ẩn sau khi đã báo.
+  const askStaff = async () => {
+    setHandoff("sending");
+    for (let refreshed = false; ; ) {
+      try {
+        await api.handoff(tokenRef.current!);
+        setHandoff("done");
+        return;
+      } catch (e) {
+        if (e instanceof ApiError && e.status === 401 && !refreshed) {
+          refreshed = true;
+          await openSession().catch(() => {});
+          continue;
+        }
+        setHandoff("failed");
+        return;
+      }
+    }
+  };
+
   const submit = (e?: FormEvent) => {
     e?.preventDefault();
     const text = draft.trim();
@@ -279,6 +300,21 @@ export function App({ publicKey }: { publicKey: string }) {
         <p className="banner" role="status">
           {t.rateLimited(waitSeconds)}
         </p>
+      )}
+
+      {chat.conversationId && phase === "ready" && !frozen && (
+        <div className="handoff">
+          {handoff === "done" ? (
+            <p role="status">{t.askStaffDone}</p>
+          ) : (
+            <>
+              <button type="button" className="link" onClick={() => void askStaff()} disabled={handoff === "sending"}>
+                {t.askStaff}
+              </button>
+              {handoff === "failed" && <span role="alert"> {t.askStaffFailed}</span>}
+            </>
+          )}
+        </div>
       )}
 
       <form className="composer" onSubmit={submit}>

@@ -205,3 +205,13 @@ button:disabled {
     scroll-behavior: auto;
   }
 }
+
+.handoff {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+.handoff p {
+  margin: 0;
+  color: var(--muted, #5b6661);
+}

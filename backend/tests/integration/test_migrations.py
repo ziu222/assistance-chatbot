@@ -49,6 +49,8 @@ CORE_TABLES = {
     "policy_releases",
     "tenant_policy",
     "policy_decisions",
+    "handoff_requests",
+    "learning_signals",
     "tenant_ai_settings",
     "agents",
     "agent_versions",

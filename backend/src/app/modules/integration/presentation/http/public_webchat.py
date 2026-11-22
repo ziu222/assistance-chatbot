@@ -20,6 +20,7 @@ from app.modules.conversation.infrastructure.persistence.repository import (
     MessageRepository,
 )
 from app.modules.conversation.infrastructure.unit_of_work import SqlConversationUnitOfWork
+from app.modules.conversation_policy.infrastructure.handoffs import open_handoff
 from app.modules.customer.infrastructure.persistence.repository import CustomerRepository
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent
 from app.modules.integration.domain.normalization import (
@@ -215,6 +216,33 @@ async def post_message(body: MessageIn, request: Request, visitor: CurrentVisito
         },
         status_code=201 if result.created else 200,
     )
+
+
+@router.post("/public/webchat/v1/handoff")
+async def request_human(request: Request, visitor: CurrentVisitor) -> dict:
+    """Khách bấm "Nhờ nhân viên" (bước 2 §12.5). Bấm nhiều lần vẫn một ticket."""
+    await enforce_rate_limit(
+        request,
+        f"handoff:v:{visitor.claims.visitor_id}",
+        MESSAGES_PER_VISITOR,
+        scope="handoff_visitor",
+        fail_open=True,
+    )
+    async with request.app.state.session_factory() as s, s.begin():
+        identity = await CustomerRepository(s).get_identity(
+            visitor.ctx, visitor.connection.id, visitor.claims.visitor_id
+        )
+        conv = (
+            await ConversationRepository(s).latest_for_customer(
+                visitor.ctx, identity.customer_id, visitor.connection.id
+            )
+            if identity
+            else None
+        )
+        if conv is None or conv.status != "open":  # chưa nhắn tin nào: chưa có gì để chuyển
+            raise ApiError(409, "no_conversation", "Send a message first")
+        _, created = await open_handoff(s, visitor.ctx.tenant_id, conv.id, source="customer_button")
+    return {"status": "open", "created": created}
 
 
 @router.get("/public/webchat/v1/events")

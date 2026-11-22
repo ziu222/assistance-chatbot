@@ -16,6 +16,9 @@ const vi = {
   sessionError: "Không mở được phiên chat. Vui lòng tải lại trang.",
   privacy: "Quyền riêng tư",
   defaultGreeting: "Xin chào! Chúng tôi có thể giúp gì cho bạn?",
+  askStaff: "Nhờ nhân viên hỗ trợ",
+  askStaffDone: "Đã báo nhân viên. Nhân viên sẽ trả lời bạn sớm nhất có thể.",
+  askStaffFailed: "Chưa báo được nhân viên, thử lại sau.",
 };
 
 type Strings = typeof vi;
@@ -38,6 +41,9 @@ const en: Strings = {
   sessionError: "Could not start the chat. Please reload the page.",
   privacy: "Privacy",
   defaultGreeting: "Hello! How can we help you?",
+  askStaff: "Talk to a person",
+  askStaffDone: "We've let our team know. Someone will reply as soon as possible.",
+  askStaffFailed: "Couldn't reach the team, please try again later.",
 };
 
 export const lang: "vi" | "en" = navigator.language?.toLowerCase().startsWith("en") ? "en" : "vi";

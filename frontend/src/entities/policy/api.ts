@@ -16,6 +16,7 @@ export type PolicyConfig = {
   paused: SituationConfig;
   after_hours: SituationConfig;
   welcome: SituationConfig & { gap_hours: number };
+  handoff_topics: string[];
 };
 export type Release = { id: string; number: number; created_at: string; current: boolean; config: PolicyConfig };
 export type Simulation = {

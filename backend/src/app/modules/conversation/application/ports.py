@@ -33,6 +33,10 @@ class ConversationStore(Protocol):
         inbound: bool,
     ) -> None: ...
 
+    async def claim_handoff(self, ctx: TenantContext, conversation_id: UUID, user_id: UUID) -> None:
+        """Nhân viên trả lời ⇒ nhận luôn ticket đang mở của hội thoại (bước 2 §12.5)."""
+        ...
+
 
 class MessageStore(Protocol):
     async def add(self, ctx: TenantContext, **fields: Any) -> Message | None: ...

@@ -49,6 +49,8 @@ export const api = {
     }),
   list: (token: string, afterSequence: number) =>
     call<MessagePage>(`/messages?after_sequence=${afterSequence}&limit=100`, { token }),
+  handoff: (token: string) =>
+    call<{ status: "open"; created: boolean }>("/handoff", { method: "POST", token, body: "{}" }),
   eventsUrl: `${BASE}/events`,
 };
 

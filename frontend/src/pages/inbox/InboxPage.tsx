@@ -7,12 +7,15 @@ import { useEventSignals } from "../../shared/lib/useEventSignals";
 import { AgentPage } from "../agent/AgentPage";
 import { KnowledgePage } from "../knowledge/KnowledgePage";
 import { PolicyPage } from "../policy/PolicyPage";
+import { QueuePage } from "../queue/QueuePage";
+import { useHandoffs } from "../../entities/handoff/api";
 import { TracePage } from "../trace/TracePage";
 
 // Màn hình, hội thoại và run đang chọn nằm trên URL để reload/chia sẻ link giữ nguyên chỗ.
-type View = "inbox" | "agent" | "policy" | "knowledge" | "trace";
+type View = "inbox" | "queue" | "agent" | "policy" | "knowledge" | "trace";
 const VIEWS: { id: View; label: string }[] = [
   { id: "inbox", label: "Hộp thư" },
+  { id: "queue", label: "Cần xử lý" },
   { id: "agent", label: "Agent" },
   { id: "policy", label: "Tin tự động" },
   { id: "knowledge", label: "Kiến thức" },
@@ -27,6 +30,7 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
   const [run, setRun] = useState<string | null>(() => param("run"));
   const live = useEventSignals(onUnauthorized); // onUnauthorized đã ổn định (useCallback ở App)
   const logout = useLogout();
+  const waiting = useHandoffs().data?.items.filter((t) => t.status === "open").length ?? 0;
   const canManage = me.role === "owner" || me.role === "admin";
 
   useEffect(() => {
@@ -49,6 +53,10 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
     history.pushState(null, "", `?c=${encodeURIComponent(id)}`);
     setSelected(id);
   };
+  const openConversation = (id: string) => {
+    setView("inbox");
+    select(id);
+  };
   const selectRun = (id: string | null) => {
     history.pushState(null, "", id ? `?view=trace&run=${encodeURIComponent(id)}` : "?view=trace");
     setRun(id);
@@ -68,6 +76,7 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
               onClick={() => go(v.id)}
             >
               {v.label}
+              {v.id === "queue" && waiting > 0 && <span className="count"> {waiting}</span>}
             </button>
           ))}
         </nav>
@@ -92,6 +101,11 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
             </section>
           )}
         </>
+      )}
+      {view === "queue" && (
+        <main className="admin-main">
+          <QueuePage onOpen={openConversation} />
+        </main>
       )}
       {view === "agent" && (
         <main className="admin-main">
