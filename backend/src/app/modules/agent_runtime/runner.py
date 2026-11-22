@@ -49,6 +49,7 @@ from app.modules.agent_runtime.llm.pricing import UnknownPrice
 from app.modules.agent_runtime.prompts import CLASSIFY, DRAFT, PROMPT_VERSION, SAFETY
 from app.modules.agent_runtime.rules import apply_rules
 from app.modules.agent_runtime.schemas import ClassifyOut, DraftOut
+from app.modules.agent_runtime.signals import behavior_signals, score, semantic_signals
 from app.modules.agent_runtime.tools import TOOLS, run_tool
 from app.modules.agent_runtime.validation import extract_amounts, validate_draft
 from app.shared.infrastructure.metrics import (
@@ -210,6 +211,18 @@ class AgentRunner:
             run.guard = False
             raise _Stop("skipped", skip_reason="no_customer_message")
 
+        # Tín hiệu leo thang theo hành vi: chỉ ghi để đo (§12.7), không đổi luồng.
+        behavior = behavior_signals(
+            [m.content for m in ctx.history if m.who == "khach"],
+            ctx.customer_texts,
+            sum(1 for m in ctx.history if m.who != "khach"),
+        )
+        run.steps.append(
+            Step(
+                "signal", "behavior", "recorded", 0, {"signals": behavior, "score": score(behavior)}
+            )
+        )
+
         # 2. Rule: không tốn LLM.
         outcome = apply_rules(ctx.customer_texts)
         if outcome is not None:
@@ -242,6 +255,23 @@ class AgentRunner:
         if not isinstance(parsed, ClassifyOut):
             raise InvalidOutput("classify: no parsed output")
         run.intents = [i for i in parsed.intents if i in tpl.intents] or ["other"]
+        semantic = semantic_signals(
+            parsed.frustration, parsed.human_decision, len(ctx.history) + len(ctx.new)
+        )
+        run.steps.append(
+            Step(
+                "signal",
+                "semantic",
+                "recorded",
+                0,
+                {
+                    "signals": semantic,
+                    "score": score(semantic),
+                    "frustration": parsed.frustration,
+                    "human_decision": parsed.human_decision,
+                },
+            )
+        )
         if set(run.intents) & set(tpl.handoff_intents):
             raise _Stop("handoff_suggested")
 

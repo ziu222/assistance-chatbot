@@ -3,7 +3,7 @@
 Không đưa thời gian hiện tại hay ID ngẫu nhiên vào các khối này: làm vậy phá prompt cache.
 """
 
-PROMPT_VERSION = "2026-11-22.1"
+PROMPT_VERSION = "2026-11-23.1"
 
 SAFETY = """\
 Quy tắc bất biến:
@@ -18,7 +18,12 @@ CLASSIFY = """\
 Nhiệm vụ: phân loại ý định của khách trong <customer_messages>. Chỉ dùng các nhãn sau, tối đa 3 \
 nhãn, nhãn chính trước:
 {intents}
-Nếu không chắc thì dùng "other"."""
+Nếu không chắc thì dùng "other".
+Ngoài ra đánh giá:
+- frustration: mức khách mất kiên nhẫn hoặc bực bội qua cả cuộc trò chuyện ("none", "mild", \
+"high"). Câu ngắn, viết tắt, thiếu dấu là bình thường, không tính là bực bội.
+- human_decision: true nếu yêu cầu cần nhân viên quyết định (ngoại lệ chính sách, giảm giá riêng, \
+khiếu nại, đền bù), false nếu là câu hỏi thông tin thông thường."""
 
 DRAFT = """\
 Nhiệm vụ: soạn bản nháp trả lời ngắn gọn bằng tiếng Việt cho các tin MỚI của khách. \
