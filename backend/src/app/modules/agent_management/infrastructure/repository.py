@@ -183,3 +183,24 @@ async def upsert_ai_settings(
         )
     ).one()
     return AiSettings(*row)
+
+
+async def list_connections(s: AsyncSession, tenant_id: UUID) -> list[dict]:
+    """Kênh của tenant kèm agent (nếu có): để chọn kênh khi tạo agent."""
+    rows = await s.execute(
+        text(
+            "SELECT c.id, c.provider, c.status, a.id AS agent_id FROM channel_connections c "
+            "LEFT JOIN agents a ON a.tenant_id = c.tenant_id AND a.channel_connection_id = c.id "
+            "WHERE c.tenant_id = :t ORDER BY c.created_at"
+        ),
+        {"t": tenant_id},
+    )
+    return [
+        {
+            "id": str(r.id),
+            "provider": r.provider,
+            "status": r.status,
+            "agent_id": str(r.agent_id) if r.agent_id else None,
+        }
+        for r in rows
+    ]

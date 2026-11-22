@@ -11,7 +11,11 @@ from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
 from app.modules.knowledge.domain.catalog_csv import CatalogCsvError, parse_catalog_csv
 from app.modules.knowledge.infrastructure import content
-from app.modules.knowledge.infrastructure.catalog import import_catalog, search_catalog
+from app.modules.knowledge.infrastructure.catalog import (
+    get_catalog_item,
+    import_catalog,
+    search_catalog,
+)
 from app.shared.presentation.http_errors import ApiError
 
 MAX_CSV_BYTES = 2 * 1024 * 1024
@@ -172,4 +176,22 @@ async def search(
             }
             for i in items
         ]
+    }
+
+
+@router.get("/catalog/items/{item_id}")
+async def get_item(item_id: UUID, request: Request, actor: CurrentStaff) -> dict:
+    """Mở bản ghi sản phẩm mà một bản nháp trích làm nguồn (trace view)."""
+    tenant_id = _require(actor, "knowledge.read")
+    async with request.app.state.session_factory() as s:
+        item = await get_catalog_item(s, tenant_id, item_id)
+    if item is None:
+        raise ApiError(404, "not_found", "Not found")
+    return {
+        "id": str(item.id),
+        "sku": item.sku,
+        "name": item.name,
+        "description": item.description,
+        "price_vnd": item.price_vnd,
+        "variants": item.variants,
     }
