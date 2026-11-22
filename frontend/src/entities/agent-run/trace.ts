@@ -54,6 +54,7 @@ export type PolicyDecision = {
   set_handling: Handling | null;
   run_agent: boolean;
   sent: boolean;
+  send_block: string | null;
   release_number: number;
 };
 

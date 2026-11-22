@@ -44,3 +44,12 @@ export function toLocalInput(iso: string): string {
   const p = (n: number) => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
 }
+
+const SEND_BLOCK: Record<string, string> = {
+  auto_send_off: "shop chưa bật gửi tin tự động",
+  conversation_closed: "hội thoại đã đóng",
+  human_handling: "nhân viên đang xử lý",
+  channel_not_supported: "kênh này chưa hỗ trợ gửi tự động",
+};
+/** Lý do SendGate chặn tin tự động; null (bản ghi trước 2.9) ⇒ chỉ ghi lại. */
+export const sendBlockLabel = (code: string | null) => (code ? (SEND_BLOCK[code] ?? code) : "bản ghi cũ, chỉ ghi lại");

@@ -4,6 +4,7 @@ import {
   useReleases,
   useRestoreRelease,
   useSavePolicy,
+  useAutoSend,
   useSimulation,
   type BusinessHours,
   type Day,
@@ -253,7 +254,6 @@ function Preview({ config }: { config: PolicyConfig }) {
       </div>
       {sim.isError && <p className="error">Nội dung chưa hợp lệ nên chưa xem thử được.</p>}
       {sim.data && <p className="muted">{describeOutcome(sim.data)}</p>}
-      <p className="muted">Bước này chưa gửi tin tự động cho khách: tin chỉ được ghi lại để xem trong Trace.</p>
     </section>
   );
 }
@@ -377,6 +377,30 @@ function History({ canManage }: { canManage: boolean }) {
   );
 }
 
+function AutoSendSwitch({ hasRelease, on, canManage }: { hasRelease: boolean; on: boolean; canManage: boolean }) {
+  const toggle = useAutoSend();
+  return (
+    <section className="card" aria-labelledby="auto-send">
+      <h2 id="auto-send">Gửi tin tự động cho khách</h2>
+      <label className="row">
+        <input
+          type="checkbox"
+          checked={on}
+          disabled={!canManage || !hasRelease || toggle.isPending}
+          onChange={(e) => toggle.mutate(e.target.checked)}
+        />
+        {on ? "Đang gửi: khách nhận đúng câu bạn viết dưới đây." : "Đang tắt: tin chỉ được ghi lại trong Trace để bạn kiểm tra."}
+      </label>
+      {!hasRelease && <small className="muted">Lưu tin tự động trước rồi mới bật được.</small>}
+      {toggle.isError && (
+        <p className="error" role="alert">
+          Không đổi được. Thử lại sau.
+        </p>
+      )}
+    </section>
+  );
+}
+
 export function PolicyPage({ canManage }: { canManage: boolean }) {
   const policy = usePolicy();
   if (policy.isError)
@@ -386,10 +410,11 @@ export function PolicyPage({ canManage }: { canManage: boolean }) {
       </p>
     );
   if (!policy.data) return <p className="state">Đang tải…</p>;
-  const { release, suggested } = policy.data;
+  const { release, suggested, auto_send } = policy.data;
   return (
     <div className="admin-page">
       <h1>Giờ làm việc và tin tự động</h1>
+      <AutoSendSwitch hasRelease={release !== null} on={auto_send} canManage={canManage} />
       {/* key: lưu/khôi phục ⇒ phiên bản mới ⇒ bản nháp dựng lại từ server */}
       <Editor
         key={release?.id ?? "suggested"}

@@ -273,7 +273,7 @@ export function App({ publicKey }: { publicKey: string }) {
         <li className="msg them">{greeting}</li>
         {chat.messages.map((m) => (
           <li key={m.id} className={m.direction === "inbound" ? "msg me" : "msg them"}>
-            <span className="sr-only">{m.direction === "inbound" ? t.you : t.staff}: </span>
+            <span className="sr-only">{m.direction === "inbound" ? t.you : m.sender_type === "system" ? t.auto : t.staff}: </span>
             {m.text /* chỉ text: React escape, không HTML/markdown/linkify (thiết kế §9.3) */}
           </li>
         ))}

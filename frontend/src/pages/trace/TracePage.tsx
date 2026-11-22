@@ -12,7 +12,7 @@ import {
   type RunStatus,
   type Source,
 } from "../../entities/agent-run/trace";
-import { handlingLabel } from "../../entities/policy/form";
+import { handlingLabel, sendBlockLabel } from "../../entities/policy/form";
 import { useEntries, useProduct, type DocEntry, type FaqEntry } from "../../entities/knowledge/api";
 import { formatTime } from "../../shared/lib/format";
 
@@ -101,7 +101,7 @@ function RunView({ run }: { run: RunDetail }) {
             <div className="card">
               <p className="pre">{run.policy.canned_text}</p>
               <small className="muted">
-                {run.policy.sent ? "Đã gửi cho khách." : "Lẽ ra sẽ gửi: bước này chỉ ghi lại, chưa gửi cho khách."}
+                {run.policy.sent ? "Đã gửi cho khách." : `Lẽ ra sẽ gửi, nhưng chưa gửi: ${sendBlockLabel(run.policy.send_block)}.`}
               </small>
             </div>
           ) : (
