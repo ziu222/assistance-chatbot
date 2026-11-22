@@ -66,3 +66,12 @@ describe("stepSummary", () => {
     );
   });
 });
+
+describe("signal steps", () => {
+  it("summarizes recorded escalation signals", () => {
+    expect(stepSummary(step({ kind: "signal", name: "behavior", detail: { signals: ["repeat", "negation"], score: 3 } }))).toBe(
+      "hỏi lặp lại, phủ nhận câu trả lời · điểm 3",
+    );
+    expect(stepSummary(step({ kind: "signal", detail: { signals: [], score: 0 } }))).toBe("không có · điểm 0");
+  });
+});
