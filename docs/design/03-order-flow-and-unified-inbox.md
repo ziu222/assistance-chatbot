@@ -1,6 +1,6 @@
 # Thiết kế: quy trình đặt hàng theo từng shop và inbox hợp nhất nhiều kênh
 
-- Trạng thái: **O2 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval); O3–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
+- Trạng thái: **O2 và O3 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval; màn hình đơn chờ xác nhận, xác nhận/sửa/hủy, hết hạn, xóa dữ liệu cá nhân); O4–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (§12 chính sách hội thoại, ticket, `SendGate`; §13 nguồn tri thức linh hoạt), [docs/evals/return-questions.md](../evals/return-questions.md).
 
@@ -117,6 +117,14 @@ Khối `<order_flow>` thay đổi theo từng hội thoại, nên đặt **sau**
 - Inbox có mục "Đơn chờ xác nhận". Thẻ phiếu hiện món, biến thể, số lượng, tạm tính và các trường đã có hoặc còn thiếu. Nhân viên có ba thao tác: **Xác nhận**, **Sửa**, **Hủy**.
 - Phiếu `ready` tự mở một ticket nhờ nhân viên (`handoff_requests.source = 'order'`), để dùng chung hàng đợi, quyền nhận ca và đo thời gian phản hồi đã có.
 - Báo ra ngoài Atlas (email, Zalo cho chủ shop) là giai đoạn sau. Nội dung báo chỉ gồm "có đơn mới" kèm link về Atlas, không có dữ liệu cá nhân.
+
+Đã implement (O3):
+
+- `GET /api/v1/order-requests?status=…` (mặc định: `ready`, `collecting`; che số điện thoại), `GET /api/v1/order-requests/{id}` (đầy đủ, kèm `stock_now` tra lại catalog), `PATCH` (sửa trường khách, số lượng, biến thể), `POST /{id}/confirm`, `POST /{id}/cancel`.
+- Sửa phiếu: trường nhân viên sửa không còn "chưa xác minh" và được ghi vào `staff_edited`; phiếu vừa đủ thông tin thì mở ticket.
+- Xác nhận/hủy đóng ticket `source = 'order'` đi kèm và ghi `learning_signals` loại `order_confirmed` / `order_cancelled` (chỉ tên trường: `staff_edited`, `unverified_left`, `missing_at_close`, kênh).
+- Relay worker chạy việc định kỳ mỗi 10 phút: phiếu `collecting` không đổi trong 72 giờ ⇒ `expired`; xóa trường cá nhân sau 30 ngày (hủy/quá hạn) hoặc 180 ngày (đã xác nhận). Các mốc là hằng số chung, chưa chỉnh theo shop.
+- Inbox nhận tín hiệu `order_request.updated` qua SSE. Màn hình "Đơn hàng" trong admin là UI thử nghiệm.
 
 ### 5.4. Dữ liệu cá nhân
 
