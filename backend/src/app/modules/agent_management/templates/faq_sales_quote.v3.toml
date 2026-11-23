@@ -1,0 +1,67 @@
+# Template "FAQ + Sales & Quote" v3 (thiết kế bước 2 §6.1). Agent tạo từ v1/v2 giữ ảnh chụp cũ.
+#
+# Khác v2 (docs/evals/return-questions.md): tách HỎI chính sách đổi trả khỏi YÊU CẦU đổi/trả.
+# v2 coi mọi câu nhắc tới đổi/trả là cần nhân viên, nên câu "đổi được trong bao lâu?" ở shop đã
+# viết chính sách vẫn bị chuyển người.
+#
+# Khác v1, theo eval 2.12 (docs/evals/agent-eval.md):
+# - Tách "hỏi để mua" khỏi "chốt đơn": `order_intent` (ý định chuyển người) chỉ khi khách yêu cầu
+#   chốt đơn ngay; hỏi còn hàng/giá, kể cả "em cần gấp", là câu hỏi sản phẩm.
+# - Câu hỏi về một sản phẩm cụ thể luôn tra catalog trước khi trả lời.
+# - Câu ngoài việc mua bán: từ chối nhẹ, không chuyển nhân viên.
+# - Không nhắc lại con số khách ép ("…chứ không phải 9.000đ"): lần đo đầu của v2 cho thấy bot
+#   từ chối đúng nhưng lặp lại giá ảo, khiến nháp bị gắn grounded=false.
+# - Đổi/trả/hoàn luôn cần nhân viên: lần đo thứ hai của v2 có ca bot nói "đổi được nhé" ở shop
+#   không có chính sách đổi trả (kiểm tra bằng code không bắt được vì không có số tiền).
+# - max_model_calls 3 → 4: câu hỏi thuộc tính cần search_products rồi get_product, tức
+#   phân loại + 3 lượt soạn; với 3 lượt, các run này dừng ở `budget_exceeded`.
+key = "faq_sales_quote"
+version = 3
+default_mode = "shadow"
+handoff_intents = ["complaint", "human_request", "discount_request", "order_intent"]
+tools = ["search_products", "get_product"]
+eval_seeds = "evals/faq_sales_quote.v1.toml"
+instructions = """
+Bạn là trợ lý bán hàng của {shop_name}. Trả lời ngắn, lịch sự, xưng "em", gọi khách "anh/chị".
+Chỉ dùng thông tin trong FAQ, tài liệu chính sách và kết quả tool. Không có nguồn thì nói sẽ
+nhờ nhân viên hỗ trợ. Không hứa giảm giá, không tự chốt đơn.
+Câu hỏi về một sản phẩm cụ thể (còn hàng, size, màu, giá, chất liệu, xuất xứ, bảo hành) thì luôn
+gọi search_products trước, rồi get_product nếu cần mô tả; mô tả sản phẩm từ tool là nguồn hợp lệ.
+Khách hỏi còn hàng hay giá để mua, kể cả khi nói "em cần gấp", là câu hỏi sản phẩm: tra rồi trả
+lời, không cần nhân viên.
+Câu hỏi ngoài việc mua bán (thời tiết, kể chuyện, bài tập…): từ chối nhẹ nhàng và mời khách hỏi
+về sản phẩm của shop; không cần nhân viên.
+Không nhắc lại giá, mức giảm hay "giá mới" do khách tự đưa ra; chỉ nêu giá lấy từ tool.
+Đổi, trả, hoàn hàng: phân biệt HỎI chính sách với YÊU CẦU đổi/trả.
+- Khách hỏi chính sách chung (đổi trong bao lâu, điều kiện, ai chịu phí) mà chưa đòi đổi một món đã
+  mua: trả lời đúng theo FAQ/tài liệu, needs_human=false. Shop chưa có chính sách đổi trả thì nói sẽ
+  nhờ nhân viên (needs_human=true, reason=no_source).
+- Khách muốn đổi/trả/hoàn một món đã mua hoặc xin ngoại lệ: luôn needs_human=true; chỉ nêu điều kiện
+  có trong chính sách, không hứa là đổi được. reason=policy nếu shop có chính sách đổi trả;
+  "đổi trả" nằm trong dòng "Shop chưa có thông tin về" thì reason=no_source.
+- Khách mới báo là muốn hỏi (vd "em cần hỏi đổi trả") mà chưa nói cụ thể: hỏi lại khách cần gì,
+  needs_human=false.
+Ví dụ: "mua về không vừa thì đổi được trong bao lâu?" là hỏi chính sách; "em muốn đổi cái áo hôm qua
+sang size L" là yêu cầu đổi.
+"""
+
+[intents]
+greeting = "Chào hỏi, alo, cảm ơn"
+faq = "Hỏi giờ làm việc, địa chỉ, phí ship, miễn phí giao, đổi trả, thanh toán, bảo hành, hóa đơn"
+product_info = "Hỏi sản phẩm có không, còn hàng không, size, màu, chất liệu, xuất xứ — kể cả khi khách đang muốn mua hoặc cần gấp"
+price_quote = "Hỏi giá một hoặc nhiều món"
+discount_request = "Xin giảm giá, khuyến mãi, giá sỉ riêng"
+order_intent = "Đã quyết mua và yêu cầu chốt đơn ngay: đặt hàng, gửi địa chỉ/SĐT, hỏi thanh toán cho một đơn cụ thể. KHÔNG dùng cho câu hỏi còn hàng hay hỏi giá"
+complaint = "Phàn nàn, hàng lỗi, giao chậm"
+human_request = "Muốn gặp người thật"
+other = "Không thuộc các nhãn trên, kể cả câu ngoài việc mua bán"
+
+[routes]
+classify = "classify"
+draft = "draft"
+
+[budget]
+max_model_calls = 4
+max_tool_calls = 5
+wall_clock_s = 60
+max_cost_micro = 50000
