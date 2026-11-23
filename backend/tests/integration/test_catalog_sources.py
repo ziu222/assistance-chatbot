@@ -207,3 +207,31 @@ async def test_sources_api(app_client, session_factory):
         ("sheets", "failed"),
     ]
     assert datetime.fromisoformat(body["runs"][0]["finished_at"]) <= datetime.now(UTC)
+
+
+async def test_scheduler_syncs_each_due_source_once_per_interval(session_factory):
+    from datetime import timedelta
+
+    from app.modules.knowledge.infrastructure.catalog_sync import sync_due_sources
+
+    t1, t2 = await tenant(session_factory), await tenant(session_factory)
+    async with session_factory() as s, s.begin():
+        await s.execute(text("DELETE FROM catalog_sources"))  # nguồn của test khác
+        for t in (t1, t2):
+            await save_source_config(s, t, "sheets", {"spreadsheet_id": SHEET_ID, "range": "A:G"})
+    creds, pem = service_account()
+    hour = timedelta(hours=1)
+
+    http, calls = fake_google(pem, ROWS)
+    assert await sync_due_sources(session_factory, creds, http, hour) == 2
+    assert await sync_due_sources(session_factory, creds, http, hour) == 0  # chưa tới hạn
+    assert len(calls) == 4
+
+    # Lần thất bại cũng tính là đã thử: không gọi lại nguồn hỏng liên tục.
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text("UPDATE catalog_sync_runs SET finished_at = now() - interval '2 hours'")
+        )
+    http, _ = fake_google(pem, [], status=403)
+    assert await sync_due_sources(session_factory, creds, http, hour) == 2
+    assert await sync_due_sources(session_factory, creds, http, hour) == 0

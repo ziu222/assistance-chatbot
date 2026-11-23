@@ -47,6 +47,7 @@ class Settings(BaseSettings):
 
     # Google Sheets (§13.2): JSON key của service account, chỉ quyền đọc. Rỗng = tắt nguồn Sheets.
     google_service_account_json: str = ""
+    catalog_sync_interval_minutes: int = 60  # lịch sync tự động các nguồn ngoài
 
 
 @lru_cache
