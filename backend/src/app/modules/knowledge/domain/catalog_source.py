@@ -10,7 +10,7 @@ import unicodedata
 from dataclasses import dataclass
 from typing import Any
 
-from app.modules.knowledge.domain.catalog_csv import ParsedItem
+from app.modules.knowledge.domain.catalog_csv import ParsedItem, parse_url
 from app.modules.knowledge.domain.text import fold
 
 SOURCES = ("csv", "sheets", "shopee", "tiktok")
@@ -34,6 +34,7 @@ class NormalizedItem:
     price_vnd: int
     variants: list[dict]
     search_text: str
+    url: str | None = None
 
 
 def clean_for_search(value: str) -> str:
@@ -64,6 +65,7 @@ def normalize(item: ParsedItem, external_id: str) -> NormalizedItem:
         price_vnd=item.price_vnd,
         variants=item.variants,
         search_text=clean_for_search(f"{item.name} {item.description or ''}"),
+        url=item.url,
     )
 
 
@@ -87,5 +89,6 @@ def from_market_listing(raw: dict[str, Any]) -> NormalizedItem:
         description=str(raw.get("description") or "").strip() or None,
         price_vnd=price,  # giá bán; price_original bị bỏ qua có chủ đích
         variants=variants,
+        url=parse_url(raw.get("url")),  # link sai ⇒ ValueError như mọi trường bắt buộc khác
     )
     return normalize(item, external_id)

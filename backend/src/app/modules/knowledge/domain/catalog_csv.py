@@ -4,8 +4,11 @@ import csv
 import io
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
+from urllib.parse import urlsplit
 
 REQUIRED = ("sku", "name", "description", "price_vnd", "size", "color", "stock")
+# Cột tùy chọn: `url` = trang sản phẩm (website hoặc sàn) để bot gửi khách (thiết kế 03 O4).
+MAX_URL = 500
 MAX_ROWS = 5000
 MAX_ERRORS = 20
 
@@ -23,6 +26,23 @@ class ParsedItem:
     description: str | None
     price_vnd: int
     variants: list[dict] = field(default_factory=list)
+    url: str | None = None
+
+
+def parse_url(value: str | None) -> str | None:
+    """Chỉ nhận link https có tên miền, không khoảng trắng. Rỗng ⇒ None; sai ⇒ ValueError."""
+    value = (value or "").strip()
+    if not value:
+        return None
+    parts = urlsplit(value)
+    if (
+        parts.scheme != "https"
+        or not parts.netloc
+        or len(value) > MAX_URL
+        or any(c.isspace() for c in value)
+    ):
+        raise ValueError("url must be a full https link")
+    return value
 
 
 def _int(value: str, column: str, line: int, errors: list[str]) -> int | None:
@@ -78,9 +98,17 @@ def parse_catalog_records(
             continue
 
         description = (row["description"] or "").strip() or None
+        try:
+            url = parse_url(row.get("url"))
+        except ValueError as exc:
+            errors.append(f"line {line}: {exc}")
+            continue
         item = items.get(sku)
         if item is None:
-            item = items[sku] = ParsedItem(sku, name, description, price)
+            item = items[sku] = ParsedItem(sku, name, description, price, url=url)
+        elif url and item.url and url != item.url:
+            errors.append(f"line {line}: sku {sku} has a different url than before")
+            continue
         elif (item.name, item.price_vnd) != (name, price):
             errors.append(f"line {line}: sku {sku} has a different name or price than before")
             continue
