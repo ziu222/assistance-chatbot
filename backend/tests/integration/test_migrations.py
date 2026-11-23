@@ -51,6 +51,8 @@ CORE_TABLES = {
     "policy_decisions",
     "handoff_requests",
     "learning_signals",
+    "writing_requests",
+    "brand_profiles",
     "tenant_ai_settings",
     "agents",
     "agent_versions",

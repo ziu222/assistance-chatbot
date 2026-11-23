@@ -56,13 +56,19 @@ async def record_usage(
     return cost
 
 
-async def spent_today_micro(s: AsyncSession, tenant_id: UUID) -> int:
-    """Chi tiêu LLM của tenant từ 00:00 UTC hôm nay (cho trần chi phí ngày, thiết kế §7.3)."""
+AUTHORING = "authoring"  # trợ lý viết có trần riêng, không ăn vào trần của nháp (§12.8)
+
+
+async def spent_today_micro(s: AsyncSession, tenant_id: UUID, *, authoring: bool = False) -> int:
+    """Chi tiêu LLM của tenant từ 00:00 UTC hôm nay (trần chi phí ngày, thiết kế §7.3).
+
+    `authoring=False`: mọi mục đích trừ trợ lý viết; `True`: chỉ trợ lý viết."""
+    op = "=" if authoring else "<>"
     row = await s.execute(
         text(
             "SELECT coalesce(sum(cost_micro), 0) FROM usage_events "
-            f"WHERE tenant_id = :t AND created_at >= {_UTC_MIDNIGHT}"
+            f"WHERE tenant_id = :t AND created_at >= {_UTC_MIDNIGHT} AND purpose {op} :a"
         ),
-        {"t": tenant_id},
+        {"t": tenant_id, "a": AUTHORING},
     )
     return int(row.scalar_one())

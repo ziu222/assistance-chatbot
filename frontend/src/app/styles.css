@@ -751,3 +751,31 @@ textarea {
 .bubble.out.auto time {
   color: var(--muted);
 }
+
+/* --- Trợ lý viết (2.11) --- */
+.suggest {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.suggestion.blocked {
+  border-color: #f3c4bf;
+  background: #fdf3f2;
+}
+
+.suggestion ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+}

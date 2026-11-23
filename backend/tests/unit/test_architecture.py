@@ -50,14 +50,14 @@ def test_runtime_never_writes_to_messages_table():
     assert offenders == []
 
 
-POLICY_DOMAIN = RUNTIME.parent / "conversation_policy" / "domain"
+PURE_DOMAINS = [RUNTIME.parent / m / "domain" for m in ("conversation_policy", "authoring")]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
 
 
 def test_policy_domain_is_pure():
     """`decide` và giờ làm việc là hàm thuần (§12.2): worker và trình mô phỏng gọi chung."""
-    files = sorted(POLICY_DOMAIN.rglob("*.py"))
-    assert files, "conversation_policy/domain not found"
+    files = sorted(f for d in PURE_DOMAINS for f in d.rglob("*.py"))
+    assert len({f.parent for f in files}) >= 2, "pure domain folders not found"
     offenders = []
     for path in files:
         for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
