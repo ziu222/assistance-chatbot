@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **2.1–2.13 đã implement**; 2.14 (adapter Shopee/TikTok qua API chính thức) còn là thiết kế — chi tiết ở §12 và §13.
+- Trạng thái: **2.1–2.13 đã implement**; 2.14 (adapter Shopee/TikTok qua API chính thức) còn là thiết kế — chi tiết ở §12 và §13. Quy trình đặt hàng và inbox nhiều kênh: [03-order-flow-and-unified-inbox.md](03-order-flow-and-unified-inbox.md).
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
