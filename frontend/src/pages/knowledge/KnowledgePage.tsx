@@ -2,8 +2,10 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import {
   useArchiveEntry,
   useCatalogSearch,
+  useCoverage,
   useCreateEntry,
   useEntries,
+  useGaps,
   useImportCatalog,
   useUpdateEntry,
   type DocEntry,
@@ -233,6 +235,50 @@ function CatalogTab({ canManage }: { canManage: boolean }) {
   );
 }
 
+/** Shop không cần viết đủ mọi thứ; chỉ cần biết chỗ nào còn thiếu và bot sẽ làm gì ở đó. */
+function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: () => void }) {
+  const coverage = useCoverage();
+  const gaps = useGaps(7);
+  if (!coverage.data) return null;
+  const missing = coverage.data.items.filter((c) => !c.covered);
+  const asked = gaps.data?.items ?? [];
+  return (
+    <section className="card" aria-labelledby="coverage">
+      <h3 id="coverage">Độ phủ kiến thức</h3>
+      <ul className="plain">
+        {coverage.data.items.map((c) => (
+          <li key={c.topic}>
+            {c.covered ? "✓" : "○"} {c.label}
+            {c.covered && <small className="muted"> — {c.sources.map((x) => x.title).join(", ")}</small>}
+          </li>
+        ))}
+      </ul>
+      {missing.length > 0 && (
+        <p className="muted">
+          Bạn chưa có thông tin về {missing.map((c) => c.label).join(", ")}. Khi khách hỏi, bot sẽ nhờ nhân viên thay vì đoán.
+        </p>
+      )}
+      {asked.length > 0 && (
+        <>
+          <h4>Khách hỏi mà bot chưa có nguồn (7 ngày qua)</h4>
+          <ul className="plain">
+            {asked.map((g) => (
+              <li key={g.topic}>
+                {g.label}: {g.count} lần
+              </li>
+            ))}
+          </ul>
+          {canManage && (
+            <button type="button" onClick={onWrite}>
+              Viết câu trả lời
+            </button>
+          )}
+        </>
+      )}
+    </section>
+  );
+}
+
 const TABS: { id: "faq" | "doc" | "catalog"; label: string }[] = [
   { id: "faq", label: "FAQ" },
   { id: "doc", label: "Tài liệu" },
@@ -245,6 +291,7 @@ export function KnowledgePage({ canManage }: { canManage: boolean }) {
     <div className="admin-page">
       <h1>Kiến thức</h1>
       {!canManage && <p className="muted">Bạn chỉ có quyền xem.</p>}
+      <CoverageCard canManage={canManage} onWrite={() => setTab("faq")} />
       <div role="tablist" className="tabs">
         {TABS.map((t) => (
           <button

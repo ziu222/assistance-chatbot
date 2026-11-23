@@ -16,6 +16,8 @@ export type Product = {
   price_vnd: number;
   variants: { size?: string; color?: string; stock?: number }[];
 };
+export type Coverage = { topic: string; label: string; covered: boolean; sources: { type: Kind; id: string; title: string }[] };
+export type Gap = { topic: string; label: string; count: number };
 export type ImportResult = { items: number; created: number; updated: number };
 
 const PATH: Record<Kind, string> = { faq: "/api/v1/knowledge/faqs", doc: "/api/v1/knowledge/docs" };
@@ -28,7 +30,7 @@ export function useCreateEntry(kind: Kind) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (body: Record<string, string>) => apiFetch<Entry>(PATH[kind], { method: "POST", body }),
-    onSuccess: () => qc.invalidateQueries({ queryKey: key(kind) }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }), // độ phủ đổi theo
   });
 }
 
@@ -37,7 +39,7 @@ export function useUpdateEntry(kind: Kind) {
   return useMutation({
     mutationFn: ({ id, ...body }: { id: string } & Record<string, string>) =>
       apiFetch<Entry>(`${PATH[kind]}/${id}`, { method: "PATCH", body }),
-    onSuccess: () => qc.invalidateQueries({ queryKey: key(kind) }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }), // độ phủ đổi theo
   });
 }
 
@@ -45,7 +47,7 @@ export function useArchiveEntry(kind: Kind) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (id: string) => apiFetch<void>(`${PATH[kind]}/${id}`, { method: "DELETE" }),
-    onSuccess: () => qc.invalidateQueries({ queryKey: key(kind) }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }), // độ phủ đổi theo
   });
 }
 
@@ -68,4 +70,18 @@ export const useProduct = (id: string | null) =>
     queryKey: ["catalog-item", id],
     queryFn: () => apiFetch<Product>(`/api/v1/catalog/items/${id}`),
     enabled: id !== null,
+  });
+
+/** Chủ đề nào shop đã viết (FAQ/tài liệu đã duyệt), chủ đề nào chưa (§13.3). */
+export const useCoverage = () =>
+  useQuery({
+    queryKey: ["knowledge", "coverage"],
+    queryFn: () => apiFetch<{ items: Coverage[] }>("/api/v1/knowledge/coverage"),
+  });
+
+/** Số lần bot phải nhờ nhân viên vì thiếu nguồn, theo chủ đề. */
+export const useGaps = (days = 7) =>
+  useQuery({
+    queryKey: ["knowledge", "gaps", days],
+    queryFn: () => apiFetch<{ days: number; items: Gap[] }>(`/api/v1/knowledge/gaps?days=${days}`),
   });
