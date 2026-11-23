@@ -23,20 +23,21 @@ class CatalogItem:
     variants: list[dict]
     source: str = "csv"
     synced_at: datetime | None = None
+    url: str | None = None
 
 
-_COLUMNS = "id, sku, name, description, price_vnd, variants, source, synced_at"
+_COLUMNS = "id, sku, name, description, price_vnd, variants, source, synced_at, url"
 
 _UPSERT = text(
     """
     INSERT INTO catalog_items (id, tenant_id, source, external_id, sku, name, description,
-                               price_vnd, variants, search_text)
+                               price_vnd, variants, search_text, url)
     VALUES (:id, :t, :src, :ext, :sku, :name, :description, :price, CAST(:variants AS jsonb),
-            :search)
+            :search, :url)
     ON CONFLICT (tenant_id, source, external_id) DO UPDATE SET
       sku = EXCLUDED.sku, name = EXCLUDED.name, description = EXCLUDED.description,
       price_vnd = EXCLUDED.price_vnd, variants = EXCLUDED.variants,
-      search_text = EXCLUDED.search_text, active = true, synced_at = now()
+      search_text = EXCLUDED.search_text, url = EXCLUDED.url, active = true, synced_at = now()
     RETURNING (xmax = 0) AS inserted
     """
 )
@@ -96,6 +97,7 @@ async def sync_catalog(
                     "price": item.price_vnd,
                     "variants": json.dumps(item.variants, ensure_ascii=False),
                     "search": item.search_text,
+                    "url": item.url,
                 },
             )
         ).scalar_one()

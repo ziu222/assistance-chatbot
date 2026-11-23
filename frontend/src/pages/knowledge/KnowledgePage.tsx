@@ -179,8 +179,8 @@ function CatalogTab({ canManage }: { canManage: boolean }) {
         <section className="card" aria-labelledby="catalog-import">
           <h3 id="catalog-import">Nhập catalog từ CSV</h3>
           <p className="muted">
-            UTF-8, tối đa 2 MB, cột: <code>{CSV_HEADER}</code>. Cập nhật theo <code>sku</code>; một dòng lỗi thì không nhập
-            gì cả.
+            UTF-8, tối đa 2 MB, cột: <code>{CSV_HEADER}</code> (thêm cột <code>url</code> nếu muốn bot gửi link trang sản
+            phẩm). Cập nhật theo <code>sku</code>; một dòng lỗi thì không nhập gì cả.
           </p>
           <input type="file" accept=".csv,text/csv" onChange={onFile} disabled={importer.isPending} aria-label="Chọn file CSV" />
           {importer.isPending && <p className="state">Đang nhập…</p>}

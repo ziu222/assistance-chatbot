@@ -1,6 +1,6 @@
 # Thiết kế: quy trình đặt hàng theo từng shop và inbox hợp nhất nhiều kênh
 
-- Trạng thái: **O2 và O3 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval; màn hình đơn chờ xác nhận, xác nhận/sửa/hủy, hết hạn, xóa dữ liệu cá nhân); O4–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
+- Trạng thái: **O2–O4 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval; màn hình đơn chờ xác nhận, xác nhận/sửa/hủy, hết hạn, xóa dữ liệu cá nhân; link trang sản phẩm); O5–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (§12 chính sách hội thoại, ticket, `SendGate`; §13 nguồn tri thức linh hoạt), [docs/evals/return-questions.md](../evals/return-questions.md).
 
@@ -70,6 +70,16 @@ OrderFlowConfig
 | `website_checkout` | Gửi link thanh toán của website | Website có trang thanh toán |
 
 Link chỉ lấy từ catalog (cột `url` mới, do adapter nguồn điền). Bước kiểm tra nháp hiện chặn mọi URL; sẽ đổi thành "chỉ cho phép URL có trong kết quả tool của run đó".
+
+Đã implement (O4):
+
+- `catalog_items.url` (chỉ `https://`, kiểm tra cả ở DB). Có thêm cột tùy chọn `url` trong CSV/Sheets; adapter sàn đọc `url` của bản ghi. Tool trả `url` khi sản phẩm có link.
+- Bước kiểm tra nháp chỉ cho phép link **trùng nguyên văn** một link tool đã trả trong run, hoặc `checkout_url` chủ shop cấu hình. Thêm tham số, sửa đường dẫn hay `www.` lạ đều làm nháp `grounded = false`.
+- `plan()` (code) quyết định cách hướng khách thực tế:
+  - Hướng khách bằng link thì chỉ hỏi món, size/màu, số lượng; không hỏi thông tin cá nhân.
+  - Món không có link, hoặc chưa cấu hình `checkout_url`, ⇒ quay về `staff_confirms`.
+- Phiếu đủ thông tin với cách hướng khách bằng link: chuyển `ready`, nhưng không mở ticket và nháp không cần nhân viên (khách tự đặt trên trang đó). Sau 72 giờ phiếu tự `expired`. Cột `order_requests.destination` ghi cách hướng khách đã dùng.
+- Chưa đo bằng eval với LLM thật: các shop giả lập chưa có link sản phẩm.
 
 ### 4.2. Phiên bản và phát hành
 

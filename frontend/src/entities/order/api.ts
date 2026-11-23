@@ -14,6 +14,7 @@ export type OrderRequest = {
   conversation_id: string;
   status: "collecting" | "ready" | "confirmed" | "cancelled" | "expired";
   channel: string;
+  destination: "staff_confirms" | "product_link" | "marketplace_link" | "website_checkout";
   customer_name: string | null;
   items: OrderItem[];
   subtotal_vnd: number;

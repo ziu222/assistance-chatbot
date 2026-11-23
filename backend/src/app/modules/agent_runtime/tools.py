@@ -92,7 +92,7 @@ def _project(item: CatalogItem) -> dict[str, Any]:
         "price_vnd": item.price_vnd,
         "variants": item.variants,
         "synced_at": item.synced_at.isoformat(timespec="minutes") if item.synced_at else None,
-    }
+    } | ({"url": item.url} if item.url else {})  # link trang sản phẩm, nếu nguồn có
 
 
 async def run_tool(s: AsyncSession, tenant_id: UUID, name: str, args: dict[str, Any]) -> ToolResult:

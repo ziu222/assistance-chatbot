@@ -38,7 +38,11 @@ function Card({ o, open, onToggle }: { o: OrderRequest; open: boolean; onToggle:
       <div className="row">
         <strong>{o.customer_name ?? "Khách"}</strong>
         <span className={`badge ${o.status === "ready" ? "handoff_suggested" : "ok"}`}>
-          {o.status === "ready" ? "Đủ thông tin, chờ xác nhận" : "Bot đang hỏi thêm"}
+          {o.status !== "ready"
+            ? "Bot đang hỏi thêm"
+            : o.destination === "staff_confirms"
+              ? "Đủ thông tin, chờ xác nhận"
+              : "Đã gửi link, khách tự đặt"}
         </span>
         <small className="muted">{o.channel}</small>
       </div>

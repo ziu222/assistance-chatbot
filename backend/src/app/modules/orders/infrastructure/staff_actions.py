@@ -15,7 +15,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.modules.conversation_policy.infrastructure.handoffs import record_signal, transition
-from app.modules.orders.domain.order_flow import OrderFlowConfig, mask_phone, missing_fields
+from app.modules.orders.domain.order_flow import OrderFlowConfig, mask_phone, missing_fields, plan
 from app.modules.orders.infrastructure.repository import OrderRequest, save_request
 
 log = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ OPEN = ("collecting", "ready")
 _SELECT = """
     SELECT o.id, o.conversation_id, o.status, o.channel, o.items, o.subtotal_vnd,
            o.customer_fields, o.unverified, o.missing_fields, o.staff_edited, o.opened_at,
-           o.ready_at, o.closed_at, o.flow_release_id, cu.display_name
+           o.ready_at, o.closed_at, o.flow_release_id, o.destination, cu.display_name
     FROM order_requests o
     JOIN conversations c ON c.tenant_id = o.tenant_id AND c.id = o.conversation_id
     LEFT JOIN customers cu ON cu.tenant_id = c.tenant_id AND cu.id = c.customer_id
@@ -46,6 +46,7 @@ def _json(r: Any, *, full: bool) -> dict:
         "conversation_id": str(r.conversation_id),
         "status": r.status,
         "channel": r.channel,
+        "destination": r.destination,
         "customer_name": r.display_name,
         "items": [
             {k: i.get(k) for k in ("sku", "name", "variant", "quantity", "unit_price_vnd")}
@@ -152,13 +153,15 @@ async def edit_request(
         items[0]["variant"] = variant
         edited.add("variant")
     cfg = await _config(s, tenant_id, r.flow_release_id)
+    required, destination, _ = plan(cfg, r.channel, items)
     req = OrderRequest(
         id=r.id,
         status=r.status,
         items=items,
         customer=cust,
         unverified=sorted(set(r.unverified) - edited),
-        missing=missing_fields(cfg.for_channel(r.channel)[0], items, cust),
+        missing=missing_fields(required, items, cust),
+        destination=destination,
     )
     await save_request(
         s,
@@ -248,7 +251,10 @@ async def expire_and_purge(s: AsyncSession) -> dict[str, int]:
             text(
                 "UPDATE order_requests SET status = 'expired', closed_at = now(), "
                 "updated_at = now() "
-                "WHERE status = 'collecting' AND updated_at < now() - make_interval(hours => :h)"
+                # Phiếu đã gửi link: khách tự đặt trên trang đó, không ai xác nhận ở Atlas.
+                "WHERE (status = 'collecting' OR (status = 'ready' "
+                "AND destination <> 'staff_confirms')) "
+                "AND updated_at < now() - make_interval(hours => :h)"
             ),
             {"h": COLLECTING_EXPIRES_H},
         )

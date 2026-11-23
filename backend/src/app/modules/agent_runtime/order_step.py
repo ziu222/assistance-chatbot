@@ -17,6 +17,7 @@ from app.modules.orders.domain.order_flow import (
     OrderFlowConfig,
     extract_phone,
     missing_fields,
+    plan,
     render_block,
 )
 from app.modules.orders.infrastructure.repository import (
@@ -37,7 +38,7 @@ class OrderContext:
 
     @property
     def required(self) -> list[str]:
-        return self.config.for_channel(self.provider)[0]
+        return plan(self.config, self.provider, self.request.items)[0]
 
     def block(self) -> str:
         r = self.request
@@ -109,6 +110,7 @@ def apply_draft(ctx: OrderContext, order: OrderFields, products: dict[str, dict]
                 "needs_variant": len(options) > 1,
                 "variant": item.get("variant") or (options[0] if len(options) == 1 else None),
                 "quantity": item.get("quantity") or 0,
+                "url": product.get("url"),
             }
         ]
     if req.items:
@@ -123,5 +125,6 @@ def apply_draft(ctx: OrderContext, order: OrderFields, products: dict[str, dict]
         if value:
             req.customer = req.customer | {f: value}
             req.unverified = sorted(set(req.unverified) | {f})
-    req.missing = missing_fields(ctx.required, req.items, req.customer)
+    required, req.destination, _ = plan(ctx.config, ctx.provider, req.items)
+    req.missing = missing_fields(required, req.items, req.customer)
     return req

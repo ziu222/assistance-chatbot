@@ -204,3 +204,59 @@ async def test_order_flow_api_publish_and_restore(app_client, session_factory):
     assert (
         await client.post("/api/v1/order-flow/releases/9/restore", headers=CSRF)
     ).status_code == 404
+
+
+async def test_product_link_destination_sends_the_catalog_link_without_staff(session_factory):
+    """O4: website gửi link trang sản phẩm; khách tự đặt, không mở ticket, không hỏi SĐT."""
+    from app.modules.knowledge.domain.catalog_csv import parse_catalog_csv
+    from app.modules.knowledge.infrastructure.catalog import import_catalog
+
+    url = "https://shop.vn/ao-khoac-gio"
+    w = await make_world(session_factory)
+    async with session_factory() as s, s.begin():
+        await import_catalog(
+            s,
+            w.tenant_id,
+            parse_catalog_csv(
+                "sku,name,description,price_vnd,size,color,stock,url\n"
+                f"AK-02,Áo khoác gió,Chống nước nhẹ cho đi mưa,350000,M,đen,5,{url}\n"
+            ),
+        )
+    await enable(session_factory, w, by_channel={"webchat": {"destination": "product_link"}})
+    runner, llm = make_runner(
+        session_factory,
+        [
+            classify("order_intent"),
+            search(),
+            lambda req: order_draft(
+                f"Dạ áo khoác gió còn hàng, anh/chị đặt tại đây nhé: {url}",
+                sku=product_from(req)["sku"],
+                quantity=1,
+                sources=[product_from(req)["id"]],
+            ),
+        ],
+    )
+    await runner.handle(await request_for(session_factory, w, ("em muốn đặt 1 áo khoác gió",)))
+
+    assert product_from(llm.requests[-1])["url"] == url  # tool trả link từ catalog
+    [draft] = await drafts(session_factory)
+    assert draft["grounded"] and not draft["needs_human"]
+    [req] = await order_rows(session_factory)
+    assert (req["status"], req["destination"]) == ("ready", "product_link")
+    assert list(req["missing_fields"]) == []  # không hỏi tên/SĐT/địa chỉ khi khách tự đặt
+    async with session_factory() as s:
+        assert (
+            await s.execute(
+                text("SELECT count(*) FROM handoff_requests WHERE tenant_id = :t"),
+                {"t": w.tenant_id},
+            )
+        ).scalar_one() == 0
+
+    # Link không có trong kết quả tool ⇒ nháp bị chặn.
+    runner, _ = make_runner(
+        session_factory,
+        [classify("order_intent"), order_draft("Đặt ở https://shop-gia.vn/ao nhé")],
+    )
+    await runner.handle(await request_for(session_factory, w, ("link đâu shop",)))
+    last = max(await drafts(session_factory), key=lambda d: d["created_at"])
+    assert last["grounded"] is False
