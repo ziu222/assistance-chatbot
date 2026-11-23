@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **2.1–2.10 đã implement**; 2.11–2.13 (trợ lý viết, eval, Sheets) là thiết kế, chưa implement — chi tiết ở §12.
+- Trạng thái: **2.1–2.10 đã implement**; 2.11–2.14 (trợ lý viết, eval, nguồn tri thức linh hoạt, adapter sàn) là thiết kế, chưa implement — chi tiết ở §12 và §13.
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
@@ -34,10 +34,11 @@ Phần mở rộng (2.7–2.11, §12): chủ shop tự cấu hình **giờ làm 
 | 13 | Gửi tin tự động **do chủ shop viết** qua module `outbound` và `SendGate` (§12.6); không gửi output của LLM |
 | 14 | Tín hiệu leo thang ở chế độ chỉ ghi + nhãn "ticket không cần" để đo; `learning_signals` append-only (§12.7, §12.9) |
 | 15 | Trợ lý viết: gợi ý chỉnh câu chữ nhiều mức, kiểm tra giữ sự thật bằng code, chủ shop luôn duyệt (§12.8) |
+| 16 | Nguồn tri thức linh hoạt: catalog qua adapter (nhập tay, CSV, Sheets; Shopee/TikTok tùy chọn), độ phủ tri thức, gợi ý bổ sung khi thiếu căn cứ (§13) |
 
 ### 1.3. Ngoài phạm vi (có chủ đích)
 
-Gửi câu trả lời AI cho khách (Autopilot, bước 5: `SendGate` mở cho nháp `grounded` theo intent), hiển thị nháp cho nhân viên (Learning — bước 4), so sánh shadow + LLM-judge (bước 3), ứng viên học tự động + duyệt một chạm (bước 4, dùng `learning_signals` ghi từ 2.8), tín hiệu leo thang **tự** chuyển người (chỉ sau khi 2.10 có số đo), approval request, tool có side-effect, RAG chunk + embedding, intent-level mode, credit ledger thương mại, Google Sheets OAuth (để sau, xem 2.13), LangGraph, rule engine/DSL do người dùng tự viết.
+Gửi câu trả lời AI cho khách (Autopilot, bước 5: `SendGate` mở cho nháp `grounded` theo intent), hiển thị nháp cho nhân viên (Learning — bước 4), so sánh shadow + LLM-judge (bước 3), ứng viên học tự động + duyệt một chạm (bước 4, dùng `learning_signals` ghi từ 2.8), tín hiệu leo thang **tự** chuyển người (chỉ sau khi 2.10 có số đo), approval request, tool có side-effect, RAG chunk + embedding, intent-level mode, credit ledger thương mại, Google Sheets OAuth người dùng (2.13 dùng service account), đồng bộ ngược lên sàn, LangGraph, rule engine/DSL do người dùng tự viết.
 
 ### 1.4. Bất biến an toàn của bước này
 
@@ -68,6 +69,7 @@ Gửi câu trả lời AI cho khách (Autopilot, bước 5: `SendGate` mở cho 
 | E15 | **Một cổng gửi duy nhất `SendGate`** trong module `outbound`; 2.9 chỉ mở cho tin mẫu do người viết | Mở dần theo rủi ro; `agent_runtime` vẫn bị test kiến trúc cấm gửi | 0033 |
 | E16 | **Trợ lý viết: LLM gợi ý, code kiểm sự thật, người duyệt** (route `authoring` riêng) | Không để model đổi "7 ngày" thành "30 ngày" hay thêm lời hứa | 0033 |
 | E17 | **Tín hiệu học append-only từ đầu; ứng viên học chỉ dựng từ chữ của nhân viên/dữ liệu shop**, không bao giờ từ chữ của khách | Dữ liệu không bổ sung ngược được; chống đầu độc tri thức (PoisonedRAG) | 0030 |
+| E18 | **Tri thức không bắt buộc đầy đủ; catalog đến qua adapter từng nguồn; độ phủ tri thức là dẫn xuất**; thiếu căn cứ ⇒ `no_source` + gợi ý bổ sung | Shop thật hiếm khi có file chính sách đầy đủ, và catalog đến từ nhiều nơi (tự nhập, Sheets, Shopee, TikTok); dữ liệu sàn không tin cậy | 0034 |
 
 **Về Managed Agents của Anthropic:** đó là cách mặc định để có agent mà không phải tự host vòng lặp. Dự án không chọn vì (1) `PROJECT_CONTEXT` §3.4.1 yêu cầu tự viết vòng agent để học và kiểm soát, (2) hội thoại/tenant/audit phải nằm trong DB của mình, (3) vấn đề dữ liệu xuyên biên giới (§16.6) cần quyết định riêng. Ghi trong ADR-0010.
 
@@ -637,7 +639,9 @@ flowchart TD
     P --> W[2.11 Trợ lý viết + hồ sơ thương hiệu]
     E --> G[2.12 Eval runner + red-team + ADR]
     X --> G
-    C --> H[2.13 Google Sheets sync, tùy chọn]
+    C --> H[2.13 Nguồn catalog dạng adapter + độ phủ tri thức + Sheets]
+    H --> M[2.14 Adapter Shopee / TikTok Shop, tùy chọn]
+    H --> G
 ```
 
 Lý do thứ tự: 2.7 và 2.8 là lưới an toàn. Khách phải có lối thoát tới người (ticket) và bot phải biết im khi người đã nhận, **trước khi** hệ thống gửi bất cứ gì tự động (2.9).
@@ -656,7 +660,8 @@ Lý do thứ tự: 2.7 và 2.8 là lưới an toàn. Khách phải có lối tho
 | 2.10 | Tín hiệu hành vi + mở rộng `ClassifyOut` (chỉ ghi), step `signal` trong trace, nhãn "không cần", ADR-0032 | có precision/recall trên dữ liệu thật hoặc demo có nhãn, ghi vào báo cáo eval | **Đã làm** (chỉ ghi, chưa điều khiển). Số đo trên bộ demo 30 ca tổng hợp ở `docs/evals/escalation-signals.md`: hành vi một mình P 80% / R 29% (ngưỡng ≥ 2, không chạm ngưỡng độ nhạy nào); hành vi + ngữ nghĩa như runner ghi P 100% / R 29% ở `high`, R 14% ở `low`; ngữ nghĩa nếu bỏ điều kiện ≥ 4 lượt P 100% / R 86% ở `high`. Độ trễ: hành vi khoảng 13 µs/lượt, ngữ nghĩa không thêm lần gọi LLM (phân loại p50 khoảng 1,2 s). Model đo được là `gpt-4.1-mini` (dự phòng) vì gateway Claude không phản hồi; Claude chưa được đo. Báo cáo theo ticket thật: `GET /api/v1/escalation/report`, hiện ở màn hình Tin tự động. |
 | 2.11 | `POST /writing/suggest`, route `authoring`, kiểm tra giữ sự thật, `brand_profiles`, nút "Gợi ý" | kiểm tra chặn "7 ngày → 30 ngày" và "freeship"; chi phí authoring ghi `usage_events` |
 | 2.12 | Eval runner (Batch API), báo cáo, ADR 0008/0009/0010/0015/0021/0027/0028; thêm ca chính sách và ca leo thang | báo cáo eval có số đo thật |
-| 2.13 | Sync Google Sheets bằng service account read-only | test sync idempotent theo `sku` |
+| 2.13 | Lớp `CatalogSource` + normalize (§13.2), chuyển nhập tay/CSV sang adapter, adapter Google Sheets (service account read-only), `catalog_sync_runs`, chủ đề FAQ/tài liệu + độ phủ + dòng "Shop chưa có thông tin về" (§13.3), `knowledge_gap` + màn hình gợi ý (§13.4), ADR-0034 | test normalize với mẫu thô kiểu sàn; sync idempotent theo `(source, external_id)`; shop thiếu mục ship ⇒ `no_source` + `knowledge_gap`; eval tách theo hồ sơ shop |
+| 2.14 | Adapter Shopee và TikTok Shop qua API chính thức + OAuth của shop; lịch sync, cờ `stale_catalog` (tùy chọn, phụ thuộc duyệt ứng dụng đối tác) | contract test với phản hồi ghi sẵn theo tài liệu chính thức; không gọi mạng trong CI |
 
 ### 11.3. Tiêu chí chấp nhận bước 2
 
@@ -896,6 +901,76 @@ Màn hình: **"Tin tự động"** (mỗi tình huống một thẻ: công tắc
 
 ---
 
-## 13. Tóm tắt một dòng
+## 13. Nguồn tri thức linh hoạt (2.13–2.14)
+
+### 13.1. Vấn đề
+
+Không phải shop nào cũng có sẵn một file chính sách đầy đủ. Có shop viết đủ 8 mục, có shop chỉ chép vài câu FAQ từ trang Shopee, có shop chưa viết gì và chỉ có catalog đồng bộ từ sàn. Catalog cũng đến từ nhiều nơi: shop tự nhập, file CSV, Google Sheets, Shopee, TikTok Shop. Mỗi nơi có định dạng khác nhau: tiêu đề sàn thường nhồi từ khóa và emoji, mô tả có hashtag, đôi khi ghi "giá gốc" cao hơn giá bán.
+
+Pipeline phải chạy được với **mọi mức đầy đủ** đó mà không bắt chủ shop chuẩn bị trước một bộ tài liệu hoàn chỉnh. Khi thiếu căn cứ, bot phải nói sẽ nhờ nhân viên chứ không đoán, và hệ thống nên biến chỗ thiếu thành gợi ý để chủ shop bổ sung dần.
+
+Nền hiện tại đã đúng hướng (§7.3, §7.4): bot chỉ dùng FAQ, tài liệu và kết quả tool; không có nguồn ⇒ `needs_human` với `reason = "no_source"`; số tiền chỉ hợp lệ khi khớp giá tool trả về hoặc số tiền trong FAQ/tài liệu. Phần này bổ sung những gì còn thiếu.
+
+### 13.2. Nguồn catalog dạng adapter
+
+```text
+CatalogSource (một adapter mỗi nguồn: manual, csv, sheets, shopee, tiktok)
+  fetch(cursor) -> Iterable[ExternalProduct]      # dữ liệu thô của nguồn, có external_id
+  → normalize(ExternalProduct) -> CatalogItem     # hàm thuần, test bằng mẫu thô
+  → upsert theo (tenant_id, source, external_id)  # idempotent; sync lại không tạo trùng
+  → sản phẩm không còn ở nguồn sau một lần sync đủ ⇒ active = false (không xóa: nháp cũ vẫn trích được)
+```
+
+- **Một nguồn sở hữu mỗi sản phẩm.** Sản phẩm đồng bộ từ sàn thì sửa ở sàn; Atlas không gộp hai nguồn cho cùng một sản phẩm. Tránh xung đột "giá nào đúng".
+- **Giữ nguyên dữ liệu gốc, chuẩn hóa riêng.** `name`/`description` giữ tiêu đề và mô tả như nguồn (khách nhìn thấy đúng thứ đó trên sàn). `search_text` được làm sạch: bỏ emoji, hashtag, ngoặc khuyến mãi kiểu "[Mã … giảm 30K]", rồi bỏ dấu như hiện nay. Biến thể dạng `"đen,M"` được tách thành `size`/`color`. Giá là **giá bán**.
+- **Dữ liệu sàn là dữ liệu không tin cậy.** "Giá gốc", "freeship", mã giảm giá trong tiêu đề hay mô tả **không** phải chính sách và **không** là số tiền hợp lệ ở bước kiểm tra (bất biến §4.1.4 giữ nguyên: số tiền hợp lệ chỉ gồm giá tool trả và số tiền trong FAQ/tài liệu shop viết). Nội dung sàn đi vào model qua `tool_result` như mọi kết quả tool, nên chữ chèn lệnh trong tiêu đề vẫn chỉ là dữ liệu.
+- **Độ tươi.** Kết quả tool kèm `synced_at`. Nguồn ngoài chưa sync quá 24 giờ thì trace gắn cờ `stale_catalog`. Nháp vẫn có thể `grounded`, nhưng đo được tỉ lệ trả lời trên dữ liệu cũ.
+- **Mỗi lần sync** ghi `catalog_sync_runs` (nguồn, bắt đầu/kết thúc, số thêm/sửa/ẩn, lỗi) để chủ shop thấy "đồng bộ lần cuối lúc…" và để vận hành phát hiện nguồn hỏng.
+
+Sàn: chỉ dùng **API chính thức** với ủy quyền của chủ shop (đăng ký ứng dụng đối tác, OAuth của từng shop, giới hạn tần suất của sàn). Không cào trang. Đồng bộ sản phẩm không chứa dữ liệu cá nhân của khách. Schema thật phải lấy từ tài liệu chính thức của từng sàn; bộ test (§13.5) chỉ mô phỏng **kiểu** dữ liệu, không theo đúng schema API.
+
+### 13.3. Độ phủ tri thức
+
+Mỗi FAQ và tài liệu gắn **chủ đề** thuộc một danh sách cố định: `hours`, `shipping`, `payment`, `returns`, `warranty`, `wholesale`, `promo`, `invoice`. Khi lưu, hệ thống gợi ý chủ đề bằng từ khóa đã bỏ dấu, chủ shop sửa nếu sai. Từ đó tính **độ phủ** của tenant: chủ đề nào shop đã viết.
+
+- **Không bắt buộc đủ.** Màn hình Kiến thức hiện danh sách chủ đề kèm trạng thái "đã có / chưa có", với câu dễ hiểu: "Bạn chưa có chính sách đổi trả. Khi khách hỏi, bot sẽ nhờ nhân viên." Onboarding hỏi nhanh vài chủ đề phổ biến nhất (ship, đổi trả, thanh toán) và điền sẵn FAQ từ câu trả lời.
+- **Bot biết mình không biết gì.** Khối tri thức của prompt (§6.4, khối 4) thêm một dòng cố định "Shop chưa có thông tin về: …", dựng từ độ phủ, sắp theo thứ tự cố định. Dòng này đổi khi độ phủ đổi, nên nằm trong `knowledge_hash` và vẫn được cache. Kiểm tra bằng code giữ nguyên, nên kể cả khi model vẫn bịa, số tiền bịa vẫn bị gắn `grounded=false`.
+- Độ phủ là **dẫn xuất** từ FAQ/tài liệu (ADR-0030): dựng lại được bất cứ lúc nào, không phải nguồn sự thật riêng.
+
+### 13.4. Biến chỗ thiếu thành gợi ý
+
+- Run kết thúc với `needs_human` và `reason = "no_source"` ⇒ ghi `learning_signals` loại `knowledge_gap`, payload gồm intent, chủ đề đoán được (từ khóa) và `run_id`. **Không chép lời khách.**
+- Gộp theo tuần ⇒ màn hình Kiến thức hiện: "Tuần này 12 khách hỏi phí ship đi tỉnh, shop chưa có thông tin" kèm nút "Viết câu trả lời" (mở sẵn trợ lý viết 2.11). Chủ shop duyệt rồi mới lưu.
+- Bước 4 mới dựng ứng viên FAQ từ **câu nhân viên đã trả lời** cho đúng loại câu hỏi đó (E17: không bao giờ từ chữ của khách).
+
+### 13.5. Kiểm thử
+
+Bộ shop giả lập `backend/evals/sim_shop/` có 12 shop khác nhau về tài liệu (đủ / viết dở / chỉ FAQ / không có), nguồn catalog (tự nhập / nhập vội / kiểu Shopee / kiểu TikTok kèm `raw_listing.json`) và quy mô (12–300 SKU). Đáp án tính theo tri thức shop đó thật sự có: chủ đề chưa viết ⇒ `no_source`, giá gốc trong mô tả sàn bị cấm báo. Eval runner (2.12) báo cáo **tách theo hồ sơ shop**, để thấy bot có giữ được "không bịa" ở shop thiếu tài liệu hay không, chứ không chỉ điểm trung bình.
+
+| Nhóm | Ca bắt buộc |
+|---|---|
+| Unit — normalize | tiêu đề có emoji/hashtag/"[Mã … giảm 30K]" ⇒ `search_text` sạch, `name` giữ nguyên; `"đen,M"` ⇒ size/color; giá = giá bán |
+| Unit — độ phủ | gợi ý chủ đề từ câu FAQ không dấu; dòng "Shop chưa có thông tin về" ổn định byte |
+| Integration — sync | sync hai lần ⇒ không trùng; sản phẩm biến mất ⇒ `active = false`; nháp cũ vẫn mở được nguồn |
+| Integration — runtime | shop không có mục ship, khách hỏi phí ship ⇒ `needs_human`, `no_source`, có `knowledge_gap`; nháp nêu "giá gốc" ⇒ `grounded = false` |
+| Eval | tỉ lệ đúng `no_source` ở shop thiếu tài liệu; tỉ lệ bịa số tiền theo hồ sơ shop |
+
+### 13.6. Dữ liệu và API bổ sung
+
+- `catalog_items` thêm `source text NOT NULL DEFAULT 'manual'`, `external_id text`, `last_seen_at timestamptz`, `UNIQUE (tenant_id, source, external_id)`; `search_text` tính bằng hàm normalize mới.
+- `catalog_sources (id, tenant_id, kind, status, credentials_ref, last_synced_at)`: `credentials_ref` trỏ tới kho bí mật, không lưu token trong bảng.
+- `catalog_sync_runs (id, tenant_id, source_id, started_at, finished_at, added, updated, deactivated, error)`.
+- `faq_entries.topics text[]`, `knowledge_docs.topics text[]`.
+- `GET /api/v1/knowledge/coverage`, `GET /api/v1/knowledge/gaps?since=`, `POST /api/v1/catalog/sources/{id}/sync`.
+
+### 13.7. Rủi ro
+
+- Duyệt ứng dụng đối tác của sàn mất thời gian và có thể bị từ chối; schema và giới hạn tần suất của sàn đổi mà không báo trước. Vì vậy 2.14 là bước tùy chọn, không chặn các bước khác.
+- Giá trên sàn đổi theo giờ (flash sale). Đồng bộ định kỳ không bao giờ khớp tuyệt đối: cần đo tỉ lệ `stale_catalog` trước khi bot tự gửi báo giá (bước 5).
+- Gợi ý chủ đề bằng từ khóa có thể sai: chủ shop luôn sửa được, và sai chỉ ảnh hưởng dòng "chưa có thông tin", không ảnh hưởng kiểm tra số tiền.
+
+---
+
+## 14. Tóm tắt một dòng
 
 Tin khách → outbox → dispatcher gom tin vào **một hàng run request có `due_at`** → worker claim → **tầng chính sách xác định** (giờ làm việc, trạng thái xử lý, tình huống do chủ shop cấu hình, ticket nhờ nhân viên) → nếu tới lượt bot: rule rẻ → phân loại → vòng tool read-only → **nháp có nguồn được backend kiểm tra** → lưu cùng trace và chi phí. Khách chỉ có thể nhận tin tự động nguyên văn do chủ shop viết, qua một cổng duy nhất; output của LLM không có đường tới khách.
