@@ -1,0 +1,247 @@
+[
+  {
+    "address": "Số 223, đường Hư Cấu 15, Phường Mẫu, Đà Nẵng",
+    "email": "khach000.home_bx@example.test",
+    "id": "home_bx-c000",
+    "name": "Lê Ngọc Chi",
+    "phone": "0929-525-211"
+  },
+  {
+    "address": "Số 273, đường Hư Cấu 37, Phường Mẫu, Cần Thơ",
+    "email": "khach001.home_bx@example.test",
+    "id": "home_bx-c001",
+    "name": "Hoàng Thanh Hiếu",
+    "phone": "0930-948-708"
+  },
+  {
+    "address": "Số 228, đường Hư Cấu 18, Phường Mẫu, Bình Dương",
+    "email": "khach002.home_bx@example.test",
+    "id": "home_bx-c002",
+    "name": "Bùi Đức Khoa",
+    "phone": "0988-956-913"
+  },
+  {
+    "address": "Số 193, đường Hư Cấu 35, Phường Mẫu, Khánh Hòa",
+    "email": "khach003.home_bx@example.test",
+    "id": "home_bx-c003",
+    "name": "Hoàng Ngọc An",
+    "phone": "0935-515-402"
+  },
+  {
+    "address": "Số 274, đường Hư Cấu 8, Phường Mẫu, Lâm Đồng",
+    "email": "khach004.home_bx@example.test",
+    "id": "home_bx-c004",
+    "name": "Trần Văn Hà",
+    "phone": "0916-335-854"
+  },
+  {
+    "address": "Số 276, đường Hư Cấu 15, Phường Mẫu, Đà Nẵng",
+    "email": "khach005.home_bx@example.test",
+    "id": "home_bx-c005",
+    "name": "Bùi Đức Hà",
+    "phone": "0916-630-284"
+  },
+  {
+    "address": "Số 43, đường Hư Cấu 22, Phường Mẫu, Lâm Đồng",
+    "email": "khach006.home_bx@example.test",
+    "id": "home_bx-c006",
+    "name": "Phạm Thị Chi",
+    "phone": "0940-651-665"
+  },
+  {
+    "address": "Số 70, đường Hư Cấu 12, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach007.home_bx@example.test",
+    "id": "home_bx-c007",
+    "name": "Đỗ Văn Nam",
+    "phone": "0943-440-662"
+  },
+  {
+    "address": "Số 113, đường Hư Cấu 6, Phường Mẫu, Lâm Đồng",
+    "email": "khach008.home_bx@example.test",
+    "id": "home_bx-c008",
+    "name": "Đặng Bảo Linh",
+    "phone": "0927-922-908"
+  },
+  {
+    "address": "Số 280, đường Hư Cấu 6, Phường Mẫu, Bình Dương",
+    "email": "khach009.home_bx@example.test",
+    "id": "home_bx-c009",
+    "name": "Lê Bảo Chi",
+    "phone": "0964-838-749"
+  },
+  {
+    "address": "Số 6, đường Hư Cấu 2, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach010.home_bx@example.test",
+    "id": "home_bx-c010",
+    "name": "Bùi Minh Nam",
+    "phone": "0953-130-133"
+  },
+  {
+    "address": "Số 42, đường Hư Cấu 6, Phường Mẫu, Cần Thơ",
+    "email": "khach011.home_bx@example.test",
+    "id": "home_bx-c011",
+    "name": "Nguyễn Văn Quân",
+    "phone": "0931-875-860"
+  },
+  {
+    "address": "Số 30, đường Hư Cấu 39, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach012.home_bx@example.test",
+    "id": "home_bx-c012",
+    "name": "Bùi Văn Hiếu",
+    "phone": "0978-763-480"
+  },
+  {
+    "address": "Số 259, đường Hư Cấu 19, Phường Mẫu, Hải Phòng",
+    "email": "khach013.home_bx@example.test",
+    "id": "home_bx-c013",
+    "name": "Lê Thanh Quân",
+    "phone": "0958-788-217"
+  },
+  {
+    "address": "Số 296, đường Hư Cấu 35, Phường Mẫu, Khánh Hòa",
+    "email": "khach014.home_bx@example.test",
+    "id": "home_bx-c014",
+    "name": "Hoàng Minh Chi",
+    "phone": "0979-932-251"
+  },
+  {
+    "address": "Số 148, đường Hư Cấu 33, Phường Mẫu, Quảng Ninh",
+    "email": "khach015.home_bx@example.test",
+    "id": "home_bx-c015",
+    "name": "Hoàng Bảo Chi",
+    "phone": "0929-279-944"
+  },
+  {
+    "address": "Số 223, đường Hư Cấu 30, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach016.home_bx@example.test",
+    "id": "home_bx-c016",
+    "name": "Nguyễn Thanh Vy",
+    "phone": "0970-141-619"
+  },
+  {
+    "address": "Số 194, đường Hư Cấu 23, Phường Mẫu, Bình Dương",
+    "email": "khach017.home_bx@example.test",
+    "id": "home_bx-c017",
+    "name": "Nguyễn Thị An",
+    "phone": "0994-367-351"
+  },
+  {
+    "address": "Số 194, đường Hư Cấu 37, Phường Mẫu, Hà Nội",
+    "email": "khach018.home_bx@example.test",
+    "id": "home_bx-c018",
+    "name": "Trần Thanh Nam",
+    "phone": "0977-253-514"
+  },
+  {
+    "address": "Số 165, đường Hư Cấu 24, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach019.home_bx@example.test",
+    "id": "home_bx-c019",
+    "name": "Phạm Đức Hà",
+    "phone": "0944-623-333"
+  },
+  {
+    "address": "Số 22, đường Hư Cấu 36, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach020.home_bx@example.test",
+    "id": "home_bx-c020",
+    "name": "Võ Gia Khoa",
+    "phone": "0983-484-847"
+  },
+  {
+    "address": "Số 286, đường Hư Cấu 30, Phường Mẫu, Quảng Ninh",
+    "email": "khach021.home_bx@example.test",
+    "id": "home_bx-c021",
+    "name": "Bùi Thị Tú",
+    "phone": "0936-346-520"
+  },
+  {
+    "address": "Số 138, đường Hư Cấu 4, Phường Mẫu, Hà Nội",
+    "email": "khach022.home_bx@example.test",
+    "id": "home_bx-c022",
+    "name": "Võ Thị Khoa",
+    "phone": "0926-166-162"
+  },
+  {
+    "address": "Số 3, đường Hư Cấu 17, Phường Mẫu, Hải Phòng",
+    "email": "khach023.home_bx@example.test",
+    "id": "home_bx-c023",
+    "name": "Đặng Gia Dũng",
+    "phone": "0981-641-856"
+  },
+  {
+    "address": "Số 194, đường Hư Cấu 13, Phường Mẫu, Lâm Đồng",
+    "email": "khach024.home_bx@example.test",
+    "id": "home_bx-c024",
+    "name": "Lê Bảo Ngân",
+    "phone": "0941-628-298"
+  },
+  {
+    "address": "Số 34, đường Hư Cấu 10, Phường Mẫu, Nghệ An",
+    "email": "khach025.home_bx@example.test",
+    "id": "home_bx-c025",
+    "name": "Trần Đức Nam",
+    "phone": "0941-258-789"
+  },
+  {
+    "address": "Số 158, đường Hư Cấu 27, Phường Mẫu, Hải Phòng",
+    "email": "khach026.home_bx@example.test",
+    "id": "home_bx-c026",
+    "name": "Hồ Gia Khoa",
+    "phone": "0976-685-760"
+  },
+  {
+    "address": "Số 67, đường Hư Cấu 24, Phường Mẫu, Lâm Đồng",
+    "email": "khach027.home_bx@example.test",
+    "id": "home_bx-c027",
+    "name": "Lê Thị Mai",
+    "phone": "0963-874-834"
+  },
+  {
+    "address": "Số 43, đường Hư Cấu 30, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach028.home_bx@example.test",
+    "id": "home_bx-c028",
+    "name": "Đặng Ngọc Dũng",
+    "phone": "0949-896-357"
+  },
+  {
+    "address": "Số 192, đường Hư Cấu 19, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach029.home_bx@example.test",
+    "id": "home_bx-c029",
+    "name": "Đặng Gia Vy",
+    "phone": "0930-463-868"
+  },
+  {
+    "address": "Số 279, đường Hư Cấu 12, Phường Mẫu, Hải Phòng",
+    "email": "khach030.home_bx@example.test",
+    "id": "home_bx-c030",
+    "name": "Lê Đức Mai",
+    "phone": "0996-477-448"
+  },
+  {
+    "address": "Số 211, đường Hư Cấu 18, Phường Mẫu, Hải Phòng",
+    "email": "khach031.home_bx@example.test",
+    "id": "home_bx-c031",
+    "name": "Phạm Thị Chi",
+    "phone": "0970-486-415"
+  },
+  {
+    "address": "Số 285, đường Hư Cấu 33, Phường Mẫu, Lâm Đồng",
+    "email": "khach032.home_bx@example.test",
+    "id": "home_bx-c032",
+    "name": "Đỗ Thị Mai",
+    "phone": "0923-477-347"
+  },
+  {
+    "address": "Số 32, đường Hư Cấu 22, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach033.home_bx@example.test",
+    "id": "home_bx-c033",
+    "name": "Lê Gia Quân",
+    "phone": "0927-576-724"
+  },
+  {
+    "address": "Số 107, đường Hư Cấu 23, Phường Mẫu, Cần Thơ",
+    "email": "khach034.home_bx@example.test",
+    "id": "home_bx-c034",
+    "name": "Hoàng Thị Phương",
+    "phone": "0940-309-321"
+  }
+]

@@ -1,0 +1,296 @@
+[
+  {
+    "address": "Số 190, đường Hư Cấu 17, Phường Mẫu, Nghệ An",
+    "email": "khach000.beauty_gl@example.test",
+    "id": "beauty_gl-c000",
+    "name": "Trần Bảo Hiếu",
+    "phone": "0956-151-713"
+  },
+  {
+    "address": "Số 151, đường Hư Cấu 23, Phường Mẫu, Nghệ An",
+    "email": "khach001.beauty_gl@example.test",
+    "id": "beauty_gl-c001",
+    "name": "Võ Gia An",
+    "phone": "0979-373-283"
+  },
+  {
+    "address": "Số 58, đường Hư Cấu 23, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach002.beauty_gl@example.test",
+    "id": "beauty_gl-c002",
+    "name": "Nguyễn Bảo Quân",
+    "phone": "0948-751-136"
+  },
+  {
+    "address": "Số 49, đường Hư Cấu 9, Phường Mẫu, Đà Nẵng",
+    "email": "khach003.beauty_gl@example.test",
+    "id": "beauty_gl-c003",
+    "name": "Đỗ Đức Mai",
+    "phone": "0932-186-647"
+  },
+  {
+    "address": "Số 125, đường Hư Cấu 34, Phường Mẫu, Quảng Ninh",
+    "email": "khach004.beauty_gl@example.test",
+    "id": "beauty_gl-c004",
+    "name": "Bùi Đức Nam",
+    "phone": "0954-569-805"
+  },
+  {
+    "address": "Số 76, đường Hư Cấu 39, Phường Mẫu, Hà Nội",
+    "email": "khach005.beauty_gl@example.test",
+    "id": "beauty_gl-c005",
+    "name": "Bùi Thị Chi",
+    "phone": "0951-481-139"
+  },
+  {
+    "address": "Số 217, đường Hư Cấu 26, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach006.beauty_gl@example.test",
+    "id": "beauty_gl-c006",
+    "name": "Đặng Văn Quân",
+    "phone": "0991-867-409"
+  },
+  {
+    "address": "Số 99, đường Hư Cấu 37, Phường Mẫu, Hải Phòng",
+    "email": "khach007.beauty_gl@example.test",
+    "id": "beauty_gl-c007",
+    "name": "Lê Gia Chi",
+    "phone": "0965-219-912"
+  },
+  {
+    "address": "Số 111, đường Hư Cấu 28, Phường Mẫu, Hải Phòng",
+    "email": "khach008.beauty_gl@example.test",
+    "id": "beauty_gl-c008",
+    "name": "Hoàng Ngọc Bình",
+    "phone": "0957-687-584"
+  },
+  {
+    "address": "Số 146, đường Hư Cấu 18, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach009.beauty_gl@example.test",
+    "id": "beauty_gl-c009",
+    "name": "Lê Gia Bình",
+    "phone": "0987-508-285"
+  },
+  {
+    "address": "Số 141, đường Hư Cấu 18, Phường Mẫu, Khánh Hòa",
+    "email": "khach010.beauty_gl@example.test",
+    "id": "beauty_gl-c010",
+    "name": "Đặng Ngọc An",
+    "phone": "0963-772-232"
+  },
+  {
+    "address": "Số 167, đường Hư Cấu 15, Phường Mẫu, Hà Nội",
+    "email": "khach011.beauty_gl@example.test",
+    "id": "beauty_gl-c011",
+    "name": "Hồ Thanh Dũng",
+    "phone": "0938-330-118"
+  },
+  {
+    "address": "Số 169, đường Hư Cấu 35, Phường Mẫu, Nghệ An",
+    "email": "khach012.beauty_gl@example.test",
+    "id": "beauty_gl-c012",
+    "name": "Hồ Gia Hiếu",
+    "phone": "0985-530-750"
+  },
+  {
+    "address": "Số 228, đường Hư Cấu 10, Phường Mẫu, Khánh Hòa",
+    "email": "khach013.beauty_gl@example.test",
+    "id": "beauty_gl-c013",
+    "name": "Bùi Thị Quân",
+    "phone": "0953-427-454"
+  },
+  {
+    "address": "Số 207, đường Hư Cấu 3, Phường Mẫu, Quảng Ninh",
+    "email": "khach014.beauty_gl@example.test",
+    "id": "beauty_gl-c014",
+    "name": "Bùi Ngọc Khoa",
+    "phone": "0996-499-361"
+  },
+  {
+    "address": "Số 272, đường Hư Cấu 24, Phường Mẫu, Hải Phòng",
+    "email": "khach015.beauty_gl@example.test",
+    "id": "beauty_gl-c015",
+    "name": "Trần Bảo Trang",
+    "phone": "0920-312-865"
+  },
+  {
+    "address": "Số 80, đường Hư Cấu 38, Phường Mẫu, Đà Nẵng",
+    "email": "khach016.beauty_gl@example.test",
+    "id": "beauty_gl-c016",
+    "name": "Hoàng Thanh Hiếu",
+    "phone": "0996-578-130"
+  },
+  {
+    "address": "Số 146, đường Hư Cấu 36, Phường Mẫu, Khánh Hòa",
+    "email": "khach017.beauty_gl@example.test",
+    "id": "beauty_gl-c017",
+    "name": "Hồ Thanh Tú",
+    "phone": "0963-883-123"
+  },
+  {
+    "address": "Số 64, đường Hư Cấu 7, Phường Mẫu, Nghệ An",
+    "email": "khach018.beauty_gl@example.test",
+    "id": "beauty_gl-c018",
+    "name": "Phạm Đức Hà",
+    "phone": "0958-721-970"
+  },
+  {
+    "address": "Số 82, đường Hư Cấu 26, Phường Mẫu, Lâm Đồng",
+    "email": "khach019.beauty_gl@example.test",
+    "id": "beauty_gl-c019",
+    "name": "Phạm Ngọc Dũng",
+    "phone": "0983-396-282"
+  },
+  {
+    "address": "Số 164, đường Hư Cấu 24, Phường Mẫu, Hà Nội",
+    "email": "khach020.beauty_gl@example.test",
+    "id": "beauty_gl-c020",
+    "name": "Đặng Thanh Linh",
+    "phone": "0963-713-385"
+  },
+  {
+    "address": "Số 238, đường Hư Cấu 19, Phường Mẫu, Khánh Hòa",
+    "email": "khach021.beauty_gl@example.test",
+    "id": "beauty_gl-c021",
+    "name": "Võ Đức Mai",
+    "phone": "0961-606-874"
+  },
+  {
+    "address": "Số 172, đường Hư Cấu 30, Phường Mẫu, Đà Nẵng",
+    "email": "khach022.beauty_gl@example.test",
+    "id": "beauty_gl-c022",
+    "name": "Lê Minh Vy",
+    "phone": "0946-103-645"
+  },
+  {
+    "address": "Số 15, đường Hư Cấu 15, Phường Mẫu, Đà Nẵng",
+    "email": "khach023.beauty_gl@example.test",
+    "id": "beauty_gl-c023",
+    "name": "Trần Đức Tú",
+    "phone": "0963-520-293"
+  },
+  {
+    "address": "Số 128, đường Hư Cấu 11, Phường Mẫu, Quảng Ninh",
+    "email": "khach024.beauty_gl@example.test",
+    "id": "beauty_gl-c024",
+    "name": "Hồ Văn Tú",
+    "phone": "0912-432-724"
+  },
+  {
+    "address": "Số 200, đường Hư Cấu 36, Phường Mẫu, Lâm Đồng",
+    "email": "khach025.beauty_gl@example.test",
+    "id": "beauty_gl-c025",
+    "name": "Bùi Văn Trang",
+    "phone": "0912-860-715"
+  },
+  {
+    "address": "Số 123, đường Hư Cấu 12, Phường Mẫu, Khánh Hòa",
+    "email": "khach026.beauty_gl@example.test",
+    "id": "beauty_gl-c026",
+    "name": "Phạm Minh Hiếu",
+    "phone": "0957-840-995"
+  },
+  {
+    "address": "Số 106, đường Hư Cấu 37, Phường Mẫu, Khánh Hòa",
+    "email": "khach027.beauty_gl@example.test",
+    "id": "beauty_gl-c027",
+    "name": "Phạm Thanh Hà",
+    "phone": "0947-166-131"
+  },
+  {
+    "address": "Số 237, đường Hư Cấu 33, Phường Mẫu, Hà Nội",
+    "email": "khach028.beauty_gl@example.test",
+    "id": "beauty_gl-c028",
+    "name": "Bùi Ngọc Hiếu",
+    "phone": "0940-915-281"
+  },
+  {
+    "address": "Số 36, đường Hư Cấu 1, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach029.beauty_gl@example.test",
+    "id": "beauty_gl-c029",
+    "name": "Hồ Thanh Khoa",
+    "phone": "0941-573-839"
+  },
+  {
+    "address": "Số 134, đường Hư Cấu 35, Phường Mẫu, Hà Nội",
+    "email": "khach030.beauty_gl@example.test",
+    "id": "beauty_gl-c030",
+    "name": "Đặng Bảo Vy",
+    "phone": "0919-901-527"
+  },
+  {
+    "address": "Số 31, đường Hư Cấu 19, Phường Mẫu, Nghệ An",
+    "email": "khach031.beauty_gl@example.test",
+    "id": "beauty_gl-c031",
+    "name": "Hồ Thị Hiếu",
+    "phone": "0971-947-843"
+  },
+  {
+    "address": "Số 226, đường Hư Cấu 28, Phường Mẫu, Hà Nội",
+    "email": "khach032.beauty_gl@example.test",
+    "id": "beauty_gl-c032",
+    "name": "Nguyễn Thanh Vy",
+    "phone": "0975-744-765"
+  },
+  {
+    "address": "Số 58, đường Hư Cấu 11, Phường Mẫu, Bình Dương",
+    "email": "khach033.beauty_gl@example.test",
+    "id": "beauty_gl-c033",
+    "name": "Trần Minh Nam",
+    "phone": "0984-871-910"
+  },
+  {
+    "address": "Số 108, đường Hư Cấu 17, Phường Mẫu, Hà Nội",
+    "email": "khach034.beauty_gl@example.test",
+    "id": "beauty_gl-c034",
+    "name": "Đặng Thanh Hà",
+    "phone": "0941-914-594"
+  },
+  {
+    "address": "Số 134, đường Hư Cấu 22, Phường Mẫu, Hải Phòng",
+    "email": "khach035.beauty_gl@example.test",
+    "id": "beauty_gl-c035",
+    "name": "Võ Văn Hiếu",
+    "phone": "0972-870-350"
+  },
+  {
+    "address": "Số 19, đường Hư Cấu 9, Phường Mẫu, Đà Nẵng",
+    "email": "khach036.beauty_gl@example.test",
+    "id": "beauty_gl-c036",
+    "name": "Bùi Thanh Hiếu",
+    "phone": "0943-681-381"
+  },
+  {
+    "address": "Số 186, đường Hư Cấu 19, Phường Mẫu, Hải Phòng",
+    "email": "khach037.beauty_gl@example.test",
+    "id": "beauty_gl-c037",
+    "name": "Đỗ Gia An",
+    "phone": "0938-479-677"
+  },
+  {
+    "address": "Số 80, đường Hư Cấu 9, Phường Mẫu, Đà Nẵng",
+    "email": "khach038.beauty_gl@example.test",
+    "id": "beauty_gl-c038",
+    "name": "Lê Gia Ngân",
+    "phone": "0966-789-401"
+  },
+  {
+    "address": "Số 15, đường Hư Cấu 14, Phường Mẫu, Quảng Ninh",
+    "email": "khach039.beauty_gl@example.test",
+    "id": "beauty_gl-c039",
+    "name": "Hồ Gia Vy",
+    "phone": "0942-752-333"
+  },
+  {
+    "address": "Số 261, đường Hư Cấu 34, Phường Mẫu, Nghệ An",
+    "email": "khach040.beauty_gl@example.test",
+    "id": "beauty_gl-c040",
+    "name": "Hoàng Minh An",
+    "phone": "0943-472-838"
+  },
+  {
+    "address": "Số 257, đường Hư Cấu 21, Phường Mẫu, Lâm Đồng",
+    "email": "khach041.beauty_gl@example.test",
+    "id": "beauty_gl-c041",
+    "name": "Bùi Minh Trang",
+    "phone": "0992-259-701"
+  }
+]

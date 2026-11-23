@@ -1,0 +1,93 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 399000,
+    "return_days": 7,
+    "shipping_vnd": {
+      "ngoai_thanh": 25000,
+      "noi_thanh": 20000,
+      "tinh": 30000
+    },
+    "wholesale_from": 12
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ],
+      "mon": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ],
+      "sat": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ],
+      "thu": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ],
+      "tue": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ],
+      "wed": [
+        [
+          "08:00",
+          "20:00"
+        ]
+      ]
+    }
+  },
+  "industry": "mỹ phẩm",
+  "knowledge": {
+    "catalog_source": "manual_sparse",
+    "faq_count": 7,
+    "policy_file": false,
+    "sections": [
+      "shipping",
+      "returns"
+    ],
+    "skus": 35
+  },
+  "name": "Mộc Hương",
+  "product_types": [
+    "Sữa rửa mặt dịu nhẹ",
+    "Kem chống nắng phổ rộng",
+    "Kem dưỡng ẩm ban ngày",
+    "Kem dưỡng ẩm ban đêm",
+    "Serum vitamin C",
+    "Serum niacinamide",
+    "Toner hoa hồng",
+    "Nước tẩy trang",
+    "Son dưỡng có màu",
+    "Son kem lì",
+    "Phấn phủ kiềm dầu",
+    "Kem nền mỏng nhẹ",
+    "Mặt nạ đất sét",
+    "Dầu gội thảo dược",
+    "Sữa tắm hương trà xanh",
+    "Xịt khoáng"
+  ],
+  "shop_key": "beauty_mh"
+}

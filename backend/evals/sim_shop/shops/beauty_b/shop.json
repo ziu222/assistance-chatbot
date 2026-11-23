@@ -1,7 +1,16 @@
 {
-  "cod": false,
-  "cod_fee_vnd": null,
-  "freeship_from_vnd": 699000,
+  "hidden_truth": {
+    "cod": false,
+    "cod_fee_vnd": null,
+    "freeship_from_vnd": 699000,
+    "return_days": 15,
+    "shipping_vnd": {
+      "ngoai_thanh": 30000,
+      "noi_thanh": 25000,
+      "tinh": 35000
+    },
+    "wholesale_from": 20
+  },
   "hours": {
     "closed_days": [
       {
@@ -57,6 +66,22 @@
     }
   },
   "industry": "mỹ phẩm",
+  "knowledge": {
+    "catalog_source": "manual",
+    "faq_count": 14,
+    "policy_file": true,
+    "sections": [
+      "hours",
+      "shipping",
+      "payment",
+      "returns",
+      "warranty",
+      "wholesale",
+      "promo",
+      "invoice"
+    ],
+    "skus": 80
+  },
   "name": "Lá Nâu",
   "product_types": [
     "Sữa rửa mặt dịu nhẹ",
@@ -76,12 +101,5 @@
     "Sữa tắm hương trà xanh",
     "Xịt khoáng"
   ],
-  "return_days": 15,
-  "shipping_vnd": {
-    "ngoai_thanh": 30000,
-    "noi_thanh": 25000,
-    "tinh": 35000
-  },
-  "shop_key": "beauty_b",
-  "wholesale_from": 20
+  "shop_key": "beauty_b"
 }

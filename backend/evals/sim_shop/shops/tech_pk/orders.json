@@ -1,0 +1,2773 @@
+[
+  {
+    "created_at": "2026-11-02T13:00:00+07:00",
+    "customer_id": "tech_pk-c014",
+    "id": "DH-PK-0001",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 215000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-016"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 430000
+  },
+  {
+    "created_at": "2026-11-14T15:00:00+07:00",
+    "customer_id": "tech_pk-c013",
+    "id": "DH-PK-0002",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-057"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 145000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-017"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1312000
+  },
+  {
+    "created_at": "2026-11-17T20:00:00+07:00",
+    "customer_id": "tech_pk-c033",
+    "id": "DH-PK-0003",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1149000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-008"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 335000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-043"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 529000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-029"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 5704000
+  },
+  {
+    "created_at": "2026-11-12T20:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0004",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 239000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-068"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-053"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 865000
+  },
+  {
+    "created_at": "2026-11-12T11:00:00+07:00",
+    "customer_id": "tech_pk-c002",
+    "id": "DH-PK-0005",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 155000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-069"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 749000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-024"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 395000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-021"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1609000
+  },
+  {
+    "created_at": "2026-11-16T14:00:00+07:00",
+    "customer_id": "tech_pk-c040",
+    "id": "DH-PK-0006",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 159000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-066"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 310000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1407000
+  },
+  {
+    "created_at": "2026-11-16T12:00:00+07:00",
+    "customer_id": "tech_pk-c046",
+    "id": "DH-PK-0007",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-065"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 465000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-003"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2015000
+  },
+  {
+    "created_at": "2026-11-21T11:00:00+07:00",
+    "customer_id": "tech_pk-c005",
+    "id": "DH-PK-0008",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 165000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-042"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 249000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "PK-061"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 414000
+  },
+  {
+    "created_at": "2026-11-20T15:00:00+07:00",
+    "customer_id": "tech_pk-c017",
+    "id": "DH-PK-0009",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 165000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-042"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-045"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1482000
+  },
+  {
+    "created_at": "2026-11-14T15:00:00+07:00",
+    "customer_id": "tech_pk-c020",
+    "id": "DH-PK-0010",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 725000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-059"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-036"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "PK-012"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2882000
+  },
+  {
+    "created_at": "2026-11-14T12:00:00+07:00",
+    "customer_id": "tech_pk-c021",
+    "id": "DH-PK-0011",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 215000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-016"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 645000
+  },
+  {
+    "created_at": "2026-11-03T20:00:00+07:00",
+    "customer_id": "tech_pk-c022",
+    "id": "DH-PK-0012",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1390000
+  },
+  {
+    "created_at": "2026-11-01T20:00:00+07:00",
+    "customer_id": "tech_pk-c003",
+    "id": "DH-PK-0013",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 539000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-056"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 220000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-040"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 95000,
+        "qty": 1,
+        "size": "1m",
+        "sku": "PK-015"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1833000
+  },
+  {
+    "created_at": "2026-11-11T17:00:00+07:00",
+    "customer_id": "tech_pk-c030",
+    "id": "DH-PK-0014",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-027"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 329000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-045"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-065"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1237000
+  },
+  {
+    "created_at": "2026-11-10T20:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0015",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-020"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 675000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-023"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-036"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2100000
+  },
+  {
+    "created_at": "2026-11-23T08:00:00+07:00",
+    "customer_id": "tech_pk-c005",
+    "id": "DH-PK-0016",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 339000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-022"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "PK-062"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1129000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-049"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 3695000
+  },
+  {
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "tech_pk-c014",
+    "id": "DH-PK-0017",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-065"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 369000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-005"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-036"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1223000
+  },
+  {
+    "created_at": "2026-11-04T13:00:00+07:00",
+    "customer_id": "tech_pk-c020",
+    "id": "DH-PK-0018",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 479000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-031"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 939000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-048"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 3775000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "tech_pk-c039",
+    "id": "DH-PK-0019",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-035"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-054"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1957000
+  },
+  {
+    "created_at": "2026-11-02T18:00:00+07:00",
+    "customer_id": "tech_pk-c021",
+    "id": "DH-PK-0020",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-063"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-035"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2317000
+  },
+  {
+    "created_at": "2026-11-12T14:00:00+07:00",
+    "customer_id": "tech_pk-c028",
+    "id": "DH-PK-0021",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 269000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-027"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-051"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1697000
+  },
+  {
+    "created_at": "2026-11-21T21:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0022",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-020"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-065"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 735000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-047"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2005000
+  },
+  {
+    "created_at": "2026-11-15T13:00:00+07:00",
+    "customer_id": "tech_pk-c020",
+    "id": "DH-PK-0023",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 515000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-032"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1545000
+  },
+  {
+    "created_at": "2026-11-13T15:00:00+07:00",
+    "customer_id": "tech_pk-c041",
+    "id": "DH-PK-0024",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 190000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-018"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 119000,
+        "qty": 2,
+        "size": "1m",
+        "sku": "PK-012"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 395000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-021"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1613000
+  },
+  {
+    "created_at": "2026-11-19T19:00:00+07:00",
+    "customer_id": "tech_pk-c036",
+    "id": "DH-PK-0025",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-035"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 150000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-037"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-051"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1815000
+  },
+  {
+    "created_at": "2026-11-12T13:00:00+07:00",
+    "customer_id": "tech_pk-c004",
+    "id": "DH-PK-0026",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-065"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 620000
+  },
+  {
+    "created_at": "2026-11-20T20:00:00+07:00",
+    "customer_id": "tech_pk-c010",
+    "id": "DH-PK-0027",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-036"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 200000
+  },
+  {
+    "created_at": "2026-11-08T16:00:00+07:00",
+    "customer_id": "tech_pk-c041",
+    "id": "DH-PK-0028",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 269000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-027"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "2m",
+        "sku": "PK-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1075000
+  },
+  {
+    "created_at": "2026-11-11T17:00:00+07:00",
+    "customer_id": "tech_pk-c002",
+    "id": "DH-PK-0029",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-061"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1888000
+  },
+  {
+    "created_at": "2026-11-21T20:00:00+07:00",
+    "customer_id": "tech_pk-c045",
+    "id": "DH-PK-0030",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 465000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-003"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 735000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-047"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3135000
+  },
+  {
+    "created_at": "2026-11-16T18:00:00+07:00",
+    "customer_id": "tech_pk-c031",
+    "id": "DH-PK-0031",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 220000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-040"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 440000
+  },
+  {
+    "created_at": "2026-11-05T19:00:00+07:00",
+    "customer_id": "tech_pk-c000",
+    "id": "DH-PK-0032",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 310000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-044"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 930000
+  },
+  {
+    "created_at": "2026-11-12T17:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0033",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-035"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 829000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-007"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-063"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 4361000
+  },
+  {
+    "created_at": "2026-11-21T12:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0034",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 215000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-016"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 829000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-007"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1044000
+  },
+  {
+    "created_at": "2026-11-22T12:00:00+07:00",
+    "customer_id": "tech_pk-c044",
+    "id": "DH-PK-0035",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 395000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-030"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 150000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-037"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1240000
+  },
+  {
+    "created_at": "2026-11-04T11:00:00+07:00",
+    "customer_id": "tech_pk-c021",
+    "id": "DH-PK-0036",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-062"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 190000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-018"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 675000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-023"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2200000
+  },
+  {
+    "created_at": "2026-11-12T15:00:00+07:00",
+    "customer_id": "tech_pk-c013",
+    "id": "DH-PK-0037",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-063"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 220000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-040"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1058000
+  },
+  {
+    "created_at": "2026-11-22T19:00:00+07:00",
+    "customer_id": "tech_pk-c037",
+    "id": "DH-PK-0038",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 245000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-041"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 225000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-020"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 479000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-031"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2622000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "tech_pk-c009",
+    "id": "DH-PK-0039",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-063"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-039"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1383000
+  },
+  {
+    "created_at": "2026-11-10T08:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0040",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 805000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-034"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 215000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-016"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 455000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-025"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1930000
+  },
+  {
+    "created_at": "2026-11-21T19:00:00+07:00",
+    "customer_id": "tech_pk-c006",
+    "id": "DH-PK-0041",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 739000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-033"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2217000
+  },
+  {
+    "created_at": "2026-11-23T13:00:00+07:00",
+    "customer_id": "tech_pk-c036",
+    "id": "DH-PK-0042",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 469000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-064"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "PK-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1865000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "tech_pk-c007",
+    "id": "DH-PK-0043",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1145000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-006"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-067"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2628000
+  },
+  {
+    "created_at": "2026-11-12T17:00:00+07:00",
+    "customer_id": "tech_pk-c043",
+    "id": "DH-PK-0044",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 560000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-004"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 455000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-025"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1015000
+  },
+  {
+    "created_at": "2026-11-02T14:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0045",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1145000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-006"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2290000
+  },
+  {
+    "created_at": "2026-11-04T14:00:00+07:00",
+    "customer_id": "tech_pk-c045",
+    "id": "DH-PK-0046",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-035"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 369000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-005"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-063"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 3810000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "tech_pk-c037",
+    "id": "DH-PK-0047",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 95000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "PK-015"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 285000
+  },
+  {
+    "created_at": "2026-11-08T13:00:00+07:00",
+    "customer_id": "tech_pk-c043",
+    "id": "DH-PK-0048",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-057"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 99000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-052"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 976000
+  },
+  {
+    "created_at": "2026-11-05T16:00:00+07:00",
+    "customer_id": "tech_pk-c034",
+    "id": "DH-PK-0049",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 239000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-068"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-053"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 736000
+  },
+  {
+    "created_at": "2026-11-12T21:00:00+07:00",
+    "customer_id": "tech_pk-c006",
+    "id": "DH-PK-0050",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-035"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 695000
+  },
+  {
+    "created_at": "2026-11-02T17:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0051",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 439000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-001"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 878000
+  },
+  {
+    "created_at": "2026-11-22T11:00:00+07:00",
+    "customer_id": "tech_pk-c020",
+    "id": "DH-PK-0052",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-022"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 469000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-064"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1616000
+  },
+  {
+    "created_at": "2026-11-07T19:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0053",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-053"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1554000
+  },
+  {
+    "created_at": "2026-11-08T20:00:00+07:00",
+    "customer_id": "tech_pk-c023",
+    "id": "DH-PK-0054",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 829000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-007"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2487000
+  },
+  {
+    "created_at": "2026-11-14T11:00:00+07:00",
+    "customer_id": "tech_pk-c046",
+    "id": "DH-PK-0055",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 539000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-056"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 735000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-047"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-020"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1499000
+  },
+  {
+    "created_at": "2026-11-04T09:00:00+07:00",
+    "customer_id": "tech_pk-c008",
+    "id": "DH-PK-0056",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 805000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-034"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1319000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-009"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 5053000
+  },
+  {
+    "created_at": "2026-11-13T09:00:00+07:00",
+    "customer_id": "tech_pk-c006",
+    "id": "DH-PK-0057",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 145000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-017"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-026"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-022"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1865000
+  },
+  {
+    "created_at": "2026-11-21T18:00:00+07:00",
+    "customer_id": "tech_pk-c017",
+    "id": "DH-PK-0058",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-063"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 120000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-070"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 295000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-019"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1757000
+  },
+  {
+    "created_at": "2026-11-10T09:00:00+07:00",
+    "customer_id": "tech_pk-c007",
+    "id": "DH-PK-0059",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 939000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-048"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 435000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-028"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2748000
+  },
+  {
+    "created_at": "2026-11-22T13:00:00+07:00",
+    "customer_id": "tech_pk-c009",
+    "id": "DH-PK-0060",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "2m",
+        "sku": "PK-013"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-069"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-044"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1419000
+  },
+  {
+    "created_at": "2026-11-18T09:00:00+07:00",
+    "customer_id": "tech_pk-c044",
+    "id": "DH-PK-0061",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 269000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-027"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 807000
+  },
+  {
+    "created_at": "2026-11-09T14:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0062",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 435000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-028"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-057"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-055"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2317000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "tech_pk-c015",
+    "id": "DH-PK-0063",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-022"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 339000
+  },
+  {
+    "created_at": "2026-11-04T09:00:00+07:00",
+    "customer_id": "tech_pk-c011",
+    "id": "DH-PK-0064",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 515000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-032"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1030000
+  },
+  {
+    "created_at": "2026-11-17T15:00:00+07:00",
+    "customer_id": "tech_pk-c025",
+    "id": "DH-PK-0065",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-022"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 120000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "PK-070"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 798000
+  },
+  {
+    "created_at": "2026-11-22T15:00:00+07:00",
+    "customer_id": "tech_pk-c027",
+    "id": "DH-PK-0066",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-060"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "PK-062"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1447000
+  },
+  {
+    "created_at": "2026-11-05T19:00:00+07:00",
+    "customer_id": "tech_pk-c038",
+    "id": "DH-PK-0067",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 120000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-070"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 240000
+  },
+  {
+    "created_at": "2026-11-21T14:00:00+07:00",
+    "customer_id": "tech_pk-c011",
+    "id": "DH-PK-0068",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 439000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-001"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "PK-062"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1737000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "tech_pk-c033",
+    "id": "DH-PK-0069",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 469000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-064"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 469000
+  },
+  {
+    "created_at": "2026-11-02T11:00:00+07:00",
+    "customer_id": "tech_pk-c042",
+    "id": "DH-PK-0070",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 829000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-007"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-039"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3252000
+  },
+  {
+    "created_at": "2026-11-13T12:00:00+07:00",
+    "customer_id": "tech_pk-c039",
+    "id": "DH-PK-0071",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 820000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-050"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2460000
+  },
+  {
+    "created_at": "2026-11-11T19:00:00+07:00",
+    "customer_id": "tech_pk-c043",
+    "id": "DH-PK-0072",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-060"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 255000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-039"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1677000
+  },
+  {
+    "created_at": "2026-11-02T17:00:00+07:00",
+    "customer_id": "tech_pk-c046",
+    "id": "DH-PK-0073",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 465000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-003"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 930000
+  },
+  {
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "tech_pk-c003",
+    "id": "DH-PK-0074",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "PK-063"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 275000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-002"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 395000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-030"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2319000
+  },
+  {
+    "created_at": "2026-11-04T11:00:00+07:00",
+    "customer_id": "tech_pk-c025",
+    "id": "DH-PK-0075",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1319000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-009"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3957000
+  },
+  {
+    "created_at": "2026-11-03T17:00:00+07:00",
+    "customer_id": "tech_pk-c015",
+    "id": "DH-PK-0076",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 295000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-019"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-051"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-060"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1493000
+  },
+  {
+    "created_at": "2026-11-19T19:00:00+07:00",
+    "customer_id": "tech_pk-c001",
+    "id": "DH-PK-0077",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 125000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-051"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 190000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-018"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 750000
+  },
+  {
+    "created_at": "2026-11-12T16:00:00+07:00",
+    "customer_id": "tech_pk-c014",
+    "id": "DH-PK-0078",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 159000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-066"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 725000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-059"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 735000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-047"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1937000
+  },
+  {
+    "created_at": "2026-11-16T12:00:00+07:00",
+    "customer_id": "tech_pk-c021",
+    "id": "DH-PK-0079",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 255000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-039"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 455000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-025"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 99000,
+        "qty": 2,
+        "size": "2m",
+        "sku": "PK-011"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1618000
+  },
+  {
+    "created_at": "2026-11-03T12:00:00+07:00",
+    "customer_id": "tech_pk-c003",
+    "id": "DH-PK-0080",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1129000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-049"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 435000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-028"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1564000
+  },
+  {
+    "created_at": "2026-11-03T17:00:00+07:00",
+    "customer_id": "tech_pk-c021",
+    "id": "DH-PK-0081",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-020"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 225000
+  },
+  {
+    "created_at": "2026-11-04T15:00:00+07:00",
+    "customer_id": "tech_pk-c031",
+    "id": "DH-PK-0082",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 159000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-066"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "PK-062"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 579000
+  },
+  {
+    "created_at": "2026-11-12T14:00:00+07:00",
+    "customer_id": "tech_pk-c032",
+    "id": "DH-PK-0083",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 309000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-063"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 309000
+  },
+  {
+    "created_at": "2026-11-01T13:00:00+07:00",
+    "customer_id": "tech_pk-c005",
+    "id": "DH-PK-0084",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1149000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-008"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-039"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1914000
+  },
+  {
+    "created_at": "2026-11-15T14:00:00+07:00",
+    "customer_id": "tech_pk-c035",
+    "id": "DH-PK-0085",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 739000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-033"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 120000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "PK-070"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2337000
+  },
+  {
+    "created_at": "2026-11-02T08:00:00+07:00",
+    "customer_id": "tech_pk-c024",
+    "id": "DH-PK-0086",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 95000,
+        "qty": 2,
+        "size": "1m",
+        "sku": "PK-015"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 725000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-059"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2365000
+  },
+  {
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "tech_pk-c040",
+    "id": "DH-PK-0087",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 529000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-029"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 220000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-040"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2247000
+  },
+  {
+    "created_at": "2026-11-14T19:00:00+07:00",
+    "customer_id": "tech_pk-c046",
+    "id": "DH-PK-0088",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 395000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-030"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 99000,
+        "qty": 1,
+        "size": "2m",
+        "sku": "PK-011"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-061"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 992000
+  },
+  {
+    "created_at": "2026-11-18T21:00:00+07:00",
+    "customer_id": "tech_pk-c002",
+    "id": "DH-PK-0089",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 575000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-058"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 335000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-043"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 469000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "PK-064"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2892000
+  },
+  {
+    "created_at": "2026-11-10T10:00:00+07:00",
+    "customer_id": "tech_pk-c030",
+    "id": "DH-PK-0090",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-039"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-057"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 435000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-028"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1978000
+  },
+  {
+    "created_at": "2026-11-10T20:00:00+07:00",
+    "customer_id": "tech_pk-c030",
+    "id": "DH-PK-0091",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 725000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-059"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2175000
+  },
+  {
+    "created_at": "2026-11-13T12:00:00+07:00",
+    "customer_id": "tech_pk-c028",
+    "id": "DH-PK-0092",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 215000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-016"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 190000,
+        "qty": 3,
+        "size": "2m",
+        "sku": "PK-014"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 785000
+  },
+  {
+    "created_at": "2026-11-19T20:00:00+07:00",
+    "customer_id": "tech_pk-c029",
+    "id": "DH-PK-0093",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 305000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-038"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 329000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-045"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 939000
+  },
+  {
+    "created_at": "2026-11-07T12:00:00+07:00",
+    "customer_id": "tech_pk-c032",
+    "id": "DH-PK-0094",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 339000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-022"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1017000
+  },
+  {
+    "created_at": "2026-11-09T18:00:00+07:00",
+    "customer_id": "tech_pk-c024",
+    "id": "DH-PK-0095",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 695000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-035"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 560000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-004"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3765000
+  },
+  {
+    "created_at": "2026-11-17T10:00:00+07:00",
+    "customer_id": "tech_pk-c026",
+    "id": "DH-PK-0096",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 329000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-045"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-054"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 275000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-002"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1500000
+  },
+  {
+    "created_at": "2026-11-21T11:00:00+07:00",
+    "customer_id": "tech_pk-c036",
+    "id": "DH-PK-0097",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "PK-061"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 369000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-005"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2383000
+  },
+  {
+    "created_at": "2026-11-03T18:00:00+07:00",
+    "customer_id": "tech_pk-c005",
+    "id": "DH-PK-0098",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-053"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 295000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-019"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1129000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-049"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 4530000
+  },
+  {
+    "created_at": "2026-11-05T16:00:00+07:00",
+    "customer_id": "tech_pk-c038",
+    "id": "DH-PK-0099",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 778000
+  },
+  {
+    "created_at": "2026-11-06T12:00:00+07:00",
+    "customer_id": "tech_pk-c012",
+    "id": "DH-PK-0100",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 675000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-023"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 749000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-024"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2922000
+  },
+  {
+    "created_at": "2026-11-02T20:00:00+07:00",
+    "customer_id": "tech_pk-c009",
+    "id": "DH-PK-0101",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 395000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1185000
+  },
+  {
+    "created_at": "2026-11-01T20:00:00+07:00",
+    "customer_id": "tech_pk-c025",
+    "id": "DH-PK-0102",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 395000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-030"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 790000
+  },
+  {
+    "created_at": "2026-11-07T13:00:00+07:00",
+    "customer_id": "tech_pk-c028",
+    "id": "DH-PK-0103",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 560000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-004"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1129000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-049"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 805000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-034"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 6353000
+  },
+  {
+    "created_at": "2026-11-23T21:00:00+07:00",
+    "customer_id": "tech_pk-c003",
+    "id": "DH-PK-0104",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-051"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 165000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-042"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 190000,
+        "qty": 1,
+        "size": "",
+        "sku": "PK-018"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 810000
+  },
+  {
+    "created_at": "2026-11-18T13:00:00+07:00",
+    "customer_id": "tech_pk-c018",
+    "id": "DH-PK-0105",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1129000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-049"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2258000
+  },
+  {
+    "created_at": "2026-11-10T10:00:00+07:00",
+    "customer_id": "tech_pk-c033",
+    "id": "DH-PK-0106",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-062"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-044"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 515000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-032"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1790000
+  },
+  {
+    "created_at": "2026-11-10T10:00:00+07:00",
+    "customer_id": "tech_pk-c023",
+    "id": "DH-PK-0107",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 165000,
+        "qty": 2,
+        "size": "",
+        "sku": "PK-042"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 330000
+  },
+  {
+    "created_at": "2026-11-01T18:00:00+07:00",
+    "customer_id": "tech_pk-c011",
+    "id": "DH-PK-0108",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 560000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-004"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "PK-062"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2100000
+  },
+  {
+    "created_at": "2026-11-06T09:00:00+07:00",
+    "customer_id": "tech_pk-c015",
+    "id": "DH-PK-0109",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 395000,
+        "qty": 3,
+        "size": "",
+        "sku": "PK-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1185000
+  },
+  {
+    "created_at": "2026-11-23T13:00:00+07:00",
+    "customer_id": "tech_pk-c035",
+    "id": "DH-PK-0110",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "PK-062"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 170000
+  }
+]

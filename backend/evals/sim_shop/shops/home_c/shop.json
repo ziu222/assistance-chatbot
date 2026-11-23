@@ -1,7 +1,16 @@
 {
-  "cod": true,
-  "cod_fee_vnd": 15000,
-  "freeship_from_vnd": 999000,
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 15000,
+    "freeship_from_vnd": 999000,
+    "return_days": 3,
+    "shipping_vnd": {
+      "ngoai_thanh": 45000,
+      "noi_thanh": 30000,
+      "tinh": 60000
+    },
+    "wholesale_from": 5
+  },
   "hours": {
     "closed_days": [
       {
@@ -69,6 +78,22 @@
     }
   },
   "industry": "đồ gia dụng",
+  "knowledge": {
+    "catalog_source": "manual",
+    "faq_count": 14,
+    "policy_file": true,
+    "sections": [
+      "hours",
+      "shipping",
+      "payment",
+      "returns",
+      "warranty",
+      "wholesale",
+      "promo",
+      "invoice"
+    ],
+    "skus": 80
+  },
   "name": "Nhà Gọn",
   "product_types": [
     "Bình giữ nhiệt inox",
@@ -88,12 +113,5 @@
     "Cây lau nhà xoay",
     "Móc dán tường (bộ 10)"
   ],
-  "return_days": 3,
-  "shipping_vnd": {
-    "ngoai_thanh": 45000,
-    "noi_thanh": 30000,
-    "tinh": 60000
-  },
-  "shop_key": "home_c",
-  "wholesale_from": 5
+  "shop_key": "home_c"
 }

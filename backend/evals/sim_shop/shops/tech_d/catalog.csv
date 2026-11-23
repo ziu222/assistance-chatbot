@@ -1,148 +1,159 @@
 sku,name,description,price_vnd,size,color,stock
-TE-001,Tai nghe Bluetooth,"Tai nghe Bluetooth: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",389000,,xanh dương,10
-TE-002,Tai nghe Bluetooth Lite,"Tai nghe Bluetooth Lite: Bluetooth 5.3, pin 6 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",359000,,trắng,31
-TE-002,Tai nghe Bluetooth Lite,"Tai nghe Bluetooth Lite: Bluetooth 5.3, pin 6 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",359000,,đen,9
-TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",530000,,trắng,3
-TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",530000,,xanh dương,33
-TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",530000,,đen,7
-TE-004,Tai nghe Bluetooth Max,"Tai nghe Bluetooth Max: Bluetooth 5.3, pin 6 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",540000,,xanh dương,2
-TE-004,Tai nghe Bluetooth Max,"Tai nghe Bluetooth Max: Bluetooth 5.3, pin 6 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",540000,,đen,0
-TE-005,Tai nghe Bluetooth Air,"Tai nghe Bluetooth Air: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",445000,,đen,20
-TE-005,Tai nghe Bluetooth Air,"Tai nghe Bluetooth Air: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",445000,,xanh dương,30
-TE-006,Tai nghe chống ồn,"Tai nghe chống ồn: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1099000,,trắng,6
-TE-006,Tai nghe chống ồn,"Tai nghe chống ồn: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1099000,,đen,39
-TE-007,Tai nghe chống ồn Lite,"Tai nghe chống ồn Lite: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",719000,,đen,0
-TE-007,Tai nghe chống ồn Lite,"Tai nghe chống ồn Lite: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",719000,,xanh dương,31
-TE-007,Tai nghe chống ồn Lite,"Tai nghe chống ồn Lite: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",719000,,trắng,26
-TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1479000,,xanh dương,0
-TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1479000,,trắng,0
-TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1479000,,đen,0
-TE-009,Tai nghe chống ồn Max,"Tai nghe chống ồn Max: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1219000,,đen,0
-TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,đen,10
-TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,xanh dương,2
-TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,trắng,0
-TE-011,Cáp sạc nhanh USB-C,"Cáp sạc nhanh USB-C: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",149000,1m,đen,13
-TE-011,Cáp sạc nhanh USB-C,"Cáp sạc nhanh USB-C: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",149000,2m,đen,26
-TE-012,Cáp sạc nhanh USB-C Lite,"Cáp sạc nhanh USB-C Lite: 60W, bọc dù. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",69000,1m,đen,39
-TE-012,Cáp sạc nhanh USB-C Lite,"Cáp sạc nhanh USB-C Lite: 60W, bọc dù. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",69000,2m,đen,19
-TE-013,Cáp sạc nhanh USB-C Pro,"Cáp sạc nhanh USB-C Pro: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",109000,1m,đen,28
-TE-013,Cáp sạc nhanh USB-C Pro,"Cáp sạc nhanh USB-C Pro: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",109000,2m,đen,36
-TE-014,Cáp sạc nhanh USB-C Max,"Cáp sạc nhanh USB-C Max: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",129000,2m,đen,0
-TE-015,Cáp sạc nhanh USB-C Air,"Cáp sạc nhanh USB-C Air: 60W, bọc dù. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",129000,2m,đen,31
-TE-016,Củ sạc nhanh 20W,Củ sạc nhanh 20W: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,175000,,xanh dương,22
-TE-017,Củ sạc nhanh 20W Lite,Củ sạc nhanh 20W Lite: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,179000,,xanh dương,24
-TE-017,Củ sạc nhanh 20W Lite,Củ sạc nhanh 20W Lite: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,179000,,trắng,11
-TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,250000,,đen,11
-TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,250000,,trắng,7
-TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,250000,,xanh dương,32
-TE-019,Củ sạc nhanh 20W Max,Củ sạc nhanh 20W Max: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,245000,,đen,17
-TE-020,Củ sạc nhanh 20W Air,Củ sạc nhanh 20W Air: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,195000,,đen,40
-TE-020,Củ sạc nhanh 20W Air,Củ sạc nhanh 20W Air: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,195000,,xanh dương,36
-TE-020,Củ sạc nhanh 20W Air,Củ sạc nhanh 20W Air: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,195000,,trắng,17
-TE-021,Củ sạc nhanh 65W,"Củ sạc nhanh 65W: GaN, 2 cổng C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",540000,,trắng,29
-TE-021,Củ sạc nhanh 65W,"Củ sạc nhanh 65W: GaN, 2 cổng C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",540000,,đen,8
-TE-021,Củ sạc nhanh 65W,"Củ sạc nhanh 65W: GaN, 2 cổng C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",540000,,xanh dương,40
-TE-022,Củ sạc nhanh 65W Lite,"Củ sạc nhanh 65W Lite: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",389000,,xanh dương,0
-TE-023,Củ sạc nhanh 65W Pro,"Củ sạc nhanh 65W Pro: GaN, 2 cổng C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",635000,,xanh dương,29
-TE-024,Củ sạc nhanh 65W Max,"Củ sạc nhanh 65W Max: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",749000,,đen,22
-TE-025,Củ sạc nhanh 65W Air,"Củ sạc nhanh 65W Air: GaN, 2 cổng C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",579000,,trắng,31
-TE-025,Củ sạc nhanh 65W Air,"Củ sạc nhanh 65W Air: GaN, 2 cổng C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",579000,,đen,33
-TE-026,Sạc dự phòng 10000mAh,Sạc dự phòng 10000mAh: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,320000,,trắng,34
-TE-026,Sạc dự phòng 10000mAh,Sạc dự phòng 10000mAh: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,320000,,xanh dương,15
-TE-026,Sạc dự phòng 10000mAh,Sạc dự phòng 10000mAh: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,320000,,đen,0
-TE-027,Sạc dự phòng 10000mAh Lite,Sạc dự phòng 10000mAh Lite: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,289000,,xanh dương,1
-TE-027,Sạc dự phòng 10000mAh Lite,Sạc dự phòng 10000mAh Lite: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,289000,,trắng,34
-TE-027,Sạc dự phòng 10000mAh Lite,Sạc dự phòng 10000mAh Lite: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,289000,,đen,6
-TE-028,Sạc dự phòng 10000mAh Pro,Sạc dự phòng 10000mAh Pro: sạc nhanh 22.5W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,449000,,đen,10
-TE-028,Sạc dự phòng 10000mAh Pro,Sạc dự phòng 10000mAh Pro: sạc nhanh 22.5W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,449000,,trắng,4
-TE-029,Sạc dự phòng 10000mAh Max,Sạc dự phòng 10000mAh Max: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,610000,,xanh dương,21
-TE-029,Sạc dự phòng 10000mAh Max,Sạc dự phòng 10000mAh Max: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,610000,,trắng,1
-TE-030,Sạc dự phòng 10000mAh Air,Sạc dự phòng 10000mAh Air: sạc nhanh 22.5W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,445000,,trắng,40
-TE-030,Sạc dự phòng 10000mAh Air,Sạc dự phòng 10000mAh Air: sạc nhanh 22.5W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,445000,,đen,29
-TE-031,Sạc dự phòng 20000mAh,"Sạc dự phòng 20000mAh: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",589000,,đen,25
-TE-031,Sạc dự phòng 20000mAh,"Sạc dự phòng 20000mAh: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",589000,,xanh dương,9
-TE-032,Sạc dự phòng 20000mAh Lite,"Sạc dự phòng 20000mAh Lite: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",440000,,xanh dương,34
-TE-033,Sạc dự phòng 20000mAh Pro,"Sạc dự phòng 20000mAh Pro: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",675000,,xanh dương,16
-TE-034,Sạc dự phòng 20000mAh Max,"Sạc dự phòng 20000mAh Max: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",890000,,xanh dương,24
-TE-034,Sạc dự phòng 20000mAh Max,"Sạc dự phòng 20000mAh Max: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",890000,,đen,33
-TE-035,Sạc dự phòng 20000mAh Air,"Sạc dự phòng 20000mAh Air: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",579000,,trắng,1
-TE-036,Chuột không dây,"Chuột không dây: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",195000,,xanh dương,37
-TE-036,Chuột không dây,"Chuột không dây: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",195000,,đen,25
-TE-036,Chuột không dây,"Chuột không dây: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",195000,,trắng,16
-TE-037,Chuột không dây Lite,"Chuột không dây Lite: 2.4GHz, pin AA. Xuất xứ Việt Nam. Bảo hành 12 tháng.",125000,,đen,27
-TE-037,Chuột không dây Lite,"Chuột không dây Lite: 2.4GHz, pin AA. Xuất xứ Việt Nam. Bảo hành 12 tháng.",125000,,xanh dương,0
-TE-038,Chuột không dây Pro,"Chuột không dây Pro: 2.4GHz, pin AA. Xuất xứ Việt Nam. Bảo hành 12 tháng.",205000,,trắng,0
-TE-039,Chuột không dây Max,"Chuột không dây Max: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",319000,,xanh dương,28
-TE-039,Chuột không dây Max,"Chuột không dây Max: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",319000,,trắng,32
-TE-039,Chuột không dây Max,"Chuột không dây Max: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",319000,,đen,27
-TE-040,Chuột không dây Air,"Chuột không dây Air: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",255000,,trắng,9
-TE-041,Chuột không dây im lặng,"Chuột không dây im lặng: nút bấm giảm ồn, Bluetooth. Xuất xứ Đài Loan. Bảo hành 12 tháng.",299000,,trắng,11
-TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",230000,,trắng,19
-TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",230000,,đen,0
-TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",230000,,xanh dương,24
-TE-043,Chuột không dây im lặng Pro,"Chuột không dây im lặng Pro: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",290000,,trắng,10
-TE-043,Chuột không dây im lặng Pro,"Chuột không dây im lặng Pro: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",290000,,đen,27
-TE-044,Chuột không dây im lặng Max,"Chuột không dây im lặng Max: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",290000,,đen,32
-TE-045,Chuột không dây im lặng Air,"Chuột không dây im lặng Air: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",210000,,trắng,20
-TE-046,Bàn phím cơ mini,"Bàn phím cơ mini: 68 phím, switch đỏ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",850000,,xanh dương,33
-TE-046,Bàn phím cơ mini,"Bàn phím cơ mini: 68 phím, switch đỏ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",850000,,đen,29
-TE-047,Bàn phím cơ mini Lite,"Bàn phím cơ mini Lite: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",715000,,đen,26
-TE-047,Bàn phím cơ mini Lite,"Bàn phím cơ mini Lite: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",715000,,trắng,3
-TE-048,Bàn phím cơ mini Pro,"Bàn phím cơ mini Pro: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1279000,,xanh dương,2
-TE-048,Bàn phím cơ mini Pro,"Bàn phím cơ mini Pro: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1279000,,đen,20
-TE-049,Bàn phím cơ mini Max,"Bàn phím cơ mini Max: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1249000,,đen,34
-TE-049,Bàn phím cơ mini Max,"Bàn phím cơ mini Max: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1249000,,xanh dương,31
-TE-049,Bàn phím cơ mini Max,"Bàn phím cơ mini Max: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1249000,,trắng,2
-TE-050,Bàn phím cơ mini Air,"Bàn phím cơ mini Air: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",795000,,đen,38
-TE-050,Bàn phím cơ mini Air,"Bàn phím cơ mini Air: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",795000,,xanh dương,35
-TE-051,Giá đỡ điện thoại,"Giá đỡ điện thoại: nhôm, gập gọn. Xuất xứ Đài Loan. Không áp dụng bảo hành.",129000,,trắng,2
-TE-052,Giá đỡ điện thoại Lite,"Giá đỡ điện thoại Lite: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",85000,,xanh dương,17
-TE-053,Giá đỡ điện thoại Pro,"Giá đỡ điện thoại Pro: nhôm, gập gọn. Xuất xứ Đài Loan. Không áp dụng bảo hành.",119000,,trắng,0
-TE-054,Giá đỡ điện thoại Max,"Giá đỡ điện thoại Max: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",149000,,trắng,0
-TE-054,Giá đỡ điện thoại Max,"Giá đỡ điện thoại Max: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",149000,,đen,12
-TE-055,Giá đỡ điện thoại Air,"Giá đỡ điện thoại Air: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",89000,,đen,0
-TE-055,Giá đỡ điện thoại Air,"Giá đỡ điện thoại Air: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",89000,,trắng,17
-TE-056,Loa Bluetooth mini,Loa Bluetooth mini: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,429000,,đen,0
-TE-057,Loa Bluetooth mini Lite,Loa Bluetooth mini Lite: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,319000,,đen,27
-TE-057,Loa Bluetooth mini Lite,Loa Bluetooth mini Lite: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,319000,,trắng,0
-TE-058,Loa Bluetooth mini Pro,Loa Bluetooth mini Pro: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,465000,,xanh dương,36
-TE-058,Loa Bluetooth mini Pro,Loa Bluetooth mini Pro: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,465000,,đen,9
-TE-059,Loa Bluetooth mini Max,Loa Bluetooth mini Max: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,599000,,xanh dương,10
-TE-060,Loa Bluetooth mini Air,Loa Bluetooth mini Air: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,465000,,trắng,0
-TE-060,Loa Bluetooth mini Air,Loa Bluetooth mini Air: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,465000,,xanh dương,40
-TE-060,Loa Bluetooth mini Air,Loa Bluetooth mini Air: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,465000,,đen,11
-TE-061,Thẻ nhớ microSD,"Thẻ nhớ microSD: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",149000,64GB,đen,14
-TE-061,Thẻ nhớ microSD,"Thẻ nhớ microSD: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",149000,128GB,đen,33
-TE-062,Thẻ nhớ microSD Lite,"Thẻ nhớ microSD Lite: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",155000,128GB,đen,0
-TE-063,Thẻ nhớ microSD Pro,"Thẻ nhớ microSD Pro: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",355000,64GB,đen,21
-TE-063,Thẻ nhớ microSD Pro,"Thẻ nhớ microSD Pro: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",355000,128GB,đen,22
-TE-064,Thẻ nhớ microSD Max,"Thẻ nhớ microSD Max: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",389000,128GB,đen,30
-TE-065,Thẻ nhớ microSD Air,"Thẻ nhớ microSD Air: class 10, U3. Xuất xứ Trung Quốc. Bảo hành 24 tháng.",350000,64GB,đen,1
-TE-066,USB 3.0,USB 3.0: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,215000,64GB,đen,5
-TE-066,USB 3.0,USB 3.0: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,215000,128GB,đen,29
-TE-067,USB 3.0 Lite,USB 3.0 Lite: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,140000,64GB,đen,1
-TE-067,USB 3.0 Lite,USB 3.0 Lite: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,140000,128GB,đen,0
-TE-068,USB 3.0 Pro,USB 3.0 Pro: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,195000,64GB,đen,18
-TE-069,USB 3.0 Max,USB 3.0 Max: vỏ kim loại. Xuất xứ Trung Quốc. Bảo hành 24 tháng.,270000,128GB,đen,15
-TE-070,USB 3.0 Air,USB 3.0 Air: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,149000,128GB,đen,39
-TE-071,Hub USB-C 6 cổng,"Hub USB-C 6 cổng: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",435000,,đen,32
-TE-071,Hub USB-C 6 cổng,"Hub USB-C 6 cổng: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",435000,,trắng,13
-TE-072,Hub USB-C 6 cổng Lite,"Hub USB-C 6 cổng Lite: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",415000,,đen,0
-TE-072,Hub USB-C 6 cổng Lite,"Hub USB-C 6 cổng Lite: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",415000,,xanh dương,0
-TE-072,Hub USB-C 6 cổng Lite,"Hub USB-C 6 cổng Lite: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",415000,,trắng,0
-TE-073,Hub USB-C 6 cổng Pro,"Hub USB-C 6 cổng Pro: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",559000,,xanh dương,0
-TE-073,Hub USB-C 6 cổng Pro,"Hub USB-C 6 cổng Pro: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",559000,,trắng,4
-TE-073,Hub USB-C 6 cổng Pro,"Hub USB-C 6 cổng Pro: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",559000,,đen,21
-TE-074,Hub USB-C 6 cổng Max,"Hub USB-C 6 cổng Max: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",699000,,xanh dương,32
-TE-075,Hub USB-C 6 cổng Air,"Hub USB-C 6 cổng Air: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",509000,,đen,27
-TE-076,Đồng hồ thông minh,"Đồng hồ thông minh: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1200000,,đen,0
-TE-076,Đồng hồ thông minh,"Đồng hồ thông minh: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1200000,,trắng,2
-TE-077,Đồng hồ thông minh Lite,"Đồng hồ thông minh Lite: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1185000,,đen,22
-TE-077,Đồng hồ thông minh Lite,"Đồng hồ thông minh Lite: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1185000,,xanh dương,7
-TE-078,Đồng hồ thông minh Pro,"Đồng hồ thông minh Pro: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1179000,,xanh dương,31
-TE-078,Đồng hồ thông minh Pro,"Đồng hồ thông minh Pro: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1179000,,trắng,22
-TE-078,Đồng hồ thông minh Pro,"Đồng hồ thông minh Pro: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1179000,,đen,22
-TE-079,Đồng hồ thông minh Max,"Đồng hồ thông minh Max: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1745000,,xanh dương,0
-TE-079,Đồng hồ thông minh Max,"Đồng hồ thông minh Max: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1745000,,trắng,0
-TE-079,Đồng hồ thông minh Max,"Đồng hồ thông minh Max: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1745000,,đen,0
-TE-080,Đồng hồ thông minh Air,"Đồng hồ thông minh Air: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1229000,,trắng,0
+TE-001,Tai nghe Bluetooth,"Tai nghe Bluetooth: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",379000,,xanh dương,0
+TE-001,Tai nghe Bluetooth,"Tai nghe Bluetooth: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",379000,,trắng,27
+TE-002,Tai nghe Bluetooth Lite,"Tai nghe Bluetooth Lite: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",279000,,xanh dương,30
+TE-002,Tai nghe Bluetooth Lite,"Tai nghe Bluetooth Lite: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",279000,,đen,23
+TE-002,Tai nghe Bluetooth Lite,"Tai nghe Bluetooth Lite: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",279000,,trắng,21
+TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",500000,,xanh dương,36
+TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",500000,,trắng,17
+TE-003,Tai nghe Bluetooth Pro,"Tai nghe Bluetooth Pro: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",500000,,đen,29
+TE-004,Tai nghe Bluetooth Max,"Tai nghe Bluetooth Max: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",555000,,trắng,38
+TE-004,Tai nghe Bluetooth Max,"Tai nghe Bluetooth Max: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",555000,,xanh dương,7
+TE-004,Tai nghe Bluetooth Max,"Tai nghe Bluetooth Max: Bluetooth 5.3, pin 6 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",555000,,đen,39
+TE-005,Tai nghe Bluetooth Air,"Tai nghe Bluetooth Air: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",479000,,đen,7
+TE-005,Tai nghe Bluetooth Air,"Tai nghe Bluetooth Air: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",479000,,xanh dương,9
+TE-005,Tai nghe Bluetooth Air,"Tai nghe Bluetooth Air: Bluetooth 5.3, pin 6 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",479000,,trắng,2
+TE-006,Tai nghe chống ồn,"Tai nghe chống ồn: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,đen,9
+TE-006,Tai nghe chống ồn,"Tai nghe chống ồn: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,xanh dương,10
+TE-006,Tai nghe chống ồn,"Tai nghe chống ồn: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,trắng,10
+TE-007,Tai nghe chống ồn Lite,"Tai nghe chống ồn Lite: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",719000,,xanh dương,0
+TE-007,Tai nghe chống ồn Lite,"Tai nghe chống ồn Lite: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",719000,,trắng,0
+TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1199000,,đen,29
+TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1199000,,xanh dương,0
+TE-008,Tai nghe chống ồn Pro,"Tai nghe chống ồn Pro: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1199000,,trắng,16
+TE-009,Tai nghe chống ồn Max,"Tai nghe chống ồn Max: chống ồn chủ động, pin 30 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1585000,,trắng,21
+TE-009,Tai nghe chống ồn Max,"Tai nghe chống ồn Max: chống ồn chủ động, pin 30 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1585000,,xanh dương,3
+TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,xanh dương,18
+TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,đen,20
+TE-010,Tai nghe chống ồn Air,"Tai nghe chống ồn Air: chống ồn chủ động, pin 30 giờ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1159000,,trắng,33
+TE-011,Cáp sạc nhanh USB-C,"Cáp sạc nhanh USB-C: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",89000,2m,đen,0
+TE-012,Cáp sạc nhanh USB-C Lite,"Cáp sạc nhanh USB-C Lite: 60W, bọc dù. Xuất xứ Đài Loan. Bảo hành 6 tháng.",105000,1m,đen,29
+TE-012,Cáp sạc nhanh USB-C Lite,"Cáp sạc nhanh USB-C Lite: 60W, bọc dù. Xuất xứ Đài Loan. Bảo hành 6 tháng.",105000,2m,đen,0
+TE-013,Cáp sạc nhanh USB-C Pro,"Cáp sạc nhanh USB-C Pro: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",109000,1m,đen,20
+TE-013,Cáp sạc nhanh USB-C Pro,"Cáp sạc nhanh USB-C Pro: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",109000,2m,đen,18
+TE-014,Cáp sạc nhanh USB-C Max,"Cáp sạc nhanh USB-C Max: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",160000,1m,đen,15
+TE-014,Cáp sạc nhanh USB-C Max,"Cáp sạc nhanh USB-C Max: 60W, bọc dù. Xuất xứ Việt Nam. Bảo hành 6 tháng.",160000,2m,đen,28
+TE-015,Cáp sạc nhanh USB-C Air,"Cáp sạc nhanh USB-C Air: 60W, bọc dù. Xuất xứ Đài Loan. Bảo hành 6 tháng.",125000,1m,đen,33
+TE-015,Cáp sạc nhanh USB-C Air,"Cáp sạc nhanh USB-C Air: 60W, bọc dù. Xuất xứ Đài Loan. Bảo hành 6 tháng.",125000,2m,đen,8
+TE-016,Củ sạc nhanh 20W,Củ sạc nhanh 20W: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,175000,,xanh dương,33
+TE-016,Củ sạc nhanh 20W,Củ sạc nhanh 20W: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,175000,,đen,36
+TE-016,Củ sạc nhanh 20W,Củ sạc nhanh 20W: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,175000,,trắng,14
+TE-017,Củ sạc nhanh 20W Lite,Củ sạc nhanh 20W Lite: chuẩn PD 20W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,129000,,trắng,15
+TE-017,Củ sạc nhanh 20W Lite,Củ sạc nhanh 20W Lite: chuẩn PD 20W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,129000,,xanh dương,20
+TE-017,Củ sạc nhanh 20W Lite,Củ sạc nhanh 20W Lite: chuẩn PD 20W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,129000,,đen,0
+TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,190000,,trắng,2
+TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,190000,,đen,14
+TE-018,Củ sạc nhanh 20W Pro,Củ sạc nhanh 20W Pro: chuẩn PD 20W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,190000,,xanh dương,25
+TE-019,Củ sạc nhanh 20W Max,Củ sạc nhanh 20W Max: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,289000,,đen,6
+TE-019,Củ sạc nhanh 20W Max,Củ sạc nhanh 20W Max: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,289000,,trắng,32
+TE-019,Củ sạc nhanh 20W Max,Củ sạc nhanh 20W Max: chuẩn PD 20W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,289000,,xanh dương,40
+TE-020,Củ sạc nhanh 20W Air,Củ sạc nhanh 20W Air: chuẩn PD 20W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,169000,,đen,5
+TE-021,Củ sạc nhanh 65W,"Củ sạc nhanh 65W: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",479000,,đen,20
+TE-021,Củ sạc nhanh 65W,"Củ sạc nhanh 65W: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",479000,,xanh dương,31
+TE-022,Củ sạc nhanh 65W Lite,"Củ sạc nhanh 65W Lite: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",400000,,xanh dương,29
+TE-023,Củ sạc nhanh 65W Pro,"Củ sạc nhanh 65W Pro: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",655000,,đen,16
+TE-023,Củ sạc nhanh 65W Pro,"Củ sạc nhanh 65W Pro: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",655000,,trắng,2
+TE-023,Củ sạc nhanh 65W Pro,"Củ sạc nhanh 65W Pro: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",655000,,xanh dương,28
+TE-024,Củ sạc nhanh 65W Max,"Củ sạc nhanh 65W Max: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",789000,,xanh dương,0
+TE-024,Củ sạc nhanh 65W Max,"Củ sạc nhanh 65W Max: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",789000,,trắng,27
+TE-024,Củ sạc nhanh 65W Max,"Củ sạc nhanh 65W Max: GaN, 2 cổng C. Xuất xứ Đài Loan. Bảo hành 12 tháng.",789000,,đen,30
+TE-025,Củ sạc nhanh 65W Air,"Củ sạc nhanh 65W Air: GaN, 2 cổng C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",609000,,đen,0
+TE-026,Sạc dự phòng 10000mAh,Sạc dự phòng 10000mAh: sạc nhanh 22.5W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,329000,,đen,15
+TE-027,Sạc dự phòng 10000mAh Lite,Sạc dự phòng 10000mAh Lite: sạc nhanh 22.5W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,335000,,trắng,32
+TE-027,Sạc dự phòng 10000mAh Lite,Sạc dự phòng 10000mAh Lite: sạc nhanh 22.5W. Xuất xứ Đài Loan. Bảo hành 12 tháng.,335000,,đen,2
+TE-028,Sạc dự phòng 10000mAh Pro,Sạc dự phòng 10000mAh Pro: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,539000,,xanh dương,0
+TE-029,Sạc dự phòng 10000mAh Max,Sạc dự phòng 10000mAh Max: sạc nhanh 22.5W. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,485000,,trắng,0
+TE-030,Sạc dự phòng 10000mAh Air,Sạc dự phòng 10000mAh Air: sạc nhanh 22.5W. Xuất xứ Việt Nam. Bảo hành 12 tháng.,455000,,đen,16
+TE-031,Sạc dự phòng 20000mAh,"Sạc dự phòng 20000mAh: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",490000,,trắng,0
+TE-031,Sạc dự phòng 20000mAh,"Sạc dự phòng 20000mAh: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",490000,,xanh dương,0
+TE-031,Sạc dự phòng 20000mAh,"Sạc dự phòng 20000mAh: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",490000,,đen,0
+TE-032,Sạc dự phòng 20000mAh Lite,"Sạc dự phòng 20000mAh Lite: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",459000,,trắng,22
+TE-032,Sạc dự phòng 20000mAh Lite,"Sạc dự phòng 20000mAh Lite: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",459000,,đen,14
+TE-032,Sạc dự phòng 20000mAh Lite,"Sạc dự phòng 20000mAh Lite: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",459000,,xanh dương,18
+TE-033,Sạc dự phòng 20000mAh Pro,"Sạc dự phòng 20000mAh Pro: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",820000,,trắng,35
+TE-033,Sạc dự phòng 20000mAh Pro,"Sạc dự phòng 20000mAh Pro: sạc nhanh 22.5W, màn hình LED. Xuất xứ Đài Loan. Bảo hành 12 tháng.",820000,,đen,1
+TE-034,Sạc dự phòng 20000mAh Max,"Sạc dự phòng 20000mAh Max: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",875000,,trắng,6
+TE-034,Sạc dự phòng 20000mAh Max,"Sạc dự phòng 20000mAh Max: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",875000,,xanh dương,31
+TE-035,Sạc dự phòng 20000mAh Air,"Sạc dự phòng 20000mAh Air: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",529000,,xanh dương,30
+TE-035,Sạc dự phòng 20000mAh Air,"Sạc dự phòng 20000mAh Air: sạc nhanh 22.5W, màn hình LED. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",529000,,trắng,21
+TE-036,Chuột không dây,"Chuột không dây: 2.4GHz, pin AA. Xuất xứ Việt Nam. Bảo hành 12 tháng.",169000,,xanh dương,16
+TE-037,Chuột không dây Lite,"Chuột không dây Lite: 2.4GHz, pin AA. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",179000,,đen,4
+TE-037,Chuột không dây Lite,"Chuột không dây Lite: 2.4GHz, pin AA. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",179000,,xanh dương,0
+TE-037,Chuột không dây Lite,"Chuột không dây Lite: 2.4GHz, pin AA. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",179000,,trắng,31
+TE-038,Chuột không dây Pro,"Chuột không dây Pro: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",205000,,trắng,0
+TE-039,Chuột không dây Max,"Chuột không dây Max: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",249000,,đen,1
+TE-039,Chuột không dây Max,"Chuột không dây Max: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",249000,,xanh dương,36
+TE-040,Chuột không dây Air,"Chuột không dây Air: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",219000,,trắng,22
+TE-040,Chuột không dây Air,"Chuột không dây Air: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",219000,,xanh dương,4
+TE-040,Chuột không dây Air,"Chuột không dây Air: 2.4GHz, pin AA. Xuất xứ Đài Loan. Bảo hành 12 tháng.",219000,,đen,36
+TE-041,Chuột không dây im lặng,"Chuột không dây im lặng: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",285000,,đen,13
+TE-041,Chuột không dây im lặng,"Chuột không dây im lặng: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",285000,,trắng,0
+TE-041,Chuột không dây im lặng,"Chuột không dây im lặng: nút bấm giảm ồn, Bluetooth. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",285000,,xanh dương,0
+TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",169000,,xanh dương,9
+TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",169000,,trắng,7
+TE-042,Chuột không dây im lặng Lite,"Chuột không dây im lặng Lite: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",169000,,đen,0
+TE-043,Chuột không dây im lặng Pro,"Chuột không dây im lặng Pro: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",269000,,đen,0
+TE-044,Chuột không dây im lặng Max,"Chuột không dây im lặng Max: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",309000,,đen,34
+TE-045,Chuột không dây im lặng Air,"Chuột không dây im lặng Air: nút bấm giảm ồn, Bluetooth. Xuất xứ Việt Nam. Bảo hành 12 tháng.",235000,,đen,15
+TE-046,Bàn phím cơ mini,"Bàn phím cơ mini: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",745000,,trắng,7
+TE-046,Bàn phím cơ mini,"Bàn phím cơ mini: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",745000,,đen,40
+TE-047,Bàn phím cơ mini Lite,"Bàn phím cơ mini Lite: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",759000,,xanh dương,37
+TE-047,Bàn phím cơ mini Lite,"Bàn phím cơ mini Lite: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",759000,,trắng,0
+TE-048,Bàn phím cơ mini Pro,"Bàn phím cơ mini Pro: 68 phím, switch đỏ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",969000,,đen,39
+TE-049,Bàn phím cơ mini Max,"Bàn phím cơ mini Max: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1369000,,trắng,12
+TE-049,Bàn phím cơ mini Max,"Bàn phím cơ mini Max: 68 phím, switch đỏ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1369000,,đen,20
+TE-050,Bàn phím cơ mini Air,"Bàn phím cơ mini Air: 68 phím, switch đỏ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1025000,,xanh dương,12
+TE-050,Bàn phím cơ mini Air,"Bàn phím cơ mini Air: 68 phím, switch đỏ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1025000,,trắng,38
+TE-050,Bàn phím cơ mini Air,"Bàn phím cơ mini Air: 68 phím, switch đỏ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1025000,,đen,16
+TE-051,Giá đỡ điện thoại,"Giá đỡ điện thoại: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",125000,,xanh dương,15
+TE-051,Giá đỡ điện thoại,"Giá đỡ điện thoại: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",125000,,trắng,6
+TE-051,Giá đỡ điện thoại,"Giá đỡ điện thoại: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",125000,,đen,12
+TE-052,Giá đỡ điện thoại Lite,"Giá đỡ điện thoại Lite: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",119000,,xanh dương,25
+TE-052,Giá đỡ điện thoại Lite,"Giá đỡ điện thoại Lite: nhôm, gập gọn. Xuất xứ Việt Nam. Không áp dụng bảo hành.",119000,,đen,24
+TE-053,Giá đỡ điện thoại Pro,"Giá đỡ điện thoại Pro: nhôm, gập gọn. Xuất xứ Đài Loan. Không áp dụng bảo hành.",189000,,trắng,0
+TE-053,Giá đỡ điện thoại Pro,"Giá đỡ điện thoại Pro: nhôm, gập gọn. Xuất xứ Đài Loan. Không áp dụng bảo hành.",189000,,xanh dương,24
+TE-054,Giá đỡ điện thoại Max,"Giá đỡ điện thoại Max: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",150000,,trắng,26
+TE-054,Giá đỡ điện thoại Max,"Giá đỡ điện thoại Max: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",150000,,xanh dương,21
+TE-055,Giá đỡ điện thoại Air,"Giá đỡ điện thoại Air: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",119000,,xanh dương,13
+TE-055,Giá đỡ điện thoại Air,"Giá đỡ điện thoại Air: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",119000,,trắng,25
+TE-055,Giá đỡ điện thoại Air,"Giá đỡ điện thoại Air: nhôm, gập gọn. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",119000,,đen,38
+TE-056,Loa Bluetooth mini,Loa Bluetooth mini: chống nước IPX5. Xuất xứ Trung Quốc. Bảo hành 12 tháng.,369000,,xanh dương,27
+TE-057,Loa Bluetooth mini Lite,Loa Bluetooth mini Lite: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,395000,,đen,22
+TE-057,Loa Bluetooth mini Lite,Loa Bluetooth mini Lite: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,395000,,trắng,28
+TE-058,Loa Bluetooth mini Pro,Loa Bluetooth mini Pro: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,569000,,xanh dương,38
+TE-058,Loa Bluetooth mini Pro,Loa Bluetooth mini Pro: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,569000,,đen,40
+TE-058,Loa Bluetooth mini Pro,Loa Bluetooth mini Pro: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,569000,,trắng,35
+TE-059,Loa Bluetooth mini Max,Loa Bluetooth mini Max: chống nước IPX5. Xuất xứ Đài Loan. Bảo hành 12 tháng.,535000,,đen,33
+TE-059,Loa Bluetooth mini Max,Loa Bluetooth mini Max: chống nước IPX5. Xuất xứ Đài Loan. Bảo hành 12 tháng.,535000,,xanh dương,30
+TE-059,Loa Bluetooth mini Max,Loa Bluetooth mini Max: chống nước IPX5. Xuất xứ Đài Loan. Bảo hành 12 tháng.,535000,,trắng,0
+TE-060,Loa Bluetooth mini Air,Loa Bluetooth mini Air: chống nước IPX5. Xuất xứ Việt Nam. Bảo hành 12 tháng.,495000,,trắng,0
+TE-061,Thẻ nhớ microSD,"Thẻ nhớ microSD: class 10, U3. Xuất xứ Trung Quốc. Bảo hành 24 tháng.",289000,64GB,đen,2
+TE-061,Thẻ nhớ microSD,"Thẻ nhớ microSD: class 10, U3. Xuất xứ Trung Quốc. Bảo hành 24 tháng.",289000,128GB,đen,9
+TE-062,Thẻ nhớ microSD Lite,"Thẻ nhớ microSD Lite: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",139000,64GB,đen,29
+TE-062,Thẻ nhớ microSD Lite,"Thẻ nhớ microSD Lite: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",139000,128GB,đen,21
+TE-063,Thẻ nhớ microSD Pro,"Thẻ nhớ microSD Pro: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",385000,64GB,đen,13
+TE-063,Thẻ nhớ microSD Pro,"Thẻ nhớ microSD Pro: class 10, U3. Xuất xứ Việt Nam. Bảo hành 24 tháng.",385000,128GB,đen,30
+TE-064,Thẻ nhớ microSD Max,"Thẻ nhớ microSD Max: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",219000,64GB,đen,27
+TE-064,Thẻ nhớ microSD Max,"Thẻ nhớ microSD Max: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",219000,128GB,đen,25
+TE-065,Thẻ nhớ microSD Air,"Thẻ nhớ microSD Air: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",279000,64GB,đen,36
+TE-065,Thẻ nhớ microSD Air,"Thẻ nhớ microSD Air: class 10, U3. Xuất xứ Đài Loan. Bảo hành 24 tháng.",279000,128GB,đen,22
+TE-066,USB 3.0,USB 3.0: vỏ kim loại. Xuất xứ Trung Quốc. Bảo hành 24 tháng.,119000,128GB,đen,37
+TE-067,USB 3.0 Lite,USB 3.0 Lite: vỏ kim loại. Xuất xứ Đài Loan. Bảo hành 24 tháng.,125000,64GB,đen,15
+TE-067,USB 3.0 Lite,USB 3.0 Lite: vỏ kim loại. Xuất xứ Đài Loan. Bảo hành 24 tháng.,125000,128GB,đen,18
+TE-068,USB 3.0 Pro,USB 3.0 Pro: vỏ kim loại. Xuất xứ Việt Nam. Bảo hành 24 tháng.,289000,128GB,đen,7
+TE-069,USB 3.0 Max,USB 3.0 Max: vỏ kim loại. Xuất xứ Trung Quốc. Bảo hành 24 tháng.,290000,64GB,đen,32
+TE-070,USB 3.0 Air,USB 3.0 Air: vỏ kim loại. Xuất xứ Đài Loan. Bảo hành 24 tháng.,110000,64GB,đen,19
+TE-071,Hub USB-C 6 cổng,"Hub USB-C 6 cổng: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",555000,,xanh dương,27
+TE-072,Hub USB-C 6 cổng Lite,"Hub USB-C 6 cổng Lite: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Đài Loan. Bảo hành 12 tháng.",469000,,xanh dương,40
+TE-073,Hub USB-C 6 cổng Pro,"Hub USB-C 6 cổng Pro: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",575000,,trắng,22
+TE-074,Hub USB-C 6 cổng Max,"Hub USB-C 6 cổng Max: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",659000,,xanh dương,7
+TE-075,Hub USB-C 6 cổng Air,"Hub USB-C 6 cổng Air: HDMI 4K, USB 3.0, đọc thẻ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",479000,,trắng,7
+TE-076,Đồng hồ thông minh,"Đồng hồ thông minh: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1369000,,xanh dương,0
+TE-077,Đồng hồ thông minh Lite,"Đồng hồ thông minh Lite: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1159000,,trắng,34
+TE-077,Đồng hồ thông minh Lite,"Đồng hồ thông minh Lite: đo nhịp tim, pin 7 ngày. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1159000,,đen,6
+TE-078,Đồng hồ thông minh Pro,"Đồng hồ thông minh Pro: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1259000,,trắng,0
+TE-078,Đồng hồ thông minh Pro,"Đồng hồ thông minh Pro: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1259000,,đen,0
+TE-079,Đồng hồ thông minh Max,"Đồng hồ thông minh Max: đo nhịp tim, pin 7 ngày. Xuất xứ Việt Nam. Bảo hành 12 tháng.",2020000,,trắng,5
+TE-079,Đồng hồ thông minh Max,"Đồng hồ thông minh Max: đo nhịp tim, pin 7 ngày. Xuất xứ Việt Nam. Bảo hành 12 tháng.",2020000,,xanh dương,6
+TE-080,Đồng hồ thông minh Air,"Đồng hồ thông minh Air: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1179000,,đen,10
+TE-080,Đồng hồ thông minh Air,"Đồng hồ thông minh Air: đo nhịp tim, pin 7 ngày. Xuất xứ Đài Loan. Bảo hành 12 tháng.",1179000,,trắng,0

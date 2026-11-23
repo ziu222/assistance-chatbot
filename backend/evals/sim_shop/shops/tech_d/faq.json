@@ -1,6 +1,6 @@
 [
   {
-    "answer": "Giờ làm việc: Thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy: 09:00–22:00; nghỉ Chủ nhật. Ngoài giờ shop trả lời vào đầu giờ làm việc kế tiếp.",
+    "answer": "Giờ làm việc: Thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy: 09:00–22:00; nghỉ Chủ nhật.",
     "question": "Shop làm việc giờ nào?"
   },
   {
@@ -8,15 +8,15 @@
     "question": "Ngày lễ shop có nghỉ không?"
   },
   {
-    "answer": "Phí giao nội thành là 20.000đ, nhận trong 1 ngày làm việc.",
+    "answer": "Phí giao nội thành là 20.000đ.",
     "question": "Phí giao nội thành bao nhiêu?"
   },
   {
-    "answer": "Phí giao ngoại thành là 30.000đ, nhận trong 1-2 ngày làm việc.",
+    "answer": "Phí giao ngoại thành là 30.000đ.",
     "question": "Phí giao ngoại thành bao nhiêu?"
   },
   {
-    "answer": "Phí giao đi tỉnh là 35.000đ, nhận trong 2-4 ngày làm việc.",
+    "answer": "Phí giao đi tỉnh là 35.000đ.",
     "question": "Phí giao đi tỉnh bao nhiêu?"
   },
   {
@@ -28,47 +28,31 @@
     "question": "Shop có nhận COD không?"
   },
   {
-    "answer": "Chuyển khoản được xác nhận trong giờ làm việc; ngoài giờ thì sáng hôm sau.",
-    "question": "Chuyển khoản bao lâu được xác nhận?"
-  },
-  {
     "answer": "Đổi trả trong 30 ngày kể từ ngày nhận hàng.",
     "question": "Đổi trả trong bao lâu?"
   },
   {
-    "answer": "Điều kiện: đổi mới trong 30 ngày nếu lỗi kỹ thuật do nhà sản xuất; còn hộp và phụ kiện, không trầy xước, không vào nước.",
+    "answer": "Điều kiện: lỗi kỹ thuật do nhà sản xuất; còn hộp và phụ kiện, không trầy xước, không vào nước.",
     "question": "Điều kiện đổi trả là gì?"
   },
   {
-    "answer": "Không đổi trả: thẻ nhớ và USB đã ghi dữ liệu (chỉ bảo hành, không đổi trả); sản phẩm hư do rơi, va đập, vào nước.",
+    "answer": "Không đổi trả: thẻ nhớ và USB đã ghi dữ liệu (chỉ bảo hành); hư do rơi, va đập, vào nước.",
     "question": "Sản phẩm nào không được đổi trả?"
-  },
-  {
-    "answer": "Lỗi do shop thì shop chịu phí ship hai chiều; đổi vì lý do cá nhân thì khách chịu phí ship.",
-    "question": "Ai chịu phí ship khi đổi hàng?"
-  },
-  {
-    "answer": "Đơn từ 15 sản phẩm được nhân viên báo giá sỉ riêng.",
-    "question": "Mua sỉ có giá riêng không?"
-  },
-  {
-    "answer": "Shop chỉ áp dụng khuyến mãi đã công bố trên fanpage, không tự giảm giá ngoài chương trình.",
-    "question": "Shop có mã giảm giá không?"
-  },
-  {
-    "answer": "Giá niêm yết đã gồm thuế.",
-    "question": "Giá đã gồm thuế chưa?"
-  },
-  {
-    "answer": "Có xuất hóa đơn VAT theo yêu cầu, gửi thông tin công ty trong ngày đặt hàng.",
-    "question": "Shop có xuất hóa đơn VAT không?"
-  },
-  {
-    "answer": "Nhân viên sẽ xem xét và quyết định từng trường hợp.",
-    "question": "Trường hợp ngoài chính sách thì sao?"
   },
   {
     "answer": "Thời hạn bảo hành ghi trong mô tả từng sản phẩm; không áp dụng cho hư hỏng do rơi vỡ hoặc vào nước.",
     "question": "Bảo hành thế nào?"
+  },
+  {
+    "answer": "Đơn từ 15 sản phẩm được nhân viên báo giá sỉ.",
+    "question": "Mua sỉ có giá riêng không?"
+  },
+  {
+    "answer": "Shop chỉ áp dụng khuyến mãi đã công bố, không tự giảm ngoài chương trình.",
+    "question": "Shop có mã giảm giá không?"
+  },
+  {
+    "answer": "Có xuất hóa đơn VAT theo yêu cầu, gửi thông tin công ty trong ngày đặt hàng.",
+    "question": "Shop có xuất hóa đơn VAT không?"
   }
 ]

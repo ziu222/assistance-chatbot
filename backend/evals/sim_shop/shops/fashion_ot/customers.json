@@ -1,0 +1,317 @@
+[
+  {
+    "address": "Số 157, đường Hư Cấu 38, Phường Mẫu, Đà Nẵng",
+    "email": "khach000.fashion_ot@example.test",
+    "id": "fashion_ot-c000",
+    "name": "Phạm Thanh Ngân",
+    "phone": "0967-436-731"
+  },
+  {
+    "address": "Số 161, đường Hư Cấu 16, Phường Mẫu, Cần Thơ",
+    "email": "khach001.fashion_ot@example.test",
+    "id": "fashion_ot-c001",
+    "name": "Hồ Thanh Quân",
+    "phone": "0964-272-104"
+  },
+  {
+    "address": "Số 170, đường Hư Cấu 31, Phường Mẫu, Khánh Hòa",
+    "email": "khach002.fashion_ot@example.test",
+    "id": "fashion_ot-c002",
+    "name": "Đặng Gia Trang",
+    "phone": "0927-795-850"
+  },
+  {
+    "address": "Số 90, đường Hư Cấu 39, Phường Mẫu, Hà Nội",
+    "email": "khach003.fashion_ot@example.test",
+    "id": "fashion_ot-c003",
+    "name": "Bùi Thanh Phương",
+    "phone": "0972-664-211"
+  },
+  {
+    "address": "Số 40, đường Hư Cấu 5, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach004.fashion_ot@example.test",
+    "id": "fashion_ot-c004",
+    "name": "Hoàng Minh Linh",
+    "phone": "0943-851-741"
+  },
+  {
+    "address": "Số 283, đường Hư Cấu 17, Phường Mẫu, Lâm Đồng",
+    "email": "khach005.fashion_ot@example.test",
+    "id": "fashion_ot-c005",
+    "name": "Đỗ Thị Vy",
+    "phone": "0985-317-137"
+  },
+  {
+    "address": "Số 149, đường Hư Cấu 9, Phường Mẫu, Khánh Hòa",
+    "email": "khach006.fashion_ot@example.test",
+    "id": "fashion_ot-c006",
+    "name": "Đỗ Bảo Hà",
+    "phone": "0956-501-328"
+  },
+  {
+    "address": "Số 123, đường Hư Cấu 11, Phường Mẫu, Lâm Đồng",
+    "email": "khach007.fashion_ot@example.test",
+    "id": "fashion_ot-c007",
+    "name": "Đỗ Văn Vy",
+    "phone": "0956-614-110"
+  },
+  {
+    "address": "Số 75, đường Hư Cấu 31, Phường Mẫu, Bình Dương",
+    "email": "khach008.fashion_ot@example.test",
+    "id": "fashion_ot-c008",
+    "name": "Lê Bảo Khoa",
+    "phone": "0932-679-679"
+  },
+  {
+    "address": "Số 190, đường Hư Cấu 15, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach009.fashion_ot@example.test",
+    "id": "fashion_ot-c009",
+    "name": "Nguyễn Ngọc Ngân",
+    "phone": "0939-164-370"
+  },
+  {
+    "address": "Số 21, đường Hư Cấu 21, Phường Mẫu, Hà Nội",
+    "email": "khach010.fashion_ot@example.test",
+    "id": "fashion_ot-c010",
+    "name": "Phạm Thanh Vy",
+    "phone": "0970-565-147"
+  },
+  {
+    "address": "Số 90, đường Hư Cấu 25, Phường Mẫu, Nghệ An",
+    "email": "khach011.fashion_ot@example.test",
+    "id": "fashion_ot-c011",
+    "name": "Đỗ Gia Nam",
+    "phone": "0984-657-683"
+  },
+  {
+    "address": "Số 208, đường Hư Cấu 23, Phường Mẫu, Bình Dương",
+    "email": "khach012.fashion_ot@example.test",
+    "id": "fashion_ot-c012",
+    "name": "Võ Văn Nam",
+    "phone": "0958-328-628"
+  },
+  {
+    "address": "Số 85, đường Hư Cấu 15, Phường Mẫu, Hà Nội",
+    "email": "khach013.fashion_ot@example.test",
+    "id": "fashion_ot-c013",
+    "name": "Bùi Bảo An",
+    "phone": "0974-242-550"
+  },
+  {
+    "address": "Số 186, đường Hư Cấu 39, Phường Mẫu, Hà Nội",
+    "email": "khach014.fashion_ot@example.test",
+    "id": "fashion_ot-c014",
+    "name": "Đỗ Gia Linh",
+    "phone": "0929-291-261"
+  },
+  {
+    "address": "Số 246, đường Hư Cấu 31, Phường Mẫu, Cần Thơ",
+    "email": "khach015.fashion_ot@example.test",
+    "id": "fashion_ot-c015",
+    "name": "Phạm Đức Quân",
+    "phone": "0924-593-791"
+  },
+  {
+    "address": "Số 66, đường Hư Cấu 37, Phường Mẫu, Quảng Ninh",
+    "email": "khach016.fashion_ot@example.test",
+    "id": "fashion_ot-c016",
+    "name": "Hồ Minh Tú",
+    "phone": "0912-349-144"
+  },
+  {
+    "address": "Số 86, đường Hư Cấu 17, Phường Mẫu, Đà Nẵng",
+    "email": "khach017.fashion_ot@example.test",
+    "id": "fashion_ot-c017",
+    "name": "Lê Minh Bình",
+    "phone": "0983-250-157"
+  },
+  {
+    "address": "Số 44, đường Hư Cấu 14, Phường Mẫu, Khánh Hòa",
+    "email": "khach018.fashion_ot@example.test",
+    "id": "fashion_ot-c018",
+    "name": "Đỗ Đức An",
+    "phone": "0994-941-390"
+  },
+  {
+    "address": "Số 211, đường Hư Cấu 39, Phường Mẫu, Đà Nẵng",
+    "email": "khach019.fashion_ot@example.test",
+    "id": "fashion_ot-c019",
+    "name": "Hồ Bảo Ngân",
+    "phone": "0931-324-950"
+  },
+  {
+    "address": "Số 176, đường Hư Cấu 30, Phường Mẫu, Quảng Ninh",
+    "email": "khach020.fashion_ot@example.test",
+    "id": "fashion_ot-c020",
+    "name": "Hồ Minh Nam",
+    "phone": "0931-841-802"
+  },
+  {
+    "address": "Số 56, đường Hư Cấu 2, Phường Mẫu, Cần Thơ",
+    "email": "khach021.fashion_ot@example.test",
+    "id": "fashion_ot-c021",
+    "name": "Hồ Văn Mai",
+    "phone": "0958-494-235"
+  },
+  {
+    "address": "Số 244, đường Hư Cấu 39, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach022.fashion_ot@example.test",
+    "id": "fashion_ot-c022",
+    "name": "Đỗ Đức Hà",
+    "phone": "0987-198-281"
+  },
+  {
+    "address": "Số 277, đường Hư Cấu 1, Phường Mẫu, Nghệ An",
+    "email": "khach023.fashion_ot@example.test",
+    "id": "fashion_ot-c023",
+    "name": "Đỗ Văn Chi",
+    "phone": "0971-775-233"
+  },
+  {
+    "address": "Số 220, đường Hư Cấu 15, Phường Mẫu, Khánh Hòa",
+    "email": "khach024.fashion_ot@example.test",
+    "id": "fashion_ot-c024",
+    "name": "Đỗ Đức Trang",
+    "phone": "0915-814-642"
+  },
+  {
+    "address": "Số 245, đường Hư Cấu 15, Phường Mẫu, Hà Nội",
+    "email": "khach025.fashion_ot@example.test",
+    "id": "fashion_ot-c025",
+    "name": "Đặng Thanh Dũng",
+    "phone": "0964-237-360"
+  },
+  {
+    "address": "Số 4, đường Hư Cấu 37, Phường Mẫu, Lâm Đồng",
+    "email": "khach026.fashion_ot@example.test",
+    "id": "fashion_ot-c026",
+    "name": "Hoàng Đức Nam",
+    "phone": "0934-105-826"
+  },
+  {
+    "address": "Số 162, đường Hư Cấu 27, Phường Mẫu, Bình Dương",
+    "email": "khach027.fashion_ot@example.test",
+    "id": "fashion_ot-c027",
+    "name": "Trần Thị Vy",
+    "phone": "0993-310-804"
+  },
+  {
+    "address": "Số 134, đường Hư Cấu 35, Phường Mẫu, Nghệ An",
+    "email": "khach028.fashion_ot@example.test",
+    "id": "fashion_ot-c028",
+    "name": "Trần Minh Tú",
+    "phone": "0993-699-359"
+  },
+  {
+    "address": "Số 105, đường Hư Cấu 27, Phường Mẫu, Lâm Đồng",
+    "email": "khach029.fashion_ot@example.test",
+    "id": "fashion_ot-c029",
+    "name": "Hồ Thanh Nam",
+    "phone": "0997-506-873"
+  },
+  {
+    "address": "Số 248, đường Hư Cấu 17, Phường Mẫu, Hải Phòng",
+    "email": "khach030.fashion_ot@example.test",
+    "id": "fashion_ot-c030",
+    "name": "Đỗ Bảo Khoa",
+    "phone": "0957-672-668"
+  },
+  {
+    "address": "Số 61, đường Hư Cấu 15, Phường Mẫu, Khánh Hòa",
+    "email": "khach031.fashion_ot@example.test",
+    "id": "fashion_ot-c031",
+    "name": "Hồ Thanh Vy",
+    "phone": "0927-975-984"
+  },
+  {
+    "address": "Số 174, đường Hư Cấu 36, Phường Mẫu, Quảng Ninh",
+    "email": "khach032.fashion_ot@example.test",
+    "id": "fashion_ot-c032",
+    "name": "Lê Văn Linh",
+    "phone": "0975-510-904"
+  },
+  {
+    "address": "Số 47, đường Hư Cấu 10, Phường Mẫu, Khánh Hòa",
+    "email": "khach033.fashion_ot@example.test",
+    "id": "fashion_ot-c033",
+    "name": "Nguyễn Minh Vy",
+    "phone": "0991-105-923"
+  },
+  {
+    "address": "Số 190, đường Hư Cấu 6, Phường Mẫu, Quảng Ninh",
+    "email": "khach034.fashion_ot@example.test",
+    "id": "fashion_ot-c034",
+    "name": "Hồ Đức Chi",
+    "phone": "0918-369-327"
+  },
+  {
+    "address": "Số 147, đường Hư Cấu 39, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach035.fashion_ot@example.test",
+    "id": "fashion_ot-c035",
+    "name": "Nguyễn Đức Vy",
+    "phone": "0988-771-633"
+  },
+  {
+    "address": "Số 266, đường Hư Cấu 19, Phường Mẫu, Cần Thơ",
+    "email": "khach036.fashion_ot@example.test",
+    "id": "fashion_ot-c036",
+    "name": "Lê Bảo Hiếu",
+    "phone": "0911-306-970"
+  },
+  {
+    "address": "Số 123, đường Hư Cấu 1, Phường Mẫu, Đà Nẵng",
+    "email": "khach037.fashion_ot@example.test",
+    "id": "fashion_ot-c037",
+    "name": "Nguyễn Ngọc Khoa",
+    "phone": "0996-136-468"
+  },
+  {
+    "address": "Số 208, đường Hư Cấu 38, Phường Mẫu, Cần Thơ",
+    "email": "khach038.fashion_ot@example.test",
+    "id": "fashion_ot-c038",
+    "name": "Trần Gia Vy",
+    "phone": "0955-785-504"
+  },
+  {
+    "address": "Số 287, đường Hư Cấu 38, Phường Mẫu, Bình Dương",
+    "email": "khach039.fashion_ot@example.test",
+    "id": "fashion_ot-c039",
+    "name": "Đỗ Thị Chi",
+    "phone": "0921-662-391"
+  },
+  {
+    "address": "Số 207, đường Hư Cấu 37, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach040.fashion_ot@example.test",
+    "id": "fashion_ot-c040",
+    "name": "Võ Gia Mai",
+    "phone": "0987-299-565"
+  },
+  {
+    "address": "Số 38, đường Hư Cấu 33, Phường Mẫu, Hải Phòng",
+    "email": "khach041.fashion_ot@example.test",
+    "id": "fashion_ot-c041",
+    "name": "Hoàng Minh Tú",
+    "phone": "0974-209-672"
+  },
+  {
+    "address": "Số 295, đường Hư Cấu 17, Phường Mẫu, Khánh Hòa",
+    "email": "khach042.fashion_ot@example.test",
+    "id": "fashion_ot-c042",
+    "name": "Võ Văn Nam",
+    "phone": "0978-932-912"
+  },
+  {
+    "address": "Số 236, đường Hư Cấu 38, Phường Mẫu, TP. Hồ Chí Minh",
+    "email": "khach043.fashion_ot@example.test",
+    "id": "fashion_ot-c043",
+    "name": "Đặng Bảo Mai",
+    "phone": "0953-894-569"
+  },
+  {
+    "address": "Số 113, đường Hư Cấu 15, Phường Mẫu, Bình Dương",
+    "email": "khach044.fashion_ot@example.test",
+    "id": "fashion_ot-c044",
+    "name": "Bùi Văn Nam",
+    "phone": "0918-491-748"
+  }
+]

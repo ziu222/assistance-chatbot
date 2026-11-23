@@ -1,0 +1,945 @@
+{
+  "items": [
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Độ pH 5.5, cho da nhạy cảm\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3963727447",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 2
+        }
+      ],
+      "price_original": 229000,
+      "price_sale": 229000,
+      "seller_sku": "GL-001",
+      "title": "Sữa rửa mặt dịu nhẹ auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Độ pH 5.5, cho da nhạy cảm\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3648403946",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 22
+        }
+      ],
+      "price_original": 235000,
+      "price_sale": 235000,
+      "seller_sku": "GL-002",
+      "title": "✨Sữa rửa mặt dịu nhẹ Sensitive✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Độ pH 5.5, cho da nhạy cảm\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3187744636",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 259000,
+      "price_sale": 259000,
+      "seller_sku": "GL-003",
+      "title": "✨Sữa rửa mặt dịu nhẹ Bright✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Độ pH 5.5, cho da nhạy cảm\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "7127584892",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 169000,
+      "price_sale": 169000,
+      "seller_sku": "GL-004",
+      "title": "✨Sữa rửa mặt dịu nhẹ Calm✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Độ pH 5.5, cho da nhạy cảm\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 300.000đ, nay chỉ còn 150.000đ!",
+      "item_id": "6531244261",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 8
+        }
+      ],
+      "price_original": 300000,
+      "price_sale": 150000,
+      "seller_sku": "GL-005",
+      "title": "Sữa rửa mặt dịu nhẹ Fresh dưỡng trắng siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- SPF50+ PA++++, kết cấu mỏng\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4431644521",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 33
+        },
+        {
+          "name": "100ml",
+          "stock": 2
+        },
+        {
+          "name": "150ml",
+          "stock": 3
+        }
+      ],
+      "price_original": 275000,
+      "price_sale": 275000,
+      "seller_sku": "GL-006",
+      "title": "Kem chống nắng phổ rộng chính hãng siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- SPF50+ PA++++, kết cấu mỏng\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4713011051",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 8
+        },
+        {
+          "name": "100ml",
+          "stock": 28
+        },
+        {
+          "name": "150ml",
+          "stock": 6
+        }
+      ],
+      "price_original": 239000,
+      "price_sale": 239000,
+      "seller_sku": "GL-007",
+      "title": "Kem chống nắng phổ rộng Sensitive auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- SPF50+ PA++++, kết cấu mỏng\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4337385343",
+      "models": [
+        {
+          "name": "150ml",
+          "stock": 30
+        }
+      ],
+      "price_original": 369000,
+      "price_sale": 369000,
+      "seller_sku": "GL-008",
+      "title": "Kem chống nắng phổ rộng Bright chính hãng 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- SPF50+ PA++++, kết cấu mỏng\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3019130310",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 38
+        },
+        {
+          "name": "100ml",
+          "stock": 15
+        },
+        {
+          "name": "150ml",
+          "stock": 17
+        }
+      ],
+      "price_original": 290000,
+      "price_sale": 290000,
+      "seller_sku": "GL-009",
+      "title": "Kem chống nắng phổ rộng Calm mini size siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- SPF50+ PA++++, kết cấu mỏng\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 392.000đ, nay chỉ còn 245.000đ!",
+      "item_id": "4049386023",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 14
+        }
+      ],
+      "price_original": 392000,
+      "price_sale": 245000,
+      "seller_sku": "GL-010",
+      "title": "Kem chống nắng phổ rộng Fresh dưỡng trắng 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Ceramide và HA, không nhờn\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 500.000đ, nay chỉ còn 250.000đ!",
+      "item_id": "8163901518",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 19
+        }
+      ],
+      "price_original": 500000,
+      "price_sale": 250000,
+      "seller_sku": "GL-011",
+      "title": "✨Kem dưỡng ẩm ban ngày✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Ceramide và HA, không nhờn\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "5782601974",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 28
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 319000,
+      "price_sale": 319000,
+      "seller_sku": "GL-012",
+      "title": "Kem dưỡng ẩm ban ngày Sensitive chính hãng 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Ceramide và HA, không nhờn\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "2756666624",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 33
+        }
+      ],
+      "price_original": 355000,
+      "price_sale": 355000,
+      "seller_sku": "GL-013",
+      "title": "Kem dưỡng ẩm ban ngày Bright auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Ceramide và HA, không nhờn\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "6620010435",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 15
+        },
+        {
+          "name": "100ml",
+          "stock": 3
+        }
+      ],
+      "price_original": 310000,
+      "price_sale": 310000,
+      "seller_sku": "GL-014",
+      "title": "✨Kem dưỡng ẩm ban ngày Calm✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Ceramide và HA, không nhờn\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 530.000đ, nay chỉ còn 265.000đ!",
+      "item_id": "9862513734",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 23
+        },
+        {
+          "name": "150ml",
+          "stock": 36
+        }
+      ],
+      "price_original": 530000,
+      "price_sale": 265000,
+      "seller_sku": "GL-015",
+      "title": "Kem dưỡng ẩm ban ngày Fresh mini size siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Peptide, phục hồi qua đêm\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "5037328522",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 14
+        },
+        {
+          "name": "100ml",
+          "stock": 16
+        }
+      ],
+      "price_original": 285000,
+      "price_sale": 285000,
+      "seller_sku": "GL-016",
+      "title": "Kem dưỡng ẩm ban đêm auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Peptide, phục hồi qua đêm\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4220862110",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 16
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 299000,
+      "price_sale": 299000,
+      "seller_sku": "GL-017",
+      "title": "Kem dưỡng ẩm ban đêm Sensitive dưỡng trắng 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Peptide, phục hồi qua đêm\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "1086561545",
+      "models": [
+        {
+          "name": "150ml",
+          "stock": 27
+        }
+      ],
+      "price_original": 409000,
+      "price_sale": 409000,
+      "seller_sku": "GL-018",
+      "title": "✨Kem dưỡng ẩm ban đêm Bright✨ chính hãng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Peptide, phục hồi qua đêm\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "7769732531",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 365000,
+      "price_sale": 365000,
+      "seller_sku": "GL-019",
+      "title": "Kem dưỡng ẩm ban đêm Calm mini size 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Peptide, phục hồi qua đêm\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4069092303",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 26
+        },
+        {
+          "name": "150ml",
+          "stock": 35
+        }
+      ],
+      "price_original": 289000,
+      "price_sale": 289000,
+      "seller_sku": "GL-020",
+      "title": "✨Kem dưỡng ẩm ban đêm Fresh✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Vitamin C 10%, làm sáng da\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "1726947767",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 6
+        },
+        {
+          "name": "100ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 359000,
+      "price_sale": 359000,
+      "seller_sku": "GL-021",
+      "title": "✨Serum vitamin C✨ chính hãng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Vitamin C 10%, làm sáng da\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "5318897881",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 22
+        },
+        {
+          "name": "150ml",
+          "stock": 3
+        }
+      ],
+      "price_original": 439000,
+      "price_sale": 439000,
+      "seller_sku": "GL-022",
+      "title": "✨Serum vitamin C Sensitive✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Vitamin C 10%, làm sáng da\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "1713810569",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 5
+        },
+        {
+          "name": "100ml",
+          "stock": 1
+        },
+        {
+          "name": "150ml",
+          "stock": 8
+        }
+      ],
+      "price_original": 429000,
+      "price_sale": 429000,
+      "seller_sku": "GL-023",
+      "title": "✨Serum vitamin C Bright✨ auth 100% | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Vitamin C 10%, làm sáng da\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "7539002241",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 18
+        }
+      ],
+      "price_original": 359000,
+      "price_sale": 359000,
+      "seller_sku": "GL-024",
+      "title": "Serum vitamin C Calm auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Vitamin C 10%, làm sáng da\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "5337148987",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 22
+        },
+        {
+          "name": "100ml",
+          "stock": 9
+        },
+        {
+          "name": "150ml",
+          "stock": 31
+        }
+      ],
+      "price_original": 340000,
+      "price_sale": 340000,
+      "seller_sku": "GL-025",
+      "title": "Serum vitamin C Fresh mini size 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Niacinamide 5%, giảm thâm\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4793930101",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 39
+        },
+        {
+          "name": "150ml",
+          "stock": 23
+        }
+      ],
+      "price_original": 295000,
+      "price_sale": 295000,
+      "seller_sku": "GL-026",
+      "title": "✨Serum niacinamide✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Niacinamide 5%, giảm thâm\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3420900257",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 14
+        },
+        {
+          "name": "150ml",
+          "stock": 17
+        }
+      ],
+      "price_original": 299000,
+      "price_sale": 299000,
+      "seller_sku": "GL-027",
+      "title": "✨Serum niacinamide Sensitive✨ mini size | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Niacinamide 5%, giảm thâm\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "1629176876",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 0
+        },
+        {
+          "name": "100ml",
+          "stock": 14
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 289000,
+      "price_sale": 289000,
+      "seller_sku": "GL-028",
+      "title": "Serum niacinamide Bright mini size siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Niacinamide 5%, giảm thâm\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "8328264724",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 8
+        },
+        {
+          "name": "100ml",
+          "stock": 26
+        },
+        {
+          "name": "150ml",
+          "stock": 25
+        }
+      ],
+      "price_original": 269000,
+      "price_sale": 269000,
+      "seller_sku": "GL-029",
+      "title": "Serum niacinamide Calm auth 100% 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Niacinamide 5%, giảm thâm\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "9159416252",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 250000,
+      "price_sale": 250000,
+      "seller_sku": "GL-030",
+      "title": "Serum niacinamide Fresh mini size 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chiết xuất hoa hồng, không cồn\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "6937609381",
+      "models": [
+        {
+          "name": "150ml",
+          "stock": 13
+        }
+      ],
+      "price_original": 205000,
+      "price_sale": 205000,
+      "seller_sku": "GL-031",
+      "title": "Toner hoa hồng mini size siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chiết xuất hoa hồng, không cồn\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4958087064",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 33
+        }
+      ],
+      "price_original": 189000,
+      "price_sale": 189000,
+      "seller_sku": "GL-032",
+      "title": "Toner hoa hồng Sensitive mini size 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chiết xuất hoa hồng, không cồn\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4467888399",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 30
+        },
+        {
+          "name": "100ml",
+          "stock": 31
+        },
+        {
+          "name": "150ml",
+          "stock": 35
+        }
+      ],
+      "price_original": 229000,
+      "price_sale": 229000,
+      "seller_sku": "GL-033",
+      "title": "Toner hoa hồng Bright mini size siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chiết xuất hoa hồng, không cồn\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 236.000đ, nay chỉ còn 169.000đ!",
+      "item_id": "2349635732",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 4
+        }
+      ],
+      "price_original": 236000,
+      "price_sale": 169000,
+      "seller_sku": "GL-034",
+      "title": "Toner hoa hồng Calm chính hãng 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chiết xuất hoa hồng, không cồn\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3154036452",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 26
+        },
+        {
+          "name": "100ml",
+          "stock": 4
+        },
+        {
+          "name": "150ml",
+          "stock": 0
+        }
+      ],
+      "price_original": 190000,
+      "price_sale": 190000,
+      "seller_sku": "GL-035",
+      "title": "✨Toner hoa hồng Fresh✨ mini size | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Micellar, làm sạch dịu\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "2988592958",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 23
+        },
+        {
+          "name": "100ml",
+          "stock": 0
+        },
+        {
+          "name": "150ml",
+          "stock": 6
+        }
+      ],
+      "price_original": 189000,
+      "price_sale": 189000,
+      "seller_sku": "GL-036",
+      "title": "Nước tẩy trang auth 100% 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Micellar, làm sạch dịu\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 208.000đ, nay chỉ còn 149.000đ!",
+      "item_id": "5051173495",
+      "models": [
+        {
+          "name": "150ml",
+          "stock": 6
+        }
+      ],
+      "price_original": 208000,
+      "price_sale": 149000,
+      "seller_sku": "GL-037",
+      "title": "Nước tẩy trang Sensitive chính hãng siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Micellar, làm sạch dịu\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4587479963",
+      "models": [
+        {
+          "name": "150ml",
+          "stock": 15
+        }
+      ],
+      "price_original": 165000,
+      "price_sale": 165000,
+      "seller_sku": "GL-038",
+      "title": "✨Nước tẩy trang Bright✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Micellar, làm sạch dịu\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "2656485964",
+      "models": [
+        {
+          "name": "100ml",
+          "stock": 34
+        },
+        {
+          "name": "150ml",
+          "stock": 11
+        }
+      ],
+      "price_original": 145000,
+      "price_sale": 145000,
+      "seller_sku": "GL-039",
+      "title": "✨Nước tẩy trang Calm✨ mini size | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Micellar, làm sạch dịu\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3710612548",
+      "models": [
+        {
+          "name": "50ml",
+          "stock": 14
+        },
+        {
+          "name": "100ml",
+          "stock": 30
+        },
+        {
+          "name": "150ml",
+          "stock": 8
+        }
+      ],
+      "price_original": 145000,
+      "price_sale": 145000,
+      "seller_sku": "GL-040",
+      "title": "✨Nước tẩy trang Fresh✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Dầu jojoba, màu nhẹ tự nhiên\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "3348394093",
+      "models": [
+        {
+          "name": "01 hồng đất",
+          "stock": 31
+        },
+        {
+          "name": "03 cam cháy",
+          "stock": 7
+        },
+        {
+          "name": "02 đỏ gạch",
+          "stock": 23
+        },
+        {
+          "name": "04 nude",
+          "stock": 30
+        }
+      ],
+      "price_original": 129000,
+      "price_sale": 129000,
+      "seller_sku": "GL-041",
+      "title": "Son dưỡng có màu chính hãng siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Dầu jojoba, màu nhẹ tự nhiên\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "2289234503",
+      "models": [
+        {
+          "name": "03 cam cháy",
+          "stock": 22
+        },
+        {
+          "name": "04 nude",
+          "stock": 26
+        }
+      ],
+      "price_original": 159000,
+      "price_sale": 159000,
+      "seller_sku": "GL-042",
+      "title": "Son dưỡng có màu Sensitive auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Dầu jojoba, màu nhẹ tự nhiên\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "4229171556",
+      "models": [
+        {
+          "name": "02 đỏ gạch",
+          "stock": 20
+        },
+        {
+          "name": "03 cam cháy",
+          "stock": 34
+        }
+      ],
+      "price_original": 175000,
+      "price_sale": 175000,
+      "seller_sku": "GL-043",
+      "title": "Son dưỡng có màu Bright auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Dầu jojoba, màu nhẹ tự nhiên\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "6168228553",
+      "models": [
+        {
+          "name": "02 đỏ gạch",
+          "stock": 13
+        },
+        {
+          "name": "04 nude",
+          "stock": 20
+        },
+        {
+          "name": "01 hồng đất",
+          "stock": 12
+        }
+      ],
+      "price_original": 100000,
+      "price_sale": 100000,
+      "seller_sku": "GL-044",
+      "title": "Son dưỡng có màu Calm mini size 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Dầu jojoba, màu nhẹ tự nhiên\n- Xuất xứ: Hàn Quốc\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "8165881716",
+      "models": [
+        {
+          "name": "03 cam cháy",
+          "stock": 26
+        },
+        {
+          "name": "01 hồng đất",
+          "stock": 31
+        }
+      ],
+      "price_original": 95000,
+      "price_sale": 95000,
+      "seller_sku": "GL-045",
+      "title": "✨Son dưỡng có màu Fresh✨ chính hãng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chất kem mịn, lâu trôi 6 giờ\n- Xuất xứ: Việt Nam\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "6304961439",
+      "models": [
+        {
+          "name": "04 nude",
+          "stock": 23
+        },
+        {
+          "name": "03 cam cháy",
+          "stock": 38
+        },
+        {
+          "name": "02 đỏ gạch",
+          "stock": 0
+        }
+      ],
+      "price_original": 205000,
+      "price_sale": 205000,
+      "seller_sku": "GL-046",
+      "title": "Son kem lì auth 100% 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chất kem mịn, lâu trôi 6 giờ\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "2828416204",
+      "models": [
+        {
+          "name": "02 đỏ gạch",
+          "stock": 22
+        },
+        {
+          "name": "04 nude",
+          "stock": 12
+        }
+      ],
+      "price_original": 189000,
+      "price_sale": 189000,
+      "seller_sku": "GL-047",
+      "title": "Son kem lì Sensitive auth 100% 💖 trend 2026"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chất kem mịn, lâu trôi 6 giờ\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "5985957879",
+      "models": [
+        {
+          "name": "01 hồng đất",
+          "stock": 7
+        },
+        {
+          "name": "02 đỏ gạch",
+          "stock": 26
+        },
+        {
+          "name": "04 nude",
+          "stock": 1
+        }
+      ],
+      "price_original": 189000,
+      "price_sale": 189000,
+      "seller_sku": "GL-048",
+      "title": "✨Son kem lì Bright✨ dưỡng trắng | xả kho"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chất kem mịn, lâu trôi 6 giờ\n- Xuất xứ: Thái Lan\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review",
+      "item_id": "7451305385",
+      "models": [
+        {
+          "name": "03 cam cháy",
+          "stock": 8
+        },
+        {
+          "name": "02 đỏ gạch",
+          "stock": 29
+        }
+      ],
+      "price_original": 159000,
+      "price_sale": 159000,
+      "seller_sku": "GL-049",
+      "title": "Son kem lì Calm auth 100% siêu hot"
+    },
+    {
+      "description": "📦 THÔNG TIN SẢN PHẨM\n- Chất kem mịn, lâu trôi 6 giờ\n- Xuất xứ: Nhật Bản\n🚚 Giao toàn quốc, đóng gói cẩn thận\n💬 Inbox shop để được tư vấn\n#skincare #lamdep #review\n💥 Giá gốc 251.000đ, nay chỉ còn 180.000đ!",
+      "item_id": "7249131725",
+      "models": [
+        {
+          "name": "01 hồng đất",
+          "stock": 38
+        },
+        {
+          "name": "02 đỏ gạch",
+          "stock": 33
+        }
+      ],
+      "price_original": 251000,
+      "price_sale": 180000,
+      "seller_sku": "GL-050",
+      "title": "✨Son kem lì Fresh✨ auth 100% | xả kho"
+    }
+  ],
+  "source": "tiktok_like"
+}

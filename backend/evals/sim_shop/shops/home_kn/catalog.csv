@@ -1,0 +1,596 @@
+sku,name,description,price_vnd,size,color,stock
+KN-001,Bình giữ nhiệt inox,"Bình giữ nhiệt inox: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",250000,750ml,trắng,0
+KN-001,Bình giữ nhiệt inox,"Bình giữ nhiệt inox: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",250000,1L,trắng,0
+KN-002,Bình giữ nhiệt inox Classic,"Bình giữ nhiệt inox Classic: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",285000,750ml,trắng,0
+KN-002,Bình giữ nhiệt inox Classic,"Bình giữ nhiệt inox Classic: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",285000,1L,trắng,0
+KN-003,Bình giữ nhiệt inox Mini,"Bình giữ nhiệt inox Mini: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",179000,1L,trắng,30
+KN-004,Bình giữ nhiệt inox Plus,"Bình giữ nhiệt inox Plus: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",275000,500ml,trắng,9
+KN-004,Bình giữ nhiệt inox Plus,"Bình giữ nhiệt inox Plus: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",275000,750ml,trắng,37
+KN-004,Bình giữ nhiệt inox Plus,"Bình giữ nhiệt inox Plus: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",275000,1L,trắng,3
+KN-005,Bình giữ nhiệt inox Eco,"Bình giữ nhiệt inox Eco: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",239000,500ml,trắng,0
+KN-005,Bình giữ nhiệt inox Eco,"Bình giữ nhiệt inox Eco: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",239000,750ml,trắng,2
+KN-005,Bình giữ nhiệt inox Eco,"Bình giữ nhiệt inox Eco: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",239000,1L,trắng,24
+KN-006,Bình giữ nhiệt mini,"Bình giữ nhiệt mini: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",190000,500ml,trắng,0
+KN-006,Bình giữ nhiệt mini,"Bình giữ nhiệt mini: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",190000,1L,trắng,0
+KN-007,Bình giữ nhiệt mini Classic,"Bình giữ nhiệt mini Classic: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",200000,500ml,trắng,26
+KN-007,Bình giữ nhiệt mini Classic,"Bình giữ nhiệt mini Classic: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",200000,750ml,trắng,26
+KN-008,Bình giữ nhiệt mini Mini,"Bình giữ nhiệt mini Mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",130000,500ml,trắng,15
+KN-008,Bình giữ nhiệt mini Mini,"Bình giữ nhiệt mini Mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",130000,750ml,trắng,13
+KN-008,Bình giữ nhiệt mini Mini,"Bình giữ nhiệt mini Mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",130000,1L,trắng,37
+KN-009,Bình giữ nhiệt mini Plus,"Bình giữ nhiệt mini Plus: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",205000,1L,trắng,21
+KN-010,Bình giữ nhiệt mini Eco,"Bình giữ nhiệt mini Eco: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",179000,500ml,trắng,11
+KN-010,Bình giữ nhiệt mini Eco,"Bình giữ nhiệt mini Eco: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",179000,750ml,trắng,38
+KN-011,Bộ hộp thủy tinh,"Bộ hộp thủy tinh: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",270000,1L,trắng,0
+KN-012,Bộ hộp thủy tinh Classic,"Bộ hộp thủy tinh Classic: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",279000,750ml,trắng,36
+KN-012,Bộ hộp thủy tinh Classic,"Bộ hộp thủy tinh Classic: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",279000,1L,trắng,40
+KN-013,Bộ hộp thủy tinh Mini,"Bộ hộp thủy tinh Mini: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",265000,750ml,trắng,8
+KN-014,Bộ hộp thủy tinh Plus,"Bộ hộp thủy tinh Plus: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",409000,500ml,trắng,22
+KN-015,Bộ hộp thủy tinh Eco,"Bộ hộp thủy tinh Eco: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",239000,500ml,trắng,21
+KN-015,Bộ hộp thủy tinh Eco,"Bộ hộp thủy tinh Eco: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",239000,750ml,trắng,7
+KN-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1355000,500ml,trắng,34
+KN-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1355000,750ml,trắng,0
+KN-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1355000,1L,trắng,29
+KN-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1310000,500ml,trắng,6
+KN-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1310000,750ml,trắng,0
+KN-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1310000,1L,trắng,30
+KN-018,Nồi chiên không dầu Mini,"Nồi chiên không dầu Mini: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1369000,1L,trắng,9
+KN-019,Nồi chiên không dầu Plus,"Nồi chiên không dầu Plus: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1550000,1L,trắng,23
+KN-020,Nồi chiên không dầu Eco,"Nồi chiên không dầu Eco: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1640000,500ml,trắng,38
+KN-020,Nồi chiên không dầu Eco,"Nồi chiên không dầu Eco: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1640000,750ml,trắng,29
+KN-021,Ấm siêu tốc,"Ấm siêu tốc: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",285000,750ml,trắng,18
+KN-021,Ấm siêu tốc,"Ấm siêu tốc: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",285000,1L,trắng,22
+KN-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",350000,500ml,trắng,28
+KN-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",350000,750ml,trắng,2
+KN-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",350000,1L,trắng,0
+KN-023,Ấm siêu tốc Mini,"Ấm siêu tốc Mini: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",299000,500ml,trắng,15
+KN-023,Ấm siêu tốc Mini,"Ấm siêu tốc Mini: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",299000,750ml,trắng,0
+KN-024,Ấm siêu tốc Plus,"Ấm siêu tốc Plus: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",409000,500ml,trắng,0
+KN-024,Ấm siêu tốc Plus,"Ấm siêu tốc Plus: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",409000,1L,trắng,0
+KN-025,Ấm siêu tốc Eco,"Ấm siêu tốc Eco: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",309000,500ml,trắng,34
+KN-025,Ấm siêu tốc Eco,"Ấm siêu tốc Eco: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",309000,750ml,trắng,25
+KN-025,Ấm siêu tốc Eco,"Ấm siêu tốc Eco: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",309000,1L,trắng,40
+KN-026,Chảo chống dính,"Chảo chống dính: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",285000,750ml,trắng,19
+KN-026,Chảo chống dính,"Chảo chống dính: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",285000,1L,trắng,10
+KN-027,Chảo chống dính Classic,"Chảo chống dính Classic: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",235000,500ml,trắng,12
+KN-027,Chảo chống dính Classic,"Chảo chống dính Classic: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",235000,1L,trắng,7
+KN-028,Chảo chống dính Mini,"Chảo chống dính Mini: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",199000,1L,trắng,0
+KN-029,Chảo chống dính Plus,"Chảo chống dính Plus: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",319000,500ml,trắng,34
+KN-029,Chảo chống dính Plus,"Chảo chống dính Plus: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",319000,1L,trắng,17
+KN-030,Chảo chống dính Eco,"Chảo chống dính Eco: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,1L,trắng,31
+KN-031,Bộ dao inox,"Bộ dao inox: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",345000,,đen,0
+KN-031,Bộ dao inox,"Bộ dao inox: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",345000,,xanh mint,0
+KN-032,Bộ dao inox Classic,"Bộ dao inox Classic: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",309000,,xanh mint,0
+KN-033,Bộ dao inox Mini,"Bộ dao inox Mini: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",245000,,đen,0
+KN-034,Bộ dao inox Plus,"Bộ dao inox Plus: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",429000,,trắng,14
+KN-034,Bộ dao inox Plus,"Bộ dao inox Plus: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",429000,,xanh mint,14
+KN-035,Bộ dao inox Eco,"Bộ dao inox Eco: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",349000,,trắng,37
+KN-036,Thớt gỗ nghiến,Thớt gỗ nghiến: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,185000,750ml,trắng,16
+KN-037,Thớt gỗ nghiến Classic,Thớt gỗ nghiến Classic: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,190000,500ml,trắng,30
+KN-037,Thớt gỗ nghiến Classic,Thớt gỗ nghiến Classic: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,190000,750ml,trắng,32
+KN-038,Thớt gỗ nghiến Mini,Thớt gỗ nghiến Mini: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,190000,1L,trắng,17
+KN-039,Thớt gỗ nghiến Plus,Thớt gỗ nghiến Plus: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,299000,1L,trắng,5
+KN-040,Thớt gỗ nghiến Eco,Thớt gỗ nghiến Eco: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,179000,500ml,trắng,21
+KN-040,Thớt gỗ nghiến Eco,Thớt gỗ nghiến Eco: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,179000,1L,trắng,0
+KN-041,Giá treo khăn,"Giá treo khăn: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",139000,,trắng,26
+KN-042,Giá treo khăn Classic,"Giá treo khăn Classic: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",149000,,xanh mint,30
+KN-042,Giá treo khăn Classic,"Giá treo khăn Classic: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",149000,,đen,33
+KN-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",140000,,đen,26
+KN-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",140000,,trắng,3
+KN-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",140000,,xanh mint,18
+KN-044,Giá treo khăn Plus,"Giá treo khăn Plus: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",179000,,xanh mint,37
+KN-045,Giá treo khăn Eco,"Giá treo khăn Eco: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",140000,,xanh mint,6
+KN-046,Kệ gia vị 2 tầng,"Kệ gia vị 2 tầng: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",240000,,trắng,31
+KN-047,Kệ gia vị 2 tầng Classic,"Kệ gia vị 2 tầng Classic: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",185000,,đen,38
+KN-047,Kệ gia vị 2 tầng Classic,"Kệ gia vị 2 tầng Classic: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",185000,,xanh mint,39
+KN-047,Kệ gia vị 2 tầng Classic,"Kệ gia vị 2 tầng Classic: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",185000,,trắng,10
+KN-048,Kệ gia vị 2 tầng Mini,"Kệ gia vị 2 tầng Mini: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",185000,,trắng,0
+KN-049,Kệ gia vị 2 tầng Plus,"Kệ gia vị 2 tầng Plus: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",255000,,xanh mint,6
+KN-050,Kệ gia vị 2 tầng Eco,"Kệ gia vị 2 tầng Eco: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,trắng,0
+KN-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",270000,,xanh mint,40
+KN-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",270000,,đen,14
+KN-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",270000,,trắng,0
+KN-052,Đèn bàn cảm ứng Classic,"Đèn bàn cảm ứng Classic: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",270000,,trắng,20
+KN-052,Đèn bàn cảm ứng Classic,"Đèn bàn cảm ứng Classic: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",270000,,xanh mint,7
+KN-052,Đèn bàn cảm ứng Classic,"Đèn bàn cảm ứng Classic: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",270000,,đen,0
+KN-053,Đèn bàn cảm ứng Mini,"Đèn bàn cảm ứng Mini: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,,xanh mint,34
+KN-054,Đèn bàn cảm ứng Plus,"Đèn bàn cảm ứng Plus: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",365000,,đen,0
+KN-054,Đèn bàn cảm ứng Plus,"Đèn bàn cảm ứng Plus: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",365000,,xanh mint,13
+KN-054,Đèn bàn cảm ứng Plus,"Đèn bàn cảm ứng Plus: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",365000,,trắng,24
+KN-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",289000,,xanh mint,38
+KN-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",289000,,đen,2
+KN-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",289000,,trắng,15
+KN-056,Quạt mini để bàn,"Quạt mini để bàn: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",160000,,đen,25
+KN-056,Quạt mini để bàn,"Quạt mini để bàn: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",160000,,xanh mint,9
+KN-057,Quạt mini để bàn Classic,"Quạt mini để bàn Classic: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",245000,,đen,28
+KN-058,Quạt mini để bàn Mini,"Quạt mini để bàn Mini: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",179000,,đen,40
+KN-058,Quạt mini để bàn Mini,"Quạt mini để bàn Mini: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",179000,,xanh mint,0
+KN-058,Quạt mini để bàn Mini,"Quạt mini để bàn Mini: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",179000,,trắng,6
+KN-059,Quạt mini để bàn Plus,"Quạt mini để bàn Plus: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",289000,,trắng,0
+KN-060,Quạt mini để bàn Eco,"Quạt mini để bàn Eco: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",170000,,xanh mint,19
+KN-060,Quạt mini để bàn Eco,"Quạt mini để bàn Eco: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",170000,,trắng,0
+KN-060,Quạt mini để bàn Eco,"Quạt mini để bàn Eco: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",170000,,đen,0
+KN-061,Máy xay sinh tố,"Máy xay sinh tố: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",659000,500ml,trắng,20
+KN-061,Máy xay sinh tố,"Máy xay sinh tố: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",659000,750ml,trắng,24
+KN-061,Máy xay sinh tố,"Máy xay sinh tố: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",659000,1L,trắng,23
+KN-062,Máy xay sinh tố Classic,"Máy xay sinh tố Classic: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",675000,500ml,trắng,0
+KN-062,Máy xay sinh tố Classic,"Máy xay sinh tố Classic: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",675000,750ml,trắng,30
+KN-063,Máy xay sinh tố Mini,"Máy xay sinh tố Mini: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",469000,500ml,trắng,0
+KN-063,Máy xay sinh tố Mini,"Máy xay sinh tố Mini: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",469000,750ml,trắng,27
+KN-063,Máy xay sinh tố Mini,"Máy xay sinh tố Mini: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",469000,1L,trắng,7
+KN-064,Máy xay sinh tố Plus,"Máy xay sinh tố Plus: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",759000,750ml,trắng,35
+KN-065,Máy xay sinh tố Eco,"Máy xay sinh tố Eco: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",520000,500ml,trắng,7
+KN-066,Hộp cơm giữ nhiệt,"Hộp cơm giữ nhiệt: 3 ngăn, inox 304. Xuất xứ Việt Nam. Bảo hành 6 tháng.",259000,1L,trắng,0
+KN-067,Hộp cơm giữ nhiệt Classic,"Hộp cơm giữ nhiệt Classic: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",219000,750ml,trắng,0
+KN-068,Hộp cơm giữ nhiệt Mini,"Hộp cơm giữ nhiệt Mini: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",180000,500ml,trắng,13
+KN-068,Hộp cơm giữ nhiệt Mini,"Hộp cơm giữ nhiệt Mini: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",180000,750ml,trắng,0
+KN-069,Hộp cơm giữ nhiệt Plus,"Hộp cơm giữ nhiệt Plus: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",250000,750ml,trắng,32
+KN-069,Hộp cơm giữ nhiệt Plus,"Hộp cơm giữ nhiệt Plus: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",250000,1L,trắng,0
+KN-070,Hộp cơm giữ nhiệt Eco,"Hộp cơm giữ nhiệt Eco: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",195000,500ml,trắng,28
+KN-070,Hộp cơm giữ nhiệt Eco,"Hộp cơm giữ nhiệt Eco: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",195000,750ml,trắng,28
+KN-071,Cây lau nhà xoay,"Cây lau nhà xoay: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,trắng,31
+KN-072,Cây lau nhà xoay Classic,"Cây lau nhà xoay Classic: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",220000,,đen,22
+KN-072,Cây lau nhà xoay Classic,"Cây lau nhà xoay Classic: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",220000,,trắng,2
+KN-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",249000,,đen,3
+KN-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",249000,,xanh mint,0
+KN-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",249000,,trắng,38
+KN-074,Cây lau nhà xoay Plus,"Cây lau nhà xoay Plus: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",370000,,đen,5
+KN-075,Cây lau nhà xoay Eco,"Cây lau nhà xoay Eco: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,xanh mint,26
+KN-075,Cây lau nhà xoay Eco,"Cây lau nhà xoay Eco: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,đen,34
+KN-076,Móc dán tường (bộ 10),"Móc dán tường (bộ 10): chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",79000,,xanh mint,27
+KN-076,Móc dán tường (bộ 10),"Móc dán tường (bộ 10): chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",79000,,đen,36
+KN-077,Móc dán tường (bộ 10) Classic,"Móc dán tường (bộ 10) Classic: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",59000,,trắng,4
+KN-078,Móc dán tường (bộ 10) Mini,"Móc dán tường (bộ 10) Mini: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",55000,,đen,14
+KN-079,Móc dán tường (bộ 10) Plus,"Móc dán tường (bộ 10) Plus: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",89000,,trắng,17
+KN-079,Móc dán tường (bộ 10) Plus,"Móc dán tường (bộ 10) Plus: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",89000,,xanh mint,28
+KN-080,Móc dán tường (bộ 10) Eco,"Móc dán tường (bộ 10) Eco: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",59000,,xanh mint,0
+KN-080,Móc dán tường (bộ 10) Eco,"Móc dán tường (bộ 10) Eco: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",59000,,trắng,11
+KN-081,Bình giữ nhiệt inox V2,"Bình giữ nhiệt inox V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",250000,500ml,trắng,40
+KN-081,Bình giữ nhiệt inox V2,"Bình giữ nhiệt inox V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",250000,750ml,trắng,39
+KN-081,Bình giữ nhiệt inox V2,"Bình giữ nhiệt inox V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",250000,1L,trắng,38
+KN-082,Bình giữ nhiệt inox Classic V2,"Bình giữ nhiệt inox Classic V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",289000,500ml,trắng,5
+KN-082,Bình giữ nhiệt inox Classic V2,"Bình giữ nhiệt inox Classic V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",289000,750ml,trắng,26
+KN-082,Bình giữ nhiệt inox Classic V2,"Bình giữ nhiệt inox Classic V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",289000,1L,trắng,20
+KN-083,Bình giữ nhiệt inox Mini V2,"Bình giữ nhiệt inox Mini V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",169000,500ml,trắng,0
+KN-083,Bình giữ nhiệt inox Mini V2,"Bình giữ nhiệt inox Mini V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",169000,1L,trắng,0
+KN-084,Bình giữ nhiệt inox Plus V2,"Bình giữ nhiệt inox Plus V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",249000,500ml,trắng,0
+KN-084,Bình giữ nhiệt inox Plus V2,"Bình giữ nhiệt inox Plus V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",249000,750ml,trắng,0
+KN-084,Bình giữ nhiệt inox Plus V2,"Bình giữ nhiệt inox Plus V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",249000,1L,trắng,0
+KN-085,Bình giữ nhiệt inox Eco V2,"Bình giữ nhiệt inox Eco V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,500ml,trắng,32
+KN-085,Bình giữ nhiệt inox Eco V2,"Bình giữ nhiệt inox Eco V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,750ml,trắng,38
+KN-085,Bình giữ nhiệt inox Eco V2,"Bình giữ nhiệt inox Eco V2: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,1L,trắng,11
+KN-086,Bình giữ nhiệt mini V2,"Bình giữ nhiệt mini V2: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,500ml,trắng,0
+KN-086,Bình giữ nhiệt mini V2,"Bình giữ nhiệt mini V2: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,750ml,trắng,8
+KN-086,Bình giữ nhiệt mini V2,"Bình giữ nhiệt mini V2: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,1L,trắng,6
+KN-087,Bình giữ nhiệt mini Classic V2,"Bình giữ nhiệt mini Classic V2: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",179000,500ml,trắng,36
+KN-087,Bình giữ nhiệt mini Classic V2,"Bình giữ nhiệt mini Classic V2: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",179000,750ml,trắng,22
+KN-087,Bình giữ nhiệt mini Classic V2,"Bình giữ nhiệt mini Classic V2: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",179000,1L,trắng,23
+KN-088,Bình giữ nhiệt mini Mini V2,"Bình giữ nhiệt mini Mini V2: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",159000,500ml,trắng,0
+KN-088,Bình giữ nhiệt mini Mini V2,"Bình giữ nhiệt mini Mini V2: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",159000,1L,trắng,0
+KN-089,Bình giữ nhiệt mini Plus V2,"Bình giữ nhiệt mini Plus V2: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",220000,500ml,trắng,20
+KN-089,Bình giữ nhiệt mini Plus V2,"Bình giữ nhiệt mini Plus V2: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",220000,750ml,trắng,29
+KN-090,Bình giữ nhiệt mini Eco V2,"Bình giữ nhiệt mini Eco V2: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",169000,500ml,trắng,23
+KN-091,Bộ hộp thủy tinh V2,"Bộ hộp thủy tinh V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",265000,500ml,trắng,35
+KN-091,Bộ hộp thủy tinh V2,"Bộ hộp thủy tinh V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",265000,750ml,trắng,15
+KN-091,Bộ hộp thủy tinh V2,"Bộ hộp thủy tinh V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",265000,1L,trắng,28
+KN-092,Bộ hộp thủy tinh Classic V2,"Bộ hộp thủy tinh Classic V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",289000,500ml,trắng,0
+KN-092,Bộ hộp thủy tinh Classic V2,"Bộ hộp thủy tinh Classic V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",289000,750ml,trắng,0
+KN-092,Bộ hộp thủy tinh Classic V2,"Bộ hộp thủy tinh Classic V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",289000,1L,trắng,0
+KN-093,Bộ hộp thủy tinh Mini V2,"Bộ hộp thủy tinh Mini V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",245000,500ml,trắng,27
+KN-093,Bộ hộp thủy tinh Mini V2,"Bộ hộp thủy tinh Mini V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",245000,750ml,trắng,22
+KN-093,Bộ hộp thủy tinh Mini V2,"Bộ hộp thủy tinh Mini V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",245000,1L,trắng,16
+KN-094,Bộ hộp thủy tinh Plus V2,"Bộ hộp thủy tinh Plus V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",359000,500ml,trắng,24
+KN-094,Bộ hộp thủy tinh Plus V2,"Bộ hộp thủy tinh Plus V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",359000,1L,trắng,18
+KN-095,Bộ hộp thủy tinh Eco V2,"Bộ hộp thủy tinh Eco V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,500ml,trắng,13
+KN-095,Bộ hộp thủy tinh Eco V2,"Bộ hộp thủy tinh Eco V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,750ml,trắng,18
+KN-095,Bộ hộp thủy tinh Eco V2,"Bộ hộp thủy tinh Eco V2: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,1L,trắng,0
+KN-096,Nồi chiên không dầu V2,"Nồi chiên không dầu V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1539000,500ml,trắng,39
+KN-096,Nồi chiên không dầu V2,"Nồi chiên không dầu V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1539000,750ml,trắng,35
+KN-096,Nồi chiên không dầu V2,"Nồi chiên không dầu V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1539000,1L,trắng,35
+KN-097,Nồi chiên không dầu Classic V2,"Nồi chiên không dầu Classic V2: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1785000,500ml,trắng,34
+KN-097,Nồi chiên không dầu Classic V2,"Nồi chiên không dầu Classic V2: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1785000,750ml,trắng,7
+KN-098,Nồi chiên không dầu Mini V2,"Nồi chiên không dầu Mini V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1435000,500ml,trắng,35
+KN-098,Nồi chiên không dầu Mini V2,"Nồi chiên không dầu Mini V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1435000,750ml,trắng,16
+KN-098,Nồi chiên không dầu Mini V2,"Nồi chiên không dầu Mini V2: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1435000,1L,trắng,38
+KN-099,Nồi chiên không dầu Plus V2,"Nồi chiên không dầu Plus V2: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",2219000,500ml,trắng,38
+KN-099,Nồi chiên không dầu Plus V2,"Nồi chiên không dầu Plus V2: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",2219000,1L,trắng,21
+KN-100,Nồi chiên không dầu Eco V2,"Nồi chiên không dầu Eco V2: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1225000,500ml,trắng,31
+KN-100,Nồi chiên không dầu Eco V2,"Nồi chiên không dầu Eco V2: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1225000,750ml,trắng,16
+KN-100,Nồi chiên không dầu Eco V2,"Nồi chiên không dầu Eco V2: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1225000,1L,trắng,25
+KN-101,Ấm siêu tốc V2,"Ấm siêu tốc V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",269000,500ml,trắng,39
+KN-101,Ấm siêu tốc V2,"Ấm siêu tốc V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",269000,1L,trắng,36
+KN-102,Ấm siêu tốc Classic V2,"Ấm siêu tốc Classic V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",270000,500ml,trắng,0
+KN-102,Ấm siêu tốc Classic V2,"Ấm siêu tốc Classic V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",270000,1L,trắng,21
+KN-103,Ấm siêu tốc Mini V2,"Ấm siêu tốc Mini V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",259000,500ml,trắng,38
+KN-103,Ấm siêu tốc Mini V2,"Ấm siêu tốc Mini V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",259000,750ml,trắng,4
+KN-103,Ấm siêu tốc Mini V2,"Ấm siêu tốc Mini V2: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",259000,1L,trắng,25
+KN-104,Ấm siêu tốc Plus V2,"Ấm siêu tốc Plus V2: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",410000,500ml,trắng,4
+KN-104,Ấm siêu tốc Plus V2,"Ấm siêu tốc Plus V2: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",410000,750ml,trắng,28
+KN-104,Ấm siêu tốc Plus V2,"Ấm siêu tốc Plus V2: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",410000,1L,trắng,1
+KN-105,Ấm siêu tốc Eco V2,"Ấm siêu tốc Eco V2: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",260000,500ml,trắng,20
+KN-105,Ấm siêu tốc Eco V2,"Ấm siêu tốc Eco V2: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",260000,750ml,trắng,15
+KN-106,Chảo chống dính V2,"Chảo chống dính V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",275000,750ml,trắng,12
+KN-106,Chảo chống dính V2,"Chảo chống dính V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",275000,1L,trắng,22
+KN-107,Chảo chống dính Classic V2,"Chảo chống dính Classic V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",229000,750ml,trắng,4
+KN-107,Chảo chống dính Classic V2,"Chảo chống dính Classic V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",229000,1L,trắng,0
+KN-108,Chảo chống dính Mini V2,"Chảo chống dính Mini V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",269000,750ml,trắng,29
+KN-109,Chảo chống dính Plus V2,"Chảo chống dính Plus V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,500ml,trắng,25
+KN-109,Chảo chống dính Plus V2,"Chảo chống dính Plus V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,750ml,trắng,0
+KN-110,Chảo chống dính Eco V2,"Chảo chống dính Eco V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",229000,750ml,trắng,34
+KN-110,Chảo chống dính Eco V2,"Chảo chống dính Eco V2: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",229000,1L,trắng,4
+KN-111,Bộ dao inox V2,"Bộ dao inox V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",279000,,đen,12
+KN-111,Bộ dao inox V2,"Bộ dao inox V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",279000,,trắng,23
+KN-111,Bộ dao inox V2,"Bộ dao inox V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",279000,,xanh mint,1
+KN-112,Bộ dao inox Classic V2,"Bộ dao inox Classic V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",279000,,xanh mint,5
+KN-113,Bộ dao inox Mini V2,"Bộ dao inox Mini V2: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",220000,,đen,38
+KN-113,Bộ dao inox Mini V2,"Bộ dao inox Mini V2: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",220000,,xanh mint,35
+KN-113,Bộ dao inox Mini V2,"Bộ dao inox Mini V2: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",220000,,trắng,0
+KN-114,Bộ dao inox Plus V2,"Bộ dao inox Plus V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",465000,,xanh mint,8
+KN-114,Bộ dao inox Plus V2,"Bộ dao inox Plus V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",465000,,trắng,15
+KN-115,Bộ dao inox Eco V2,"Bộ dao inox Eco V2: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",330000,,trắng,28
+KN-116,Thớt gỗ nghiến V2,Thớt gỗ nghiến V2: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,220000,500ml,trắng,5
+KN-116,Thớt gỗ nghiến V2,Thớt gỗ nghiến V2: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,220000,750ml,trắng,0
+KN-117,Thớt gỗ nghiến Classic V2,Thớt gỗ nghiến Classic V2: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,179000,500ml,trắng,26
+KN-117,Thớt gỗ nghiến Classic V2,Thớt gỗ nghiến Classic V2: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,179000,750ml,trắng,16
+KN-117,Thớt gỗ nghiến Classic V2,Thớt gỗ nghiến Classic V2: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,179000,1L,trắng,11
+KN-118,Thớt gỗ nghiến Mini V2,Thớt gỗ nghiến Mini V2: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,129000,500ml,trắng,23
+KN-119,Thớt gỗ nghiến Plus V2,Thớt gỗ nghiến Plus V2: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,269000,500ml,trắng,13
+KN-119,Thớt gỗ nghiến Plus V2,Thớt gỗ nghiến Plus V2: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,269000,750ml,trắng,0
+KN-119,Thớt gỗ nghiến Plus V2,Thớt gỗ nghiến Plus V2: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,269000,1L,trắng,15
+KN-120,Thớt gỗ nghiến Eco V2,Thớt gỗ nghiến Eco V2: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,165000,750ml,trắng,0
+KN-121,Giá treo khăn V2,"Giá treo khăn V2: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",169000,,xanh mint,0
+KN-121,Giá treo khăn V2,"Giá treo khăn V2: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",169000,,đen,0
+KN-122,Giá treo khăn Classic V2,"Giá treo khăn Classic V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",140000,,đen,35
+KN-122,Giá treo khăn Classic V2,"Giá treo khăn Classic V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",140000,,xanh mint,35
+KN-123,Giá treo khăn Mini V2,"Giá treo khăn Mini V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",149000,,trắng,0
+KN-123,Giá treo khăn Mini V2,"Giá treo khăn Mini V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",149000,,đen,21
+KN-123,Giá treo khăn Mini V2,"Giá treo khăn Mini V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",149000,,xanh mint,39
+KN-124,Giá treo khăn Plus V2,"Giá treo khăn Plus V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",190000,,đen,39
+KN-124,Giá treo khăn Plus V2,"Giá treo khăn Plus V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",190000,,xanh mint,0
+KN-124,Giá treo khăn Plus V2,"Giá treo khăn Plus V2: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",190000,,trắng,21
+KN-125,Giá treo khăn Eco V2,"Giá treo khăn Eco V2: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",169000,,xanh mint,15
+KN-125,Giá treo khăn Eco V2,"Giá treo khăn Eco V2: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",169000,,trắng,0
+KN-126,Kệ gia vị 2 tầng V2,"Kệ gia vị 2 tầng V2: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",205000,,trắng,0
+KN-126,Kệ gia vị 2 tầng V2,"Kệ gia vị 2 tầng V2: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",205000,,đen,0
+KN-126,Kệ gia vị 2 tầng V2,"Kệ gia vị 2 tầng V2: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",205000,,xanh mint,0
+KN-127,Kệ gia vị 2 tầng Classic V2,"Kệ gia vị 2 tầng Classic V2: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",215000,,trắng,33
+KN-128,Kệ gia vị 2 tầng Mini V2,"Kệ gia vị 2 tầng Mini V2: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",185000,,trắng,0
+KN-129,Kệ gia vị 2 tầng Plus V2,"Kệ gia vị 2 tầng Plus V2: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",235000,,trắng,25
+KN-130,Kệ gia vị 2 tầng Eco V2,"Kệ gia vị 2 tầng Eco V2: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,xanh mint,0
+KN-130,Kệ gia vị 2 tầng Eco V2,"Kệ gia vị 2 tầng Eco V2: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,đen,19
+KN-130,Kệ gia vị 2 tầng Eco V2,"Kệ gia vị 2 tầng Eco V2: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,trắng,25
+KN-131,Đèn bàn cảm ứng V2,"Đèn bàn cảm ứng V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",265000,,đen,6
+KN-131,Đèn bàn cảm ứng V2,"Đèn bàn cảm ứng V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",265000,,trắng,4
+KN-132,Đèn bàn cảm ứng Classic V2,"Đèn bàn cảm ứng Classic V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",255000,,đen,38
+KN-132,Đèn bàn cảm ứng Classic V2,"Đèn bàn cảm ứng Classic V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",255000,,xanh mint,7
+KN-133,Đèn bàn cảm ứng Mini V2,"Đèn bàn cảm ứng Mini V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",209000,,trắng,18
+KN-133,Đèn bàn cảm ứng Mini V2,"Đèn bàn cảm ứng Mini V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",209000,,xanh mint,38
+KN-134,Đèn bàn cảm ứng Plus V2,"Đèn bàn cảm ứng Plus V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",380000,,trắng,25
+KN-134,Đèn bàn cảm ứng Plus V2,"Đèn bàn cảm ứng Plus V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",380000,,đen,6
+KN-134,Đèn bàn cảm ứng Plus V2,"Đèn bàn cảm ứng Plus V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",380000,,xanh mint,0
+KN-135,Đèn bàn cảm ứng Eco V2,"Đèn bàn cảm ứng Eco V2: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",299000,,đen,0
+KN-136,Quạt mini để bàn V2,"Quạt mini để bàn V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",190000,,trắng,36
+KN-136,Quạt mini để bàn V2,"Quạt mini để bàn V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",190000,,xanh mint,28
+KN-137,Quạt mini để bàn Classic V2,"Quạt mini để bàn Classic V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",209000,,xanh mint,30
+KN-137,Quạt mini để bàn Classic V2,"Quạt mini để bàn Classic V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",209000,,đen,34
+KN-137,Quạt mini để bàn Classic V2,"Quạt mini để bàn Classic V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",209000,,trắng,28
+KN-138,Quạt mini để bàn Mini V2,"Quạt mini để bàn Mini V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",169000,,đen,0
+KN-139,Quạt mini để bàn Plus V2,"Quạt mini để bàn Plus V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",239000,,đen,0
+KN-139,Quạt mini để bàn Plus V2,"Quạt mini để bàn Plus V2: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",239000,,trắng,0
+KN-140,Quạt mini để bàn Eco V2,"Quạt mini để bàn Eco V2: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",150000,,xanh mint,0
+KN-140,Quạt mini để bàn Eco V2,"Quạt mini để bàn Eco V2: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",150000,,trắng,36
+KN-140,Quạt mini để bàn Eco V2,"Quạt mini để bàn Eco V2: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",150000,,đen,37
+KN-141,Máy xay sinh tố V2,"Máy xay sinh tố V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",640000,750ml,trắng,6
+KN-141,Máy xay sinh tố V2,"Máy xay sinh tố V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",640000,1L,trắng,9
+KN-142,Máy xay sinh tố Classic V2,"Máy xay sinh tố Classic V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",665000,1L,trắng,36
+KN-143,Máy xay sinh tố Mini V2,"Máy xay sinh tố Mini V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",469000,500ml,trắng,39
+KN-143,Máy xay sinh tố Mini V2,"Máy xay sinh tố Mini V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",469000,750ml,trắng,22
+KN-144,Máy xay sinh tố Plus V2,"Máy xay sinh tố Plus V2: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",670000,500ml,trắng,0
+KN-144,Máy xay sinh tố Plus V2,"Máy xay sinh tố Plus V2: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",670000,750ml,trắng,19
+KN-144,Máy xay sinh tố Plus V2,"Máy xay sinh tố Plus V2: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",670000,1L,trắng,3
+KN-145,Máy xay sinh tố Eco V2,"Máy xay sinh tố Eco V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",705000,500ml,trắng,1
+KN-145,Máy xay sinh tố Eco V2,"Máy xay sinh tố Eco V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",705000,750ml,trắng,2
+KN-145,Máy xay sinh tố Eco V2,"Máy xay sinh tố Eco V2: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",705000,1L,trắng,4
+KN-146,Hộp cơm giữ nhiệt V2,"Hộp cơm giữ nhiệt V2: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",230000,500ml,trắng,9
+KN-146,Hộp cơm giữ nhiệt V2,"Hộp cơm giữ nhiệt V2: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",230000,750ml,trắng,31
+KN-147,Hộp cơm giữ nhiệt Classic V2,"Hộp cơm giữ nhiệt Classic V2: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",230000,500ml,trắng,0
+KN-147,Hộp cơm giữ nhiệt Classic V2,"Hộp cơm giữ nhiệt Classic V2: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",230000,1L,trắng,34
+KN-148,Hộp cơm giữ nhiệt Mini V2,"Hộp cơm giữ nhiệt Mini V2: 3 ngăn, inox 304. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,500ml,trắng,5
+KN-149,Hộp cơm giữ nhiệt Plus V2,"Hộp cơm giữ nhiệt Plus V2: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",289000,500ml,trắng,0
+KN-149,Hộp cơm giữ nhiệt Plus V2,"Hộp cơm giữ nhiệt Plus V2: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",289000,750ml,trắng,1
+KN-149,Hộp cơm giữ nhiệt Plus V2,"Hộp cơm giữ nhiệt Plus V2: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",289000,1L,trắng,30
+KN-150,Hộp cơm giữ nhiệt Eco V2,"Hộp cơm giữ nhiệt Eco V2: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",199000,1L,trắng,29
+KN-151,Cây lau nhà xoay V2,"Cây lau nhà xoay V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",249000,,đen,1
+KN-152,Cây lau nhà xoay Classic V2,"Cây lau nhà xoay Classic V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",319000,,đen,10
+KN-152,Cây lau nhà xoay Classic V2,"Cây lau nhà xoay Classic V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",319000,,xanh mint,34
+KN-152,Cây lau nhà xoay Classic V2,"Cây lau nhà xoay Classic V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",319000,,trắng,38
+KN-153,Cây lau nhà xoay Mini V2,"Cây lau nhà xoay Mini V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",200000,,trắng,6
+KN-153,Cây lau nhà xoay Mini V2,"Cây lau nhà xoay Mini V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",200000,,đen,33
+KN-154,Cây lau nhà xoay Plus V2,"Cây lau nhà xoay Plus V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",395000,,trắng,0
+KN-154,Cây lau nhà xoay Plus V2,"Cây lau nhà xoay Plus V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",395000,,xanh mint,10
+KN-154,Cây lau nhà xoay Plus V2,"Cây lau nhà xoay Plus V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",395000,,đen,36
+KN-155,Cây lau nhà xoay Eco V2,"Cây lau nhà xoay Eco V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",269000,,trắng,34
+KN-155,Cây lau nhà xoay Eco V2,"Cây lau nhà xoay Eco V2: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",269000,,đen,16
+KN-156,Móc dán tường (bộ 10) V2,"Móc dán tường (bộ 10) V2: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",69000,,xanh mint,0
+KN-156,Móc dán tường (bộ 10) V2,"Móc dán tường (bộ 10) V2: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",69000,,đen,13
+KN-157,Móc dán tường (bộ 10) Classic V2,"Móc dán tường (bộ 10) Classic V2: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",89000,,đen,22
+KN-157,Móc dán tường (bộ 10) Classic V2,"Móc dán tường (bộ 10) Classic V2: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",89000,,trắng,29
+KN-158,Móc dán tường (bộ 10) Mini V2,"Móc dán tường (bộ 10) Mini V2: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",69000,,đen,24
+KN-158,Móc dán tường (bộ 10) Mini V2,"Móc dán tường (bộ 10) Mini V2: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",69000,,xanh mint,11
+KN-159,Móc dán tường (bộ 10) Plus V2,"Móc dán tường (bộ 10) Plus V2: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",80000,,trắng,20
+KN-160,Móc dán tường (bộ 10) Eco V2,"Móc dán tường (bộ 10) Eco V2: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",69000,,trắng,30
+KN-161,Bình giữ nhiệt inox V3,"Bình giữ nhiệt inox V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,750ml,trắng,4
+KN-161,Bình giữ nhiệt inox V3,"Bình giữ nhiệt inox V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,1L,trắng,12
+KN-162,Bình giữ nhiệt inox Classic V3,"Bình giữ nhiệt inox Classic V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",260000,500ml,trắng,1
+KN-162,Bình giữ nhiệt inox Classic V3,"Bình giữ nhiệt inox Classic V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",260000,750ml,trắng,9
+KN-163,Bình giữ nhiệt inox Mini V3,"Bình giữ nhiệt inox Mini V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",220000,500ml,trắng,4
+KN-164,Bình giữ nhiệt inox Plus V3,"Bình giữ nhiệt inox Plus V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",245000,750ml,trắng,38
+KN-165,Bình giữ nhiệt inox Eco V3,"Bình giữ nhiệt inox Eco V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",220000,500ml,trắng,0
+KN-165,Bình giữ nhiệt inox Eco V3,"Bình giữ nhiệt inox Eco V3: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",220000,750ml,trắng,0
+KN-166,Bình giữ nhiệt mini V3,"Bình giữ nhiệt mini V3: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,500ml,trắng,5
+KN-166,Bình giữ nhiệt mini V3,"Bình giữ nhiệt mini V3: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,750ml,trắng,0
+KN-166,Bình giữ nhiệt mini V3,"Bình giữ nhiệt mini V3: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,1L,trắng,19
+KN-167,Bình giữ nhiệt mini Classic V3,"Bình giữ nhiệt mini Classic V3: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",219000,500ml,trắng,9
+KN-167,Bình giữ nhiệt mini Classic V3,"Bình giữ nhiệt mini Classic V3: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",219000,750ml,trắng,14
+KN-167,Bình giữ nhiệt mini Classic V3,"Bình giữ nhiệt mini Classic V3: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",219000,1L,trắng,33
+KN-168,Bình giữ nhiệt mini Mini V3,"Bình giữ nhiệt mini Mini V3: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",120000,500ml,trắng,0
+KN-168,Bình giữ nhiệt mini Mini V3,"Bình giữ nhiệt mini Mini V3: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",120000,750ml,trắng,0
+KN-168,Bình giữ nhiệt mini Mini V3,"Bình giữ nhiệt mini Mini V3: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",120000,1L,trắng,0
+KN-169,Bình giữ nhiệt mini Plus V3,"Bình giữ nhiệt mini Plus V3: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",230000,750ml,trắng,3
+KN-170,Bình giữ nhiệt mini Eco V3,"Bình giữ nhiệt mini Eco V3: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,750ml,trắng,36
+KN-171,Bộ hộp thủy tinh V3,"Bộ hộp thủy tinh V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",299000,500ml,trắng,33
+KN-171,Bộ hộp thủy tinh V3,"Bộ hộp thủy tinh V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",299000,1L,trắng,9
+KN-172,Bộ hộp thủy tinh Classic V3,"Bộ hộp thủy tinh Classic V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",300000,500ml,trắng,0
+KN-172,Bộ hộp thủy tinh Classic V3,"Bộ hộp thủy tinh Classic V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",300000,750ml,trắng,30
+KN-172,Bộ hộp thủy tinh Classic V3,"Bộ hộp thủy tinh Classic V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",300000,1L,trắng,11
+KN-173,Bộ hộp thủy tinh Mini V3,"Bộ hộp thủy tinh Mini V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",185000,500ml,trắng,25
+KN-173,Bộ hộp thủy tinh Mini V3,"Bộ hộp thủy tinh Mini V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",185000,1L,trắng,9
+KN-174,Bộ hộp thủy tinh Plus V3,"Bộ hộp thủy tinh Plus V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",309000,500ml,trắng,37
+KN-174,Bộ hộp thủy tinh Plus V3,"Bộ hộp thủy tinh Plus V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",309000,750ml,trắng,10
+KN-174,Bộ hộp thủy tinh Plus V3,"Bộ hộp thủy tinh Plus V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",309000,1L,trắng,15
+KN-175,Bộ hộp thủy tinh Eco V3,"Bộ hộp thủy tinh Eco V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",299000,500ml,trắng,3
+KN-175,Bộ hộp thủy tinh Eco V3,"Bộ hộp thủy tinh Eco V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",299000,750ml,trắng,1
+KN-175,Bộ hộp thủy tinh Eco V3,"Bộ hộp thủy tinh Eco V3: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",299000,1L,trắng,35
+KN-176,Nồi chiên không dầu V3,"Nồi chiên không dầu V3: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1299000,750ml,trắng,9
+KN-176,Nồi chiên không dầu V3,"Nồi chiên không dầu V3: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1299000,1L,trắng,1
+KN-177,Nồi chiên không dầu Classic V3,"Nồi chiên không dầu Classic V3: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1869000,500ml,trắng,12
+KN-177,Nồi chiên không dầu Classic V3,"Nồi chiên không dầu Classic V3: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1869000,750ml,trắng,0
+KN-177,Nồi chiên không dầu Classic V3,"Nồi chiên không dầu Classic V3: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1869000,1L,trắng,38
+KN-178,Nồi chiên không dầu Mini V3,"Nồi chiên không dầu Mini V3: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1189000,500ml,trắng,12
+KN-179,Nồi chiên không dầu Plus V3,"Nồi chiên không dầu Plus V3: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",2185000,500ml,trắng,0
+KN-179,Nồi chiên không dầu Plus V3,"Nồi chiên không dầu Plus V3: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",2185000,750ml,trắng,30
+KN-180,Nồi chiên không dầu Eco V3,"Nồi chiên không dầu Eco V3: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1535000,500ml,trắng,11
+KN-180,Nồi chiên không dầu Eco V3,"Nồi chiên không dầu Eco V3: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1535000,1L,trắng,36
+KN-181,Ấm siêu tốc V3,"Ấm siêu tốc V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,500ml,trắng,34
+KN-181,Ấm siêu tốc V3,"Ấm siêu tốc V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,750ml,trắng,34
+KN-181,Ấm siêu tốc V3,"Ấm siêu tốc V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,1L,trắng,32
+KN-182,Ấm siêu tốc Classic V3,"Ấm siêu tốc Classic V3: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",349000,500ml,trắng,0
+KN-183,Ấm siêu tốc Mini V3,"Ấm siêu tốc Mini V3: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",239000,500ml,trắng,7
+KN-183,Ấm siêu tốc Mini V3,"Ấm siêu tốc Mini V3: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",239000,750ml,trắng,34
+KN-183,Ấm siêu tốc Mini V3,"Ấm siêu tốc Mini V3: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",239000,1L,trắng,0
+KN-184,Ấm siêu tốc Plus V3,"Ấm siêu tốc Plus V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",385000,500ml,trắng,33
+KN-184,Ấm siêu tốc Plus V3,"Ấm siêu tốc Plus V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",385000,750ml,trắng,20
+KN-184,Ấm siêu tốc Plus V3,"Ấm siêu tốc Plus V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",385000,1L,trắng,7
+KN-185,Ấm siêu tốc Eco V3,"Ấm siêu tốc Eco V3: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",319000,500ml,trắng,14
+KN-186,Chảo chống dính V3,"Chảo chống dính V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",285000,500ml,trắng,0
+KN-186,Chảo chống dính V3,"Chảo chống dính V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",285000,750ml,trắng,18
+KN-186,Chảo chống dính V3,"Chảo chống dính V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",285000,1L,trắng,9
+KN-187,Chảo chống dính Classic V3,"Chảo chống dính Classic V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",220000,500ml,trắng,1
+KN-187,Chảo chống dính Classic V3,"Chảo chống dính Classic V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",220000,750ml,trắng,0
+KN-187,Chảo chống dính Classic V3,"Chảo chống dính Classic V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",220000,1L,trắng,4
+KN-188,Chảo chống dính Mini V3,"Chảo chống dính Mini V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",265000,750ml,trắng,9
+KN-188,Chảo chống dính Mini V3,"Chảo chống dính Mini V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",265000,1L,trắng,7
+KN-189,Chảo chống dính Plus V3,"Chảo chống dính Plus V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",379000,500ml,trắng,27
+KN-189,Chảo chống dính Plus V3,"Chảo chống dính Plus V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",379000,750ml,trắng,13
+KN-189,Chảo chống dính Plus V3,"Chảo chống dính Plus V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",379000,1L,trắng,0
+KN-190,Chảo chống dính Eco V3,"Chảo chống dính Eco V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",285000,750ml,trắng,38
+KN-190,Chảo chống dính Eco V3,"Chảo chống dính Eco V3: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",285000,1L,trắng,0
+KN-191,Bộ dao inox V3,"Bộ dao inox V3: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",279000,,xanh mint,39
+KN-192,Bộ dao inox Classic V3,"Bộ dao inox Classic V3: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",349000,,đen,11
+KN-192,Bộ dao inox Classic V3,"Bộ dao inox Classic V3: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",349000,,trắng,34
+KN-193,Bộ dao inox Mini V3,"Bộ dao inox Mini V3: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",309000,,xanh mint,18
+KN-194,Bộ dao inox Plus V3,"Bộ dao inox Plus V3: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",375000,,trắng,1
+KN-194,Bộ dao inox Plus V3,"Bộ dao inox Plus V3: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",375000,,xanh mint,24
+KN-194,Bộ dao inox Plus V3,"Bộ dao inox Plus V3: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",375000,,đen,24
+KN-195,Bộ dao inox Eco V3,"Bộ dao inox Eco V3: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",349000,,xanh mint,10
+KN-196,Thớt gỗ nghiến V3,Thớt gỗ nghiến V3: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,219000,500ml,trắng,17
+KN-196,Thớt gỗ nghiến V3,Thớt gỗ nghiến V3: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,219000,750ml,trắng,3
+KN-197,Thớt gỗ nghiến Classic V3,Thớt gỗ nghiến Classic V3: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,250000,1L,trắng,27
+KN-198,Thớt gỗ nghiến Mini V3,Thớt gỗ nghiến Mini V3: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,159000,500ml,trắng,25
+KN-198,Thớt gỗ nghiến Mini V3,Thớt gỗ nghiến Mini V3: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,159000,1L,trắng,0
+KN-199,Thớt gỗ nghiến Plus V3,Thớt gỗ nghiến Plus V3: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,225000,750ml,trắng,22
+KN-200,Thớt gỗ nghiến Eco V3,Thớt gỗ nghiến Eco V3: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,209000,500ml,trắng,39
+KN-200,Thớt gỗ nghiến Eco V3,Thớt gỗ nghiến Eco V3: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,209000,750ml,trắng,40
+KN-200,Thớt gỗ nghiến Eco V3,Thớt gỗ nghiến Eco V3: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,209000,1L,trắng,0
+KN-201,Giá treo khăn V3,"Giá treo khăn V3: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",170000,,xanh mint,25
+KN-202,Giá treo khăn Classic V3,"Giá treo khăn Classic V3: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",140000,,xanh mint,19
+KN-203,Giá treo khăn Mini V3,"Giá treo khăn Mini V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",155000,,trắng,17
+KN-203,Giá treo khăn Mini V3,"Giá treo khăn Mini V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",155000,,đen,3
+KN-203,Giá treo khăn Mini V3,"Giá treo khăn Mini V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",155000,,xanh mint,16
+KN-204,Giá treo khăn Plus V3,"Giá treo khăn Plus V3: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",210000,,đen,0
+KN-204,Giá treo khăn Plus V3,"Giá treo khăn Plus V3: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",210000,,xanh mint,0
+KN-204,Giá treo khăn Plus V3,"Giá treo khăn Plus V3: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",210000,,trắng,0
+KN-205,Giá treo khăn Eco V3,"Giá treo khăn Eco V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",139000,,xanh mint,24
+KN-205,Giá treo khăn Eco V3,"Giá treo khăn Eco V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",139000,,đen,28
+KN-205,Giá treo khăn Eco V3,"Giá treo khăn Eco V3: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",139000,,trắng,31
+KN-206,Kệ gia vị 2 tầng V3,"Kệ gia vị 2 tầng V3: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,trắng,0
+KN-206,Kệ gia vị 2 tầng V3,"Kệ gia vị 2 tầng V3: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,đen,19
+KN-207,Kệ gia vị 2 tầng Classic V3,"Kệ gia vị 2 tầng Classic V3: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,xanh mint,22
+KN-207,Kệ gia vị 2 tầng Classic V3,"Kệ gia vị 2 tầng Classic V3: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,đen,26
+KN-208,Kệ gia vị 2 tầng Mini V3,"Kệ gia vị 2 tầng Mini V3: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",160000,,đen,12
+KN-208,Kệ gia vị 2 tầng Mini V3,"Kệ gia vị 2 tầng Mini V3: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",160000,,xanh mint,0
+KN-209,Kệ gia vị 2 tầng Plus V3,"Kệ gia vị 2 tầng Plus V3: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",210000,,đen,38
+KN-210,Kệ gia vị 2 tầng Eco V3,"Kệ gia vị 2 tầng Eco V3: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,trắng,38
+KN-210,Kệ gia vị 2 tầng Eco V3,"Kệ gia vị 2 tầng Eco V3: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",189000,,đen,11
+KN-211,Đèn bàn cảm ứng V3,"Đèn bàn cảm ứng V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",310000,,trắng,27
+KN-211,Đèn bàn cảm ứng V3,"Đèn bàn cảm ứng V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",310000,,xanh mint,30
+KN-212,Đèn bàn cảm ứng Classic V3,"Đèn bàn cảm ứng Classic V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",339000,,xanh mint,23
+KN-212,Đèn bàn cảm ứng Classic V3,"Đèn bàn cảm ứng Classic V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",339000,,trắng,10
+KN-212,Đèn bàn cảm ứng Classic V3,"Đèn bàn cảm ứng Classic V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",339000,,đen,6
+KN-213,Đèn bàn cảm ứng Mini V3,"Đèn bàn cảm ứng Mini V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",190000,,trắng,18
+KN-214,Đèn bàn cảm ứng Plus V3,"Đèn bàn cảm ứng Plus V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",399000,,xanh mint,0
+KN-214,Đèn bàn cảm ứng Plus V3,"Đèn bàn cảm ứng Plus V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",399000,,đen,0
+KN-215,Đèn bàn cảm ứng Eco V3,"Đèn bàn cảm ứng Eco V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",279000,,trắng,9
+KN-215,Đèn bàn cảm ứng Eco V3,"Đèn bàn cảm ứng Eco V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",279000,,xanh mint,26
+KN-215,Đèn bàn cảm ứng Eco V3,"Đèn bàn cảm ứng Eco V3: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",279000,,đen,27
+KN-216,Quạt mini để bàn V3,"Quạt mini để bàn V3: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",209000,,xanh mint,23
+KN-217,Quạt mini để bàn Classic V3,"Quạt mini để bàn Classic V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",239000,,đen,0
+KN-217,Quạt mini để bàn Classic V3,"Quạt mini để bàn Classic V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",239000,,trắng,31
+KN-218,Quạt mini để bàn Mini V3,"Quạt mini để bàn Mini V3: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",140000,,trắng,0
+KN-218,Quạt mini để bàn Mini V3,"Quạt mini để bàn Mini V3: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",140000,,xanh mint,37
+KN-218,Quạt mini để bàn Mini V3,"Quạt mini để bàn Mini V3: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",140000,,đen,8
+KN-219,Quạt mini để bàn Plus V3,"Quạt mini để bàn Plus V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",245000,,trắng,40
+KN-220,Quạt mini để bàn Eco V3,"Quạt mini để bàn Eco V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,trắng,23
+KN-220,Quạt mini để bàn Eco V3,"Quạt mini để bàn Eco V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,xanh mint,0
+KN-220,Quạt mini để bàn Eco V3,"Quạt mini để bàn Eco V3: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,đen,40
+KN-221,Máy xay sinh tố V3,"Máy xay sinh tố V3: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",599000,500ml,trắng,0
+KN-221,Máy xay sinh tố V3,"Máy xay sinh tố V3: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",599000,750ml,trắng,31
+KN-221,Máy xay sinh tố V3,"Máy xay sinh tố V3: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",599000,1L,trắng,15
+KN-222,Máy xay sinh tố Classic V3,"Máy xay sinh tố Classic V3: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",615000,500ml,trắng,0
+KN-222,Máy xay sinh tố Classic V3,"Máy xay sinh tố Classic V3: cối thủy tinh, 6 lưỡi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",615000,750ml,trắng,0
+KN-223,Máy xay sinh tố Mini V3,"Máy xay sinh tố Mini V3: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",569000,500ml,trắng,13
+KN-223,Máy xay sinh tố Mini V3,"Máy xay sinh tố Mini V3: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",569000,1L,trắng,7
+KN-224,Máy xay sinh tố Plus V3,"Máy xay sinh tố Plus V3: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",709000,500ml,trắng,36
+KN-224,Máy xay sinh tố Plus V3,"Máy xay sinh tố Plus V3: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",709000,1L,trắng,12
+KN-225,Máy xay sinh tố Eco V3,"Máy xay sinh tố Eco V3: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",759000,500ml,trắng,31
+KN-225,Máy xay sinh tố Eco V3,"Máy xay sinh tố Eco V3: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",759000,750ml,trắng,29
+KN-225,Máy xay sinh tố Eco V3,"Máy xay sinh tố Eco V3: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",759000,1L,trắng,9
+KN-226,Hộp cơm giữ nhiệt V3,"Hộp cơm giữ nhiệt V3: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",275000,500ml,trắng,33
+KN-227,Hộp cơm giữ nhiệt Classic V3,"Hộp cơm giữ nhiệt Classic V3: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",200000,750ml,trắng,37
+KN-228,Hộp cơm giữ nhiệt Mini V3,"Hộp cơm giữ nhiệt Mini V3: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",200000,750ml,trắng,40
+KN-229,Hộp cơm giữ nhiệt Plus V3,"Hộp cơm giữ nhiệt Plus V3: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",279000,1L,trắng,31
+KN-230,Hộp cơm giữ nhiệt Eco V3,"Hộp cơm giữ nhiệt Eco V3: 3 ngăn, inox 304. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",249000,750ml,trắng,32
+KN-231,Cây lau nhà xoay V3,"Cây lau nhà xoay V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",319000,,đen,0
+KN-231,Cây lau nhà xoay V3,"Cây lau nhà xoay V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",319000,,trắng,0
+KN-231,Cây lau nhà xoay V3,"Cây lau nhà xoay V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",319000,,xanh mint,0
+KN-232,Cây lau nhà xoay Classic V3,"Cây lau nhà xoay Classic V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",269000,,xanh mint,31
+KN-232,Cây lau nhà xoay Classic V3,"Cây lau nhà xoay Classic V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",269000,,đen,25
+KN-233,Cây lau nhà xoay Mini V3,"Cây lau nhà xoay Mini V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",239000,,đen,12
+KN-233,Cây lau nhà xoay Mini V3,"Cây lau nhà xoay Mini V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",239000,,xanh mint,5
+KN-234,Cây lau nhà xoay Plus V3,"Cây lau nhà xoay Plus V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",310000,,xanh mint,22
+KN-235,Cây lau nhà xoay Eco V3,"Cây lau nhà xoay Eco V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,đen,0
+KN-235,Cây lau nhà xoay Eco V3,"Cây lau nhà xoay Eco V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,trắng,0
+KN-235,Cây lau nhà xoay Eco V3,"Cây lau nhà xoay Eco V3: xoay 360 độ, kèm 2 bông lau. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",229000,,xanh mint,0
+KN-236,Móc dán tường (bộ 10) V3,"Móc dán tường (bộ 10) V3: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",89000,,đen,1
+KN-237,Móc dán tường (bộ 10) Classic V3,"Móc dán tường (bộ 10) Classic V3: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",89000,,xanh mint,10
+KN-238,Móc dán tường (bộ 10) Mini V3,"Móc dán tường (bộ 10) Mini V3: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",65000,,xanh mint,37
+KN-238,Móc dán tường (bộ 10) Mini V3,"Móc dán tường (bộ 10) Mini V3: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",65000,,đen,26
+KN-239,Móc dán tường (bộ 10) Plus V3,"Móc dán tường (bộ 10) Plus V3: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",109000,,trắng,31
+KN-240,Móc dán tường (bộ 10) Eco V3,"Móc dán tường (bộ 10) Eco V3: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",75000,,xanh mint,2
+KN-240,Móc dán tường (bộ 10) Eco V3,"Móc dán tường (bộ 10) Eco V3: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",75000,,đen,22
+KN-241,Bình giữ nhiệt inox V4,"Bình giữ nhiệt inox V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",225000,500ml,trắng,0
+KN-241,Bình giữ nhiệt inox V4,"Bình giữ nhiệt inox V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",225000,750ml,trắng,0
+KN-241,Bình giữ nhiệt inox V4,"Bình giữ nhiệt inox V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",225000,1L,trắng,22
+KN-242,Bình giữ nhiệt inox Classic V4,"Bình giữ nhiệt inox Classic V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",190000,500ml,trắng,0
+KN-243,Bình giữ nhiệt inox Mini V4,"Bình giữ nhiệt inox Mini V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",190000,750ml,trắng,19
+KN-243,Bình giữ nhiệt inox Mini V4,"Bình giữ nhiệt inox Mini V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",190000,1L,trắng,30
+KN-244,Bình giữ nhiệt inox Plus V4,"Bình giữ nhiệt inox Plus V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",229000,750ml,trắng,30
+KN-245,Bình giữ nhiệt inox Eco V4,"Bình giữ nhiệt inox Eco V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,750ml,trắng,20
+KN-245,Bình giữ nhiệt inox Eco V4,"Bình giữ nhiệt inox Eco V4: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",199000,1L,trắng,6
+KN-246,Bình giữ nhiệt mini V4,"Bình giữ nhiệt mini V4: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",219000,750ml,trắng,3
+KN-247,Bình giữ nhiệt mini Classic V4,"Bình giữ nhiệt mini Classic V4: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",160000,750ml,trắng,38
+KN-248,Bình giữ nhiệt mini Mini V4,"Bình giữ nhiệt mini Mini V4: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",179000,750ml,trắng,8
+KN-249,Bình giữ nhiệt mini Plus V4,"Bình giữ nhiệt mini Plus V4: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",229000,500ml,trắng,38
+KN-249,Bình giữ nhiệt mini Plus V4,"Bình giữ nhiệt mini Plus V4: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",229000,1L,trắng,1
+KN-250,Bình giữ nhiệt mini Eco V4,"Bình giữ nhiệt mini Eco V4: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",155000,750ml,trắng,14
+KN-251,Bộ hộp thủy tinh V4,"Bộ hộp thủy tinh V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",259000,500ml,trắng,19
+KN-251,Bộ hộp thủy tinh V4,"Bộ hộp thủy tinh V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",259000,750ml,trắng,28
+KN-251,Bộ hộp thủy tinh V4,"Bộ hộp thủy tinh V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",259000,1L,trắng,22
+KN-252,Bộ hộp thủy tinh Classic V4,"Bộ hộp thủy tinh Classic V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",330000,750ml,trắng,5
+KN-253,Bộ hộp thủy tinh Mini V4,"Bộ hộp thủy tinh Mini V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",235000,1L,trắng,17
+KN-254,Bộ hộp thủy tinh Plus V4,"Bộ hộp thủy tinh Plus V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",300000,500ml,trắng,0
+KN-254,Bộ hộp thủy tinh Plus V4,"Bộ hộp thủy tinh Plus V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",300000,1L,trắng,0
+KN-255,Bộ hộp thủy tinh Eco V4,"Bộ hộp thủy tinh Eco V4: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",279000,1L,trắng,35
+KN-256,Nồi chiên không dầu V4,"Nồi chiên không dầu V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1345000,1L,trắng,4
+KN-257,Nồi chiên không dầu Classic V4,"Nồi chiên không dầu Classic V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1359000,750ml,trắng,34
+KN-257,Nồi chiên không dầu Classic V4,"Nồi chiên không dầu Classic V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1359000,1L,trắng,19
+KN-258,Nồi chiên không dầu Mini V4,"Nồi chiên không dầu Mini V4: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1209000,500ml,trắng,0
+KN-259,Nồi chiên không dầu Plus V4,"Nồi chiên không dầu Plus V4: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1769000,500ml,trắng,15
+KN-259,Nồi chiên không dầu Plus V4,"Nồi chiên không dầu Plus V4: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",1769000,1L,trắng,2
+KN-260,Nồi chiên không dầu Eco V4,"Nồi chiên không dầu Eco V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1239000,500ml,trắng,34
+KN-260,Nồi chiên không dầu Eco V4,"Nồi chiên không dầu Eco V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1239000,750ml,trắng,26
+KN-260,Nồi chiên không dầu Eco V4,"Nồi chiên không dầu Eco V4: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1239000,1L,trắng,38
+KN-261,Ấm siêu tốc V4,"Ấm siêu tốc V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",389000,500ml,trắng,36
+KN-261,Ấm siêu tốc V4,"Ấm siêu tốc V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",389000,750ml,trắng,17
+KN-261,Ấm siêu tốc V4,"Ấm siêu tốc V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",389000,1L,trắng,26
+KN-262,Ấm siêu tốc Classic V4,"Ấm siêu tốc Classic V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",265000,500ml,trắng,12
+KN-262,Ấm siêu tốc Classic V4,"Ấm siêu tốc Classic V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",265000,750ml,trắng,27
+KN-262,Ấm siêu tốc Classic V4,"Ấm siêu tốc Classic V4: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",265000,1L,trắng,9
+KN-263,Ấm siêu tốc Mini V4,"Ấm siêu tốc Mini V4: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",230000,500ml,trắng,2
+KN-263,Ấm siêu tốc Mini V4,"Ấm siêu tốc Mini V4: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",230000,750ml,trắng,29
+KN-264,Ấm siêu tốc Plus V4,"Ấm siêu tốc Plus V4: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",439000,500ml,trắng,18
+KN-264,Ấm siêu tốc Plus V4,"Ấm siêu tốc Plus V4: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",439000,750ml,trắng,38
+KN-264,Ấm siêu tốc Plus V4,"Ấm siêu tốc Plus V4: inox 304, tự ngắt khi sôi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",439000,1L,trắng,10
+KN-265,Ấm siêu tốc Eco V4,"Ấm siêu tốc Eco V4: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",309000,500ml,trắng,3
+KN-265,Ấm siêu tốc Eco V4,"Ấm siêu tốc Eco V4: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",309000,750ml,trắng,21
+KN-266,Chảo chống dính V4,"Chảo chống dính V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",240000,500ml,trắng,40
+KN-267,Chảo chống dính Classic V4,"Chảo chống dính Classic V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",270000,500ml,trắng,9
+KN-267,Chảo chống dính Classic V4,"Chảo chống dính Classic V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",270000,750ml,trắng,10
+KN-268,Chảo chống dính Mini V4,"Chảo chống dính Mini V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",185000,500ml,trắng,1
+KN-268,Chảo chống dính Mini V4,"Chảo chống dính Mini V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",185000,1L,trắng,15
+KN-269,Chảo chống dính Plus V4,"Chảo chống dính Plus V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",329000,500ml,trắng,24
+KN-269,Chảo chống dính Plus V4,"Chảo chống dính Plus V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",329000,750ml,trắng,1
+KN-269,Chảo chống dính Plus V4,"Chảo chống dính Plus V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",329000,1L,trắng,28
+KN-270,Chảo chống dính Eco V4,"Chảo chống dính Eco V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",280000,500ml,trắng,14
+KN-270,Chảo chống dính Eco V4,"Chảo chống dính Eco V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",280000,750ml,trắng,0
+KN-270,Chảo chống dính Eco V4,"Chảo chống dính Eco V4: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",280000,1L,trắng,12
+KN-271,Bộ dao inox V4,"Bộ dao inox V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",350000,,trắng,0
+KN-272,Bộ dao inox Classic V4,"Bộ dao inox Classic V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",260000,,xanh mint,0
+KN-273,Bộ dao inox Mini V4,"Bộ dao inox Mini V4: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,,đen,0
+KN-274,Bộ dao inox Plus V4,"Bộ dao inox Plus V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,,xanh mint,0
+KN-274,Bộ dao inox Plus V4,"Bộ dao inox Plus V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,,đen,0
+KN-274,Bộ dao inox Plus V4,"Bộ dao inox Plus V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,,trắng,0
+KN-275,Bộ dao inox Eco V4,"Bộ dao inox Eco V4: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",305000,,đen,35
+KN-276,Thớt gỗ nghiến V4,Thớt gỗ nghiến V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,239000,750ml,trắng,5
+KN-277,Thớt gỗ nghiến Classic V4,Thớt gỗ nghiến Classic V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,199000,500ml,trắng,19
+KN-277,Thớt gỗ nghiến Classic V4,Thớt gỗ nghiến Classic V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,199000,750ml,trắng,33
+KN-277,Thớt gỗ nghiến Classic V4,Thớt gỗ nghiến Classic V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,199000,1L,trắng,10
+KN-278,Thớt gỗ nghiến Mini V4,Thớt gỗ nghiến Mini V4: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,165000,500ml,trắng,0
+KN-278,Thớt gỗ nghiến Mini V4,Thớt gỗ nghiến Mini V4: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,165000,750ml,trắng,0
+KN-278,Thớt gỗ nghiến Mini V4,Thớt gỗ nghiến Mini V4: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,165000,1L,trắng,0
+KN-279,Thớt gỗ nghiến Plus V4,Thớt gỗ nghiến Plus V4: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,309000,500ml,trắng,5
+KN-279,Thớt gỗ nghiến Plus V4,Thớt gỗ nghiến Plus V4: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,309000,750ml,trắng,4
+KN-279,Thớt gỗ nghiến Plus V4,Thớt gỗ nghiến Plus V4: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,309000,1L,trắng,32
+KN-280,Thớt gỗ nghiến Eco V4,Thớt gỗ nghiến Eco V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,150000,500ml,trắng,8
+KN-280,Thớt gỗ nghiến Eco V4,Thớt gỗ nghiến Eco V4: gỗ nghiến nguyên khối. Xuất xứ Trung Quốc. Không áp dụng bảo hành.,150000,750ml,trắng,12
+KN-281,Giá treo khăn V4,"Giá treo khăn V4: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",199000,,trắng,12
+KN-281,Giá treo khăn V4,"Giá treo khăn V4: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",199000,,xanh mint,24
+KN-282,Giá treo khăn Classic V4,"Giá treo khăn Classic V4: thép sơn tĩnh điện, dán tường. Xuất xứ Thái Lan. Không áp dụng bảo hành.",139000,,đen,0
+KN-283,Giá treo khăn Mini V4,"Giá treo khăn Mini V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",155000,,xanh mint,19
+KN-283,Giá treo khăn Mini V4,"Giá treo khăn Mini V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",155000,,trắng,29
+KN-283,Giá treo khăn Mini V4,"Giá treo khăn Mini V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",155000,,đen,2
+KN-284,Giá treo khăn Plus V4,"Giá treo khăn Plus V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",159000,,trắng,0
+KN-285,Giá treo khăn Eco V4,"Giá treo khăn Eco V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",160000,,đen,40
+KN-285,Giá treo khăn Eco V4,"Giá treo khăn Eco V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",160000,,trắng,12
+KN-285,Giá treo khăn Eco V4,"Giá treo khăn Eco V4: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",160000,,xanh mint,14
+KN-286,Kệ gia vị 2 tầng V4,"Kệ gia vị 2 tầng V4: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",210000,,đen,11
+KN-286,Kệ gia vị 2 tầng V4,"Kệ gia vị 2 tầng V4: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",210000,,xanh mint,23
+KN-287,Kệ gia vị 2 tầng Classic V4,"Kệ gia vị 2 tầng Classic V4: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",189000,,xanh mint,0
+KN-287,Kệ gia vị 2 tầng Classic V4,"Kệ gia vị 2 tầng Classic V4: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",189000,,trắng,2
+KN-288,Kệ gia vị 2 tầng Mini V4,"Kệ gia vị 2 tầng Mini V4: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",175000,,đen,27
+KN-288,Kệ gia vị 2 tầng Mini V4,"Kệ gia vị 2 tầng Mini V4: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",175000,,trắng,10
+KN-288,Kệ gia vị 2 tầng Mini V4,"Kệ gia vị 2 tầng Mini V4: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",175000,,xanh mint,21
+KN-289,Kệ gia vị 2 tầng Plus V4,"Kệ gia vị 2 tầng Plus V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",259000,,trắng,19
+KN-289,Kệ gia vị 2 tầng Plus V4,"Kệ gia vị 2 tầng Plus V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",259000,,đen,12
+KN-289,Kệ gia vị 2 tầng Plus V4,"Kệ gia vị 2 tầng Plus V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",259000,,xanh mint,0
+KN-290,Kệ gia vị 2 tầng Eco V4,"Kệ gia vị 2 tầng Eco V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",180000,,trắng,0
+KN-290,Kệ gia vị 2 tầng Eco V4,"Kệ gia vị 2 tầng Eco V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",180000,,đen,0
+KN-290,Kệ gia vị 2 tầng Eco V4,"Kệ gia vị 2 tầng Eco V4: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",180000,,xanh mint,0
+KN-291,Đèn bàn cảm ứng V4,"Đèn bàn cảm ứng V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",295000,,trắng,6
+KN-292,Đèn bàn cảm ứng Classic V4,"Đèn bàn cảm ứng Classic V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",335000,,xanh mint,8
+KN-292,Đèn bàn cảm ứng Classic V4,"Đèn bàn cảm ứng Classic V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",335000,,đen,35
+KN-293,Đèn bàn cảm ứng Mini V4,"Đèn bàn cảm ứng Mini V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",269000,,xanh mint,36
+KN-294,Đèn bàn cảm ứng Plus V4,"Đèn bàn cảm ứng Plus V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",320000,,trắng,33
+KN-294,Đèn bàn cảm ứng Plus V4,"Đèn bàn cảm ứng Plus V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",320000,,xanh mint,32
+KN-294,Đèn bàn cảm ứng Plus V4,"Đèn bàn cảm ứng Plus V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",320000,,đen,34
+KN-295,Đèn bàn cảm ứng Eco V4,"Đèn bàn cảm ứng Eco V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",280000,,xanh mint,26
+KN-295,Đèn bàn cảm ứng Eco V4,"Đèn bàn cảm ứng Eco V4: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",280000,,đen,8
+KN-296,Quạt mini để bàn V4,"Quạt mini để bàn V4: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",225000,,trắng,28
+KN-296,Quạt mini để bàn V4,"Quạt mini để bàn V4: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",225000,,xanh mint,12
+KN-296,Quạt mini để bàn V4,"Quạt mini để bàn V4: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",225000,,đen,0
+KN-297,Quạt mini để bàn Classic V4,"Quạt mini để bàn Classic V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",189000,,trắng,8
+KN-297,Quạt mini để bàn Classic V4,"Quạt mini để bàn Classic V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",189000,,đen,32
+KN-298,Quạt mini để bàn Mini V4,"Quạt mini để bàn Mini V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",139000,,xanh mint,34
+KN-298,Quạt mini để bàn Mini V4,"Quạt mini để bàn Mini V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",139000,,đen,0
+KN-299,Quạt mini để bàn Plus V4,"Quạt mini để bàn Plus V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,đen,2
+KN-300,Quạt mini để bàn Eco V4,"Quạt mini để bàn Eco V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,trắng,13
+KN-300,Quạt mini để bàn Eco V4,"Quạt mini để bàn Eco V4: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",209000,,xanh mint,13

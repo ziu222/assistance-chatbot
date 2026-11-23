@@ -1,464 +1,179 @@
 [
   {
-    "created_at": "2026-11-09T19:00:00+07:00",
-    "customer_id": "home_c-c048",
+    "created_at": "2026-11-15T11:00:00+07:00",
+    "customer_id": "home_c-c039",
     "id": "DH-HO-0001",
     "items": [
       {
-        "color": "đen",
-        "price_vnd": 185000,
+        "color": "xanh mint",
+        "price_vnd": 155000,
         "qty": 3,
         "size": "",
-        "sku": "HO-060"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-001"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 159000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-010"
+        "sku": "HO-042"
       }
     ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
     "status": "cho_xac_nhan",
-    "total_vnd": 1680000
+    "total_vnd": 525000
   },
   {
-    "created_at": "2026-11-02T09:00:00+07:00",
-    "customer_id": "home_c-c023",
+    "created_at": "2026-11-03T16:00:00+07:00",
+    "customer_id": "home_c-c011",
     "id": "DH-HO-0002",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 239000,
+        "price_vnd": 189000,
         "qty": 3,
-        "size": "500ml",
-        "sku": "HO-070"
+        "size": "750ml",
+        "sku": "HO-013"
       },
       {
         "color": "trắng",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-074"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 349000,
+        "price_vnd": 249000,
         "qty": 3,
         "size": "500ml",
-        "sku": "HO-027"
+        "sku": "HO-002"
       }
     ],
-    "region": "tinh",
+    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 2841000
+    "total_vnd": 1314000
   },
   {
-    "created_at": "2026-11-23T09:00:00+07:00",
-    "customer_id": "home_c-c035",
+    "created_at": "2026-11-04T19:00:00+07:00",
+    "customer_id": "home_c-c033",
     "id": "DH-HO-0003",
     "items": [
       {
-        "color": "đen",
-        "price_vnd": 219000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-047"
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-036"
       },
       {
-        "color": "đen",
-        "price_vnd": 185000,
-        "qty": 1,
+        "color": "xanh mint",
+        "price_vnd": 209000,
+        "qty": 2,
         "size": "",
-        "sku": "HO-060"
+        "sku": "HO-073"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 60000,
     "status": "da_giao",
-    "total_vnd": 683000
+    "total_vnd": 985000
   },
   {
-    "created_at": "2026-11-23T11:00:00+07:00",
-    "customer_id": "home_c-c055",
+    "created_at": "2026-11-11T14:00:00+07:00",
+    "customer_id": "home_c-c007",
     "id": "DH-HO-0004",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 349000,
-        "qty": 3,
+        "price_vnd": 289000,
+        "qty": 1,
         "size": "500ml",
-        "sku": "HO-027"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1245000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-018"
+        "sku": "HO-023"
       },
       {
         "color": "đen",
-        "price_vnd": 159000,
-        "qty": 3,
+        "price_vnd": 145000,
+        "qty": 2,
         "size": "",
-        "sku": "HO-043"
+        "sku": "HO-058"
       }
     ],
     "region": "tinh",
-    "ship_fee_vnd": 0,
+    "ship_fee_vnd": 60000,
     "status": "da_huy",
-    "total_vnd": 5259000
+    "total_vnd": 639000
   },
   {
-    "created_at": "2026-11-12T15:00:00+07:00",
-    "customer_id": "home_c-c023",
+    "created_at": "2026-11-06T20:00:00+07:00",
+    "customer_id": "home_c-c024",
     "id": "DH-HO-0005",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 375000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-029"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 199000,
+        "price_vnd": 1355000,
         "qty": 2,
-        "size": "",
-        "sku": "HO-042"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-046"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1722000
-  },
-  {
-    "created_at": "2026-11-18T12:00:00+07:00",
-    "customer_id": "home_c-c052",
-    "id": "DH-HO-0006",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 749000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-065"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 179000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-068"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2035000
-  },
-  {
-    "created_at": "2026-11-03T14:00:00+07:00",
-    "customer_id": "home_c-c005",
-    "id": "DH-HO-0007",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 65000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-080"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-048"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "dang_giao",
-    "total_vnd": 449000
-  },
-  {
-    "created_at": "2026-11-04T19:00:00+07:00",
-    "customer_id": "home_c-c017",
-    "id": "DH-HO-0008",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-037"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_giao",
-    "total_vnd": 215000
-  },
-  {
-    "created_at": "2026-11-01T12:00:00+07:00",
-    "customer_id": "home_c-c040",
-    "id": "DH-HO-0009",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 690000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-064"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "da_huy",
-    "total_vnd": 750000
-  },
-  {
-    "created_at": "2026-11-01T12:00:00+07:00",
-    "customer_id": "home_c-c041",
-    "id": "DH-HO-0010",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-070"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1825000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-017"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 4128000
-  },
-  {
-    "created_at": "2026-11-11T14:00:00+07:00",
-    "customer_id": "home_c-c041",
-    "id": "DH-HO-0011",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 255000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-009"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 315000
-  },
-  {
-    "created_at": "2026-11-09T11:00:00+07:00",
-    "customer_id": "home_c-c050",
-    "id": "DH-HO-0012",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 169000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-044"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 199000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-042"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-063"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2273000
-  },
-  {
-    "created_at": "2026-11-20T10:00:00+07:00",
-    "customer_id": "home_c-c010",
-    "id": "DH-HO-0013",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-048"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-037"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "da_giao",
-    "total_vnd": 624000
-  },
-  {
-    "created_at": "2026-11-19T10:00:00+07:00",
-    "customer_id": "home_c-c020",
-    "id": "DH-HO-0014",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-069"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-037"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 429000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-024"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1511000
-  },
-  {
-    "created_at": "2026-11-05T13:00:00+07:00",
-    "customer_id": "home_c-c022",
-    "id": "DH-HO-0015",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 370000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-034"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-048"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 1042000
-  },
-  {
-    "created_at": "2026-11-05T15:00:00+07:00",
-    "customer_id": "home_c-c049",
-    "id": "DH-HO-0016",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-070"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-021"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 999000
-  },
-  {
-    "created_at": "2026-11-10T20:00:00+07:00",
-    "customer_id": "home_c-c057",
-    "id": "DH-HO-0017",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 1265000,
-        "qty": 3,
         "size": "750ml",
         "sku": "HO-020"
       },
       {
         "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 2,
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-010"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 3,
         "size": "1L",
-        "sku": "HO-001"
+        "sku": "HO-026"
       }
     ],
-    "region": "ngoai_thanh",
+    "region": "tinh",
     "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 4333000
+    "status": "doi_tra",
+    "total_vnd": 3564000
   },
   {
-    "created_at": "2026-11-18T09:00:00+07:00",
-    "customer_id": "home_c-c043",
-    "id": "DH-HO-0018",
+    "created_at": "2026-11-22T17:00:00+07:00",
+    "customer_id": "home_c-c031",
+    "id": "DH-HO-0006",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 2025000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-019"
-      },
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-039"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 244000
+  },
+  {
+    "created_at": "2026-11-06T10:00:00+07:00",
+    "customer_id": "home_c-c008",
+    "id": "DH-HO-0007",
+    "items": [
       {
         "color": "xanh mint",
+        "price_vnd": 180000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "dang_giao",
+    "total_vnd": 210000
+  },
+  {
+    "created_at": "2026-11-17T19:00:00+07:00",
+    "customer_id": "home_c-c023",
+    "id": "DH-HO-0008",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 59000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-078"
+      },
+      {
+        "color": "đen",
         "price_vnd": 209000,
         "qty": 3,
         "size": "",
@@ -466,399 +181,420 @@
       },
       {
         "color": "trắng",
-        "price_vnd": 225000,
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-004"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1014000
+  },
+  {
+    "created_at": "2026-11-03T12:00:00+07:00",
+    "customer_id": "home_c-c042",
+    "id": "DH-HO-0009",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-070"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-014"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 290000,
         "qty": 1,
         "size": "",
-        "sku": "HO-057"
+        "sku": "HO-054"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 6927000
+    "status": "da_huy",
+    "total_vnd": 1197000
   },
   {
-    "created_at": "2026-11-20T18:00:00+07:00",
-    "customer_id": "home_c-c003",
-    "id": "DH-HO-0019",
+    "created_at": "2026-11-06T09:00:00+07:00",
+    "customer_id": "home_c-c036",
+    "id": "DH-HO-0010",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-004"
+        "price_vnd": 789000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-061"
       },
       {
-        "color": "xanh mint",
-        "price_vnd": 279000,
+        "color": "đen",
+        "price_vnd": 239000,
         "qty": 1,
         "size": "",
         "sku": "HO-052"
       }
     ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "da_huy",
-    "total_vnd": 962000
-  },
-  {
-    "created_at": "2026-11-03T16:00:00+07:00",
-    "customer_id": "home_c-c001",
-    "id": "DH-HO-0020",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-075"
-      }
-    ],
     "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
+    "ship_fee_vnd": 0,
     "status": "doi_tra",
-    "total_vnd": 530000
+    "total_vnd": 1028000
   },
   {
-    "created_at": "2026-11-17T08:00:00+07:00",
-    "customer_id": "home_c-c038",
-    "id": "DH-HO-0021",
+    "created_at": "2026-11-12T16:00:00+07:00",
+    "customer_id": "home_c-c016",
+    "id": "DH-HO-0011",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 1,
+        "price_vnd": 225000,
+        "qty": 3,
         "size": "1L",
-        "sku": "HO-012"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 235000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-066"
+        "sku": "HO-026"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 60000,
     "status": "cho_xac_nhan",
-    "total_vnd": 780000
+    "total_vnd": 735000
   },
   {
-    "created_at": "2026-11-10T15:00:00+07:00",
-    "customer_id": "home_c-c022",
-    "id": "DH-HO-0022",
+    "created_at": "2026-11-05T12:00:00+07:00",
+    "customer_id": "home_c-c008",
+    "id": "DH-HO-0012",
     "items": [
       {
-        "color": "đen",
-        "price_vnd": 219000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-047"
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-009"
       },
       {
         "color": "trắng",
-        "price_vnd": 335000,
-        "qty": 2,
+        "price_vnd": 300000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-024"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "dang_giao",
+    "total_vnd": 589000
+  },
+  {
+    "created_at": "2026-11-19T16:00:00+07:00",
+    "customer_id": "home_c-c000",
+    "id": "DH-HO-0013",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 249000,
+        "qty": 3,
         "size": "",
         "sku": "HO-051"
       },
       {
         "color": "trắng",
-        "price_vnd": 2025000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-019"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 5158000
-  },
-  {
-    "created_at": "2026-11-19T17:00:00+07:00",
-    "customer_id": "home_c-c008",
-    "id": "DH-HO-0023",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-012"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
+        "price_vnd": 249000,
         "qty": 1,
-        "size": "750ml",
-        "sku": "HO-028"
+        "size": "500ml",
+        "sku": "HO-002"
       },
       {
-        "color": "trắng",
-        "price_vnd": 225000,
+        "color": "xanh mint",
+        "price_vnd": 169000,
         "qty": 3,
         "size": "",
-        "sku": "HO-057"
+        "sku": "HO-048"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 1425000
+    "total_vnd": 1503000
   },
   {
-    "created_at": "2026-11-17T13:00:00+07:00",
-    "customer_id": "home_c-c055",
-    "id": "DH-HO-0024",
+    "created_at": "2026-11-16T15:00:00+07:00",
+    "customer_id": "home_c-c030",
+    "id": "DH-HO-0014",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 2025000,
+        "price_vnd": 1279000,
         "qty": 2,
-        "size": "1L",
-        "sku": "HO-019"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 4050000
-  },
-  {
-    "created_at": "2026-11-21T12:00:00+07:00",
-    "customer_id": "home_c-c026",
-    "id": "DH-HO-0025",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-076"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "doi_tra",
-    "total_vnd": 89000
-  },
-  {
-    "created_at": "2026-11-13T12:00:00+07:00",
-    "customer_id": "home_c-c011",
-    "id": "DH-HO-0026",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-023"
+        "size": "500ml",
+        "sku": "HO-018"
       },
       {
-        "color": "xanh mint",
-        "price_vnd": 250000,
+        "color": "trắng",
+        "price_vnd": 145000,
         "qty": 1,
         "size": "",
-        "sku": "HO-072"
+        "sku": "HO-041"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2703000
+  },
+  {
+    "created_at": "2026-11-21T18:00:00+07:00",
+    "customer_id": "home_c-c034",
+    "id": "DH-HO-0015",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "doi_tra",
+    "total_vnd": 438000
+  },
+  {
+    "created_at": "2026-11-03T15:00:00+07:00",
+    "customer_id": "home_c-c032",
+    "id": "DH-HO-0016",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1905000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-019"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 1147000
+    "total_vnd": 5715000
   },
   {
-    "created_at": "2026-11-01T10:00:00+07:00",
-    "customer_id": "home_c-c050",
-    "id": "DH-HO-0027",
+    "created_at": "2026-11-14T21:00:00+07:00",
+    "customer_id": "home_c-c040",
+    "id": "DH-HO-0017",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 209000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-073"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "dang_giao",
+    "total_vnd": 269000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "home_c-c012",
+    "id": "DH-HO-0018",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 199000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-006"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 275000,
+        "price_vnd": 290000,
         "qty": 1,
         "size": "750ml",
-        "sku": "HO-039"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2210000
-  },
-  {
-    "created_at": "2026-11-23T18:00:00+07:00",
-    "customer_id": "home_c-c031",
-    "id": "DH-HO-0028",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 275000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-039"
+        "sku": "HO-029"
       },
       {
-        "color": "trắng",
-        "price_vnd": 699000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-061"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 2223000
-  },
-  {
-    "created_at": "2026-11-20T19:00:00+07:00",
-    "customer_id": "home_c-c004",
-    "id": "DH-HO-0029",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-004"
+        "color": "xanh mint",
+        "price_vnd": 430000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-034"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 45000,
-    "status": "da_huy",
-    "total_vnd": 683000
+    "status": "da_giao",
+    "total_vnd": 765000
   },
   {
-    "created_at": "2026-11-17T19:00:00+07:00",
-    "customer_id": "home_c-c023",
-    "id": "DH-HO-0030",
+    "created_at": "2026-11-14T18:00:00+07:00",
+    "customer_id": "home_c-c048",
+    "id": "DH-HO-0019",
     "items": [
       {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
+        "color": "xanh mint",
+        "price_vnd": 169000,
+        "qty": 1,
         "size": "",
-        "sku": "HO-075"
+        "sku": "HO-048"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 249000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-051"
       },
       {
         "color": "trắng",
-        "price_vnd": 739000,
+        "price_vnd": 145000,
         "qty": 3,
+        "size": "",
+        "sku": "HO-058"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_huy",
+    "total_vnd": 913000
+  },
+  {
+    "created_at": "2026-11-14T09:00:00+07:00",
+    "customer_id": "home_c-c035",
+    "id": "DH-HO-0020",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 369000,
+        "qty": 2,
         "size": "1L",
-        "sku": "HO-062"
+        "sku": "HO-021"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 280000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-031"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 70000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-077"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "doi_tra",
-    "total_vnd": 2717000
+    "total_vnd": 1228000
   },
   {
-    "created_at": "2026-11-02T12:00:00+07:00",
-    "customer_id": "home_c-c010",
-    "id": "DH-HO-0031",
+    "created_at": "2026-11-13T12:00:00+07:00",
+    "customer_id": "home_c-c029",
+    "id": "DH-HO-0021",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-003"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 370000,
+        "price_vnd": 1905000,
         "qty": 2,
-        "size": "",
-        "sku": "HO-034"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-021"
+        "size": "750ml",
+        "sku": "HO-019"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 1319000
+    "total_vnd": 3810000
   },
   {
-    "created_at": "2026-11-03T16:00:00+07:00",
-    "customer_id": "home_c-c059",
-    "id": "DH-HO-0032",
+    "created_at": "2026-11-19T19:00:00+07:00",
+    "customer_id": "home_c-c035",
+    "id": "DH-HO-0022",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 390000,
+        "color": "xanh mint",
+        "price_vnd": 175000,
         "qty": 2,
         "size": "",
-        "sku": "HO-054"
+        "sku": "HO-044"
       },
       {
-        "color": "đen",
+        "color": "trắng",
         "price_vnd": 199000,
         "qty": 3,
-        "size": "",
-        "sku": "HO-046"
+        "size": "750ml",
+        "sku": "HO-039"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-069"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 1377000
+    "total_vnd": 1477000
   },
   {
-    "created_at": "2026-11-11T21:00:00+07:00",
-    "customer_id": "home_c-c034",
-    "id": "DH-HO-0033",
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "home_c-c039",
+    "id": "DH-HO-0023",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 429000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-024"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1287000
-  },
-  {
-    "created_at": "2026-11-12T21:00:00+07:00",
-    "customer_id": "home_c-c037",
-    "id": "DH-HO-0034",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 275000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-039"
+        "price_vnd": 59000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-078"
       },
       {
         "color": "xanh mint",
+        "price_vnd": 70000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-077"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-074"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_giao",
+    "total_vnd": 871000
+  },
+  {
+    "created_at": "2026-11-07T13:00:00+07:00",
+    "customer_id": "home_c-c019",
+    "id": "DH-HO-0024",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-009"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-033"
+      },
+      {
+        "color": "trắng",
         "price_vnd": 250000,
         "qty": 1,
         "size": "",
@@ -868,1241 +604,1081 @@
     "region": "tinh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 1075000
+    "total_vnd": 1206000
   },
   {
-    "created_at": "2026-11-16T14:00:00+07:00",
-    "customer_id": "home_c-c023",
-    "id": "DH-HO-0035",
+    "created_at": "2026-11-20T14:00:00+07:00",
+    "customer_id": "home_c-c042",
+    "id": "DH-HO-0025",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 209000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-002"
+        "color": "xanh mint",
+        "price_vnd": 149000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-043"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 45000,
     "status": "doi_tra",
-    "total_vnd": 672000
+    "total_vnd": 343000
   },
   {
-    "created_at": "2026-11-23T21:00:00+07:00",
-    "customer_id": "home_c-c039",
-    "id": "DH-HO-0036",
+    "created_at": "2026-11-07T20:00:00+07:00",
+    "customer_id": "home_c-c029",
+    "id": "DH-HO-0026",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 380000,
+        "price_vnd": 289000,
         "qty": 1,
-        "size": "500ml",
-        "sku": "HO-021"
+        "size": "750ml",
+        "sku": "HO-025"
       },
       {
         "color": "trắng",
-        "price_vnd": 285000,
+        "price_vnd": 80000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-079"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1279000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-018"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4366000
+  },
+  {
+    "created_at": "2026-11-21T21:00:00+07:00",
+    "customer_id": "home_c-c021",
+    "id": "DH-HO-0027",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 249000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-067"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-023"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1740000,
         "qty": 1,
         "size": "500ml",
-        "sku": "HO-014"
+        "sku": "HO-016"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3354000
+  },
+  {
+    "created_at": "2026-11-16T19:00:00+07:00",
+    "customer_id": "home_c-c017",
+    "id": "DH-HO-0028",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 729000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-064"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_giao",
+    "total_vnd": 774000
+  },
+  {
+    "created_at": "2026-11-18T14:00:00+07:00",
+    "customer_id": "home_c-c000",
+    "id": "DH-HO-0029",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 265000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-059"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-069"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 1015000
+  },
+  {
+    "created_at": "2026-11-18T17:00:00+07:00",
+    "customer_id": "home_c-c017",
+    "id": "DH-HO-0030",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-025"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "doi_tra",
+    "total_vnd": 623000
+  },
+  {
+    "created_at": "2026-11-16T14:00:00+07:00",
+    "customer_id": "home_c-c024",
+    "id": "DH-HO-0031",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 209000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-073"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 290000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-054"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-026"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1754000
+  },
+  {
+    "created_at": "2026-11-03T12:00:00+07:00",
+    "customer_id": "home_c-c006",
+    "id": "DH-HO-0032",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1740000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-016"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1279000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-018"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3019000
+  },
+  {
+    "created_at": "2026-11-02T08:00:00+07:00",
+    "customer_id": "home_c-c007",
+    "id": "DH-HO-0033",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-069"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 250000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-035"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1529000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-017"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 5632000
+  },
+  {
+    "created_at": "2026-11-20T17:00:00+07:00",
+    "customer_id": "home_c-c036",
+    "id": "DH-HO-0034",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 59000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-080"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-036"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 317000
+  },
+  {
+    "created_at": "2026-11-11T20:00:00+07:00",
+    "customer_id": "home_c-c014",
+    "id": "DH-HO-0035",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-071"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 190000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-046"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "doi_tra",
+    "total_vnd": 899000
+  },
+  {
+    "created_at": "2026-11-01T10:00:00+07:00",
+    "customer_id": "home_c-c005",
+    "id": "DH-HO-0036",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 220000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-050"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 60000,
     "status": "cho_xac_nhan",
-    "total_vnd": 725000
+    "total_vnd": 720000
   },
   {
-    "created_at": "2026-11-10T19:00:00+07:00",
-    "customer_id": "home_c-c022",
+    "created_at": "2026-11-20T10:00:00+07:00",
+    "customer_id": "home_c-c011",
     "id": "DH-HO-0037",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-069"
+        "color": "đen",
+        "price_vnd": 80000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-079"
       },
       {
         "color": "trắng",
+        "price_vnd": 250000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-035"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 619000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1199000
+  },
+  {
+    "created_at": "2026-11-22T12:00:00+07:00",
+    "customer_id": "home_c-c027",
+    "id": "DH-HO-0038",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-036"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 199000
+  },
+  {
+    "created_at": "2026-11-15T10:00:00+07:00",
+    "customer_id": "home_c-c047",
+    "id": "DH-HO-0039",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 70000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-077"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 220000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-050"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 145000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-058"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 770000
+  },
+  {
+    "created_at": "2026-11-16T14:00:00+07:00",
+    "customer_id": "home_c-c033",
+    "id": "DH-HO-0040",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 80000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-079"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-049"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "doi_tra",
+    "total_vnd": 519000
+  },
+  {
+    "created_at": "2026-11-07T13:00:00+07:00",
+    "customer_id": "home_c-c009",
+    "id": "DH-HO-0041",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 155000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-042"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 190000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-003"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 905000
+  },
+  {
+    "created_at": "2026-11-09T11:00:00+07:00",
+    "customer_id": "home_c-c045",
+    "id": "DH-HO-0042",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-010"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 70000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-077"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-049"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 911000
+  },
+  {
+    "created_at": "2026-11-08T18:00:00+07:00",
+    "customer_id": "home_c-c044",
+    "id": "DH-HO-0043",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-030"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 219000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-049"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1215000
+  },
+  {
+    "created_at": "2026-11-12T13:00:00+07:00",
+    "customer_id": "home_c-c024",
+    "id": "DH-HO-0044",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 145000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-058"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_huy",
+    "total_vnd": 350000
+  },
+  {
+    "created_at": "2026-11-14T09:00:00+07:00",
+    "customer_id": "home_c-c027",
+    "id": "DH-HO-0045",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 619000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1857000
+  },
+  {
+    "created_at": "2026-11-06T11:00:00+07:00",
+    "customer_id": "home_c-c037",
+    "id": "DH-HO-0046",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 130000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-045"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 848000
+  },
+  {
+    "created_at": "2026-11-23T10:00:00+07:00",
+    "customer_id": "home_c-c005",
+    "id": "DH-HO-0047",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 249000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-067"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 70000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-077"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 170000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-068"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "dang_giao",
+    "total_vnd": 589000
+  },
+  {
+    "created_at": "2026-11-14T12:00:00+07:00",
+    "customer_id": "home_c-c011",
+    "id": "DH-HO-0048",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 269000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-071"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-007"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-033"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1623000
+  },
+  {
+    "created_at": "2026-11-03T11:00:00+07:00",
+    "customer_id": "home_c-c005",
+    "id": "DH-HO-0049",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 235000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-053"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_huy",
+    "total_vnd": 295000
+  },
+  {
+    "created_at": "2026-11-07T17:00:00+07:00",
+    "customer_id": "home_c-c045",
+    "id": "DH-HO-0050",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-007"
+      },
+      {
+        "color": "đen",
         "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-074"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-023"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1494000
+  },
+  {
+    "created_at": "2026-11-18T09:00:00+07:00",
+    "customer_id": "home_c-c049",
+    "id": "DH-HO-0051",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-009"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 548000
+  },
+  {
+    "created_at": "2026-11-08T20:00:00+07:00",
+    "customer_id": "home_c-c000",
+    "id": "DH-HO-0052",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 269000,
         "qty": 1,
         "size": "",
         "sku": "HO-071"
       },
       {
         "color": "trắng",
-        "price_vnd": 249000,
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-048"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "dang_giao",
+    "total_vnd": 806000
+  },
+  {
+    "created_at": "2026-11-06T08:00:00+07:00",
+    "customer_id": "home_c-c030",
+    "id": "DH-HO-0053",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 309000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-022"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 250000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-035"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1427000
+  },
+  {
+    "created_at": "2026-11-19T20:00:00+07:00",
+    "customer_id": "home_c-c017",
+    "id": "DH-HO-0054",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1529000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-017"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 4587000
+  },
+  {
+    "created_at": "2026-11-06T18:00:00+07:00",
+    "customer_id": "home_c-c038",
+    "id": "DH-HO-0055",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 365000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-032"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 265000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-059"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1890000
+  },
+  {
+    "created_at": "2026-11-10T15:00:00+07:00",
+    "customer_id": "home_c-c033",
+    "id": "DH-HO-0056",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
         "qty": 1,
         "size": "500ml",
-        "sku": "HO-015"
+        "sku": "HO-009"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 289000
+  },
+  {
+    "created_at": "2026-11-21T16:00:00+07:00",
+    "customer_id": "home_c-c022",
+    "id": "DH-HO-0057",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 249000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-051"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 269000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-071"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 1166000
+    "total_vnd": 1554000
   },
   {
-    "created_at": "2026-11-01T19:00:00+07:00",
-    "customer_id": "home_c-c019",
-    "id": "DH-HO-0038",
+    "created_at": "2026-11-07T09:00:00+07:00",
+    "customer_id": "home_c-c038",
+    "id": "DH-HO-0058",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 1245000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-018"
+        "color": "xanh mint",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-074"
       },
       {
-        "color": "trắng",
-        "price_vnd": 225000,
+        "color": "đen",
+        "price_vnd": 239000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-052"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 219000,
         "qty": 1,
         "size": "",
-        "sku": "HO-057"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 3960000
-  },
-  {
-    "created_at": "2026-11-08T12:00:00+07:00",
-    "customer_id": "home_c-c044",
-    "id": "DH-HO-0039",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 375000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-029"
+        "sku": "HO-033"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1125000
+    "status": "da_giao",
+    "total_vnd": 1574000
   },
   {
-    "created_at": "2026-11-04T09:00:00+07:00",
-    "customer_id": "home_c-c044",
-    "id": "DH-HO-0040",
+    "created_at": "2026-11-12T08:00:00+07:00",
+    "customer_id": "home_c-c020",
+    "id": "DH-HO-0059",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 349000,
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-039"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 229000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-015"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 901000
+  },
+  {
+    "created_at": "2026-11-05T18:00:00+07:00",
+    "customer_id": "home_c-c019",
+    "id": "DH-HO-0060",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-026"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 190000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-003"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "doi_tra",
+    "total_vnd": 890000
+  },
+  {
+    "created_at": "2026-11-13T15:00:00+07:00",
+    "customer_id": "home_c-c045",
+    "id": "DH-HO-0061",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 365000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1905000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-019"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4175000
+  },
+  {
+    "created_at": "2026-11-05T18:00:00+07:00",
+    "customer_id": "home_c-c006",
+    "id": "DH-HO-0062",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-048"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
         "qty": 1,
         "size": "500ml",
         "sku": "HO-027"
       }
     ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 394000
-  },
-  {
-    "created_at": "2026-11-02T20:00:00+07:00",
-    "customer_id": "home_c-c006",
-    "id": "DH-HO-0041",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 739000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-062"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 769000
-  },
-  {
-    "created_at": "2026-11-04T20:00:00+07:00",
-    "customer_id": "home_c-c000",
-    "id": "DH-HO-0042",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 235000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-066"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-076"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 165000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-008"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "dang_giao",
-    "total_vnd": 684000
-  },
-  {
-    "created_at": "2026-11-22T13:00:00+07:00",
-    "customer_id": "home_c-c011",
-    "id": "DH-HO-0043",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 69000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-078"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_giao",
-    "total_vnd": 237000
-  },
-  {
-    "created_at": "2026-11-12T13:00:00+07:00",
-    "customer_id": "home_c-c037",
-    "id": "DH-HO-0044",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-012"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "da_huy",
-    "total_vnd": 795000
-  },
-  {
-    "created_at": "2026-11-19T09:00:00+07:00",
-    "customer_id": "home_c-c032",
-    "id": "DH-HO-0045",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 749000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-065"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 2247000
-  },
-  {
-    "created_at": "2026-11-07T12:00:00+07:00",
-    "customer_id": "home_c-c045",
-    "id": "DH-HO-0046",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-075"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 780000
-  },
-  {
-    "created_at": "2026-11-07T16:00:00+07:00",
-    "customer_id": "home_c-c059",
-    "id": "DH-HO-0047",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-069"
-      }
-    ],
     "region": "noi_thanh",
     "ship_fee_vnd": 30000,
     "status": "dang_giao",
-    "total_vnd": 927000
+    "total_vnd": 538000
   },
   {
-    "created_at": "2026-11-17T11:00:00+07:00",
-    "customer_id": "home_c-c013",
-    "id": "DH-HO-0048",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 699000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-061"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 219000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-047"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-076"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1735000
-  },
-  {
-    "created_at": "2026-11-12T19:00:00+07:00",
-    "customer_id": "home_c-c031",
-    "id": "DH-HO-0049",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-015"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 165000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-041"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_huy",
-    "total_vnd": 1023000
-  },
-  {
-    "created_at": "2026-11-15T17:00:00+07:00",
+    "created_at": "2026-11-03T17:00:00+07:00",
     "customer_id": "home_c-c018",
-    "id": "DH-HO-0050",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-072"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-006"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 744000
-  },
-  {
-    "created_at": "2026-11-06T08:00:00+07:00",
-    "customer_id": "home_c-c023",
-    "id": "DH-HO-0051",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 219000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-040"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 225000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-057"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 375000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-029"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1413000
-  },
-  {
-    "created_at": "2026-11-19T09:00:00+07:00",
-    "customer_id": "home_c-c044",
-    "id": "DH-HO-0052",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 285000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-014"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 335000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-051"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2962000
-  },
-  {
-    "created_at": "2026-11-14T19:00:00+07:00",
-    "customer_id": "home_c-c053",
-    "id": "DH-HO-0053",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-022"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 255000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-009"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 219000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-047"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1744000
-  },
-  {
-    "created_at": "2026-11-20T14:00:00+07:00",
-    "customer_id": "home_c-c042",
-    "id": "DH-HO-0054",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 189000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-036"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-075"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1067000
-  },
-  {
-    "created_at": "2026-11-16T11:00:00+07:00",
-    "customer_id": "home_c-c031",
-    "id": "DH-HO-0055",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 235000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-066"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 189000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-036"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 704000
-  },
-  {
-    "created_at": "2026-11-20T18:00:00+07:00",
-    "customer_id": "home_c-c024",
-    "id": "DH-HO-0056",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 1245000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-018"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-004"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-013"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2152000
-  },
-  {
-    "created_at": "2026-11-15T11:00:00+07:00",
-    "customer_id": "home_c-c050",
-    "id": "DH-HO-0057",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 1265000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-020"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 275000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-039"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2090000
-  },
-  {
-    "created_at": "2026-11-02T14:00:00+07:00",
-    "customer_id": "home_c-c001",
-    "id": "DH-HO-0058",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 690000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-064"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-063"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 3387000
-  },
-  {
-    "created_at": "2026-11-15T08:00:00+07:00",
-    "customer_id": "home_c-c028",
-    "id": "DH-HO-0059",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-050"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "da_huy",
-    "total_vnd": 463000
-  },
-  {
-    "created_at": "2026-11-23T10:00:00+07:00",
-    "customer_id": "home_c-c056",
-    "id": "DH-HO-0060",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-023"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 942000
-  },
-  {
-    "created_at": "2026-11-22T15:00:00+07:00",
-    "customer_id": "home_c-c036",
-    "id": "DH-HO-0061",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 229000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-056"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1245000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-018"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 3177000
-  },
-  {
-    "created_at": "2026-11-19T14:00:00+07:00",
-    "customer_id": "home_c-c031",
-    "id": "DH-HO-0062",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-071"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-070"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 359000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-074"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2073000
-  },
-  {
-    "created_at": "2026-11-01T20:00:00+07:00",
-    "customer_id": "home_c-c037",
     "id": "DH-HO-0063",
     "items": [
       {
-        "color": "xanh mint",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-046"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-037"
-      },
-      {
         "color": "đen",
-        "price_vnd": 199000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-042"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "da_giao",
-    "total_vnd": 842000
-  },
-  {
-    "created_at": "2026-11-08T11:00:00+07:00",
-    "customer_id": "home_c-c015",
-    "id": "DH-HO-0064",
-    "items": [
-      {
-        "color": "xanh mint",
         "price_vnd": 169000,
         "qty": 2,
         "size": "",
-        "sku": "HO-044"
+        "sku": "HO-048"
       },
       {
         "color": "trắng",
-        "price_vnd": 300000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-049"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-013"
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-007"
       }
     ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1207000
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_giao",
+    "total_vnd": 950000
   },
   {
-    "created_at": "2026-11-02T15:00:00+07:00",
-    "customer_id": "home_c-c020",
+    "created_at": "2026-11-11T11:00:00+07:00",
+    "customer_id": "home_c-c019",
+    "id": "DH-HO-0064",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-066"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-071"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 524000
+  },
+  {
+    "created_at": "2026-11-21T16:00:00+07:00",
+    "customer_id": "home_c-c023",
     "id": "DH-HO-0065",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 219000,
-        "qty": 2,
+        "price_vnd": 309000,
+        "qty": 3,
         "size": "500ml",
-        "sku": "HO-040"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-076"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 285000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-011"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "doi_tra",
-    "total_vnd": 901000
-  },
-  {
-    "created_at": "2026-11-13T17:00:00+07:00",
-    "customer_id": "home_c-c020",
-    "id": "DH-HO-0066",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 275000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-055"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 209000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-073"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 235000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-066"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1882000
-  },
-  {
-    "created_at": "2026-11-11T15:00:00+07:00",
-    "customer_id": "home_c-c013",
-    "id": "DH-HO-0067",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 199000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-042"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-074"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1475000
-  },
-  {
-    "created_at": "2026-11-18T11:00:00+07:00",
-    "customer_id": "home_c-c053",
-    "id": "DH-HO-0068",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 169000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-044"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 1,
-        "size": "750ml",
         "sku": "HO-022"
       },
       {
         "color": "trắng",
-        "price_vnd": 99000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-079"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1015000
-  },
-  {
-    "created_at": "2026-11-03T19:00:00+07:00",
-    "customer_id": "home_c-c047",
-    "id": "DH-HO-0069",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 370000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-034"
+        "price_vnd": 249000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-002"
       },
       {
         "color": "trắng",
-        "price_vnd": 219000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-007"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1329000
-  },
-  {
-    "created_at": "2026-11-10T16:00:00+07:00",
-    "customer_id": "home_c-c041",
-    "id": "DH-HO-0070",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 1,
+        "price_vnd": 189000,
+        "qty": 3,
         "size": "750ml",
         "sku": "HO-013"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-076"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 169000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-044"
       }
     ],
     "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
+    "ship_fee_vnd": 0,
     "status": "doi_tra",
-    "total_vnd": 755000
+    "total_vnd": 1743000
   },
   {
-    "created_at": "2026-11-17T15:00:00+07:00",
+    "created_at": "2026-11-15T13:00:00+07:00",
     "customer_id": "home_c-c039",
-    "id": "DH-HO-0071",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 229000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-056"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-070"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 752000
-  },
-  {
-    "created_at": "2026-11-15T12:00:00+07:00",
-    "customer_id": "home_c-c052",
-    "id": "DH-HO-0072",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 319000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-071"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 429000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-024"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-003"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2443000
-  },
-  {
-    "created_at": "2026-11-08T10:00:00+07:00",
-    "customer_id": "home_c-c009",
-    "id": "DH-HO-0073",
+    "id": "DH-HO-0066",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 299000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-069"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 99000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-079"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 229000,
+        "price_vnd": 145000,
         "qty": 2,
         "size": "",
-        "sku": "HO-056"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1652000
-  },
-  {
-    "created_at": "2026-11-09T18:00:00+07:00",
-    "customer_id": "home_c-c010",
-    "id": "DH-HO-0074",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 275000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-039"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 229000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-056"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 255000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-053"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1243000
-  },
-  {
-    "created_at": "2026-11-14T14:00:00+07:00",
-    "customer_id": "home_c-c035",
-    "id": "DH-HO-0075",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 379000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-031"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 279000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-052"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-015"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1156000
-  },
-  {
-    "created_at": "2026-11-21T21:00:00+07:00",
-    "customer_id": "home_c-c011",
-    "id": "DH-HO-0076",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-005"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-026"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-021"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1963000
-  },
-  {
-    "created_at": "2026-11-20T12:00:00+07:00",
-    "customer_id": "home_c-c020",
-    "id": "DH-HO-0077",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-063"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "dang_giao",
-    "total_vnd": 699000
-  },
-  {
-    "created_at": "2026-11-03T14:00:00+07:00",
-    "customer_id": "home_c-c056",
-    "id": "DH-HO-0078",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 255000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-053"
+        "sku": "HO-058"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 60000,
-    "status": "da_giao",
-    "total_vnd": 825000
+    "status": "cho_xac_nhan",
+    "total_vnd": 350000
   },
   {
-    "created_at": "2026-11-20T09:00:00+07:00",
-    "customer_id": "home_c-c015",
-    "id": "DH-HO-0079",
+    "created_at": "2026-11-16T14:00:00+07:00",
+    "customer_id": "home_c-c048",
+    "id": "DH-HO-0067",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 1245000,
+        "price_vnd": 210000,
         "qty": 3,
         "size": "1L",
-        "sku": "HO-018"
+        "sku": "HO-037"
       },
       {
         "color": "xanh mint",
-        "price_vnd": 379000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-031"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-015"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 5370000
-  },
-  {
-    "created_at": "2026-11-04T10:00:00+07:00",
-    "customer_id": "home_c-c009",
-    "id": "DH-HO-0080",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 159000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-043"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-075"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "doi_tra",
-    "total_vnd": 848000
-  },
-  {
-    "created_at": "2026-11-19T08:00:00+07:00",
-    "customer_id": "home_c-c055",
-    "id": "DH-HO-0081",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 189000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-036"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 423000
-  },
-  {
-    "created_at": "2026-11-22T11:00:00+07:00",
-    "customer_id": "home_c-c030",
-    "id": "DH-HO-0082",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 299000,
+        "price_vnd": 169000,
         "qty": 1,
-        "size": "1L",
-        "sku": "HO-069"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 3,
         "size": "",
         "sku": "HO-048"
       }
@@ -2110,23 +1686,252 @@
     "region": "ngoai_thanh",
     "ship_fee_vnd": 45000,
     "status": "dang_giao",
-    "total_vnd": 971000
+    "total_vnd": 844000
   },
   {
-    "created_at": "2026-11-20T08:00:00+07:00",
-    "customer_id": "home_c-c041",
-    "id": "DH-HO-0083",
+    "created_at": "2026-11-21T12:00:00+07:00",
+    "customer_id": "home_c-c009",
+    "id": "DH-HO-0068",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 2025000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-019"
+        "price_vnd": 229000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-005"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 269000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-071"
       },
       {
         "color": "đen",
+        "price_vnd": 209000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-073"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1394000
+  },
+  {
+    "created_at": "2026-11-09T14:00:00+07:00",
+    "customer_id": "home_c-c014",
+    "id": "DH-HO-0069",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-026"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 720000
+  },
+  {
+    "created_at": "2026-11-07T14:00:00+07:00",
+    "customer_id": "home_c-c036",
+    "id": "DH-HO-0070",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 170000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-006"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 200000
+  },
+  {
+    "created_at": "2026-11-19T12:00:00+07:00",
+    "customer_id": "home_c-c013",
+    "id": "DH-HO-0071",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-054"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 640000
+  },
+  {
+    "created_at": "2026-11-16T20:00:00+07:00",
+    "customer_id": "home_c-c004",
+    "id": "DH-HO-0072",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-009"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 304000
+  },
+  {
+    "created_at": "2026-11-04T09:00:00+07:00",
+    "customer_id": "home_c-c042",
+    "id": "DH-HO-0073",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 145000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-060"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_giao",
+    "total_vnd": 480000
+  },
+  {
+    "created_at": "2026-11-18T21:00:00+07:00",
+    "customer_id": "home_c-c047",
+    "id": "DH-HO-0074",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 175000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-044"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 80000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-079"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_huy",
+    "total_vnd": 650000
+  },
+  {
+    "created_at": "2026-11-08T21:00:00+07:00",
+    "customer_id": "home_c-c001",
+    "id": "DH-HO-0075",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 155000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-042"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 170000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-068"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 1005000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "home_c-c037",
+    "id": "DH-HO-0076",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 565000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-062"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 250000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-035"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2195000
+  },
+  {
+    "created_at": "2026-11-15T10:00:00+07:00",
+    "customer_id": "home_c-c006",
+    "id": "DH-HO-0077",
+    "items": [
+      {
+        "color": "xanh mint",
         "price_vnd": 219000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-033"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 359000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-014"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1016000
+  },
+  {
+    "created_at": "2026-11-08T10:00:00+07:00",
+    "customer_id": "home_c-c039",
+    "id": "DH-HO-0078",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-070"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 540000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-065"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 259000,
         "qty": 2,
         "size": "",
         "sku": "HO-047"
@@ -2135,198 +1940,969 @@
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 6513000
+    "total_vnd": 2165000
   },
   {
-    "created_at": "2026-11-15T14:00:00+07:00",
-    "customer_id": "home_c-c054",
-    "id": "DH-HO-0084",
+    "created_at": "2026-11-14T15:00:00+07:00",
+    "customer_id": "home_c-c001",
+    "id": "DH-HO-0079",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 219000,
+        "price_vnd": 259000,
         "qty": 2,
-        "size": "750ml",
-        "sku": "HO-007"
+        "size": "500ml",
+        "sku": "HO-009"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 145000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-041"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 838000
+  },
+  {
+    "created_at": "2026-11-19T11:00:00+07:00",
+    "customer_id": "home_c-c025",
+    "id": "DH-HO-0080",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-048"
       },
       {
         "color": "trắng",
-        "price_vnd": 379000,
+        "price_vnd": 1740000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-016"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3649000
+  },
+  {
+    "created_at": "2026-11-20T13:00:00+07:00",
+    "customer_id": "home_c-c037",
+    "id": "DH-HO-0081",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 280000,
         "qty": 3,
         "size": "",
         "sku": "HO-031"
       },
       {
         "color": "trắng",
-        "price_vnd": 265000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-033"
+        "price_vnd": 210000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-037"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 2370000
+    "status": "cho_xac_nhan",
+    "total_vnd": 1260000
   },
   {
-    "created_at": "2026-11-08T12:00:00+07:00",
-    "customer_id": "home_c-c059",
-    "id": "DH-HO-0085",
+    "created_at": "2026-11-14T15:00:00+07:00",
+    "customer_id": "home_c-c005",
+    "id": "DH-HO-0082",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 335000,
+        "price_vnd": 259000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-011"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "dang_giao",
+    "total_vnd": 508000
+  },
+  {
+    "created_at": "2026-11-22T21:00:00+07:00",
+    "customer_id": "home_c-c044",
+    "id": "DH-HO-0083",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1355000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-020"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-007"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 270000,
         "qty": 2,
+        "size": "750ml",
+        "sku": "HO-001"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2084000
+  },
+  {
+    "created_at": "2026-11-02T17:00:00+07:00",
+    "customer_id": "home_c-c005",
+    "id": "DH-HO-0084",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 1,
         "size": "",
-        "sku": "HO-051"
+        "sku": "HO-074"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 295000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-012"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 939000
+  },
+  {
+    "created_at": "2026-11-13T21:00:00+07:00",
+    "customer_id": "home_c-c031",
+    "id": "DH-HO-0085",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 80000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-079"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 30000,
     "status": "doi_tra",
-    "total_vnd": 700000
+    "total_vnd": 110000
   },
   {
-    "created_at": "2026-11-21T14:00:00+07:00",
-    "customer_id": "home_c-c056",
+    "created_at": "2026-11-03T21:00:00+07:00",
+    "customer_id": "home_c-c039",
     "id": "DH-HO-0086",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 380000,
+        "price_vnd": 250000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-035"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 810000
+  },
+  {
+    "created_at": "2026-11-23T16:00:00+07:00",
+    "customer_id": "home_c-c006",
+    "id": "DH-HO-0087",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1279000,
         "qty": 3,
         "size": "750ml",
-        "sku": "HO-021"
+        "sku": "HO-018"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-009"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 4096000
+  },
+  {
+    "created_at": "2026-11-06T19:00:00+07:00",
+    "customer_id": "home_c-c030",
+    "id": "DH-HO-0088",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 59000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-078"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-029"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_giao",
+    "total_vnd": 699000
+  },
+  {
+    "created_at": "2026-11-14T20:00:00+07:00",
+    "customer_id": "home_c-c015",
+    "id": "DH-HO-0089",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 190000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-046"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-066"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1010000
+  },
+  {
+    "created_at": "2026-11-02T09:00:00+07:00",
+    "customer_id": "home_c-c003",
+    "id": "DH-HO-0090",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-042"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
+        "qty": 3,
+        "size": "500ml",
+        "sku": "HO-027"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1327000
+  },
+  {
+    "created_at": "2026-11-23T13:00:00+07:00",
+    "customer_id": "home_c-c037",
+    "id": "DH-HO-0091",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1740000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-016"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1905000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-019"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-014"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 1140000
+    "total_vnd": 8173000
   },
   {
-    "created_at": "2026-11-14T21:00:00+07:00",
-    "customer_id": "home_c-c047",
-    "id": "DH-HO-0087",
+    "created_at": "2026-11-21T18:00:00+07:00",
+    "customer_id": "home_c-c042",
+    "id": "DH-HO-0092",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 189000,
+        "price_vnd": 565000,
         "qty": 2,
-        "size": "500ml",
-        "sku": "HO-036"
+        "size": "750ml",
+        "sku": "HO-062"
       }
     ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 423000
+    "total_vnd": 1130000
   },
   {
-    "created_at": "2026-11-14T17:00:00+07:00",
-    "customer_id": "home_c-c022",
-    "id": "DH-HO-0088",
+    "created_at": "2026-11-12T09:00:00+07:00",
+    "customer_id": "home_c-c003",
+    "id": "DH-HO-0093",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 275000,
+        "price_vnd": 75000,
         "qty": 3,
         "size": "",
-        "sku": "HO-055"
+        "sku": "HO-076"
       },
       {
         "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-013"
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-039"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-027"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 1632000
+    "total_vnd": 1301000
   },
   {
-    "created_at": "2026-11-21T10:00:00+07:00",
-    "customer_id": "home_c-c028",
-    "id": "DH-HO-0089",
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "home_c-c025",
+    "id": "DH-HO-0094",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-033"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 264000
+  },
+  {
+    "created_at": "2026-11-06T08:00:00+07:00",
+    "customer_id": "home_c-c010",
+    "id": "DH-HO-0095",
     "items": [
       {
         "color": "xanh mint",
-        "price_vnd": 319000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-071"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 199000,
+        "price_vnd": 155000,
         "qty": 3,
         "size": "",
         "sku": "HO-042"
       },
       {
-        "color": "đen",
-        "price_vnd": 229000,
+        "color": "trắng",
+        "price_vnd": 145000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-058"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1279000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-018"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 4737000
+  },
+  {
+    "created_at": "2026-11-08T16:00:00+07:00",
+    "customer_id": "home_c-c038",
+    "id": "DH-HO-0096",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-054"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 295000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-012"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 905000
+  },
+  {
+    "created_at": "2026-11-12T19:00:00+07:00",
+    "customer_id": "home_c-c021",
+    "id": "DH-HO-0097",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-036"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-026"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "dang_giao",
+    "total_vnd": 623000
+  },
+  {
+    "created_at": "2026-11-22T21:00:00+07:00",
+    "customer_id": "home_c-c047",
+    "id": "DH-HO-0098",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-048"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 175000,
         "qty": 1,
         "size": "",
-        "sku": "HO-059"
+        "sku": "HO-044"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-001"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1053000
+  },
+  {
+    "created_at": "2026-11-19T16:00:00+07:00",
+    "customer_id": "home_c-c018",
+    "id": "DH-HO-0099",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 540000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-065"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-036"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 170000,
+        "qty": 2,
+        "size": "750ml",
+        "sku": "HO-068"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 1145000
+    "total_vnd": 2298000
   },
   {
-    "created_at": "2026-11-19T09:00:00+07:00",
-    "customer_id": "home_c-c020",
-    "id": "DH-HO-0090",
+    "created_at": "2026-11-15T17:00:00+07:00",
+    "customer_id": "home_c-c036",
+    "id": "DH-HO-0100",
     "items": [
       {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-059"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 170000,
+        "qty": 3,
+        "size": "750ml",
+        "sku": "HO-006"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-037"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1195000
+  },
+  {
+    "created_at": "2026-11-10T18:00:00+07:00",
+    "customer_id": "home_c-c002",
+    "id": "DH-HO-0101",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 145000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-041"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 335000
+  },
+  {
+    "created_at": "2026-11-01T16:00:00+07:00",
+    "customer_id": "home_c-c014",
+    "id": "DH-HO-0102",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-075"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 575000
+  },
+  {
+    "created_at": "2026-11-01T14:00:00+07:00",
+    "customer_id": "home_c-c003",
+    "id": "DH-HO-0103",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-029"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 45000,
+    "status": "da_giao",
+    "total_vnd": 335000
+  },
+  {
+    "created_at": "2026-11-21T20:00:00+07:00",
+    "customer_id": "home_c-c019",
+    "id": "DH-HO-0104",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-036"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_huy",
+    "total_vnd": 229000
+  },
+  {
+    "created_at": "2026-11-11T10:00:00+07:00",
+    "customer_id": "home_c-c034",
+    "id": "DH-HO-0105",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-007"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 729000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-064"
+      },
+      {
         "color": "đen",
-        "price_vnd": 279000,
+        "price_vnd": 265000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-075"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1826000
+  },
+  {
+    "created_at": "2026-11-09T10:00:00+07:00",
+    "customer_id": "home_c-c042",
+    "id": "DH-HO-0106",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 225000,
+        "qty": 2,
+        "size": "1L",
+        "sku": "HO-026"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-002"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 249000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-055"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1197000
+  },
+  {
+    "created_at": "2026-11-12T09:00:00+07:00",
+    "customer_id": "home_c-c048",
+    "id": "DH-HO-0107",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-033"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
         "qty": 3,
         "size": "",
-        "sku": "HO-052"
+        "sku": "HO-054"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1308000
+  },
+  {
+    "created_at": "2026-11-04T21:00:00+07:00",
+    "customer_id": "home_c-c000",
+    "id": "DH-HO-0108",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "1L",
+        "sku": "HO-040"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-070"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 726000
+  },
+  {
+    "created_at": "2026-11-15T13:00:00+07:00",
+    "customer_id": "home_c-c007",
+    "id": "DH-HO-0109",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 259000,
+        "qty": 1,
+        "size": "500ml",
+        "sku": "HO-009"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 289000
+  },
+  {
+    "created_at": "2026-11-06T14:00:00+07:00",
+    "customer_id": "home_c-c012",
+    "id": "DH-HO-0110",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 265000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-069"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 145000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-060"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 1,
+        "size": "750ml",
+        "sku": "HO-066"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 45000,
     "status": "doi_tra",
-    "total_vnd": 882000
+    "total_vnd": 930000
   },
   {
-    "created_at": "2026-11-21T20:00:00+07:00",
-    "customer_id": "home_c-c049",
-    "id": "DH-HO-0091",
+    "created_at": "2026-11-23T16:00:00+07:00",
+    "customer_id": "home_c-c012",
+    "id": "DH-HO-0111",
     "items": [
       {
+        "color": "xanh mint",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-033"
+      },
+      {
         "color": "trắng",
-        "price_vnd": 380000,
-        "qty": 3,
+        "price_vnd": 190000,
+        "qty": 1,
         "size": "500ml",
-        "sku": "HO-021"
+        "sku": "HO-003"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 59000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-080"
       }
     ],
     "region": "tinh",
-    "ship_fee_vnd": 0,
+    "ship_fee_vnd": 60000,
     "status": "cho_xac_nhan",
-    "total_vnd": 1140000
+    "total_vnd": 528000
   },
   {
-    "created_at": "2026-11-05T12:00:00+07:00",
-    "customer_id": "home_c-c030",
-    "id": "DH-HO-0092",
+    "created_at": "2026-11-13T11:00:00+07:00",
+    "customer_id": "home_c-c010",
+    "id": "DH-HO-0112",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 130000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-045"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-004"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "dang_giao",
+    "total_vnd": 589000
+  },
+  {
+    "created_at": "2026-11-23T09:00:00+07:00",
+    "customer_id": "home_c-c047",
+    "id": "DH-HO-0113",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 59000,
+        "qty": 3,
+        "size": "",
+        "sku": "HO-080"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 60000,
+    "status": "da_giao",
+    "total_vnd": 237000
+  },
+  {
+    "created_at": "2026-11-21T13:00:00+07:00",
+    "customer_id": "home_c-c012",
+    "id": "DH-HO-0114",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 729000,
+        "qty": 2,
+        "size": "500ml",
+        "sku": "HO-064"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1458000
+  },
+  {
+    "created_at": "2026-11-19T13:00:00+07:00",
+    "customer_id": "home_c-c001",
+    "id": "DH-HO-0115",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 229000,
+        "qty": 1,
+        "size": "1L",
+        "sku": "HO-005"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 259000
+  },
+  {
+    "created_at": "2026-11-20T16:00:00+07:00",
+    "customer_id": "home_c-c035",
+    "id": "DH-HO-0116",
+    "items": [
+      {
+        "color": "xanh mint",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-048"
+      },
+      {
+        "color": "xanh mint",
+        "price_vnd": 175000,
+        "qty": 2,
+        "size": "",
+        "sku": "HO-044"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-054"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 839000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "home_c-c046",
+    "id": "DH-HO-0117",
     "items": [
       {
         "color": "xanh mint",
         "price_vnd": 75000,
         "qty": 2,
         "size": "",
-        "sku": "HO-077"
+        "sku": "HO-076"
       }
     ],
     "region": "ngoai_thanh",
@@ -2335,675 +2911,78 @@
     "total_vnd": 195000
   },
   {
-    "created_at": "2026-11-14T13:00:00+07:00",
-    "customer_id": "home_c-c005",
-    "id": "DH-HO-0093",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 59000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-076"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_giao",
-    "total_vnd": 148000
-  },
-  {
-    "created_at": "2026-11-01T16:00:00+07:00",
-    "customer_id": "home_c-c001",
-    "id": "DH-HO-0094",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 335000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-051"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1005000
-  },
-  {
-    "created_at": "2026-11-14T17:00:00+07:00",
-    "customer_id": "home_c-c039",
-    "id": "DH-HO-0095",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 99000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-079"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-030"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-012"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1096000
-  },
-  {
-    "created_at": "2026-11-14T20:00:00+07:00",
-    "customer_id": "home_c-c033",
-    "id": "DH-HO-0096",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 1265000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-020"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-012"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1515000
-  },
-  {
-    "created_at": "2026-11-16T14:00:00+07:00",
-    "customer_id": "home_c-c018",
-    "id": "DH-HO-0097",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 690000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-064"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1500000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-016"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 3570000
-  },
-  {
-    "created_at": "2026-11-10T19:00:00+07:00",
-    "customer_id": "home_c-c052",
-    "id": "DH-HO-0098",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 229000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-056"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_giao",
-    "total_vnd": 717000
-  },
-  {
-    "created_at": "2026-11-08T13:00:00+07:00",
-    "customer_id": "home_c-c028",
-    "id": "DH-HO-0099",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 339000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-025"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 390000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-054"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 429000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-024"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1548000
-  },
-  {
-    "created_at": "2026-11-13T19:00:00+07:00",
-    "customer_id": "home_c-c045",
-    "id": "DH-HO-0100",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 229000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-059"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 285000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-011"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 209000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-002"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1711000
-  },
-  {
-    "created_at": "2026-11-08T15:00:00+07:00",
-    "customer_id": "home_c-c059",
-    "id": "DH-HO-0101",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 75000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-077"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 265000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-033"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 385000
-  },
-  {
-    "created_at": "2026-11-10T14:00:00+07:00",
-    "customer_id": "home_c-c024",
-    "id": "DH-HO-0102",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 69000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-078"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 75000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-077"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "dang_giao",
-    "total_vnd": 354000
-  },
-  {
-    "created_at": "2026-11-11T15:00:00+07:00",
-    "customer_id": "home_c-c059",
-    "id": "DH-HO-0103",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 209000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-048"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1825000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-017"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-072"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 5027000
-  },
-  {
-    "created_at": "2026-11-05T12:00:00+07:00",
+    "created_at": "2026-11-18T21:00:00+07:00",
     "customer_id": "home_c-c027",
-    "id": "DH-HO-0104",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-012"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "da_huy",
-    "total_vnd": 810000
-  },
-  {
-    "created_at": "2026-11-09T19:00:00+07:00",
-    "customer_id": "home_c-c055",
-    "id": "DH-HO-0105",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 165000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-041"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 210000
-  },
-  {
-    "created_at": "2026-11-06T13:00:00+07:00",
-    "customer_id": "home_c-c027",
-    "id": "DH-HO-0106",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 229000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-056"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 3,
-        "size": "500ml",
-        "sku": "HO-037"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1242000
-  },
-  {
-    "created_at": "2026-11-16T12:00:00+07:00",
-    "customer_id": "home_c-c002",
-    "id": "DH-HO-0107",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1265000,
-        "qty": 1,
-        "size": "750ml",
-        "sku": "HO-020"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-072"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2184000
-  },
-  {
-    "created_at": "2026-11-15T13:00:00+07:00",
-    "customer_id": "home_c-c002",
-    "id": "DH-HO-0108",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-060"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "da_giao",
-    "total_vnd": 230000
-  },
-  {
-    "created_at": "2026-11-10T10:00:00+07:00",
-    "customer_id": "home_c-c055",
-    "id": "DH-HO-0109",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-072"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 669000,
-        "qty": 1,
-        "size": "500ml",
-        "sku": "HO-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 229000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-059"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1148000
-  },
-  {
-    "created_at": "2026-11-07T17:00:00+07:00",
-    "customer_id": "home_c-c037",
-    "id": "DH-HO-0110",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 235000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-066"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 60000,
-    "status": "doi_tra",
-    "total_vnd": 765000
-  },
-  {
-    "created_at": "2026-11-03T11:00:00+07:00",
-    "customer_id": "home_c-c058",
-    "id": "DH-HO-0111",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 179000,
-        "qty": 1,
-        "size": "1L",
-        "sku": "HO-068"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 45000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 224000
-  },
-  {
-    "created_at": "2026-11-12T17:00:00+07:00",
-    "customer_id": "home_c-c025",
-    "id": "DH-HO-0112",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 2,
-        "size": "500ml",
-        "sku": "HO-013"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 159000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-043"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1015000
-  },
-  {
-    "created_at": "2026-11-23T18:00:00+07:00",
-    "customer_id": "home_c-c029",
-    "id": "DH-HO-0113",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 199000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-042"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "da_giao",
-    "total_vnd": 229000
-  },
-  {
-    "created_at": "2026-11-20T15:00:00+07:00",
-    "customer_id": "home_c-c041",
-    "id": "DH-HO-0114",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 229000,
-        "qty": 3,
-        "size": "",
-        "sku": "HO-059"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 250000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-035"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1187000
-  },
-  {
-    "created_at": "2026-11-02T19:00:00+07:00",
-    "customer_id": "home_c-c051",
-    "id": "DH-HO-0115",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 209000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-073"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 1825000,
-        "qty": 2,
-        "size": "1L",
-        "sku": "HO-017"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 3859000
-  },
-  {
-    "created_at": "2026-11-09T10:00:00+07:00",
-    "customer_id": "home_c-c025",
-    "id": "DH-HO-0116",
-    "items": [
-      {
-        "color": "xanh mint",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "",
-        "sku": "HO-071"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 668000
-  },
-  {
-    "created_at": "2026-11-13T20:00:00+07:00",
-    "customer_id": "home_c-c010",
-    "id": "DH-HO-0117",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 279000,
-        "qty": 1,
-        "size": "",
-        "sku": "HO-052"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "dang_giao",
-    "total_vnd": 309000
-  },
-  {
-    "created_at": "2026-11-10T18:00:00+07:00",
-    "customer_id": "home_c-c051",
     "id": "DH-HO-0118",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 2,
+        "price_vnd": 1740000,
+        "qty": 3,
         "size": "500ml",
-        "sku": "HO-037"
+        "sku": "HO-016"
       },
       {
-        "color": "trắng",
-        "price_vnd": 1265000,
-        "qty": 2,
-        "size": "750ml",
-        "sku": "HO-020"
+        "color": "xanh mint",
+        "price_vnd": 59000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-080"
       }
     ],
-    "region": "tinh",
+    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 2900000
+    "total_vnd": 5279000
   },
   {
-    "created_at": "2026-11-19T17:00:00+07:00",
+    "created_at": "2026-11-13T10:00:00+07:00",
     "customer_id": "home_c-c017",
     "id": "DH-HO-0119",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 1825000,
-        "qty": 3,
-        "size": "750ml",
-        "sku": "HO-017"
-      },
-      {
-        "color": "xanh mint",
-        "price_vnd": 199000,
+        "price_vnd": 229000,
         "qty": 2,
-        "size": "",
-        "sku": "HO-046"
+        "size": "750ml",
+        "sku": "HO-005"
       },
       {
         "color": "trắng",
-        "price_vnd": 269000,
-        "qty": 2,
+        "price_vnd": 359000,
+        "qty": 3,
         "size": "750ml",
-        "sku": "HO-013"
+        "sku": "HO-014"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 6411000
+    "total_vnd": 1535000
   },
   {
-    "created_at": "2026-11-03T08:00:00+07:00",
-    "customer_id": "home_c-c027",
+    "created_at": "2026-11-10T14:00:00+07:00",
+    "customer_id": "home_c-c001",
     "id": "DH-HO-0120",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 250000,
-        "qty": 3,
-        "size": "1L",
-        "sku": "HO-012"
+        "color": "đen",
+        "price_vnd": 235000,
+        "qty": 1,
+        "size": "",
+        "sku": "HO-053"
       },
       {
         "color": "trắng",
-        "price_vnd": 275000,
+        "price_vnd": 179000,
         "qty": 2,
-        "size": "",
-        "sku": "HO-055"
+        "size": "750ml",
+        "sku": "HO-010"
       }
     ],
     "region": "tinh",
-    "ship_fee_vnd": 0,
+    "ship_fee_vnd": 60000,
     "status": "doi_tra",
-    "total_vnd": 1300000
+    "total_vnd": 653000
   }
 ]

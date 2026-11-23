@@ -1,7 +1,16 @@
 {
-  "cod": true,
-  "cod_fee_vnd": 0,
-  "freeship_from_vnd": 499000,
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 499000,
+    "return_days": 7,
+    "shipping_vnd": {
+      "ngoai_thanh": 40000,
+      "noi_thanh": 30000,
+      "tinh": 45000
+    },
+    "wholesale_from": 10
+  },
   "hours": {
     "closed_days": [
       {
@@ -75,6 +84,22 @@
     }
   },
   "industry": "thời trang",
+  "knowledge": {
+    "catalog_source": "manual",
+    "faq_count": 14,
+    "policy_file": true,
+    "sections": [
+      "hours",
+      "shipping",
+      "payment",
+      "returns",
+      "warranty",
+      "wholesale",
+      "promo",
+      "invoice"
+    ],
+    "skus": 80
+  },
   "name": "Mây Mặc",
   "product_types": [
     "Áo thun cotton cổ tròn",
@@ -95,12 +120,5 @@
     "Áo polo",
     "Quần lót cotton (set 3)"
   ],
-  "return_days": 7,
-  "shipping_vnd": {
-    "ngoai_thanh": 40000,
-    "noi_thanh": 30000,
-    "tinh": 45000
-  },
-  "shop_key": "fashion_a",
-  "wholesale_from": 10
+  "shop_key": "fashion_a"
 }

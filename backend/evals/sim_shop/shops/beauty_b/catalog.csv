@@ -1,182 +1,183 @@
 sku,name,description,price_vnd,size,color,stock
-BE-001,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,150ml,,0
-BE-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,50ml,,8
-BE-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,100ml,,16
-BE-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",180000,150ml,,0
-BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",165000,50ml,,19
-BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",165000,100ml,,18
-BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",165000,150ml,,33
-BE-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,50ml,,9
-BE-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,100ml,,9
-BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",240000,50ml,,18
-BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",240000,100ml,,25
-BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",240000,150ml,,6
-BE-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",270000,100ml,,6
-BE-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",270000,150ml,,30
-BE-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",310000,50ml,,32
-BE-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",310000,100ml,,19
-BE-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",310000,150ml,,37
-BE-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,50ml,,30
-BE-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,100ml,,0
-BE-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,150ml,,11
-BE-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",249000,150ml,,20
-BE-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,50ml,,11
-BE-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,100ml,,0
-BE-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,150ml,,15
-BE-012,Kem dưỡng ẩm ban ngày Sensitive,"Kem dưỡng ẩm ban ngày Sensitive: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,50ml,,9
-BE-013,Kem dưỡng ẩm ban ngày Bright,"Kem dưỡng ẩm ban ngày Bright: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,150ml,,8
-BE-014,Kem dưỡng ẩm ban ngày Calm,"Kem dưỡng ẩm ban ngày Calm: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,50ml,,0
-BE-014,Kem dưỡng ẩm ban ngày Calm,"Kem dưỡng ẩm ban ngày Calm: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,150ml,,0
-BE-015,Kem dưỡng ẩm ban ngày Fresh,"Kem dưỡng ẩm ban ngày Fresh: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,50ml,,0
-BE-015,Kem dưỡng ẩm ban ngày Fresh,"Kem dưỡng ẩm ban ngày Fresh: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,150ml,,40
-BE-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,50ml,,29
-BE-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,100ml,,6
-BE-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,150ml,,9
-BE-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,50ml,,6
-BE-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,100ml,,39
-BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",370000,50ml,,19
-BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",370000,100ml,,16
-BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",370000,150ml,,8
-BE-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",309000,50ml,,37
-BE-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",309000,100ml,,35
-BE-020,Kem dưỡng ẩm ban đêm Fresh,"Kem dưỡng ẩm ban đêm Fresh: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,150ml,,0
-BE-021,Serum vitamin C,"Serum vitamin C: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,100ml,,33
-BE-021,Serum vitamin C,"Serum vitamin C: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,150ml,,28
-BE-022,Serum vitamin C Sensitive,"Serum vitamin C Sensitive: vitamin C 10%, làm sáng da. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",409000,50ml,,0
-BE-022,Serum vitamin C Sensitive,"Serum vitamin C Sensitive: vitamin C 10%, làm sáng da. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",409000,100ml,,10
-BE-023,Serum vitamin C Bright,"Serum vitamin C Bright: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",409000,100ml,,16
-BE-023,Serum vitamin C Bright,"Serum vitamin C Bright: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",409000,150ml,,0
-BE-024,Serum vitamin C Calm,"Serum vitamin C Calm: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,50ml,,12
-BE-024,Serum vitamin C Calm,"Serum vitamin C Calm: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,150ml,,0
-BE-025,Serum vitamin C Fresh,"Serum vitamin C Fresh: vitamin C 10%, làm sáng da. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,100ml,,9
-BE-025,Serum vitamin C Fresh,"Serum vitamin C Fresh: vitamin C 10%, làm sáng da. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",359000,150ml,,18
-BE-026,Serum niacinamide,"Serum niacinamide: niacinamide 5%, giảm thâm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,100ml,,17
-BE-026,Serum niacinamide,"Serum niacinamide: niacinamide 5%, giảm thâm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,150ml,,37
-BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,50ml,,11
-BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,100ml,,17
-BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,150ml,,37
-BE-028,Serum niacinamide Bright,"Serum niacinamide Bright: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,50ml,,1
-BE-028,Serum niacinamide Bright,"Serum niacinamide Bright: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,100ml,,31
-BE-028,Serum niacinamide Bright,"Serum niacinamide Bright: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,150ml,,10
-BE-029,Serum niacinamide Calm,"Serum niacinamide Calm: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,100ml,,21
-BE-030,Serum niacinamide Fresh,"Serum niacinamide Fresh: niacinamide 5%, giảm thâm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",249000,150ml,,4
-BE-031,Toner hoa hồng,"Toner hoa hồng: chiết xuất hoa hồng, không cồn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,100ml,,20
-BE-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,50ml,,20
-BE-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,16
-BE-033,Toner hoa hồng Bright,"Toner hoa hồng Bright: chiết xuất hoa hồng, không cồn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,50ml,,0
-BE-033,Toner hoa hồng Bright,"Toner hoa hồng Bright: chiết xuất hoa hồng, không cồn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,100ml,,15
-BE-033,Toner hoa hồng Bright,"Toner hoa hồng Bright: chiết xuất hoa hồng, không cồn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,150ml,,1
-BE-034,Toner hoa hồng Calm,"Toner hoa hồng Calm: chiết xuất hoa hồng, không cồn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",229000,50ml,,16
-BE-034,Toner hoa hồng Calm,"Toner hoa hồng Calm: chiết xuất hoa hồng, không cồn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",229000,100ml,,4
-BE-034,Toner hoa hồng Calm,"Toner hoa hồng Calm: chiết xuất hoa hồng, không cồn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",229000,150ml,,10
-BE-035,Toner hoa hồng Fresh,"Toner hoa hồng Fresh: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,150ml,,24
-BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,50ml,,4
-BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,100ml,,9
-BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,150ml,,17
-BE-037,Nước tẩy trang Sensitive,"Nước tẩy trang Sensitive: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,13
-BE-037,Nước tẩy trang Sensitive,"Nước tẩy trang Sensitive: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,150ml,,0
-BE-038,Nước tẩy trang Bright,"Nước tẩy trang Bright: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,50ml,,21
-BE-039,Nước tẩy trang Calm,"Nước tẩy trang Calm: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,100ml,,8
-BE-039,Nước tẩy trang Calm,"Nước tẩy trang Calm: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,150ml,,0
-BE-040,Nước tẩy trang Fresh,"Nước tẩy trang Fresh: micellar, làm sạch dịu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",160000,100ml,,0
-BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",140000,,01 hồng đất,12
-BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",140000,,03 cam cháy,0
-BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",140000,,02 đỏ gạch,29
-BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",140000,,04 nude,36
-BE-042,Son dưỡng có màu Sensitive,"Son dưỡng có màu Sensitive: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,01 hồng đất,0
-BE-042,Son dưỡng có màu Sensitive,"Son dưỡng có màu Sensitive: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,04 nude,15
-BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,01 hồng đất,0
-BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,03 cam cháy,0
-BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,02 đỏ gạch,29
-BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,04 nude,6
-BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,,04 nude,37
-BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,,01 hồng đất,26
-BE-045,Son dưỡng có màu Fresh,"Son dưỡng có màu Fresh: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,03 cam cháy,18
-BE-045,Son dưỡng có màu Fresh,"Son dưỡng có màu Fresh: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",119000,,01 hồng đất,10
-BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,,04 nude,0
-BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,,03 cam cháy,9
-BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,,02 đỏ gạch,34
-BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,,03 cam cháy,33
-BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,,02 đỏ gạch,18
-BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,,04 nude,21
-BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,,01 hồng đất,2
-BE-048,Son kem lì Bright,"Son kem lì Bright: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,03 cam cháy,7
-BE-048,Son kem lì Bright,"Son kem lì Bright: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,04 nude,16
-BE-048,Son kem lì Bright,"Son kem lì Bright: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,01 hồng đất,4
-BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,02 đỏ gạch,23
-BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,01 hồng đất,2
-BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,03 cam cháy,23
-BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",195000,,03 cam cháy,0
-BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",195000,,01 hồng đất,0
-BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",195000,,02 đỏ gạch,2
-BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,02 đỏ gạch,0
-BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,01 hồng đất,0
-BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,04 nude,0
-BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,03 cam cháy,0
-BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,,04 nude,21
-BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,,03 cam cháy,0
-BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",260000,,01 hồng đất,28
-BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",279000,,03 cam cháy,12
-BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",279000,,01 hồng đất,19
-BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,01 hồng đất,7
-BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,04 nude,10
-BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,02 đỏ gạch,5
-BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,03 cam cháy,21
-BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,,01 hồng đất,5
-BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,,02 đỏ gạch,7
-BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,,04 nude,4
-BE-056,Kem nền mỏng nhẹ,"Kem nền mỏng nhẹ: che phủ vừa, có SPF20. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",299000,,04 nude,7
-BE-056,Kem nền mỏng nhẹ,"Kem nền mỏng nhẹ: che phủ vừa, có SPF20. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",299000,,02 đỏ gạch,37
-BE-056,Kem nền mỏng nhẹ,"Kem nền mỏng nhẹ: che phủ vừa, có SPF20. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",299000,,03 cam cháy,15
-BE-057,Kem nền mỏng nhẹ Sensitive,"Kem nền mỏng nhẹ Sensitive: che phủ vừa, có SPF20. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,,01 hồng đất,5
-BE-057,Kem nền mỏng nhẹ Sensitive,"Kem nền mỏng nhẹ Sensitive: che phủ vừa, có SPF20. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,,02 đỏ gạch,25
-BE-057,Kem nền mỏng nhẹ Sensitive,"Kem nền mỏng nhẹ Sensitive: che phủ vừa, có SPF20. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,,03 cam cháy,5
-BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,,04 nude,11
-BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,,03 cam cháy,28
-BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,,01 hồng đất,7
-BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",339000,,02 đỏ gạch,13
-BE-059,Kem nền mỏng nhẹ Calm,"Kem nền mỏng nhẹ Calm: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",290000,,02 đỏ gạch,36
-BE-059,Kem nền mỏng nhẹ Calm,"Kem nền mỏng nhẹ Calm: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",290000,,01 hồng đất,10
-BE-059,Kem nền mỏng nhẹ Calm,"Kem nền mỏng nhẹ Calm: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",290000,,03 cam cháy,0
-BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,04 nude,19
-BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,01 hồng đất,31
-BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,03 cam cháy,20
-BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,02 đỏ gạch,31
-BE-061,Mặt nạ đất sét,"Mặt nạ đất sét: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",200000,50ml,,25
-BE-061,Mặt nạ đất sét,"Mặt nạ đất sét: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",200000,100ml,,29
-BE-061,Mặt nạ đất sét,"Mặt nạ đất sét: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",200000,150ml,,0
-BE-062,Mặt nạ đất sét Sensitive,"Mặt nạ đất sét Sensitive: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",200000,50ml,,7
-BE-062,Mặt nạ đất sét Sensitive,"Mặt nạ đất sét Sensitive: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",200000,150ml,,0
-BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,50ml,,31
-BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,100ml,,16
-BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,150ml,,6
-BE-064,Mặt nạ đất sét Calm,"Mặt nạ đất sét Calm: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,11
-BE-065,Mặt nạ đất sét Fresh,"Mặt nạ đất sét Fresh: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",215000,100ml,,0
-BE-066,Dầu gội thảo dược,"Dầu gội thảo dược: bồ kết và hương nhu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",185000,50ml,,0
-BE-066,Dầu gội thảo dược,"Dầu gội thảo dược: bồ kết và hương nhu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",185000,100ml,,0
-BE-066,Dầu gội thảo dược,"Dầu gội thảo dược: bồ kết và hương nhu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",185000,150ml,,0
-BE-067,Dầu gội thảo dược Sensitive,"Dầu gội thảo dược Sensitive: bồ kết và hương nhu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,100ml,,0
-BE-068,Dầu gội thảo dược Bright,"Dầu gội thảo dược Bright: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,50ml,,17
-BE-068,Dầu gội thảo dược Bright,"Dầu gội thảo dược Bright: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,32
-BE-068,Dầu gội thảo dược Bright,"Dầu gội thảo dược Bright: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,150ml,,31
-BE-069,Dầu gội thảo dược Calm,"Dầu gội thảo dược Calm: bồ kết và hương nhu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",140000,150ml,,26
-BE-070,Dầu gội thảo dược Fresh,"Dầu gội thảo dược Fresh: bồ kết và hương nhu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",120000,150ml,,18
-BE-071,Sữa tắm hương trà xanh,"Sữa tắm hương trà xanh: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,100ml,,7
-BE-071,Sữa tắm hương trà xanh,"Sữa tắm hương trà xanh: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,150ml,,15
-BE-072,Sữa tắm hương trà xanh Sensitive,"Sữa tắm hương trà xanh Sensitive: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",139000,100ml,,6
-BE-072,Sữa tắm hương trà xanh Sensitive,"Sữa tắm hương trà xanh Sensitive: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",139000,150ml,,14
-BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,50ml,,0
-BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,26
-BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,150ml,,0
-BE-074,Sữa tắm hương trà xanh Calm,"Sữa tắm hương trà xanh Calm: chiết xuất trà xanh. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,50ml,,16
-BE-075,Sữa tắm hương trà xanh Fresh,"Sữa tắm hương trà xanh Fresh: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",109000,50ml,,0
-BE-075,Sữa tắm hương trà xanh Fresh,"Sữa tắm hương trà xanh Fresh: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",109000,100ml,,0
-BE-075,Sữa tắm hương trà xanh Fresh,"Sữa tắm hương trà xanh Fresh: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",109000,150ml,,0
-BE-076,Xịt khoáng,"Xịt khoáng: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",159000,100ml,,17
-BE-076,Xịt khoáng,"Xịt khoáng: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",159000,150ml,,6
-BE-077,Xịt khoáng Sensitive,"Xịt khoáng Sensitive: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",159000,150ml,,14
-BE-078,Xịt khoáng Bright,"Xịt khoáng Bright: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",195000,100ml,,1
-BE-078,Xịt khoáng Bright,"Xịt khoáng Bright: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",195000,150ml,,9
-BE-079,Xịt khoáng Calm,"Xịt khoáng Calm: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,100ml,,18
-BE-079,Xịt khoáng Calm,"Xịt khoáng Calm: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,150ml,,25
-BE-080,Xịt khoáng Fresh,"Xịt khoáng Fresh: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,100ml,,0
+BE-001,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",165000,50ml,,0
+BE-001,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",165000,150ml,,10
+BE-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,50ml,,29
+BE-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,100ml,,13
+BE-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive: độ pH 5.5, cho da nhạy cảm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",155000,150ml,,26
+BE-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,100ml,,0
+BE-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,150ml,,33
+BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,50ml,,27
+BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,100ml,,8
+BE-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,150ml,,23
+BE-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,50ml,,38
+BE-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh: độ pH 5.5, cho da nhạy cảm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,100ml,,22
+BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,50ml,,0
+BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,100ml,,0
+BE-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",319000,150ml,,0
+BE-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",245000,50ml,,32
+BE-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",245000,100ml,,14
+BE-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",245000,150ml,,2
+BE-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",325000,100ml,,40
+BE-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,50ml,,36
+BE-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,100ml,,10
+BE-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",279000,50ml,,11
+BE-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",279000,100ml,,14
+BE-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh: SPF50+ PA++++, kết cấu mỏng. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",279000,150ml,,11
+BE-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,150ml,,9
+BE-012,Kem dưỡng ẩm ban ngày Sensitive,"Kem dưỡng ẩm ban ngày Sensitive: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,100ml,,6
+BE-012,Kem dưỡng ẩm ban ngày Sensitive,"Kem dưỡng ẩm ban ngày Sensitive: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,150ml,,27
+BE-013,Kem dưỡng ẩm ban ngày Bright,"Kem dưỡng ẩm ban ngày Bright: ceramide và HA, không nhờn. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",299000,100ml,,27
+BE-014,Kem dưỡng ẩm ban ngày Calm,"Kem dưỡng ẩm ban ngày Calm: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",350000,50ml,,34
+BE-014,Kem dưỡng ẩm ban ngày Calm,"Kem dưỡng ẩm ban ngày Calm: ceramide và HA, không nhờn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",350000,150ml,,6
+BE-015,Kem dưỡng ẩm ban ngày Fresh,"Kem dưỡng ẩm ban ngày Fresh: ceramide và HA, không nhờn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",265000,100ml,,10
+BE-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",320000,50ml,,40
+BE-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",320000,100ml,,26
+BE-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive: peptide, phục hồi qua đêm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,50ml,,25
+BE-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive: peptide, phục hồi qua đêm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",379000,150ml,,9
+BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",330000,50ml,,35
+BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",330000,100ml,,16
+BE-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright: peptide, phục hồi qua đêm. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",330000,150ml,,20
+BE-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",389000,100ml,,0
+BE-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm: peptide, phục hồi qua đêm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",389000,150ml,,8
+BE-020,Kem dưỡng ẩm ban đêm Fresh,"Kem dưỡng ẩm ban đêm Fresh: peptide, phục hồi qua đêm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",309000,50ml,,19
+BE-020,Kem dưỡng ẩm ban đêm Fresh,"Kem dưỡng ẩm ban đêm Fresh: peptide, phục hồi qua đêm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",309000,150ml,,37
+BE-021,Serum vitamin C,"Serum vitamin C: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",395000,50ml,,24
+BE-021,Serum vitamin C,"Serum vitamin C: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",395000,150ml,,10
+BE-022,Serum vitamin C Sensitive,"Serum vitamin C Sensitive: vitamin C 10%, làm sáng da. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",429000,100ml,,31
+BE-023,Serum vitamin C Bright,"Serum vitamin C Bright: vitamin C 10%, làm sáng da. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,100ml,,29
+BE-023,Serum vitamin C Bright,"Serum vitamin C Bright: vitamin C 10%, làm sáng da. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",349000,150ml,,32
+BE-024,Serum vitamin C Calm,"Serum vitamin C Calm: vitamin C 10%, làm sáng da. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",369000,150ml,,34
+BE-025,Serum vitamin C Fresh,"Serum vitamin C Fresh: vitamin C 10%, làm sáng da. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",325000,150ml,,8
+BE-026,Serum niacinamide,"Serum niacinamide: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",309000,100ml,,24
+BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",315000,50ml,,14
+BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",315000,100ml,,32
+BE-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",315000,150ml,,0
+BE-028,Serum niacinamide Bright,"Serum niacinamide Bright: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,100ml,,22
+BE-028,Serum niacinamide Bright,"Serum niacinamide Bright: niacinamide 5%, giảm thâm. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,150ml,,31
+BE-029,Serum niacinamide Calm,"Serum niacinamide Calm: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,50ml,,26
+BE-029,Serum niacinamide Calm,"Serum niacinamide Calm: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,100ml,,3
+BE-029,Serum niacinamide Calm,"Serum niacinamide Calm: niacinamide 5%, giảm thâm. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",329000,150ml,,29
+BE-030,Serum niacinamide Fresh,"Serum niacinamide Fresh: niacinamide 5%, giảm thâm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",285000,50ml,,6
+BE-030,Serum niacinamide Fresh,"Serum niacinamide Fresh: niacinamide 5%, giảm thâm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",285000,100ml,,40
+BE-030,Serum niacinamide Fresh,"Serum niacinamide Fresh: niacinamide 5%, giảm thâm. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",285000,150ml,,4
+BE-031,Toner hoa hồng,"Toner hoa hồng: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,50ml,,14
+BE-031,Toner hoa hồng,"Toner hoa hồng: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,100ml,,38
+BE-031,Toner hoa hồng,"Toner hoa hồng: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,150ml,,35
+BE-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive: chiết xuất hoa hồng, không cồn. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,27
+BE-033,Toner hoa hồng Bright,"Toner hoa hồng Bright: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,150ml,,10
+BE-034,Toner hoa hồng Calm,"Toner hoa hồng Calm: chiết xuất hoa hồng, không cồn. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",215000,50ml,,0
+BE-034,Toner hoa hồng Calm,"Toner hoa hồng Calm: chiết xuất hoa hồng, không cồn. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",215000,150ml,,12
+BE-035,Toner hoa hồng Fresh,"Toner hoa hồng Fresh: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,50ml,,17
+BE-035,Toner hoa hồng Fresh,"Toner hoa hồng Fresh: chiết xuất hoa hồng, không cồn. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,100ml,,8
+BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,50ml,,21
+BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,100ml,,27
+BE-036,Nước tẩy trang,"Nước tẩy trang: micellar, làm sạch dịu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,150ml,,0
+BE-037,Nước tẩy trang Sensitive,"Nước tẩy trang Sensitive: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,50ml,,9
+BE-037,Nước tẩy trang Sensitive,"Nước tẩy trang Sensitive: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,100ml,,27
+BE-037,Nước tẩy trang Sensitive,"Nước tẩy trang Sensitive: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",189000,150ml,,33
+BE-038,Nước tẩy trang Bright,"Nước tẩy trang Bright: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,50ml,,0
+BE-038,Nước tẩy trang Bright,"Nước tẩy trang Bright: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,100ml,,40
+BE-038,Nước tẩy trang Bright,"Nước tẩy trang Bright: micellar, làm sạch dịu. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,150ml,,11
+BE-039,Nước tẩy trang Calm,"Nước tẩy trang Calm: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,50ml,,14
+BE-039,Nước tẩy trang Calm,"Nước tẩy trang Calm: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,100ml,,33
+BE-039,Nước tẩy trang Calm,"Nước tẩy trang Calm: micellar, làm sạch dịu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,150ml,,11
+BE-040,Nước tẩy trang Fresh,"Nước tẩy trang Fresh: micellar, làm sạch dịu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",139000,150ml,,18
+BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",110000,,03 cam cháy,21
+BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",110000,,04 nude,30
+BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",110000,,02 đỏ gạch,22
+BE-041,Son dưỡng có màu,"Son dưỡng có màu: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",110000,,01 hồng đất,0
+BE-042,Son dưỡng có màu Sensitive,"Son dưỡng có màu Sensitive: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,01 hồng đất,36
+BE-042,Son dưỡng có màu Sensitive,"Son dưỡng có màu Sensitive: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,03 cam cháy,32
+BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,04 nude,25
+BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,03 cam cháy,23
+BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,01 hồng đất,1
+BE-043,Son dưỡng có màu Bright,"Son dưỡng có màu Bright: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,,02 đỏ gạch,0
+BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,03 cam cháy,15
+BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,01 hồng đất,32
+BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,04 nude,3
+BE-044,Son dưỡng có màu Calm,"Son dưỡng có màu Calm: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,02 đỏ gạch,39
+BE-045,Son dưỡng có màu Fresh,"Son dưỡng có màu Fresh: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,04 nude,37
+BE-045,Son dưỡng có màu Fresh,"Son dưỡng có màu Fresh: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,01 hồng đất,39
+BE-045,Son dưỡng có màu Fresh,"Son dưỡng có màu Fresh: dầu jojoba, màu nhẹ tự nhiên. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",99000,,03 cam cháy,5
+BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,02 đỏ gạch,2
+BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,03 cam cháy,35
+BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,04 nude,36
+BE-046,Son kem lì,"Son kem lì: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,01 hồng đất,1
+BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,,04 nude,30
+BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,,02 đỏ gạch,34
+BE-047,Son kem lì Sensitive,"Son kem lì Sensitive: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",209000,,01 hồng đất,15
+BE-048,Son kem lì Bright,"Son kem lì Bright: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,04 nude,37
+BE-048,Son kem lì Bright,"Son kem lì Bright: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,01 hồng đất,15
+BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",160000,,01 hồng đất,38
+BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",160000,,04 nude,22
+BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",160000,,02 đỏ gạch,16
+BE-049,Son kem lì Calm,"Son kem lì Calm: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",160000,,03 cam cháy,0
+BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,04 nude,3
+BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,03 cam cháy,5
+BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,01 hồng đất,4
+BE-050,Son kem lì Fresh,"Son kem lì Fresh: chất kem mịn, lâu trôi 6 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",199000,,02 đỏ gạch,29
+BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,01 hồng đất,0
+BE-051,Phấn phủ kiềm dầu,"Phấn phủ kiềm dầu: dạng nén, kiềm dầu 8 giờ. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,,03 cam cháy,26
+BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,,04 nude,2
+BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,,02 đỏ gạch,22
+BE-052,Phấn phủ kiềm dầu Sensitive,"Phấn phủ kiềm dầu Sensitive: dạng nén, kiềm dầu 8 giờ. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",219000,,01 hồng đất,7
+BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,02 đỏ gạch,40
+BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,03 cam cháy,16
+BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,04 nude,0
+BE-053,Phấn phủ kiềm dầu Bright,"Phấn phủ kiềm dầu Bright: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,01 hồng đất,0
+BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,02 đỏ gạch,19
+BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,01 hồng đất,1
+BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,04 nude,10
+BE-054,Phấn phủ kiềm dầu Calm,"Phấn phủ kiềm dầu Calm: dạng nén, kiềm dầu 8 giờ. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",230000,,03 cam cháy,0
+BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,02 đỏ gạch,30
+BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,01 hồng đất,22
+BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,04 nude,37
+BE-055,Phấn phủ kiềm dầu Fresh,"Phấn phủ kiềm dầu Fresh: dạng nén, kiềm dầu 8 giờ. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",205000,,03 cam cháy,40
+BE-056,Kem nền mỏng nhẹ,"Kem nền mỏng nhẹ: che phủ vừa, có SPF20. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,,04 nude,15
+BE-056,Kem nền mỏng nhẹ,"Kem nền mỏng nhẹ: che phủ vừa, có SPF20. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",289000,,01 hồng đất,30
+BE-057,Kem nền mỏng nhẹ Sensitive,"Kem nền mỏng nhẹ Sensitive: che phủ vừa, có SPF20. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",290000,,04 nude,1
+BE-057,Kem nền mỏng nhẹ Sensitive,"Kem nền mỏng nhẹ Sensitive: che phủ vừa, có SPF20. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",290000,,01 hồng đất,5
+BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",335000,,02 đỏ gạch,0
+BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",335000,,03 cam cháy,0
+BE-058,Kem nền mỏng nhẹ Bright,"Kem nền mỏng nhẹ Bright: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",335000,,04 nude,12
+BE-059,Kem nền mỏng nhẹ Calm,"Kem nền mỏng nhẹ Calm: che phủ vừa, có SPF20. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",335000,,01 hồng đất,0
+BE-059,Kem nền mỏng nhẹ Calm,"Kem nền mỏng nhẹ Calm: che phủ vừa, có SPF20. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",335000,,04 nude,0
+BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,03 cam cháy,0
+BE-060,Kem nền mỏng nhẹ Fresh,"Kem nền mỏng nhẹ Fresh: che phủ vừa, có SPF20. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",269000,,02 đỏ gạch,0
+BE-061,Mặt nạ đất sét,"Mặt nạ đất sét: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",239000,50ml,,13
+BE-062,Mặt nạ đất sét Sensitive,"Mặt nạ đất sét Sensitive: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",220000,50ml,,19
+BE-062,Mặt nạ đất sét Sensitive,"Mặt nạ đất sét Sensitive: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",220000,100ml,,21
+BE-062,Mặt nạ đất sét Sensitive,"Mặt nạ đất sét Sensitive: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",220000,150ml,,18
+BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",259000,50ml,,0
+BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",259000,100ml,,0
+BE-063,Mặt nạ đất sét Bright,"Mặt nạ đất sét Bright: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",259000,150ml,,0
+BE-064,Mặt nạ đất sét Calm,"Mặt nạ đất sét Calm: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",190000,50ml,,38
+BE-064,Mặt nạ đất sét Calm,"Mặt nạ đất sét Calm: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",190000,100ml,,14
+BE-064,Mặt nạ đất sét Calm,"Mặt nạ đất sét Calm: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",190000,150ml,,13
+BE-065,Mặt nạ đất sét Fresh,"Mặt nạ đất sét Fresh: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,50ml,,9
+BE-065,Mặt nạ đất sét Fresh,"Mặt nạ đất sét Fresh: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,100ml,,19
+BE-065,Mặt nạ đất sét Fresh,"Mặt nạ đất sét Fresh: đất sét trắng, làm sạch lỗ chân lông. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",169000,150ml,,23
+BE-066,Dầu gội thảo dược,"Dầu gội thảo dược: bồ kết và hương nhu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",170000,100ml,,32
+BE-066,Dầu gội thảo dược,"Dầu gội thảo dược: bồ kết và hương nhu. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",170000,150ml,,25
+BE-067,Dầu gội thảo dược Sensitive,"Dầu gội thảo dược Sensitive: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",170000,50ml,,33
+BE-067,Dầu gội thảo dược Sensitive,"Dầu gội thảo dược Sensitive: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",170000,100ml,,6
+BE-068,Dầu gội thảo dược Bright,"Dầu gội thảo dược Bright: bồ kết và hương nhu. Xuất xứ Việt Nam. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",229000,100ml,,0
+BE-069,Dầu gội thảo dược Calm,"Dầu gội thảo dược Calm: bồ kết và hương nhu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,100ml,,39
+BE-069,Dầu gội thảo dược Calm,"Dầu gội thảo dược Calm: bồ kết và hương nhu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",150000,150ml,,35
+BE-070,Dầu gội thảo dược Fresh,"Dầu gội thảo dược Fresh: bồ kết và hương nhu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",120000,100ml,,1
+BE-070,Dầu gội thảo dược Fresh,"Dầu gội thảo dược Fresh: bồ kết và hương nhu. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",120000,150ml,,33
+BE-071,Sữa tắm hương trà xanh,"Sữa tắm hương trà xanh: chiết xuất trà xanh. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,50ml,,38
+BE-071,Sữa tắm hương trà xanh,"Sữa tắm hương trà xanh: chiết xuất trà xanh. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,100ml,,30
+BE-071,Sữa tắm hương trà xanh,"Sữa tắm hương trà xanh: chiết xuất trà xanh. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",175000,150ml,,30
+BE-072,Sữa tắm hương trà xanh Sensitive,"Sữa tắm hương trà xanh Sensitive: chiết xuất trà xanh. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,100ml,,36
+BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,50ml,,0
+BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,100ml,,0
+BE-073,Sữa tắm hương trà xanh Bright,"Sữa tắm hương trà xanh Bright: chiết xuất trà xanh. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",145000,150ml,,0
+BE-074,Sữa tắm hương trà xanh Calm,"Sữa tắm hương trà xanh Calm: chiết xuất trà xanh. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",159000,100ml,,0
+BE-075,Sữa tắm hương trà xanh Fresh,"Sữa tắm hương trà xanh Fresh: chiết xuất trà xanh. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",159000,100ml,,0
+BE-076,Xịt khoáng,"Xịt khoáng: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",139000,150ml,,2
+BE-077,Xịt khoáng Sensitive,"Xịt khoáng Sensitive: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Nhật Bản. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",139000,50ml,,34
+BE-078,Xịt khoáng Bright,"Xịt khoáng Bright: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,100ml,,8
+BE-078,Xịt khoáng Bright,"Xịt khoáng Bright: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",149000,150ml,,0
+BE-079,Xịt khoáng Calm,"Xịt khoáng Calm: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Hàn Quốc. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",179000,50ml,,31
+BE-080,Xịt khoáng Fresh,"Xịt khoáng Fresh: khoáng thiên nhiên, cấp ẩm tức thì. Xuất xứ Thái Lan. Hạn dùng 24 tháng từ ngày sản xuất, dùng trong 12 tháng sau khi mở nắp.",125000,100ml,,16

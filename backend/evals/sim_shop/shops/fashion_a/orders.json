@@ -1,365 +1,2664 @@
 [
   {
-    "created_at": "2026-11-23T15:00:00+07:00",
-    "customer_id": "fashion_a-c057",
+    "created_at": "2026-11-20T18:00:00+07:00",
+    "customer_id": "fashion_a-c001",
     "id": "DH-FA-0001",
     "items": [
       {
-        "color": "đen",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-063"
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-006"
       },
       {
-        "color": "xanh navy",
-        "price_vnd": 469000,
-        "qty": 2,
+        "color": "be",
+        "price_vnd": 180000,
+        "qty": 3,
         "size": "M",
-        "sku": "FA-026"
+        "sku": "FA-004"
+      },
+      {
+        "color": "be",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-011"
       }
     ],
-    "region": "noi_thanh",
+    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 1207000
+    "total_vnd": 2034000
   },
   {
-    "created_at": "2026-11-18T12:00:00+07:00",
-    "customer_id": "fashion_a-c035",
+    "created_at": "2026-11-10T15:00:00+07:00",
+    "customer_id": "fashion_a-c004",
     "id": "DH-FA-0002",
     "items": [
       {
-        "color": "be",
-        "price_vnd": 395000,
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-070"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 275000,
         "qty": 3,
-        "size": "L",
-        "sku": "FA-041"
+        "size": "M",
+        "sku": "FA-038"
       }
     ],
-    "region": "noi_thanh",
+    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 1185000
+    "total_vnd": 1403000
   },
   {
-    "created_at": "2026-11-05T11:00:00+07:00",
-    "customer_id": "fashion_a-c050",
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "fashion_a-c045",
     "id": "DH-FA-0003",
     "items": [
       {
         "color": "be",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "M",
+        "price_vnd": 159000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-008"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 305000,
+        "qty": 1,
+        "size": "L",
         "sku": "FA-021"
       },
       {
-        "color": "xám",
-        "price_vnd": 290000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-023"
+        "color": "be",
+        "price_vnd": 310000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-057"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 1367000
+    "total_vnd": 1553000
   },
   {
-    "created_at": "2026-11-20T09:00:00+07:00",
-    "customer_id": "fashion_a-c008",
+    "created_at": "2026-11-15T09:00:00+07:00",
+    "customer_id": "fashion_a-c017",
     "id": "DH-FA-0004",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 159000,
-        "qty": 3,
-        "size": "XL",
-        "sku": "FA-004"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-047"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 975000
-  },
-  {
-    "created_at": "2026-11-17T14:00:00+07:00",
-    "customer_id": "fashion_a-c030",
-    "id": "DH-FA-0005",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-040"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1077000
-  },
-  {
-    "created_at": "2026-11-22T16:00:00+07:00",
-    "customer_id": "fashion_a-c029",
-    "id": "DH-FA-0006",
     "items": [
       {
         "color": "xám",
         "price_vnd": 435000,
         "qty": 2,
         "size": "S",
-        "sku": "FA-074"
+        "sku": "FA-045"
       },
       {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-010"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1130000
-  },
-  {
-    "created_at": "2026-11-04T16:00:00+07:00",
-    "customer_id": "fashion_a-c053",
-    "id": "DH-FA-0007",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 329000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-017"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 410000,
-        "qty": 3,
+        "color": "trắng",
+        "price_vnd": 219000,
+        "qty": 2,
         "size": "M",
-        "sku": "FA-071"
+        "sku": "FA-052"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1559000
+    "status": "da_huy",
+    "total_vnd": 1308000
   },
   {
-    "created_at": "2026-11-23T11:00:00+07:00",
-    "customer_id": "fashion_a-c059",
-    "id": "DH-FA-0008",
+    "created_at": "2026-11-14T11:00:00+07:00",
+    "customer_id": "fashion_a-c010",
+    "id": "DH-FA-0005",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 355000,
+        "color": "be",
+        "price_vnd": 289000,
         "qty": 1,
         "size": "S",
-        "sku": "FA-039"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "da_giao",
-    "total_vnd": 395000
-  },
-  {
-    "created_at": "2026-11-05T18:00:00+07:00",
-    "customer_id": "fashion_a-c017",
-    "id": "DH-FA-0009",
-    "items": [
+        "sku": "FA-032"
+      },
       {
-        "color": "xám",
-        "price_vnd": 240000,
+        "color": "đen",
+        "price_vnd": 380000,
         "qty": 2,
         "size": "M",
-        "sku": "FA-067"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 269000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-037"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1287000
-  },
-  {
-    "created_at": "2026-11-05T10:00:00+07:00",
-    "customer_id": "fashion_a-c037",
-    "id": "DH-FA-0010",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-079"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 270000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-069"
+        "sku": "FA-019"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 0,
     "status": "doi_tra",
-    "total_vnd": 990000
+    "total_vnd": 1049000
   },
   {
-    "created_at": "2026-11-07T20:00:00+07:00",
-    "customer_id": "fashion_a-c041",
-    "id": "DH-FA-0011",
+    "created_at": "2026-11-16T12:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0006",
     "items": [
       {
-        "color": "xanh navy",
-        "price_vnd": 289000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-080"
-      },
-      {
-        "color": "be",
-        "price_vnd": 179000,
+        "color": "đen",
+        "price_vnd": 399000,
         "qty": 1,
         "size": "S",
-        "sku": "FA-078"
+        "sku": "FA-074"
       },
       {
         "color": "be",
-        "price_vnd": 399000,
+        "price_vnd": 425000,
         "qty": 3,
-        "size": "L",
-        "sku": "FA-044"
+        "size": "M",
+        "sku": "FA-041"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 1665000
+    "total_vnd": 1674000
   },
   {
-    "created_at": "2026-11-22T14:00:00+07:00",
-    "customer_id": "fashion_a-c051",
-    "id": "DH-FA-0012",
+    "created_at": "2026-11-08T11:00:00+07:00",
+    "customer_id": "fashion_a-c037",
+    "id": "DH-FA-0007",
     "items": [
       {
-        "color": "xanh navy",
+        "color": "trắng",
         "price_vnd": 259000,
         "qty": 3,
         "size": "M",
-        "sku": "FA-054"
+        "sku": "FA-012"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 777000
+  },
+  {
+    "created_at": "2026-11-10T16:00:00+07:00",
+    "customer_id": "fashion_a-c000",
+    "id": "DH-FA-0008",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 155000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-007"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 229000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-037"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1152000
+  },
+  {
+    "created_at": "2026-11-12T20:00:00+07:00",
+    "customer_id": "fashion_a-c025",
+    "id": "DH-FA-0009",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-056"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 618000
+  },
+  {
+    "created_at": "2026-11-10T09:00:00+07:00",
+    "customer_id": "fashion_a-c024",
+    "id": "DH-FA-0010",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-006"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-052"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1035000
+  },
+  {
+    "created_at": "2026-11-12T20:00:00+07:00",
+    "customer_id": "fashion_a-c009",
+    "id": "DH-FA-0011",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 269000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-058"
       },
       {
         "color": "xanh navy",
-        "price_vnd": 289000,
-        "qty": 3,
+        "price_vnd": 399000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-071"
+      },
+      {
+        "color": "be",
+        "price_vnd": 305000,
+        "qty": 2,
         "size": "L",
+        "sku": "FA-036"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1677000
+  },
+  {
+    "created_at": "2026-11-02T08:00:00+07:00",
+    "customer_id": "fashion_a-c002",
+    "id": "DH-FA-0012",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-078"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 483000
+  },
+  {
+    "created_at": "2026-11-05T17:00:00+07:00",
+    "customer_id": "fashion_a-c032",
+    "id": "DH-FA-0013",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-043"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 987000
+  },
+  {
+    "created_at": "2026-11-20T19:00:00+07:00",
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0014",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 345000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-042"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_huy",
+    "total_vnd": 385000
+  },
+  {
+    "created_at": "2026-11-22T09:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0015",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 419000,
+        "qty": 2,
+        "size": "XL",
+        "sku": "FA-044"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 379000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-065"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 255000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-066"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2106000
+  },
+  {
+    "created_at": "2026-11-06T16:00:00+07:00",
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0016",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 340000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-040"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 180000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-004"
+      },
+      {
+        "color": "be",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-077"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1817000
+  },
+  {
+    "created_at": "2026-11-01T15:00:00+07:00",
+    "customer_id": "fashion_a-c020",
+    "id": "DH-FA-0017",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "XL",
         "sku": "FA-080"
       },
       {
         "color": "đen",
-        "price_vnd": 159000,
-        "qty": 2,
+        "price_vnd": 279000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-049"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 380000,
+        "qty": 1,
         "size": "L",
-        "sku": "FA-004"
+        "sku": "FA-019"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 1962000
+    "total_vnd": 1506000
   },
   {
-    "created_at": "2026-11-15T11:00:00+07:00",
-    "customer_id": "fashion_a-c030",
-    "id": "DH-FA-0013",
+    "created_at": "2026-11-16T21:00:00+07:00",
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0018",
     "items": [
       {
-        "color": "be",
-        "price_vnd": 400000,
+        "color": "đen",
+        "price_vnd": 459000,
         "qty": 1,
         "size": "XL",
-        "sku": "FA-059"
+        "sku": "FA-020"
       },
       {
         "color": "xám",
-        "price_vnd": 260000,
+        "price_vnd": 170000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-053"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 969000
+  },
+  {
+    "created_at": "2026-11-11T10:00:00+07:00",
+    "customer_id": "fashion_a-c029",
+    "id": "DH-FA-0019",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 159000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-008"
+      },
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-018"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 239000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-067"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2004000
+  },
+  {
+    "created_at": "2026-11-09T16:00:00+07:00",
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0020",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 419000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-044"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-070"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 225000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-046"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2349000
+  },
+  {
+    "created_at": "2026-11-23T19:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0021",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 315000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-039"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 945000
+  },
+  {
+    "created_at": "2026-11-19T18:00:00+07:00",
+    "customer_id": "fashion_a-c034",
+    "id": "DH-FA-0022",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-062"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 435000,
         "qty": 2,
+        "size": "M",
+        "sku": "FA-045"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1830000
+  },
+  {
+    "created_at": "2026-11-03T13:00:00+07:00",
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0023",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 235000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-051"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 435000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-045"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1340000
+  },
+  {
+    "created_at": "2026-11-04T17:00:00+07:00",
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0024",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 309000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-033"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-062"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 365000,
+        "qty": 2,
+        "size": "XL",
+        "sku": "FA-028"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2617000
+  },
+  {
+    "created_at": "2026-11-14T13:00:00+07:00",
+    "customer_id": "fashion_a-c045",
+    "id": "DH-FA-0025",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 335000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-031"
+      },
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 155000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-007"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2027000
+  },
+  {
+    "created_at": "2026-11-16T15:00:00+07:00",
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0026",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 285000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-013"
+      },
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-018"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1395000
+  },
+  {
+    "created_at": "2026-11-02T20:00:00+07:00",
+    "customer_id": "fashion_a-c005",
+    "id": "DH-FA-0027",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 229000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-037"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 503000
+  },
+  {
+    "created_at": "2026-11-13T20:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0028",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 399000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-074"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 515000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-030"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-069"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1991000
+  },
+  {
+    "created_at": "2026-11-19T17:00:00+07:00",
+    "customer_id": "fashion_a-c006",
+    "id": "DH-FA-0029",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 275000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-038"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_huy",
+    "total_vnd": 315000
+  },
+  {
+    "created_at": "2026-11-17T15:00:00+07:00",
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0030",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 229000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-037"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 409000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-059"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1505000
+  },
+  {
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "fashion_a-c016",
+    "id": "DH-FA-0031",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 375000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-015"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 420000
+  },
+  {
+    "created_at": "2026-11-14T16:00:00+07:00",
+    "customer_id": "fashion_a-c020",
+    "id": "DH-FA-0032",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 340000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-024"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-002"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 419000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2402000
+  },
+  {
+    "created_at": "2026-11-16T13:00:00+07:00",
+    "customer_id": "fashion_a-c015",
+    "id": "DH-FA-0033",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-052"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 249000
+  },
+  {
+    "created_at": "2026-11-09T13:00:00+07:00",
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0034",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-034"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_huy",
+    "total_vnd": 429000
+  },
+  {
+    "created_at": "2026-11-10T10:00:00+07:00",
+    "customer_id": "fashion_a-c025",
+    "id": "DH-FA-0035",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 399000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-074"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-002"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-034"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1312000
+  },
+  {
+    "created_at": "2026-11-05T15:00:00+07:00",
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0036",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 379000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-065"
+      },
+      {
+        "color": "be",
+        "price_vnd": 340000,
+        "qty": 1,
+        "size": "XL",
+        "sku": "FA-040"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 349000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-016"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1447000
+  },
+  {
+    "created_at": "2026-11-03T16:00:00+07:00",
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0037",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 235000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-048"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-054"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 399000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-071"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2101000
+  },
+  {
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "fashion_a-c033",
+    "id": "DH-FA-0038",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 239000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-047"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-010"
+      },
+      {
+        "color": "be",
+        "price_vnd": 320000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-073"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1156000
+  },
+  {
+    "created_at": "2026-11-05T16:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0039",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 375000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-015"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 445000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-027"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 820000
+  },
+  {
+    "created_at": "2026-11-01T14:00:00+07:00",
+    "customer_id": "fashion_a-c016",
+    "id": "DH-FA-0040",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 320000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-073"
+      },
+      {
+        "color": "be",
+        "price_vnd": 159000,
+        "qty": 2,
+        "size": "XL",
+        "sku": "FA-008"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 958000
+  },
+  {
+    "created_at": "2026-11-14T13:00:00+07:00",
+    "customer_id": "fashion_a-c044",
+    "id": "DH-FA-0041",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 365000,
+        "qty": 1,
+        "size": "XL",
+        "sku": "FA-028"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 395000
+  },
+  {
+    "created_at": "2026-11-02T12:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0042",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-070"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "dang_giao",
+    "total_vnd": 329000
+  },
+  {
+    "created_at": "2026-11-15T21:00:00+07:00",
+    "customer_id": "fashion_a-c024",
+    "id": "DH-FA-0043",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-018"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 540000
+  },
+  {
+    "created_at": "2026-11-18T14:00:00+07:00",
+    "customer_id": "fashion_a-c033",
+    "id": "DH-FA-0044",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-011"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-070"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1186000
+  },
+  {
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "fashion_a-c046",
+    "id": "DH-FA-0045",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 435000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-029"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "doi_tra",
+    "total_vnd": 475000
+  },
+  {
+    "created_at": "2026-11-04T08:00:00+07:00",
+    "customer_id": "fashion_a-c042",
+    "id": "DH-FA-0046",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-055"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-069"
+      },
+      {
+        "color": "be",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-049"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1405000
+  },
+  {
+    "created_at": "2026-11-02T15:00:00+07:00",
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0047",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 279000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-079"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 119000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-003"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 443000
+  },
+  {
+    "created_at": "2026-11-17T12:00:00+07:00",
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0048",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-007"
+      },
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-006"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1376000
+  },
+  {
+    "created_at": "2026-11-08T14:00:00+07:00",
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0049",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 399000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-074"
+      },
+      {
+        "color": "be",
+        "price_vnd": 425000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-041"
+      },
+      {
+        "color": "be",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-077"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2245000
+  },
+  {
+    "created_at": "2026-11-14T16:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0050",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 159000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-008"
+      },
+      {
+        "color": "be",
+        "price_vnd": 360000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-072"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1557000
+  },
+  {
+    "created_at": "2026-11-23T14:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0051",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 435000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-045"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1305000
+  },
+  {
+    "created_at": "2026-11-16T11:00:00+07:00",
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0052",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 315000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 360000
+  },
+  {
+    "created_at": "2026-11-17T10:00:00+07:00",
+    "customer_id": "fashion_a-c024",
+    "id": "DH-FA-0053",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 380000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-019"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 415000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-060"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1970000
+  },
+  {
+    "created_at": "2026-11-03T15:00:00+07:00",
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0054",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-033"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 618000
+  },
+  {
+    "created_at": "2026-11-13T18:00:00+07:00",
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0055",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-069"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "doi_tra",
+    "total_vnd": 319000
+  },
+  {
+    "created_at": "2026-11-01T11:00:00+07:00",
+    "customer_id": "fashion_a-c012",
+    "id": "DH-FA-0056",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-006"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-010"
+      },
+      {
+        "color": "be",
+        "price_vnd": 420000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-025"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1835000
+  },
+  {
+    "created_at": "2026-11-15T16:00:00+07:00",
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0057",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 349000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-016"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-062"
+      },
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-032"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2236000
+  },
+  {
+    "created_at": "2026-11-16T20:00:00+07:00",
+    "customer_id": "fashion_a-c020",
+    "id": "DH-FA-0058",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 340000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-040"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-034"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1798000
+  },
+  {
+    "created_at": "2026-11-19T21:00:00+07:00",
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0059",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 235000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-048"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 500000
+  },
+  {
+    "created_at": "2026-11-07T13:00:00+07:00",
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0060",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 380000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-019"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-003"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-034"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2275000
+  },
+  {
+    "created_at": "2026-11-09T20:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0061",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-073"
+      },
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-032"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1827000
+  },
+  {
+    "created_at": "2026-11-21T08:00:00+07:00",
+    "customer_id": "fashion_a-c033",
+    "id": "DH-FA-0062",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-063"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 409000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-059"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 355000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-022"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1871000
+  },
+  {
+    "created_at": "2026-11-05T21:00:00+07:00",
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0063",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-010"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_giao",
+    "total_vnd": 239000
+  },
+  {
+    "created_at": "2026-11-17T15:00:00+07:00",
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0064",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 209000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-009"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 239000
+  },
+  {
+    "created_at": "2026-11-16T18:00:00+07:00",
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0065",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "XL",
+        "sku": "FA-080"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 867000
+  },
+  {
+    "created_at": "2026-11-17T19:00:00+07:00",
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0066",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-001"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 199000
+  },
+  {
+    "created_at": "2026-11-05T11:00:00+07:00",
+    "customer_id": "fashion_a-c012",
+    "id": "DH-FA-0067",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 229000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-037"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 119000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-003"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 379000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-065"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1185000
+  },
+  {
+    "created_at": "2026-11-08T19:00:00+07:00",
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0068",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 190000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-068"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 309000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-033"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 225000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-046"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1448000
+  },
+  {
+    "created_at": "2026-11-16T08:00:00+07:00",
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0069",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 299000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-011"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-005"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 956000
+  },
+  {
+    "created_at": "2026-11-21T20:00:00+07:00",
+    "customer_id": "fashion_a-c021",
+    "id": "DH-FA-0070",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 355000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-022"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 710000
+  },
+  {
+    "created_at": "2026-11-09T16:00:00+07:00",
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0071",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 285000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-013"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 190000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-068"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-006"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 864000
+  },
+  {
+    "created_at": "2026-11-06T17:00:00+07:00",
+    "customer_id": "fashion_a-c015",
+    "id": "DH-FA-0072",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-005"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 315000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-023"
+      },
+      {
+        "color": "be",
+        "price_vnd": 425000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-041"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1549000
+  },
+  {
+    "created_at": "2026-11-12T08:00:00+07:00",
+    "customer_id": "fashion_a-c006",
+    "id": "DH-FA-0073",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-050"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-070"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 329000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-043"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2006000
+  },
+  {
+    "created_at": "2026-11-21T12:00:00+07:00",
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0074",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 515000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-030"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-010"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1943000
+  },
+  {
+    "created_at": "2026-11-22T14:00:00+07:00",
+    "customer_id": "fashion_a-c005",
+    "id": "DH-FA-0075",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 515000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-030"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 225000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-046"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1705000
+  },
+  {
+    "created_at": "2026-11-11T13:00:00+07:00",
+    "customer_id": "fashion_a-c006",
+    "id": "DH-FA-0076",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 275000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-038"
+      },
+      {
+        "color": "be",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
         "size": "S",
         "sku": "FA-010"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 920000
+    "status": "cho_xac_nhan",
+    "total_vnd": 1725000
   },
   {
-    "created_at": "2026-11-05T20:00:00+07:00",
-    "customer_id": "fashion_a-c025",
-    "id": "DH-FA-0014",
+    "created_at": "2026-11-09T09:00:00+07:00",
+    "customer_id": "fashion_a-c008",
+    "id": "DH-FA-0077",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-001"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "dang_giao",
+    "total_vnd": 378000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0078",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 340000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-024"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 680000
+  },
+  {
+    "created_at": "2026-11-03T17:00:00+07:00",
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0079",
     "items": [
       {
         "color": "be",
-        "price_vnd": 179000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-078"
+        "price_vnd": 180000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-004"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "da_huy",
+    "total_vnd": 405000
+  },
+  {
+    "created_at": "2026-11-18T11:00:00+07:00",
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0080",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-050"
       },
       {
-        "color": "xám",
-        "price_vnd": 365000,
-        "qty": 3,
+        "color": "xanh navy",
+        "price_vnd": 125000,
+        "qty": 1,
         "size": "M",
-        "sku": "FA-019"
+        "sku": "FA-002"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 665000
+  },
+  {
+    "created_at": "2026-11-14T12:00:00+07:00",
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0081",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 355000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-022"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-049"
+      },
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-018"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1538000
+  },
+  {
+    "created_at": "2026-11-16T17:00:00+07:00",
+    "customer_id": "fashion_a-c039",
+    "id": "DH-FA-0082",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 320000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-062"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-010"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1237000
+  },
+  {
+    "created_at": "2026-11-01T14:00:00+07:00",
+    "customer_id": "fashion_a-c021",
+    "id": "DH-FA-0083",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 409000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-059"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_giao",
+    "total_vnd": 449000
+  },
+  {
+    "created_at": "2026-11-20T19:00:00+07:00",
+    "customer_id": "fashion_a-c012",
+    "id": "DH-FA-0084",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-049"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-043"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-057"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 1632000
+    "total_vnd": 2165000
   },
   {
-    "created_at": "2026-11-15T11:00:00+07:00",
-    "customer_id": "fashion_a-c017",
-    "id": "DH-FA-0015",
+    "created_at": "2026-11-21T15:00:00+07:00",
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0085",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 425000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-041"
+      },
+      {
+        "color": "be",
+        "price_vnd": 315000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-023"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1795000
+  },
+  {
+    "created_at": "2026-11-12T09:00:00+07:00",
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0086",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 345000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-042"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 690000
+  },
+  {
+    "created_at": "2026-11-18T08:00:00+07:00",
+    "customer_id": "fashion_a-c046",
+    "id": "DH-FA-0087",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 265000,
+        "qty": 1,
+        "size": "XL",
+        "sku": "FA-076"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 45000,
+    "status": "dang_giao",
+    "total_vnd": 310000
+  },
+  {
+    "created_at": "2026-11-16T10:00:00+07:00",
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0088",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 445000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-027"
+      },
+      {
+        "color": "be",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-057"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1955000
+  },
+  {
+    "created_at": "2026-11-15T17:00:00+07:00",
+    "customer_id": "fashion_a-c030",
+    "id": "DH-FA-0089",
     "items": [
       {
         "color": "xanh navy",
-        "price_vnd": 209000,
+        "price_vnd": 335000,
+        "qty": 1,
+        "size": "XL",
+        "sku": "FA-031"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 309000,
         "qty": 2,
         "size": "M",
-        "sku": "FA-066"
+        "sku": "FA-033"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 953000
+  },
+  {
+    "created_at": "2026-11-22T18:00:00+07:00",
+    "customer_id": "fashion_a-c022",
+    "id": "DH-FA-0090",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 219000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-052"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-069"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 379000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-065"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1594000
+  },
+  {
+    "created_at": "2026-11-22T18:00:00+07:00",
+    "customer_id": "fashion_a-c025",
+    "id": "DH-FA-0091",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-079"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 837000
+  },
+  {
+    "created_at": "2026-11-17T16:00:00+07:00",
+    "customer_id": "fashion_a-c037",
+    "id": "DH-FA-0092",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 309000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-056"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 315000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-014"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 624000
+  },
+  {
+    "created_at": "2026-11-16T09:00:00+07:00",
+    "customer_id": "fashion_a-c018",
+    "id": "DH-FA-0093",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 399000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-074"
+      },
+      {
+        "color": "be",
+        "price_vnd": 435000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-029"
+      },
+      {
+        "color": "be",
+        "price_vnd": 269000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-058"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2641000
+  },
+  {
+    "created_at": "2026-11-07T16:00:00+07:00",
+    "customer_id": "fashion_a-c030",
+    "id": "DH-FA-0094",
+    "items": [
+      {
+        "color": "be",
+        "price_vnd": 299000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-011"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 375000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-015"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1348000
+  },
+  {
+    "created_at": "2026-11-03T12:00:00+07:00",
+    "customer_id": "fashion_a-c002",
+    "id": "DH-FA-0095",
+    "items": [
+      {
+        "color": "xanh navy",
+        "price_vnd": 355000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-061"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 285000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-013"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1635000
+  },
+  {
+    "created_at": "2026-11-18T10:00:00+07:00",
+    "customer_id": "fashion_a-c021",
+    "id": "DH-FA-0096",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 375000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-015"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-003"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 419000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-044"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2739000
+  },
+  {
+    "created_at": "2026-11-20T11:00:00+07:00",
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0097",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-055"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 415000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-060"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 515000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2312000
+  },
+  {
+    "created_at": "2026-11-18T10:00:00+07:00",
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0098",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-055"
+      },
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-050"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-001"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1336000
+  },
+  {
+    "created_at": "2026-11-21T13:00:00+07:00",
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0099",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 410000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-026"
       },
       {
         "color": "trắng",
-        "price_vnd": 335000,
+        "price_vnd": 409000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-059"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1638000
+  },
+  {
+    "created_at": "2026-11-20T10:00:00+07:00",
+    "customer_id": "fashion_a-c043",
+    "id": "DH-FA-0100",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 1,
+        "size": "L",
+        "sku": "FA-079"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 235000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-051"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 749000
+  },
+  {
+    "created_at": "2026-11-04T10:00:00+07:00",
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0101",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 315000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-039"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "S",
+        "sku": "FA-079"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 265000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-076"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1768000
+  },
+  {
+    "created_at": "2026-11-16T18:00:00+07:00",
+    "customer_id": "fashion_a-c034",
+    "id": "DH-FA-0102",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 380000,
+        "qty": 3,
+        "size": "M",
+        "sku": "FA-019"
+      },
+      {
+        "color": "xám",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-066"
+      },
+      {
+        "color": "be",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-050"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2445000
+  },
+  {
+    "created_at": "2026-11-02T21:00:00+07:00",
+    "customer_id": "fashion_a-c022",
+    "id": "DH-FA-0103",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 315000,
         "qty": 2,
         "size": "M",
+        "sku": "FA-023"
+      },
+      {
+        "color": "be",
+        "price_vnd": 360000,
+        "qty": 1,
+        "size": "M",
         "sku": "FA-072"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 355000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-022"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1700000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0104",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
+    "status": "da_huy",
+    "total_vnd": 329000
+  },
+  {
+    "created_at": "2026-11-03T17:00:00+07:00",
+    "customer_id": "fashion_a-c001",
+    "id": "DH-FA-0105",
+    "items": [
+      {
+        "color": "xám",
+        "price_vnd": 170000,
+        "qty": 3,
+        "size": "L",
+        "sku": "FA-053"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-063"
       }
     ],
     "region": "noi_thanh",
@@ -368,2649 +2667,385 @@
     "total_vnd": 1088000
   },
   {
-    "created_at": "2026-11-20T14:00:00+07:00",
-    "customer_id": "fashion_a-c055",
-    "id": "DH-FA-0016",
+    "created_at": "2026-11-18T12:00:00+07:00",
+    "customer_id": "fashion_a-c010",
+    "id": "DH-FA-0106",
     "items": [
       {
-        "color": "be",
-        "price_vnd": 259000,
+        "color": "xanh navy",
+        "price_vnd": 275000,
         "qty": 2,
-        "size": "S",
-        "sku": "FA-013"
+        "size": "M",
+        "sku": "FA-038"
       }
     ],
-    "region": "ngoai_thanh",
+    "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "cho_xac_nhan",
-    "total_vnd": 518000
+    "total_vnd": 550000
   },
   {
-    "created_at": "2026-11-07T20:00:00+07:00",
-    "customer_id": "fashion_a-c020",
-    "id": "DH-FA-0017",
+    "created_at": "2026-11-09T20:00:00+07:00",
+    "customer_id": "fashion_a-c034",
+    "id": "DH-FA-0107",
     "items": [
       {
         "color": "be",
-        "price_vnd": 359000,
+        "price_vnd": 320000,
         "qty": 3,
-        "size": "M",
-        "sku": "FA-021"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1077000
-  },
-  {
-    "created_at": "2026-11-01T09:00:00+07:00",
-    "customer_id": "fashion_a-c031",
-    "id": "DH-FA-0018",
-    "items": [
+        "size": "L",
+        "sku": "FA-073"
+      },
       {
-        "color": "trắng",
-        "price_vnd": 365000,
-        "qty": 2,
+        "color": "be",
+        "price_vnd": 300000,
+        "qty": 3,
         "size": "M",
         "sku": "FA-064"
       }
     ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 730000
-  },
-  {
-    "created_at": "2026-11-10T15:00:00+07:00",
-    "customer_id": "fashion_a-c003",
-    "id": "DH-FA-0019",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 439000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-065"
-      },
-      {
-        "color": "be",
-        "price_vnd": 400000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-059"
-      }
-    ],
     "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1239000
-  },
-  {
-    "created_at": "2026-11-13T13:00:00+07:00",
-    "customer_id": "fashion_a-c048",
-    "id": "DH-FA-0020",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 280000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-061"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-037"
-      },
-      {
-        "color": "be",
-        "price_vnd": 270000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-069"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1359000
-  },
-  {
-    "created_at": "2026-11-12T16:00:00+07:00",
-    "customer_id": "fashion_a-c012",
-    "id": "DH-FA-0021",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 205000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-052"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 615000
-  },
-  {
-    "created_at": "2026-11-20T09:00:00+07:00",
-    "customer_id": "fashion_a-c043",
-    "id": "DH-FA-0022",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-010"
-      },
-      {
-        "color": "be",
-        "price_vnd": 329000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-050"
-      }
-    ],
-    "region": "tinh",
     "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 1178000
-  },
-  {
-    "created_at": "2026-11-12T20:00:00+07:00",
-    "customer_id": "fashion_a-c035",
-    "id": "DH-FA-0023",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 259000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-013"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 518000
-  },
-  {
-    "created_at": "2026-11-02T10:00:00+07:00",
-    "customer_id": "fashion_a-c002",
-    "id": "DH-FA-0024",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 469000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-026"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1407000
-  },
-  {
-    "created_at": "2026-11-10T17:00:00+07:00",
-    "customer_id": "fashion_a-c039",
-    "id": "DH-FA-0025",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 349000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-043"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 280000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-061"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-067"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1149000
-  },
-  {
-    "created_at": "2026-11-01T13:00:00+07:00",
-    "customer_id": "fashion_a-c052",
-    "id": "DH-FA-0026",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 439000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-065"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 209000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-066"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1735000
+    "total_vnd": 1860000
   },
   {
     "created_at": "2026-11-21T20:00:00+07:00",
-    "customer_id": "fashion_a-c016",
-    "id": "DH-FA-0027",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 345000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-015"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 259000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-054"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1467000
-  },
-  {
-    "created_at": "2026-11-02T17:00:00+07:00",
     "customer_id": "fashion_a-c015",
-    "id": "DH-FA-0028",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 435000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-074"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 600000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-030"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 159000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-007"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 2394000
-  },
-  {
-    "created_at": "2026-11-17T20:00:00+07:00",
-    "customer_id": "fashion_a-c026",
-    "id": "DH-FA-0029",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 345000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-015"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 479000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-025"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 139000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-003"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1586000
-  },
-  {
-    "created_at": "2026-11-06T15:00:00+07:00",
-    "customer_id": "fashion_a-c020",
-    "id": "DH-FA-0030",
+    "id": "DH-FA-0108",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 280000,
+        "price_vnd": 289000,
         "qty": 3,
         "size": "M",
-        "sku": "FA-061"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-008"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 259000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-018"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 2172000
-  },
-  {
-    "created_at": "2026-11-07T11:00:00+07:00",
-    "customer_id": "fashion_a-c030",
-    "id": "DH-FA-0031",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 399000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-044"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "XL",
         "sku": "FA-070"
       },
       {
-        "color": "xám",
-        "price_vnd": 259000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-046"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2462000
-  },
-  {
-    "created_at": "2026-11-23T15:00:00+07:00",
-    "customer_id": "fashion_a-c044",
-    "id": "DH-FA-0032",
-    "items": [
-      {
         "color": "trắng",
-        "price_vnd": 335000,
+        "price_vnd": 199000,
         "qty": 2,
-        "size": "M",
-        "sku": "FA-072"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 355000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-039"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1735000
-  },
-  {
-    "created_at": "2026-11-22T16:00:00+07:00",
-    "customer_id": "fashion_a-c036",
-    "id": "DH-FA-0033",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 310000,
-        "qty": 3,
-        "size": "XL",
-        "sku": "FA-062"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 485000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-045"
+        "size": "S",
+        "sku": "FA-006"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "da_giao",
-    "total_vnd": 1900000
+    "total_vnd": 1265000
   },
   {
-    "created_at": "2026-11-12T15:00:00+07:00",
-    "customer_id": "fashion_a-c005",
-    "id": "DH-FA-0034",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 189000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-051"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 485000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-045"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1348000
-  },
-  {
-    "created_at": "2026-11-19T11:00:00+07:00",
-    "customer_id": "fashion_a-c039",
-    "id": "DH-FA-0035",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 265000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-033"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 310000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-062"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 340000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-028"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 2065000
-  },
-  {
-    "created_at": "2026-11-04T14:00:00+07:00",
-    "customer_id": "fashion_a-c003",
-    "id": "DH-FA-0036",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 159000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-007"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "cho_xac_nhan",
-    "total_vnd": 507000
-  },
-  {
-    "created_at": "2026-11-16T15:00:00+07:00",
-    "customer_id": "fashion_a-c059",
-    "id": "DH-FA-0037",
+    "created_at": "2026-11-08T11:00:00+07:00",
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0109",
     "items": [
       {
         "color": "trắng",
-        "price_vnd": 280000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-061"
-      },
-      {
-        "color": "be",
-        "price_vnd": 259000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-013"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 798000
-  },
-  {
-    "created_at": "2026-11-02T10:00:00+07:00",
-    "customer_id": "fashion_a-c046",
-    "id": "DH-FA-0038",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 469000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-026"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-037"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 379000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-042"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 2813000
-  },
-  {
-    "created_at": "2026-11-02T08:00:00+07:00",
-    "customer_id": "fashion_a-c056",
-    "id": "DH-FA-0039",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 290000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-023"
-      },
-      {
-        "color": "be",
-        "price_vnd": 229000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-005"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1267000
-  },
-  {
-    "created_at": "2026-11-17T15:00:00+07:00",
-    "customer_id": "fashion_a-c034",
-    "id": "DH-FA-0040",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 349000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-073"
-      },
-      {
-        "color": "be",
         "price_vnd": 179000,
         "qty": 2,
         "size": "M",
-        "sku": "FA-078"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1056000
-  },
-  {
-    "created_at": "2026-11-04T13:00:00+07:00",
-    "customer_id": "fashion_a-c051",
-    "id": "DH-FA-0041",
-    "items": [
+        "sku": "FA-005"
+      },
       {
         "color": "xám",
-        "price_vnd": 439000,
+        "price_vnd": 269000,
         "qty": 2,
-        "size": "M",
-        "sku": "FA-065"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 878000
-  },
-  {
-    "created_at": "2026-11-01T19:00:00+07:00",
-    "customer_id": "fashion_a-c011",
-    "id": "DH-FA-0042",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 400000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-059"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 800000
-  },
-  {
-    "created_at": "2026-11-13T21:00:00+07:00",
-    "customer_id": "fashion_a-c057",
-    "id": "DH-FA-0043",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-038"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 349000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-073"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1286000
-  },
-  {
-    "created_at": "2026-11-11T11:00:00+07:00",
-    "customer_id": "fashion_a-c030",
-    "id": "DH-FA-0044",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 209000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-066"
-      },
-      {
-        "color": "be",
-        "price_vnd": 379000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-042"
+        "size": "S",
+        "sku": "FA-058"
       }
     ],
     "region": "noi_thanh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 797000
+    "total_vnd": 896000
   },
   {
-    "created_at": "2026-11-09T13:00:00+07:00",
-    "customer_id": "fashion_a-c048",
-    "id": "DH-FA-0045",
+    "created_at": "2026-11-12T16:00:00+07:00",
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0110",
     "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 379000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-034"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "doi_tra",
-    "total_vnd": 419000
-  },
-  {
-    "created_at": "2026-11-22T09:00:00+07:00",
-    "customer_id": "fashion_a-c003",
-    "id": "DH-FA-0046",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 499000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-075"
-      },
       {
         "color": "xám",
         "price_vnd": 435000,
         "qty": 3,
-        "size": "M",
-        "sku": "FA-074"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2303000
-  },
-  {
-    "created_at": "2026-11-04T18:00:00+07:00",
-    "customer_id": "fashion_a-c044",
-    "id": "DH-FA-0047",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-040"
+        "size": "S",
+        "sku": "FA-045"
       },
       {
-        "color": "be",
-        "price_vnd": 359000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-021"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 2154000
-  },
-  {
-    "created_at": "2026-11-20T13:00:00+07:00",
-    "customer_id": "fashion_a-c029",
-    "id": "DH-FA-0048",
-    "items": [
-      {
         "color": "xám",
-        "price_vnd": 205000,
+        "price_vnd": 279000,
         "qty": 1,
         "size": "S",
-        "sku": "FA-048"
+        "sku": "FA-079"
       },
       {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-055"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1873000
+  },
+  {
+    "created_at": "2026-11-02T12:00:00+07:00",
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0111",
+    "items": [
+      {
         "color": "xám",
-        "price_vnd": 240000,
+        "price_vnd": 279000,
         "qty": 2,
         "size": "M",
-        "sku": "FA-079"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 685000
-  },
-  {
-    "created_at": "2026-11-23T13:00:00+07:00",
-    "customer_id": "fashion_a-c033",
-    "id": "DH-FA-0049",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 410000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-071"
+        "sku": "FA-069"
       },
       {
-        "color": "đen",
-        "price_vnd": 280000,
+        "color": "xanh navy",
+        "price_vnd": 355000,
         "qty": 3,
         "size": "M",
-        "sku": "FA-061"
+        "sku": "FA-022"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 345000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-042"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1250000
+    "status": "cho_xac_nhan",
+    "total_vnd": 1968000
   },
   {
-    "created_at": "2026-11-17T11:00:00+07:00",
-    "customer_id": "fashion_a-c057",
-    "id": "DH-FA-0050",
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "fashion_a-c015",
+    "id": "DH-FA-0112",
     "items": [
       {
-        "color": "be",
-        "price_vnd": 349000,
+        "color": "trắng",
+        "price_vnd": 295000,
         "qty": 1,
-        "size": "M",
-        "sku": "FA-073"
+        "size": "S",
+        "sku": "FA-017"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 45000,
-    "status": "doi_tra",
-    "total_vnd": 394000
+    "status": "dang_giao",
+    "total_vnd": 340000
   },
   {
-    "created_at": "2026-11-03T16:00:00+07:00",
-    "customer_id": "fashion_a-c031",
-    "id": "DH-FA-0051",
+    "created_at": "2026-11-03T14:00:00+07:00",
+    "customer_id": "fashion_a-c032",
+    "id": "DH-FA-0113",
     "items": [
       {
-        "color": "be",
-        "price_vnd": 270000,
+        "color": "đen",
+        "price_vnd": 235000,
         "qty": 3,
-        "size": "M",
-        "sku": "FA-069"
+        "size": "L",
+        "sku": "FA-051"
       },
       {
-        "color": "trắng",
-        "price_vnd": 365000,
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-063"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 380000,
         "qty": 1,
         "size": "M",
-        "sku": "FA-020"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 349000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-022"
+        "sku": "FA-019"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2222000
+    "status": "da_giao",
+    "total_vnd": 1663000
   },
   {
-    "created_at": "2026-11-18T15:00:00+07:00",
-    "customer_id": "fashion_a-c003",
-    "id": "DH-FA-0052",
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "fashion_a-c042",
+    "id": "DH-FA-0114",
     "items": [
       {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-008"
+        "color": "be",
+        "price_vnd": 305000,
+        "qty": 2,
+        "size": "L",
+        "sku": "FA-036"
       },
       {
-        "color": "be",
-        "price_vnd": 400000,
-        "qty": 2,
+        "color": "xám",
+        "price_vnd": 235000,
+        "qty": 1,
+        "size": "XL",
+        "sku": "FA-048"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 409000,
+        "qty": 1,
         "size": "L",
         "sku": "FA-059"
       }
     ],
     "region": "tinh",
     "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1355000
-  },
-  {
-    "created_at": "2026-11-12T19:00:00+07:00",
-    "customer_id": "fashion_a-c027",
-    "id": "DH-FA-0053",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 359000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-040"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 139000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-003"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 189000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-051"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 687000
-  },
-  {
-    "created_at": "2026-11-10T14:00:00+07:00",
-    "customer_id": "fashion_a-c002",
-    "id": "DH-FA-0054",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 249000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-070"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
     "status": "da_huy",
-    "total_vnd": 289000
+    "total_vnd": 1254000
   },
   {
-    "created_at": "2026-11-12T14:00:00+07:00",
-    "customer_id": "fashion_a-c026",
-    "id": "DH-FA-0055",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 259000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-018"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 777000
-  },
-  {
-    "created_at": "2026-11-13T16:00:00+07:00",
-    "customer_id": "fashion_a-c034",
-    "id": "DH-FA-0056",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-049"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-011"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1007000
-  },
-  {
-    "created_at": "2026-11-22T19:00:00+07:00",
-    "customer_id": "fashion_a-c029",
-    "id": "DH-FA-0057",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 445000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-029"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "dang_giao",
-    "total_vnd": 485000
-  },
-  {
-    "created_at": "2026-11-04T08:00:00+07:00",
-    "customer_id": "fashion_a-c059",
-    "id": "DH-FA-0058",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-055"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 270000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-069"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-049"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1278000
-  },
-  {
-    "created_at": "2026-11-22T19:00:00+07:00",
-    "customer_id": "fashion_a-c038",
-    "id": "DH-FA-0059",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 259000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-054"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-079"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 139000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-003"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 638000
-  },
-  {
-    "created_at": "2026-11-08T16:00:00+07:00",
-    "customer_id": "fashion_a-c028",
-    "id": "DH-FA-0060",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 265000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-032"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "doi_tra",
-    "total_vnd": 305000
-  },
-  {
-    "created_at": "2026-11-19T13:00:00+07:00",
-    "customer_id": "fashion_a-c014",
-    "id": "DH-FA-0061",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-008"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 555000
-  },
-  {
-    "created_at": "2026-11-19T19:00:00+07:00",
+    "created_at": "2026-11-10T13:00:00+07:00",
     "customer_id": "fashion_a-c035",
-    "id": "DH-FA-0062",
+    "id": "DH-FA-0115",
     "items": [
       {
         "color": "đen",
-        "price_vnd": 215000,
+        "price_vnd": 225000,
         "qty": 1,
         "size": "L",
-        "sku": "FA-077"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 379000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-042"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 305000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-031"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1583000
-  },
-  {
-    "created_at": "2026-11-22T14:00:00+07:00",
-    "customer_id": "fashion_a-c041",
-    "id": "DH-FA-0063",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-055"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "da_giao",
-    "total_vnd": 280000
-  },
-  {
-    "created_at": "2026-11-08T12:00:00+07:00",
-    "customer_id": "fashion_a-c054",
-    "id": "DH-FA-0064",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 395000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-041"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 259000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-054"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 190000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-053"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1429000
-  },
-  {
-    "created_at": "2026-11-07T13:00:00+07:00",
-    "customer_id": "fashion_a-c016",
-    "id": "DH-FA-0065",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 365000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-019"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 420000,
-        "qty": 3,
-        "size": "XL",
-        "sku": "FA-060"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-008"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 2360000
-  },
-  {
-    "created_at": "2026-11-20T17:00:00+07:00",
-    "customer_id": "fashion_a-c043",
-    "id": "DH-FA-0066",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-011"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 280000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-058"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 205000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-048"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1470000
-  },
-  {
-    "created_at": "2026-11-18T11:00:00+07:00",
-    "customer_id": "fashion_a-c042",
-    "id": "DH-FA-0067",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-010"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 780000
-  },
-  {
-    "created_at": "2026-11-16T11:00:00+07:00",
-    "customer_id": "fashion_a-c007",
-    "id": "DH-FA-0068",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 405000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-027"
+        "sku": "FA-046"
       },
       {
         "color": "đen",
-        "price_vnd": 349000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-043"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 754000
-  },
-  {
-    "created_at": "2026-11-12T12:00:00+07:00",
-    "customer_id": "fashion_a-c041",
-    "id": "DH-FA-0069",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 179000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-078"
-      },
-      {
-        "color": "be",
-        "price_vnd": 405000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-027"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 189000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-051"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1725000
-  },
-  {
-    "created_at": "2026-11-11T11:00:00+07:00",
-    "customer_id": "fashion_a-c048",
-    "id": "DH-FA-0070",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-047"
-      },
-      {
-        "color": "xanh navy",
         "price_vnd": 209000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-066"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1125000
-  },
-  {
-    "created_at": "2026-11-09T16:00:00+07:00",
-    "customer_id": "fashion_a-c001",
-    "id": "DH-FA-0071",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 395000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-041"
-      },
-      {
-        "color": "be",
-        "price_vnd": 190000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-053"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1755000
-  },
-  {
-    "created_at": "2026-11-18T18:00:00+07:00",
-    "customer_id": "fashion_a-c031",
-    "id": "DH-FA-0072",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 499000,
         "qty": 1,
-        "size": "S",
-        "sku": "FA-075"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 259000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-054"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 239000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-038"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1475000
-  },
-  {
-    "created_at": "2026-11-05T19:00:00+07:00",
-    "customer_id": "fashion_a-c010",
-    "id": "DH-FA-0073",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 399000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-044"
-      },
-      {
-        "color": "be",
-        "price_vnd": 265000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-033"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 269000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-063"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 2534000
-  },
-  {
-    "created_at": "2026-11-05T21:00:00+07:00",
-    "customer_id": "fashion_a-c026",
-    "id": "DH-FA-0074",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 269000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 415000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-024"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 249000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-070"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1471000
-  },
-  {
-    "created_at": "2026-11-20T15:00:00+07:00",
-    "customer_id": "fashion_a-c042",
-    "id": "DH-FA-0075",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 600000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-030"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 199000,
-        "qty": 2,
         "size": "M",
         "sku": "FA-009"
       },
       {
-        "color": "be",
-        "price_vnd": 365000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-020"
+        "color": "trắng",
+        "price_vnd": 279000,
+        "qty": 2,
+        "size": "M",
+        "sku": "FA-069"
       }
     ],
-    "region": "tinh",
+    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "doi_tra",
-    "total_vnd": 2093000
+    "total_vnd": 992000
   },
   {
-    "created_at": "2026-11-17T21:00:00+07:00",
-    "customer_id": "fashion_a-c001",
-    "id": "DH-FA-0076",
+    "created_at": "2026-11-01T09:00:00+07:00",
+    "customer_id": "fashion_a-c010",
+    "id": "DH-FA-0116",
     "items": [
       {
-        "color": "xám",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-063"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 139000,
+        "color": "be",
+        "price_vnd": 295000,
         "qty": 3,
         "size": "M",
-        "sku": "FA-003"
+        "sku": "FA-017"
+      },
+      {
+        "color": "be",
+        "price_vnd": 320000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-073"
+      },
+      {
+        "color": "xanh navy",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "S",
+        "sku": "FA-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2072000
+  },
+  {
+    "created_at": "2026-11-06T21:00:00+07:00",
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0117",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 409000,
+        "qty": 1,
+        "size": "M",
+        "sku": "FA-059"
       },
       {
         "color": "đen",
         "price_vnd": 169000,
         "qty": 3,
-        "size": "M",
+        "size": "S",
         "sku": "FA-001"
       }
     ],
     "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1193000
-  },
-  {
-    "created_at": "2026-11-12T12:00:00+07:00",
-    "customer_id": "fashion_a-c016",
-    "id": "DH-FA-0077",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 319000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-056"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 290000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-023"
-      },
-      {
-        "color": "be",
-        "price_vnd": 309000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-014"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
     "status": "dang_giao",
-    "total_vnd": 2174000
+    "total_vnd": 916000
   },
   {
-    "created_at": "2026-11-22T21:00:00+07:00",
-    "customer_id": "fashion_a-c019",
-    "id": "DH-FA-0078",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-011"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 205000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-048"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1135000
-  },
-  {
-    "created_at": "2026-11-18T15:00:00+07:00",
-    "customer_id": "fashion_a-c024",
-    "id": "DH-FA-0079",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 229000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-005"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "da_huy",
-    "total_vnd": 498000
-  },
-  {
-    "created_at": "2026-11-14T18:00:00+07:00",
-    "customer_id": "fashion_a-c054",
-    "id": "DH-FA-0080",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 149000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-002"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "doi_tra",
-    "total_vnd": 189000
-  },
-  {
-    "created_at": "2026-11-09T08:00:00+07:00",
-    "customer_id": "fashion_a-c030",
-    "id": "DH-FA-0081",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 349000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-073"
-      },
-      {
-        "color": "be",
-        "price_vnd": 259000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-013"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1126000
-  },
-  {
-    "created_at": "2026-11-06T21:00:00+07:00",
-    "customer_id": "fashion_a-c002",
-    "id": "DH-FA-0082",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-036"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 747000
-  },
-  {
-    "created_at": "2026-11-19T11:00:00+07:00",
+    "created_at": "2026-11-22T18:00:00+07:00",
     "customer_id": "fashion_a-c010",
-    "id": "DH-FA-0083",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 139000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-003"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 405000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-027"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 544000
-  },
-  {
-    "created_at": "2026-11-12T08:00:00+07:00",
-    "customer_id": "fashion_a-c047",
-    "id": "DH-FA-0084",
+    "id": "DH-FA-0118",
     "items": [
       {
         "color": "xanh navy",
-        "price_vnd": 329000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-050"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-070"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 349000,
+        "price_vnd": 239000,
         "qty": 1,
-        "size": "XL",
-        "sku": "FA-043"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 2083000
-  },
-  {
-    "created_at": "2026-11-20T17:00:00+07:00",
-    "customer_id": "fashion_a-c038",
-    "id": "DH-FA-0085",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 1,
-        "size": "S",
-        "sku": "FA-056"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "doi_tra",
-    "total_vnd": 359000
-  },
-  {
-    "created_at": "2026-11-13T14:00:00+07:00",
-    "customer_id": "fashion_a-c035",
-    "id": "DH-FA-0086",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 379000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-042"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 159000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-004"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 917000
-  },
-  {
-    "created_at": "2026-11-08T19:00:00+07:00",
-    "customer_id": "fashion_a-c018",
-    "id": "DH-FA-0087",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 499000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-075"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 499000
-  },
-  {
-    "created_at": "2026-11-21T10:00:00+07:00",
-    "customer_id": "fashion_a-c045",
-    "id": "DH-FA-0088",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 260000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-011"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 40000,
-    "status": "da_giao",
-    "total_vnd": 300000
-  },
-  {
-    "created_at": "2026-11-05T09:00:00+07:00",
-    "customer_id": "fashion_a-c006",
-    "id": "DH-FA-0089",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 329000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-050"
-      },
-      {
-        "color": "be",
-        "price_vnd": 395000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-041"
-      },
-      {
-        "color": "be",
-        "price_vnd": 249000,
-        "qty": 2,
         "size": "L",
         "sku": "FA-047"
       }
     ],
     "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1617000
-  },
-  {
-    "created_at": "2026-11-14T09:00:00+07:00",
-    "customer_id": "fashion_a-c032",
-    "id": "DH-FA-0090",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-056"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 957000
-  },
-  {
-    "created_at": "2026-11-20T20:00:00+07:00",
-    "customer_id": "fashion_a-c038",
-    "id": "DH-FA-0091",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 325000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-012"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 975000
-  },
-  {
-    "created_at": "2026-11-18T11:00:00+07:00",
-    "customer_id": "fashion_a-c057",
-    "id": "DH-FA-0092",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 329000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-050"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 149000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-002"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 807000
-  },
-  {
-    "created_at": "2026-11-06T14:00:00+07:00",
-    "customer_id": "fashion_a-c004",
-    "id": "DH-FA-0093",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-067"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 349000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-022"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 249000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-049"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
+    "ship_fee_vnd": 40000,
     "status": "da_giao",
-    "total_vnd": 1436000
+    "total_vnd": 279000
   },
   {
-    "created_at": "2026-11-21T15:00:00+07:00",
-    "customer_id": "fashion_a-c046",
-    "id": "DH-FA-0094",
+    "created_at": "2026-11-08T14:00:00+07:00",
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0119",
     "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 259000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-054"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 355000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-039"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 969000
-  },
-  {
-    "created_at": "2026-11-11T15:00:00+07:00",
-    "customer_id": "fashion_a-c024",
-    "id": "DH-FA-0095",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-079"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 469000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-026"
-      },
-      {
-        "color": "be",
-        "price_vnd": 400000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-059"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 1509000
-  },
-  {
-    "created_at": "2026-11-16T13:00:00+07:00",
-    "customer_id": "fashion_a-c012",
-    "id": "DH-FA-0096",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 319000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-056"
-      },
       {
         "color": "đen",
-        "price_vnd": 215000,
+        "price_vnd": 235000,
         "qty": 3,
         "size": "L",
-        "sku": "FA-077"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1283000
-  },
-  {
-    "created_at": "2026-11-21T15:00:00+07:00",
-    "customer_id": "fashion_a-c044",
-    "id": "DH-FA-0097",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 189000,
-        "qty": 2,
-        "size": "M",
         "sku": "FA-051"
       }
     ],
     "region": "tinh",
-    "ship_fee_vnd": 45000,
-    "status": "dang_giao",
-    "total_vnd": 423000
-  },
-  {
-    "created_at": "2026-11-22T20:00:00+07:00",
-    "customer_id": "fashion_a-c011",
-    "id": "DH-FA-0098",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 265000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-032"
-      },
-      {
-        "color": "be",
-        "price_vnd": 379000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-042"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-049"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1656000
-  },
-  {
-    "created_at": "2026-11-21T12:00:00+07:00",
-    "customer_id": "fashion_a-c008",
-    "id": "DH-FA-0099",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 159000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-004"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 420000,
-        "qty": 1,
-        "size": "XL",
-        "sku": "FA-060"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 405000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-027"
-      }
-    ],
-    "region": "ngoai_thanh",
     "ship_fee_vnd": 0,
     "status": "da_huy",
-    "total_vnd": 1953000
+    "total_vnd": 705000
   },
   {
-    "created_at": "2026-11-13T09:00:00+07:00",
-    "customer_id": "fashion_a-c050",
-    "id": "DH-FA-0100",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 265000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-033"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 795000
-  },
-  {
-    "created_at": "2026-11-18T08:00:00+07:00",
-    "customer_id": "fashion_a-c026",
-    "id": "DH-FA-0101",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 215000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-077"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 310000,
-        "qty": 3,
-        "size": "XL",
-        "sku": "FA-062"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1360000
-  },
-  {
-    "created_at": "2026-11-12T10:00:00+07:00",
-    "customer_id": "fashion_a-c042",
-    "id": "DH-FA-0102",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 270000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-069"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 215000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-077"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 45000,
-    "status": "dang_giao",
-    "total_vnd": 530000
-  },
-  {
-    "created_at": "2026-11-17T19:00:00+07:00",
-    "customer_id": "fashion_a-c014",
-    "id": "DH-FA-0103",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-079"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 185000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-006"
-      },
-      {
-        "color": "be",
-        "price_vnd": 349000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-073"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1014000
-  },
-  {
-    "created_at": "2026-11-17T10:00:00+07:00",
-    "customer_id": "fashion_a-c044",
-    "id": "DH-FA-0104",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 335000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-072"
-      },
-      {
-        "color": "trắng",
-        "price_vnd": 499000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-075"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 435000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-074"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 2973000
-  },
-  {
-    "created_at": "2026-11-05T13:00:00+07:00",
-    "customer_id": "fashion_a-c053",
-    "id": "DH-FA-0105",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 159000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-004"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 310000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-062"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 628000
-  },
-  {
-    "created_at": "2026-11-15T19:00:00+07:00",
-    "customer_id": "fashion_a-c006",
-    "id": "DH-FA-0106",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 399000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-044"
-      },
-      {
-        "color": "be",
-        "price_vnd": 400000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-059"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1997000
-  },
-  {
-    "created_at": "2026-11-06T19:00:00+07:00",
-    "customer_id": "fashion_a-c043",
-    "id": "DH-FA-0107",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 280000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-058"
-      },
-      {
-        "color": "be",
-        "price_vnd": 395000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-041"
-      },
-      {
-        "color": "be",
-        "price_vnd": 199000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-009"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1272000
-  },
-  {
-    "created_at": "2026-11-18T14:00:00+07:00",
-    "customer_id": "fashion_a-c021",
-    "id": "DH-FA-0108",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-067"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 720000
-  },
-  {
-    "created_at": "2026-11-13T08:00:00+07:00",
-    "customer_id": "fashion_a-c027",
-    "id": "DH-FA-0109",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 600000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-030"
-      },
-      {
-        "color": "be",
-        "price_vnd": 205000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-052"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1215000
-  },
-  {
-    "created_at": "2026-11-23T20:00:00+07:00",
-    "customer_id": "fashion_a-c048",
-    "id": "DH-FA-0110",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-079"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 469000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-026"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 280000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-058"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 2167000
-  },
-  {
-    "created_at": "2026-11-11T11:00:00+07:00",
-    "customer_id": "fashion_a-c023",
-    "id": "DH-FA-0111",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 435000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-074"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 1305000
-  },
-  {
-    "created_at": "2026-11-13T17:00:00+07:00",
-    "customer_id": "fashion_a-c039",
-    "id": "DH-FA-0112",
-    "items": [
-      {
-        "color": "đen",
-        "price_vnd": 345000,
-        "qty": 2,
-        "size": "L",
-        "sku": "FA-015"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 379000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-034"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "dang_giao",
-    "total_vnd": 1827000
-  },
-  {
-    "created_at": "2026-11-22T19:00:00+07:00",
-    "customer_id": "fashion_a-c011",
-    "id": "DH-FA-0113",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 485000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-045"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 970000
-  },
-  {
-    "created_at": "2026-11-10T09:00:00+07:00",
-    "customer_id": "fashion_a-c015",
-    "id": "DH-FA-0114",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-079"
-      },
-      {
-        "color": "xanh navy",
-        "price_vnd": 219000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-076"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 1158000
-  },
-  {
-    "created_at": "2026-11-20T10:00:00+07:00",
-    "customer_id": "fashion_a-c026",
-    "id": "DH-FA-0115",
-    "items": [
-      {
-        "color": "xám",
-        "price_vnd": 205000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-048"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "doi_tra",
-    "total_vnd": 615000
-  },
-  {
-    "created_at": "2026-11-06T13:00:00+07:00",
-    "customer_id": "fashion_a-c008",
-    "id": "DH-FA-0116",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 329000,
-        "qty": 3,
-        "size": "L",
-        "sku": "FA-050"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 240000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-055"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 415000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-024"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "cho_xac_nhan",
-    "total_vnd": 2537000
-  },
-  {
-    "created_at": "2026-11-13T16:00:00+07:00",
-    "customer_id": "fashion_a-c052",
-    "id": "DH-FA-0117",
-    "items": [
-      {
-        "color": "xanh navy",
-        "price_vnd": 289000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-080"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 159000,
-        "qty": 1,
-        "size": "L",
-        "sku": "FA-007"
-      }
-    ],
-    "region": "noi_thanh",
-    "ship_fee_vnd": 30000,
-    "status": "dang_giao",
-    "total_vnd": 478000
-  },
-  {
-    "created_at": "2026-11-08T12:00:00+07:00",
-    "customer_id": "fashion_a-c001",
-    "id": "DH-FA-0118",
-    "items": [
-      {
-        "color": "trắng",
-        "price_vnd": 365000,
-        "qty": 3,
-        "size": "M",
-        "sku": "FA-064"
-      },
-      {
-        "color": "be",
-        "price_vnd": 190000,
-        "qty": 2,
-        "size": "M",
-        "sku": "FA-053"
-      },
-      {
-        "color": "xám",
-        "price_vnd": 269000,
-        "qty": 1,
-        "size": "M",
-        "sku": "FA-063"
-      }
-    ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
-    "status": "da_giao",
-    "total_vnd": 1744000
-  },
-  {
-    "created_at": "2026-11-15T17:00:00+07:00",
-    "customer_id": "fashion_a-c010",
-    "id": "DH-FA-0119",
-    "items": [
-      {
-        "color": "be",
-        "price_vnd": 249000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-036"
-      }
-    ],
-    "region": "ngoai_thanh",
-    "ship_fee_vnd": 0,
-    "status": "da_huy",
-    "total_vnd": 747000
-  },
-  {
-    "created_at": "2026-11-02T20:00:00+07:00",
-    "customer_id": "fashion_a-c052",
+    "created_at": "2026-11-03T10:00:00+07:00",
+    "customer_id": "fashion_a-c037",
     "id": "DH-FA-0120",
     "items": [
       {
-        "color": "xám",
-        "price_vnd": 365000,
-        "qty": 3,
-        "size": "S",
-        "sku": "FA-064"
-      },
-      {
-        "color": "đen",
-        "price_vnd": 410000,
-        "qty": 2,
-        "size": "S",
-        "sku": "FA-071"
-      },
-      {
         "color": "xanh navy",
-        "price_vnd": 209000,
-        "qty": 2,
-        "size": "XL",
-        "sku": "FA-066"
+        "price_vnd": 285000,
+        "qty": 1,
+        "size": "S",
+        "sku": "FA-013"
       }
     ],
-    "region": "tinh",
-    "ship_fee_vnd": 0,
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 40000,
     "status": "doi_tra",
-    "total_vnd": 2333000
+    "total_vnd": 325000
   }
 ]

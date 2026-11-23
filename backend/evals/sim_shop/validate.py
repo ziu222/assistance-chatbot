@@ -37,6 +37,7 @@ from app.modules.knowledge.domain.text import fold  # noqa: E402
 
 CATEGORIES = {
     "faq",
+    "missing_info",
     "product_info",
     "price_quote",
     "out_of_stock",
@@ -75,11 +76,34 @@ MIN = {
     "hard_share": 0.30,
     "no_diacritic_share": 0.40,
     "distinct_last_share": 0.65,
-    "policy_chars": 1000,
-    "faq": 15,
-    "skus": 80,
-    "multi_variant_skus": 20,
+    "policy_chars": 1000,  # chỉ áp cho shop khai báo đủ mọi mục chính sách
+    "multi_variant_share": 0.2,
+    "shops": 10,
+    "shops_without_docs": 2,  # shop không có cả file chính sách lẫn FAQ
+    "no_source_share": 0.10,  # ca mà đáp án đúng là "chưa có căn cứ, nhờ nhân viên"
 }
+TOPIC_SECTION = {
+    "ship": "shipping",
+    "freeship": "shipping",
+    "return": "returns",
+    "cod": "payment",
+    "hours": "hours",
+    "warranty": "warranty",
+    "wholesale": "wholesale",
+    "invoice": "invoice",
+    "promo": "promo",
+}
+ALL_SECTIONS = {
+    "hours",
+    "shipping",
+    "payment",
+    "returns",
+    "warranty",
+    "wholesale",
+    "promo",
+    "invoice",
+}
+MARKET_SOURCES = {"shopee_like", "tiktok_like"}
 
 
 def load(path: Path):
@@ -101,8 +125,11 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
         raw = (folder / "catalog.csv").read_text(encoding="utf-8")
         items = parse_catalog_csv(raw)  # parser import thật của Atlas
         rows = list(csv.DictReader(io.StringIO(raw)))
-        policy = (folder / "policy.md").read_text(encoding="utf-8")
-        faq = load(folder / "faq.json")
+        # Shop thật có thể không có file chính sách hoặc FAQ: thiếu là hợp lệ, không phải lỗi.
+        pf, ff = folder / "policy.md", folder / "faq.json"
+        policy = pf.read_text(encoding="utf-8") if pf.exists() else ""
+        faq = load(ff) if ff.exists() else []
+        kn = shop["knowledge"]
         orders = load(folder / "orders.json")
         hours = BusinessHours.model_validate(shop["hours"])
         shops[key] = {
@@ -114,12 +141,14 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
             "known": extract_amounts(policy + "\n" + " ".join(f["answer"] for f in faq)),
         }
         cat[key] = {i.sku: i for i in items}
-        if len(items) < MIN["skus"]:
-            errors.append(f"{key}: only {len(items)} SKUs")
-        if sum(len(i.variants) > 1 for i in items) < MIN["multi_variant_skus"]:
+        if len(items) != kn["skus"] or kn["policy_file"] != pf.exists():
+            errors.append(f"{key}: shop.json knowledge does not match files")
+        if kn["faq_count"] != len(faq) or not set(kn["sections"]) <= ALL_SECTIONS:
+            errors.append(f"{key}: knowledge.faq_count/sections inconsistent")
+        if sum(len(i.variants) > 1 for i in items) < len(items) * MIN["multi_variant_share"]:
             errors.append(f"{key}: too few SKUs with several variants")
-        for r in rows:
-            if not any(r["name"].startswith(t) for t in shop["product_types"]):
+        for r in rows:  # tiêu đề kiểu sàn có emoji/từ khóa: chỉ cần chứa đúng tên loại
+            if not any(t in r["name"] for t in shop["product_types"]):
                 errors.append(
                     f"{key}: {r['sku']} '{r['name']}' is not a {shop['industry']} product"
                 )
@@ -127,11 +156,27 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
         steps = Counter(b - a for a, b in zip(prices, prices[1:], strict=False))
         if steps and steps.most_common(1)[0][1] > len(prices) * 0.2:
             errors.append(f"{key}: prices follow a fixed step {steps.most_common(1)[0]}")
-        if len(policy) < MIN["policy_chars"] or len(policy) > 20000:
+        full = set(kn["sections"]) == ALL_SECTIONS and kn["policy_file"]
+        if (full and len(policy) < MIN["policy_chars"]) or len(policy) > 20000:
             errors.append(f"{key}: policy.md length {len(policy)}")
+        for sec in kn["sections"]:  # mục khai báo có phải thật sự xuất hiện trong tài liệu
+            if not policy and not faq:
+                errors.append(f"{key}: declares section {sec} but has no documents")
+        if kn["catalog_source"] in MARKET_SOURCES:
+            raw_items = load(folder / "raw_listing.json")["items"]
+            by_sku = {x["seller_sku"]: x for x in raw_items}
+            for it in items:
+                src = by_sku.get(it.sku)
+                if not src or src["price_sale"] != it.price_vnd or src["title"] != it.name:
+                    errors.append(f"{key}: {it.sku} catalog.csv differs from raw_listing.json")
+            shops[key]["original"] = {
+                k: x["price_original"]
+                for k, x in by_sku.items()
+                if x["price_original"] > x["price_sale"]
+            }
         if re.search(r"\d,\d{3}đ", policy + json.dumps(faq, ensure_ascii=False)):
             errors.append(f"{key}: mixed number format (use 35.000đ)")
-        if not MIN["faq"] <= len(faq) <= 30:
+        if len(faq) > 30:
             errors.append(f"{key}: {len(faq)} FAQ entries")
         for f in faq:
             if any(w in f["answer"].lower() for w in SYSTEM_WORDS):
@@ -141,6 +186,11 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
                 if it["sku"] not in cat[key]:
                     errors.append(f"{key}: order {o['id']} has unknown SKU {it['sku']}")
 
+    if len(shops) < MIN["shops"]:
+        errors.append(f"only {len(shops)} shops")
+    bare = sum(not s["policy"] and not s["faq"] for s in shops.values())
+    if bare < MIN["shops_without_docs"]:
+        errors.append(f"only {bare} shops without any documents")
     tasks = load(ROOT / "tasks.json")
     personas = {p["id"] for p in load(ROOT / "personas.json")}
     if len(tasks) < MIN["tasks"]:
@@ -181,7 +231,22 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
             errors.append(f"{tid}: reason '{e['reason']}' without handoff")
         if not e["needs_human"] and detect_handoff(PolicyConfig(), texts) is not None:
             errors.append(f"{tid}: labelled no-handoff but Atlas phrase rule would hand off")
+        # Đáp án theo tri thức shop CÓ: chủ đề shop chưa viết ⇒ chuyển người vì thiếu căn cứ.
+        sections = set(s["shop"]["knowledge"]["sections"])
+        if "topic" in e:
+            known = TOPIC_SECTION[e["topic"]] in sections
+            if known and e["reason"] == "no_source":
+                errors.append(f"{tid}: shop documents {e['topic']} but label says no_source")
+            if not known and (not e["needs_human"] or e["reason"] != "no_source"):
+                errors.append(f"{tid}: shop has no {e['topic']} section but label is not no_source")
+        if e["reason"] == "no_source" and e["amounts"]:
+            errors.append(f"{tid}: no_source case must not expect amounts")
         skus = [x["sku"] for x in e["sources_include"] if x["type"] == "product"]
+        if t["category"] == "price_quote":
+            for sku in skus:
+                orig = s.get("original", {}).get(sku)
+                if orig and f"{orig:,}".replace(",", ".") + "đ" not in e["must_not_say"]:
+                    errors.append(f"{tid}: listing shows original price {orig} but not forbidden")
         for sku in skus + e.get("candidates", []):
             if sku not in cat[t["shop"]]:
                 errors.append(f"{tid}: unknown SKU {sku}")
@@ -243,6 +308,9 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
                 f"{tid}: policy {e['policy']['situation']!r} but decide says {got.situation!r}"
             )
 
+    no_source = sum(t["expected"]["reason"] == "no_source" for t in tasks) / len(tasks)
+    if no_source < MIN["no_source_share"]:
+        errors.append(f"no_source share {no_source:.2f} < {MIN['no_source_share']}")
     seeds = tomllib.loads(SEEDS.read_text(encoding="utf-8"))["cases"]
     ids = {t["id"] for t in tasks}
     if len(seeds) != 40 or any(c["id"] not in ids or "messages" not in c for c in seeds):
@@ -251,6 +319,8 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
         errors.append("eval seeds do not cover every category")
     return {
         "tasks": len(tasks),
+        "shops": len(shops),
+        "no_source": round(no_source, 2),
         "no_diacritic": no_dia,
         "distinct_last": distinct,
         "hard": hard,
