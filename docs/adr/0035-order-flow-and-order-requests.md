@@ -1,6 +1,6 @@
 # ADR-0035: Quy trình đặt hàng là cấu hình có phiên bản; bot ghi phiếu, không tự chốt đơn
 
-- Status: proposed (thiết kế `docs/design/03-order-flow-and-unified-inbox.md`, chưa implement)
+- Status: accepted (O2 đã implement; xem `docs/design/03-order-flow-and-unified-inbox.md`)
 - Date: 2026-11-24
 
 ## Context
@@ -37,7 +37,7 @@ Tạo đơn thật là thao tác có tác dụng phụ, cần dữ liệu cá nh
    - Trợ lý viết điền sẵn cấu hình từ FAQ/tài liệu.
    - Tín hiệu `order_confirmed` (đã chiếu) gợi ý chỉnh trường bắt buộc.
    - Chủ shop phát hành; không có gì tự áp dụng.
-7. **Template v4** bỏ `order_intent` khỏi `handoff_intents`; nháp đơn hàng luôn có `needs_human = true`, `reason = order` cho tới khi nhân viên xác nhận.
+7. **Template v4** bỏ `order_intent` khỏi `handoff_intents`. Trong lúc thu thập, bot tự hỏi tiếp; phiếu đủ thông tin thì nháp có `needs_human = true`, `reason = order` và ticket được mở.
 
 ## Alternatives considered
 
