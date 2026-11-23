@@ -17,6 +17,7 @@ from app.modules.agent_management.infrastructure.templates import load_templates
 from app.modules.agent_runtime.infrastructure.config import debounce_window
 from app.modules.agent_runtime.llm.factory import build_llm
 from app.modules.agent_runtime.runner import AgentRunner
+from app.modules.authoring.worker import AuthoringWorker
 from app.modules.conversation_policy.stage import PolicyStage
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
@@ -31,6 +32,7 @@ async def main() -> None:
         f"{t.key}.v{t.version}": {t.routes.classify, t.routes.draft}
         for t in load_templates().values()
     }
+    used_routes["authoring"] = {"authoring"}
     llm, _ = build_llm(settings, used_routes)
     engine = create_engine(settings.database_url)
     factory = create_session_factory(engine)
@@ -49,7 +51,13 @@ async def main() -> None:
         with contextlib.suppress(NotImplementedError):  # Windows: Ctrl+C qua KeyboardInterrupt
             loop.add_signal_handler(sig, stop.set)
     try:
-        await worker.run(stop, concurrency=settings.agent_worker_concurrency)
+        authoring = AuthoringWorker(
+            factory, llm, daily_cap_micro=settings.authoring_daily_cap_micro
+        )
+        await asyncio.gather(
+            worker.run(stop, concurrency=settings.agent_worker_concurrency),
+            authoring.run(stop),
+        )
     finally:
         await engine.dispose()
 

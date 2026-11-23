@@ -14,7 +14,9 @@ import {
   type Span,
 } from "../../entities/policy/api";
 import { DAYS, clock, describeOutcome, localInstant, normalizeSpans, toLocalInput } from "../../entities/policy/form";
+import { SuggestPanel } from "../../features/suggest-writing/SuggestPanel";
 import { ApiError } from "../../shared/api/client";
+import { BrandSection } from "./BrandSection";
 import { formatTime } from "../../shared/lib/format";
 
 // ponytail: giờ nhập/hiển thị theo giờ máy người dùng; đúng khi máy cùng múi giờ với shop
@@ -218,6 +220,7 @@ function SituationCard({
           <option value="waiting_human">bot im, chờ nhân viên</option>
         </select>
       </label>
+      <SuggestPanel text={value.text} kind="auto_message" onUse={(t) => onChange({ ...value, text: t })} />
       {extra}
     </article>
   );
@@ -481,6 +484,7 @@ export function PolicyPage({ canManage }: { canManage: boolean }) {
         canManage={canManage}
         currentNumber={release?.number ?? null}
       />
+      <BrandSection canManage={canManage} />
       <History canManage={canManage} />
     </div>
   );

@@ -25,3 +25,15 @@ max_tokens = 4096
 provider = "openai"
 model = "gpt-4.1"
 max_tokens = 2048
+
+# Trợ lý viết (bước 2.11): model rẻ. Gợi ý luôn qua kiểm tra giữ sự thật bằng code và chủ shop
+# duyệt trước khi lưu, nên đích chưa qua eval chỉ ảnh hưởng chất lượng câu chữ, không lọt tới khách.
+[[routes.authoring.targets]]
+provider = "anthropic"
+model = "claude-haiku-5-5"
+max_tokens = 2048
+
+[[routes.authoring.targets]]
+provider = "openai"
+model = "gpt-4.1-mini"
+max_tokens = 1024
