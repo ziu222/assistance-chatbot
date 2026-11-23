@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import Counter
 from datetime import datetime
@@ -34,12 +35,14 @@ def main() -> int:
     if len(shops) < 4 or len(tasks) < 400:
         ERRORS.append("need four shops and at least 400 tasks")
     catalogs = {}
+    orders = {}
     for key, shop in shops.items():
         folder = ROOT / "shops" / key
         raw = (folder / "catalog.csv").read_text(encoding="utf-8")
         try:
             items = parse_catalog_csv(raw)
             catalogs[key] = {i.sku: i for i in items}
+            orders[key] = {item["id"] for item in load(folder / "orders.json")}
         except Exception as exc:
             ERRORS.append(f"{key}: catalog: {exc}")
         try:
@@ -100,13 +103,18 @@ def main() -> int:
         )
         policy_text = (ROOT / "shops" / task["shop"] / "policy.md").read_text(encoding="utf-8")
         known_amounts = extract_amounts(faq_text + "\n" + policy_text)
-        if task["expected"]["amounts"]:
+        if task["expected"]["amounts"] and task["expected"]["sources_include"]:
             sku = task["expected"]["sources_include"][0]["sku"]
             amount = task["expected"]["amounts"][0]
             if amount != catalogs[task["shop"]][sku].price_vnd or amount not in (
                 known_amounts | {catalogs[task["shop"]][sku].price_vnd}
             ):
                 ERRORS.append(f"{task['id']}: amount mismatch")
+        order_match = re.search(r"DH-[A-Z]{2}-\d{4}", task["messages"][0]["text"])
+        if task["category"] == "order_status" and (
+            order_match is None or order_match.group() not in orders[task["shop"]]
+        ):
+            ERRORS.append(f"{task['id']}: missing order reference")
         if task["expected"]["reason"] not in {
             "",
             "no_source",
@@ -117,6 +125,18 @@ def main() -> int:
             "unclear",
         }:
             ERRORS.append(f"{task['id']}: invalid reason")
+        if not task["expected"]["needs_human"] and task["expected"]["reason"] != "":
+            ERRORS.append(f"{task['id']}: non-handoff task has reason")
+        if task["category"] in {"multi_turn", "frustration"} and not task["history"]:
+            ERRORS.append(f"{task['id']}: missing history")
+        source_skus = [source["sku"] for source in task["expected"]["sources_include"]]
+        if not task["notes"] or (
+            not any(token in task["notes"] for token in source_skus)
+            and not any(
+                token in task["notes"] for token in {"policy.md", "faq.json", "orders.json"}
+            )
+        ):
+            ERRORS.append(f"{task['id']}: note is not traceable")
         hours = BusinessHours.model_validate(shops[task["shop"]]["hours"])
         policy = PolicyConfig(
             hours=hours,
@@ -135,6 +155,24 @@ def main() -> int:
             ERRORS.append(
                 f"{task['id']}: policy situation {expected_situation!r} != {decision.situation!r}"
             )
+    normalized = {
+        re.sub(
+            r"\d+", "<n>", re.sub(r"[A-Z]{2}-\d{3,4}", "<sku>", t["messages"][0]["text"].lower())
+        )
+        for t in tasks
+    }
+    no_diacritic = sum(
+        not any(ch in t["messages"][0]["text"] for ch in "ăâđêôơưÁĂÂĐÊÔƠƯ") for t in tasks
+    )
+    if len(normalized) < 100:
+        ERRORS.append(f"too few normalized templates: {len(normalized)}")
+    if no_diacritic / len(tasks) < 0.4:
+        ERRORS.append("no-diacritic share below 40%")
+    if sum(t["difficulty"] == "hard" for t in tasks) / len(tasks) < 0.3:
+        ERRORS.append("hard share below 30%")
+    personas = {p["id"] for p in load(ROOT / "personas.json")}
+    if {t["persona"] for t in tasks} != personas or len(personas) < 8:
+        ERRORS.append("not all personas are used")
     print("shops:", len(shops), "tasks:", len(tasks), "categories:", dict(sorted(counts.items())))
     print(
         "needs_human:",

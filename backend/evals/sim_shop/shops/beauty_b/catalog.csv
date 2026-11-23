@@ -1,81 +1,108 @@
 sku,name,description,price_vnd,size,color,stock
-BE-001,Kem dưỡng ẩm mẫu 1,"Sản phẩm Kem dưỡng ẩm mẫu 1, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",89000,,đen,0
-BE-002,Kem dưỡng ẩm,"Sản phẩm Kem dưỡng ẩm, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",94000,,be,6
-BE-003,Kem dưỡng ẩm ban đêm,"Sản phẩm Kem dưỡng ẩm ban đêm, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",99000,,xanh,7
-BE-004,Kem dưỡng ẩm mẫu 4,"Sản phẩm Kem dưỡng ẩm mẫu 4, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",104000,,đen,8
-BE-005,Kem dưỡng ẩm mẫu 5,"Sản phẩm Kem dưỡng ẩm mẫu 5, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",109000,,be,9
-BE-006,Kem dưỡng ẩm mẫu 6,"Sản phẩm Kem dưỡng ẩm mẫu 6, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",114000,,xanh,10
-BE-007,Kem dưỡng ẩm mẫu 7,"Sản phẩm Kem dưỡng ẩm mẫu 7, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",119000,,đen,11
-BE-008,Kem dưỡng ẩm mẫu 8,"Sản phẩm Kem dưỡng ẩm mẫu 8, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",124000,,be,12
-BE-009,Kem dưỡng ẩm mẫu 9,"Sản phẩm Kem dưỡng ẩm mẫu 9, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",129000,,xanh,5
-BE-010,Kem dưỡng ẩm mẫu 10,"Sản phẩm Kem dưỡng ẩm mẫu 10, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",134000,,đen,6
-BE-011,Kem dưỡng ẩm mẫu 11,"Sản phẩm Kem dưỡng ẩm mẫu 11, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",139000,,be,7
-BE-012,Kem dưỡng ẩm mẫu 12,"Sản phẩm Kem dưỡng ẩm mẫu 12, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",144000,,xanh,8
-BE-013,Kem dưỡng ẩm mẫu 13,"Sản phẩm Kem dưỡng ẩm mẫu 13, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",149000,,đen,9
-BE-014,Kem dưỡng ẩm mẫu 14,"Sản phẩm Kem dưỡng ẩm mẫu 14, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",154000,,be,10
-BE-015,Kem dưỡng ẩm mẫu 15,"Sản phẩm Kem dưỡng ẩm mẫu 15, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",159000,,xanh,11
-BE-016,Kem dưỡng ẩm mẫu 16,"Sản phẩm Kem dưỡng ẩm mẫu 16, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",164000,,đen,12
-BE-017,Kem dưỡng ẩm mẫu 17,"Sản phẩm Kem dưỡng ẩm mẫu 17, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",169000,,be,5
-BE-018,Kem dưỡng ẩm mẫu 18,"Sản phẩm Kem dưỡng ẩm mẫu 18, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",174000,,xanh,0
-BE-019,Kem dưỡng ẩm mẫu 19,"Sản phẩm Kem dưỡng ẩm mẫu 19, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",179000,,đen,7
-BE-020,Kem dưỡng ẩm mẫu 20,"Sản phẩm Kem dưỡng ẩm mẫu 20, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",184000,,be,8
-BE-021,Kem dưỡng ẩm mẫu 21,"Sản phẩm Kem dưỡng ẩm mẫu 21, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",189000,,xanh,9
-BE-022,Kem dưỡng ẩm mẫu 22,"Sản phẩm Kem dưỡng ẩm mẫu 22, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",194000,,đen,10
-BE-023,Kem dưỡng ẩm mẫu 23,"Sản phẩm Kem dưỡng ẩm mẫu 23, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",199000,,be,11
-BE-024,Kem dưỡng ẩm mẫu 24,"Sản phẩm Kem dưỡng ẩm mẫu 24, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",204000,,xanh,12
-BE-025,Kem dưỡng ẩm mẫu 25,"Sản phẩm Kem dưỡng ẩm mẫu 25, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",209000,,đen,5
-BE-026,Kem dưỡng ẩm mẫu 26,"Sản phẩm Kem dưỡng ẩm mẫu 26, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",214000,,be,6
-BE-027,Kem dưỡng ẩm mẫu 27,"Sản phẩm Kem dưỡng ẩm mẫu 27, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",219000,,xanh,7
-BE-028,Kem dưỡng ẩm mẫu 28,"Sản phẩm Kem dưỡng ẩm mẫu 28, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",224000,,đen,8
-BE-029,Kem dưỡng ẩm mẫu 29,"Sản phẩm Kem dưỡng ẩm mẫu 29, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",229000,,be,9
-BE-030,Kem dưỡng ẩm mẫu 30,"Sản phẩm Kem dưỡng ẩm mẫu 30, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",234000,,xanh,10
-BE-031,Kem dưỡng ẩm mẫu 31,"Sản phẩm Kem dưỡng ẩm mẫu 31, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",239000,,đen,11
-BE-032,Kem dưỡng ẩm mẫu 32,"Sản phẩm Kem dưỡng ẩm mẫu 32, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",244000,,be,12
-BE-033,Kem dưỡng ẩm mẫu 33,"Sản phẩm Kem dưỡng ẩm mẫu 33, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",249000,,xanh,5
-BE-034,Kem dưỡng ẩm mẫu 34,"Sản phẩm Kem dưỡng ẩm mẫu 34, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",254000,,đen,6
-BE-035,Kem dưỡng ẩm mẫu 35,"Sản phẩm Kem dưỡng ẩm mẫu 35, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",259000,,be,0
-BE-036,Kem dưỡng ẩm mẫu 36,"Sản phẩm Kem dưỡng ẩm mẫu 36, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",264000,,xanh,8
-BE-037,Kem dưỡng ẩm mẫu 37,"Sản phẩm Kem dưỡng ẩm mẫu 37, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",269000,,đen,9
-BE-038,Kem dưỡng ẩm mẫu 38,"Sản phẩm Kem dưỡng ẩm mẫu 38, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",274000,,be,10
-BE-039,Kem dưỡng ẩm mẫu 39,"Sản phẩm Kem dưỡng ẩm mẫu 39, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",279000,,xanh,11
-BE-040,Kem dưỡng ẩm mẫu 40,"Sản phẩm Kem dưỡng ẩm mẫu 40, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",284000,,đen,12
-BE-041,Kem dưỡng ẩm mẫu 41,"Sản phẩm Kem dưỡng ẩm mẫu 41, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",289000,,be,5
-BE-042,Kem dưỡng ẩm mẫu 42,"Sản phẩm Kem dưỡng ẩm mẫu 42, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",294000,,xanh,6
-BE-043,Kem dưỡng ẩm mẫu 43,"Sản phẩm Kem dưỡng ẩm mẫu 43, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",299000,,đen,7
-BE-044,Kem dưỡng ẩm mẫu 44,"Sản phẩm Kem dưỡng ẩm mẫu 44, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",304000,,be,8
-BE-045,Kem dưỡng ẩm mẫu 45,"Sản phẩm Kem dưỡng ẩm mẫu 45, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",309000,,xanh,9
-BE-046,Kem dưỡng ẩm mẫu 46,"Sản phẩm Kem dưỡng ẩm mẫu 46, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",314000,,đen,10
-BE-047,Kem dưỡng ẩm mẫu 47,"Sản phẩm Kem dưỡng ẩm mẫu 47, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",319000,,be,11
-BE-048,Kem dưỡng ẩm mẫu 48,"Sản phẩm Kem dưỡng ẩm mẫu 48, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",324000,,xanh,12
-BE-049,Kem dưỡng ẩm mẫu 49,"Sản phẩm Kem dưỡng ẩm mẫu 49, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",329000,,đen,5
-BE-050,Kem dưỡng ẩm mẫu 50,"Sản phẩm Kem dưỡng ẩm mẫu 50, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",334000,,be,6
-BE-051,Kem dưỡng ẩm mẫu 51,"Sản phẩm Kem dưỡng ẩm mẫu 51, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",339000,,xanh,7
-BE-052,Kem dưỡng ẩm mẫu 52,"Sản phẩm Kem dưỡng ẩm mẫu 52, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",344000,,đen,0
-BE-053,Kem dưỡng ẩm mẫu 53,"Sản phẩm Kem dưỡng ẩm mẫu 53, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",349000,,be,9
-BE-054,Kem dưỡng ẩm mẫu 54,"Sản phẩm Kem dưỡng ẩm mẫu 54, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",354000,,xanh,10
-BE-055,Kem dưỡng ẩm mẫu 55,"Sản phẩm Kem dưỡng ẩm mẫu 55, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",359000,,đen,11
-BE-056,Kem dưỡng ẩm mẫu 56,"Sản phẩm Kem dưỡng ẩm mẫu 56, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",364000,,be,12
-BE-057,Kem dưỡng ẩm mẫu 57,"Sản phẩm Kem dưỡng ẩm mẫu 57, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",369000,,xanh,5
-BE-058,Kem dưỡng ẩm mẫu 58,"Sản phẩm Kem dưỡng ẩm mẫu 58, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",374000,,đen,6
-BE-059,Kem dưỡng ẩm mẫu 59,"Sản phẩm Kem dưỡng ẩm mẫu 59, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",379000,,be,7
-BE-060,Kem dưỡng ẩm mẫu 60,"Sản phẩm Kem dưỡng ẩm mẫu 60, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",384000,,xanh,8
-BE-061,Kem dưỡng ẩm mẫu 61,"Sản phẩm Kem dưỡng ẩm mẫu 61, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",389000,,đen,9
-BE-062,Kem dưỡng ẩm mẫu 62,"Sản phẩm Kem dưỡng ẩm mẫu 62, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",394000,,be,10
-BE-063,Kem dưỡng ẩm mẫu 63,"Sản phẩm Kem dưỡng ẩm mẫu 63, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",399000,,xanh,11
-BE-064,Kem dưỡng ẩm mẫu 64,"Sản phẩm Kem dưỡng ẩm mẫu 64, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",404000,,đen,12
-BE-065,Kem dưỡng ẩm mẫu 65,"Sản phẩm Kem dưỡng ẩm mẫu 65, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",409000,,be,5
-BE-066,Kem dưỡng ẩm mẫu 66,"Sản phẩm Kem dưỡng ẩm mẫu 66, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",414000,,xanh,6
-BE-067,Kem dưỡng ẩm mẫu 67,"Sản phẩm Kem dưỡng ẩm mẫu 67, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",419000,,đen,7
-BE-068,Kem dưỡng ẩm mẫu 68,"Sản phẩm Kem dưỡng ẩm mẫu 68, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",424000,,be,8
-BE-069,Kem dưỡng ẩm mẫu 69,"Sản phẩm Kem dưỡng ẩm mẫu 69, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",429000,,xanh,0
-BE-070,Kem dưỡng ẩm mẫu 70,"Sản phẩm Kem dưỡng ẩm mẫu 70, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",434000,,đen,10
-BE-071,Kem dưỡng ẩm mẫu 71,"Sản phẩm Kem dưỡng ẩm mẫu 71, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",439000,,be,11
-BE-072,Kem dưỡng ẩm mẫu 72,"Sản phẩm Kem dưỡng ẩm mẫu 72, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",444000,,xanh,12
-BE-073,Kem dưỡng ẩm mẫu 73,"Sản phẩm Kem dưỡng ẩm mẫu 73, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",449000,,đen,5
-BE-074,Kem dưỡng ẩm mẫu 74,"Sản phẩm Kem dưỡng ẩm mẫu 74, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",454000,,be,6
-BE-075,Kem dưỡng ẩm mẫu 75,"Sản phẩm Kem dưỡng ẩm mẫu 75, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",459000,,xanh,7
-BE-076,Kem dưỡng ẩm mẫu 76,"Sản phẩm Kem dưỡng ẩm mẫu 76, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",464000,,đen,8
-BE-077,Kem dưỡng ẩm mẫu 77,"Sản phẩm Kem dưỡng ẩm mẫu 77, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",469000,,be,9
-BE-078,Kem dưỡng ẩm mẫu 78,"Sản phẩm Kem dưỡng ẩm mẫu 78, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",474000,,xanh,10
-BE-079,Kem dưỡng ẩm mẫu 79,"Sản phẩm Kem dưỡng ẩm mẫu 79, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",479000,,đen,11
-BE-080,Kem dưỡng ẩm mẫu 80,"Sản phẩm Kem dưỡng ẩm mẫu 80, chất liệu bền, xuất xứ Việt Nam; xem chính sách bảo hành.",484000,,be,12
+BE-001,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",89000,,đen,0
+BE-001,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",89000,,be,0
+BE-002,Kem dưỡng ẩm,"Kem dưỡng ẩm, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",275000,,be,9
+BE-003,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",170000,,xanh rêu,3
+BE-004,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",356000,,đen,10
+BE-004,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",356000,,be,11
+BE-005,Váy midi hoa,"Váy midi hoa, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",251000,,be,4
+BE-006,Kem chống nắng,"Kem chống nắng, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",146000,,xanh rêu,11
+BE-007,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",332000,,đen,5
+BE-007,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",332000,,be,6
+BE-008,Son dưỡng có màu,"Son dưỡng có màu, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",227000,,be,12
+BE-009,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",122000,,xanh rêu,6
+BE-010,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",308000,,đen,13
+BE-010,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",308000,,be,14
+BE-011,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",203000,,be,7
+BE-012,Giá treo khăn,"Giá treo khăn, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",98000,,xanh rêu,14
+BE-013,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",284000,,đen,8
+BE-013,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",284000,,be,9
+BE-014,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",179000,,be,2
+BE-015,Chuột không dây,"Chuột không dây, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",365000,,xanh rêu,9
+BE-016,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",260000,,đen,3
+BE-016,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",260000,,be,4
+BE-017,Áo khoác gió,"Áo khoác gió, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",155000,,be,10
+BE-018,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",341000,,xanh rêu,0
+BE-019,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",236000,,đen,11
+BE-019,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",236000,,be,12
+BE-020,Quần jogger,"Quần jogger, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",131000,,be,5
+BE-021,Váy midi hoa,"Váy midi hoa, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",317000,,xanh rêu,12
+BE-022,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",212000,,đen,6
+BE-022,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",212000,,be,7
+BE-023,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",107000,,be,13
+BE-024,Son dưỡng có màu,"Son dưỡng có màu, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",293000,,xanh rêu,7
+BE-025,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",188000,,đen,14
+BE-025,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",188000,,be,2
+BE-026,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",374000,,be,8
+BE-027,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",269000,,xanh rêu,2
+BE-028,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",164000,,đen,9
+BE-028,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",164000,,be,10
+BE-029,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",350000,,be,3
+BE-030,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",245000,,xanh rêu,10
+BE-031,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",140000,,đen,4
+BE-031,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",140000,,be,5
+BE-032,Sạc dự phòng,"Sạc dự phòng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",326000,,be,11
+BE-033,Áo khoác gió,"Áo khoác gió, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",221000,,xanh rêu,5
+BE-034,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",116000,,đen,12
+BE-034,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",116000,,be,13
+BE-035,Áo sơ mi linen,"Áo sơ mi linen, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",302000,,be,0
+BE-036,Quần jogger,"Quần jogger, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",197000,,xanh rêu,13
+BE-037,Váy midi hoa,"Váy midi hoa, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",92000,,đen,7
+BE-037,Váy midi hoa,"Váy midi hoa, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",92000,,be,8
+BE-038,Kem chống nắng,"Kem chống nắng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",278000,,be,14
+BE-039,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",173000,,xanh rêu,8
+BE-040,Son dưỡng có màu,"Son dưỡng có màu, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",359000,,đen,2
+BE-040,Son dưỡng có màu,"Son dưỡng có màu, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",359000,,be,3
+BE-041,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",254000,,be,9
+BE-042,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",149000,,xanh rêu,3
+BE-043,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",335000,,đen,10
+BE-043,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",335000,,be,11
+BE-044,Giá treo khăn,"Giá treo khăn, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",230000,,be,4
+BE-045,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",125000,,xanh rêu,11
+BE-046,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",311000,,đen,5
+BE-046,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",311000,,be,6
+BE-047,Chuột không dây,"Chuột không dây, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",206000,,be,12
+BE-048,Sạc dự phòng,"Sạc dự phòng, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",101000,,xanh rêu,6
+BE-049,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",287000,,đen,13
+BE-049,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",287000,,be,14
+BE-050,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",182000,,be,7
+BE-051,Áo sơ mi linen,"Áo sơ mi linen, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",368000,,xanh rêu,14
+BE-052,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",263000,,đen,0
+BE-052,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",263000,,be,0
+BE-053,Váy midi hoa,"Váy midi hoa, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",158000,,be,2
+BE-054,Kem chống nắng,"Kem chống nắng, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",344000,,xanh rêu,9
+BE-055,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",239000,,đen,3
+BE-055,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",239000,,be,4
+BE-056,Son dưỡng có màu,"Son dưỡng có màu, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",134000,,be,10
+BE-057,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",320000,,xanh rêu,4
+BE-058,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",215000,,đen,11
+BE-058,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",215000,,be,12
+BE-059,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",110000,,be,5
+BE-060,Giá treo khăn,"Giá treo khăn, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",296000,,xanh rêu,12
+BE-061,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",191000,,đen,6
+BE-061,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",191000,,be,7
+BE-062,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",377000,,be,13
+BE-063,Chuột không dây,"Chuột không dây, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",272000,,xanh rêu,7
+BE-064,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",167000,,đen,14
+BE-064,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",167000,,be,2
+BE-065,Áo khoác gió,"Áo khoác gió, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",353000,,be,8
+BE-066,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",248000,,xanh rêu,2
+BE-067,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",143000,,đen,9
+BE-067,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",143000,,be,10
+BE-068,Quần jogger,"Quần jogger, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",329000,,be,3
+BE-069,Váy midi hoa,"Váy midi hoa, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",224000,,xanh rêu,0
+BE-070,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",119000,,đen,4
+BE-070,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",119000,,be,5
+BE-071,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",305000,,be,11
+BE-072,Son dưỡng có màu,"Son dưỡng có màu, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",200000,,xanh rêu,5
+BE-073,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",95000,,đen,12
+BE-073,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",95000,,be,13
+BE-074,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",281000,,be,6
+BE-075,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",176000,,xanh rêu,13
+BE-076,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",362000,,đen,7
+BE-076,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",362000,,be,8
+BE-077,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",257000,,be,14
+BE-078,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",152000,,xanh rêu,8
+BE-079,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",338000,,đen,2
+BE-079,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",338000,,be,3
+BE-080,Sạc dự phòng,"Sạc dự phòng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",233000,,be,9

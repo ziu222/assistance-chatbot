@@ -1,7 +1,7 @@
 # Chính sách Ghim Số
 
 - Đổi trả 30 ngày; còn tem, chưa qua sử dụng, có video mở gói.
-- Phí giao nội thành 20,000đ; ngoại thành 35,000đ; tỉnh 50,000đ.
+- Phí giao nội thành 20.000đ; ngoại thành 35.000đ; tỉnh 50.000đ.
 - Đơn từ 500.000đ được miễn phí giao.
 - Có COD; chuyển khoản xác nhận trong giờ làm việc.
 - Giá hiển thị đã gồm thuế; không tự áp dụng khuyến mãi ngoài chương trình công bố.

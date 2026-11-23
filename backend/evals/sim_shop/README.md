@@ -18,10 +18,12 @@ cho cùng byte đầu ra. `validate.py` import parser catalog, `BusinessHours`, 
 `extract_amounts` của Atlas. Trường `eval_seeds` trong template hiện chỉ là đường dẫn quy ước;
 chưa có code runtime đọc trường này.
 
-Bộ hiện có 4 shop, 80 SKU/shop, 50 khách/shop, 100 đơn/shop và 450 nhiệm vụ (25 mỗi nhóm
-category). Câu không dấu chiếm ít nhất một nửa. Các số tiền là giá một SKU; không chấm tổng
-nhiều món vì Atlas chưa hỗ trợ.
+Bộ hiện có 4 shop, 80 SKU/shop (có nhiều dòng biến thể size/màu), 50 khách/shop, 100 đơn/shop
+và 450 nhiệm vụ (25 mỗi nhóm category). Câu không dấu chiếm ít nhất 40%; 8 persona đều được
+dùng. Nhiệm vụ multi-turn có history thật và order reference trỏ tới `orders.json`. Các số
+tiền là giá một SKU; không chấm tổng nhiều món vì Atlas chưa hỗ trợ.
 
-Giới hạn: câu sinh theo mẫu sạch hơn chat thật; trạng thái đơn chỉ là dữ liệu chuẩn bị cho
-tool tương lai, nên câu hỏi đơn/hủy/hoàn tiền vẫn gắn `needs_human`. Thông tin không có nguồn
-được gắn `unclear` và chuyển người, không tự bịa.
+Generator hiện dùng các biến thể câu viết tay deterministic, không gọi LLM. Vì vậy câu vẫn
+sạch hơn chat thật và không đại diện đầy đủ tiếng địa phương. Trạng thái đơn chỉ là dữ liệu
+chuẩn bị cho tool tương lai, nên câu hỏi đơn/hủy/hoàn tiền vẫn gắn `needs_human`. Thông tin
+không có nguồn được gắn `unclear` và chuyển người, không tự bịa.
