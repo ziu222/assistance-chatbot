@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **2.1–2.12 đã implement**; 2.13–2.14 (nguồn tri thức linh hoạt, adapter sàn) là thiết kế, chưa implement — chi tiết ở §12 và §13.
+- Trạng thái: **2.1–2.12 đã implement**; 2.13 đã implement phần độ phủ tri thức và `knowledge_gap` (§13.3–13.4); phần nguồn catalog dạng adapter + Google Sheets của 2.13 và 2.14 (adapter sàn) còn là thiết kế — chi tiết ở §12 và §13.
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
@@ -937,10 +937,13 @@ Mỗi FAQ và tài liệu gắn **chủ đề** thuộc một danh sách cố đ
 - **Bot biết mình không biết gì.** Khối tri thức của prompt (§6.4, khối 4) thêm một dòng cố định "Shop chưa có thông tin về: …", dựng từ độ phủ, sắp theo thứ tự cố định. Dòng này đổi khi độ phủ đổi, nên nằm trong `knowledge_hash` và vẫn được cache. Kiểm tra bằng code giữ nguyên, nên kể cả khi model vẫn bịa, số tiền bịa vẫn bị gắn `grounded=false`.
 - Độ phủ là **dẫn xuất** từ FAQ/tài liệu (ADR-0030): dựng lại được bất cứ lúc nào, không phải nguồn sự thật riêng.
 
+Đã implement (2.13, phần độ phủ): `knowledge/domain/topics.py` đoán chủ đề; cột `topics text[]` trên `faq_entries` và `knowledge_docs` (NULL = để hệ thống đoán, mảng kể cả rỗng = chủ shop đã chọn; PATCH `topics: null` quay lại tự đoán); `GET /api/v1/knowledge/coverage`; dòng `<missing>` cuối khối `<knowledge>`. Bộ từ khóa được kiểm bằng 12 shop giả lập: độ phủ đoán từ FAQ/chính sách khớp đúng mục mỗi shop khai báo. Chưa làm: câu hỏi nhanh lúc onboarding, giao diện sửa chủ đề từng mục (API đã có).
+
 ### 13.4. Biến chỗ thiếu thành gợi ý
 
 - Run kết thúc với `needs_human` và `reason = "no_source"` ⇒ ghi `learning_signals` loại `knowledge_gap`, payload gồm intent, chủ đề đoán được (từ khóa) và `run_id`. **Không chép lời khách.**
 - Gộp theo tuần ⇒ màn hình Kiến thức hiện: "Tuần này 12 khách hỏi phí ship đi tỉnh, shop chưa có thông tin" kèm nút "Viết câu trả lời" (mở sẵn trợ lý viết 2.11). Chủ shop duyệt rồi mới lưu.
+- Đã implement: tín hiệu ghi trong cùng transaction lưu nháp; `GET /api/v1/knowledge/gaps?days=7` đếm theo chủ đề (không đoán được chủ đề ⇒ `other`); thẻ "Độ phủ kiến thức" trên trang Kiến thức. Nút "Viết câu trả lời" hiện chỉ mở tab FAQ; mở sẵn trợ lý viết với chủ đề tương ứng là việc tiếp theo.
 - Bước 4 mới dựng ứng viên FAQ từ **câu nhân viên đã trả lời** cho đúng loại câu hỏi đó (E17: không bao giờ từ chữ của khách).
 
 ### 13.5. Kiểm thử

@@ -257,3 +257,26 @@ async def emit_completed(
         },
         trace_id=None,
     )
+
+
+async def record_knowledge_gap(
+    s: AsyncSession,
+    *,
+    tenant_id: UUID,
+    conversation_id: UUID,
+    run_id: UUID,
+    intents: list[str] | None,
+    topics: list[str],
+) -> None:
+    """`learning_signals` kind=knowledge_gap (§13.3): chỉ nhãn chủ đề, không lưu chữ của khách."""
+    await s.execute(
+        text(
+            "INSERT INTO learning_signals (tenant_id, conversation_id, kind, payload) "
+            "VALUES (:t, :c, 'knowledge_gap', CAST(:p AS jsonb))"
+        ),
+        {
+            "t": tenant_id,
+            "c": conversation_id,
+            "p": json.dumps({"run_id": str(run_id), "intents": intents or [], "topics": topics}),
+        },
+    )

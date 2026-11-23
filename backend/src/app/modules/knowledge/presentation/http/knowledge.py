@@ -6,10 +6,12 @@ from uuid import UUID
 from fastapi import APIRouter, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
+from sqlalchemy import text
 
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
 from app.modules.knowledge.domain.catalog_csv import CatalogCsvError, parse_catalog_csv
+from app.modules.knowledge.domain.topics import TOPICS, effective_topics
 from app.modules.knowledge.infrastructure import content
 from app.modules.knowledge.infrastructure.catalog import (
     get_catalog_item,
@@ -31,9 +33,14 @@ def _require(actor: StaffActor, action: str) -> UUID:
 
 # ---------- FAQ + tài liệu: cùng hình dạng, khác tên cột ----------
 
+Topic = Literal[tuple(TOPICS)]  # type: ignore[valid-type]  # cùng danh sách với domain
+# `topics`: bỏ trống = hệ thống đoán từ nội dung; gửi mảng (kể cả rỗng) = chủ shop chọn;
+# PATCH với null = quay lại để hệ thống đoán.
+
 
 class FaqIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    topics: list[Topic] | None = None
     question: str = Field(min_length=1, max_length=500)
     answer: str = Field(min_length=1, max_length=4000)
     status: Literal["draft", "approved"] = "approved"
@@ -41,6 +48,7 @@ class FaqIn(BaseModel):
 
 class FaqPatch(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    topics: list[Topic] | None = None
     question: str | None = Field(default=None, min_length=1, max_length=500)
     answer: str | None = Field(default=None, min_length=1, max_length=4000)
     status: Literal["draft", "approved", "archived"] | None = None
@@ -48,6 +56,7 @@ class FaqPatch(BaseModel):
 
 class DocIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    topics: list[Topic] | None = None
     title: str = Field(min_length=1, max_length=200)
     body: str = Field(min_length=1, max_length=20000)
     status: Literal["draft", "approved"] = "approved"
@@ -55,6 +64,7 @@ class DocIn(BaseModel):
 
 class DocPatch(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    topics: list[Topic] | None = None
     title: str | None = Field(default=None, min_length=1, max_length=200)
     body: str | None = Field(default=None, min_length=1, max_length=20000)
     status: Literal["draft", "approved", "archived"] | None = None
@@ -69,6 +79,8 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
             a: e.first,
             b: e.second,
             "status": e.status,
+            "topics": e.topics,  # null = hệ thống đoán
+            "effective_topics": effective_topics(e.topics, f"{e.first} {e.second}"),
             "created_at": e.created_at.isoformat(),
             "updated_at": e.updated_at.isoformat(),
         }
@@ -84,7 +96,7 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
         tenant_id = _require(actor, "knowledge.manage")
         async with request.app.state.session_factory() as s, s.begin():
             entry = await content.create_entry(
-                s, kind, tenant_id, getattr(body, a), getattr(body, b), body.status
+                s, kind, tenant_id, getattr(body, a), getattr(body, b), body.status, body.topics
             )
         return JSONResponse(as_json(entry), status_code=201)
 
@@ -102,6 +114,8 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
                 first=getattr(body, a),
                 second=getattr(body, b),
                 status=body.status,
+                topics=body.topics,
+                set_topics="topics" in body.model_fields_set,
             )
         if entry is None:
             raise ApiError(404, "not_found", "Not found")
@@ -124,6 +138,54 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
 
 _register("faq", "/knowledge/faqs", ("question", "answer"), FaqIn, FaqPatch)
 _register("doc", "/knowledge/docs", ("title", "body"), DocIn, DocPatch)
+
+
+# ---------- độ phủ + chỗ thiếu (§13.3) ----------
+
+
+@router.get("/knowledge/coverage")
+async def coverage(request: Request, actor: CurrentStaff) -> dict:
+    """Mỗi chủ đề: đã có FAQ/tài liệu đã duyệt nào nói tới chưa."""
+    tenant_id = _require(actor, "knowledge.read")
+    sources: dict[str, list[dict]] = {t: [] for t in TOPICS}
+    async with request.app.state.session_factory() as s:
+        for kind in ("faq", "doc"):
+            for e in await content.list_entries(s, kind, tenant_id):
+                if e.status != "approved":
+                    continue
+                for t in effective_topics(e.topics, f"{e.first} {e.second}"):
+                    sources[t].append({"type": kind, "id": str(e.id), "title": e.first})
+    return {
+        "items": [
+            {"topic": t, "label": label, "covered": bool(sources[t]), "sources": sources[t]}
+            for t, label in TOPICS.items()
+        ]
+    }
+
+
+@router.get("/knowledge/gaps")
+async def gaps(
+    request: Request, actor: CurrentStaff, days: Annotated[int, Query(ge=1, le=90)] = 7
+) -> dict:
+    """Bot phải nhờ nhân viên vì thiếu nguồn: đếm theo chủ đề trong `days` ngày gần nhất."""
+    tenant_id = _require(actor, "knowledge.read")
+    async with request.app.state.session_factory() as s:
+        rows = await s.execute(
+            text(
+                "SELECT COALESCE(t.topic, 'other') AS topic, count(*) AS n "
+                "FROM learning_signals ls "
+                "LEFT JOIN LATERAL jsonb_array_elements_text(ls.payload->'topics') AS t(topic) "
+                "ON true "
+                "WHERE ls.tenant_id = :t AND ls.kind = 'knowledge_gap' "
+                "AND ls.created_at > now() - make_interval(days => :d) "
+                "GROUP BY 1 ORDER BY n DESC, topic"
+            ),
+            {"t": tenant_id, "d": days},
+        )
+        items = [
+            {"topic": r.topic, "label": TOPICS.get(r.topic, "khác"), "count": r.n} for r in rows
+        ]
+    return {"days": days, "items": items}
 
 
 # ---------- catalog ----------

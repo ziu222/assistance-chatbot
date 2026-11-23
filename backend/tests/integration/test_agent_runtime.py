@@ -350,6 +350,15 @@ async def test_model_needs_human_keeps_draft_and_hands_off(world, session_factor
     [draft] = await drafts(session_factory)
     assert (await one_run(session_factory))["status"] == "handoff_suggested"
     assert draft["needs_human"] and draft["reason"] == "no_source"
+    # Thiếu nguồn ⇒ một tín hiệu knowledge_gap chỉ mang nhãn chủ đề, không có chữ của khách.
+    async with session_factory() as s:
+        [payload] = (
+            await s.execute(
+                text("SELECT payload FROM learning_signals WHERE kind = 'knowledge_gap'")
+            )
+        ).scalars()
+    assert payload["topics"] == ["wholesale"] and payload["intents"] == ["faq"]
+    assert "sỉ" not in json.dumps(payload, ensure_ascii=False)
 
 
 # ---------- tiêu chí 5 / §7.4: nháp phải khớp nguồn và giá ----------
@@ -396,6 +405,10 @@ async def test_faq_source_and_faq_amounts_are_valid(world, session_factory):
     draft_req = llm.requests[1]
     assert any("Đổi trong 7 ngày" in b for b in draft_req.system_blocks)
     assert "Đổi trong 7 ngày" not in (draft_req.turns[0].text or "")
+    # Shop mới có FAQ đổi trả: các chủ đề còn lại được nêu là chưa có để bot không đoán (§13.3).
+    knowledge = next(b for b in draft_req.system_blocks if "</knowledge>" in b)
+    assert "Shop chưa có thông tin về: giờ làm việc, phí giao hàng" in knowledge
+    assert "đổi trả" not in knowledge.split("<missing>")[1]
 
 
 async def test_customer_cannot_close_the_data_block(world, session_factory):

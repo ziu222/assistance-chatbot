@@ -1,5 +1,6 @@
 """Bước 2.3: FAQ, tài liệu nhỏ, catalog có cấu trúc, tool read-only cho agent."""
 
+import json
 from uuid import uuid4
 
 import pytest
@@ -239,3 +240,56 @@ async def test_knowledge_tenant_isolation(new_client, session_factory):
     assert (
         await client_b.delete(f"/api/v1/knowledge/faqs/{faq['id']}", headers=CSRF)
     ).status_code == 404
+
+
+# ---------- độ phủ + chỗ thiếu (§13.3) ----------
+
+
+async def test_topics_coverage_and_gaps(new_client, session_factory):
+    client, ctx, *_ = await logged_in(new_client, session_factory, role="owner")
+    faq = (
+        await client.post(
+            "/api/v1/knowledge/faqs",
+            json={"question": "Ship nội thành bao nhiêu?", "answer": "25k, có COD."},
+            headers=CSRF,
+        )
+    ).json()
+    assert faq["topics"] is None and faq["effective_topics"] == ["shipping", "payment"]
+    bad = await client.post(
+        "/api/v1/knowledge/faqs",
+        json={"question": "Q?", "answer": "A.", "topics": ["khong-co"]},
+        headers=CSRF,
+    )
+    assert bad.status_code == 422
+
+    def covered(body):
+        return {i["topic"] for i in body["items"] if i["covered"]}
+
+    assert covered((await client.get("/api/v1/knowledge/coverage")).json()) == {
+        "shipping",
+        "payment",
+    }
+    # Chủ shop sửa chủ đề; PATCH topics=null quay lại để hệ thống đoán.
+    url = f"/api/v1/knowledge/faqs/{faq['id']}"
+    r = await client.patch(url, json={"topics": ["shipping"]}, headers=CSRF)
+    assert r.json()["effective_topics"] == ["shipping"]
+    assert (await client.patch(url, json={"answer": "30k."}, headers=CSRF)).json()["topics"] == [
+        "shipping"
+    ]
+    r = await client.patch(url, json={"topics": None}, headers=CSRF)
+    assert r.json()["topics"] is None
+
+    async with session_factory() as s, s.begin():
+        for topics in (["returns"], ["returns"], []):
+            await s.execute(
+                text(
+                    "INSERT INTO learning_signals (tenant_id, kind, payload) "
+                    "VALUES (:t, 'knowledge_gap', CAST(:p AS jsonb))"
+                ),
+                {"t": ctx.tenant_id, "p": json.dumps({"topics": topics})},
+            )
+    gaps = (await client.get("/api/v1/knowledge/gaps?days=7")).json()
+    assert gaps["items"] == [
+        {"topic": "returns", "label": "đổi trả", "count": 2},
+        {"topic": "other", "label": "khác", "count": 1},
+    ]

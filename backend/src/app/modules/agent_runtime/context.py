@@ -12,6 +12,7 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.knowledge.domain.topics import covered, effective_topics, missing_line
 from app.modules.knowledge.infrastructure.content import list_entries
 
 HISTORY_TURNS = 10
@@ -100,6 +101,14 @@ async def build_context(
     )
     parts = [f'<faq id="{e.id}">\nQ: {e.first}\nA: {e.second}\n</faq>' for e in faqs]
     parts += [f'<doc id="{e.id}" title="{escape(e.first)}">\n{e.second}\n</doc>' for e in docs]
+    # Shop không cần viết đủ mọi thứ: chủ đề chưa có thì nói rõ để bot nhờ người thay vì đoán
+    # (§13.3). Nằm trong khối ổn định nên vào knowledge_hash và được cache như phần còn lại.
+    entries = [*faqs, *docs]
+    gap = missing_line(
+        covered(effective_topics(e.topics, f"{e.first} {e.second}") for e in entries)
+    )
+    if gap:
+        parts.append(f"<missing>{gap}</missing>")
     block = "<knowledge>\n" + "\n".join(parts) + "\n</knowledge>"
     return RunContext(
         knowledge_block=block,
