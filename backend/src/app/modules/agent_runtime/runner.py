@@ -29,6 +29,7 @@ from app.modules.agent_runtime.infrastructure.runs import (
     finish_run,
     load_agent,
     lock_for_save,
+    record_knowledge_gap,
     save_draft,
     start_run,
 )
@@ -52,6 +53,7 @@ from app.modules.agent_runtime.schemas import ClassifyOut, DraftOut
 from app.modules.agent_runtime.signals import behavior_signals, score, semantic_signals
 from app.modules.agent_runtime.tools import TOOLS, run_tool
 from app.modules.agent_runtime.validation import extract_amounts, validate_draft
+from app.modules.knowledge.domain.topics import suggest_topics
 from app.shared.infrastructure.metrics import (
     AGENT_DRAFTS,
     AGENT_NO_LLM,
@@ -460,6 +462,15 @@ class AgentRunner:
                         grounded=str(draft.grounded).lower(),
                         needs_human=str(draft.needs_human).lower(),
                     ).inc()
+                    if draft.needs_human and "no_source" in (draft.reason or "") and run.ctx:
+                        await record_knowledge_gap(
+                            s,
+                            tenant_id=run.tenant_id,
+                            conversation_id=run.conversation_id,
+                            run_id=run.run_id,
+                            intents=run.intents,
+                            topics=suggest_topics(" ".join(run.ctx.customer_texts)),
+                        )
                 await emit_completed(
                     s,
                     tenant_id=run.tenant_id,
