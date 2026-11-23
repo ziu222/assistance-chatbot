@@ -1042,6 +1042,14 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
             if "giá" in template:
                 exp["amounts"] = [p["price"]]
                 notes += f" giá {money(p['price'])}"
+        if "muốn đặt" in template:
+            # Thiết kế 03: tra kho, trả lời, hỏi tiếp theo quy trình đặt hàng; chỉ chuyển người
+            # khi phiếu đủ thông tin.
+            exp |= {
+                "intents_any": ["order_intent", "product_info"],
+                "tools_any": ["search_products"],
+            }
+            notes += "; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người"
         return b.add(shop, category, persona, [msg], exp, notes + ".", difficulty="medium")
 
     if category == "hard_negative":

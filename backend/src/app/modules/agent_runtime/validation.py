@@ -8,6 +8,7 @@ import re
 
 from app.modules.agent_runtime.schemas import DraftOut
 from app.modules.knowledge.domain.text import fold
+from app.modules.orders.domain.order_flow import claims_order_placed
 
 MAX_REPLY = 1200
 _URL_OR_HTML = re.compile(r"https?://|www\.|<\s*/?\s*[a-z!]", re.IGNORECASE)
@@ -49,4 +50,6 @@ def validate_draft(
         problems.append("length")
     if not extract_amounts(draft.reply) <= known_amounts:
         problems.append("amount_mismatch")
+    if claims_order_placed(draft.reply):  # chỉ nhân viên xác nhận đơn (ADR-0035)
+        problems.append("order_claim")
     return problems

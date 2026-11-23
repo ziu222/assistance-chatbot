@@ -1,6 +1,6 @@
 # Thiết kế: quy trình đặt hàng theo từng shop và inbox hợp nhất nhiều kênh
 
-- Trạng thái: **thiết kế, chưa implement**. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
+- Trạng thái: **O2 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval); O3–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (§12 chính sách hội thoại, ticket, `SendGate`; §13 nguồn tri thức linh hoạt), [docs/evals/return-questions.md](../evals/return-questions.md).
 
@@ -104,7 +104,10 @@ collecting ──(đủ trường bắt buộc)──▶ ready ──(nhân viê
    - `phone`: tách bằng code (mẫu số điện thoại Việt Nam), không để model chép lại.
    - `name`, `address`, `delivery_time`, `note`: model trả trong một trường có cấu trúc mới của output nháp (`order_fields`). Code ghi vào phiếu và đánh dấu "chưa xác minh".
 5. Code tính các trường còn thiếu theo cấu hình. Khối `<order_flow>` trong prompt đưa ra: trường bắt buộc, trường còn thiếu, `destination`, cùng `payment_text` và `confirm_text` nguyên văn.
-6. Nháp hỏi đúng **một** trường tiếp theo, hoặc khi đã đủ thì dùng `confirm_text` / link. Nháp luôn có `needs_human = true`, `reason = order` cho tới khi nhân viên xác nhận.
+6. Nháp hỏi đúng **một** trường tiếp theo, hoặc khi đã đủ thì dùng `confirm_text` / link. **Trong lúc thu thập, bot tự hỏi tiếp** (`needs_human` theo model). Khi phiếu đủ thông tin (`ready`), code đặt `needs_human = true`, `reason = order` và mở ticket.
+
+   Lần đo đầu của O2 ép mọi nháp trong luồng đặt hàng phải "cần nhân viên", kết quả là 4/4 ca hết hàng bị chuyển người thừa (bot chỉ cần báo hết hàng và gợi ý mẫu khác). Xem [docs/evals/order-flow.md](../evals/order-flow.md).
+7. Chỉ biến thể **còn hàng** mới vào phiếu. Món hết sạch không tạo phiếu; khi chưa có món nào lẫn thông tin nào thì không ghi phiếu rỗng.
 
 Khối `<order_flow>` thay đổi theo từng hội thoại, nên đặt **sau** khối tri thức ổn định để không phá prompt cache (ADR-0028).
 
@@ -213,7 +216,7 @@ Thứ tự kênh đề xuất: **Zalo OA hoặc Facebook Messenger trước** (n
   - không nói đơn đã xác nhận;
   - hướng đúng `destination` của kênh.
 
-  Các ca "em muốn đặt X, shop có trả lời được không?" ngoài giờ / tạm nghỉ đổi nhãn thành "tra kho, trả lời, chuyển người với `reason = order`".
+  Các ca "em muốn đặt X, shop có trả lời được không?" lúc tạm nghỉ đổi nhãn thành "tra kho, trả lời, hỏi tiếp; chưa cần người" (đã làm ở O2).
 
 ## 9. Trình tự (phụ thuộc, không phải deadline)
 

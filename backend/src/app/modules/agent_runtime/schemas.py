@@ -26,3 +26,24 @@ class DraftOut(BaseModel):
     sources: list[Source] = Field(max_length=10)
     needs_human: bool
     reason: Literal["", "no_source", "policy", "discount", "order", "complaint", "unclear"]
+
+
+class OrderFields(BaseModel):
+    """Phần đơn hàng model điền khi có khối <order_flow> (thiết kế 03 §5.2). Rỗng/0 = chưa biết.
+
+    Không có số điện thoại: code tự tách từ tin của khách. `sku` chỉ được nhận nếu nằm trong kết
+    quả tool của chính run đó; giá luôn lấy từ catalog.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+    sku: str = Field(max_length=64)
+    variant: str = Field(max_length=100)
+    quantity: int = Field(ge=0, le=999)
+    name: str = Field(max_length=100)
+    address: str = Field(max_length=300)
+    delivery_time: str = Field(max_length=100)
+    note: str = Field(max_length=300)
+
+
+class OrderDraftOut(DraftOut):
+    order: OrderFields

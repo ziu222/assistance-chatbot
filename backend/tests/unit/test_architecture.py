@@ -50,7 +50,9 @@ def test_runtime_never_writes_to_messages_table():
     assert offenders == []
 
 
-PURE_DOMAINS = [RUNTIME.parent / m / "domain" for m in ("conversation_policy", "authoring")]
+PURE_DOMAINS = [
+    RUNTIME.parent / m / "domain" for m in ("conversation_policy", "authoring", "orders")
+]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
 
 
