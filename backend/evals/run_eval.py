@@ -18,6 +18,7 @@ import argparse
 import asyncio
 import dataclasses
 import json
+import re
 import sys
 import time
 from collections import Counter, defaultdict
@@ -64,6 +65,7 @@ from app.modules.conversation_policy.infrastructure.repository import publish  #
 from app.modules.conversation_policy.stage import PolicyStage  # noqa: E402
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent  # noqa: E402
 from app.modules.knowledge.domain.catalog_csv import parse_catalog_csv  # noqa: E402
+from app.modules.knowledge.domain.text import fold  # noqa: E402
 from app.modules.knowledge.infrastructure.catalog import import_catalog, sync_catalog  # noqa: E402
 from app.modules.knowledge.infrastructure.catalog_sync import market_items  # noqa: E402
 from app.modules.knowledge.infrastructure.content import create_entry  # noqa: E402
@@ -498,6 +500,10 @@ async def main() -> int:
     ap.add_argument("--out", help="ghi báo cáo markdown")
     ap.add_argument("--raw", help="ghi kết quả từng ca (jsonl)")
     ap.add_argument("--template-version", type=int, default=None, help="so sánh các bản template")
+    ap.add_argument(
+        "--match",
+        help="chỉ chạy ca có tin khách khớp regex (trên chữ đã bỏ dấu), vd 'doi|tra hang'",
+    )
     args = ap.parse_args()
     global TEMPLATE_VERSION
     TEMPLATE_VERSION = args.template_version
@@ -507,7 +513,14 @@ async def main() -> int:
     await recreate(url)
     engine = create_async_engine(url)
     factory = create_session_factory(engine)
-    tasks = sample(json.loads((SIM / "tasks.json").read_text(encoding="utf-8")), args.per_category)
+    all_tasks = json.loads((SIM / "tasks.json").read_text(encoding="utf-8"))
+    if args.match:  # bộ test tập trung khi sửa một hành vi cụ thể
+        all_tasks = [
+            t
+            for t in all_tasks
+            if re.search(args.match, fold(" ".join(m["text"] for m in t["messages"])))
+        ]
+    tasks = sample(all_tasks, args.per_category)
     shops = {}
     for key in sorted({t["shop"] for t in tasks}):
         shops[key] = await load_shop(factory, key)
