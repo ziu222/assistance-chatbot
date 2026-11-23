@@ -113,7 +113,7 @@ async def test_search_products_tool_projection_and_tenant_scope(new_client, sess
         }
     assert result.ok
     [item] = [i for i in result.data if i["sku"] == "D-07"]
-    assert set(item) == {"id", "sku", "name", "price_vnd", "variants"}  # đã chiếu, không đổ nguyên
+    assert set(item) == {"id", "sku", "name", "price_vnd", "variants", "synced_at"}  # đã chiếu
     assert item["price_vnd"] == 890000
     assert {i["id"] for i in result.data} <= {str(x) for x in ids_a}  # không lẫn của tenant B
 

@@ -381,7 +381,8 @@ class AgentRunner:
                             "records": len(tr.data)
                             if ok and isinstance(tr.data, list)
                             else int(ok),
-                        },
+                        }
+                        | ({"stale_catalog": True} if tr is not None and tr.stale else {}),
                     )
                 )
             turns.append(Turn(role="assistant", text=res.text, tool_calls=res.tool_calls))

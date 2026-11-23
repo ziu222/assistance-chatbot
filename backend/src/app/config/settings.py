@@ -45,6 +45,9 @@ class Settings(BaseSettings):
     # Trần chi phí ngày của trợ lý viết, riêng với trần của nháp (micro-USD; 300000 = 0,3 USD).
     authoring_daily_cap_micro: int = 300_000
 
+    # Google Sheets (§13.2): JSON key của service account, chỉ quyền đọc. Rỗng = tắt nguồn Sheets.
+    google_service_account_json: str = ""
+
 
 @lru_cache
 def get_settings() -> Settings:

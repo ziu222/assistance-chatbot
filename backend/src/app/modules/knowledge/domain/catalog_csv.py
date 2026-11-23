@@ -2,6 +2,7 @@
 
 import csv
 import io
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
 
 REQUIRED = ("sku", "name", "description", "price_vnd", "size", "color", "stock")
@@ -38,14 +39,31 @@ def _int(value: str, column: str, line: int, errors: list[str]) -> int | None:
 
 def parse_catalog_csv(content: str) -> list[ParsedItem]:
     reader = csv.DictReader(io.StringIO(content.removeprefix("﻿")))
-    missing = [c for c in REQUIRED if c not in (reader.fieldnames or [])]
+    return parse_catalog_records(reader.fieldnames, reader)
+
+
+def parse_catalog_table(values: Sequence[Sequence[str]]) -> list[ParsedItem]:
+    """Bảng như Google Sheets trả: dòng đầu là header, ô trống cuối dòng có thể bị lược."""
+    if not values:
+        raise CatalogCsvError(["no data rows"])
+    header = [str(h).strip() for h in values[0]]
+    records = (
+        {h: str(row[i]) if i < len(row) else "" for i, h in enumerate(header)} for row in values[1:]
+    )
+    return parse_catalog_records(header, records)
+
+
+def parse_catalog_records(
+    fieldnames: Sequence[str] | None, records: Iterable[dict[str, str | None]]
+) -> list[ParsedItem]:
+    missing = [c for c in REQUIRED if c not in (fieldnames or [])]
     if missing:
         raise CatalogCsvError([f"missing columns: {', '.join(missing)}"])
 
     items: dict[str, ParsedItem] = {}
     errors: list[str] = []
     rows = 0
-    for line, row in enumerate(reader, start=2):  # dòng 1 là header
+    for line, row in enumerate(records, start=2):  # dòng 1 là header
         rows += 1
         if rows > MAX_ROWS:
             raise CatalogCsvError([f"too many rows (max {MAX_ROWS})"])

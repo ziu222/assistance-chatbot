@@ -1,8 +1,10 @@
 """REST knowledge (thiết kế bước 2 §8.1): FAQ, tài liệu nhỏ, import + thử tìm catalog."""
 
+from datetime import UTC, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
+import httpx
 from fastapi import APIRouter, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -14,9 +16,22 @@ from app.modules.knowledge.domain.catalog_csv import CatalogCsvError, parse_cata
 from app.modules.knowledge.domain.topics import TOPICS, effective_topics
 from app.modules.knowledge.infrastructure import content
 from app.modules.knowledge.infrastructure.catalog import (
+    SyncResult,
     get_catalog_item,
     import_catalog,
+    record_sync_run,
     search_catalog,
+)
+from app.modules.knowledge.infrastructure.catalog_sync import (
+    get_source_config,
+    recent_runs,
+    save_source_config,
+    sync_sheets,
+)
+from app.modules.knowledge.infrastructure.sheets import (
+    CELL_RANGE,
+    SPREADSHEET_ID,
+    service_account_email,
 )
 from app.shared.presentation.http_errors import ApiError
 
@@ -205,15 +220,80 @@ async def import_catalog_csv(request: Request, actor: CurrentStaff) -> dict:
     raw = await request.body()
     if len(raw) > MAX_CSV_BYTES:
         raise ApiError(413, "payload_too_large", "CSV larger than 2 MB")
+    started = datetime.now(UTC)
+    factory = request.app.state.session_factory
     try:
         items = parse_catalog_csv(raw.decode("utf-8"))
+        async with factory() as s, s.begin():
+            created, updated = await import_catalog(s, tenant_id, items)
+            await record_sync_run(
+                s, tenant_id, "csv", started, SyncResult(created=created, updated=updated)
+            )
     except UnicodeDecodeError as exc:
         raise ApiError(422, "invalid_csv", "CSV must be UTF-8") from exc
     except CatalogCsvError as exc:
+        async with factory() as s, s.begin():
+            failed = SyncResult(errors=exc.errors)
+            await record_sync_run(s, tenant_id, "csv", started, failed, failed=True)
         raise ApiError(422, "invalid_csv", "CSV has errors", details=exc.errors) from exc
-    async with request.app.state.session_factory() as s, s.begin():
-        created, updated = await import_catalog(s, tenant_id, items)
     return {"items": len(items), "created": created, "updated": updated}
+
+
+# ---------- nguồn catalog (§13.2) ----------
+
+
+class SheetsSourceIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    spreadsheet_id: str = Field(pattern=SPREADSHEET_ID.pattern)
+    range: str = Field(default="A:G", pattern=CELL_RANGE.pattern)
+
+
+def _run_json(run: dict) -> dict:
+    return run | {k: run[k].isoformat() for k in ("started_at", "finished_at")}
+
+
+@router.get("/catalog/sources")
+async def list_sources(request: Request, actor: CurrentStaff) -> dict:
+    """Cấu hình Sheets + các lần sync gần nhất ("đồng bộ lần cuối lúc…")."""
+    tenant_id = _require(actor, "knowledge.read")
+    async with request.app.state.session_factory() as s:
+        sheets = await get_source_config(s, tenant_id, "sheets")
+        runs = await recent_runs(s, tenant_id)
+    return {
+        # Chủ shop chia sẻ sheet (quyền xem) cho email này.
+        "service_account_email": service_account_email(
+            request.app.state.settings.google_service_account_json
+        ),
+        "sheets": sheets,
+        "runs": [_run_json(r) for r in runs],
+    }
+
+
+@router.put("/catalog/sources/sheets", dependencies=[Csrf])
+async def put_sheets_source(body: SheetsSourceIn, request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "knowledge.manage")
+    async with request.app.state.session_factory() as s, s.begin():
+        await save_source_config(s, tenant_id, "sheets", body.model_dump())
+    return body.model_dump()
+
+
+@router.post("/catalog/sources/sheets/sync", dependencies=[Csrf])
+async def sync_sheets_now(request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "knowledge.manage")
+    async with httpx.AsyncClient() as http:
+        status, result = await sync_sheets(
+            request.app.state.session_factory,
+            tenant_id,
+            request.app.state.settings.google_service_account_json,
+            http,
+        )
+    return {
+        "status": status,
+        "created": result.created,
+        "updated": result.updated,
+        "deactivated": result.deactivated,
+        "errors": result.errors[:20],
+    }
 
 
 @router.get("/catalog/search")
