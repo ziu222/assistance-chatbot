@@ -101,6 +101,13 @@
     "skus": 80
   },
   "name": "Mây Mặc",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "product_link"
+      }
+    }
+  },
   "product_types": [
     "Áo thun cotton cổ tròn",
     "Áo thun form rộng",

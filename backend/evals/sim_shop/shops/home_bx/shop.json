@@ -62,6 +62,13 @@
     "skus": 20
   },
   "name": "Bếp Xinh",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "marketplace_link"
+      }
+    }
+  },
   "product_types": [
     "Bình giữ nhiệt inox",
     "Bình giữ nhiệt mini",

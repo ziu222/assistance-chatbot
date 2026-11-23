@@ -42,6 +42,7 @@ def _check(reply: str, urls=frozenset()):
 def test_draft_may_only_contain_links_the_tools_returned():
     assert _check(f"Anh/chị đặt tại đây nhé: {URL}.", frozenset({URL})) == []
     assert _check(f"Đặt tại {URL}", frozenset()) == ["url_or_html"]
+    assert _check(f"[Đặt tại đây: {URL}]", frozenset({URL})) == []  # ngoặc đóng không thuộc link
     assert _check("Đặt tại https://shop.vn/ao-khoac-gio?ref=bot", frozenset({URL})) == [
         "url_or_html"
     ]

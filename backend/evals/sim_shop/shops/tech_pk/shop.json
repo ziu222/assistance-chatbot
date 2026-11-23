@@ -74,6 +74,13 @@
     "skus": 70
   },
   "name": "Phụ Kiện 247",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "marketplace_link"
+      }
+    }
+  },
   "product_types": [
     "Tai nghe Bluetooth",
     "Tai nghe chống ồn",

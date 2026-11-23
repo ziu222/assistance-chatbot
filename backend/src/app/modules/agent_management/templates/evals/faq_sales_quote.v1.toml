@@ -305,17 +305,17 @@ messages = [{ "from" = "customer", "text" = "shop oi", "at" = "2026-11-25T16:45:
 expected = { "intents_any" = ["product_info", "price_quote"], "tools_any" = [], "sources_include" = [{ "type" = "product", "sku" = "BE-068" }], "amounts" = [], "must_not_say" = [], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "", "run_agent" = true } }
 
 [[cases]]
-id = "beauty_b-multi_turn-014"
-shop = "beauty_b"
-category = "multi_turn"
-history = [{ "who" = "khach", "text" = "alo shop, Serum vitamin C Calm con ko" }, { "who" = "shop", "text" = "Dạ Serum vitamin C Calm giá 369.000đ, hiện loại 150ml còn hàng ạ." }, { "who" = "khach", "text" = "Vay loai 150ml thi sao shop?" }, { "who" = "shop", "text" = "Dạ loại 150ml còn hàng ạ." }]
-messages = [{ "from" = "customer", "text" = "The Kem duong am ban ngay Calm gia bn?", "at" = "2026-11-25T14:20:00+07:00" }]
-expected = { "intents_any" = ["price_quote"], "tools_any" = ["search_products"], "sources_include" = [{ "type" = "product", "sku" = "BE-014" }], "amounts" = [350000], "must_not_say" = [], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "", "run_agent" = true } }
+id = "beauty_mh-order_request-005"
+shop = "beauty_mh"
+category = "order_request"
+history = []
+messages = [{ "from" = "customer", "text" = "chot Sua rua mat diu nhe loai 50ml x3 cho em", "at" = "2026-11-25T14:20:00+07:00" }]
+expected = { "intents_any" = ["order_intent", "product_info", "price_quote"], "tools_any" = ["search_products"], "sources_include" = [{ "type" = "product", "sku" = "MH-001" }], "amounts" = [], "must_not_say" = ["đặt hàng thành công", "đã xác nhận đơn", "đã lên đơn"], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "", "run_agent" = true } }
 
 [[cases]]
-id = "beauty_b-multi_turn-020"
-shop = "beauty_b"
-category = "multi_turn"
-history = [{ "who" = "khach", "text" = "Shop ơi cho em hỏi Son dưỡng có màu Sensitive" }, { "who" = "shop", "text" = "Dạ Son dưỡng có màu Sensitive giá 149.000đ, hiện màu 01 hồng đất còn hàng ạ." }, { "who" = "khach", "text" = "Nếu hết thì em lấy màu 03 cam cháy nha" }, { "who" = "shop", "text" = "Dạ màu 03 cam cháy còn hàng ạ." }]
-messages = [{ "from" = "customer", "text" = "Ship về Đà Lạt mất bao nhiêu nữa ạ?", "at" = "2026-11-27T21:30:00+07:00" }]
-expected = { "intents_any" = ["faq"], "tools_any" = [], "sources_include" = [], "amounts" = [35000], "must_not_say" = [], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "", "run_agent" = true } }
+id = "beauty_mh-order_request-011"
+shop = "beauty_mh"
+category = "order_request"
+history = []
+messages = [{ "from" = "customer", "text" = "chốt Kem chống nắng phổ rộng Calm loại 100ml x3 cho em ạ", "at" = "2026-11-27T15:10:00+07:00" }]
+expected = { "intents_any" = ["order_intent", "product_info", "price_quote"], "tools_any" = ["search_products"], "sources_include" = [{ "type" = "product", "sku" = "MH-009" }], "amounts" = [], "must_not_say" = ["đặt hàng thành công", "đã xác nhận đơn", "đã lên đơn"], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "", "run_agent" = true } }

@@ -77,6 +77,7 @@
     "skus": 12
   },
   "name": "Loa Nhỏ",
+  "order_flow": {},
   "product_types": [
     "Tai nghe Bluetooth",
     "Tai nghe chống ồn",

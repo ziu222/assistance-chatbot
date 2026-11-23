@@ -138,20 +138,42 @@ def render_block(
     """Khối `<order_flow>`: đổi theo hội thoại nên đặt sau khối tri thức (ADR-0028)."""
     required, destination, url = plan(config, provider, items)
     have = [f"{LABELS[f]}: đã có" for f in required if f not in missing]
+    by_link = destination in ("product_link", "marketplace_link")
     lines = [
         "<order_flow>",
-        "Khách muốn đặt hàng. Bạn KHÔNG tạo hay xác nhận đơn; nhân viên sẽ xác nhận.",
-        "Tra sản phẩm bằng tool trước; hết hàng thì gợi ý mẫu cùng loại còn hàng.",
+        "Khách muốn đặt hàng. Bạn KHÔNG tạo hay xác nhận đơn.",
+        'Gọi search_products NGAY trong lượt này trước khi trả lời; không nói kiểu "em kiểm '
+        'tra rồi báo lại". Hết hàng thì gợi ý mẫu cùng loại còn hàng.',
         "Điền order: sku (từ kết quả tool), variant, quantity, và các thông tin khách vừa cho.",
-        "Thông tin đã có: " + ("; ".join(have) if have else "chưa có"),
     ]
+    # Cách đặt hàng của shop phải có ngay từ đầu: khối này được dựng TRƯỚC khi tra kho, nên lúc
+    # đó phiếu thường chưa có món dù khách đã nêu đủ (lần đo đầu của O4: 0/9 ca gửi link).
+    if by_link:
+        lines.append(
+            "Cách đặt hàng của shop: khách tự đặt qua link. Khi đã có món còn hàng, size/màu và số "
+            "lượng, gửi khách đúng `url` của sản phẩm đó trong kết quả tool, chép nguyên văn. "
+            "KHÔNG hỏi tên, số điện thoại, địa chỉ. Sản phẩm không có url thì nói nhân viên sẽ "
+            "hỗ trợ đặt hàng."
+        )
+    elif destination == "website_checkout":
+        lines.append(
+            "Cách đặt hàng của shop: khi đã có món, size/màu và số lượng, gửi khách link thanh "
+            f"toán sau, chép nguyên văn: {url}. KHÔNG hỏi tên, số điện thoại, địa chỉ."
+        )
+    else:
+        lines.append("Cách đặt hàng của shop: thu đủ thông tin rồi nhân viên gọi xác nhận.")
+    lines.append("Thông tin đã có: " + ("; ".join(have) if have else "chưa có"))
     if missing and missing[0] == "product":
-        # Phiếu được dựng trước khi tra kho: khách thường đã nêu món ngay trong tin này.
         rest = [LABELS[f] for f in missing[1:]]
         lines.append(
-            "Phiếu chưa có sản phẩm: tra món khách nhắc tới bằng tool rồi điền sku; khách chưa "
-            "nêu món nào thì hỏi khách muốn đặt món nào."
-            + (f" Sau đó hỏi MỘT mục tiếp theo, theo thứ tự: {', '.join(rest)}." if rest else "")
+            "Phiếu chưa có sản phẩm: tra món khách nhắc tới rồi điền sku; khách chưa nêu món nào "
+            "thì hỏi khách muốn đặt món nào."
+            + (
+                f" Các mục cần có: {', '.join(rest)}. Bỏ qua mục khách đã nêu; còn thiếu thì "
+                "chỉ hỏi MỘT mục."
+                if rest
+                else ""
+            )
         )
     elif missing:
         lines.append(

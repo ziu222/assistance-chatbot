@@ -77,6 +77,13 @@
     "skus": 80
   },
   "name": "Ghim Số",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "product_link"
+      }
+    }
+  },
   "product_types": [
     "Tai nghe Bluetooth",
     "Tai nghe chống ồn",

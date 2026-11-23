@@ -47,6 +47,7 @@ class Score:
     situation: bool
     grounded: bool | None  # nháp (nếu có) qua kiểm tra nguồn/giá của Atlas
     no_source_safe: bool | None  # ca thiếu căn cứ: chuyển người và không bịa
+    link: bool | None = None  # ca đặt hàng đủ thông tin: nháp có đúng link sản phẩm
 
 
 def predicted_handoff(o: Outcome) -> bool:
@@ -98,6 +99,7 @@ def score(expected: dict, o: Outcome) -> Score:
         situation=o.situation == expected["policy"]["situation"],
         grounded=o.grounded,
         no_source_safe=no_source,
+        link=(expected["link"] in (o.draft_text or "")) if expected.get("link") else None,
     )
 
 
@@ -112,6 +114,7 @@ DIMENSIONS = [
     "situation",
     "grounded",
     "no_source_safe",
+    "link",
 ]
 
 

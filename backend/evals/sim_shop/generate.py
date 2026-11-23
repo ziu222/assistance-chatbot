@@ -76,6 +76,7 @@ CATEGORIES = [
     "after_hours",
     "paused",
     "hard_negative",
+    "order_request",  # cuối danh sách: các nhóm trước giữ nguyên id và nội dung
 ]
 PER_CATEGORY = 25
 # Ca thiếu căn cứ là tình huống phổ biến nhất ở shop thật: lấy nhiều hơn.
@@ -100,7 +101,32 @@ PERSONA_BY_CATEGORY = {
     "after_hours": ["lich_su", "voi_va", "nguoi_lon_tuoi"],
     "paused": ["lich_su", "voi_va", "nguoi_lon_tuoi"],
     "hard_negative": ["lich_su", "voi_va", "khach_si"],
+    "order_request": ["voi_va", "lich_su", "nguoi_lon_tuoi"],
 }
+# Quy trình đặt hàng (thiết kế 03): shop sàn gửi link sàn, shop có website gửi link trang sản
+# phẩm, shop còn lại để nhân viên xác nhận. Không dùng rng: thêm vào không đổi dữ liệu cũ.
+WEBSITE_SHOPS = ("fashion_a", "home_c", "tech_d")
+ORDER_CLAIMS = ["đặt hàng thành công", "đã xác nhận đơn", "đã lên đơn"]
+
+
+def order_flow(key: str, cfg: dict) -> dict:
+    if cfg["source"] in ("shopee_like", "tiktok_like"):
+        return {"by_channel": {"webchat": {"destination": "marketplace_link"}}}
+    if key in WEBSITE_SHOPS:
+        return {"by_channel": {"webchat": {"destination": "product_link"}}}
+    return {}
+
+
+def product_url(key: str, cfg: dict, p: dict) -> str | None:
+    """Link hư cấu (.example) để đo bot có chép link nguyên văn không."""
+    slug = key.replace("_", "-")
+    if cfg["source"] in ("shopee_like", "tiktok_like"):
+        return f"https://san.example/{slug}/{p['item_id']}"
+    if key in WEBSITE_SHOPS:
+        return f"https://{slug}.example/sp/{p['sku'].lower()}"
+    return None
+
+
 MATERIAL_WORDS = (
     "cotton",
     "linen",
@@ -367,11 +393,12 @@ def build_catalog(cfg: dict, rng: random.Random) -> list[dict]:
 def write_catalog(folder: Path, cfg: dict, products: list[dict]) -> None:
     with (folder / "catalog.csv").open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["sku", "name", "description", "price_vnd", "size", "color", "stock"])
+        header = ["sku", "name", "description", "price_vnd", "size", "color", "stock", "url"]
+        writer.writerow(header)
         for p in products:
             for v in p["variants"]:
                 row = [p["sku"], p["name"], p["description"], p["price"], v["size"], v["color"]]
-                writer.writerow([*row, v["stock"]])
+                writer.writerow([*row, v["stock"], p.get("url") or ""])
     if cfg["source"] in ("shopee_like", "tiktok_like"):
         # Dữ liệu thô "như đồng bộ từ sàn" (hư cấu): catalog.csv là bản đã chuẩn hóa từ file này.
         listing = [
@@ -386,6 +413,7 @@ def write_catalog(folder: Path, cfg: dict, products: list[dict]) -> None:
                     for v in p["variants"]
                 ],
                 "seller_sku": p["sku"],
+                "url": p.get("url"),
             }
             for p in products
         ]
@@ -1052,6 +1080,32 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
             notes += "; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người"
         return b.add(shop, category, persona, [msg], exp, notes + ".", difficulty="medium")
 
+    if category == "order_request":
+        p = rng.choice([x for x in products if any(v["stock"] > 0 for v in x["variants"])])
+        template = t("order_request")
+        q = rng.choice([1, 2, 3])
+        msg = b.fill(template, shop, p, q=q)
+        flow = order_flow(shop, cfg).get("by_channel", {}).get("webchat", {})
+        link = flow.get("destination") in ("product_link", "marketplace_link") and p["url"]
+        # Biến thể nào còn hàng cũng phải đủ số lượng khách đặt; thiếu thì bot đúng khi gợi ý
+        # mẫu khác thay vì gửi link.
+        enough = min(v["stock"] for v in p["variants"] if v["stock"] > 0) >= q
+        exp = {
+            "intents_any": ["order_intent", "product_info", "price_quote"],
+            "tools_any": ["search_products"],
+            "sources_include": [{"type": "product", "sku": p["sku"]}],
+            "must_not_say": ORDER_CLAIMS
+            + ([money(p["original"])] if p["original"] and p["original"] > p["price"] else []),
+            "policy": no_policy(),
+        }
+        notes = f"Đặt {p['sku']}; quy trình: {flow.get('destination', 'staff_confirms')}"
+        if link and enough and "{q}" in template:
+            exp["link"] = p["url"]  # đủ món + size/màu + số lượng ⇒ gửi đúng link này
+            notes += "; đủ thông tin nên phải gửi link"
+        elif not link:
+            notes += "; nhân viên xác nhận: hỏi thông tin tiếp, không nói đã đặt"
+        return b.add(shop, category, persona, [msg], exp, notes + ".", difficulty="medium")
+
     if category == "hard_negative":
         p = rng.choice(products)
         template = t("hard_negative")
@@ -1235,6 +1289,8 @@ def main() -> None:
         folder = ROOT / "shops" / key
         folder.mkdir(parents=True, exist_ok=True)
         products = build_catalog(cfg, rng)
+        for p in products:
+            p["url"] = product_url(key, cfg, p)
         hours = {
             "timezone": "Asia/Ho_Chi_Minh",
             "weekly": cfg["weekly"],
@@ -1258,6 +1314,7 @@ def main() -> None:
                     "catalog_source": cfg["source"],
                     "skus": len(products),
                 },
+                "order_flow": order_flow(key, cfg),
                 "hidden_truth": {  # sự thật shop biết nhưng có thể CHƯA viết ra: không phải căn cứ
                     "shipping_vnd": dict(zip(REGIONS, cfg["ship"], strict=True)),
                     "freeship_from_vnd": cfg["freeship_from"],
