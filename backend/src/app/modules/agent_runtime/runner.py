@@ -108,6 +108,7 @@ class _Run:
     order: OrderContext | None = None  # luồng đặt hàng (thiết kế 03): None = không áp dụng
     order_update: OrderRequest | None = None  # phiếu sau lượt này, ghi cùng nháp
     products: dict[str, dict] = field(default_factory=dict)  # sku ⇒ bản ghi tool đã trả
+    urls: set[str] = field(default_factory=set)  # link được phép trong nháp (tool + cấu hình)
     guard: bool = True  # kiểm tra lại mode/kill switch/last_sequence ngay trước khi lưu
 
     @property
@@ -294,6 +295,8 @@ class AgentRunner:
             )
         if run.order:
             with_phone(run.order, ctx.customer_texts)
+            if run.order.config.checkout_url:
+                run.urls.add(run.order.config.checkout_url)
             run.steps.append(
                 Step("rule", "order_flow", "active", 0, {"missing": run.order.request.missing})
             )
@@ -307,6 +310,7 @@ class AgentRunner:
             out,
             valid_sources=set(ctx.knowledge_sources) | {("product", p) for p in product_ids},
             known_amounts=prices | extract_amounts(ctx.knowledge_text),
+            known_urls=frozenset(run.urls),
         )
         run.steps.append(
             Step(
@@ -322,7 +326,7 @@ class AgentRunner:
             # Đang thu thập thì bot tự hỏi tiếp; đủ thông tin thì cần nhân viên xác nhận đơn.
             # Phiếu được ghi cùng nháp ở bước lưu.
             run.order_update = apply_draft(run.order, out.order, run.products)
-            if not run.order_update.missing:
+            if not run.order_update.missing and run.order_update.destination == "staff_confirms":
                 needs_human, reason = True, "order"
             run.steps.append(
                 Step(
@@ -403,6 +407,8 @@ class AgentRunner:
                         product_ids.add(item["id"])
                         prices.add(int(item["price_vnd"]))
                         run.products[item["sku"]] = item
+                        if item.get("url"):
+                            run.urls.add(item["url"])
                 error = "unknown_tool" if tr is None else tr.error
                 results.append(
                     LLMToolResult(
