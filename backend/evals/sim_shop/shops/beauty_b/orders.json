@@ -1,602 +1,3058 @@
 [
   {
-    "customer_id": "beauty_b-c000",
-    "id": "DH-BE-0000",
-    "sku": "BE-001",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c001",
+    "created_at": "2026-11-05T13:00:00+07:00",
+    "customer_id": "beauty_b-c002",
     "id": "DH-BE-0001",
-    "sku": "BE-002",
-    "status": "dang_giao"
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-043"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 382000
   },
   {
-    "customer_id": "beauty_b-c002",
+    "created_at": "2026-11-17T09:00:00+07:00",
+    "customer_id": "beauty_b-c011",
     "id": "DH-BE-0002",
-    "sku": "BE-003",
-    "status": "da_giao"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 270000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-007"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-079"
+      },
+      {
+        "color": "",
+        "price_vnd": 150000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-039"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1429000
   },
   {
-    "customer_id": "beauty_b-c003",
-    "id": "DH-BE-0003",
-    "sku": "BE-004",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c004",
-    "id": "DH-BE-0004",
-    "sku": "BE-005",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c005",
-    "id": "DH-BE-0005",
-    "sku": "BE-006",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c006",
-    "id": "DH-BE-0006",
-    "sku": "BE-007",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c007",
-    "id": "DH-BE-0007",
-    "sku": "BE-008",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c008",
-    "id": "DH-BE-0008",
-    "sku": "BE-009",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c009",
-    "id": "DH-BE-0009",
-    "sku": "BE-010",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c010",
-    "id": "DH-BE-0010",
-    "sku": "BE-011",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c011",
-    "id": "DH-BE-0011",
-    "sku": "BE-012",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c012",
-    "id": "DH-BE-0012",
-    "sku": "BE-013",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c013",
-    "id": "DH-BE-0013",
-    "sku": "BE-014",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c014",
-    "id": "DH-BE-0014",
-    "sku": "BE-015",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c015",
-    "id": "DH-BE-0015",
-    "sku": "BE-016",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c016",
-    "id": "DH-BE-0016",
-    "sku": "BE-017",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c017",
-    "id": "DH-BE-0017",
-    "sku": "BE-018",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c018",
-    "id": "DH-BE-0018",
-    "sku": "BE-019",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c019",
-    "id": "DH-BE-0019",
-    "sku": "BE-020",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c020",
-    "id": "DH-BE-0020",
-    "sku": "BE-021",
-    "status": "cho_xac_nhan"
-  },
-  {
+    "created_at": "2026-11-12T12:00:00+07:00",
     "customer_id": "beauty_b-c021",
-    "id": "DH-BE-0021",
-    "sku": "BE-022",
-    "status": "dang_giao"
+    "id": "DH-BE-0003",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 339000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-021"
+      },
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-054"
+      },
+      {
+        "color": "",
+        "price_vnd": 120000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-070"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 898000
   },
   {
-    "customer_id": "beauty_b-c022",
-    "id": "DH-BE-0022",
-    "sku": "BE-023",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c023",
-    "id": "DH-BE-0023",
-    "sku": "BE-024",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c024",
-    "id": "DH-BE-0024",
-    "sku": "BE-025",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c025",
-    "id": "DH-BE-0025",
-    "sku": "BE-026",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c026",
-    "id": "DH-BE-0026",
-    "sku": "BE-027",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c027",
-    "id": "DH-BE-0027",
-    "sku": "BE-028",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c028",
-    "id": "DH-BE-0028",
-    "sku": "BE-029",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c029",
-    "id": "DH-BE-0029",
-    "sku": "BE-030",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c030",
-    "id": "DH-BE-0030",
-    "sku": "BE-031",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c031",
-    "id": "DH-BE-0031",
-    "sku": "BE-032",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c032",
-    "id": "DH-BE-0032",
-    "sku": "BE-033",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c033",
-    "id": "DH-BE-0033",
-    "sku": "BE-034",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c034",
-    "id": "DH-BE-0034",
-    "sku": "BE-035",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c035",
-    "id": "DH-BE-0035",
-    "sku": "BE-036",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c036",
-    "id": "DH-BE-0036",
-    "sku": "BE-037",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c037",
-    "id": "DH-BE-0037",
-    "sku": "BE-038",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c038",
-    "id": "DH-BE-0038",
-    "sku": "BE-039",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c039",
-    "id": "DH-BE-0039",
-    "sku": "BE-040",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c040",
-    "id": "DH-BE-0040",
-    "sku": "BE-041",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c041",
-    "id": "DH-BE-0041",
-    "sku": "BE-042",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c042",
-    "id": "DH-BE-0042",
-    "sku": "BE-043",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c043",
-    "id": "DH-BE-0043",
-    "sku": "BE-044",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c044",
-    "id": "DH-BE-0044",
-    "sku": "BE-045",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c045",
-    "id": "DH-BE-0045",
-    "sku": "BE-046",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c046",
-    "id": "DH-BE-0046",
-    "sku": "BE-047",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c047",
-    "id": "DH-BE-0047",
-    "sku": "BE-048",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c048",
-    "id": "DH-BE-0048",
-    "sku": "BE-049",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c049",
-    "id": "DH-BE-0049",
-    "sku": "BE-050",
-    "status": "doi_tra"
-  },
-  {
+    "created_at": "2026-11-04T18:00:00+07:00",
     "customer_id": "beauty_b-c000",
-    "id": "DH-BE-0050",
-    "sku": "BE-051",
-    "status": "cho_xac_nhan"
+    "id": "DH-BE-0004",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-080"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 542000
   },
   {
-    "customer_id": "beauty_b-c001",
-    "id": "DH-BE-0051",
-    "sku": "BE-052",
-    "status": "dang_giao"
+    "created_at": "2026-11-09T16:00:00+07:00",
+    "customer_id": "beauty_b-c024",
+    "id": "DH-BE-0005",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 339000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-058"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-031"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "doi_tra",
+    "total_vnd": 722000
   },
   {
-    "customer_id": "beauty_b-c002",
-    "id": "DH-BE-0052",
-    "sku": "BE-053",
-    "status": "da_giao"
+    "created_at": "2026-11-21T11:00:00+07:00",
+    "customer_id": "beauty_b-c057",
+    "id": "DH-BE-0006",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-037"
+      },
+      {
+        "color": "",
+        "price_vnd": 165000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-004"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-067"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1116000
   },
   {
-    "customer_id": "beauty_b-c003",
-    "id": "DH-BE-0053",
-    "sku": "BE-054",
-    "status": "da_huy"
+    "created_at": "2026-11-03T11:00:00+07:00",
+    "customer_id": "beauty_b-c040",
+    "id": "DH-BE-0007",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 185000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-066"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-011"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 965000
   },
   {
-    "customer_id": "beauty_b-c004",
-    "id": "DH-BE-0054",
-    "sku": "BE-055",
-    "status": "doi_tra"
+    "created_at": "2026-11-22T10:00:00+07:00",
+    "customer_id": "beauty_b-c047",
+    "id": "DH-BE-0008",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-028"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-055"
+      },
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-014"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2691000
   },
   {
+    "created_at": "2026-11-03T08:00:00+07:00",
     "customer_id": "beauty_b-c005",
-    "id": "DH-BE-0055",
-    "sku": "BE-056",
-    "status": "cho_xac_nhan"
+    "id": "DH-BE-0009",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-059"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_huy",
+    "total_vnd": 605000
   },
   {
-    "customer_id": "beauty_b-c006",
-    "id": "DH-BE-0056",
-    "sku": "BE-057",
-    "status": "dang_giao"
+    "created_at": "2026-11-08T12:00:00+07:00",
+    "customer_id": "beauty_b-c052",
+    "id": "DH-BE-0010",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-033"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 254000
   },
   {
-    "customer_id": "beauty_b-c007",
-    "id": "DH-BE-0057",
-    "sku": "BE-058",
-    "status": "da_giao"
+    "created_at": "2026-11-22T09:00:00+07:00",
+    "customer_id": "beauty_b-c024",
+    "id": "DH-BE-0011",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-050"
+      },
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-058"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1068000
   },
   {
+    "created_at": "2026-11-22T12:00:00+07:00",
+    "customer_id": "beauty_b-c050",
+    "id": "DH-BE-0012",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 205000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-001"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-080"
+      },
+      {
+        "color": "",
+        "price_vnd": 239000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-009"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1192000
+  },
+  {
+    "created_at": "2026-11-13T20:00:00+07:00",
     "customer_id": "beauty_b-c008",
-    "id": "DH-BE-0058",
-    "sku": "BE-059",
-    "status": "da_huy"
+    "id": "DH-BE-0013",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-012"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-037"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1903000
   },
   {
+    "created_at": "2026-11-13T16:00:00+07:00",
+    "customer_id": "beauty_b-c038",
+    "id": "DH-BE-0014",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 209000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-038"
+      },
+      {
+        "color": "",
+        "price_vnd": 309000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-019"
+      },
+      {
+        "color": "",
+        "price_vnd": 150000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 703000
+  },
+  {
+    "created_at": "2026-11-06T10:00:00+07:00",
     "customer_id": "beauty_b-c009",
-    "id": "DH-BE-0059",
-    "sku": "BE-060",
-    "status": "doi_tra"
+    "id": "DH-BE-0015",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-011"
+      },
+      {
+        "color": "",
+        "price_vnd": 160000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-040"
+      },
+      {
+        "color": "",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-027"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1927000
   },
   {
-    "customer_id": "beauty_b-c010",
-    "id": "DH-BE-0060",
-    "sku": "BE-061",
-    "status": "cho_xac_nhan"
-  },
-  {
+    "created_at": "2026-11-22T20:00:00+07:00",
     "customer_id": "beauty_b-c011",
-    "id": "DH-BE-0061",
-    "sku": "BE-062",
-    "status": "dang_giao"
+    "id": "DH-BE-0016",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-079"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 194000
   },
   {
-    "customer_id": "beauty_b-c012",
-    "id": "DH-BE-0062",
-    "sku": "BE-063",
-    "status": "da_giao"
+    "created_at": "2026-11-16T13:00:00+07:00",
+    "customer_id": "beauty_b-c037",
+    "id": "DH-BE-0017",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-007"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-071"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 239000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-060"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1137000
   },
   {
-    "customer_id": "beauty_b-c013",
-    "id": "DH-BE-0063",
-    "sku": "BE-064",
-    "status": "da_huy"
+    "created_at": "2026-11-15T13:00:00+07:00",
+    "customer_id": "beauty_b-c031",
+    "id": "DH-BE-0018",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 379000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-017"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-031"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 937000
   },
   {
+    "created_at": "2026-11-08T19:00:00+07:00",
+    "customer_id": "beauty_b-c050",
+    "id": "DH-BE-0019",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 160000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-040"
+      },
+      {
+        "color": "",
+        "price_vnd": 109000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-075"
+      },
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-020"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1067000
+  },
+  {
+    "created_at": "2026-11-10T15:00:00+07:00",
+    "customer_id": "beauty_b-c022",
+    "id": "DH-BE-0020",
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-056"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-036"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-047"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1593000
+  },
+  {
+    "created_at": "2026-11-21T09:00:00+07:00",
+    "customer_id": "beauty_b-c056",
+    "id": "DH-BE-0021",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-014"
+      },
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-023"
+      },
+      {
+        "color": "",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-078"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2335000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "beauty_b-c016",
+    "id": "DH-BE-0022",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 249000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-010"
+      },
+      {
+        "color": "",
+        "price_vnd": 180000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-003"
+      },
+      {
+        "color": "",
+        "price_vnd": 215000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-065"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1502000
+  },
+  {
+    "created_at": "2026-11-17T09:00:00+07:00",
+    "customer_id": "beauty_b-c032",
+    "id": "DH-BE-0023",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-020"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-047"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 528000
+  },
+  {
+    "created_at": "2026-11-17T10:00:00+07:00",
+    "customer_id": "beauty_b-c010",
+    "id": "DH-BE-0024",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-047"
+      },
+      {
+        "color": "",
+        "price_vnd": 215000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-065"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1182000
+  },
+  {
+    "created_at": "2026-11-16T11:00:00+07:00",
     "customer_id": "beauty_b-c014",
-    "id": "DH-BE-0064",
-    "sku": "BE-065",
-    "status": "doi_tra"
+    "id": "DH-BE-0025",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 339000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-021"
+      },
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-023"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1835000
   },
   {
+    "created_at": "2026-11-07T16:00:00+07:00",
+    "customer_id": "beauty_b-c042",
+    "id": "DH-BE-0026",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 229000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-034"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 254000
+  },
+  {
+    "created_at": "2026-11-23T16:00:00+07:00",
+    "customer_id": "beauty_b-c006",
+    "id": "DH-BE-0027",
+    "items": [
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 195000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-050"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-061"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 795000
+  },
+  {
+    "created_at": "2026-11-21T21:00:00+07:00",
+    "customer_id": "beauty_b-c037",
+    "id": "DH-BE-0028",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-036"
+      },
+      {
+        "color": "",
+        "price_vnd": 229000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-034"
+      },
+      {
+        "color": "",
+        "price_vnd": 109000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-075"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1183000
+  },
+  {
+    "created_at": "2026-11-13T13:00:00+07:00",
+    "customer_id": "beauty_b-c033",
+    "id": "DH-BE-0029",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-067"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_huy",
+    "total_vnd": 403000
+  },
+  {
+    "created_at": "2026-11-03T16:00:00+07:00",
+    "customer_id": "beauty_b-c014",
+    "id": "DH-BE-0030",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-063"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "doi_tra",
+    "total_vnd": 644000
+  },
+  {
+    "created_at": "2026-11-11T19:00:00+07:00",
+    "customer_id": "beauty_b-c026",
+    "id": "DH-BE-0031",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-036"
+      },
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-028"
+      },
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-020"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2173000
+  },
+  {
+    "created_at": "2026-11-06T18:00:00+07:00",
+    "customer_id": "beauty_b-c037",
+    "id": "DH-BE-0032",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 425000
+  },
+  {
+    "created_at": "2026-11-02T17:00:00+07:00",
+    "customer_id": "beauty_b-c032",
+    "id": "DH-BE-0033",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 180000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-003"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-032"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_giao",
+    "total_vnd": 414000
+  },
+  {
+    "created_at": "2026-11-13T17:00:00+07:00",
+    "customer_id": "beauty_b-c033",
+    "id": "DH-BE-0034",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-008"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_huy",
+    "total_vnd": 645000
+  },
+  {
+    "created_at": "2026-11-05T20:00:00+07:00",
+    "customer_id": "beauty_b-c038",
+    "id": "DH-BE-0035",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 180000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-003"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-037"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-011"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1018000
+  },
+  {
+    "created_at": "2026-11-13T14:00:00+07:00",
+    "customer_id": "beauty_b-c014",
+    "id": "DH-BE-0036",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-024"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-080"
+      },
+      {
+        "color": "",
+        "price_vnd": 185000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-066"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1212000
+  },
+  {
+    "created_at": "2026-11-17T18:00:00+07:00",
+    "customer_id": "beauty_b-c055",
+    "id": "DH-BE-0037",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-014"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "dang_giao",
+    "total_vnd": 394000
+  },
+  {
+    "created_at": "2026-11-18T16:00:00+07:00",
+    "customer_id": "beauty_b-c002",
+    "id": "DH-BE-0038",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-020"
+      },
+      {
+        "color": "",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-078"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 904000
+  },
+  {
+    "created_at": "2026-11-20T16:00:00+07:00",
+    "customer_id": "beauty_b-c057",
+    "id": "DH-BE-0039",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-012"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 957000
+  },
+  {
+    "created_at": "2026-11-02T19:00:00+07:00",
+    "customer_id": "beauty_b-c055",
+    "id": "DH-BE-0040",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 299000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-056"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 628000
+  },
+  {
+    "created_at": "2026-11-08T21:00:00+07:00",
+    "customer_id": "beauty_b-c049",
+    "id": "DH-BE-0041",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-055"
+      },
+      {
+        "color": "",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-030"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1276000
+  },
+  {
+    "created_at": "2026-11-23T19:00:00+07:00",
+    "customer_id": "beauty_b-c000",
+    "id": "DH-BE-0042",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-037"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 423000
+  },
+  {
+    "created_at": "2026-11-21T11:00:00+07:00",
+    "customer_id": "beauty_b-c024",
+    "id": "DH-BE-0043",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-074"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_giao",
+    "total_vnd": 562000
+  },
+  {
+    "created_at": "2026-11-19T13:00:00+07:00",
+    "customer_id": "beauty_b-c027",
+    "id": "DH-BE-0044",
+    "items": [
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 140000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-041"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 279000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-053"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-047"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1335000
+  },
+  {
+    "created_at": "2026-11-09T12:00:00+07:00",
+    "customer_id": "beauty_b-c030",
+    "id": "DH-BE-0045",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-036"
+      },
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 239000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-051"
+      },
+      {
+        "color": "",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-027"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1733000
+  },
+  {
+    "created_at": "2026-11-17T14:00:00+07:00",
+    "customer_id": "beauty_b-c013",
+    "id": "DH-BE-0046",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-045"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 239000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-051"
+      },
+      {
+        "color": "",
+        "price_vnd": 370000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-018"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1205000
+  },
+  {
+    "created_at": "2026-11-03T21:00:00+07:00",
+    "customer_id": "beauty_b-c051",
+    "id": "DH-BE-0047",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-071"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-079"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 711000
+  },
+  {
+    "created_at": "2026-11-09T11:00:00+07:00",
+    "customer_id": "beauty_b-c004",
+    "id": "DH-BE-0048",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-061"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_giao",
+    "total_vnd": 425000
+  },
+  {
+    "created_at": "2026-11-17T12:00:00+07:00",
+    "customer_id": "beauty_b-c041",
+    "id": "DH-BE-0049",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-011"
+      },
+      {
+        "color": "",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-078"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1170000
+  },
+  {
+    "created_at": "2026-11-20T16:00:00+07:00",
+    "customer_id": "beauty_b-c050",
+    "id": "DH-BE-0050",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 159000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-077"
+      },
+      {
+        "color": "",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-008"
+      },
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-023"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1037000
+  },
+  {
+    "created_at": "2026-11-13T13:00:00+07:00",
+    "customer_id": "beauty_b-c017",
+    "id": "DH-BE-0051",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-030"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-079"
+      },
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-022"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1414000
+  },
+  {
+    "created_at": "2026-11-18T17:00:00+07:00",
+    "customer_id": "beauty_b-c018",
+    "id": "DH-BE-0052",
+    "items": [
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 239000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-051"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 260000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-052"
+      },
+      {
+        "color": "",
+        "price_vnd": 159000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-076"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1656000
+  },
+  {
+    "created_at": "2026-11-01T12:00:00+07:00",
+    "customer_id": "beauty_b-c036",
+    "id": "DH-BE-0053",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-045"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-036"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 725000
+  },
+  {
+    "created_at": "2026-11-10T13:00:00+07:00",
+    "customer_id": "beauty_b-c032",
+    "id": "DH-BE-0054",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 279000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-053"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 837000
+  },
+  {
+    "created_at": "2026-11-23T15:00:00+07:00",
+    "customer_id": "beauty_b-c016",
+    "id": "DH-BE-0055",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 185000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-066"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 590000
+  },
+  {
+    "created_at": "2026-11-19T21:00:00+07:00",
+    "customer_id": "beauty_b-c057",
+    "id": "DH-BE-0056",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-073"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 998000
+  },
+  {
+    "created_at": "2026-11-21T20:00:00+07:00",
+    "customer_id": "beauty_b-c024",
+    "id": "DH-BE-0057",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 425000
+  },
+  {
+    "created_at": "2026-11-18T08:00:00+07:00",
+    "customer_id": "beauty_b-c033",
+    "id": "DH-BE-0058",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-030"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 528000
+  },
+  {
+    "created_at": "2026-11-07T17:00:00+07:00",
+    "customer_id": "beauty_b-c022",
+    "id": "DH-BE-0059",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 229000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-034"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-032"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-037"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1055000
+  },
+  {
+    "created_at": "2026-11-09T11:00:00+07:00",
     "customer_id": "beauty_b-c015",
-    "id": "DH-BE-0065",
-    "sku": "BE-066",
-    "status": "cho_xac_nhan"
+    "id": "DH-BE-0060",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-024"
+      },
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-025"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1316000
   },
   {
+    "created_at": "2026-11-04T09:00:00+07:00",
+    "customer_id": "beauty_b-c009",
+    "id": "DH-BE-0061",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 329000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-026"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 987000
+  },
+  {
+    "created_at": "2026-11-16T13:00:00+07:00",
+    "customer_id": "beauty_b-c054",
+    "id": "DH-BE-0062",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-064"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 622000
+  },
+  {
+    "created_at": "2026-11-19T10:00:00+07:00",
+    "customer_id": "beauty_b-c048",
+    "id": "DH-BE-0063",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-041"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-064"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-074"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1235000
+  },
+  {
+    "created_at": "2026-11-17T13:00:00+07:00",
+    "customer_id": "beauty_b-c002",
+    "id": "DH-BE-0064",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-068"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 433000
+  },
+  {
+    "created_at": "2026-11-01T08:00:00+07:00",
+    "customer_id": "beauty_b-c044",
+    "id": "DH-BE-0065",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-023"
+      },
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-059"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1807000
+  },
+  {
+    "created_at": "2026-11-08T12:00:00+07:00",
     "customer_id": "beauty_b-c016",
     "id": "DH-BE-0066",
-    "sku": "BE-067",
-    "status": "dang_giao"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 329000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-027"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 205000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-049"
+      },
+      {
+        "color": "",
+        "price_vnd": 109000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-075"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1382000
   },
   {
-    "customer_id": "beauty_b-c017",
-    "id": "DH-BE-0067",
-    "sku": "BE-068",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c018",
-    "id": "DH-BE-0068",
-    "sku": "BE-069",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c019",
-    "id": "DH-BE-0069",
-    "sku": "BE-070",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c020",
-    "id": "DH-BE-0070",
-    "sku": "BE-071",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c021",
-    "id": "DH-BE-0071",
-    "sku": "BE-072",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c022",
-    "id": "DH-BE-0072",
-    "sku": "BE-073",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c023",
-    "id": "DH-BE-0073",
-    "sku": "BE-074",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c024",
-    "id": "DH-BE-0074",
-    "sku": "BE-075",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c025",
-    "id": "DH-BE-0075",
-    "sku": "BE-076",
-    "status": "cho_xac_nhan"
-  },
-  {
+    "created_at": "2026-11-23T20:00:00+07:00",
     "customer_id": "beauty_b-c026",
-    "id": "DH-BE-0076",
-    "sku": "BE-077",
-    "status": "dang_giao"
+    "id": "DH-BE-0067",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-079"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 150000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-044"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 494000
   },
   {
-    "customer_id": "beauty_b-c027",
-    "id": "DH-BE-0077",
-    "sku": "BE-078",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c028",
-    "id": "DH-BE-0078",
-    "sku": "BE-079",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c029",
-    "id": "DH-BE-0079",
-    "sku": "BE-080",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c030",
-    "id": "DH-BE-0080",
-    "sku": "BE-001",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c031",
-    "id": "DH-BE-0081",
-    "sku": "BE-002",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c032",
-    "id": "DH-BE-0082",
-    "sku": "BE-003",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c033",
-    "id": "DH-BE-0083",
-    "sku": "BE-004",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "beauty_b-c034",
-    "id": "DH-BE-0084",
-    "sku": "BE-005",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c035",
-    "id": "DH-BE-0085",
-    "sku": "BE-006",
-    "status": "cho_xac_nhan"
-  },
-  {
+    "created_at": "2026-11-22T11:00:00+07:00",
     "customer_id": "beauty_b-c036",
-    "id": "DH-BE-0086",
-    "sku": "BE-007",
-    "status": "dang_giao"
+    "id": "DH-BE-0068",
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-047"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 260000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-052"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1138000
   },
   {
-    "customer_id": "beauty_b-c037",
-    "id": "DH-BE-0087",
-    "sku": "BE-008",
-    "status": "da_giao"
+    "created_at": "2026-11-13T11:00:00+07:00",
+    "customer_id": "beauty_b-c054",
+    "id": "DH-BE-0069",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 597000
   },
   {
-    "customer_id": "beauty_b-c038",
-    "id": "DH-BE-0088",
-    "sku": "BE-009",
-    "status": "da_huy"
+    "created_at": "2026-11-16T10:00:00+07:00",
+    "customer_id": "beauty_b-c026",
+    "id": "DH-BE-0070",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-020"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "doi_tra",
+    "total_vnd": 344000
   },
   {
-    "customer_id": "beauty_b-c039",
-    "id": "DH-BE-0089",
-    "sku": "BE-010",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "beauty_b-c040",
-    "id": "DH-BE-0090",
-    "sku": "BE-011",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "beauty_b-c041",
-    "id": "DH-BE-0091",
-    "sku": "BE-012",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "beauty_b-c042",
-    "id": "DH-BE-0092",
-    "sku": "BE-013",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "beauty_b-c043",
-    "id": "DH-BE-0093",
-    "sku": "BE-014",
-    "status": "da_huy"
-  },
-  {
+    "created_at": "2026-11-06T08:00:00+07:00",
     "customer_id": "beauty_b-c044",
+    "id": "DH-BE-0071",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-067"
+      },
+      {
+        "color": "",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-069"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-041"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1078000
+  },
+  {
+    "created_at": "2026-11-11T12:00:00+07:00",
+    "customer_id": "beauty_b-c028",
+    "id": "DH-BE-0072",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-033"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 682000
+  },
+  {
+    "created_at": "2026-11-22T17:00:00+07:00",
+    "customer_id": "beauty_b-c022",
+    "id": "DH-BE-0073",
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-047"
+      },
+      {
+        "color": "",
+        "price_vnd": 139000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-072"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_giao",
+    "total_vnd": 661000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "beauty_b-c020",
+    "id": "DH-BE-0074",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-074"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 388000
+  },
+  {
+    "created_at": "2026-11-06T18:00:00+07:00",
+    "customer_id": "beauty_b-c009",
+    "id": "DH-BE-0075",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 339000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-058"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-011"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1537000
+  },
+  {
+    "created_at": "2026-11-11T13:00:00+07:00",
+    "customer_id": "beauty_b-c014",
+    "id": "DH-BE-0076",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-054"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-079"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 398000
+  },
+  {
+    "created_at": "2026-11-01T10:00:00+07:00",
+    "customer_id": "beauty_b-c011",
+    "id": "DH-BE-0077",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 209000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-038"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-035"
+      },
+      {
+        "color": "",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-078"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1186000
+  },
+  {
+    "created_at": "2026-11-02T08:00:00+07:00",
+    "customer_id": "beauty_b-c035",
+    "id": "DH-BE-0078",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-031"
+      },
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-033"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-011"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 688000
+  },
+  {
+    "created_at": "2026-11-13T12:00:00+07:00",
+    "customer_id": "beauty_b-c041",
+    "id": "DH-BE-0079",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-068"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-011"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_huy",
+    "total_vnd": 683000
+  },
+  {
+    "created_at": "2026-11-05T16:00:00+07:00",
+    "customer_id": "beauty_b-c008",
+    "id": "DH-BE-0080",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-032"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 433000
+  },
+  {
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "beauty_b-c055",
+    "id": "DH-BE-0081",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 165000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-004"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 525000
+  },
+  {
+    "created_at": "2026-11-06T17:00:00+07:00",
+    "customer_id": "beauty_b-c034",
+    "id": "DH-BE-0082",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 239000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-060"
+      },
+      {
+        "color": "",
+        "price_vnd": 120000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-070"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 837000
+  },
+  {
+    "created_at": "2026-11-08T20:00:00+07:00",
+    "customer_id": "beauty_b-c034",
+    "id": "DH-BE-0083",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 290000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-059"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-073"
+      },
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 299000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-056"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2065000
+  },
+  {
+    "created_at": "2026-11-05T12:00:00+07:00",
+    "customer_id": "beauty_b-c016",
+    "id": "DH-BE-0084",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-057"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 608000
+  },
+  {
+    "created_at": "2026-11-18T08:00:00+07:00",
+    "customer_id": "beauty_b-c030",
+    "id": "DH-BE-0085",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 205000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-001"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 440000
+  },
+  {
+    "created_at": "2026-11-07T14:00:00+07:00",
+    "customer_id": "beauty_b-c023",
+    "id": "DH-BE-0086",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-063"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-062"
+      },
+      {
+        "color": "",
+        "price_vnd": 150000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1188000
+  },
+  {
+    "created_at": "2026-11-21T11:00:00+07:00",
+    "customer_id": "beauty_b-c027",
+    "id": "DH-BE-0087",
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-056"
+      },
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 239000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-051"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-032"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1773000
+  },
+  {
+    "created_at": "2026-11-21T15:00:00+07:00",
+    "customer_id": "beauty_b-c007",
+    "id": "DH-BE-0088",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-079"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-035"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-037"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 726000
+  },
+  {
+    "created_at": "2026-11-06T09:00:00+07:00",
+    "customer_id": "beauty_b-c001",
+    "id": "DH-BE-0089",
+    "items": [
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 339000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-058"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-035"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-080"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 732000
+  },
+  {
+    "created_at": "2026-11-01T15:00:00+07:00",
+    "customer_id": "beauty_b-c009",
+    "id": "DH-BE-0090",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-035"
+      },
+      {
+        "color": "",
+        "price_vnd": 379000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-017"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 946000
+  },
+  {
+    "created_at": "2026-11-15T19:00:00+07:00",
+    "customer_id": "beauty_b-c023",
+    "id": "DH-BE-0091",
+    "items": [
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 150000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 330000
+  },
+  {
+    "created_at": "2026-11-13T09:00:00+07:00",
+    "customer_id": "beauty_b-c017",
+    "id": "DH-BE-0092",
+    "items": [
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 119000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-043"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "dang_giao",
+    "total_vnd": 144000
+  },
+  {
+    "created_at": "2026-11-02T11:00:00+07:00",
+    "customer_id": "beauty_b-c015",
+    "id": "DH-BE-0093",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-061"
+      },
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-024"
+      },
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-025"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1437000
+  },
+  {
+    "created_at": "2026-11-11T10:00:00+07:00",
+    "customer_id": "beauty_b-c059",
     "id": "DH-BE-0094",
-    "sku": "BE-015",
-    "status": "doi_tra"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-013"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-067"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1265000
   },
   {
-    "customer_id": "beauty_b-c045",
+    "created_at": "2026-11-02T21:00:00+07:00",
+    "customer_id": "beauty_b-c056",
     "id": "DH-BE-0095",
-    "sku": "BE-016",
-    "status": "cho_xac_nhan"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 240000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-006"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-071"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-067"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1206000
   },
   {
-    "customer_id": "beauty_b-c046",
+    "created_at": "2026-11-13T20:00:00+07:00",
+    "customer_id": "beauty_b-c007",
     "id": "DH-BE-0096",
-    "sku": "BE-017",
-    "status": "dang_giao"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-028"
+      },
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-015"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-031"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1316000
   },
   {
-    "customer_id": "beauty_b-c047",
+    "created_at": "2026-11-23T17:00:00+07:00",
+    "customer_id": "beauty_b-c030",
     "id": "DH-BE-0097",
-    "sku": "BE-018",
-    "status": "da_giao"
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-002"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "dang_giao",
+    "total_vnd": 602000
   },
   {
-    "customer_id": "beauty_b-c048",
+    "created_at": "2026-11-03T18:00:00+07:00",
+    "customer_id": "beauty_b-c031",
     "id": "DH-BE-0098",
-    "sku": "BE-019",
-    "status": "da_huy"
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 230000,
+        "qty": 1,
+        "size": "",
+        "sku": "BE-048"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "da_giao",
+    "total_vnd": 255000
   },
   {
-    "customer_id": "beauty_b-c049",
+    "created_at": "2026-11-18T20:00:00+07:00",
+    "customer_id": "beauty_b-c020",
     "id": "DH-BE-0099",
-    "sku": "BE-020",
-    "status": "doi_tra"
+    "items": [
+      {
+        "color": "04 nude",
+        "price_vnd": 150000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-044"
+      },
+      {
+        "color": "",
+        "price_vnd": 310000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-008"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-046"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1070000
+  },
+  {
+    "created_at": "2026-11-23T15:00:00+07:00",
+    "customer_id": "beauty_b-c031",
+    "id": "DH-BE-0100",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-045"
+      },
+      {
+        "color": "02 đỏ gạch",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-057"
+      },
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-025"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1653000
+  },
+  {
+    "created_at": "2026-11-09T21:00:00+07:00",
+    "customer_id": "beauty_b-c029",
+    "id": "DH-BE-0101",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 209000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-038"
+      },
+      {
+        "color": "",
+        "price_vnd": 120000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-070"
+      },
+      {
+        "color": "",
+        "price_vnd": 219000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-063"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1425000
+  },
+  {
+    "created_at": "2026-11-21T16:00:00+07:00",
+    "customer_id": "beauty_b-c000",
+    "id": "DH-BE-0102",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-071"
+      },
+      {
+        "color": "",
+        "price_vnd": 339000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-021"
+      },
+      {
+        "color": "",
+        "price_vnd": 239000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-009"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1514000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "beauty_b-c004",
+    "id": "DH-BE-0103",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-024"
+      },
+      {
+        "color": "",
+        "price_vnd": 180000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-003"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1317000
+  },
+  {
+    "created_at": "2026-11-14T18:00:00+07:00",
+    "customer_id": "beauty_b-c020",
+    "id": "DH-BE-0104",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 359000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-025"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-068"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1674000
+  },
+  {
+    "created_at": "2026-11-04T15:00:00+07:00",
+    "customer_id": "beauty_b-c012",
+    "id": "DH-BE-0105",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 260000,
+        "qty": 1,
+        "size": "50ml",
+        "sku": "BE-015"
+      },
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-013"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "doi_tra",
+    "total_vnd": 634000
+  },
+  {
+    "created_at": "2026-11-13T18:00:00+07:00",
+    "customer_id": "beauty_b-c053",
+    "id": "DH-BE-0106",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1047000
+  },
+  {
+    "created_at": "2026-11-20T19:00:00+07:00",
+    "customer_id": "beauty_b-c014",
+    "id": "DH-BE-0107",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-068"
+      },
+      {
+        "color": "",
+        "price_vnd": 169000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-080"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 766000
+  },
+  {
+    "created_at": "2026-11-03T15:00:00+07:00",
+    "customer_id": "beauty_b-c059",
+    "id": "DH-BE-0108",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 3,
+        "size": "50ml",
+        "sku": "BE-002"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 597000
+  },
+  {
+    "created_at": "2026-11-02T19:00:00+07:00",
+    "customer_id": "beauty_b-c033",
+    "id": "DH-BE-0109",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-008"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-047"
+      },
+      {
+        "color": "",
+        "price_vnd": 139000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-072"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1574000
+  },
+  {
+    "created_at": "2026-11-04T19:00:00+07:00",
+    "customer_id": "beauty_b-c006",
+    "id": "DH-BE-0110",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 150000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 185000
+  },
+  {
+    "created_at": "2026-11-22T11:00:00+07:00",
+    "customer_id": "beauty_b-c033",
+    "id": "DH-BE-0111",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 140000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-069"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 25000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 165000
+  },
+  {
+    "created_at": "2026-11-04T10:00:00+07:00",
+    "customer_id": "beauty_b-c027",
+    "id": "DH-BE-0112",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 409000,
+        "qty": 3,
+        "size": "100ml",
+        "sku": "BE-023"
+      },
+      {
+        "color": "",
+        "price_vnd": 139000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-072"
+      },
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 199000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-054"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2241000
+  },
+  {
+    "created_at": "2026-11-06T16:00:00+07:00",
+    "customer_id": "beauty_b-c042",
+    "id": "DH-BE-0113",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "150ml",
+        "sku": "BE-071"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 567000
+  },
+  {
+    "created_at": "2026-11-08T17:00:00+07:00",
+    "customer_id": "beauty_b-c038",
+    "id": "DH-BE-0114",
+    "items": [
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-057"
+      },
+      {
+        "color": "03 cam cháy",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-046"
+      },
+      {
+        "color": "04 nude",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-041"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1308000
+  },
+  {
+    "created_at": "2026-11-02T12:00:00+07:00",
+    "customer_id": "beauty_b-c046",
+    "id": "DH-BE-0115",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 349000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-028"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 205000,
+        "qty": 2,
+        "size": "",
+        "sku": "BE-049"
+      },
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-071"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1466000
+  },
+  {
+    "created_at": "2026-11-23T21:00:00+07:00",
+    "customer_id": "beauty_b-c049",
+    "id": "DH-BE-0116",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 180000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-003"
+      },
+      {
+        "color": "",
+        "price_vnd": 189000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-067"
+      },
+      {
+        "color": "",
+        "price_vnd": 370000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-018"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1109000
+  },
+  {
+    "created_at": "2026-11-05T12:00:00+07:00",
+    "customer_id": "beauty_b-c009",
+    "id": "DH-BE-0117",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-071"
+      },
+      {
+        "color": "",
+        "price_vnd": 185000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-066"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "dang_giao",
+    "total_vnd": 579000
+  },
+  {
+    "created_at": "2026-11-19T11:00:00+07:00",
+    "customer_id": "beauty_b-c025",
+    "id": "DH-BE-0118",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 109000,
+        "qty": 2,
+        "size": "50ml",
+        "sku": "BE-075"
+      },
+      {
+        "color": "",
+        "price_vnd": 199000,
+        "qty": 1,
+        "size": "100ml",
+        "sku": "BE-032"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_giao",
+    "total_vnd": 452000
+  },
+  {
+    "created_at": "2026-11-19T14:00:00+07:00",
+    "customer_id": "beauty_b-c051",
+    "id": "DH-BE-0119",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 249000,
+        "qty": 2,
+        "size": "150ml",
+        "sku": "BE-010"
+      },
+      {
+        "color": "01 hồng đất",
+        "price_vnd": 119000,
+        "qty": 3,
+        "size": "",
+        "sku": "BE-042"
+      },
+      {
+        "color": "",
+        "price_vnd": 200000,
+        "qty": 1,
+        "size": "150ml",
+        "sku": "BE-062"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1055000
+  },
+  {
+    "created_at": "2026-11-04T21:00:00+07:00",
+    "customer_id": "beauty_b-c026",
+    "id": "DH-BE-0120",
+    "items": [
+      {
+        "color": "",
+        "price_vnd": 310000,
+        "qty": 2,
+        "size": "100ml",
+        "sku": "BE-008"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "doi_tra",
+    "total_vnd": 650000
   }
 ]

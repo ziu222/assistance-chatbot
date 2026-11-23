@@ -1,602 +1,3009 @@
 [
   {
-    "customer_id": "tech_d-c000",
-    "id": "DH-TE-0000",
-    "sku": "TE-001",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c001",
+    "created_at": "2026-11-18T14:00:00+07:00",
+    "customer_id": "tech_d-c059",
     "id": "DH-TE-0001",
-    "sku": "TE-002",
-    "status": "dang_giao"
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-022"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1099000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-006"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 149000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-054"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4522000
   },
   {
-    "customer_id": "tech_d-c002",
-    "id": "DH-TE-0002",
-    "sku": "TE-003",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c003",
-    "id": "DH-TE-0003",
-    "sku": "TE-004",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c004",
-    "id": "DH-TE-0004",
-    "sku": "TE-005",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c005",
-    "id": "DH-TE-0005",
-    "sku": "TE-006",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c006",
-    "id": "DH-TE-0006",
-    "sku": "TE-007",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c007",
-    "id": "DH-TE-0007",
-    "sku": "TE-008",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c008",
-    "id": "DH-TE-0008",
-    "sku": "TE-009",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c009",
-    "id": "DH-TE-0009",
-    "sku": "TE-010",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c010",
-    "id": "DH-TE-0010",
-    "sku": "TE-011",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c011",
-    "id": "DH-TE-0011",
-    "sku": "TE-012",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c012",
-    "id": "DH-TE-0012",
-    "sku": "TE-013",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c013",
-    "id": "DH-TE-0013",
-    "sku": "TE-014",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c014",
-    "id": "DH-TE-0014",
-    "sku": "TE-015",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c015",
-    "id": "DH-TE-0015",
-    "sku": "TE-016",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c016",
-    "id": "DH-TE-0016",
-    "sku": "TE-017",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c017",
-    "id": "DH-TE-0017",
-    "sku": "TE-018",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c018",
-    "id": "DH-TE-0018",
-    "sku": "TE-019",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c019",
-    "id": "DH-TE-0019",
-    "sku": "TE-020",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c020",
-    "id": "DH-TE-0020",
-    "sku": "TE-021",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c021",
-    "id": "DH-TE-0021",
-    "sku": "TE-022",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c022",
-    "id": "DH-TE-0022",
-    "sku": "TE-023",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c023",
-    "id": "DH-TE-0023",
-    "sku": "TE-024",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c024",
-    "id": "DH-TE-0024",
-    "sku": "TE-025",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c025",
-    "id": "DH-TE-0025",
-    "sku": "TE-026",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c026",
-    "id": "DH-TE-0026",
-    "sku": "TE-027",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c027",
-    "id": "DH-TE-0027",
-    "sku": "TE-028",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c028",
-    "id": "DH-TE-0028",
-    "sku": "TE-029",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c029",
-    "id": "DH-TE-0029",
-    "sku": "TE-030",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c030",
-    "id": "DH-TE-0030",
-    "sku": "TE-031",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c031",
-    "id": "DH-TE-0031",
-    "sku": "TE-032",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c032",
-    "id": "DH-TE-0032",
-    "sku": "TE-033",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c033",
-    "id": "DH-TE-0033",
-    "sku": "TE-034",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c034",
-    "id": "DH-TE-0034",
-    "sku": "TE-035",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c035",
-    "id": "DH-TE-0035",
-    "sku": "TE-036",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c036",
-    "id": "DH-TE-0036",
-    "sku": "TE-037",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c037",
-    "id": "DH-TE-0037",
-    "sku": "TE-038",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c038",
-    "id": "DH-TE-0038",
-    "sku": "TE-039",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c039",
-    "id": "DH-TE-0039",
-    "sku": "TE-040",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c040",
-    "id": "DH-TE-0040",
-    "sku": "TE-041",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c041",
-    "id": "DH-TE-0041",
-    "sku": "TE-042",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c042",
-    "id": "DH-TE-0042",
-    "sku": "TE-043",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c043",
-    "id": "DH-TE-0043",
-    "sku": "TE-044",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c044",
-    "id": "DH-TE-0044",
-    "sku": "TE-045",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c045",
-    "id": "DH-TE-0045",
-    "sku": "TE-046",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c046",
-    "id": "DH-TE-0046",
-    "sku": "TE-047",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c047",
-    "id": "DH-TE-0047",
-    "sku": "TE-048",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c048",
-    "id": "DH-TE-0048",
-    "sku": "TE-049",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c049",
-    "id": "DH-TE-0049",
-    "sku": "TE-050",
-    "status": "doi_tra"
-  },
-  {
+    "created_at": "2026-11-13T18:00:00+07:00",
     "customer_id": "tech_d-c000",
-    "id": "DH-TE-0050",
-    "sku": "TE-051",
-    "status": "cho_xac_nhan"
+    "id": "DH-TE-0002",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-016"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 445000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1065000
   },
   {
-    "customer_id": "tech_d-c001",
-    "id": "DH-TE-0051",
-    "sku": "TE-052",
-    "status": "dang_giao"
+    "created_at": "2026-11-09T18:00:00+07:00",
+    "customer_id": "tech_d-c052",
+    "id": "DH-TE-0003",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-002"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 795000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-050"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1513000
   },
   {
-    "customer_id": "tech_d-c002",
-    "id": "DH-TE-0052",
-    "sku": "TE-053",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c003",
-    "id": "DH-TE-0053",
-    "sku": "TE-054",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c004",
-    "id": "DH-TE-0054",
-    "sku": "TE-055",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c005",
-    "id": "DH-TE-0055",
-    "sku": "TE-056",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c006",
-    "id": "DH-TE-0056",
-    "sku": "TE-057",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c007",
-    "id": "DH-TE-0057",
-    "sku": "TE-058",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c008",
-    "id": "DH-TE-0058",
-    "sku": "TE-059",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c009",
-    "id": "DH-TE-0059",
-    "sku": "TE-060",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c010",
-    "id": "DH-TE-0060",
-    "sku": "TE-061",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c011",
-    "id": "DH-TE-0061",
-    "sku": "TE-062",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c012",
-    "id": "DH-TE-0062",
-    "sku": "TE-063",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c013",
-    "id": "DH-TE-0063",
-    "sku": "TE-064",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c014",
-    "id": "DH-TE-0064",
-    "sku": "TE-065",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c015",
-    "id": "DH-TE-0065",
-    "sku": "TE-066",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c016",
-    "id": "DH-TE-0066",
-    "sku": "TE-067",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c017",
-    "id": "DH-TE-0067",
-    "sku": "TE-068",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c018",
-    "id": "DH-TE-0068",
-    "sku": "TE-069",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c019",
-    "id": "DH-TE-0069",
-    "sku": "TE-070",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c020",
-    "id": "DH-TE-0070",
-    "sku": "TE-071",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c021",
-    "id": "DH-TE-0071",
-    "sku": "TE-072",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c022",
-    "id": "DH-TE-0072",
-    "sku": "TE-073",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c023",
-    "id": "DH-TE-0073",
-    "sku": "TE-074",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c024",
-    "id": "DH-TE-0074",
-    "sku": "TE-075",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c025",
-    "id": "DH-TE-0075",
-    "sku": "TE-076",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c026",
-    "id": "DH-TE-0076",
-    "sku": "TE-077",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c027",
-    "id": "DH-TE-0077",
-    "sku": "TE-078",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c028",
-    "id": "DH-TE-0078",
-    "sku": "TE-079",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c029",
-    "id": "DH-TE-0079",
-    "sku": "TE-080",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c030",
-    "id": "DH-TE-0080",
-    "sku": "TE-001",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c031",
-    "id": "DH-TE-0081",
-    "sku": "TE-002",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c032",
-    "id": "DH-TE-0082",
-    "sku": "TE-003",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c033",
-    "id": "DH-TE-0083",
-    "sku": "TE-004",
-    "status": "da_huy"
-  },
-  {
+    "created_at": "2026-11-19T10:00:00+07:00",
     "customer_id": "tech_d-c034",
-    "id": "DH-TE-0084",
-    "sku": "TE-005",
-    "status": "doi_tra"
+    "id": "DH-TE-0004",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1279000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-048"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1099000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-006"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1219000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-009"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 7074000
   },
   {
-    "customer_id": "tech_d-c035",
-    "id": "DH-TE-0085",
-    "sku": "TE-006",
-    "status": "cho_xac_nhan"
+    "created_at": "2026-11-11T10:00:00+07:00",
+    "customer_id": "tech_d-c008",
+    "id": "DH-TE-0005",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 3,
+        "size": "2m",
+        "sku": "TE-013"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1185000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-077"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3882000
   },
   {
-    "customer_id": "tech_d-c036",
-    "id": "DH-TE-0086",
-    "sku": "TE-007",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c037",
-    "id": "DH-TE-0087",
-    "sku": "TE-008",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c038",
-    "id": "DH-TE-0088",
-    "sku": "TE-009",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c039",
-    "id": "DH-TE-0089",
-    "sku": "TE-010",
-    "status": "doi_tra"
-  },
-  {
-    "customer_id": "tech_d-c040",
-    "id": "DH-TE-0090",
-    "sku": "TE-011",
-    "status": "cho_xac_nhan"
-  },
-  {
-    "customer_id": "tech_d-c041",
-    "id": "DH-TE-0091",
-    "sku": "TE-012",
-    "status": "dang_giao"
-  },
-  {
-    "customer_id": "tech_d-c042",
-    "id": "DH-TE-0092",
-    "sku": "TE-013",
-    "status": "da_giao"
-  },
-  {
-    "customer_id": "tech_d-c043",
-    "id": "DH-TE-0093",
-    "sku": "TE-014",
-    "status": "da_huy"
-  },
-  {
-    "customer_id": "tech_d-c044",
-    "id": "DH-TE-0094",
-    "sku": "TE-015",
-    "status": "doi_tra"
-  },
-  {
+    "created_at": "2026-11-01T11:00:00+07:00",
     "customer_id": "tech_d-c045",
-    "id": "DH-TE-0095",
-    "sku": "TE-016",
-    "status": "cho_xac_nhan"
+    "id": "DH-TE-0006",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 299000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-041"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "TE-062"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1219000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-009"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4266000
   },
   {
-    "customer_id": "tech_d-c046",
-    "id": "DH-TE-0096",
-    "sku": "TE-017",
-    "status": "dang_giao"
-  },
-  {
+    "created_at": "2026-11-14T20:00:00+07:00",
     "customer_id": "tech_d-c047",
-    "id": "DH-TE-0097",
-    "sku": "TE-018",
-    "status": "da_giao"
+    "id": "DH-TE-0007",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1745000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-079"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3490000
   },
   {
+    "created_at": "2026-11-16T12:00:00+07:00",
+    "customer_id": "tech_d-c023",
+    "id": "DH-TE-0008",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1229000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-080"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1229000
+  },
+  {
+    "created_at": "2026-11-08T19:00:00+07:00",
+    "customer_id": "tech_d-c002",
+    "id": "DH-TE-0009",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 195000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-020"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 230000
+  },
+  {
+    "created_at": "2026-11-01T11:00:00+07:00",
     "customer_id": "tech_d-c048",
-    "id": "DH-TE-0098",
-    "sku": "TE-019",
-    "status": "da_huy"
+    "id": "DH-TE-0010",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-057"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-043"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 250000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-018"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2258000
   },
   {
+    "created_at": "2026-11-08T17:00:00+07:00",
+    "customer_id": "tech_d-c046",
+    "id": "DH-TE-0011",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 290000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-043"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 290000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-044"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 440000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-032"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 3060000
+  },
+  {
+    "created_at": "2026-11-16T09:00:00+07:00",
+    "customer_id": "tech_d-c055",
+    "id": "DH-TE-0012",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "TE-067"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 230000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-042"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 510000
+  },
+  {
+    "created_at": "2026-11-03T10:00:00+07:00",
+    "customer_id": "tech_d-c008",
+    "id": "DH-TE-0013",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 719000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-007"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 719000
+  },
+  {
+    "created_at": "2026-11-08T14:00:00+07:00",
+    "customer_id": "tech_d-c012",
+    "id": "DH-TE-0014",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 435000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-071"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-027"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 589000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-031"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2037000
+  },
+  {
+    "created_at": "2026-11-15T18:00:00+07:00",
+    "customer_id": "tech_d-c036",
+    "id": "DH-TE-0015",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1179000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-078"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2358000
+  },
+  {
+    "created_at": "2026-11-13T10:00:00+07:00",
+    "customer_id": "tech_d-c025",
+    "id": "DH-TE-0016",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 579000
+  },
+  {
+    "created_at": "2026-11-03T20:00:00+07:00",
+    "customer_id": "tech_d-c027",
+    "id": "DH-TE-0017",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-057"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 89000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-055"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 408000
+  },
+  {
+    "created_at": "2026-11-10T15:00:00+07:00",
+    "customer_id": "tech_d-c029",
+    "id": "DH-TE-0018",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1185000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-077"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 270000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "TE-069"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 4095000
+  },
+  {
+    "created_at": "2026-11-16T11:00:00+07:00",
+    "customer_id": "tech_d-c045",
+    "id": "DH-TE-0019",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1249000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-049"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 415000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-072"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 3328000
+  },
+  {
+    "created_at": "2026-11-12T15:00:00+07:00",
+    "customer_id": "tech_d-c046",
+    "id": "DH-TE-0020",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-025"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 579000
+  },
+  {
+    "created_at": "2026-11-03T14:00:00+07:00",
+    "customer_id": "tech_d-c037",
+    "id": "DH-TE-0021",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-054"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-051"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 556000
+  },
+  {
+    "created_at": "2026-11-14T12:00:00+07:00",
+    "customer_id": "tech_d-c012",
+    "id": "DH-TE-0022",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-016"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 525000
+  },
+  {
+    "created_at": "2026-11-08T15:00:00+07:00",
+    "customer_id": "tech_d-c015",
+    "id": "DH-TE-0023",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-045"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 215000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "TE-066"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "TE-063"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1985000
+  },
+  {
+    "created_at": "2026-11-05T12:00:00+07:00",
+    "customer_id": "tech_d-c041",
+    "id": "DH-TE-0024",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 715000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-047"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2145000
+  },
+  {
+    "created_at": "2026-11-13T14:00:00+07:00",
+    "customer_id": "tech_d-c045",
+    "id": "DH-TE-0025",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 599000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-059"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 245000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-019"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 675000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-033"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2717000
+  },
+  {
+    "created_at": "2026-11-18T18:00:00+07:00",
+    "customer_id": "tech_d-c032",
+    "id": "DH-TE-0026",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1200000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-076"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 2,
+        "size": "1m",
+        "sku": "TE-011"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "TE-067"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 3118000
+  },
+  {
+    "created_at": "2026-11-12T21:00:00+07:00",
+    "customer_id": "tech_d-c036",
+    "id": "DH-TE-0027",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1200000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-076"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 255000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-040"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3855000
+  },
+  {
+    "created_at": "2026-11-10T08:00:00+07:00",
+    "customer_id": "tech_d-c044",
+    "id": "DH-TE-0028",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1737000
+  },
+  {
+    "created_at": "2026-11-23T14:00:00+07:00",
+    "customer_id": "tech_d-c049",
+    "id": "DH-TE-0029",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "TE-063"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 20000,
+    "status": "da_huy",
+    "total_vnd": 375000
+  },
+  {
+    "created_at": "2026-11-17T09:00:00+07:00",
+    "customer_id": "tech_d-c011",
+    "id": "DH-TE-0030",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 149000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-054"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 125000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-037"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 429000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-056"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 703000
+  },
+  {
+    "created_at": "2026-11-07T12:00:00+07:00",
+    "customer_id": "tech_d-c051",
+    "id": "DH-TE-0031",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 559000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-073"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 449000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-028"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1906000
+  },
+  {
+    "created_at": "2026-11-13T09:00:00+07:00",
+    "customer_id": "tech_d-c005",
+    "id": "DH-TE-0032",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-057"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1229000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-080"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2186000
+  },
+  {
+    "created_at": "2026-11-04T08:00:00+07:00",
+    "customer_id": "tech_d-c043",
+    "id": "DH-TE-0033",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1219000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-009"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-044"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 4237000
+  },
+  {
+    "created_at": "2026-11-02T09:00:00+07:00",
+    "customer_id": "tech_d-c050",
+    "id": "DH-TE-0034",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-035"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1737000
+  },
+  {
+    "created_at": "2026-11-09T15:00:00+07:00",
+    "customer_id": "tech_d-c033",
+    "id": "DH-TE-0035",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "TE-067"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 315000
+  },
+  {
+    "created_at": "2026-11-08T13:00:00+07:00",
+    "customer_id": "tech_d-c020",
+    "id": "DH-TE-0036",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-044"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1179000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-078"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4117000
+  },
+  {
+    "created_at": "2026-11-05T08:00:00+07:00",
+    "customer_id": "tech_d-c025",
+    "id": "DH-TE-0037",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 85000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-052"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1249000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-049"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1745000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-079"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 4909000
+  },
+  {
+    "created_at": "2026-11-14T18:00:00+07:00",
+    "customer_id": "tech_d-c032",
+    "id": "DH-TE-0038",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-016"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "TE-068"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-036"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1520000
+  },
+  {
+    "created_at": "2026-11-02T20:00:00+07:00",
+    "customer_id": "tech_d-c023",
+    "id": "DH-TE-0039",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-001"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 424000
+  },
+  {
+    "created_at": "2026-11-16T18:00:00+07:00",
+    "customer_id": "tech_d-c059",
+    "id": "DH-TE-0040",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 230000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-042"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-057"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 445000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-030"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2307000
+  },
+  {
+    "created_at": "2026-11-03T12:00:00+07:00",
+    "customer_id": "tech_d-c050",
+    "id": "DH-TE-0041",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "TE-013"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 795000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-050"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 205000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-038"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2917000
+  },
+  {
+    "created_at": "2026-11-22T19:00:00+07:00",
+    "customer_id": "tech_d-c010",
+    "id": "DH-TE-0042",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 435000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-071"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 465000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-060"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-022"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 2219000
+  },
+  {
+    "created_at": "2026-11-11T14:00:00+07:00",
+    "customer_id": "tech_d-c010",
+    "id": "DH-TE-0043",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 129000,
+        "qty": 3,
+        "size": "2m",
+        "sku": "TE-014"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 20000,
+    "status": "da_giao",
+    "total_vnd": 407000
+  },
+  {
+    "created_at": "2026-11-18T18:00:00+07:00",
+    "customer_id": "tech_d-c059",
+    "id": "DH-TE-0044",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 610000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-029"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 675000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-033"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 3855000
+  },
+  {
+    "created_at": "2026-11-13T18:00:00+07:00",
+    "customer_id": "tech_d-c047",
+    "id": "DH-TE-0045",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "TE-063"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 69000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "TE-012"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-043"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1852000
+  },
+  {
+    "created_at": "2026-11-19T11:00:00+07:00",
+    "customer_id": "tech_d-c021",
+    "id": "DH-TE-0046",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 415000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-072"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 429000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-056"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 445000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-030"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2133000
+  },
+  {
+    "created_at": "2026-11-18T11:00:00+07:00",
+    "customer_id": "tech_d-c037",
+    "id": "DH-TE-0047",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "2m",
+        "sku": "TE-015"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 699000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-074"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1279000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-048"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 4913000
+  },
+  {
+    "created_at": "2026-11-19T11:00:00+07:00",
+    "customer_id": "tech_d-c038",
+    "id": "DH-TE-0048",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 89000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-055"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 299000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-041"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1164000
+  },
+  {
+    "created_at": "2026-11-05T21:00:00+07:00",
+    "customer_id": "tech_d-c020",
+    "id": "DH-TE-0049",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-051"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_huy",
+    "total_vnd": 417000
+  },
+  {
+    "created_at": "2026-11-23T08:00:00+07:00",
+    "customer_id": "tech_d-c042",
+    "id": "DH-TE-0050",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 610000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-029"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "TE-064"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 999000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "tech_d-c045",
+    "id": "DH-TE-0051",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 299000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-041"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-040"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 350000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "TE-065"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2063000
+  },
+  {
+    "created_at": "2026-11-06T21:00:00+07:00",
+    "customer_id": "tech_d-c059",
+    "id": "DH-TE-0052",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 195000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-020"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-027"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1062000
+  },
+  {
+    "created_at": "2026-11-22T15:00:00+07:00",
+    "customer_id": "tech_d-c027",
+    "id": "DH-TE-0053",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-051"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-039"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 767000
+  },
+  {
+    "created_at": "2026-11-18T14:00:00+07:00",
+    "customer_id": "tech_d-c054",
+    "id": "DH-TE-0054",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-051"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1159000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-010"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1417000
+  },
+  {
+    "created_at": "2026-11-23T12:00:00+07:00",
+    "customer_id": "tech_d-c054",
+    "id": "DH-TE-0055",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-017"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 537000
+  },
+  {
+    "created_at": "2026-11-07T20:00:00+07:00",
+    "customer_id": "tech_d-c013",
+    "id": "DH-TE-0056",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 540000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-021"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 699000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-074"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2478000
+  },
+  {
+    "created_at": "2026-11-06T08:00:00+07:00",
+    "customer_id": "tech_d-c043",
+    "id": "DH-TE-0057",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-026"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 359000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-002"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 715000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-047"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3467000
+  },
+  {
+    "created_at": "2026-11-17T18:00:00+07:00",
+    "customer_id": "tech_d-c007",
+    "id": "DH-TE-0058",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 850000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-046"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 850000
+  },
+  {
+    "created_at": "2026-11-08T14:00:00+07:00",
+    "customer_id": "tech_d-c007",
+    "id": "DH-TE-0059",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1200000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-076"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 429000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-056"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 4029000
+  },
+  {
+    "created_at": "2026-11-03T20:00:00+07:00",
+    "customer_id": "tech_d-c042",
+    "id": "DH-TE-0060",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-039"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1185000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-077"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 4512000
+  },
+  {
+    "created_at": "2026-11-04T09:00:00+07:00",
+    "customer_id": "tech_d-c007",
+    "id": "DH-TE-0061",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1249000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-049"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-036"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4137000
+  },
+  {
+    "created_at": "2026-11-19T15:00:00+07:00",
+    "customer_id": "tech_d-c036",
+    "id": "DH-TE-0062",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "TE-063"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "dang_giao",
+    "total_vnd": 390000
+  },
+  {
+    "created_at": "2026-11-10T17:00:00+07:00",
+    "customer_id": "tech_d-c027",
+    "id": "DH-TE-0063",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 2,
+        "size": "1m",
+        "sku": "TE-013"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1200000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-076"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 3818000
+  },
+  {
+    "created_at": "2026-11-18T10:00:00+07:00",
+    "customer_id": "tech_d-c058",
+    "id": "DH-TE-0064",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 1,
+        "size": "2m",
+        "sku": "TE-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "da_huy",
+    "total_vnd": 144000
+  },
+  {
+    "created_at": "2026-11-19T16:00:00+07:00",
+    "customer_id": "tech_d-c053",
+    "id": "DH-TE-0065",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 530000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-003"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-051"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1719000
+  },
+  {
+    "created_at": "2026-11-19T11:00:00+07:00",
+    "customer_id": "tech_d-c008",
+    "id": "DH-TE-0066",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-016"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 289000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-027"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 749000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-024"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1502000
+  },
+  {
+    "created_at": "2026-11-06T14:00:00+07:00",
+    "customer_id": "tech_d-c034",
+    "id": "DH-TE-0067",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 540000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-021"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 69000,
+        "qty": 1,
+        "size": "1m",
+        "sku": "TE-012"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 415000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-072"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1439000
+  },
+  {
+    "created_at": "2026-11-16T19:00:00+07:00",
+    "customer_id": "tech_d-c036",
+    "id": "DH-TE-0068",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-001"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 440000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-032"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 319000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-039"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 3125000
+  },
+  {
+    "created_at": "2026-11-02T11:00:00+07:00",
+    "customer_id": "tech_d-c015",
+    "id": "DH-TE-0069",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "64GB",
+        "sku": "TE-067"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 850000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-046"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2970000
+  },
+  {
+    "created_at": "2026-11-07T17:00:00+07:00",
+    "customer_id": "tech_d-c035",
+    "id": "DH-TE-0070",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-039"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "doi_tra",
+    "total_vnd": 354000
+  },
+  {
+    "created_at": "2026-11-09T14:00:00+07:00",
+    "customer_id": "tech_d-c016",
+    "id": "DH-TE-0071",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-036"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-017"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 764000
+  },
+  {
+    "created_at": "2026-11-21T19:00:00+07:00",
+    "customer_id": "tech_d-c004",
+    "id": "DH-TE-0072",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 540000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-021"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 85000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-052"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 599000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-059"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3132000
+  },
+  {
+    "created_at": "2026-11-01T17:00:00+07:00",
+    "customer_id": "tech_d-c024",
+    "id": "DH-TE-0073",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-025"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 1279000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-048"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 3716000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "tech_d-c007",
+    "id": "DH-TE-0074",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1159000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-010"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1159000
+  },
+  {
+    "created_at": "2026-11-08T12:00:00+07:00",
+    "customer_id": "tech_d-c055",
+    "id": "DH-TE-0075",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1219000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-009"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 290000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-043"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3018000
+  },
+  {
+    "created_at": "2026-11-04T10:00:00+07:00",
+    "customer_id": "tech_d-c006",
+    "id": "DH-TE-0076",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 1,
+        "size": "2m",
+        "sku": "TE-013"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "cho_xac_nhan",
+    "total_vnd": 139000
+  },
+  {
+    "created_at": "2026-11-04T08:00:00+07:00",
+    "customer_id": "tech_d-c038",
+    "id": "DH-TE-0077",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 255000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-040"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1200000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-076"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "TE-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 5430000
+  },
+  {
+    "created_at": "2026-11-22T20:00:00+07:00",
+    "customer_id": "tech_d-c051",
+    "id": "DH-TE-0078",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 299000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-041"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 30000,
+    "status": "da_giao",
+    "total_vnd": 329000
+  },
+  {
+    "created_at": "2026-11-05T18:00:00+07:00",
+    "customer_id": "tech_d-c045",
+    "id": "DH-TE-0079",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 435000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-071"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 1185000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-077"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 85000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-052"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 3930000
+  },
+  {
+    "created_at": "2026-11-02T19:00:00+07:00",
+    "customer_id": "tech_d-c017",
+    "id": "DH-TE-0080",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 245000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-019"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 735000
+  },
+  {
+    "created_at": "2026-11-10T12:00:00+07:00",
+    "customer_id": "tech_d-c032",
+    "id": "DH-TE-0081",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1279000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-048"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 440000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1179000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-078"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 6635000
+  },
+  {
+    "created_at": "2026-11-11T21:00:00+07:00",
+    "customer_id": "tech_d-c049",
+    "id": "DH-TE-0082",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 140000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "TE-067"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 445000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-030"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1310000
+  },
+  {
+    "created_at": "2026-11-06T17:00:00+07:00",
+    "customer_id": "tech_d-c005",
+    "id": "DH-TE-0083",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "TE-011"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 447000
+  },
+  {
+    "created_at": "2026-11-01T14:00:00+07:00",
+    "customer_id": "tech_d-c051",
+    "id": "DH-TE-0084",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 3,
+        "size": "2m",
+        "sku": "TE-011"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 447000
+  },
+  {
+    "created_at": "2026-11-07T21:00:00+07:00",
+    "customer_id": "tech_d-c039",
+    "id": "DH-TE-0085",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 215000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "TE-066"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 250000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-018"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 155000,
+        "qty": 2,
+        "size": "128GB",
+        "sku": "TE-062"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1705000
+  },
+  {
+    "created_at": "2026-11-17T11:00:00+07:00",
+    "customer_id": "tech_d-c059",
+    "id": "DH-TE-0086",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-001"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 89000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-055"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 270000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "TE-069"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 926000
+  },
+  {
+    "created_at": "2026-11-02T14:00:00+07:00",
+    "customer_id": "tech_d-c022",
+    "id": "DH-TE-0087",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1159000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-010"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1159000
+  },
+  {
+    "created_at": "2026-11-18T21:00:00+07:00",
+    "customer_id": "tech_d-c053",
+    "id": "DH-TE-0088",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1249000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-049"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-022"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 2416000
+  },
+  {
+    "created_at": "2026-11-07T08:00:00+07:00",
+    "customer_id": "tech_d-c016",
+    "id": "DH-TE-0089",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 205000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-038"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 410000
+  },
+  {
+    "created_at": "2026-11-20T15:00:00+07:00",
+    "customer_id": "tech_d-c000",
+    "id": "DH-TE-0090",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 559000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-073"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-051"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 449000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-028"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2384000
+  },
+  {
+    "created_at": "2026-11-12T08:00:00+07:00",
+    "customer_id": "tech_d-c025",
+    "id": "DH-TE-0091",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-039"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 850000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-046"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 2869000
+  },
+  {
+    "created_at": "2026-11-17T10:00:00+07:00",
+    "customer_id": "tech_d-c033",
+    "id": "DH-TE-0092",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 429000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-056"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 429000
+  },
+  {
+    "created_at": "2026-11-12T12:00:00+07:00",
+    "customer_id": "tech_d-c025",
+    "id": "DH-TE-0093",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 175000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-016"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 355000,
+        "qty": 1,
+        "size": "128GB",
+        "sku": "TE-063"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 530000
+  },
+  {
+    "created_at": "2026-11-05T13:00:00+07:00",
+    "customer_id": "tech_d-c010",
+    "id": "DH-TE-0094",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 89000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-055"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 749000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-024"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2336000
+  },
+  {
+    "created_at": "2026-11-11T08:00:00+07:00",
+    "customer_id": "tech_d-c026",
+    "id": "DH-TE-0095",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 429000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-056"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-001"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 850000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-046"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 2057000
+  },
+  {
+    "created_at": "2026-11-14T15:00:00+07:00",
+    "customer_id": "tech_d-c007",
+    "id": "DH-TE-0096",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 320000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-026"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 960000
+  },
+  {
+    "created_at": "2026-11-05T13:00:00+07:00",
+    "customer_id": "tech_d-c008",
+    "id": "DH-TE-0097",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "128GB",
+        "sku": "TE-064"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 179000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-017"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 230000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-042"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1576000
+  },
+  {
+    "created_at": "2026-11-03T20:00:00+07:00",
+    "customer_id": "tech_d-c031",
+    "id": "DH-TE-0098",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 359000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-002"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 589000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-031"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 719000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-007"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 3334000
+  },
+  {
+    "created_at": "2026-11-04T21:00:00+07:00",
     "customer_id": "tech_d-c049",
     "id": "DH-TE-0099",
-    "sku": "TE-020",
-    "status": "doi_tra"
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 440000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-032"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1229000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-080"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 2549000
+  },
+  {
+    "created_at": "2026-11-20T10:00:00+07:00",
+    "customer_id": "tech_d-c032",
+    "id": "DH-TE-0100",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 440000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-032"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 89000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-055"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1147000
+  },
+  {
+    "created_at": "2026-11-13T08:00:00+07:00",
+    "customer_id": "tech_d-c008",
+    "id": "DH-TE-0101",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1200000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-076"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 1200000
+  },
+  {
+    "created_at": "2026-11-14T16:00:00+07:00",
+    "customer_id": "tech_d-c024",
+    "id": "DH-TE-0102",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 579000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-025"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 245000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-019"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 824000
+  },
+  {
+    "created_at": "2026-11-21T08:00:00+07:00",
+    "customer_id": "tech_d-c027",
+    "id": "DH-TE-0103",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 445000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-030"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 610000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-029"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1500000
+  },
+  {
+    "created_at": "2026-11-11T08:00:00+07:00",
+    "customer_id": "tech_d-c015",
+    "id": "DH-TE-0104",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 129000,
+        "qty": 2,
+        "size": "2m",
+        "sku": "TE-015"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 579000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-035"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1995000
+  },
+  {
+    "created_at": "2026-11-11T11:00:00+07:00",
+    "customer_id": "tech_d-c047",
+    "id": "DH-TE-0105",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1099000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-006"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 1099000
+  },
+  {
+    "created_at": "2026-11-11T12:00:00+07:00",
+    "customer_id": "tech_d-c023",
+    "id": "DH-TE-0106",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 2,
+        "size": "64GB",
+        "sku": "TE-061"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 195000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-036"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 688000
+  },
+  {
+    "created_at": "2026-11-05T13:00:00+07:00",
+    "customer_id": "tech_d-c049",
+    "id": "DH-TE-0107",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 109000,
+        "qty": 3,
+        "size": "1m",
+        "sku": "TE-013"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 35000,
+    "status": "dang_giao",
+    "total_vnd": 362000
+  },
+  {
+    "created_at": "2026-11-03T09:00:00+07:00",
+    "customer_id": "tech_d-c024",
+    "id": "DH-TE-0108",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 715000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-047"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 1200000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-076"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1915000
+  },
+  {
+    "created_at": "2026-11-21T21:00:00+07:00",
+    "customer_id": "tech_d-c058",
+    "id": "DH-TE-0109",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 1179000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-078"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 1179000
+  },
+  {
+    "created_at": "2026-11-20T13:00:00+07:00",
+    "customer_id": "tech_d-c034",
+    "id": "DH-TE-0110",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 579000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-025"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 579000
+  },
+  {
+    "created_at": "2026-11-23T12:00:00+07:00",
+    "customer_id": "tech_d-c035",
+    "id": "DH-TE-0111",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 149000,
+        "qty": 1,
+        "size": "64GB",
+        "sku": "TE-061"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 320000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-026"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 469000
+  },
+  {
+    "created_at": "2026-11-01T10:00:00+07:00",
+    "customer_id": "tech_d-c050",
+    "id": "DH-TE-0112",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 210000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-045"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 715000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-047"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 465000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-058"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 3245000
+  },
+  {
+    "created_at": "2026-11-22T16:00:00+07:00",
+    "customer_id": "tech_d-c031",
+    "id": "DH-TE-0113",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-036"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 179000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-017"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 205000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-038"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1737000
+  },
+  {
+    "created_at": "2026-11-06T17:00:00+07:00",
+    "customer_id": "tech_d-c000",
+    "id": "DH-TE-0114",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 1159000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-010"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-022"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-057"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 3415000
+  },
+  {
+    "created_at": "2026-11-23T19:00:00+07:00",
+    "customer_id": "tech_d-c032",
+    "id": "DH-TE-0115",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1200000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-076"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 3600000
+  },
+  {
+    "created_at": "2026-11-18T11:00:00+07:00",
+    "customer_id": "tech_d-c002",
+    "id": "DH-TE-0116",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 890000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-034"
+      },
+      {
+        "color": "trắng",
+        "price_vnd": 319000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-039"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 610000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-029"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "cho_xac_nhan",
+    "total_vnd": 4237000
+  },
+  {
+    "created_at": "2026-11-07T16:00:00+07:00",
+    "customer_id": "tech_d-c015",
+    "id": "DH-TE-0117",
+    "items": [
+      {
+        "color": "đen",
+        "price_vnd": 1099000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-006"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 245000,
+        "qty": 1,
+        "size": "",
+        "sku": "TE-019"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "dang_giao",
+    "total_vnd": 1344000
+  },
+  {
+    "created_at": "2026-11-11T09:00:00+07:00",
+    "customer_id": "tech_d-c023",
+    "id": "DH-TE-0118",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 389000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-001"
+      }
+    ],
+    "region": "tinh",
+    "ship_fee_vnd": 0,
+    "status": "da_giao",
+    "total_vnd": 1167000
+  },
+  {
+    "created_at": "2026-11-12T11:00:00+07:00",
+    "customer_id": "tech_d-c052",
+    "id": "DH-TE-0119",
+    "items": [
+      {
+        "color": "trắng",
+        "price_vnd": 435000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-071"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 890000,
+        "qty": 2,
+        "size": "",
+        "sku": "TE-034"
+      },
+      {
+        "color": "đen",
+        "price_vnd": 250000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-018"
+      }
+    ],
+    "region": "noi_thanh",
+    "ship_fee_vnd": 0,
+    "status": "da_huy",
+    "total_vnd": 3835000
+  },
+  {
+    "created_at": "2026-11-21T18:00:00+07:00",
+    "customer_id": "tech_d-c055",
+    "id": "DH-TE-0120",
+    "items": [
+      {
+        "color": "xanh dương",
+        "price_vnd": 195000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-036"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 635000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-023"
+      },
+      {
+        "color": "xanh dương",
+        "price_vnd": 675000,
+        "qty": 3,
+        "size": "",
+        "sku": "TE-033"
+      }
+    ],
+    "region": "ngoai_thanh",
+    "ship_fee_vnd": 0,
+    "status": "doi_tra",
+    "total_vnd": 4515000
   }
 ]

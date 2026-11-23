@@ -1,12 +1,16 @@
 {
   "cod": true,
   "cod_fee_vnd": 0,
-  "freeship_from_vnd": 500000,
+  "freeship_from_vnd": 499000,
   "hours": {
     "closed_days": [
       {
         "date": "2027-02-06",
-        "note": "Tết"
+        "note": "Mùng 1 Tết"
+      },
+      {
+        "date": "2027-02-07",
+        "note": "Mùng 2 Tết"
       }
     ],
     "pause_until": "2026-11-24T12:00:00+07:00",
@@ -72,10 +76,31 @@
   },
   "industry": "thời trang",
   "name": "Mây Mặc",
-  "shipping_regions": {
-    "ngoai_thanh": 50000,
-    "noi_thanh": 35000,
-    "tinh": 65000
+  "product_types": [
+    "Áo thun cotton cổ tròn",
+    "Áo thun form rộng",
+    "Áo sơ mi linen",
+    "Áo sơ mi oxford",
+    "Áo khoác gió",
+    "Áo khoác gió lót lông",
+    "Áo hoodie nỉ",
+    "Áo len cổ lọ",
+    "Quần jean ống suông",
+    "Quần jogger",
+    "Quần short kaki",
+    "Quần tây công sở",
+    "Váy midi hoa",
+    "Chân váy xếp ly",
+    "Đầm maxi đi biển",
+    "Áo polo",
+    "Quần lót cotton (set 3)"
+  ],
+  "return_days": 7,
+  "shipping_vnd": {
+    "ngoai_thanh": 40000,
+    "noi_thanh": 30000,
+    "tinh": 45000
   },
-  "shop_key": "fashion_a"
+  "shop_key": "fashion_a",
+  "wholesale_from": 10
 }

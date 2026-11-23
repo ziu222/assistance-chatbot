@@ -1,12 +1,16 @@
 {
   "cod": true,
-  "cod_fee_vnd": 0,
-  "freeship_from_vnd": 500000,
+  "cod_fee_vnd": 15000,
+  "freeship_from_vnd": 999000,
   "hours": {
     "closed_days": [
       {
-        "date": "2026-11-23",
-        "note": "nghỉ bảo trì"
+        "date": "2026-11-30",
+        "note": "Nghỉ kiểm kho"
+      },
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
       }
     ],
     "pause_until": "2026-11-24T12:00:00+07:00",
@@ -66,10 +70,30 @@
   },
   "industry": "đồ gia dụng",
   "name": "Nhà Gọn",
-  "shipping_regions": {
+  "product_types": [
+    "Bình giữ nhiệt inox",
+    "Bình giữ nhiệt mini",
+    "Bộ hộp thủy tinh",
+    "Nồi chiên không dầu",
+    "Ấm siêu tốc",
+    "Chảo chống dính",
+    "Bộ dao inox",
+    "Thớt gỗ nghiến",
+    "Giá treo khăn",
+    "Kệ gia vị 2 tầng",
+    "Đèn bàn cảm ứng",
+    "Quạt mini để bàn",
+    "Máy xay sinh tố",
+    "Hộp cơm giữ nhiệt",
+    "Cây lau nhà xoay",
+    "Móc dán tường (bộ 10)"
+  ],
+  "return_days": 3,
+  "shipping_vnd": {
     "ngoai_thanh": 45000,
     "noi_thanh": 30000,
     "tinh": 60000
   },
-  "shop_key": "home_c"
+  "shop_key": "home_c",
+  "wholesale_from": 5
 }

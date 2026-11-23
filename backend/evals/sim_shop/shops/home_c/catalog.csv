@@ -1,108 +1,168 @@
 sku,name,description,price_vnd,size,color,stock
-HO-001,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",159000,,đen,0
-HO-001,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",159000,,be,0
-HO-002,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",345000,,be,9
-HO-003,Bình giữ nhiệt inox,"Bình giữ nhiệt inox, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",240000,,xanh rêu,3
-HO-004,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",426000,,đen,10
-HO-004,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",426000,,be,11
-HO-005,Váy midi hoa,"Váy midi hoa, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",321000,,be,4
-HO-006,Kem chống nắng,"Kem chống nắng, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",216000,,xanh rêu,11
-HO-007,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",402000,,đen,5
-HO-007,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",402000,,be,6
-HO-008,Son dưỡng có màu,"Son dưỡng có màu, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",297000,,be,12
-HO-009,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",192000,,xanh rêu,6
-HO-010,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",378000,,đen,13
-HO-010,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",378000,,be,14
-HO-011,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",273000,,be,7
-HO-012,Giá treo khăn,"Giá treo khăn, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",168000,,xanh rêu,14
-HO-013,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",354000,,đen,8
-HO-013,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",354000,,be,9
-HO-014,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",249000,,be,2
-HO-015,Chuột không dây,"Chuột không dây, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",435000,,xanh rêu,9
-HO-016,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",330000,,đen,3
-HO-016,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",330000,,be,4
-HO-017,Áo khoác gió,"Áo khoác gió, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",225000,,be,10
-HO-018,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",411000,,xanh rêu,0
-HO-019,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",306000,,đen,11
-HO-019,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",306000,,be,12
-HO-020,Quần jogger,"Quần jogger, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",201000,,be,5
-HO-021,Váy midi hoa,"Váy midi hoa, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",387000,,xanh rêu,12
-HO-022,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",282000,,đen,6
-HO-022,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",282000,,be,7
-HO-023,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",177000,,be,13
-HO-024,Son dưỡng có màu,"Son dưỡng có màu, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",363000,,xanh rêu,7
-HO-025,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",258000,,đen,14
-HO-025,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",258000,,be,2
-HO-026,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",444000,,be,8
-HO-027,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",339000,,xanh rêu,2
-HO-028,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",234000,,đen,9
-HO-028,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",234000,,be,10
-HO-029,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",420000,,be,3
-HO-030,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",315000,,xanh rêu,10
-HO-031,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",210000,,đen,4
-HO-031,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",210000,,be,5
-HO-032,Sạc dự phòng,"Sạc dự phòng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",396000,,be,11
-HO-033,Áo khoác gió,"Áo khoác gió, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",291000,,xanh rêu,5
-HO-034,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",186000,,đen,12
-HO-034,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",186000,,be,13
-HO-035,Áo sơ mi linen,"Áo sơ mi linen, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",372000,,be,0
-HO-036,Quần jogger,"Quần jogger, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",267000,,xanh rêu,13
-HO-037,Váy midi hoa,"Váy midi hoa, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",162000,,đen,7
-HO-037,Váy midi hoa,"Váy midi hoa, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",162000,,be,8
-HO-038,Kem chống nắng,"Kem chống nắng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",348000,,be,14
-HO-039,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",243000,,xanh rêu,8
-HO-040,Son dưỡng có màu,"Son dưỡng có màu, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",429000,,đen,2
-HO-040,Son dưỡng có màu,"Son dưỡng có màu, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",429000,,be,3
-HO-041,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",324000,,be,9
-HO-042,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",219000,,xanh rêu,3
-HO-043,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",405000,,đen,10
-HO-043,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",405000,,be,11
-HO-044,Giá treo khăn,"Giá treo khăn, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",300000,,be,4
-HO-045,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",195000,,xanh rêu,11
-HO-046,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",381000,,đen,5
-HO-046,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",381000,,be,6
-HO-047,Chuột không dây,"Chuột không dây, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",276000,,be,12
-HO-048,Sạc dự phòng,"Sạc dự phòng, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",171000,,xanh rêu,6
-HO-049,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",357000,,đen,13
-HO-049,Áo khoác gió,"Áo khoác gió, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",357000,,be,14
-HO-050,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",252000,,be,7
-HO-051,Áo sơ mi linen,"Áo sơ mi linen, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",438000,,xanh rêu,14
-HO-052,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",333000,,đen,0
-HO-052,Quần jogger,"Quần jogger, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",333000,,be,0
-HO-053,Váy midi hoa,"Váy midi hoa, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",228000,,be,2
-HO-054,Kem chống nắng,"Kem chống nắng, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",414000,,xanh rêu,9
-HO-055,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",309000,,đen,3
-HO-055,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",309000,,be,4
-HO-056,Son dưỡng có màu,"Son dưỡng có màu, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",204000,,be,10
-HO-057,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",390000,,xanh rêu,4
-HO-058,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",285000,,đen,11
-HO-058,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",285000,,be,12
-HO-059,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",180000,,be,5
-HO-060,Giá treo khăn,"Giá treo khăn, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",366000,,xanh rêu,12
-HO-061,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",261000,,đen,6
-HO-061,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",261000,,be,7
-HO-062,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",447000,,be,13
-HO-063,Chuột không dây,"Chuột không dây, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",342000,,xanh rêu,7
-HO-064,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",237000,,đen,14
-HO-064,Sạc dự phòng,"Sạc dự phòng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",237000,,be,2
-HO-065,Áo khoác gió,"Áo khoác gió, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",423000,,be,8
-HO-066,Áo khoác gió lót lông,"Áo khoác gió lót lông, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",318000,,xanh rêu,2
-HO-067,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",213000,,đen,9
-HO-067,Áo sơ mi linen,"Áo sơ mi linen, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",213000,,be,10
-HO-068,Quần jogger,"Quần jogger, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",399000,,be,3
-HO-069,Váy midi hoa,"Váy midi hoa, chất liệu inox; xuất xứ Thái Lan; bảo hành 11 tháng.",294000,,xanh rêu,0
-HO-070,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",189000,,đen,4
-HO-070,Kem chống nắng,"Kem chống nắng, chất liệu cotton; xuất xứ Việt Nam; bảo hành 12 tháng.",189000,,be,5
-HO-071,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ, chất liệu canvas; xuất xứ Thái Lan; bảo hành 13 tháng.",375000,,be,11
-HO-072,Son dưỡng có màu,"Son dưỡng có màu, chất liệu inox; xuất xứ Việt Nam; bảo hành 14 tháng.",270000,,xanh rêu,5
-HO-073,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",165000,,đen,12
-HO-073,Bình giữ nhiệt,"Bình giữ nhiệt, chất liệu cotton; xuất xứ Thái Lan; bảo hành 3 tháng.",165000,,be,13
-HO-074,Hộp đựng thực phẩm,"Hộp đựng thực phẩm, chất liệu canvas; xuất xứ Việt Nam; bảo hành 4 tháng.",351000,,be,6
-HO-075,Đèn bàn cảm ứng,"Đèn bàn cảm ứng, chất liệu inox; xuất xứ Thái Lan; bảo hành 5 tháng.",246000,,xanh rêu,13
-HO-076,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",432000,,đen,7
-HO-076,Giá treo khăn,"Giá treo khăn, chất liệu cotton; xuất xứ Việt Nam; bảo hành 6 tháng.",432000,,be,8
-HO-077,Tai nghe Bluetooth,"Tai nghe Bluetooth, chất liệu canvas; xuất xứ Thái Lan; bảo hành 7 tháng.",327000,,be,14
-HO-078,Cáp sạc nhanh,"Cáp sạc nhanh, chất liệu inox; xuất xứ Việt Nam; bảo hành 8 tháng.",222000,,xanh rêu,8
-HO-079,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",408000,,đen,2
-HO-079,Chuột không dây,"Chuột không dây, chất liệu cotton; xuất xứ Thái Lan; bảo hành 9 tháng.",408000,,be,3
-HO-080,Sạc dự phòng,"Sạc dự phòng, chất liệu canvas; xuất xứ Việt Nam; bảo hành 10 tháng.",303000,,be,9
+HO-001,Bình giữ nhiệt inox,"Bình giữ nhiệt inox: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",269000,500ml,trắng,21
+HO-001,Bình giữ nhiệt inox,"Bình giữ nhiệt inox: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",269000,750ml,trắng,10
+HO-001,Bình giữ nhiệt inox,"Bình giữ nhiệt inox: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",269000,1L,trắng,15
+HO-002,Bình giữ nhiệt inox Classic,"Bình giữ nhiệt inox Classic: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",209000,500ml,trắng,26
+HO-002,Bình giữ nhiệt inox Classic,"Bình giữ nhiệt inox Classic: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",209000,750ml,trắng,0
+HO-002,Bình giữ nhiệt inox Classic,"Bình giữ nhiệt inox Classic: inox 304, giữ nhiệt 12 giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",209000,1L,trắng,31
+HO-003,Bình giữ nhiệt inox Mini,"Bình giữ nhiệt inox Mini: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,500ml,trắng,28
+HO-003,Bình giữ nhiệt inox Mini,"Bình giữ nhiệt inox Mini: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",199000,750ml,trắng,9
+HO-004,Bình giữ nhiệt inox Plus,"Bình giữ nhiệt inox Plus: inox 304, giữ nhiệt 12 giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",319000,750ml,trắng,37
+HO-005,Bình giữ nhiệt inox Eco,"Bình giữ nhiệt inox Eco: inox 304, giữ nhiệt 12 giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",185000,750ml,trắng,21
+HO-006,Bình giữ nhiệt mini,"Bình giữ nhiệt mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,500ml,trắng,21
+HO-006,Bình giữ nhiệt mini,"Bình giữ nhiệt mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,750ml,trắng,2
+HO-006,Bình giữ nhiệt mini,"Bình giữ nhiệt mini: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",199000,1L,trắng,11
+HO-007,Bình giữ nhiệt mini Classic,"Bình giữ nhiệt mini Classic: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",219000,750ml,trắng,0
+HO-008,Bình giữ nhiệt mini Mini,"Bình giữ nhiệt mini Mini: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",165000,500ml,trắng,0
+HO-008,Bình giữ nhiệt mini Mini,"Bình giữ nhiệt mini Mini: inox 304, nắp bật. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",165000,1L,trắng,0
+HO-009,Bình giữ nhiệt mini Plus,"Bình giữ nhiệt mini Plus: inox 304, nắp bật. Xuất xứ Thái Lan. Bảo hành 12 tháng.",255000,750ml,trắng,8
+HO-010,Bình giữ nhiệt mini Eco,"Bình giữ nhiệt mini Eco: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",159000,500ml,trắng,34
+HO-010,Bình giữ nhiệt mini Eco,"Bình giữ nhiệt mini Eco: inox 304, nắp bật. Xuất xứ Việt Nam. Bảo hành 12 tháng.",159000,1L,trắng,36
+HO-011,Bộ hộp thủy tinh,"Bộ hộp thủy tinh: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,500ml,trắng,0
+HO-011,Bộ hộp thủy tinh,"Bộ hộp thủy tinh: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,750ml,trắng,0
+HO-011,Bộ hộp thủy tinh,"Bộ hộp thủy tinh: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,1L,trắng,0
+HO-012,Bộ hộp thủy tinh Classic,"Bộ hộp thủy tinh Classic: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,500ml,trắng,0
+HO-012,Bộ hộp thủy tinh Classic,"Bộ hộp thủy tinh Classic: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,1L,trắng,24
+HO-013,Bộ hộp thủy tinh Mini,"Bộ hộp thủy tinh Mini: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",269000,500ml,trắng,7
+HO-013,Bộ hộp thủy tinh Mini,"Bộ hộp thủy tinh Mini: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",269000,750ml,trắng,32
+HO-013,Bộ hộp thủy tinh Mini,"Bộ hộp thủy tinh Mini: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Thái Lan. Bảo hành 6 tháng.",269000,1L,trắng,35
+HO-014,Bộ hộp thủy tinh Plus,"Bộ hộp thủy tinh Plus: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,500ml,trắng,0
+HO-014,Bộ hộp thủy tinh Plus,"Bộ hộp thủy tinh Plus: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",285000,1L,trắng,20
+HO-015,Bộ hộp thủy tinh Eco,"Bộ hộp thủy tinh Eco: thủy tinh chịu nhiệt, nắp khóa. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",249000,500ml,trắng,0
+HO-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1500000,500ml,trắng,2
+HO-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1500000,750ml,trắng,18
+HO-016,Nồi chiên không dầu,"Nồi chiên không dầu: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1500000,1L,trắng,22
+HO-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1825000,500ml,trắng,10
+HO-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1825000,750ml,trắng,20
+HO-017,Nồi chiên không dầu Classic,"Nồi chiên không dầu Classic: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1825000,1L,trắng,22
+HO-018,Nồi chiên không dầu Mini,"Nồi chiên không dầu Mini: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1245000,500ml,trắng,34
+HO-018,Nồi chiên không dầu Mini,"Nồi chiên không dầu Mini: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1245000,750ml,trắng,28
+HO-018,Nồi chiên không dầu Mini,"Nồi chiên không dầu Mini: lòng chống dính, hẹn giờ. Xuất xứ Việt Nam. Bảo hành 12 tháng.",1245000,1L,trắng,10
+HO-019,Nồi chiên không dầu Plus,"Nồi chiên không dầu Plus: lòng chống dính, hẹn giờ. Xuất xứ Thái Lan. Bảo hành 12 tháng.",2025000,1L,trắng,0
+HO-020,Nồi chiên không dầu Eco,"Nồi chiên không dầu Eco: lòng chống dính, hẹn giờ. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",1265000,750ml,trắng,27
+HO-021,Ấm siêu tốc,"Ấm siêu tốc: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",380000,500ml,trắng,7
+HO-021,Ấm siêu tốc,"Ấm siêu tốc: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",380000,750ml,trắng,0
+HO-021,Ấm siêu tốc,"Ấm siêu tốc: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",380000,1L,trắng,0
+HO-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",380000,500ml,trắng,2
+HO-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",380000,750ml,trắng,31
+HO-022,Ấm siêu tốc Classic,"Ấm siêu tốc Classic: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",380000,1L,trắng,0
+HO-023,Ấm siêu tốc Mini,"Ấm siêu tốc Mini: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",299000,500ml,trắng,9
+HO-023,Ấm siêu tốc Mini,"Ấm siêu tốc Mini: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",299000,750ml,trắng,15
+HO-023,Ấm siêu tốc Mini,"Ấm siêu tốc Mini: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",299000,1L,trắng,0
+HO-024,Ấm siêu tốc Plus,"Ấm siêu tốc Plus: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",429000,500ml,trắng,5
+HO-024,Ấm siêu tốc Plus,"Ấm siêu tốc Plus: inox 304, tự ngắt khi sôi. Xuất xứ Thái Lan. Bảo hành 12 tháng.",429000,1L,trắng,29
+HO-025,Ấm siêu tốc Eco,"Ấm siêu tốc Eco: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",339000,500ml,trắng,3
+HO-025,Ấm siêu tốc Eco,"Ấm siêu tốc Eco: inox 304, tự ngắt khi sôi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",339000,750ml,trắng,25
+HO-026,Chảo chống dính,"Chảo chống dính: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",319000,500ml,trắng,3
+HO-026,Chảo chống dính,"Chảo chống dính: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",319000,750ml,trắng,16
+HO-026,Chảo chống dính,"Chảo chống dính: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",319000,1L,trắng,26
+HO-027,Chảo chống dính Classic,"Chảo chống dính Classic: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",349000,500ml,trắng,29
+HO-027,Chảo chống dính Classic,"Chảo chống dính Classic: phủ đá ceramic, dùng bếp từ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",349000,1L,trắng,20
+HO-028,Chảo chống dính Mini,"Chảo chống dính Mini: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",250000,750ml,trắng,4
+HO-029,Chảo chống dính Plus,"Chảo chống dính Plus: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",375000,500ml,trắng,38
+HO-029,Chảo chống dính Plus,"Chảo chống dính Plus: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",375000,750ml,trắng,35
+HO-029,Chảo chống dính Plus,"Chảo chống dính Plus: phủ đá ceramic, dùng bếp từ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",375000,1L,trắng,0
+HO-030,Chảo chống dính Eco,"Chảo chống dính Eco: phủ đá ceramic, dùng bếp từ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",249000,750ml,trắng,13
+HO-031,Bộ dao inox,"Bộ dao inox: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,,xanh mint,8
+HO-031,Bộ dao inox,"Bộ dao inox: 5 món, kèm giá cắm. Xuất xứ Thái Lan. Bảo hành 6 tháng.",379000,,trắng,0
+HO-032,Bộ dao inox Classic,"Bộ dao inox Classic: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",350000,,xanh mint,25
+HO-032,Bộ dao inox Classic,"Bộ dao inox Classic: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",350000,,đen,0
+HO-032,Bộ dao inox Classic,"Bộ dao inox Classic: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",350000,,trắng,22
+HO-033,Bộ dao inox Mini,"Bộ dao inox Mini: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",265000,,trắng,4
+HO-034,Bộ dao inox Plus,"Bộ dao inox Plus: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",370000,,đen,0
+HO-034,Bộ dao inox Plus,"Bộ dao inox Plus: 5 món, kèm giá cắm. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",370000,,trắng,0
+HO-035,Bộ dao inox Eco,"Bộ dao inox Eco: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,,đen,1
+HO-035,Bộ dao inox Eco,"Bộ dao inox Eco: 5 món, kèm giá cắm. Xuất xứ Việt Nam. Bảo hành 6 tháng.",250000,,xanh mint,32
+HO-036,Thớt gỗ nghiến,Thớt gỗ nghiến: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,189000,500ml,trắng,1
+HO-036,Thớt gỗ nghiến,Thớt gỗ nghiến: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,189000,750ml,trắng,36
+HO-037,Thớt gỗ nghiến Classic,Thớt gỗ nghiến Classic: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,185000,500ml,trắng,0
+HO-038,Thớt gỗ nghiến Mini,Thớt gỗ nghiến Mini: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,155000,500ml,trắng,4
+HO-038,Thớt gỗ nghiến Mini,Thớt gỗ nghiến Mini: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,155000,750ml,trắng,0
+HO-038,Thớt gỗ nghiến Mini,Thớt gỗ nghiến Mini: gỗ nghiến nguyên khối. Xuất xứ Việt Nam. Không áp dụng bảo hành.,155000,1L,trắng,11
+HO-039,Thớt gỗ nghiến Plus,Thớt gỗ nghiến Plus: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,275000,500ml,trắng,0
+HO-039,Thớt gỗ nghiến Plus,Thớt gỗ nghiến Plus: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,275000,750ml,trắng,24
+HO-039,Thớt gỗ nghiến Plus,Thớt gỗ nghiến Plus: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,275000,1L,trắng,5
+HO-040,Thớt gỗ nghiến Eco,Thớt gỗ nghiến Eco: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,219000,500ml,trắng,18
+HO-040,Thớt gỗ nghiến Eco,Thớt gỗ nghiến Eco: gỗ nghiến nguyên khối. Xuất xứ Thái Lan. Không áp dụng bảo hành.,219000,1L,trắng,27
+HO-041,Giá treo khăn,"Giá treo khăn: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",165000,,trắng,34
+HO-042,Giá treo khăn Classic,"Giá treo khăn Classic: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",199000,,xanh mint,21
+HO-042,Giá treo khăn Classic,"Giá treo khăn Classic: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",199000,,đen,37
+HO-042,Giá treo khăn Classic,"Giá treo khăn Classic: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",199000,,trắng,23
+HO-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",159000,,xanh mint,40
+HO-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",159000,,đen,19
+HO-043,Giá treo khăn Mini,"Giá treo khăn Mini: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",159000,,trắng,1
+HO-044,Giá treo khăn Plus,"Giá treo khăn Plus: thép sơn tĩnh điện, dán tường. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",169000,,xanh mint,40
+HO-045,Giá treo khăn Eco,"Giá treo khăn Eco: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",179000,,đen,0
+HO-045,Giá treo khăn Eco,"Giá treo khăn Eco: thép sơn tĩnh điện, dán tường. Xuất xứ Việt Nam. Không áp dụng bảo hành.",179000,,trắng,19
+HO-046,Kệ gia vị 2 tầng,"Kệ gia vị 2 tầng: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",199000,,xanh mint,8
+HO-046,Kệ gia vị 2 tầng,"Kệ gia vị 2 tầng: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",199000,,đen,22
+HO-047,Kệ gia vị 2 tầng Classic,"Kệ gia vị 2 tầng Classic: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",219000,,đen,31
+HO-048,Kệ gia vị 2 tầng Mini,"Kệ gia vị 2 tầng Mini: thép sơn, có móc treo. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",209000,,đen,30
+HO-049,Kệ gia vị 2 tầng Plus,"Kệ gia vị 2 tầng Plus: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",300000,,xanh mint,20
+HO-049,Kệ gia vị 2 tầng Plus,"Kệ gia vị 2 tầng Plus: thép sơn, có móc treo. Xuất xứ Thái Lan. Không áp dụng bảo hành.",300000,,trắng,21
+HO-050,Kệ gia vị 2 tầng Eco,"Kệ gia vị 2 tầng Eco: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,xanh mint,0
+HO-050,Kệ gia vị 2 tầng Eco,"Kệ gia vị 2 tầng Eco: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,đen,0
+HO-050,Kệ gia vị 2 tầng Eco,"Kệ gia vị 2 tầng Eco: thép sơn, có móc treo. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,trắng,22
+HO-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",335000,,đen,20
+HO-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",335000,,trắng,21
+HO-051,Đèn bàn cảm ứng,"Đèn bàn cảm ứng: 3 chế độ sáng, sạc USB-C. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",335000,,xanh mint,18
+HO-052,Đèn bàn cảm ứng Classic,"Đèn bàn cảm ứng Classic: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",279000,,đen,20
+HO-052,Đèn bàn cảm ứng Classic,"Đèn bàn cảm ứng Classic: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",279000,,xanh mint,24
+HO-053,Đèn bàn cảm ứng Mini,"Đèn bàn cảm ứng Mini: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",255000,,xanh mint,33
+HO-053,Đèn bàn cảm ứng Mini,"Đèn bàn cảm ứng Mini: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",255000,,trắng,22
+HO-054,Đèn bàn cảm ứng Plus,"Đèn bàn cảm ứng Plus: 3 chế độ sáng, sạc USB-C. Xuất xứ Thái Lan. Bảo hành 12 tháng.",390000,,trắng,34
+HO-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,,trắng,34
+HO-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,,đen,0
+HO-055,Đèn bàn cảm ứng Eco,"Đèn bàn cảm ứng Eco: 3 chế độ sáng, sạc USB-C. Xuất xứ Việt Nam. Bảo hành 12 tháng.",275000,,xanh mint,3
+HO-056,Quạt mini để bàn,"Quạt mini để bàn: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,,trắng,20
+HO-056,Quạt mini để bàn,"Quạt mini để bàn: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,,xanh mint,0
+HO-057,Quạt mini để bàn Classic,"Quạt mini để bàn Classic: pin 4000mAh, 3 tốc độ. Xuất xứ Thái Lan. Bảo hành 6 tháng.",225000,,trắng,35
+HO-058,Quạt mini để bàn Mini,"Quạt mini để bàn Mini: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",159000,,đen,0
+HO-059,Quạt mini để bàn Plus,"Quạt mini để bàn Plus: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",229000,,xanh mint,36
+HO-059,Quạt mini để bàn Plus,"Quạt mini để bàn Plus: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",229000,,trắng,10
+HO-059,Quạt mini để bàn Plus,"Quạt mini để bàn Plus: pin 4000mAh, 3 tốc độ. Xuất xứ Trung Quốc. Bảo hành 6 tháng.",229000,,đen,19
+HO-060,Quạt mini để bàn Eco,"Quạt mini để bàn Eco: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",185000,,xanh mint,4
+HO-060,Quạt mini để bàn Eco,"Quạt mini để bàn Eco: pin 4000mAh, 3 tốc độ. Xuất xứ Việt Nam. Bảo hành 6 tháng.",185000,,đen,0
+HO-061,Máy xay sinh tố,"Máy xay sinh tố: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",699000,500ml,trắng,12
+HO-061,Máy xay sinh tố,"Máy xay sinh tố: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",699000,1L,trắng,38
+HO-062,Máy xay sinh tố Classic,"Máy xay sinh tố Classic: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",739000,750ml,trắng,0
+HO-062,Máy xay sinh tố Classic,"Máy xay sinh tố Classic: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",739000,1L,trắng,0
+HO-063,Máy xay sinh tố Mini,"Máy xay sinh tố Mini: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",669000,500ml,trắng,30
+HO-064,Máy xay sinh tố Plus,"Máy xay sinh tố Plus: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",690000,500ml,trắng,15
+HO-064,Máy xay sinh tố Plus,"Máy xay sinh tố Plus: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",690000,750ml,trắng,0
+HO-064,Máy xay sinh tố Plus,"Máy xay sinh tố Plus: cối thủy tinh, 6 lưỡi. Xuất xứ Trung Quốc. Bảo hành 12 tháng.",690000,1L,trắng,17
+HO-065,Máy xay sinh tố Eco,"Máy xay sinh tố Eco: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",749000,500ml,trắng,2
+HO-065,Máy xay sinh tố Eco,"Máy xay sinh tố Eco: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",749000,750ml,trắng,0
+HO-065,Máy xay sinh tố Eco,"Máy xay sinh tố Eco: cối thủy tinh, 6 lưỡi. Xuất xứ Việt Nam. Bảo hành 12 tháng.",749000,1L,trắng,0
+HO-066,Hộp cơm giữ nhiệt,"Hộp cơm giữ nhiệt: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",235000,500ml,trắng,26
+HO-066,Hộp cơm giữ nhiệt,"Hộp cơm giữ nhiệt: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",235000,1L,trắng,7
+HO-067,Hộp cơm giữ nhiệt Classic,"Hộp cơm giữ nhiệt Classic: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,500ml,trắng,16
+HO-067,Hộp cơm giữ nhiệt Classic,"Hộp cơm giữ nhiệt Classic: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,750ml,trắng,31
+HO-067,Hộp cơm giữ nhiệt Classic,"Hộp cơm giữ nhiệt Classic: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",229000,1L,trắng,22
+HO-068,Hộp cơm giữ nhiệt Mini,"Hộp cơm giữ nhiệt Mini: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",179000,500ml,trắng,0
+HO-068,Hộp cơm giữ nhiệt Mini,"Hộp cơm giữ nhiệt Mini: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",179000,750ml,trắng,0
+HO-068,Hộp cơm giữ nhiệt Mini,"Hộp cơm giữ nhiệt Mini: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",179000,1L,trắng,0
+HO-069,Hộp cơm giữ nhiệt Plus,"Hộp cơm giữ nhiệt Plus: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",299000,500ml,trắng,26
+HO-069,Hộp cơm giữ nhiệt Plus,"Hộp cơm giữ nhiệt Plus: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",299000,750ml,trắng,0
+HO-069,Hộp cơm giữ nhiệt Plus,"Hộp cơm giữ nhiệt Plus: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",299000,1L,trắng,0
+HO-070,Hộp cơm giữ nhiệt Eco,"Hộp cơm giữ nhiệt Eco: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",239000,500ml,trắng,0
+HO-070,Hộp cơm giữ nhiệt Eco,"Hộp cơm giữ nhiệt Eco: 3 ngăn, inox 304. Xuất xứ Thái Lan. Bảo hành 6 tháng.",239000,1L,trắng,38
+HO-071,Cây lau nhà xoay,"Cây lau nhà xoay: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",319000,,trắng,37
+HO-071,Cây lau nhà xoay,"Cây lau nhà xoay: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",319000,,đen,14
+HO-071,Cây lau nhà xoay,"Cây lau nhà xoay: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",319000,,xanh mint,21
+HO-072,Cây lau nhà xoay Classic,"Cây lau nhà xoay Classic: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",250000,,đen,33
+HO-072,Cây lau nhà xoay Classic,"Cây lau nhà xoay Classic: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",250000,,trắng,9
+HO-072,Cây lau nhà xoay Classic,"Cây lau nhà xoay Classic: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",250000,,xanh mint,4
+HO-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,xanh mint,2
+HO-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,đen,38
+HO-073,Cây lau nhà xoay Mini,"Cây lau nhà xoay Mini: xoay 360 độ, kèm 2 bông lau. Xuất xứ Việt Nam. Không áp dụng bảo hành.",209000,,trắng,21
+HO-074,Cây lau nhà xoay Plus,"Cây lau nhà xoay Plus: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",359000,,xanh mint,31
+HO-074,Cây lau nhà xoay Plus,"Cây lau nhà xoay Plus: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",359000,,trắng,0
+HO-075,Cây lau nhà xoay Eco,"Cây lau nhà xoay Eco: xoay 360 độ, kèm 2 bông lau. Xuất xứ Thái Lan. Không áp dụng bảo hành.",250000,,đen,0
+HO-076,Móc dán tường (bộ 10),"Móc dán tường (bộ 10): chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",59000,,trắng,32
+HO-077,Móc dán tường (bộ 10) Classic,"Móc dán tường (bộ 10) Classic: chịu lực 3kg, không khoan. Xuất xứ Việt Nam. Không áp dụng bảo hành.",75000,,xanh mint,30
+HO-078,Móc dán tường (bộ 10) Mini,"Móc dán tường (bộ 10) Mini: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",69000,,đen,36
+HO-079,Móc dán tường (bộ 10) Plus,"Móc dán tường (bộ 10) Plus: chịu lực 3kg, không khoan. Xuất xứ Thái Lan. Không áp dụng bảo hành.",99000,,trắng,1
+HO-080,Móc dán tường (bộ 10) Eco,"Móc dán tường (bộ 10) Eco: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",65000,,đen,0
+HO-080,Móc dán tường (bộ 10) Eco,"Móc dán tường (bộ 10) Eco: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",65000,,xanh mint,0
+HO-080,Móc dán tường (bộ 10) Eco,"Móc dán tường (bộ 10) Eco: chịu lực 3kg, không khoan. Xuất xứ Trung Quốc. Không áp dụng bảo hành.",65000,,trắng,24

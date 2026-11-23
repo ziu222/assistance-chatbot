@@ -1,9 +1,14 @@
 {
   "cod": false,
   "cod_fee_vnd": null,
-  "freeship_from_vnd": 700000,
+  "freeship_from_vnd": 699000,
   "hours": {
-    "closed_days": [],
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
     "pause_until": "2026-11-24T12:00:00+07:00",
     "timezone": "Asia/Ho_Chi_Minh",
     "weekly": {
@@ -53,10 +58,30 @@
   },
   "industry": "mỹ phẩm",
   "name": "Lá Nâu",
-  "shipping_regions": {
-    "ngoai_thanh": 40000,
+  "product_types": [
+    "Sữa rửa mặt dịu nhẹ",
+    "Kem chống nắng phổ rộng",
+    "Kem dưỡng ẩm ban ngày",
+    "Kem dưỡng ẩm ban đêm",
+    "Serum vitamin C",
+    "Serum niacinamide",
+    "Toner hoa hồng",
+    "Nước tẩy trang",
+    "Son dưỡng có màu",
+    "Son kem lì",
+    "Phấn phủ kiềm dầu",
+    "Kem nền mỏng nhẹ",
+    "Mặt nạ đất sét",
+    "Dầu gội thảo dược",
+    "Sữa tắm hương trà xanh",
+    "Xịt khoáng"
+  ],
+  "return_days": 15,
+  "shipping_vnd": {
+    "ngoai_thanh": 30000,
     "noi_thanh": 25000,
-    "tinh": 55000
+    "tinh": 35000
   },
-  "shop_key": "beauty_b"
+  "shop_key": "beauty_b",
+  "wholesale_from": 20
 }
