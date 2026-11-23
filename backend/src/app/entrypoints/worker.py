@@ -16,6 +16,7 @@ from app.config.settings import get_settings
 from app.modules.agent_runtime.infrastructure.config import debounce_window
 from app.modules.agent_runtime.infrastructure.run_requests import enqueue_from_outbox
 from app.modules.knowledge.infrastructure.catalog_sync import run_catalog_scheduler
+from app.modules.orders.infrastructure.staff_actions import run_order_maintenance
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
 from app.workers.outbox_relay import OutboxRelay, RedisPublisher
@@ -41,7 +42,8 @@ async def main() -> None:
         with contextlib.suppress(NotImplementedError):
             loop.add_signal_handler(sig, stop.set)
 
-    tasks = [relay.run(stop)]
+    # Phiếu đặt hàng bỏ dở ⇒ expired; xóa dữ liệu cá nhân quá hạn (thiết kế 03 §5.4).
+    tasks = [relay.run(stop), run_order_maintenance(factory, stop)]
     if settings.google_service_account_json:  # chưa cấu hình service account ⇒ không có gì để sync
         interval = timedelta(minutes=settings.catalog_sync_interval_minutes)
         tasks.append(

@@ -7,15 +7,17 @@ import { useEventSignals } from "../../shared/lib/useEventSignals";
 import { AgentPage } from "../agent/AgentPage";
 import { KnowledgePage } from "../knowledge/KnowledgePage";
 import { PolicyPage } from "../policy/PolicyPage";
+import { OrdersPage } from "../orders/OrdersPage";
 import { QueuePage } from "../queue/QueuePage";
 import { useHandoffs } from "../../entities/handoff/api";
 import { TracePage } from "../trace/TracePage";
 
 // Màn hình, hội thoại và run đang chọn nằm trên URL để reload/chia sẻ link giữ nguyên chỗ.
-type View = "inbox" | "queue" | "agent" | "policy" | "knowledge" | "trace";
+type View = "inbox" | "queue" | "orders" | "agent" | "policy" | "knowledge" | "trace";
 const VIEWS: { id: View; label: string }[] = [
   { id: "inbox", label: "Hộp thư" },
   { id: "queue", label: "Cần xử lý" },
+  { id: "orders", label: "Đơn hàng" },
   { id: "agent", label: "Agent" },
   { id: "policy", label: "Tin tự động" },
   { id: "knowledge", label: "Kiến thức" },
@@ -105,6 +107,11 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
       {view === "queue" && (
         <main className="admin-main">
           <QueuePage onOpen={openConversation} />
+        </main>
+      )}
+      {view === "orders" && (
+        <main className="admin-main">
+          <OrdersPage />
         </main>
       )}
       {view === "agent" && (
