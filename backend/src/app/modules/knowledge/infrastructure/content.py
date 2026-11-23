@@ -25,6 +25,7 @@ class Entry:
     status: str
     created_at: datetime
     updated_at: datetime
+    topics: list[str] | None = None  # None = hệ thống đoán; mảng = chủ shop đã chọn
 
 
 def _sql(kind: Kind) -> tuple[str, str, str]:
@@ -36,7 +37,7 @@ async def list_entries(s: AsyncSession, kind: Kind, tenant_id: UUID) -> list[Ent
     table, a, b = _sql(kind)
     rows = await s.execute(
         text(
-            f"SELECT id, {a}, {b}, status, created_at, updated_at FROM {table} "
+            f"SELECT id, {a}, {b}, status, created_at, updated_at, topics FROM {table} "
             "WHERE tenant_id = :t ORDER BY created_at"
         ),
         {"t": tenant_id},
@@ -45,17 +46,23 @@ async def list_entries(s: AsyncSession, kind: Kind, tenant_id: UUID) -> list[Ent
 
 
 async def create_entry(
-    s: AsyncSession, kind: Kind, tenant_id: UUID, first: str, second: str, status: str
+    s: AsyncSession,
+    kind: Kind,
+    tenant_id: UUID,
+    first: str,
+    second: str,
+    status: str,
+    topics: list[str] | None = None,
 ) -> Entry:
     table, a, b = _sql(kind)
     row = (
         await s.execute(
             text(
-                f"INSERT INTO {table} (id, tenant_id, {a}, {b}, status) "
-                "VALUES (:id, :t, :x, :y, :st) "
-                f"RETURNING id, {a}, {b}, status, created_at, updated_at"
+                f"INSERT INTO {table} (id, tenant_id, {a}, {b}, status, topics) "
+                "VALUES (:id, :t, :x, :y, :st, :tp) "
+                f"RETURNING id, {a}, {b}, status, created_at, updated_at, topics"
             ),
-            {"id": uuid4(), "t": tenant_id, "x": first, "y": second, "st": status},
+            {"id": uuid4(), "t": tenant_id, "x": first, "y": second, "st": status, "tp": topics},
         )
     ).one()
     return Entry(*row)
@@ -70,6 +77,8 @@ async def update_entry(
     first: str | None,
     second: str | None,
     status: str | None,
+    topics: list[str] | None = None,
+    set_topics: bool = False,  # True ⇒ ghi `topics` (kể cả None = quay lại để hệ thống đoán)
 ) -> Entry | None:
     table, a, b = _sql(kind)
     row = (
@@ -77,11 +86,21 @@ async def update_entry(
             text(
                 f"UPDATE {table} SET {a} = COALESCE(CAST(:x AS text), {a}), "
                 f"{b} = COALESCE(CAST(:y AS text), {b}), "
-                "status = COALESCE(CAST(:st AS text), status), updated_at = now() "
+                "status = COALESCE(CAST(:st AS text), status), "
+                "topics = CASE WHEN :set_tp THEN CAST(:tp AS text[]) ELSE topics END, "
+                "updated_at = now() "
                 "WHERE tenant_id = :t AND id = :id "
-                f"RETURNING id, {a}, {b}, status, created_at, updated_at"
+                f"RETURNING id, {a}, {b}, status, created_at, updated_at, topics"
             ),
-            {"x": first, "y": second, "st": status, "t": tenant_id, "id": entry_id},
+            {
+                "x": first,
+                "y": second,
+                "st": status,
+                "t": tenant_id,
+                "id": entry_id,
+                "tp": topics,
+                "set_tp": set_topics,
+            },
         )
     ).first()
     return Entry(*row) if row else None
