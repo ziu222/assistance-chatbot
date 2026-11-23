@@ -69,6 +69,8 @@ from app.modules.knowledge.domain.text import fold  # noqa: E402
 from app.modules.knowledge.infrastructure.catalog import import_catalog, sync_catalog  # noqa: E402
 from app.modules.knowledge.infrastructure.catalog_sync import market_items  # noqa: E402
 from app.modules.knowledge.infrastructure.content import create_entry  # noqa: E402
+from app.modules.orders.domain.order_flow import OrderFlowConfig  # noqa: E402
+from app.modules.orders.infrastructure.repository import publish_flow  # noqa: E402
 from app.shared.infrastructure.db import create_session_factory  # noqa: E402
 
 SIM = ROOT / "sim_shop"
@@ -157,6 +159,8 @@ async def load_shop(factory, key: str) -> Shop:
         await s.execute(text("UPDATE agents SET mode = 'shadow' WHERE id = :a"), {"a": agent_id})
         # Trần ngày rộng: eval không được dừng giữa chừng vì trần của shop demo.
         await upsert_ai_settings(s, tenant, ai_enabled=True, daily_cost_cap_micro=100_000_000)
+        # Quy trình đặt hàng mặc định (nhân viên xác nhận) cho mọi shop giả lập.
+        await publish_flow(s, tenant, OrderFlowConfig(), None)
         listing = folder / "raw_listing.json"
         if listing.exists():
             # Shop đồng bộ từ sàn đi đúng đường adapter (§13.2): tiêu đề thô, chuẩn hóa riêng.

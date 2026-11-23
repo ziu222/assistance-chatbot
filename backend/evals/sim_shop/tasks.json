@@ -5224,10 +5224,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -5242,7 +5240,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -5254,7 +5254,7 @@
         "text": "Em muon dat Serum niacinamide Calm, shop co tra loi duoc khong a?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm MH-029.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm MH-029; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "nguoi_lon_tuoi",
     "shop": "beauty_mh"
   },
@@ -11519,10 +11519,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -11537,7 +11535,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -11549,7 +11549,7 @@
         "text": "Em muon dat Sua rua mat diu nhe Bright, shop co tra loi duoc khong a?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm BE-003.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm BE-003; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "nguoi_lon_tuoi",
     "shop": "beauty_b"
   },
@@ -14678,10 +14678,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -14696,7 +14694,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -14708,7 +14708,7 @@
         "text": "Em muốn đặt Tai nghe Bluetooth Air, shop có trả lời dc ko?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm TE-005.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm TE-005; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "voi_va",
     "shop": "tech_d"
   },
@@ -18238,10 +18238,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -18256,7 +18254,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -18268,7 +18268,7 @@
         "text": "Em muốn đặt Thớt gỗ nghiến Mini, shop có trả lời được không ạ?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm HO-038.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm HO-038; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "lich_su",
     "shop": "home_c"
   },
@@ -18608,10 +18608,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -18626,7 +18624,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -18638,7 +18638,7 @@
         "text": "Em muon dat Serum niacinamide Calm, shop co tra loi dc ko?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm MH-029.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm MH-029; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "voi_va",
     "shop": "beauty_mh"
   },
@@ -19521,10 +19521,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -19539,7 +19537,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -19551,7 +19551,7 @@
         "text": "Em muốn đặt Bộ hộp thủy tinh Plus, shop có trả lời dc ko?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm BX-019.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm BX-019; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "voi_va",
     "shop": "home_bx"
   },
@@ -20099,10 +20099,8 @@
         "needs_human_label": false
       },
       "intents_any": [
-        "faq",
-        "product_info",
-        "price_quote",
-        "other"
+        "order_intent",
+        "product_info"
       ],
       "must_not_say": [],
       "needs_human": false,
@@ -20117,7 +20115,9 @@
           "type": "product"
         }
       ],
-      "tools_any": []
+      "tools_any": [
+        "search_products"
+      ]
     },
     "future_expected": null,
     "history": [],
@@ -20129,7 +20129,7 @@
         "text": "Em muon dat The nho microSD Max, shop co tra loi dc ko?"
       }
     ],
-    "notes": "shop.json hours: thời điểm này paused; sản phẩm LN-004.",
+    "notes": "shop.json hours: thời điểm này paused; sản phẩm LN-004; khách muốn đặt: tra kho, hỏi tiếp, chưa cần người.",
     "persona": "voi_va",
     "shop": "tech_ln"
   },
