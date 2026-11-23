@@ -1,0 +1,99 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 399000,
+    "return_days": 30,
+    "shipping_vnd": {
+      "ngoai_thanh": 30000,
+      "noi_thanh": 20000,
+      "tinh": 35000
+    },
+    "wholesale_from": 15
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "mon": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ]
+    }
+  },
+  "industry": "điện tử và phụ kiện",
+  "knowledge": {
+    "catalog_source": "manual",
+    "faq_count": 14,
+    "policy_file": true,
+    "sections": [
+      "hours",
+      "shipping",
+      "payment",
+      "returns",
+      "warranty",
+      "wholesale",
+      "promo",
+      "invoice"
+    ],
+    "skus": 80
+  },
+  "name": "Ghim Số",
+  "product_types": [
+    "Tai nghe Bluetooth",
+    "Tai nghe chống ồn",
+    "Cáp sạc nhanh USB-C",
+    "Củ sạc nhanh 20W",
+    "Củ sạc nhanh 65W",
+    "Sạc dự phòng 10000mAh",
+    "Sạc dự phòng 20000mAh",
+    "Chuột không dây",
+    "Chuột không dây im lặng",
+    "Bàn phím cơ mini",
+    "Giá đỡ điện thoại",
+    "Loa Bluetooth mini",
+    "Thẻ nhớ microSD",
+    "USB 3.0",
+    "Hub USB-C 6 cổng",
+    "Đồng hồ thông minh"
+  ],
+  "shop_key": "tech_d"
+}

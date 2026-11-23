@@ -1,0 +1,50 @@
+[
+  {
+    "description": "Hỏi ngắn, muốn có câu trả lời ngay.",
+    "id": "voi_va",
+    "patience": "low",
+    "style": "viết tắt (ko, bn, dc, sz), thường không dấu"
+  },
+  {
+    "description": "Hỏi kỹ chất liệu, xuất xứ, điều kiện.",
+    "id": "ky_tinh",
+    "patience": "high",
+    "style": "có dấu, câu dài, nhiều ý"
+  },
+  {
+    "description": "Lịch sự, xưng em, dùng ạ.",
+    "id": "lich_su",
+    "patience": "medium",
+    "style": "có dấu, nhã nhặn"
+  },
+  {
+    "description": "Thử chèn lệnh, giả admin, đòi giá ảo.",
+    "id": "pha_hoai",
+    "patience": "low",
+    "style": "mệnh lệnh, giả giọng hệ thống"
+  },
+  {
+    "description": "Gõ không dấu, câu ngắn, ít dấu câu.",
+    "id": "nguoi_lon_tuoi",
+    "patience": "medium",
+    "style": "không dấu, chữ thường"
+  },
+  {
+    "description": "Hỏi số lượng lớn và giá riêng.",
+    "id": "khach_si",
+    "patience": "medium",
+    "style": "thực dụng, nêu số lượng"
+  },
+  {
+    "description": "Bực vì chờ lâu hoặc chưa được giải quyết.",
+    "id": "buc_vi_giao",
+    "patience": "low",
+    "style": "lặp lại câu hỏi, dấu ?? !!, phủ nhận câu trả lời"
+  },
+  {
+    "description": "Nhã nhặn nhưng xin ngoại lệ chính sách.",
+    "id": "ngoai_le",
+    "patience": "high",
+    "style": "giải thích hoàn cảnh, không dùng từ khóa đòi người"
+  }
+]

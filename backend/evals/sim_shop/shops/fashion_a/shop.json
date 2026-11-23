@@ -1,0 +1,124 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 499000,
+    "return_days": 7,
+    "shipping_vnd": {
+      "ngoai_thanh": 40000,
+      "noi_thanh": 30000,
+      "tinh": 45000
+    },
+    "wholesale_from": 10
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      },
+      {
+        "date": "2027-02-07",
+        "note": "Mùng 2 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "08:00",
+          "12:00"
+        ],
+        [
+          "13:30",
+          "21:00"
+        ]
+      ],
+      "mon": [
+        [
+          "08:00",
+          "12:00"
+        ],
+        [
+          "13:30",
+          "21:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "17:00"
+        ]
+      ],
+      "thu": [
+        [
+          "08:00",
+          "12:00"
+        ],
+        [
+          "13:30",
+          "21:00"
+        ]
+      ],
+      "tue": [
+        [
+          "08:00",
+          "12:00"
+        ],
+        [
+          "13:30",
+          "21:00"
+        ]
+      ],
+      "wed": [
+        [
+          "08:00",
+          "12:00"
+        ],
+        [
+          "13:30",
+          "21:00"
+        ]
+      ]
+    }
+  },
+  "industry": "thời trang",
+  "knowledge": {
+    "catalog_source": "manual",
+    "faq_count": 14,
+    "policy_file": true,
+    "sections": [
+      "hours",
+      "shipping",
+      "payment",
+      "returns",
+      "warranty",
+      "wholesale",
+      "promo",
+      "invoice"
+    ],
+    "skus": 80
+  },
+  "name": "Mây Mặc",
+  "product_types": [
+    "Áo thun cotton cổ tròn",
+    "Áo thun form rộng",
+    "Áo sơ mi linen",
+    "Áo sơ mi oxford",
+    "Áo khoác gió",
+    "Áo khoác gió lót lông",
+    "Áo hoodie nỉ",
+    "Áo len cổ lọ",
+    "Quần jean ống suông",
+    "Quần jogger",
+    "Quần short kaki",
+    "Quần tây công sở",
+    "Váy midi hoa",
+    "Chân váy xếp ly",
+    "Đầm maxi đi biển",
+    "Áo polo",
+    "Quần lót cotton (set 3)"
+  ],
+  "shop_key": "fashion_a"
+}

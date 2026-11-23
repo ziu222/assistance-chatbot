@@ -1,0 +1,304 @@
+sku,name,description,price_vnd,size,color,stock
+FA-001,Áo thun cotton cổ tròn,"Áo thun cotton cổ tròn: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",169000,S,đen,35
+FA-001,Áo thun cotton cổ tròn,"Áo thun cotton cổ tròn: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",169000,M,đen,0
+FA-002,Áo thun cotton cổ tròn Daily,"Áo thun cotton cổ tròn Daily: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",125000,S,trắng,1
+FA-002,Áo thun cotton cổ tròn Daily,"Áo thun cotton cổ tròn Daily: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",125000,S,xanh navy,11
+FA-002,Áo thun cotton cổ tròn Daily,"Áo thun cotton cổ tròn Daily: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",125000,M,trắng,22
+FA-002,Áo thun cotton cổ tròn Daily,"Áo thun cotton cổ tròn Daily: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",125000,M,xanh navy,14
+FA-003,Áo thun cotton cổ tròn Basic,"Áo thun cotton cổ tròn Basic: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",119000,M,xanh navy,25
+FA-003,Áo thun cotton cổ tròn Basic,"Áo thun cotton cổ tròn Basic: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",119000,L,xanh navy,0
+FA-003,Áo thun cotton cổ tròn Basic,"Áo thun cotton cổ tròn Basic: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",119000,XL,xanh navy,40
+FA-004,Áo thun cotton cổ tròn Studio,"Áo thun cotton cổ tròn Studio: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",180000,S,be,24
+FA-004,Áo thun cotton cổ tròn Studio,"Áo thun cotton cổ tròn Studio: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",180000,S,xanh navy,23
+FA-004,Áo thun cotton cổ tròn Studio,"Áo thun cotton cổ tròn Studio: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",180000,M,be,18
+FA-004,Áo thun cotton cổ tròn Studio,"Áo thun cotton cổ tròn Studio: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",180000,M,xanh navy,5
+FA-005,Áo thun cotton cổ tròn Signature,"Áo thun cotton cổ tròn Signature: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",179000,S,trắng,21
+FA-005,Áo thun cotton cổ tròn Signature,"Áo thun cotton cổ tròn Signature: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",179000,M,trắng,5
+FA-005,Áo thun cotton cổ tròn Signature,"Áo thun cotton cổ tròn Signature: cotton 100%, thấm hút tốt. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",179000,L,trắng,37
+FA-006,Áo thun form rộng,"Áo thun form rộng: cotton pha spandex, dáng rộng. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,S,trắng,35
+FA-006,Áo thun form rộng,"Áo thun form rộng: cotton pha spandex, dáng rộng. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,M,trắng,38
+FA-006,Áo thun form rộng,"Áo thun form rộng: cotton pha spandex, dáng rộng. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,L,trắng,38
+FA-007,Áo thun form rộng Daily,"Áo thun form rộng Daily: cotton pha spandex, dáng rộng. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",155000,S,trắng,28
+FA-007,Áo thun form rộng Daily,"Áo thun form rộng Daily: cotton pha spandex, dáng rộng. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",155000,M,trắng,25
+FA-008,Áo thun form rộng Basic,"Áo thun form rộng Basic: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",159000,M,be,30
+FA-008,Áo thun form rộng Basic,"Áo thun form rộng Basic: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",159000,L,be,0
+FA-008,Áo thun form rộng Basic,"Áo thun form rộng Basic: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",159000,XL,be,17
+FA-009,Áo thun form rộng Studio,"Áo thun form rộng Studio: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",209000,S,trắng,32
+FA-009,Áo thun form rộng Studio,"Áo thun form rộng Studio: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",209000,S,đen,0
+FA-009,Áo thun form rộng Studio,"Áo thun form rộng Studio: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",209000,M,trắng,20
+FA-009,Áo thun form rộng Studio,"Áo thun form rộng Studio: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",209000,M,đen,16
+FA-010,Áo thun form rộng Signature,"Áo thun form rộng Signature: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,S,xám,0
+FA-010,Áo thun form rộng Signature,"Áo thun form rộng Signature: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,S,trắng,0
+FA-010,Áo thun form rộng Signature,"Áo thun form rộng Signature: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,M,xám,0
+FA-010,Áo thun form rộng Signature,"Áo thun form rộng Signature: cotton pha spandex, dáng rộng. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,M,trắng,0
+FA-011,Áo sơ mi linen,"Áo sơ mi linen: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",299000,S,be,0
+FA-011,Áo sơ mi linen,"Áo sơ mi linen: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",299000,M,be,38
+FA-012,Áo sơ mi linen Daily,"Áo sơ mi linen Daily: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",259000,S,đen,0
+FA-012,Áo sơ mi linen Daily,"Áo sơ mi linen Daily: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",259000,S,trắng,0
+FA-012,Áo sơ mi linen Daily,"Áo sơ mi linen Daily: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",259000,M,đen,0
+FA-012,Áo sơ mi linen Daily,"Áo sơ mi linen Daily: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",259000,M,trắng,0
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,S,xanh navy,4
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,S,xám,7
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,M,xanh navy,0
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,M,xám,7
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,L,xanh navy,13
+FA-013,Áo sơ mi linen Basic,"Áo sơ mi linen Basic: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",285000,L,xám,9
+FA-014,Áo sơ mi linen Studio,"Áo sơ mi linen Studio: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,M,xám,6
+FA-014,Áo sơ mi linen Studio,"Áo sơ mi linen Studio: linen thoáng mát, không nhăn nhiều. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,L,xám,16
+FA-015,Áo sơ mi linen Signature,"Áo sơ mi linen Signature: linen thoáng mát, không nhăn nhiều. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",375000,S,đen,30
+FA-015,Áo sơ mi linen Signature,"Áo sơ mi linen Signature: linen thoáng mát, không nhăn nhiều. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",375000,S,xanh navy,36
+FA-015,Áo sơ mi linen Signature,"Áo sơ mi linen Signature: linen thoáng mát, không nhăn nhiều. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",375000,M,đen,32
+FA-015,Áo sơ mi linen Signature,"Áo sơ mi linen Signature: linen thoáng mát, không nhăn nhiều. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",375000,M,xanh navy,19
+FA-016,Áo sơ mi oxford,"Áo sơ mi oxford: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",349000,S,xám,0
+FA-016,Áo sơ mi oxford,"Áo sơ mi oxford: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",349000,S,trắng,12
+FA-016,Áo sơ mi oxford,"Áo sơ mi oxford: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",349000,M,xám,0
+FA-016,Áo sơ mi oxford,"Áo sơ mi oxford: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",349000,M,trắng,0
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,S,be,21
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,S,trắng,26
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,M,be,0
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,M,trắng,30
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,L,be,5
+FA-017,Áo sơ mi oxford Daily,"Áo sơ mi oxford Daily: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",295000,L,trắng,0
+FA-018,Áo sơ mi oxford Basic,"Áo sơ mi oxford Basic: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",270000,M,be,29
+FA-018,Áo sơ mi oxford Basic,"Áo sơ mi oxford Basic: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",270000,L,be,20
+FA-019,Áo sơ mi oxford Studio,"Áo sơ mi oxford Studio: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",380000,S,đen,10
+FA-019,Áo sơ mi oxford Studio,"Áo sơ mi oxford Studio: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",380000,M,đen,39
+FA-019,Áo sơ mi oxford Studio,"Áo sơ mi oxford Studio: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",380000,L,đen,22
+FA-020,Áo sơ mi oxford Signature,"Áo sơ mi oxford Signature: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",459000,M,đen,9
+FA-020,Áo sơ mi oxford Signature,"Áo sơ mi oxford Signature: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",459000,L,đen,17
+FA-020,Áo sơ mi oxford Signature,"Áo sơ mi oxford Signature: vải oxford dày vừa, dáng suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",459000,XL,đen,29
+FA-021,Áo khoác gió,"Áo khoác gió: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,M,trắng,3
+FA-021,Áo khoác gió,"Áo khoác gió: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,M,đen,14
+FA-021,Áo khoác gió,"Áo khoác gió: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,L,trắng,7
+FA-021,Áo khoác gió,"Áo khoác gió: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,L,đen,36
+FA-022,Áo khoác gió Daily,"Áo khoác gió Daily: vải dù chống nước nhẹ, có mũ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",355000,S,xanh navy,7
+FA-022,Áo khoác gió Daily,"Áo khoác gió Daily: vải dù chống nước nhẹ, có mũ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",355000,S,trắng,3
+FA-022,Áo khoác gió Daily,"Áo khoác gió Daily: vải dù chống nước nhẹ, có mũ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",355000,M,xanh navy,15
+FA-022,Áo khoác gió Daily,"Áo khoác gió Daily: vải dù chống nước nhẹ, có mũ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",355000,M,trắng,30
+FA-023,Áo khoác gió Basic,"Áo khoác gió Basic: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,S,be,18
+FA-023,Áo khoác gió Basic,"Áo khoác gió Basic: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,S,xám,33
+FA-023,Áo khoác gió Basic,"Áo khoác gió Basic: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,M,be,35
+FA-023,Áo khoác gió Basic,"Áo khoác gió Basic: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,M,xám,2
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,S,be,33
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,S,xanh navy,0
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,M,be,13
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,M,xanh navy,28
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,L,be,0
+FA-024,Áo khoác gió Studio,"Áo khoác gió Studio: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,L,xanh navy,35
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,S,xanh navy,19
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,S,be,13
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,M,xanh navy,25
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,M,be,12
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,L,xanh navy,20
+FA-025,Áo khoác gió Signature,"Áo khoác gió Signature: vải dù chống nước nhẹ, có mũ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",420000,L,be,1
+FA-026,Áo khoác gió lót lông,"Áo khoác gió lót lông: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",410000,M,xám,11
+FA-026,Áo khoác gió lót lông,"Áo khoác gió lót lông: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",410000,L,xám,19
+FA-026,Áo khoác gió lót lông,"Áo khoác gió lót lông: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",410000,XL,xám,40
+FA-027,Áo khoác gió lót lông Daily,"Áo khoác gió lót lông Daily: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",445000,S,đen,0
+FA-027,Áo khoác gió lót lông Daily,"Áo khoác gió lót lông Daily: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",445000,M,đen,40
+FA-028,Áo khoác gió lót lông Basic,"Áo khoác gió lót lông Basic: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",365000,M,trắng,1
+FA-028,Áo khoác gió lót lông Basic,"Áo khoác gió lót lông Basic: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",365000,L,trắng,7
+FA-028,Áo khoác gió lót lông Basic,"Áo khoác gió lót lông Basic: vải dù, lót lông cừu nhân tạo. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",365000,XL,trắng,15
+FA-029,Áo khoác gió lót lông Studio,"Áo khoác gió lót lông Studio: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,M,xám,29
+FA-029,Áo khoác gió lót lông Studio,"Áo khoác gió lót lông Studio: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,M,be,33
+FA-029,Áo khoác gió lót lông Studio,"Áo khoác gió lót lông Studio: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,L,xám,36
+FA-029,Áo khoác gió lót lông Studio,"Áo khoác gió lót lông Studio: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,L,be,11
+FA-030,Áo khoác gió lót lông Signature,"Áo khoác gió lót lông Signature: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",515000,M,xanh navy,16
+FA-030,Áo khoác gió lót lông Signature,"Áo khoác gió lót lông Signature: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",515000,M,đen,21
+FA-030,Áo khoác gió lót lông Signature,"Áo khoác gió lót lông Signature: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",515000,L,xanh navy,6
+FA-030,Áo khoác gió lót lông Signature,"Áo khoác gió lót lông Signature: vải dù, lót lông cừu nhân tạo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",515000,L,đen,0
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,M,xám,14
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,M,xanh navy,25
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,L,xám,38
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,L,xanh navy,2
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,XL,xám,37
+FA-031,Áo hoodie nỉ,"Áo hoodie nỉ: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",335000,XL,xanh navy,1
+FA-032,Áo hoodie nỉ Daily,"Áo hoodie nỉ Daily: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,be,2
+FA-032,Áo hoodie nỉ Daily,"Áo hoodie nỉ Daily: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,be,26
+FA-032,Áo hoodie nỉ Daily,"Áo hoodie nỉ Daily: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,L,be,30
+FA-033,Áo hoodie nỉ Basic,"Áo hoodie nỉ Basic: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",309000,S,trắng,17
+FA-033,Áo hoodie nỉ Basic,"Áo hoodie nỉ Basic: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",309000,S,xanh navy,14
+FA-033,Áo hoodie nỉ Basic,"Áo hoodie nỉ Basic: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",309000,M,trắng,22
+FA-033,Áo hoodie nỉ Basic,"Áo hoodie nỉ Basic: nỉ bông dày, mũ hai lớp. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",309000,M,xanh navy,25
+FA-034,Áo hoodie nỉ Studio,"Áo hoodie nỉ Studio: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",389000,S,đen,3
+FA-034,Áo hoodie nỉ Studio,"Áo hoodie nỉ Studio: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",389000,M,đen,16
+FA-034,Áo hoodie nỉ Studio,"Áo hoodie nỉ Studio: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",389000,L,đen,2
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,S,be,8
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,S,trắng,11
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,M,be,7
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,M,trắng,20
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,L,be,25
+FA-035,Áo hoodie nỉ Signature,"Áo hoodie nỉ Signature: nỉ bông dày, mũ hai lớp. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",379000,L,trắng,13
+FA-036,Áo len cổ lọ,"Áo len cổ lọ: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,M,be,24
+FA-036,Áo len cổ lọ,"Áo len cổ lọ: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",305000,L,be,0
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,S,xanh navy,34
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,S,trắng,18
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,M,xanh navy,35
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,M,trắng,30
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,L,xanh navy,38
+FA-037,Áo len cổ lọ Daily,"Áo len cổ lọ Daily: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",229000,L,trắng,16
+FA-038,Áo len cổ lọ Basic,"Áo len cổ lọ Basic: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",275000,M,xanh navy,12
+FA-038,Áo len cổ lọ Basic,"Áo len cổ lọ Basic: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",275000,L,xanh navy,23
+FA-038,Áo len cổ lọ Basic,"Áo len cổ lọ Basic: len acrylic mềm, không xù. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",275000,XL,xanh navy,22
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,S,xám,32
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,S,trắng,2
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,M,xám,0
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,M,trắng,16
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,L,xám,38
+FA-039,Áo len cổ lọ Studio,"Áo len cổ lọ Studio: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",315000,L,trắng,36
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,M,be,0
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,M,trắng,8
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,L,be,12
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,L,trắng,31
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,XL,be,38
+FA-040,Áo len cổ lọ Signature,"Áo len cổ lọ Signature: len acrylic mềm, không xù. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",340000,XL,trắng,34
+FA-041,Quần jean ống suông,"Quần jean ống suông: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",425000,S,be,0
+FA-041,Quần jean ống suông,"Quần jean ống suông: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",425000,M,be,18
+FA-041,Quần jean ống suông,"Quần jean ống suông: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",425000,L,be,0
+FA-042,Quần jean ống suông Daily,"Quần jean ống suông Daily: jean co giãn nhẹ, ống suông. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",345000,S,xanh navy,12
+FA-042,Quần jean ống suông Daily,"Quần jean ống suông Daily: jean co giãn nhẹ, ống suông. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",345000,S,xám,17
+FA-042,Quần jean ống suông Daily,"Quần jean ống suông Daily: jean co giãn nhẹ, ống suông. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",345000,M,xanh navy,31
+FA-042,Quần jean ống suông Daily,"Quần jean ống suông Daily: jean co giãn nhẹ, ống suông. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",345000,M,xám,0
+FA-043,Quần jean ống suông Basic,"Quần jean ống suông Basic: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",329000,S,trắng,0
+FA-043,Quần jean ống suông Basic,"Quần jean ống suông Basic: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",329000,M,trắng,39
+FA-043,Quần jean ống suông Basic,"Quần jean ống suông Basic: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",329000,L,trắng,40
+FA-044,Quần jean ống suông Studio,"Quần jean ống suông Studio: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",419000,M,xám,7
+FA-044,Quần jean ống suông Studio,"Quần jean ống suông Studio: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",419000,L,xám,14
+FA-044,Quần jean ống suông Studio,"Quần jean ống suông Studio: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",419000,XL,xám,17
+FA-045,Quần jean ống suông Signature,"Quần jean ống suông Signature: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,S,xanh navy,15
+FA-045,Quần jean ống suông Signature,"Quần jean ống suông Signature: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,S,xám,19
+FA-045,Quần jean ống suông Signature,"Quần jean ống suông Signature: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,M,xanh navy,30
+FA-045,Quần jean ống suông Signature,"Quần jean ống suông Signature: jean co giãn nhẹ, ống suông. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",435000,M,xám,0
+FA-046,Quần jogger,"Quần jogger: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",225000,M,đen,20
+FA-046,Quần jogger,"Quần jogger: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",225000,L,đen,37
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,M,xanh navy,28
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,M,đen,39
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,L,xanh navy,6
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,L,đen,37
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,XL,xanh navy,2
+FA-047,Quần jogger Daily,"Quần jogger Daily: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,XL,đen,18
+FA-048,Quần jogger Basic,"Quần jogger Basic: nỉ da cá, bo gấu. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",235000,M,xám,32
+FA-048,Quần jogger Basic,"Quần jogger Basic: nỉ da cá, bo gấu. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",235000,L,xám,31
+FA-048,Quần jogger Basic,"Quần jogger Basic: nỉ da cá, bo gấu. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",235000,XL,xám,22
+FA-049,Quần jogger Studio,"Quần jogger Studio: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,đen,8
+FA-049,Quần jogger Studio,"Quần jogger Studio: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,be,26
+FA-049,Quần jogger Studio,"Quần jogger Studio: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,L,đen,1
+FA-049,Quần jogger Studio,"Quần jogger Studio: nỉ da cá, bo gấu. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,L,be,35
+FA-050,Quần jogger Signature,"Quần jogger Signature: nỉ da cá, bo gấu. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",270000,M,be,0
+FA-050,Quần jogger Signature,"Quần jogger Signature: nỉ da cá, bo gấu. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",270000,L,be,0
+FA-051,Quần short kaki,"Quần short kaki: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",235000,M,đen,8
+FA-051,Quần short kaki,"Quần short kaki: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",235000,M,trắng,8
+FA-051,Quần short kaki,"Quần short kaki: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",235000,L,đen,10
+FA-051,Quần short kaki,"Quần short kaki: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",235000,L,trắng,19
+FA-052,Quần short kaki Daily,"Quần short kaki Daily: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,M,trắng,18
+FA-052,Quần short kaki Daily,"Quần short kaki Daily: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,M,xám,27
+FA-052,Quần short kaki Daily,"Quần short kaki Daily: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,L,trắng,33
+FA-052,Quần short kaki Daily,"Quần short kaki Daily: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,L,xám,1
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,M,trắng,15
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,M,xám,27
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,L,trắng,0
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,L,xám,25
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,XL,trắng,10
+FA-053,Quần short kaki Basic,"Quần short kaki Basic: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",170000,XL,xám,3
+FA-054,Quần short kaki Studio,"Quần short kaki Studio: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,S,đen,17
+FA-054,Quần short kaki Studio,"Quần short kaki Studio: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,M,đen,26
+FA-054,Quần short kaki Studio,"Quần short kaki Studio: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",199000,L,đen,22
+FA-055,Quần short kaki Signature,"Quần short kaki Signature: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,đen,7
+FA-055,Quần short kaki Signature,"Quần short kaki Signature: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,đen,7
+FA-055,Quần short kaki Signature,"Quần short kaki Signature: kaki cotton, túi xéo. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,L,đen,20
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,M,trắng,37
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,M,xám,12
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,L,trắng,6
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,L,xám,25
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,XL,trắng,16
+FA-056,Quần tây công sở,"Quần tây công sở: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",309000,XL,xám,38
+FA-057,Quần tây công sở Daily,"Quần tây công sở Daily: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",310000,M,be,0
+FA-057,Quần tây công sở Daily,"Quần tây công sở Daily: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",310000,M,trắng,38
+FA-057,Quần tây công sở Daily,"Quần tây công sở Daily: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",310000,L,be,28
+FA-057,Quần tây công sở Daily,"Quần tây công sở Daily: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",310000,L,trắng,30
+FA-058,Quần tây công sở Basic,"Quần tây công sở Basic: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",269000,S,xám,19
+FA-058,Quần tây công sở Basic,"Quần tây công sở Basic: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",269000,S,be,0
+FA-058,Quần tây công sở Basic,"Quần tây công sở Basic: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",269000,M,xám,26
+FA-058,Quần tây công sở Basic,"Quần tây công sở Basic: vải tuytsi, ít nhăn. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",269000,M,be,37
+FA-059,Quần tây công sở Studio,"Quần tây công sở Studio: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",409000,S,trắng,9
+FA-059,Quần tây công sở Studio,"Quần tây công sở Studio: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",409000,M,trắng,3
+FA-059,Quần tây công sở Studio,"Quần tây công sở Studio: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",409000,L,trắng,29
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,M,trắng,0
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,M,xám,0
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,L,trắng,0
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,L,xám,0
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,XL,trắng,0
+FA-060,Quần tây công sở Signature,"Quần tây công sở Signature: vải tuytsi, ít nhăn. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",415000,XL,xám,0
+FA-061,Váy midi hoa,"Váy midi hoa: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",355000,M,xanh navy,0
+FA-061,Váy midi hoa,"Váy midi hoa: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",355000,L,xanh navy,30
+FA-061,Váy midi hoa,"Váy midi hoa: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",355000,XL,xanh navy,17
+FA-062,Váy midi hoa Daily,"Váy midi hoa Daily: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,S,xám,36
+FA-062,Váy midi hoa Daily,"Váy midi hoa Daily: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,M,xám,40
+FA-062,Váy midi hoa Daily,"Váy midi hoa Daily: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,L,xám,5
+FA-063,Váy midi hoa Basic,"Váy midi hoa Basic: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,xanh navy,0
+FA-063,Váy midi hoa Basic,"Váy midi hoa Basic: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,đen,9
+FA-063,Váy midi hoa Basic,"Váy midi hoa Basic: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,xanh navy,24
+FA-063,Váy midi hoa Basic,"Váy midi hoa Basic: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,đen,35
+FA-064,Váy midi hoa Studio,"Váy midi hoa Studio: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",300000,M,be,0
+FA-064,Váy midi hoa Studio,"Váy midi hoa Studio: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",300000,L,be,35
+FA-064,Váy midi hoa Studio,"Váy midi hoa Studio: voan hoa nhí, có lót. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",300000,XL,be,23
+FA-065,Váy midi hoa Signature,"Váy midi hoa Signature: voan hoa nhí, có lót. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",379000,S,đen,0
+FA-065,Váy midi hoa Signature,"Váy midi hoa Signature: voan hoa nhí, có lót. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",379000,M,đen,0
+FA-066,Chân váy xếp ly,"Chân váy xếp ly: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",255000,S,xám,0
+FA-066,Chân váy xếp ly,"Chân váy xếp ly: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",255000,M,xám,10
+FA-066,Chân váy xếp ly,"Chân váy xếp ly: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",255000,L,xám,35
+FA-067,Chân váy xếp ly Daily,"Chân váy xếp ly Daily: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,S,xám,12
+FA-067,Chân váy xếp ly Daily,"Chân váy xếp ly Daily: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,M,xám,9
+FA-067,Chân váy xếp ly Daily,"Chân váy xếp ly Daily: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",239000,L,xám,34
+FA-068,Chân váy xếp ly Basic,"Chân váy xếp ly Basic: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",190000,M,xám,2
+FA-068,Chân váy xếp ly Basic,"Chân váy xếp ly Basic: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",190000,L,xám,0
+FA-069,Chân váy xếp ly Studio,"Chân váy xếp ly Studio: vải tuyết mưa, xếp ly cố định. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",279000,S,xám,0
+FA-069,Chân váy xếp ly Studio,"Chân váy xếp ly Studio: vải tuyết mưa, xếp ly cố định. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",279000,S,trắng,38
+FA-069,Chân váy xếp ly Studio,"Chân váy xếp ly Studio: vải tuyết mưa, xếp ly cố định. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,xám,21
+FA-069,Chân váy xếp ly Studio,"Chân váy xếp ly Studio: vải tuyết mưa, xếp ly cố định. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,trắng,39
+FA-070,Chân váy xếp ly Signature,"Chân váy xếp ly Signature: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,xanh navy,30
+FA-070,Chân váy xếp ly Signature,"Chân váy xếp ly Signature: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,S,trắng,7
+FA-070,Chân váy xếp ly Signature,"Chân váy xếp ly Signature: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,xanh navy,21
+FA-070,Chân váy xếp ly Signature,"Chân váy xếp ly Signature: vải tuyết mưa, xếp ly cố định. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,trắng,24
+FA-071,Đầm maxi đi biển,"Đầm maxi đi biển: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,S,xanh navy,0
+FA-071,Đầm maxi đi biển,"Đầm maxi đi biển: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,M,xanh navy,9
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,M,đen,23
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,M,be,0
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,L,đen,10
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,L,be,15
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,XL,đen,23
+FA-072,Đầm maxi đi biển Daily,"Đầm maxi đi biển Daily: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",360000,XL,be,24
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,S,be,0
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,S,xám,37
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,M,be,5
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,M,xám,0
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,L,be,2
+FA-073,Đầm maxi đi biển Basic,"Đầm maxi đi biển Basic: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",320000,L,xám,0
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,S,be,10
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,S,đen,40
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,M,be,0
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,M,đen,0
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,L,be,28
+FA-074,Đầm maxi đi biển Studio,"Đầm maxi đi biển Studio: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",399000,L,đen,29
+FA-075,Đầm maxi đi biển Signature,"Đầm maxi đi biển Signature: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",439000,M,xám,20
+FA-075,Đầm maxi đi biển Signature,"Đầm maxi đi biển Signature: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",439000,M,xanh navy,0
+FA-075,Đầm maxi đi biển Signature,"Đầm maxi đi biển Signature: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",439000,L,xám,39
+FA-075,Đầm maxi đi biển Signature,"Đầm maxi đi biển Signature: lụa satin, dáng xòe. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",439000,L,xanh navy,0
+FA-076,Áo polo,"Áo polo: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",265000,M,đen,28
+FA-076,Áo polo,"Áo polo: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",265000,L,đen,25
+FA-076,Áo polo,"Áo polo: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",265000,XL,đen,15
+FA-077,Áo polo Daily,"Áo polo Daily: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,S,be,0
+FA-077,Áo polo Daily,"Áo polo Daily: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,M,be,0
+FA-077,Áo polo Daily,"Áo polo Daily: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",199000,L,be,0
+FA-078,Áo polo Basic,"Áo polo Basic: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,S,trắng,26
+FA-078,Áo polo Basic,"Áo polo Basic: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,M,trắng,26
+FA-078,Áo polo Basic,"Áo polo Basic: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",219000,L,trắng,22
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,S,trắng,0
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,S,xám,12
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,trắng,5
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,M,xám,32
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,L,trắng,37
+FA-079,Áo polo Studio,"Áo polo Studio: cá sấu cotton, cổ bẻ. Xuất xứ Việt Nam. Giặt máy chế độ nhẹ, không sấy nóng.",279000,L,xám,29
+FA-080,Áo polo Signature,"Áo polo Signature: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,M,be,20
+FA-080,Áo polo Signature,"Áo polo Signature: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,L,be,3
+FA-080,Áo polo Signature,"Áo polo Signature: cá sấu cotton, cổ bẻ. Xuất xứ Trung Quốc. Giặt máy chế độ nhẹ, không sấy nóng.",289000,XL,be,0

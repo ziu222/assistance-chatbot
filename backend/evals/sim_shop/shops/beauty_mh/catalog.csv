@@ -1,0 +1,67 @@
+sku,name,description,price_vnd,size,color,stock
+MH-001,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ. Hàng đẹp, giá tốt. Xuất xứ Hàn Quốc.",180000,50ml,,10
+MH-001,Sữa rửa mặt dịu nhẹ,"Sữa rửa mặt dịu nhẹ. Hàng đẹp, giá tốt. Xuất xứ Hàn Quốc.",180000,150ml,,0
+MH-002,Sữa rửa mặt dịu nhẹ Sensitive,"Sữa rửa mặt dịu nhẹ Sensitive. Độ pH 5.5, cho da nhạy cảm.",199000,150ml,,0
+MH-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright. Hàng đẹp, giá tốt.",245000,50ml,,22
+MH-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright. Hàng đẹp, giá tốt.",245000,100ml,,40
+MH-003,Sữa rửa mặt dịu nhẹ Bright,"Sữa rửa mặt dịu nhẹ Bright. Hàng đẹp, giá tốt.",245000,150ml,,28
+MH-004,Sữa rửa mặt dịu nhẹ Calm,"Sữa rửa mặt dịu nhẹ Calm. Hàng đẹp, giá tốt.",169000,50ml,,0
+MH-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh. Độ pH 5.5, cho da nhạy cảm.",179000,50ml,,24
+MH-005,Sữa rửa mặt dịu nhẹ Fresh,"Sữa rửa mặt dịu nhẹ Fresh. Độ pH 5.5, cho da nhạy cảm.",179000,150ml,,5
+MH-006,Kem chống nắng phổ rộng,"Kem chống nắng phổ rộng. Hàng đẹp, giá tốt.",249000,50ml,,32
+MH-007,Kem chống nắng phổ rộng Sensitive,"Kem chống nắng phổ rộng Sensitive. Hàng đẹp, giá tốt.",329000,100ml,,40
+MH-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright. SPF50+ PA++++, kết cấu mỏng.",289000,50ml,,36
+MH-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright. SPF50+ PA++++, kết cấu mỏng.",289000,100ml,,0
+MH-008,Kem chống nắng phổ rộng Bright,"Kem chống nắng phổ rộng Bright. SPF50+ PA++++, kết cấu mỏng.",289000,150ml,,19
+MH-009,Kem chống nắng phổ rộng Calm,"Kem chống nắng phổ rộng Calm. SPF50+ PA++++, kết cấu mỏng.",289000,100ml,,35
+MH-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh. Hàng đẹp, giá tốt. Xuất xứ Thái Lan.",209000,50ml,,39
+MH-010,Kem chống nắng phổ rộng Fresh,"Kem chống nắng phổ rộng Fresh. Hàng đẹp, giá tốt. Xuất xứ Thái Lan.",209000,100ml,,31
+MH-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày. Ceramide và HA, không nhờn. Xuất xứ Thái Lan.",295000,50ml,,24
+MH-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày. Ceramide và HA, không nhờn. Xuất xứ Thái Lan.",295000,100ml,,31
+MH-011,Kem dưỡng ẩm ban ngày,"Kem dưỡng ẩm ban ngày. Ceramide và HA, không nhờn. Xuất xứ Thái Lan.",295000,150ml,,14
+MH-012,Kem dưỡng ẩm ban ngày Sensitive,"Kem dưỡng ẩm ban ngày Sensitive. Ceramide và HA, không nhờn. Xuất xứ Nhật Bản.",379000,50ml,,6
+MH-013,Kem dưỡng ẩm ban ngày Bright,"Kem dưỡng ẩm ban ngày Bright. Ceramide và HA, không nhờn. Xuất xứ Nhật Bản.",375000,100ml,,23
+MH-013,Kem dưỡng ẩm ban ngày Bright,"Kem dưỡng ẩm ban ngày Bright. Ceramide và HA, không nhờn. Xuất xứ Nhật Bản.",375000,150ml,,31
+MH-014,Kem dưỡng ẩm ban ngày Calm,"Kem dưỡng ẩm ban ngày Calm. Hàng đẹp, giá tốt.",289000,50ml,,38
+MH-015,Kem dưỡng ẩm ban ngày Fresh,"Kem dưỡng ẩm ban ngày Fresh. Ceramide và HA, không nhờn.",250000,100ml,,0
+MH-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm. Hàng đẹp, giá tốt.",309000,50ml,,13
+MH-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm. Hàng đẹp, giá tốt.",309000,100ml,,35
+MH-016,Kem dưỡng ẩm ban đêm,"Kem dưỡng ẩm ban đêm. Hàng đẹp, giá tốt.",309000,150ml,,39
+MH-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive. Peptide, phục hồi qua đêm.",335000,50ml,,30
+MH-017,Kem dưỡng ẩm ban đêm Sensitive,"Kem dưỡng ẩm ban đêm Sensitive. Peptide, phục hồi qua đêm.",335000,100ml,,23
+MH-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright. Hàng đẹp, giá tốt.",370000,50ml,,25
+MH-018,Kem dưỡng ẩm ban đêm Bright,"Kem dưỡng ẩm ban đêm Bright. Hàng đẹp, giá tốt.",370000,150ml,,28
+MH-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm. Hàng đẹp, giá tốt. Xuất xứ Việt Nam.",359000,50ml,,40
+MH-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm. Hàng đẹp, giá tốt. Xuất xứ Việt Nam.",359000,100ml,,7
+MH-019,Kem dưỡng ẩm ban đêm Calm,"Kem dưỡng ẩm ban đêm Calm. Hàng đẹp, giá tốt. Xuất xứ Việt Nam.",359000,150ml,,33
+MH-020,Kem dưỡng ẩm ban đêm Fresh,"Kem dưỡng ẩm ban đêm Fresh. Peptide, phục hồi qua đêm.",279000,50ml,,8
+MH-020,Kem dưỡng ẩm ban đêm Fresh,"Kem dưỡng ẩm ban đêm Fresh. Peptide, phục hồi qua đêm.",279000,150ml,,30
+MH-021,Serum vitamin C,"Serum vitamin C. Hàng đẹp, giá tốt. Xuất xứ Hàn Quốc.",290000,50ml,,0
+MH-021,Serum vitamin C,"Serum vitamin C. Hàng đẹp, giá tốt. Xuất xứ Hàn Quốc.",290000,100ml,,0
+MH-021,Serum vitamin C,"Serum vitamin C. Hàng đẹp, giá tốt. Xuất xứ Hàn Quốc.",290000,150ml,,0
+MH-022,Serum vitamin C Sensitive,"Serum vitamin C Sensitive. Vitamin C 10%, làm sáng da.",420000,50ml,,26
+MH-022,Serum vitamin C Sensitive,"Serum vitamin C Sensitive. Vitamin C 10%, làm sáng da.",420000,100ml,,37
+MH-023,Serum vitamin C Bright,"Serum vitamin C Bright. Hàng đẹp, giá tốt.",469000,100ml,,9
+MH-024,Serum vitamin C Calm,"Serum vitamin C Calm. Hàng đẹp, giá tốt. Xuất xứ Nhật Bản.",389000,50ml,,0
+MH-024,Serum vitamin C Calm,"Serum vitamin C Calm. Hàng đẹp, giá tốt. Xuất xứ Nhật Bản.",389000,150ml,,38
+MH-025,Serum vitamin C Fresh,"Serum vitamin C Fresh. Vitamin C 10%, làm sáng da.",349000,100ml,,15
+MH-025,Serum vitamin C Fresh,"Serum vitamin C Fresh. Vitamin C 10%, làm sáng da.",349000,150ml,,35
+MH-026,Serum niacinamide,"Serum niacinamide. Hàng đẹp, giá tốt. Xuất xứ Nhật Bản.",329000,150ml,,0
+MH-027,Serum niacinamide Sensitive,"Serum niacinamide Sensitive. Niacinamide 5%, giảm thâm. Xuất xứ Việt Nam.",279000,50ml,,0
+MH-028,Serum niacinamide Bright,"Serum niacinamide Bright. Niacinamide 5%, giảm thâm.",375000,50ml,,5
+MH-028,Serum niacinamide Bright,"Serum niacinamide Bright. Niacinamide 5%, giảm thâm.",375000,100ml,,27
+MH-029,Serum niacinamide Calm,"Serum niacinamide Calm. Niacinamide 5%, giảm thâm. Xuất xứ Nhật Bản.",325000,50ml,,23
+MH-029,Serum niacinamide Calm,"Serum niacinamide Calm. Niacinamide 5%, giảm thâm. Xuất xứ Nhật Bản.",325000,100ml,,40
+MH-029,Serum niacinamide Calm,"Serum niacinamide Calm. Niacinamide 5%, giảm thâm. Xuất xứ Nhật Bản.",325000,150ml,,1
+MH-030,Serum niacinamide Fresh,"Serum niacinamide Fresh. Hàng đẹp, giá tốt.",305000,50ml,,8
+MH-031,Toner hoa hồng,"Toner hoa hồng. Chiết xuất hoa hồng, không cồn.",165000,100ml,,13
+MH-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive. Hàng đẹp, giá tốt.",190000,50ml,,18
+MH-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive. Hàng đẹp, giá tốt.",190000,100ml,,7
+MH-032,Toner hoa hồng Sensitive,"Toner hoa hồng Sensitive. Hàng đẹp, giá tốt.",190000,150ml,,38
+MH-033,Toner hoa hồng Bright,"Toner hoa hồng Bright. Hàng đẹp, giá tốt.",239000,50ml,,28
+MH-033,Toner hoa hồng Bright,"Toner hoa hồng Bright. Hàng đẹp, giá tốt.",239000,100ml,,23
+MH-033,Toner hoa hồng Bright,"Toner hoa hồng Bright. Hàng đẹp, giá tốt.",239000,150ml,,5
+MH-034,Toner hoa hồng Calm,"Toner hoa hồng Calm. Chiết xuất hoa hồng, không cồn.",220000,50ml,,0
+MH-034,Toner hoa hồng Calm,"Toner hoa hồng Calm. Chiết xuất hoa hồng, không cồn.",220000,100ml,,21
+MH-034,Toner hoa hồng Calm,"Toner hoa hồng Calm. Chiết xuất hoa hồng, không cồn.",220000,150ml,,12
+MH-035,Toner hoa hồng Fresh,"Toner hoa hồng Fresh. Chiết xuất hoa hồng, không cồn.",140000,100ml,,22

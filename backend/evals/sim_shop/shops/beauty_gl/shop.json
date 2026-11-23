@@ -1,0 +1,100 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 499000,
+    "return_days": 7,
+    "shipping_vnd": {
+      "ngoai_thanh": 30000,
+      "noi_thanh": 25000,
+      "tinh": 35000
+    },
+    "wholesale_from": 50
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "mon": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "sun": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "21:00"
+        ]
+      ]
+    }
+  },
+  "industry": "mỹ phẩm",
+  "knowledge": {
+    "catalog_source": "tiktok_like",
+    "faq_count": 5,
+    "policy_file": true,
+    "sections": [
+      "returns",
+      "promo",
+      "payment"
+    ],
+    "skus": 50
+  },
+  "name": "Glow Lab",
+  "product_types": [
+    "Sữa rửa mặt dịu nhẹ",
+    "Kem chống nắng phổ rộng",
+    "Kem dưỡng ẩm ban ngày",
+    "Kem dưỡng ẩm ban đêm",
+    "Serum vitamin C",
+    "Serum niacinamide",
+    "Toner hoa hồng",
+    "Nước tẩy trang",
+    "Son dưỡng có màu",
+    "Son kem lì",
+    "Phấn phủ kiềm dầu",
+    "Kem nền mỏng nhẹ",
+    "Mặt nạ đất sét",
+    "Dầu gội thảo dược",
+    "Sữa tắm hương trà xanh",
+    "Xịt khoáng"
+  ],
+  "shop_key": "beauty_gl"
+}

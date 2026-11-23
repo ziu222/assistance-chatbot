@@ -1,0 +1,58 @@
+[
+  {
+    "answer": "Giờ làm việc: Thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy: 08:00–20:00; nghỉ Chủ nhật.",
+    "question": "Shop làm việc giờ nào?"
+  },
+  {
+    "answer": "Shop nghỉ các ngày: 2027-02-06 (Mùng 1 Tết).",
+    "question": "Ngày lễ shop có nghỉ không?"
+  },
+  {
+    "answer": "Phí giao nội thành là 35.000đ.",
+    "question": "Phí giao nội thành bao nhiêu?"
+  },
+  {
+    "answer": "Phí giao ngoại thành là 50.000đ.",
+    "question": "Phí giao ngoại thành bao nhiêu?"
+  },
+  {
+    "answer": "Phí giao đi tỉnh là 70.000đ.",
+    "question": "Phí giao đi tỉnh bao nhiêu?"
+  },
+  {
+    "answer": "Đơn từ 1.500.000đ được miễn phí giao hàng.",
+    "question": "Mua bao nhiêu thì được miễn phí giao?"
+  },
+  {
+    "answer": "Có nhận thanh toán khi nhận hàng (COD), phí thu hộ 20.000đ.",
+    "question": "Shop có nhận COD không?"
+  },
+  {
+    "answer": "Đổi trả trong 7 ngày kể từ ngày nhận hàng.",
+    "question": "Đổi trả trong bao lâu?"
+  },
+  {
+    "answer": "Điều kiện: còn nguyên hộp, đủ phụ kiện; lỗi do nhà sản xuất hoặc vỡ khi giao.",
+    "question": "Điều kiện đổi trả là gì?"
+  },
+  {
+    "answer": "Không đổi trả: sản phẩm đã qua sử dụng không do lỗi; móc dán đã bóc keo.",
+    "question": "Sản phẩm nào không được đổi trả?"
+  },
+  {
+    "answer": "Thời hạn bảo hành ghi trong mô tả từng sản phẩm; không áp dụng cho hư hỏng do rơi vỡ hoặc vào nước.",
+    "question": "Bảo hành thế nào?"
+  },
+  {
+    "answer": "Đơn từ 10 sản phẩm được nhân viên báo giá sỉ.",
+    "question": "Mua sỉ có giá riêng không?"
+  },
+  {
+    "answer": "Shop chỉ áp dụng khuyến mãi đã công bố, không tự giảm ngoài chương trình.",
+    "question": "Shop có mã giảm giá không?"
+  },
+  {
+    "answer": "Có xuất hóa đơn VAT theo yêu cầu, gửi thông tin công ty trong ngày đặt hàng.",
+    "question": "Shop có xuất hóa đơn VAT không?"
+  }
+]

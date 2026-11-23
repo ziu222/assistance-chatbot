@@ -1,0 +1,84 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 500000,
+    "return_days": 5,
+    "shipping_vnd": {
+      "ngoai_thanh": 40000,
+      "noi_thanh": 30000,
+      "tinh": 50000
+    },
+    "wholesale_from": 10
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "08:00",
+          "17:00"
+        ]
+      ],
+      "mon": [
+        [
+          "08:00",
+          "17:00"
+        ]
+      ],
+      "thu": [
+        [
+          "08:00",
+          "17:00"
+        ]
+      ],
+      "tue": [
+        [
+          "08:00",
+          "17:00"
+        ]
+      ],
+      "wed": [
+        [
+          "08:00",
+          "17:00"
+        ]
+      ]
+    }
+  },
+  "industry": "đồ gia dụng",
+  "knowledge": {
+    "catalog_source": "shopee_like",
+    "faq_count": 0,
+    "policy_file": false,
+    "sections": [],
+    "skus": 20
+  },
+  "name": "Bếp Xinh",
+  "product_types": [
+    "Bình giữ nhiệt inox",
+    "Bình giữ nhiệt mini",
+    "Bộ hộp thủy tinh",
+    "Nồi chiên không dầu",
+    "Ấm siêu tốc",
+    "Chảo chống dính",
+    "Bộ dao inox",
+    "Thớt gỗ nghiến",
+    "Giá treo khăn",
+    "Kệ gia vị 2 tầng",
+    "Đèn bàn cảm ứng",
+    "Quạt mini để bàn",
+    "Máy xay sinh tố",
+    "Hộp cơm giữ nhiệt",
+    "Cây lau nhà xoay",
+    "Móc dán tường (bộ 10)"
+  ],
+  "shop_key": "home_bx"
+}

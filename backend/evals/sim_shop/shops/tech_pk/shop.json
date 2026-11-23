@@ -1,0 +1,96 @@
+{
+  "hidden_truth": {
+    "cod": true,
+    "cod_fee_vnd": 0,
+    "freeship_from_vnd": 199000,
+    "return_days": 7,
+    "shipping_vnd": {
+      "ngoai_thanh": 25000,
+      "noi_thanh": 15000,
+      "tinh": 30000
+    },
+    "wholesale_from": 50
+  },
+  "hours": {
+    "closed_days": [
+      {
+        "date": "2027-02-06",
+        "note": "Mùng 1 Tết"
+      }
+    ],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "mon": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "sat": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "sun": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "thu": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "tue": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ],
+      "wed": [
+        [
+          "07:00",
+          "23:00"
+        ]
+      ]
+    }
+  },
+  "industry": "điện tử và phụ kiện",
+  "knowledge": {
+    "catalog_source": "shopee_like",
+    "faq_count": 0,
+    "policy_file": false,
+    "sections": [],
+    "skus": 70
+  },
+  "name": "Phụ Kiện 247",
+  "product_types": [
+    "Tai nghe Bluetooth",
+    "Tai nghe chống ồn",
+    "Cáp sạc nhanh USB-C",
+    "Củ sạc nhanh 20W",
+    "Củ sạc nhanh 65W",
+    "Sạc dự phòng 10000mAh",
+    "Sạc dự phòng 20000mAh",
+    "Chuột không dây",
+    "Chuột không dây im lặng",
+    "Bàn phím cơ mini",
+    "Giá đỡ điện thoại",
+    "Loa Bluetooth mini",
+    "Thẻ nhớ microSD",
+    "USB 3.0",
+    "Hub USB-C 6 cổng",
+    "Đồng hồ thông minh"
+  ],
+  "shop_key": "tech_pk"
+}

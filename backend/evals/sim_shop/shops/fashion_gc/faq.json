@@ -1,0 +1,26 @@
+[
+  {
+    "answer": "Giờ làm việc: Thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy: 13:00–23:00; nghỉ Chủ nhật.",
+    "question": "Shop làm việc giờ nào?"
+  },
+  {
+    "answer": "Shop nghỉ các ngày: 2027-02-06 (Mùng 1 Tết).",
+    "question": "Ngày lễ shop có nghỉ không?"
+  },
+  {
+    "answer": "Phí giao nội thành là 30.000đ.",
+    "question": "Phí giao nội thành bao nhiêu?"
+  },
+  {
+    "answer": "Phí giao ngoại thành là 35.000đ.",
+    "question": "Phí giao ngoại thành bao nhiêu?"
+  },
+  {
+    "answer": "Phí giao đi tỉnh là 40.000đ.",
+    "question": "Phí giao đi tỉnh bao nhiêu?"
+  },
+  {
+    "answer": "Đơn từ 599.000đ được miễn phí giao hàng.",
+    "question": "Mua bao nhiêu thì được miễn phí giao?"
+  }
+]
