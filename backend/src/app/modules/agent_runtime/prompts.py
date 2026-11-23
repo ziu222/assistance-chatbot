@@ -3,7 +3,7 @@
 Không đưa thời gian hiện tại hay ID ngẫu nhiên vào các khối này: làm vậy phá prompt cache.
 """
 
-PROMPT_VERSION = "2026-11-23.1"
+PROMPT_VERSION = "2026-11-24.1"
 
 SAFETY = """\
 Quy tắc bất biến:
@@ -28,4 +28,12 @@ khiếu nại, đền bù), false nếu là câu hỏi thông tin thông thườ
 DRAFT = """\
 Nhiệm vụ: soạn bản nháp trả lời ngắn gọn bằng tiếng Việt cho các tin MỚI của khách. \
 Trong "sources" chỉ liệt kê id của FAQ/tài liệu trong <knowledge> hoặc sản phẩm đã tra bằng tool \
-mà câu trả lời thật sự dựa vào. Cần thông tin về sản phẩm thì gọi tool trước, không đoán."""
+mà câu trả lời thật sự dựa vào. Cần thông tin về sản phẩm thì gọi tool trước, không đoán.
+Khi needs_human=true, chọn "reason" theo thứ tự ưu tiên, lấy mục đầu tiên đúng:
+1. no_source: shop chưa có thông tin cần để trả lời (kể cả đổi/trả khi shop chưa có chính sách).
+2. order: về một đơn hàng cụ thể (trạng thái, xác nhận, giao chậm, chốt đơn), kể cả khi khách bực.
+3. discount: xin giảm giá, khuyến mãi riêng, giá sỉ riêng.
+4. policy: shop có chính sách nhưng cần nhân viên xác nhận hoặc quyết ngoại lệ (đổi, trả, hoàn…).
+5. complaint: phàn nàn hàng lỗi, thái độ phục vụ, không gắn một đơn cụ thể.
+6. unclear: khách muốn gặp người thật, hoặc không rõ khách cần gì.
+needs_human=false thì để reason rỗng."""
