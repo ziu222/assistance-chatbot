@@ -83,3 +83,7 @@ ca `no_source` mà vẫn có số tiền kỳ vọng, giá gốc không bị c�
 - Ca hỏi thuộc tính mà mô tả không có còn ít (vài ca); tên dòng sản phẩm (Daily, Pro…) là quy ước.
 - Giờ trong `at` cố định quanh 24–30/11/2026; tạm nghỉ của mọi shop là sáng 24/11.
 - Trường `eval_seeds` trong template là đường dẫn quy ước; chưa có code runtime đọc file seeds.
+
+## Đặt hàng và link sản phẩm (thiết kế 03)
+
+`shop.json` có `order_flow`: shop sàn gửi link sàn, `fashion_a`/`home_c`/`tech_d` gửi link trang sản phẩm, shop còn lại để nhân viên xác nhận. `catalog.csv` và `raw_listing.json` có cột `url` (tên miền `.example`, hư cấu). Nhóm `order_request` (25 ca) chấm thêm chiều `link`: ca đủ món, size/màu, số lượng ở shop gửi link phải chứa đúng link đó.

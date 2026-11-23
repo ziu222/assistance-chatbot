@@ -72,6 +72,13 @@
     "skus": 45
   },
   "name": "Gió Chiều",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "marketplace_link"
+      }
+    }
+  },
   "product_types": [
     "Áo thun cotton cổ tròn",
     "Áo thun form rộng",

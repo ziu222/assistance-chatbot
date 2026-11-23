@@ -160,7 +160,7 @@ async def load_shop(factory, key: str) -> Shop:
         # Trần ngày rộng: eval không được dừng giữa chừng vì trần của shop demo.
         await upsert_ai_settings(s, tenant, ai_enabled=True, daily_cost_cap_micro=100_000_000)
         # Quy trình đặt hàng mặc định (nhân viên xác nhận) cho mọi shop giả lập.
-        await publish_flow(s, tenant, OrderFlowConfig(), None)
+        await publish_flow(s, tenant, OrderFlowConfig(**meta.get("order_flow", {})), None)
         listing = folder / "raw_listing.json"
         if listing.exists():
             # Shop đồng bộ từ sàn đi đúng đường adapter (§13.2): tiêu đề thô, chuẩn hóa riêng.

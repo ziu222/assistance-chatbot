@@ -55,6 +55,7 @@ CATEGORIES = {
     "after_hours",
     "paused",
     "hard_negative",
+    "order_request",
 }
 INTENTS = {
     "greeting",

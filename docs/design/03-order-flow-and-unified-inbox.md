@@ -79,7 +79,7 @@ Link chỉ lấy từ catalog (cột `url` mới, do adapter nguồn điền). B
   - Hướng khách bằng link thì chỉ hỏi món, size/màu, số lượng; không hỏi thông tin cá nhân.
   - Món không có link, hoặc chưa cấu hình `checkout_url`, ⇒ quay về `staff_confirms`.
 - Phiếu đủ thông tin với cách hướng khách bằng link: chuyển `ready`, nhưng không mở ticket và nháp không cần nhân viên (khách tự đặt trên trang đó). Sau 72 giờ phiếu tự `expired`. Cột `order_requests.destination` ghi cách hướng khách đã dùng.
-- Chưa đo bằng eval với LLM thật: các shop giả lập chưa có link sản phẩm.
+- Đo bằng eval với LLM thật: 7/8 ca gửi đúng link sau khi khối `<order_flow>` nêu cách đặt hàng ngay từ đầu (lần đầu 0/9). Xem [docs/evals/product-links.md](../evals/product-links.md).
 
 ### 4.2. Phiên bản và phát hành
 

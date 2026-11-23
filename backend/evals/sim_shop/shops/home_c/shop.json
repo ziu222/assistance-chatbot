@@ -95,6 +95,13 @@
     "skus": 80
   },
   "name": "Nhà Gọn",
+  "order_flow": {
+    "by_channel": {
+      "webchat": {
+        "destination": "product_link"
+      }
+    }
+  },
   "product_types": [
     "Bình giữ nhiệt inox",
     "Bình giữ nhiệt mini",

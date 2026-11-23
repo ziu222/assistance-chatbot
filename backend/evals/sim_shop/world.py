@@ -736,6 +736,14 @@ TEMPLATES = {
     ],
     # Khách bình thường nhưng có "!!", "??", chữ "không", nhắn nhiều dòng, hỏi lại để chắc.
     # Không có ý đặt/chốt đơn (order_intent là ý định chuyển người của template).
+    # Đặt hàng (thiết kế 03): có số lượng thì đủ để gửi link; không có thì bot phải hỏi thêm.
+    "order_request": [
+        "Cho em đặt {q} {p} {v} nhé shop",
+        "Em lấy {p} {v}, {q} cái",
+        "chốt {p} {v} x{q} cho em",
+        "Shop ơi em muốn mua {p} {v}",
+        "Em đặt {p} {v} được không ạ?",
+    ],
     "hard_negative": [
         "Đẹp quá shop ơi!! {p} còn {v} không ạ?",
         "Không cần gói quà đâu ạ, em chỉ hỏi {p} giá bao nhiêu thôi",
