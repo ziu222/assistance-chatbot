@@ -30,6 +30,7 @@ export function useEventSignals(onUnauthorized: () => void): boolean {
         const s = JSON.parse((e as MessageEvent).data) as { t: string; c?: string };
         void qc.invalidateQueries({ queryKey: ["conversations"] });
         void qc.invalidateQueries({ queryKey: ["handoffs"] }); // tin mới có thể đổi hàng đợi
+        if (s.t.startsWith("order_request")) void qc.invalidateQueries({ queryKey: ["order-requests"] });
         if (s.c) {
           void qc.invalidateQueries({ queryKey: ["messages", s.c] });
           void qc.invalidateQueries({ queryKey: ["conversation", s.c] });
