@@ -47,13 +47,20 @@ from app.modules.agent_runtime.llm.port import (
 )
 from app.modules.agent_runtime.llm.port import ToolResult as LLMToolResult
 from app.modules.agent_runtime.llm.pricing import UnknownPrice
+from app.modules.agent_runtime.order_step import (
+    OrderContext,
+    apply_draft,
+    load_order,
+    with_phone,
+)
 from app.modules.agent_runtime.prompts import CLASSIFY, DRAFT, PROMPT_VERSION, SAFETY
 from app.modules.agent_runtime.rules import apply_rules
-from app.modules.agent_runtime.schemas import ClassifyOut, DraftOut
+from app.modules.agent_runtime.schemas import ClassifyOut, DraftOut, OrderDraftOut
 from app.modules.agent_runtime.signals import behavior_signals, score, semantic_signals
 from app.modules.agent_runtime.tools import TOOLS, run_tool
 from app.modules.agent_runtime.validation import extract_amounts, validate_draft
 from app.modules.knowledge.domain.topics import suggest_topics
+from app.modules.orders.infrastructure.repository import OrderRequest, save_request
 from app.shared.infrastructure.metrics import (
     AGENT_DRAFTS,
     AGENT_NO_LLM,
@@ -98,6 +105,9 @@ class _Run:
     steps: list[Step] = field(default_factory=list)
     intents: list[str] | None = None
     ctx: RunContext | None = None
+    order: OrderContext | None = None  # luồng đặt hàng (thiết kế 03): None = không áp dụng
+    order_update: OrderRequest | None = None  # phiếu sau lượt này, ghi cùng nháp
+    products: dict[str, dict] = field(default_factory=dict)  # sku ⇒ bản ghi tool đã trả
     guard: bool = True  # kiểm tra lại mode/kill switch/last_sequence ngay trước khi lưu
 
     @property
@@ -277,6 +287,17 @@ class AgentRunner:
         if set(run.intents) & set(tpl.handoff_intents):
             raise _Stop("handoff_suggested")
 
+        # 3b. Đặt hàng: shop đã bật quy trình và khách muốn đặt (hoặc đang có phiếu dở).
+        async with self._factory() as s:
+            run.order = await load_order(
+                s, run.tenant_id, run.conversation_id, order_intent="order_intent" in run.intents
+            )
+        if run.order:
+            with_phone(run.order, ctx.customer_texts)
+            run.steps.append(
+                Step("rule", "order_flow", "active", 0, {"missing": run.order.request.missing})
+            )
+
         # 4. Soạn nháp (vòng tool read-only).
         out, prices, product_ids = await self._draft(run, ctx)
 
@@ -296,25 +317,43 @@ class AgentRunner:
                 {"problems": problems},
             )
         )
+        needs_human, reason = out.needs_human, out.reason
+        if run.order and isinstance(out, OrderDraftOut):
+            # Đơn hàng luôn cần nhân viên xác nhận; phiếu được ghi cùng nháp ở bước lưu.
+            run.order_update = apply_draft(run.order, out.order, run.products)
+            needs_human, reason = True, reason or "order"
+            run.steps.append(
+                Step(
+                    "rule",
+                    "order_request",
+                    "ready" if not run.order_update.missing else "collecting",
+                    0,
+                    {"missing": run.order_update.missing, "items": len(run.order_update.items)},
+                )
+            )
         reply = out.reply.strip()
         if not reply:
-            if out.needs_human:
+            if needs_human:
                 raise _Stop("handoff_suggested")
             raise _Stop("failed", error_code="empty_reply")
         draft = DraftToSave(
             reply,
             [s.model_dump() for s in out.sources],
             grounded=not problems,
-            needs_human=out.needs_human,
-            reason=out.reason or ",".join(problems) or None,
+            needs_human=needs_human,
+            reason=reason or ",".join(problems) or None,
         )
-        raise _Stop("handoff_suggested" if out.needs_human else "completed", draft=draft)
+        raise _Stop("handoff_suggested" if needs_human else "completed", draft=draft)
 
     async def _draft(self, run: _Run, ctx: RunContext) -> tuple[DraftOut, set[int], set[str]]:
         tpl = run.agent.template
         budget = tpl.budget
         instructions = tpl.instructions.replace("{shop_name}", run.agent.shop_name)
         system = (SAFETY + "\n" + DRAFT, instructions, ctx.knowledge_block)
+        schema: type[DraftOut] = DraftOut
+        if run.order:  # khối đổi theo hội thoại: sau khối tri thức đã cache (ADR-0028)
+            system += (run.order.block(),)
+            schema = OrderDraftOut
         tools = tuple(t for t in TOOLS if t.name in tpl.tools)
         turns = [Turn(role="user", text=ctx.transcript())]
         prices: set[int] = set()
@@ -332,7 +371,7 @@ class AgentRunner:
                     system_blocks=system,
                     turns=tuple(turns),
                     tools=tools,
-                    output_schema=DraftOut,
+                    output_schema=schema,
                     deadline=run.deadline,
                 ),
             )
@@ -361,6 +400,7 @@ class AgentRunner:
                     for item in tr.data if isinstance(tr.data, list) else [tr.data]:
                         product_ids.add(item["id"])
                         prices.add(int(item["price_vnd"]))
+                        run.products[item["sku"]] = item
                 error = "unknown_tool" if tr is None else tr.error
                 results.append(
                     LLMToolResult(
@@ -459,6 +499,15 @@ class AgentRunner:
                         based_on_sequence=run.to_sequence,
                         draft=draft,
                     )
+                    if run.order and run.order_update:
+                        await save_request(
+                            s,
+                            run.tenant_id,
+                            run.conversation_id,
+                            flow_release_id=run.order.release_id,
+                            channel=run.order.provider,
+                            req=run.order_update,
+                        )
                     AGENT_DRAFTS.labels(
                         grounded=str(draft.grounded).lower(),
                         needs_human=str(draft.needs_human).lower(),
