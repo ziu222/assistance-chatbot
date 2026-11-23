@@ -1,0 +1,50 @@
+[
+  {
+    "description": "Hỏi ngắn, muốn có giá ngay.",
+    "id": "voi_va",
+    "patience": "low",
+    "style": "viết tắt, đôi khi không dấu"
+  },
+  {
+    "description": "Hỏi kỹ chất liệu và điều kiện.",
+    "id": "ky_tinh",
+    "patience": "high",
+    "style": "có dấu, nhiều câu hỏi"
+  },
+  {
+    "description": "Lịch sự nhưng xin ngoại lệ.",
+    "id": "lich_su",
+    "patience": "medium",
+    "style": "xưng em, dùng ạ"
+  },
+  {
+    "description": "Thử prompt injection và giả admin.",
+    "id": "phá_hoại",
+    "patience": "low",
+    "style": "mệnh lệnh"
+  },
+  {
+    "description": "Gõ không dấu, câu ngắn.",
+    "id": "nguoi_lon_tuoi",
+    "patience": "medium",
+    "style": "không dấu"
+  },
+  {
+    "description": "Hỏi số lượng và giá riêng.",
+    "id": "khach_si",
+    "patience": "medium",
+    "style": "thực dụng"
+  },
+  {
+    "description": "Bực vì giao chậm.",
+    "id": "buc_vi_giao",
+    "patience": "low",
+    "style": "lặp lại, dấu hỏi"
+  },
+  {
+    "description": "Lịch sự nhưng cần người quyết.",
+    "id": "ngoai_le",
+    "patience": "high",
+    "style": "nhã nhặn"
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "cod": false,
+  "cod_fee_vnd": null,
+  "freeship_from_vnd": 700000,
+  "hours": {
+    "closed_days": [],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "mon": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "sat": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "sun": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "thu": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "tue": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ],
+      "wed": [
+        [
+          "10:00",
+          "23:30"
+        ]
+      ]
+    }
+  },
+  "industry": "mỹ phẩm",
+  "name": "Lá Nâu",
+  "shipping_regions": {
+    "ngoai_thanh": 40000,
+    "noi_thanh": 25000,
+    "tinh": 55000
+  },
+  "shop_key": "beauty_b"
+}

@@ -1,0 +1,602 @@
+[
+  {
+    "customer_id": "fashion_a-c000",
+    "id": "DH-FA-0000",
+    "sku": "FA-001",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c001",
+    "id": "DH-FA-0001",
+    "sku": "FA-002",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c002",
+    "id": "DH-FA-0002",
+    "sku": "FA-003",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c003",
+    "id": "DH-FA-0003",
+    "sku": "FA-004",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c004",
+    "id": "DH-FA-0004",
+    "sku": "FA-005",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c005",
+    "id": "DH-FA-0005",
+    "sku": "FA-006",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c006",
+    "id": "DH-FA-0006",
+    "sku": "FA-007",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c007",
+    "id": "DH-FA-0007",
+    "sku": "FA-008",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c008",
+    "id": "DH-FA-0008",
+    "sku": "FA-009",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c009",
+    "id": "DH-FA-0009",
+    "sku": "FA-010",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c010",
+    "id": "DH-FA-0010",
+    "sku": "FA-011",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c011",
+    "id": "DH-FA-0011",
+    "sku": "FA-012",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c012",
+    "id": "DH-FA-0012",
+    "sku": "FA-013",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c013",
+    "id": "DH-FA-0013",
+    "sku": "FA-014",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0014",
+    "sku": "FA-015",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c015",
+    "id": "DH-FA-0015",
+    "sku": "FA-016",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c016",
+    "id": "DH-FA-0016",
+    "sku": "FA-017",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0017",
+    "sku": "FA-018",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c018",
+    "id": "DH-FA-0018",
+    "sku": "FA-019",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0019",
+    "sku": "FA-020",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c020",
+    "id": "DH-FA-0020",
+    "sku": "FA-021",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c021",
+    "id": "DH-FA-0021",
+    "sku": "FA-022",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c022",
+    "id": "DH-FA-0022",
+    "sku": "FA-023",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0023",
+    "sku": "FA-024",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c024",
+    "id": "DH-FA-0024",
+    "sku": "FA-025",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c025",
+    "id": "DH-FA-0025",
+    "sku": "FA-026",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0026",
+    "sku": "FA-027",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c027",
+    "id": "DH-FA-0027",
+    "sku": "FA-028",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0028",
+    "sku": "FA-029",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c029",
+    "id": "DH-FA-0029",
+    "sku": "FA-030",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c030",
+    "id": "DH-FA-0030",
+    "sku": "FA-031",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0031",
+    "sku": "FA-032",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c032",
+    "id": "DH-FA-0032",
+    "sku": "FA-033",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c033",
+    "id": "DH-FA-0033",
+    "sku": "FA-034",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c034",
+    "id": "DH-FA-0034",
+    "sku": "FA-035",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c035",
+    "id": "DH-FA-0035",
+    "sku": "FA-036",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0036",
+    "sku": "FA-037",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c037",
+    "id": "DH-FA-0037",
+    "sku": "FA-038",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0038",
+    "sku": "FA-039",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c039",
+    "id": "DH-FA-0039",
+    "sku": "FA-040",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0040",
+    "sku": "FA-041",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0041",
+    "sku": "FA-042",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c042",
+    "id": "DH-FA-0042",
+    "sku": "FA-043",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c043",
+    "id": "DH-FA-0043",
+    "sku": "FA-044",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c044",
+    "id": "DH-FA-0044",
+    "sku": "FA-045",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c045",
+    "id": "DH-FA-0045",
+    "sku": "FA-046",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c046",
+    "id": "DH-FA-0046",
+    "sku": "FA-047",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0047",
+    "sku": "FA-048",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c048",
+    "id": "DH-FA-0048",
+    "sku": "FA-049",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c049",
+    "id": "DH-FA-0049",
+    "sku": "FA-050",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c000",
+    "id": "DH-FA-0050",
+    "sku": "FA-051",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c001",
+    "id": "DH-FA-0051",
+    "sku": "FA-052",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c002",
+    "id": "DH-FA-0052",
+    "sku": "FA-053",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c003",
+    "id": "DH-FA-0053",
+    "sku": "FA-054",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c004",
+    "id": "DH-FA-0054",
+    "sku": "FA-055",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c005",
+    "id": "DH-FA-0055",
+    "sku": "FA-056",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c006",
+    "id": "DH-FA-0056",
+    "sku": "FA-057",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c007",
+    "id": "DH-FA-0057",
+    "sku": "FA-058",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c008",
+    "id": "DH-FA-0058",
+    "sku": "FA-059",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c009",
+    "id": "DH-FA-0059",
+    "sku": "FA-060",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c010",
+    "id": "DH-FA-0060",
+    "sku": "FA-061",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c011",
+    "id": "DH-FA-0061",
+    "sku": "FA-062",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c012",
+    "id": "DH-FA-0062",
+    "sku": "FA-063",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c013",
+    "id": "DH-FA-0063",
+    "sku": "FA-064",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c014",
+    "id": "DH-FA-0064",
+    "sku": "FA-065",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c015",
+    "id": "DH-FA-0065",
+    "sku": "FA-066",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c016",
+    "id": "DH-FA-0066",
+    "sku": "FA-067",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c017",
+    "id": "DH-FA-0067",
+    "sku": "FA-068",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c018",
+    "id": "DH-FA-0068",
+    "sku": "FA-069",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c019",
+    "id": "DH-FA-0069",
+    "sku": "FA-070",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c020",
+    "id": "DH-FA-0070",
+    "sku": "FA-071",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c021",
+    "id": "DH-FA-0071",
+    "sku": "FA-072",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c022",
+    "id": "DH-FA-0072",
+    "sku": "FA-073",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c023",
+    "id": "DH-FA-0073",
+    "sku": "FA-074",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c024",
+    "id": "DH-FA-0074",
+    "sku": "FA-075",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c025",
+    "id": "DH-FA-0075",
+    "sku": "FA-076",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c026",
+    "id": "DH-FA-0076",
+    "sku": "FA-077",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c027",
+    "id": "DH-FA-0077",
+    "sku": "FA-078",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c028",
+    "id": "DH-FA-0078",
+    "sku": "FA-079",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c029",
+    "id": "DH-FA-0079",
+    "sku": "FA-080",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c030",
+    "id": "DH-FA-0080",
+    "sku": "FA-001",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c031",
+    "id": "DH-FA-0081",
+    "sku": "FA-002",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c032",
+    "id": "DH-FA-0082",
+    "sku": "FA-003",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c033",
+    "id": "DH-FA-0083",
+    "sku": "FA-004",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c034",
+    "id": "DH-FA-0084",
+    "sku": "FA-005",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c035",
+    "id": "DH-FA-0085",
+    "sku": "FA-006",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c036",
+    "id": "DH-FA-0086",
+    "sku": "FA-007",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c037",
+    "id": "DH-FA-0087",
+    "sku": "FA-008",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c038",
+    "id": "DH-FA-0088",
+    "sku": "FA-009",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c039",
+    "id": "DH-FA-0089",
+    "sku": "FA-010",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c040",
+    "id": "DH-FA-0090",
+    "sku": "FA-011",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c041",
+    "id": "DH-FA-0091",
+    "sku": "FA-012",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c042",
+    "id": "DH-FA-0092",
+    "sku": "FA-013",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c043",
+    "id": "DH-FA-0093",
+    "sku": "FA-014",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c044",
+    "id": "DH-FA-0094",
+    "sku": "FA-015",
+    "status": "doi_tra"
+  },
+  {
+    "customer_id": "fashion_a-c045",
+    "id": "DH-FA-0095",
+    "sku": "FA-016",
+    "status": "cho_xac_nhan"
+  },
+  {
+    "customer_id": "fashion_a-c046",
+    "id": "DH-FA-0096",
+    "sku": "FA-017",
+    "status": "dang_giao"
+  },
+  {
+    "customer_id": "fashion_a-c047",
+    "id": "DH-FA-0097",
+    "sku": "FA-018",
+    "status": "da_giao"
+  },
+  {
+    "customer_id": "fashion_a-c048",
+    "id": "DH-FA-0098",
+    "sku": "FA-019",
+    "status": "da_huy"
+  },
+  {
+    "customer_id": "fashion_a-c049",
+    "id": "DH-FA-0099",
+    "sku": "FA-020",
+    "status": "doi_tra"
+  }
+]

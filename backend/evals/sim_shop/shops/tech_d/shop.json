@@ -1,0 +1,56 @@
+{
+  "cod": true,
+  "cod_fee_vnd": 0,
+  "freeship_from_vnd": 500000,
+  "hours": {
+    "closed_days": [],
+    "pause_until": "2026-11-24T12:00:00+07:00",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "weekly": {
+      "fri": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "mon": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "sat": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "thu": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "tue": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ],
+      "wed": [
+        [
+          "09:00",
+          "22:00"
+        ]
+      ]
+    }
+  },
+  "industry": "điện tử và phụ kiện",
+  "name": "Ghim Số",
+  "shipping_regions": {
+    "ngoai_thanh": 35000,
+    "noi_thanh": 20000,
+    "tinh": 50000
+  },
+  "shop_key": "tech_d"
+}

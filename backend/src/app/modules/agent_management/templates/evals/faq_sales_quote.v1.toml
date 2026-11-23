@@ -1,0 +1,201 @@
+# 40 seed cases selected deterministically from tasks.json.
+
+[[cases]]
+id = "beauty_b-product_info-013"
+category = "product_info"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-product_info-017"
+category = "product_info"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-multi_turn-007"
+category = "multi_turn"
+needs_human = false
+
+[[cases]]
+id = "tech_d-return_request-005"
+category = "return_request"
+needs_human = true
+
+[[cases]]
+id = "home_c-policy_exception-017"
+category = "policy_exception"
+needs_human = true
+
+[[cases]]
+id = "home_c-injection-006"
+category = "injection"
+needs_human = true
+
+[[cases]]
+id = "beauty_b-order_status-020"
+category = "order_status"
+needs_human = true
+
+[[cases]]
+id = "home_c-faq-007"
+category = "faq"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-ambiguous_product-010"
+category = "ambiguous_product"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-ambiguous_product-021"
+category = "ambiguous_product"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-discount_request-020"
+category = "discount_request"
+needs_human = true
+
+[[cases]]
+id = "beauty_b-paused-018"
+category = "paused"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-order_status-024"
+category = "order_status"
+needs_human = true
+
+[[cases]]
+id = "tech_d-return_request-013"
+category = "return_request"
+needs_human = true
+
+[[cases]]
+id = "beauty_b-human_request-017"
+category = "human_request"
+needs_human = true
+
+[[cases]]
+id = "home_c-order_status-013"
+category = "order_status"
+needs_human = true
+
+[[cases]]
+id = "fashion_a-frustration-005"
+category = "frustration"
+needs_human = true
+
+[[cases]]
+id = "tech_d-multi_turn-017"
+category = "multi_turn"
+needs_human = false
+
+[[cases]]
+id = "home_c-human_request-018"
+category = "human_request"
+needs_human = true
+
+[[cases]]
+id = "tech_d-discount_request-019"
+category = "discount_request"
+needs_human = true
+
+[[cases]]
+id = "home_c-hard_negative-006"
+category = "hard_negative"
+needs_human = false
+
+[[cases]]
+id = "home_c-product_info-010"
+category = "product_info"
+needs_human = false
+
+[[cases]]
+id = "tech_d-order_status-010"
+category = "order_status"
+needs_human = true
+
+[[cases]]
+id = "beauty_b-out_of_stock-015"
+category = "out_of_stock"
+needs_human = false
+
+[[cases]]
+id = "tech_d-faq-012"
+category = "faq"
+needs_human = false
+
+[[cases]]
+id = "home_c-out_of_scope-005"
+category = "out_of_scope"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-order_status-004"
+category = "order_status"
+needs_human = true
+
+[[cases]]
+id = "beauty_b-discount_request-021"
+category = "discount_request"
+needs_human = true
+
+[[cases]]
+id = "home_c-after_hours-020"
+category = "after_hours"
+needs_human = false
+
+[[cases]]
+id = "beauty_b-price_quote-012"
+category = "price_quote"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-ambiguous_product-001"
+category = "ambiguous_product"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-faq-005"
+category = "faq"
+needs_human = false
+
+[[cases]]
+id = "tech_d-faq-008"
+category = "faq"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-out_of_stock-014"
+category = "out_of_stock"
+needs_human = false
+
+[[cases]]
+id = "home_c-paused-003"
+category = "paused"
+needs_human = false
+
+[[cases]]
+id = "home_c-out_of_scope-013"
+category = "out_of_scope"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-human_request-016"
+category = "human_request"
+needs_human = true
+
+[[cases]]
+id = "tech_d-complaint-004"
+category = "complaint"
+needs_human = true
+
+[[cases]]
+id = "fashion_a-paused-021"
+category = "paused"
+needs_human = false
+
+[[cases]]
+id = "fashion_a-order_status-007"
+category = "order_status"
+needs_human = true
