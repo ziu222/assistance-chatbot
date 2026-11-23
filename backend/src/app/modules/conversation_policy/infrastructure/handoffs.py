@@ -11,7 +11,7 @@ from uuid import UUID, uuid4
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-Source = Literal["customer_button", "phrase", "topic", "staff"]
+Source = Literal["customer_button", "phrase", "topic", "staff", "order"]
 Action = Literal["claim", "resolve", "dismiss"]
 EVENT_SCHEMA_VERSION = 1
 
