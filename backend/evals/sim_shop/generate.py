@@ -969,7 +969,8 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
             {
                 "intents_any": ["complaint", "other", "faq"],
                 "needs_human": True,
-                "reason": "policy",
+                # Mọi câu xin ngoại lệ đều về đổi/trả: shop chưa viết đổi trả ⇒ no_source.
+                "reason": "policy" if has(cfg, "returns") else "no_source",
                 "escalation": {"human_decision": True},
                 "policy": no_policy(),
             },
@@ -1118,6 +1119,8 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
 
     if category == "frustration":
         first, last, reason = rng.choice(FRUSTRATION_TOPICS)
+        if reason == "returns":
+            reason = "policy" if has(cfg, "returns") else "no_source"
         p = rng.choice(products)
         order = rng.choice(w["orders"])
         multi = len({x["color"] for x in p["variants"]}) > 1
