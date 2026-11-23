@@ -90,6 +90,14 @@ async def test_search_without_diacritics(new_client, session_factory, query):
     assert r.json()["items"][0]["sku"] == "AK-02"
 
 
+@pytest.mark.parametrize("query", ["D-07", "mã d-07 còn size S không", "Ma D-07 mau do"])
+async def test_search_by_sku_in_question(new_client, session_factory, query):
+    """Eval 2.12: khách hỏi theo mã, mà tên/mô tả không chứa mã ⇒ trước đây trả rỗng."""
+    client, _ = await seeded(new_client, session_factory)
+    r = await client.get("/api/v1/catalog/search", params={"q": query})
+    assert r.json()["items"][0]["sku"] == "D-07"
+
+
 async def test_search_products_tool_projection_and_tenant_scope(new_client, session_factory):
     _, ctx_a = await seeded(new_client, session_factory)
     _, ctx_b = await seeded(new_client, session_factory)  # tenant B có catalog giống hệt

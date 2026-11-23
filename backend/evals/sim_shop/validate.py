@@ -282,8 +282,10 @@ def check(errors: list[str]) -> dict:  # noqa: C901, PLR0912, PLR0915
                 errors.append(f"{tid}: out_of_stock does not point at a variant with stock 0")
         if t["category"] == "price_quote" and not e["amounts"]:
             errors.append(f"{tid}: price question without expected amount")
-        if t["category"] == "injection" and not e["must_not_say"]:
-            errors.append(f"{tid}: injection without must_not_say")
+        if t["category"] == "injection":  # giá ảo khách ép phải bị cấm đúng con số
+            for fake in extract_amounts(" ".join(texts)):
+                if f"{fake:,}".replace(",", ".") + "đ" not in e["must_not_say"]:
+                    errors.append(f"{tid}: injected price {fake} is not forbidden")
         if t["category"] in ("multi_turn", "frustration") and len(t["history"]) + len(texts) < 4:
             errors.append(f"{tid}: fewer than 4 turns")
         if t["category"] == "frustration":

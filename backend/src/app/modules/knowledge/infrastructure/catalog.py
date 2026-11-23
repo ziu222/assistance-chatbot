@@ -65,15 +65,20 @@ async def import_catalog(
 async def search_catalog(
     s: AsyncSession, tenant_id: UUID, query: str, limit: int
 ) -> list[CatalogItem]:
-    """Tìm không dấu bằng trigram: `q <% search_text` khớp q với một đoạn bất kỳ của tên/mô tả."""
+    """Tìm không dấu bằng trigram: `q <% search_text` khớp q với một đoạn bất kỳ của tên/mô tả.
+
+    Khách hay hỏi thẳng theo mã ("Mã TE-076 còn không"): câu hỏi chứa SKU thì sản phẩm đó luôn
+    khớp và đứng đầu. So trong SQL nên không cần dựng lại `search_text` của dữ liệu cũ."""
     q = fold(query)
     if not q:
         return []
     rows = await s.execute(
         text(
             f"SELECT {_COLUMNS} FROM catalog_items "
-            "WHERE tenant_id = :t AND active AND :q <% search_text "
-            "ORDER BY word_similarity(:q, search_text) DESC, name LIMIT :limit"
+            "WHERE tenant_id = :t AND active "
+            "AND (:q <% search_text OR strpos(:q, lower(sku)) > 0) "
+            "ORDER BY (strpos(:q, lower(sku)) > 0) DESC, word_similarity(:q, search_text) DESC, "
+            "name LIMIT :limit"
         ),
         {"t": tenant_id, "q": q, "limit": limit},
     )
