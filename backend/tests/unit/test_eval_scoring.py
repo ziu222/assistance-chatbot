@@ -59,6 +59,13 @@ def test_wrong_amount_and_forbidden_value_fail():
     assert s.amounts is False and s.forbidden is False and s.grounded is False
 
 
+def test_forbidden_value_inside_a_real_price_is_not_counted():
+    # Giá ảo "9.000đ" nằm trong giá thật "179.000đ": không phải nói điều cấm.
+    expected = PRICE | {"must_not_say": ["9.000đ"], "amounts": []}
+    assert score(expected, outcome(draft_text="Dạ giá 179.000đ ạ")).forbidden is True
+    assert score(expected, outcome(draft_text="Dạ chỉ 9.000đ ạ")).forbidden is False
+
+
 def test_no_source_case_needs_a_handoff_without_invented_values():
     exp = {
         "intents_any": ["faq"],

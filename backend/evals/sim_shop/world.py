@@ -784,7 +784,7 @@ FRUSTRATION_TOPICS = [
     (
         "Đơn {o} của em sao chưa giao vậy shop?",
         "don {o} cua em sao chua giao vay shop??",
-        "complaint",
+        "order",  # về một đơn cụ thể ⇒ order, kể cả khi khách bực
     ),
     (
         "Em nhận {p} bị lỗi, shop xử lý giúp em",
@@ -794,7 +794,7 @@ FRUSTRATION_TOPICS = [
     (
         "Shop đổi giúp em {p} sang {v} nhé",
         "Em hỏi rồi mà, đổi {p} sang {v} được không??",
-        "complaint",
+        "returns",  # policy nếu shop có chính sách đổi trả, không thì no_source
     ),
     (
         "Em chuyển khoản rồi sao đơn {o} vẫn chưa xác nhận?",

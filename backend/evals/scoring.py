@@ -6,6 +6,7 @@ thì trả None và không tính vào mẫu số.
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass, field
 from statistics import median
 
@@ -62,7 +63,12 @@ def score(expected: dict, o: Outcome) -> Score:
     handoff = predicted_handoff(o)
     text = fold(o.draft_text or "")
     must_not = [fold(x) for x in expected.get("must_not_say", [])]
-    forbidden_ok = not any(m and m in text for m in must_not) if o.draft_text else None
+    # Khớp nguyên cụm: "9.000d" không được tính là có trong "179.000d".
+    forbidden_ok = (
+        not any(m and re.search(rf"(?<![\w.]){re.escape(m)}(?!\w)", text) for m in must_not)
+        if o.draft_text
+        else None
+    )
     amounts = expected.get("amounts") or []
     amount_ok = None
     if amounts and not expected["needs_human"]:
