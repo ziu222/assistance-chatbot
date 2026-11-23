@@ -319,9 +319,11 @@ class AgentRunner:
         )
         needs_human, reason = out.needs_human, out.reason
         if run.order and isinstance(out, OrderDraftOut):
-            # Đơn hàng luôn cần nhân viên xác nhận; phiếu được ghi cùng nháp ở bước lưu.
+            # Đang thu thập thì bot tự hỏi tiếp; đủ thông tin thì cần nhân viên xác nhận đơn.
+            # Phiếu được ghi cùng nháp ở bước lưu.
             run.order_update = apply_draft(run.order, out.order, run.products)
-            needs_human, reason = True, reason or "order"
+            if not run.order_update.missing:
+                needs_human, reason = True, "order"
             run.steps.append(
                 Step(
                     "rule",
@@ -499,7 +501,7 @@ class AgentRunner:
                         based_on_sequence=run.to_sequence,
                         draft=draft,
                     )
-                    if run.order and run.order_update:
+                    if run.order and run.order_update and run.order_update.worth_saving:
                         await save_request(
                             s,
                             run.tenant_id,

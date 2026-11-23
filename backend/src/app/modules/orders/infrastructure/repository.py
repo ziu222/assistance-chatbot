@@ -114,6 +114,11 @@ class OrderRequest:
     unverified: list[str] = field(default_factory=list)
     missing: list[str] = field(default_factory=list)
 
+    @property
+    def worth_saving(self) -> bool:
+        """Chưa có món nào lẫn thông tin nào (vd món khách hỏi đã hết) ⇒ không tạo phiếu rỗng."""
+        return self.id is not None or bool(self.items or self.customer)
+
 
 async def open_request(
     s: AsyncSession, tenant_id: UUID, conversation_id: UUID

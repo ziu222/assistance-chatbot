@@ -286,7 +286,7 @@ shop = "beauty_b"
 category = "paused"
 history = []
 messages = [{ "from" = "customer", "text" = "Em muon dat Sua rua mat diu nhe Bright, shop co tra loi duoc khong a?", "at" = "2026-11-24T10:50:00+07:00" }]
-expected = { "intents_any" = ["faq", "product_info", "price_quote", "other"], "tools_any" = [], "sources_include" = [{ "type" = "product", "sku" = "BE-003" }], "amounts" = [], "must_not_say" = [], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "paused", "run_agent" = true } }
+expected = { "intents_any" = ["order_intent", "product_info"], "tools_any" = ["search_products"], "sources_include" = [{ "type" = "product", "sku" = "BE-003" }], "amounts" = [], "must_not_say" = [], "needs_human" = false, "reason" = "", "escalation" = { "needs_human_label" = false, "frustration" = "none", "human_decision" = false }, "policy" = { "situation" = "paused", "run_agent" = true } }
 
 [[cases]]
 id = "beauty_b-hard_negative-005"

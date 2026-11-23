@@ -104,7 +104,7 @@ async def test_order_request_is_collected_then_handed_to_staff(session_factory):
     block = llm.requests[-1].system_blocks[-1]
     assert block.startswith("<order_flow>") and "tra món khách nhắc tới" in block
     [draft] = await drafts(session_factory)
-    assert draft["needs_human"] and draft["reason"] == "order" and draft["grounded"]
+    assert not draft["needs_human"] and draft["grounded"]  # đang thu thập: bot tự hỏi tiếp
 
     # Lượt 2: khách gửi đủ thông tin. Sku bịa bị bỏ qua; số điện thoại do code tách.
     runner, llm = make_runner(
@@ -129,6 +129,8 @@ async def test_order_request_is_collected_then_handed_to_staff(session_factory):
     assert req["items"][0]["sku"] == "AK-02" and req["subtotal_vnd"] == 350000
     assert req["customer_fields"]["phone"] == PHONE
     assert set(req["unverified"]) == {"name", "address"}  # phone do code tách: không nằm đây
+    last = max(await drafts(session_factory), key=lambda d: d["created_at"])
+    assert last["needs_human"] and last["reason"] == "order"  # đủ thông tin: cần nhân viên
 
     async with session_factory() as s:
         handoff = (

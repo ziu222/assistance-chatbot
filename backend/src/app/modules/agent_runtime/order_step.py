@@ -93,8 +93,10 @@ def apply_draft(ctx: OrderContext, order: OrderFields, products: dict[str, dict]
     """Phiếu sau lượt này. `products`: sku ⇒ bản ghi tool đã trả trong run."""
     req = replace(ctx.request, items=[dict(i) for i in ctx.request.items])
     product = products.get(order.sku.strip())
-    if product is not None:
-        options = [o for o in (_option(v) for v in product.get("variants", [])) if o]
+    # Chỉ nhận biến thể còn hàng; món hết sạch không vào phiếu (bot gợi ý mẫu khác).
+    in_stock = [v for v in (product or {}).get("variants", []) if (v.get("stock") or 0) > 0]
+    if product is not None and in_stock:
+        options = [o for o in (_option(v) for v in in_stock) if o]
         same = req.items and req.items[0]["sku"] == product["sku"]
         item = req.items[0] if same else {}
         req.items = [
