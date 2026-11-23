@@ -1,7 +1,10 @@
 """Chạy một lần sync từ nguồn ngoài (§13.2) và luôn ghi lại kết quả vào `catalog_sync_runs`."""
 
+import asyncio
+import contextlib
 import json
-from datetime import UTC, datetime
+import logging
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID
 
@@ -17,6 +20,8 @@ from app.modules.knowledge.domain.catalog_source import (
 )
 from app.modules.knowledge.infrastructure.catalog import SyncResult, record_sync_run, sync_catalog
 from app.modules.knowledge.infrastructure.sheets import SheetsError, fetch_values
+
+log = logging.getLogger(__name__)
 
 
 def market_items(raw_items: list[dict[str, Any]]) -> tuple[list[NormalizedItem], list[str]]:
@@ -89,3 +94,54 @@ async def sync_sheets(
         result = await sync_catalog(s, tenant_id, "sheets", items, full=True)
         await record_sync_run(s, tenant_id, "sheets", started, result)
     return ("partial" if result.errors else "ok"), result
+
+
+async def sync_due_sources(
+    factory: async_sessionmaker[AsyncSession],
+    credentials_json: str,
+    http: httpx.AsyncClient,
+    interval: timedelta,
+) -> int:
+    """Sync mọi nguồn Sheets chưa có lần sync nào (kể cả thất bại) trong `interval`.
+
+    Lần thất bại cũng tính: nguồn hỏng được thử lại sau một chu kỳ chứ không bị gọi liên tục.
+    Khóa dòng `catalog_sources` bằng SKIP LOCKED nên chạy nhiều worker không sync trùng.
+    """
+    done = 0
+    while True:
+        async with factory() as s, s.begin():
+            tenant_id = (
+                await s.execute(
+                    text(
+                        "SELECT cs.tenant_id FROM catalog_sources cs "
+                        "WHERE cs.source = 'sheets' AND NOT EXISTS ("
+                        "  SELECT 1 FROM catalog_sync_runs r WHERE r.tenant_id = cs.tenant_id "
+                        "  AND r.source = 'sheets' "
+                        "  AND r.finished_at > now() - make_interval(secs => :secs)) "
+                        "ORDER BY cs.updated_at LIMIT 1 FOR UPDATE OF cs SKIP LOCKED"
+                    ),
+                    {"secs": interval.total_seconds()},
+                )
+            ).scalar_one_or_none()
+            if tenant_id is None:
+                return done
+            # Giữ khóa trong lúc sync (transaction khác ghi sản phẩm + lần sync).
+            await sync_sheets(factory, tenant_id, credentials_json, http)
+            done += 1
+
+
+async def run_catalog_scheduler(
+    factory: async_sessionmaker[AsyncSession],
+    credentials_json: str,
+    interval: timedelta,
+    stop: asyncio.Event,
+    tick_s: float = 60.0,
+) -> None:
+    async with httpx.AsyncClient() as http:
+        while not stop.is_set():
+            try:
+                await sync_due_sources(factory, credentials_json, http, interval)
+            except Exception:
+                log.exception("catalog scheduler tick failed")
+            with contextlib.suppress(TimeoutError):
+                await asyncio.wait_for(stop.wait(), timeout=tick_s)
