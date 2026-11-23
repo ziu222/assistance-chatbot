@@ -33,9 +33,11 @@ async def test_list_templates(new_client, session_factory):
     client, *_ = await owner(new_client, session_factory, role="agent")
     r = await client.get("/api/v1/agent-templates")
     assert r.status_code == 200
-    [t] = [x for x in r.json()["items"] if x["key"] == "faq_sales_quote"]
-    assert t["version"] == 1 and t["default_mode"] == "shadow"
-    assert "complaint" in t["intents"]
+    versions = {x["version"]: x for x in r.json()["items"] if x["key"] == "faq_sales_quote"}
+    assert {1, 2} <= set(versions)  # bản cũ vẫn liệt kê: agent cũ giữ ảnh chụp của nó
+    assert all(
+        t["default_mode"] == "shadow" and "complaint" in t["intents"] for t in versions.values()
+    )
 
 
 async def test_create_agent_snapshots_template_and_starts_manual(new_client, session_factory):
@@ -46,15 +48,23 @@ async def test_create_agent_snapshots_template_and_starts_manual(new_client, ses
     assert agent["mode"] == "manual"  # an toàn: admin chủ động bật Shadow
     assert agent["version"] == 1
     assert agent["current_version"]["version_number"] == 1
-    assert (agent["template_key"], agent["template_version"]) == ("faq_sales_quote", 1)
+    latest = get_template("faq_sales_quote").version  # không nêu version ⇒ bản mới nhất
+    assert (agent["template_key"], agent["template_version"]) == ("faq_sales_quote", latest)
 
     async with session_factory() as s:
         config, created_by = (
             await s.execute(text("SELECT config, created_by FROM agent_versions"))
         ).one()
-    expected = json.loads(get_template("faq_sales_quote", 1).model_dump_json())
+    expected = json.loads(get_template("faq_sales_quote", latest).model_dump_json())
     assert config == expected  # ảnh chụp, không phải tham chiếu tới file
     assert created_by == uid
+
+
+async def test_older_template_version_can_still_be_chosen(new_client, session_factory):
+    """Template v2 ra đời không đổi agent cũ, và vẫn tạo được agent từ v1 nếu cần so sánh."""
+    client, _, _, conn_id = await owner(new_client, session_factory)
+    r = await create(client, conn_id, template_version=1)
+    assert r.status_code == 201 and r.json()["template_version"] == 1
 
 
 async def test_one_agent_per_connection(new_client, session_factory):

@@ -537,7 +537,8 @@ async def test_endless_tool_loop_stops_at_budget(world, session_factory):
 
     run = await one_run(session_factory)
     assert (run["status"], run["error_code"]) == ("failed", "budget_exceeded")
-    assert run["model_calls"] <= 3 and not await drafts(session_factory)
+    limit = get_template("faq_sales_quote").budget.max_model_calls
+    assert run["model_calls"] <= limit and not await drafts(session_factory)
 
 
 async def test_cost_cap_of_version_stops_the_run(world, session_factory):
