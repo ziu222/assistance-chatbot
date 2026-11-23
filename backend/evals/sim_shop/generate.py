@@ -101,6 +101,28 @@ PERSONA_BY_CATEGORY = {
     "paused": ["lich_su", "voi_va", "nguoi_lon_tuoi"],
     "hard_negative": ["lich_su", "voi_va", "khach_si"],
 }
+MATERIAL_WORDS = (
+    "cotton",
+    "linen",
+    "oxford",
+    "kaki",
+    "nỉ",
+    "jean",
+    "len ",
+    "vải",
+    "voan",
+    "lụa",
+    "tuyết mưa",
+    "cá sấu",
+    "inox",
+    "thủy tinh",
+    "gỗ",
+    "thép",
+    "nhôm",
+    "ceramic",
+    "đá ",
+    "đất sét",
+)
 # Chủ đề câu hỏi ⇒ mục chính sách cần có để trả lời.
 TOPIC_SECTION = {
     "ship": "shipping",
@@ -249,7 +271,9 @@ def describe(cfg: dict, spec: tuple, name: str, origin: str, rng: random.Random)
     """Mô tả theo nguồn catalog; trả (mô tả, thuộc tính có trong mô tả, bẫy giá gốc)."""
     _, _, _, _, desc, warranty = spec
     kind, source = cfg["kind"], cfg["source"]
-    attrs = {"material": True, "origin": True, "warranty": warranty is not None}
+    # "Chất liệu" chỉ có căn cứ khi mô tả thật sự nêu chất liệu (vd "chuẩn PD 20W" thì không).
+    has_material = any(w in desc.lower() for w in MATERIAL_WORDS)
+    attrs = {"material": has_material, "origin": True, "warranty": warranty is not None}
     if kind == "fashion":
         tail = "Giặt máy chế độ nhẹ, không sấy nóng."
     elif kind == "beauty":
@@ -961,7 +985,9 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
         # Giá ảo: cấm đúng con số. "Giá nhập"/"giảm 99%": không cấm cụm từ (câu từ chối đúng
         # vẫn nhắc lại nó); hỏi giá nhập thì từ chối + báo giá bán là đủ, không cần người.
         must = [fake] if "{fake}" in template else []
-        handoff = "{fake}" in template or "99%" in template
+        # Giá ảo: từ chối và báo giá thật là đủ (không cần người), chỉ cấm nhắc lại giá ảo.
+        # Đòi giảm 99% là xin giảm giá ⇒ chuyển người như discount_request.
+        handoff = "99%" in template
         return b.add(
             shop,
             category,
@@ -998,6 +1024,8 @@ def make_task(b: Builder, category: str, shop: str, persona: str) -> bool:  # no
         if "doi tra" in template or "đổi trả" in template:
             if not has(cfg, "returns"):
                 return False
+        if ("mo lai" in template or "con lam" in template) and not has(cfg, "hours"):
+            return False  # hỏi giờ mở cửa mà shop chưa viết giờ: đã có ở missing_info
         msg = b.fill(template, shop, p, region=region)
         exp = {
             "intents_any": ["faq", "product_info", "price_quote", "other"],

@@ -70,6 +70,7 @@ from app.shared.infrastructure.db import create_session_factory  # noqa: E402
 
 SIM = ROOT / "sim_shop"
 TEMPLATE = "faq_sales_quote"
+TEMPLATE_VERSION: int | None = None  # None = bản mới nhất; đặt bằng --template-version
 ALL_SECTIONS = {
     "hours",
     "shipping",
@@ -139,7 +140,7 @@ async def load_shop(factory, key: str) -> Shop:
                 {"k": seeded.public_key},
             )
         ).scalar_one()
-        tpl = get_template(TEMPLATE)
+        tpl = get_template(TEMPLATE, TEMPLATE_VERSION)
         agent_id = await insert_agent(
             s,
             tenant_id=tenant,
@@ -417,12 +418,13 @@ def report(rows, shops: dict[str, Shop], args, elapsed: float, mode: str) -> str
     total = summary(rows)
     served = Counter(m for _, o, _ in rows for m in o.served_by)
     statuses = Counter(o.run_status or "no_run" for _, o, _ in rows)
+    tpl_version = get_template(TEMPLATE, TEMPLATE_VERSION).version
     models = ", ".join(f"{k} × {v}" for k, v in served.most_common())
     md = [
         "# Báo cáo eval agent (bước 2.12)",
         "",
         f"- Ngày chạy: {datetime.now().astimezone():%Y-%m-%d %H:%M}; chế độ: **{mode}**; "
-        f"`PROMPT_VERSION` {PROMPT_VERSION}; template `{TEMPLATE}`.",
+        f"`PROMPT_VERSION` {PROMPT_VERSION}; template `{TEMPLATE}` v{tpl_version}.",
         f"- Dữ liệu: `backend/evals/sim_shop/` (12 shop giả lập), {len(rows)} nhiệm vụ "
         + (f"({args.per_category} ca mỗi nhóm)." if args.per_category else "(toàn bộ)."),
         f"- Model phục vụ (số lần gọi): {models or 'không gọi LLM'}.",
@@ -485,7 +487,10 @@ async def main() -> int:
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--out", help="ghi báo cáo markdown")
     ap.add_argument("--raw", help="ghi kết quả từng ca (jsonl)")
+    ap.add_argument("--template-version", type=int, default=None, help="so sánh các bản template")
     args = ap.parse_args()
+    global TEMPLATE_VERSION
+    TEMPLATE_VERSION = args.template_version
 
     settings = get_settings()
     url = eval_url(settings.database_url)
@@ -499,7 +504,7 @@ async def main() -> int:
     if args.fake:
         llm, mode = GenericFake(), "LLM giả (smoke)"
     else:
-        tpl = get_template(TEMPLATE)
+        tpl = get_template(TEMPLATE, TEMPLATE_VERSION)
         llm, _ = build_llm(
             settings, {f"{tpl.key}.v{tpl.version}": {tpl.routes.classify, tpl.routes.draft}}
         )
