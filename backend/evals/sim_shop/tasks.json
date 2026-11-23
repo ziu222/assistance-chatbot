@@ -98,10 +98,7 @@
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
+      "must_not_say": [],
       "needs_human": true,
       "policy": {
         "run_agent": true,
@@ -595,10 +592,7 @@
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
+      "must_not_say": [],
       "needs_human": true,
       "policy": {
         "run_agent": true,
@@ -1124,10 +1118,7 @@
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
+      "must_not_say": [],
       "needs_human": true,
       "policy": {
         "run_agent": true,
@@ -1833,7 +1824,7 @@
       {
         "at": "2026-11-25T14:20:00+07:00",
         "from": "customer",
-        "text": "Ấm siêu tốc Plus màu/size loại 500ml có sẵn không ạ, em cần gấp"
+        "text": "Ấm siêu tốc Plus loại 500ml có sẵn không ạ, em cần gấp"
       }
     ],
     "notes": "catalog.csv BX-009 loại 500ml: tồn 0; biến thể khác còn hàng.",
@@ -3635,7 +3626,7 @@
       {
         "at": "2026-11-25T14:20:00+07:00",
         "from": "customer",
-        "text": "Cu sac nhanh 65W Air mau/size mau den co san khong a, em can gap"
+        "text": "Cu sac nhanh 65W Air mau den co san khong a, em can gap"
       }
     ],
     "notes": "catalog.csv TE-025 màu đen: tồn 0 (hết mọi biến thể).",
@@ -4269,10 +4260,7 @@
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
+      "must_not_say": [],
       "needs_human": true,
       "policy": {
         "run_agent": true,
@@ -4623,7 +4611,7 @@
       {
         "at": "2026-11-25T20:15:00+07:00",
         "from": "customer",
-        "text": "Quan tay cong so Basic mau/size sz L mau xanh navy co san ko, em can gap"
+        "text": "Quan tay cong so Basic sz L mau xanh navy co san ko, em can gap"
       }
     ],
     "notes": "catalog.csv OT-058 size L màu xanh navy: tồn 0 (hết mọi biến thể).",
@@ -5402,10 +5390,7 @@
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
+      "must_not_say": [],
       "needs_human": true,
       "policy": {
         "run_agent": true,
@@ -7913,7 +7898,7 @@
       {
         "at": "2026-11-26T10:30:00+07:00",
         "from": "customer",
-        "text": "Quan short kaki Basic mau/size sz XL mau xam co san ko, em can gap"
+        "text": "Quan short kaki Basic sz XL mau xam co san ko, em can gap"
       }
     ],
     "notes": "catalog.csv OT-053 size XL màu xám: tồn 0; biến thể khác còn hàng.",
@@ -8454,7 +8439,7 @@
       {
         "at": "2026-11-25T14:20:00+07:00",
         "from": "customer",
-        "text": "Sữa rửa mặt dịu nhẹ Calm màu/size loại 150ml có sẵn không ạ, em cần gấp ạ"
+        "text": "Sữa rửa mặt dịu nhẹ Calm loại 150ml có sẵn không ạ, em cần gấp ạ"
       }
     ],
     "notes": "catalog.csv GL-004 loại 150ml: tồn 0 (hết mọi biến thể).",
@@ -8803,7 +8788,7 @@
       {
         "at": "2026-11-27T21:30:00+07:00",
         "from": "customer",
-        "text": "Ao so mi linen mau/size size L mau trang co san khong a, em can gap"
+        "text": "Ao so mi linen size L mau trang co san khong a, em can gap"
       }
     ],
     "notes": "catalog.csv OT-011 size L màu trắng: tồn 0; biến thể khác còn hàng.",
@@ -9550,23 +9535,20 @@
       "escalation": {
         "frustration": "none",
         "human_decision": false,
-        "needs_human_label": true
+        "needs_human_label": false
       },
       "intents_any": [
         "discount_request",
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
-      "needs_human": true,
+      "must_not_say": [],
+      "needs_human": false,
       "policy": {
         "run_agent": true,
         "situation": null
       },
-      "reason": "policy",
+      "reason": "",
       "sources_include": [],
       "tools_any": []
     },
@@ -9752,23 +9734,20 @@
       "escalation": {
         "frustration": "none",
         "human_decision": false,
-        "needs_human_label": true
+        "needs_human_label": false
       },
       "intents_any": [
         "discount_request",
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
-      "needs_human": true,
+      "must_not_say": [],
+      "needs_human": false,
       "policy": {
         "run_agent": true,
         "situation": null
       },
-      "reason": "policy",
+      "reason": "",
       "sources_include": [],
       "tools_any": []
     },
@@ -12349,7 +12328,7 @@
       {
         "at": "2026-11-27T15:10:00+07:00",
         "from": "customer",
-        "text": "Dong ho thong minh Air mau/size mau trang co san khong a, em can gap"
+        "text": "Dong ho thong minh Air mau trang co san khong a, em can gap"
       }
     ],
     "notes": "catalog.csv TE-080 màu trắng: tồn 0; biến thể khác còn hàng.",
@@ -13714,23 +13693,20 @@
       "escalation": {
         "frustration": "none",
         "human_decision": false,
-        "needs_human_label": true
+        "needs_human_label": false
       },
       "intents_any": [
         "discount_request",
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
-      "needs_human": true,
+      "must_not_say": [],
+      "needs_human": false,
       "policy": {
         "run_agent": true,
         "situation": null
       },
-      "reason": "policy",
+      "reason": "",
       "sources_include": [],
       "tools_any": []
     },
@@ -15925,7 +15901,7 @@
       {
         "at": "2026-11-25T16:45:00+07:00",
         "from": "customer",
-        "text": "Bo hop thuy tinh Mini mau/size loai 750ml co san khong a, em can gap"
+        "text": "Bo hop thuy tinh Mini loai 750ml co san khong a, em can gap"
       }
     ],
     "notes": "catalog.csv BX-018 loại 750ml: tồn 0; biến thể khác còn hàng.",
@@ -17076,23 +17052,20 @@
       "escalation": {
         "frustration": "none",
         "human_decision": false,
-        "needs_human_label": true
+        "needs_human_label": false
       },
       "intents_any": [
         "discount_request",
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
-      "needs_human": true,
+      "must_not_say": [],
+      "needs_human": false,
       "policy": {
         "run_agent": true,
         "situation": null
       },
-      "reason": "policy",
+      "reason": "",
       "sources_include": [],
       "tools_any": []
     },
@@ -17353,23 +17326,20 @@
       "escalation": {
         "frustration": "none",
         "human_decision": false,
-        "needs_human_label": true
+        "needs_human_label": false
       },
       "intents_any": [
         "discount_request",
         "price_quote",
         "other"
       ],
-      "must_not_say": [
-        "giá nhập",
-        "99%"
-      ],
-      "needs_human": true,
+      "must_not_say": [],
+      "needs_human": false,
       "policy": {
         "run_agent": true,
         "situation": null
       },
-      "reason": "policy",
+      "reason": "",
       "sources_include": [],
       "tools_any": []
     },

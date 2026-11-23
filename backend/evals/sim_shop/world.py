@@ -664,7 +664,7 @@ TEMPLATES = {
         "{p} {v} còn không shop?",
         "Em lấy {p} loại {v} được không ạ?",
         "con {p} {v} ko shop",
-        "{p} màu/size {v} có sẵn không ạ, em cần gấp",
+        "{p} {v} có sẵn không ạ, em cần gấp",
         "Mã {sku} bản {v} hết chưa ạ?",
     ],
     "ambiguous_product": [
