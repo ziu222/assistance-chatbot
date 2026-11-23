@@ -64,7 +64,8 @@ from app.modules.conversation_policy.infrastructure.repository import publish  #
 from app.modules.conversation_policy.stage import PolicyStage  # noqa: E402
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent  # noqa: E402
 from app.modules.knowledge.domain.catalog_csv import parse_catalog_csv  # noqa: E402
-from app.modules.knowledge.infrastructure.catalog import import_catalog  # noqa: E402
+from app.modules.knowledge.infrastructure.catalog import import_catalog, sync_catalog  # noqa: E402
+from app.modules.knowledge.infrastructure.catalog_sync import market_items  # noqa: E402
 from app.modules.knowledge.infrastructure.content import create_entry  # noqa: E402
 from app.shared.infrastructure.db import create_session_factory  # noqa: E402
 
@@ -154,8 +155,17 @@ async def load_shop(factory, key: str) -> Shop:
         await s.execute(text("UPDATE agents SET mode = 'shadow' WHERE id = :a"), {"a": agent_id})
         # Trần ngày rộng: eval không được dừng giữa chừng vì trần của shop demo.
         await upsert_ai_settings(s, tenant, ai_enabled=True, daily_cost_cap_micro=100_000_000)
-        raw = (folder / "catalog.csv").read_text(encoding="utf-8")
-        await import_catalog(s, tenant, parse_catalog_csv(raw))
+        listing = folder / "raw_listing.json"
+        if listing.exists():
+            # Shop đồng bộ từ sàn đi đúng đường adapter (§13.2): tiêu đề thô, chuẩn hóa riêng.
+            data = json.loads(listing.read_text(encoding="utf-8"))
+            items, errors = market_items(data["items"])
+            source = "tiktok" if data["source"].startswith("tiktok") else "shopee"
+            result = await sync_catalog(s, tenant, source, items, full=True, errors=errors)
+            assert not result.errors, result.errors
+        else:
+            raw = (folder / "catalog.csv").read_text(encoding="utf-8")
+            await import_catalog(s, tenant, parse_catalog_csv(raw))
         faq_file, policy_file = folder / "faq.json", folder / "policy.md"
         if faq_file.exists():
             for f in json.loads(faq_file.read_text(encoding="utf-8")):

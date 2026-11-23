@@ -1,6 +1,6 @@
 # Thiết kế chi tiết — Bước 2: Agent từ template (FAQ + Sales & Quote), chạy Shadow
 
-- Trạng thái: **2.1–2.12 đã implement**; 2.13 đã implement phần độ phủ tri thức và `knowledge_gap` (§13.3–13.4); phần nguồn catalog dạng adapter + Google Sheets của 2.13 và 2.14 (adapter sàn) còn là thiết kế — chi tiết ở §12 và §13.
+- Trạng thái: **2.1–2.13 đã implement**; 2.14 (adapter Shopee/TikTok qua API chính thức) còn là thiết kế — chi tiết ở §12 và §13.
 - Phạm vi nguồn: `PROJECT_CONTEXT.md` §22.4 bước 2, §6.5–6.5.1, §7, §9, §11.0, §14.4–14.6, §16.3–16.7, §18.2, §19.5–19.9, §26.4.
 - Nền móng đã có (bước 1): inbound idempotent + outbox + relay + SSE + inbox. Bước này **không sửa** đường inbound.
 - Số liệu (cửa sổ debounce, budget, ngưỡng) là **giá trị khởi điểm cần đo**, không phải cam kết.
@@ -926,6 +926,15 @@ CatalogSource (một adapter mỗi nguồn: manual, csv, sheets, shopee, tiktok)
 - **Dữ liệu sàn là dữ liệu không tin cậy.** "Giá gốc", "freeship", mã giảm giá trong tiêu đề hay mô tả **không** phải chính sách và **không** là số tiền hợp lệ ở bước kiểm tra (bất biến §4.1.4 giữ nguyên: số tiền hợp lệ chỉ gồm giá tool trả và số tiền trong FAQ/tài liệu shop viết). Nội dung sàn đi vào model qua `tool_result` như mọi kết quả tool, nên chữ chèn lệnh trong tiêu đề vẫn chỉ là dữ liệu.
 - **Độ tươi.** Kết quả tool kèm `synced_at`. Nguồn ngoài chưa sync quá 24 giờ thì trace gắn cờ `stale_catalog`. Nháp vẫn có thể `grounded`, nhưng đo được tỉ lệ trả lời trên dữ liệu cũ.
 - **Mỗi lần sync** ghi `catalog_sync_runs` (nguồn, bắt đầu/kết thúc, số thêm/sửa/ẩn, lỗi) để chủ shop thấy "đồng bộ lần cuối lúc…" và để vận hành phát hiện nguồn hỏng.
+
+Đã implement (2.13):
+
+- `knowledge/domain/catalog_source.py`: `normalize`, `clean_for_search`, `split_variant`, `from_market_listing` (kiểu dữ liệu sàn của bộ giả lập). Test với `raw_listing.json` của 5 shop: tên giữ nguyên, giá là giá bán, biến thể khớp `catalog.csv`.
+- Migration 0014: `catalog_items.source` + `external_id`, unique `(tenant_id, source, external_id)`; dữ liệu cũ là `csv` với `external_id = sku`. Bảng `catalog_sources` (cấu hình, không chứa secret) và `catalog_sync_runs` (`ok` / `partial` / `failed`).
+- `sync_catalog`: upsert theo nguồn; SKU đã thuộc nguồn khác ⇒ bỏ qua và báo lỗi; `full` ⇒ ẩn sản phẩm vắng mặt, trừ khi lần sync có lỗi. Nhập CSV đi qua đây nhưng **không** ẩn sản phẩm vắng mặt (chủ shop hay tải file một phần).
+- Google Sheets: service account (`GOOGLE_SERVICE_ACCOUNT_JSON`), scope `spreadsheets.readonly`, cùng cột với CSV; bảng có lỗi ⇒ không ghi gì. API: `GET /api/v1/catalog/sources`, `PUT /api/v1/catalog/sources/sheets`, `POST /api/v1/catalog/sources/sheets/sync`. Chưa có lịch sync tự động (2.14).
+- Kết quả tool có `synced_at`; nguồn ngoài cũ hơn 24 giờ ⇒ bước tool trong trace có `stale_catalog: true`.
+- Eval: shop kiểu sàn được nạp từ `raw_listing.json` qua adapter thay vì `catalog.csv`.
 
 Sàn: chỉ dùng **API chính thức** với ủy quyền của chủ shop (đăng ký ứng dụng đối tác, OAuth của từng shop, giới hạn tần suất của sàn). Không cào trang. Đồng bộ sản phẩm không chứa dữ liệu cá nhân của khách. Schema thật phải lấy từ tài liệu chính thức của từng sàn; bộ test (§13.5) chỉ mô phỏng **kiểu** dữ liệu, không theo đúng schema API.
 
