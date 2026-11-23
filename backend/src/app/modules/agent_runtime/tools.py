@@ -5,6 +5,7 @@ model), giới hạn số bản ghi và chiếu kết quả còn vài trường 
 """
 
 from dataclasses import dataclass
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from uuid import UUID
 
@@ -19,6 +20,7 @@ from app.modules.knowledge.infrastructure.catalog import (
 )
 
 DESCRIPTION_LIMIT = 500
+STALE_AFTER = timedelta(hours=24)  # nguồn ngoài chưa sync quá lâu ⇒ trace gắn cờ (§13.2)
 
 
 class _SearchProducts(BaseModel):
@@ -73,6 +75,13 @@ class ToolResult:
     ok: bool
     data: Any = None
     error: str | None = None  # invalid_arguments | not_found | unknown_tool
+    stale: bool = False  # có sản phẩm từ nguồn ngoài chưa sync trong STALE_AFTER
+
+
+def _stale(items: list[CatalogItem]) -> bool:
+    # CSV do chủ shop tự tải lên: không có "nguồn" để mà cũ.
+    cutoff = datetime.now(UTC) - STALE_AFTER
+    return any(i.source != "csv" and i.synced_at and i.synced_at < cutoff for i in items)
 
 
 def _project(item: CatalogItem) -> dict[str, Any]:
@@ -82,6 +91,7 @@ def _project(item: CatalogItem) -> dict[str, Any]:
         "name": item.name,
         "price_vnd": item.price_vnd,
         "variants": item.variants,
+        "synced_at": item.synced_at.isoformat(timespec="minutes") if item.synced_at else None,
     }
 
 
@@ -91,14 +101,16 @@ async def run_tool(s: AsyncSession, tenant_id: UUID, name: str, args: dict[str, 
         if name == "search_products":
             p = _SearchProducts.model_validate(args)
             items = await search_catalog(s, tenant_id, p.query, p.limit)
-            return ToolResult(ok=True, data=[_project(i) for i in items])
+            return ToolResult(ok=True, data=[_project(i) for i in items], stale=_stale(items))
         if name == "get_product":
             g = _GetProduct.model_validate(args)
             item = await get_catalog_item(s, tenant_id, g.product_id)
             if item is None:  # không có, hoặc của tenant khác: không phân biệt
                 return ToolResult(ok=False, error="not_found")
             description = (item.description or "")[:DESCRIPTION_LIMIT]
-            return ToolResult(ok=True, data=_project(item) | {"description": description})
+            return ToolResult(
+                ok=True, data=_project(item) | {"description": description}, stale=_stale([item])
+            )
     except ValidationError:
         return ToolResult(ok=False, error="invalid_arguments")
     return ToolResult(ok=False, error="unknown_tool")
