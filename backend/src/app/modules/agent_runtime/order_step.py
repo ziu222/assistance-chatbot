@@ -81,13 +81,20 @@ def _option(variant: dict) -> str:
     return " ".join(str(v) for v in (variant.get("size"), variant.get("color")) if v)
 
 
-def _match_variant(wanted: str, options: list[str]) -> str | None:
-    """Chỉ nhận biến thể có thật trong catalog (so không dấu, không phân biệt thứ tự từ)."""
-    w = set(fold(wanted).replace("/", " ").split())
-    for o in options:
-        if w and set(fold(o).split()) == w:
-            return o
-    return None
+def match_variant(wanted: str, options: list[str]) -> str | None:
+    """Chỉ nhận biến thể có thật trong catalog, so không dấu và không theo thứ tự từ.
+
+    Khách và model hay viết kèm chữ đệm ("size M màu đen" cho biến thể "M đen"): biến thể khớp khi
+    mọi từ của nó có trong câu. Nhiều biến thể cùng khớp thì lấy biến thể dài nhất, và chỉ khi
+    không hòa ("M" và "M đen" ⇒ "M đen"; "đen" và "trắng" đều không khớp "M").
+    """
+    w = set(fold(wanted).replace("/", " ").replace(",", " ").split())
+    hits = [o for o in options if (words := set(fold(o).split())) and words <= w]
+    if not hits:
+        return None
+    best = max(len(set(fold(o).split())) for o in hits)
+    top = [o for o in hits if len(set(fold(o).split())) == best]
+    return top[0] if len(top) == 1 else None
 
 
 def apply_draft(ctx: OrderContext, order: OrderFields, products: dict[str, dict]) -> OrderRequest:
@@ -115,7 +122,7 @@ def apply_draft(ctx: OrderContext, order: OrderFields, products: dict[str, dict]
         ]
     if req.items:
         item = req.items[0]
-        variant = _match_variant(order.variant, item.get("options", []))
+        variant = match_variant(order.variant, item.get("options", []))
         if variant:
             item["variant"] = variant
         if order.quantity:

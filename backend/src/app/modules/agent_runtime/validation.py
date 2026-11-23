@@ -13,7 +13,7 @@ from app.modules.orders.domain.order_flow import claims_order_placed
 MAX_REPLY = 1200
 _HTML = re.compile(r"<\s*/?\s*[a-z!]", re.IGNORECASE)
 _URL = re.compile(r"(?:https?://|www\.)[^\s<>\"']+", re.IGNORECASE)
-_URL_TAIL = ".,;:!?)…"
+_URL_TAIL = ".,;:!?)]}…"  # dấu câu/ngoặc đóng ngay sau link
 # Số tiền: "350.000đ", "350k", "1,2 triệu", hoặc số có dấu phân cách nghìn dù thiếu đơn vị.
 _AMOUNT = re.compile(
     r"(?<![\w.,])(\d{1,3}(?:[.,]\d{3})+|\d+(?:[.,]\d+)?)\s*(nghin|ngan|trieu|tr|k|vnd|dong|d)?(?![a-z0-9])"

@@ -77,8 +77,30 @@ def test_claims_order_placed(reply, claim):
 def test_block_asks_one_field_or_uses_owner_text():
     cfg = OrderFlowConfig(confirm_text="Shop gọi lại trong 30 phút ạ", payment_text="COD toàn quốc")
     asking = render_block(cfg, "webchat", [], {}, ["product", "phone"])
-    assert "tra món khách nhắc tới" in asking and "theo thứ tự: số điện thoại" in asking
+    assert "tra món khách nhắc tới" in asking and "Các mục cần có: số điện thoại" in asking
     assert "COD toàn quốc" in asking
     assert "Chỉ hỏi MỘT mục: số điện thoại" in render_block(cfg, "webchat", [ITEM], {}, ["phone"])
     done = render_block(cfg, "webchat", [ITEM], {}, [])
     assert '"Shop gọi lại trong 30 phút ạ"' in done
+
+
+def test_variant_matches_with_filler_words_but_not_when_ambiguous():
+    from app.modules.agent_runtime.order_step import match_variant
+
+    options = ["M đen", "L đen", "M trắng"]
+    assert match_variant("size M màu đen", options) == "M đen"
+    assert match_variant("L, đen", options) == "L đen"
+    assert match_variant("M", options) is None  # M đen hay M trắng: phải hỏi lại
+    assert match_variant("size XL", options) is None
+    assert match_variant("M", ["M", "M đen"]) == "M"
+    assert match_variant("loại 500ml", ["500ml", "1L"]) == "500ml"
+
+
+def test_block_states_the_ordering_method_before_the_product_is_known():
+    """Khối được dựng trước khi tra kho: cách đặt hàng phải có sẵn, kể cả khi phiếu còn rỗng."""
+    link = OrderFlowConfig(by_channel={"webchat": {"destination": "product_link"}})
+    block = render_block(link, "webchat", [], {}, ["product", "variant", "quantity"])
+    assert "`url` của sản phẩm đó trong kết quả tool" in block
+    assert "KHÔNG hỏi tên, số điện thoại, địa chỉ" in block
+    staff = render_block(OrderFlowConfig(), "webchat", [], {}, ["product"])
+    assert "nhân viên gọi xác nhận" in staff and "url" not in staff
