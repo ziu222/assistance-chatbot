@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     llm_base_url: str = ""
     # Tắt tạm một provider khi nó sập kéo dài, vd "anthropic" (phân tách bằng dấu phẩy).
     llm_disabled_providers: str = ""
+    # Trần chi phí ngày của trợ lý viết, riêng với trần của nháp (micro-USD; 300000 = 0,3 USD).
+    authoring_daily_cap_micro: int = 300_000
 
 
 @lru_cache

@@ -10,6 +10,7 @@ from sqlalchemy import text
 from app.config.settings import Settings, get_settings
 from app.modules.agent_management.presentation.http.agents import router as agents_api
 from app.modules.agent_runtime.presentation.http.agent_runs import router as agent_runs_api
+from app.modules.authoring.presentation.http.writing import router as writing_api
 from app.modules.conversation_policy.presentation.http.policy import router as policy_api
 from app.modules.identity.presentation.http.auth import router as staff_auth
 from app.modules.inbox.presentation.http.events import router as staff_events
@@ -69,6 +70,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(agent_runs_api)
     app.include_router(knowledge_api)
     app.include_router(policy_api)
+    app.include_router(writing_api)
     # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
     app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 
