@@ -174,3 +174,20 @@ async def test_abandoned_requests_expire_and_personal_data_is_purged(app_client,
         ).one()
     assert row.status == "expired" and row.customer_fields == {} and row.pii_purged_at
     assert row.items[0]["sku"] == "AK-02"  # phần không phải dữ liệu cá nhân giữ để thống kê
+
+
+async def test_link_requests_left_ready_also_expire(app_client, session_factory):
+    _, _, _, rid = await shop_with_request(app_client, session_factory)
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE order_requests SET status = 'ready', destination = 'product_link', "
+                "updated_at = now() - interval '73 hours' WHERE id = :id"
+            ),
+            {"id": rid},
+        )
+        await expire_and_purge(s)
+        status = (
+            await s.execute(text("SELECT status FROM order_requests WHERE id = :id"), {"id": rid})
+        ).scalar_one()
+    assert status == "expired"

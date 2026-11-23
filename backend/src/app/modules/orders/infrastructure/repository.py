@@ -113,6 +113,7 @@ class OrderRequest:
     customer: dict = field(default_factory=dict)
     unverified: list[str] = field(default_factory=list)
     missing: list[str] = field(default_factory=list)
+    destination: str = "staff_confirms"  # gửi link ⇒ khách tự đặt, không mở ticket
 
     @property
     def worth_saving(self) -> bool:
@@ -126,7 +127,8 @@ async def open_request(
     row = (
         await s.execute(
             text(
-                "SELECT id, status, items, customer_fields, unverified, missing_fields "
+                "SELECT id, status, items, customer_fields, unverified, missing_fields, "
+                "destination "
                 "FROM order_requests WHERE tenant_id = :t AND conversation_id = :c "
                 "AND status IN ('collecting','ready')"
             ),
@@ -142,6 +144,7 @@ async def open_request(
         row.customer_fields,
         list(row.unverified),
         list(row.missing_fields),
+        row.destination,
     )
 
 
@@ -168,6 +171,7 @@ async def save_request(
         "cf": json.dumps(req.customer, ensure_ascii=False),
         "unv": req.unverified,
         "miss": req.missing,
+        "dest": req.destination,
     }
     became_ready = False
     if req.id is None:
@@ -176,8 +180,8 @@ async def save_request(
             text(
                 "INSERT INTO order_requests (id, tenant_id, conversation_id, status, "
                 "flow_release_id, channel, items, subtotal_vnd, customer_fields, unverified, "
-                "missing_fields, ready_at) VALUES (:id, :t, :c, :st, :fr, :ch, "
-                "CAST(:items AS jsonb), :sub, CAST(:cf AS jsonb), :unv, :miss, "
+                "missing_fields, destination, ready_at) VALUES (:id, :t, :c, :st, :fr, :ch, "
+                "CAST(:items AS jsonb), :sub, CAST(:cf AS jsonb), :unv, :miss, :dest, "
                 "CASE WHEN :st = 'ready' THEN now() END)"
             ),
             params | {"id": req.id, "fr": flow_release_id, "ch": channel},
@@ -189,7 +193,7 @@ async def save_request(
                 text(
                     "UPDATE order_requests o SET status = :st, items = CAST(:items AS jsonb), "
                     "subtotal_vnd = :sub, customer_fields = CAST(:cf AS jsonb), unverified = :unv, "
-                    "missing_fields = :miss, updated_at = now(), "
+                    "missing_fields = :miss, destination = :dest, updated_at = now(), "
                     "ready_at = CASE WHEN :st = 'ready' THEN COALESCE(o.ready_at, now()) END "
                     "FROM order_requests old "
                     "WHERE old.id = o.id AND o.tenant_id = :t AND o.id = :id "
@@ -221,7 +225,7 @@ async def save_request(
             ),
         },
     )
-    if became_ready:
+    if became_ready and req.destination == "staff_confirms":
         handoff_id, created = await open_handoff(
             s, tenant_id, conversation_id, source="order", reason="order"
         )

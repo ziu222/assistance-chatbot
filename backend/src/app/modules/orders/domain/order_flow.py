@@ -7,8 +7,9 @@ xác nhận đơn: câu "đã đặt thành công" bị bắt ở bước kiểm
 import re
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
+from app.modules.knowledge.domain.catalog_csv import parse_url
 from app.modules.knowledge.domain.text import fold
 
 Field_ = Literal[
@@ -47,6 +48,12 @@ class OrderFlowConfig(BaseModel):
         max_length=500,
     )
     by_channel: dict[str, ChannelOverride] = {}
+    checkout_url: str | None = None  # trang thanh toán của website (destination website_checkout)
+
+    @field_validator("checkout_url")
+    @classmethod
+    def _https(cls, v: str | None) -> str | None:
+        return parse_url(v)
 
     def for_channel(self, provider: str) -> tuple[list[str], str]:
         """(trường bắt buộc, destination) sau khi áp ghi đè của kênh."""
@@ -57,6 +64,33 @@ class OrderFlowConfig(BaseModel):
         return [f for f in FIELDS if f in required], (
             o.destination if o and o.destination else None
         ) or self.destination
+
+
+ITEM_FIELDS = ("product", "variant", "quantity")
+
+
+def plan(
+    config: OrderFlowConfig, provider: str, items: list[dict]
+) -> tuple[list[str], str, str | None]:
+    """(trường bắt buộc, destination thực tế, link gửi khách) — code quyết, không phải model.
+
+    Hướng khách bằng link thì khách tự đặt trên trang đó: chỉ cần món/size/số lượng, không hỏi
+    thông tin cá nhân (thiết kế 03 §4.1). Món chưa có link, hoặc chưa cấu hình trang thanh toán ⇒
+    quay về nhân viên xác nhận.
+    """
+    required, destination = config.for_channel(provider)
+    url = None
+    if destination in ("product_link", "marketplace_link"):
+        url = items[0].get("url") if items else None
+        if items and not url:
+            destination = "staff_confirms"
+    elif destination == "website_checkout":
+        url = config.checkout_url
+        if not url:
+            destination = "staff_confirms"
+    if destination != "staff_confirms":
+        required = [f for f in required if f in ITEM_FIELDS]
+    return required, destination, url
 
 
 def missing_fields(required: list[str], items: list[dict], customer: dict) -> list[str]:
@@ -102,7 +136,7 @@ def render_block(
     config: OrderFlowConfig, provider: str, items: list[dict], customer: dict, missing: list[str]
 ) -> str:
     """Khối `<order_flow>`: đổi theo hội thoại nên đặt sau khối tri thức (ADR-0028)."""
-    required, destination = config.for_channel(provider)
+    required, destination, url = plan(config, provider, items)
     have = [f"{LABELS[f]}: đã có" for f in required if f not in missing]
     lines = [
         "<order_flow>",
@@ -127,7 +161,9 @@ def render_block(
     elif destination == "staff_confirms":
         lines.append(f'Đã đủ thông tin. Trả lời đúng câu sau: "{config.confirm_text}"')
     else:
-        lines.append("Đã đủ thông tin. Nói nhân viên sẽ gửi hướng dẫn đặt hàng.")
+        lines.append(
+            f"Đã đủ thông tin. Gửi khách link sau để tự đặt hàng, chép nguyên văn, không sửa: {url}"
+        )
     if config.payment_text:
         lines.append(f'Khách hỏi thanh toán thì dùng đúng câu: "{config.payment_text}"')
     lines.append("</order_flow>")
