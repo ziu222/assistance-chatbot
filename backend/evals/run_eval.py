@@ -500,7 +500,8 @@ async def main() -> int:
     ap.add_argument("--fake", action="store_true", help="LLM giả, không gọi mạng")
     ap.add_argument("--per-category", type=int, default=None)
     ap.add_argument("--max-cost-usd", type=float, default=2.0)
-    ap.add_argument("--concurrency", type=int, default=4)
+    # Mặc định khớp AGENT_WORKER_CONCURRENCY khi chạy qua gateway: 3-4 run cùng lúc bị 429 nhiều.
+    ap.add_argument("--concurrency", type=int, default=2)
     ap.add_argument("--out", help="ghi báo cáo markdown")
     ap.add_argument("--raw", help="ghi kết quả từng ca (jsonl)")
     ap.add_argument("--template-version", type=int, default=None, help="so sánh các bản template")
