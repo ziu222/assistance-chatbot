@@ -543,14 +543,13 @@ async def test_kill_switch_during_run_skips_without_saving(world, session_factor
 
 
 async def test_endless_tool_loop_stops_at_budget(world, session_factory):
-    runner, llm = make_runner(
-        session_factory, [classify("price_quote"), search(), search(), search()]
-    )
+    limit = get_template("faq_sales_quote").budget.max_model_calls
+    # Model cứ gọi tool mãi: đủ lượt để chạm trần của template mới nhất, bất kể trần là bao nhiêu.
+    runner, llm = make_runner(session_factory, [classify("price_quote")] + [search()] * limit)
     await runner.handle(await request_for(session_factory, world))
 
     run = await one_run(session_factory)
     assert (run["status"], run["error_code"]) == ("failed", "budget_exceeded")
-    limit = get_template("faq_sales_quote").budget.max_model_calls
     assert run["model_calls"] <= limit and not await drafts(session_factory)
 
 
