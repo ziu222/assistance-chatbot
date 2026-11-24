@@ -64,6 +64,7 @@ CORE_TABLES = {
     "order_flow_releases",
     "tenant_order_flow",
     "order_requests",
+    "shadow_comparisons",
     "usage_events",
     "agent_runs",
     "agent_run_steps",

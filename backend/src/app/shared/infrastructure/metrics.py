@@ -66,3 +66,11 @@ LLM_LATENCY = Histogram(
 )
 LLM_TOKENS = Counter("llm_tokens_total", "LLM tokens by kind", ["provider", "kind"])
 LLM_COST_MICRO = Counter("llm_cost_micro_total", "LLM cost in micro-USD", ["provider"])
+SHADOW_COMPARISONS = Counter(
+    "shadow_comparisons_total", "Shadow drafts compared with staff replies", ["status", "verdict"]
+)
+SHADOW_PAIRING_LAG = Histogram(
+    "shadow_pairing_lag_seconds",
+    "Time from the staff reply to its comparison",
+    buckets=(60, 180, 600, 1800, 3600, 21600, 86400),
+)
