@@ -2,6 +2,9 @@
 
 Quy tắc phân loại lỗi (đây là chỗ dễ sai nhất):
 - ProviderUnavailable (timeout, 5xx, quá tải, 429, key hỏng) ⇒ ghi nhận rồi thử đích kế.
+- 429 ⇒ chờ (Retry-After nếu có, không thì lùi dần) rồi thử lại CÙNG đích tối đa 2 lần, trong trần
+  timeout của đích; hết lượt mới tính là lỗi. Gateway giới hạn tốc độ khi nhiều run chạy cùng lúc:
+  không chờ thì 3 lần 429 liên tiếp mở circuit và mọi run sau đó thất bại ngay (đo 2026-11-24).
 - BadRequest (yêu cầu sai, vượt context) ⇒ ném ngay: đích khác cũng sẽ lỗi, đó là bug cần sửa.
 - refusal ⇒ KHÔNG phải lỗi: trả về như kết quả, không đi tìm model chịu trả lời (§19.7).
 - InvalidOutput ⇒ thử lại MỘT lần trên cùng đích rồi mới sang đích kế; không tính vào circuit.
@@ -11,8 +14,9 @@ Mọi đích nhận cùng một LLMRequest trung lập nên tri thức trong req
 import asyncio
 import dataclasses
 import logging
+import random
 import time
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
 
 from app.modules.agent_runtime.llm.breaker import CircuitBreaker
 from app.modules.agent_runtime.llm.port import (
@@ -37,6 +41,10 @@ from app.shared.infrastructure.metrics import (
 
 log = logging.getLogger(__name__)
 
+RATE_LIMIT_RETRIES = 2
+RATE_LIMIT_BACKOFF_S = (1.5, 4.0)  # khi không có Retry-After; có jitter để các run không dồn lại
+MAX_RETRY_AFTER_S = 10.0
+
 
 class FailoverLLM:
     def __init__(
@@ -46,11 +54,13 @@ class FailoverLLM:
         *,
         breaker: CircuitBreaker | None = None,
         clock: Callable[[], float] = time.monotonic,
+        sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
     ) -> None:
         self._routes = routes
         self._backends = backends
         self._breaker = breaker or CircuitBreaker(clock=clock)
         self._clock = clock
+        self._sleep = sleep
 
     async def complete(self, req: LLMRequest) -> LLMResult:
         targets = self._routes.get(req.route)
@@ -109,12 +119,20 @@ class FailoverLLM:
     ) -> LLMResult:
         try:
             async with asyncio.timeout(timeout):  # trần cứng, bất kể SDK có tôn trọng timeout
-                for attempt in (1, 2):
+                invalid, limited = 0, 0
+                while True:
                     try:
                         return await backend.complete(target, req, timeout)
                     except InvalidOutput:
-                        if attempt == 2:
+                        invalid += 1
+                        if invalid == 2:
                             raise
+                    except ProviderUnavailable as exc:
+                        if exc.reason != "rate_limited" or limited == RATE_LIMIT_RETRIES:
+                            raise
+                        wait = exc.retry_after or RATE_LIMIT_BACKOFF_S[limited]
+                        limited += 1
+                        await self._sleep(min(wait, MAX_RETRY_AFTER_S) * random.uniform(1, 1.3))
         except TimeoutError:
             raise ProviderUnavailable(target.provider, "timeout") from None
         raise AssertionError("unreachable")
