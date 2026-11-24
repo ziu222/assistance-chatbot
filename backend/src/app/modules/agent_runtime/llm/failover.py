@@ -132,6 +132,8 @@ class FailoverLLM:
                             raise
                         wait = exc.retry_after or RATE_LIMIT_BACKOFF_S[limited]
                         limited += 1
+                        # Đếm để thấy gateway đang bị dồn (đặt AGENT_WORKER_CONCURRENCY cho khớp).
+                        self._observe(target, "rate_limited_retry")
                         await self._sleep(min(wait, MAX_RETRY_AFTER_S) * random.uniform(1, 1.3))
         except TimeoutError:
             raise ProviderUnavailable(target.provider, "timeout") from None
