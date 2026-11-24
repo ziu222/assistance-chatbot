@@ -21,6 +21,28 @@ export type Calibration = {
   needs: { labels: number; kappa: number };
 };
 
+export type IntentSummary = {
+  intent: string | null;
+  models: string[];
+  total: number;
+  unanswered: number;
+  scored: number;
+  sendable_rate: number | null;
+  wrong_rate: number | null;
+  handoff_extra: number;
+  handoff_missing: number;
+  median_bot_lead_s: number | null;
+  ready: boolean;
+  not_ready_because: string[];
+};
+
+export const useShadowSummary = (days = 14) =>
+  useQuery({
+    queryKey: ["shadow", "summary", days],
+    queryFn: () =>
+      apiFetch<{ days: number; judge_calibrated: boolean; intents: IntentSummary[] }>(`/api/v1/shadow/summary?days=${days}`),
+  });
+
 export const LABELS: Record<Label, string> = { sendable: "Gửi được", rewrite: "Phải sửa", wrong: "Sai" };
 
 export const useComparisons = () =>
