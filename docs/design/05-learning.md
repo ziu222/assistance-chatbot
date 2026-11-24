@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **thiết kế, chưa implement**. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1 đã implement** (chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`); L2–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -63,6 +63,26 @@ Bước 4 thêm chế độ **Learning** vào thang Manual → Shadow → Learni
   - `diff_features` (code tính): số tiền thêm/bớt/đổi, sản phẩm đổi, link đổi, câu được thêm, câu bị xóa.
 - Không chép chữ nhân viên vào `draft_uses`: bản ghi tham chiếu `message_id`; chữ nằm trong `messages`.
 - `shadow_comparisons` của nháp này mang `draft_exposure = 'shown'`. Bước 3 tính riêng các cặp này bằng **mức sửa** thay vì so sánh độc lập (§7).
+
+Đã implement (L1):
+
+- `agents.mode` thêm `learning` (migration 0021).
+  - Runner soạn nháp ở cả `shadow` lẫn `learning`. Riêng `learning` bỏ qua lấy mẫu, vì nhân viên cần nháp cho mọi tin.
+  - Bước kiểm tra trước khi lưu chấp nhận cả hai chế độ.
+- Module `learning`:
+  - `domain/draft_use.py` (hàm thuần) tính `action`, `edit_ratio`, và `diff_features` gồm số tiền thêm/bớt, link đổi, câu thêm/bớt.
+  - `infrastructure/drafts.py`: nháp hợp lệ, ghi lựa chọn, bỏ ngầm.
+- API:
+  - `GET /api/v1/conversations/{id}/draft` (ghi `agent_drafts.shown_at` lần đầu hiện);
+  - `POST /api/v1/conversations/{id}/draft/{draft_id}/discard`;
+  - API trả lời nhận `draft_id` và trả `draft_action`.
+- Nhân viên tự gõ câu khác trong khi nháp **đã hiện** ⇒ ghi `discarded` kèm `message_id`. Nháp chưa từng hiện thì không ghi gì.
+- `shadow_comparisons.draft_exposure = 'shown'` khi nháp đã hiện (`shown_at`).
+- Tín hiệu học: `draft_used` / `draft_edited` / `draft_discarded`.
+- **Khác thiết kế:**
+  - `draft_uses` được ghi trong transaction ngay sau tin nhắn, không chung transaction, vì use case gửi tin nằm ở module `conversation`. Khóa chính `draft_id` làm việc ghi lại an toàn; lỗi ở đây chỉ mất một bản ghi học.
+  - `diff_features` chưa so sản phẩm.
+- Ô soạn tin trong admin (UI thử nghiệm) hiện "Gợi ý của bot" với Dùng / Sửa / Bỏ và tô số tiền cần kiểm. Đã thử trên trình duyệt với DB dev: Sửa → đổi giá → gửi thì ghi `edited`, `amounts_added = [320000]`, `amounts_removed = [350000]`.
 
 ### 4.3. Giá trị cho nhân viên đo được
 
