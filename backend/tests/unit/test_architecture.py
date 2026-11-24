@@ -51,7 +51,8 @@ def test_runtime_never_writes_to_messages_table():
 
 
 PURE_DOMAINS = [
-    RUNTIME.parent / m / "domain" for m in ("conversation_policy", "authoring", "orders", "shadow")
+    RUNTIME.parent / m / "domain"
+    for m in ("conversation_policy", "authoring", "orders", "shadow", "learning")
 ]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
 
