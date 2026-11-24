@@ -1,6 +1,6 @@
 # Thiết kế bước 3: so sánh nháp shadow với câu nhân viên thật sự gửi
 
-- Trạng thái: **S1–S3 đã implement** (ghép cặp, chấm bằng code; giám khảo, trần chi phí, lấy mẫu, bộ vàng; nhãn của chủ shop và kappa); S4–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
+- Trạng thái: **S1–S4 đã implement** (ghép cặp, chấm bằng code; giám khảo, trần chi phí, lấy mẫu, bộ vàng; nhãn của chủ shop và kappa; tổng hợp theo ý định và mức sẵn sàng); S5 chờ bước 4. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (bất biến shadow, `agent_drafts`, §7.6 tri thức bền, §7.7 tầng "Học"), [03-order-flow-and-unified-inbox.md](03-order-flow-and-unified-inbox.md), [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md), [docs/evals/](../evals/).
 
@@ -155,6 +155,17 @@ Mỗi tenant × ý định × phiên bản cấu hình AI (template version, `PR
 - không có cặp `conflict` số tiền nào trong 7 ngày.
 
 Đổi phiên bản cấu hình (template, prompt, model, knowledge release) thì bộ đếm của phiên bản mới bắt đầu lại từ đầu, vì số đo của phiên bản cũ không nói gì về phiên bản mới.
+
+Đã implement (S4):
+
+- `shadow/domain/readiness.py` (hàm thuần): mỗi điều kiện chưa đạt trả kèm lý do đọc được, ví dụ "chưa đủ mẫu (12/30 cặp được chấm)".
+- `GET /api/v1/shadow/summary?days=14`:
+  - Mỗi ý định chỉ tính các cặp thuộc **phiên bản cấu hình hiện tại** của nó (template, phiên bản template, `PROMPT_VERSION`, `knowledge_hash`).
+  - Model phục vụ không nằm trong khóa, vì failover đổi model giữa các run; nó được liệt kê riêng.
+- Nháp bị Atlas chặn (`not_sendable`) làm giảm tỉ lệ gửi được nhưng không tính là "sai", vì cổng gửi không bao giờ gửi chúng.
+- Mâu thuẫn số tiền chỉ tính khi câu nhân viên không bị nghi.
+- Màn hình "Chấm nháp" (UI thử nghiệm) có bảng theo ý định.
+- Báo cáo tuần là chính API này với `days=7`; gửi báo cáo qua email hay Zalo chưa làm.
 
 ## 8. Dữ liệu và API (dự kiến)
 
