@@ -1,6 +1,6 @@
 # Thiết kế bước 3: so sánh nháp shadow với câu nhân viên thật sự gửi
 
-- Trạng thái: **thiết kế, chưa implement**. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
+- Trạng thái: **S1 đã implement** (ghép cặp, chấm bằng code, việc định kỳ, metric); S2–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (bất biến shadow, `agent_drafts`, §7.6 tri thức bền, §7.7 tầng "Học"), [03-order-flow-and-unified-inbox.md](03-order-flow-and-unified-inbox.md), [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md), [docs/evals/](../evals/).
 
@@ -71,6 +71,17 @@ Nhân viên có thể báo giá cũ, quên chính sách, hoặc trả lời cụ
 | Nháp đã bị Atlas chặn | `grounded = false` | `not_sendable` ngay, không cần giám khảo |
 
 `conflict` về số tiền hoặc sản phẩm (mà câu tham chiếu không bị nghi) ⇒ cặp có kết luận `wrong` từ code, không cần giám khảo.
+
+Đã implement (S1):
+
+- Module `shadow`:
+  - `domain/pairing.py` (ghép cặp) và `domain/checks.py` (chấm bằng code) là hàm thuần, có test architecture.
+  - `infrastructure/comparisons.py` là việc định kỳ mỗi phút trong relay worker.
+- Bảng `shadow_comparisons` (migration 0018). Mỗi nháp có tối đa một dòng (unique `draft_id`); câu tham chiếu chỉ lưu số thứ tự tin, không chép nội dung.
+- Nháp `pending` không tạo dòng và được xem lại ở lượt sau. Lượt đầu tự xử lý mọi nháp cũ (backfill). Duyệt theo trang (keyset), khóa nháp bằng `SKIP LOCKED`.
+- `known_amounts` gồm mọi giá catalog và số tiền trong FAQ/tài liệu **hiện tại** (chưa có ảnh chụp tri thức đúng lúc soạn nháp); câu nhân viên vì thế có thể bị nghi nhầm khi giá vừa đổi.
+- Metric: `shadow_comparisons_total{status, verdict}`, `shadow_pairing_lag_seconds`.
+- Chưa có API hay màn hình (S4). Chạy trên DB dev: 8 nháp cũ đều `unanswered` (hội thoại thử chưa ai trả lời).
 
 ## 6. LLM làm giám khảo (có trần chi phí, có hiệu chỉnh)
 
