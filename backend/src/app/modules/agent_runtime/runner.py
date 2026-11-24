@@ -71,6 +71,8 @@ from app.shared.infrastructure.metrics import (
 log = logging.getLogger(__name__)
 
 _WITH_OUTPUT = ("completed", "handoff_suggested")
+# Shadow: nháp chỉ lưu; Learning (thiết kế 05): nháp hiện cho nhân viên. Không mode nào tự gửi.
+DRAFTING_MODES = ("shadow", "learning")
 
 
 class _Stop(Exception):
@@ -191,11 +193,15 @@ class AgentRunner:
             gate = "handling_human" if agent.handling == "human" else "handling_waiting"
         elif not settings.ai_enabled:
             gate = "kill_switch"
-        elif agent.mode != "shadow":
+        elif agent.mode not in DRAFTING_MODES:
             gate = "mode_manual"
         elif spent >= settings.daily_cost_cap_micro:
             gate = "daily_cap"
-        elif agent.sample_rate < 1 and self._rng() >= float(agent.sample_rate):
+        elif (
+            agent.mode == "shadow"  # Learning: nhân viên cần nháp cho mọi tin, không lấy mẫu
+            and agent.sample_rate < 1
+            and self._rng() >= float(agent.sample_rate)
+        ):
             gate = "sampled_out"
         run.steps.append(Step("rule", "gate", gate or "pass", 0, {"skip_reason": gate}))
         if gate:
@@ -490,7 +496,7 @@ class AgentRunner:
                 # Kiểm tra lại ngay trước khi lưu, dưới khóa: bất biến 3 và §7.5.
                 guard = await lock_for_save(s, run.tenant_id, run.conversation_id)
                 ai_on = (await get_ai_settings(s, run.tenant_id)).ai_enabled
-                if guard.mode != "shadow":
+                if guard.mode not in DRAFTING_MODES:
                     status, skip_reason, draft = "skipped", "mode_changed", None
                 elif not ai_on:
                     status, skip_reason, draft = "skipped", "kill_switch", None

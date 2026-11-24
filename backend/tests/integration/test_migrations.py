@@ -66,6 +66,7 @@ CORE_TABLES = {
     "order_requests",
     "shadow_comparisons",
     "judge_labels",
+    "draft_uses",
     "usage_events",
     "agent_runs",
     "agent_run_steps",
