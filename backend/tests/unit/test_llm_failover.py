@@ -333,7 +333,10 @@ async def test_rate_limit_waits_and_retries_the_same_target():
     )
     o = FakeBackend("openai", [])
     llm = FailoverLLM({"draft": (A, O)}, {"anthropic": a, "openai": o}, sleep=sleep)
+    labels = dict(provider="anthropic", model=A.model, outcome="rate_limited_retry")
+    before = metric("llm_requests_total", **labels)
     result = await llm.complete(request())
+    assert metric("llm_requests_total", **labels) == before + 2
     assert (result.text, result.failover_from) == ("từ claude", ())
     assert len(a.calls) == 3 and o.calls == []
     assert 2.0 <= waits[0] <= 2.6 and 4.0 <= waits[1] <= 5.2  # Retry-After, rồi lùi dần

@@ -56,10 +56,34 @@ các lời gọi lỗi:
 - **Chi phí** gần gấp đôi lần đo chủ yếu OpenAI, vì Claude dùng nhiều lượt hơn (178 lời gọi so với
   khoảng 170 lời gọi của hai model OpenAI, và prompt mỗi lượt lớn hơn).
 
+## Giới hạn tốc độ của gateway (đo 2026-11-24)
+
+Bài tải có kiểm soát (`claude-sonnet-5`, prompt khoảng 4.200 token, nội dung khác nhau mỗi request để
+không trúng cache, 24 request mỗi mức, không thử lại):
+
+| Request đồng thời | Thành công | Độ trễ p50 / p95 | Thông lượng |
+|---|---|---|---|
+| 1 | 24/24 | 3,6 s / 7,0 s (một lần 33,7 s) | 12 req/phút |
+| 2 | 24/24 | 4,3 s / 10,8 s | 23 req/phút |
+| 3 | 9/24 (15 lần 429) | — | — |
+| 4 | 11/24 (13 lần 429) | — | — |
+
+- Gateway chịu ổn định khoảng **2 request đồng thời**: khoảng 23 req/phút, hay khoảng 100.000 token
+  vào mỗi phút. Vượt mức đó thì nhận 429 không kèm `Retry-After`.
+- Độ trễ từng lời gọi dao động rất mạnh: 3–5 s là thường, nhưng có lần 16–66 s ngay cả khi không tải.
+- **Đã chỉnh:**
+  - `AGENT_WORKER_CONCURRENCY=2` trong `backend/.env` (cấu hình triển khai, không đổi mặc định của
+    code vì đây là giới hạn riêng của gateway);
+  - eval mặc định `--concurrency 2`;
+  - mỗi lần thử lại vì 429 được đếm ở `llm_requests_total{outcome="rate_limited_retry"}`.
+- **Eval 80 nhiệm vụ ở mức 2:** 0 run thất bại; chất lượng như lần chạy 4 song song (chuyển người
+  đúng 75/80, tool 24/24, lý do 13/13, điều cấm 61/61, nháp qua kiểm tra 60/61). Độ trễ mỗi nhiệm vụ
+  p50 21 s → **12,4 s**, p95 37 s → 32 s. Đuôi p95 đến từ các lời gọi chậm của gateway, không phải 429.
+
 ## Việc nên làm tiếp
 
-- Đo giới hạn tốc độ thật của gateway (request hay token mỗi phút) rồi đặt
-  `AGENT_WORKER_CONCURRENCY` cho khớp, thay vì để 429 điều tiết.
+- Theo dõi `rate_limited_retry`. Nếu nhiều shop dùng chung một key gateway thì 2 run đồng thời là
+  giới hạn của cả hệ thống, không phải của từng shop.
 - Cho phép tạm tính của phiếu đặt hàng làm số tiền hợp lệ trong nháp.
 - Bật lại OpenAI dự phòng khi có credit: xóa dòng `LLM_DISABLED_PROVIDERS=openai` trong `backend/.env`.
 
