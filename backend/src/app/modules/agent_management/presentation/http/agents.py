@@ -29,7 +29,7 @@ class CreateAgentIn(BaseModel):
 class UpdateAgentIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     version: int = Field(ge=1)  # bắt buộc: chống ghi đè khi hai admin sửa cùng lúc
-    mode: Literal["manual", "shadow"] | None = None  # bước 2 chưa có learning/autopilot
+    mode: Literal["manual", "shadow", "learning"] | None = None  # chưa có autopilot (bước 5)
     shadow_sample_rate: Decimal | None = Field(default=None, ge=0, le=1, decimal_places=2)
 
 

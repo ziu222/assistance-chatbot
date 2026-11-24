@@ -3,6 +3,7 @@
 Conversation của tenant khác trả 404 (không phải 403) để không lộ sự tồn tại.
 """
 
+import logging
 from typing import Annotated, Literal
 from uuid import UUID
 
@@ -27,10 +28,12 @@ from app.modules.integration.domain.normalization import (
     normalize_text,
     validate_client_message_id,
 )
+from app.modules.learning.infrastructure.drafts import discard_shown_draft, record_use
 from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
 from app.shared.presentation.http_errors import ApiError
 
+log = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/conversations")
 
 
@@ -42,6 +45,7 @@ class ReplyIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     client_message_id: str = Field(max_length=64)
     text: str = Field(max_length=16_000)
+    draft_id: UUID | None = None  # chế độ Learning: nhân viên bấm Dùng/Sửa nháp này (thiết kế 05)
 
 
 def _ctx(actor: StaffActor, action: str) -> TenantContext:
@@ -145,11 +149,30 @@ async def reply(
         raise ApiError(409, "duplicate_client_message_id", "client_message_id reused") from exc
     except TransientDatabaseError as exc:
         raise ApiError(503, "busy", "Please retry", {"Retry-After": "1"}) from exc
+    draft_action = None
+    if result.created:
+        # Không chung transaction với tin nhắn (ponytail ở learning.infrastructure.drafts): lỗi ở
+        # đây chỉ làm mất một bản ghi học, không ảnh hưởng tin đã gửi.
+        try:
+            async with request.app.state.session_factory() as s, s.begin():
+                if body.draft_id:
+                    draft_action = await record_use(
+                        s, ctx.tenant_id, conversation_id, body.draft_id,
+                        message_id=result.message_id, sent=text, used=True, user_id=actor.user_id,
+                    )  # fmt: skip
+                else:
+                    draft_action = await discard_shown_draft(
+                        s, ctx.tenant_id, conversation_id, result.message_id, result.sequence,
+                        actor.user_id,
+                    )  # fmt: skip
+        except Exception:
+            log.exception("could not record draft use")
     return JSONResponse(
         {
             "message_id": str(result.message_id),
             "sequence": result.sequence,
             "conversation_id": str(result.conversation_id),
+            "draft_action": draft_action,
         },
         status_code=201 if result.created else 200,
     )

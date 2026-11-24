@@ -18,6 +18,7 @@ from app.modules.inbox.presentation.http.staff_inbox import router as staff_inbo
 from app.modules.integration.infrastructure.webchat.token import TokenSigner
 from app.modules.integration.presentation.http.public_webchat import router as public_webchat
 from app.modules.knowledge.presentation.http.knowledge import router as knowledge_api
+from app.modules.learning.presentation.http.drafts import router as learning_drafts_api
 from app.modules.orders.presentation.http.order_flow import router as order_flow_api
 from app.modules.orders.presentation.http.order_requests import router as order_requests_api
 from app.modules.shadow.presentation.http.shadow import router as shadow_api
@@ -77,6 +78,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(order_flow_api)
     app.include_router(order_requests_api)
     app.include_router(shadow_api)
+    app.include_router(learning_drafts_api)
     # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
     app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 

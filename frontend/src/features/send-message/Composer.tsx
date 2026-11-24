@@ -1,4 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState, type FormEvent, type KeyboardEvent } from "react";
 import { conversationKeys } from "../../entities/conversation/api";
 import { messageKeys } from "../../entities/message/api";
@@ -6,6 +6,9 @@ import type { PendingReply } from "../../entities/message/timeline";
 import { ApiError, apiFetch } from "../../shared/api/client";
 
 const MAX_RETRIES = 3;
+const VND = new Intl.NumberFormat("vi-VN");
+
+type BotDraft = { id: string; text: string; needs_human: boolean; reason: string | null; amounts: number[] };
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 type Props = {
@@ -20,17 +23,26 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
   const qc = useQueryClient();
   const [draft, setDraft] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [usingDraft, setUsingDraft] = useState<string | null>(null); // nháp đang sửa trong ô soạn
+  // Chế độ Learning (thiết kế 05): nháp của bot hiện ở đây; người vẫn là người gửi.
+  // Khóa nằm dưới ["conversation", id] nên tín hiệu SSE của hội thoại tự làm mới.
+  const draftKey = ["conversation", conversationId, "draft"] as const;
+  const botDraft = useQuery({
+    queryKey: draftKey,
+    queryFn: () => apiFetch<{ draft: BotDraft | null }>(`/api/v1/conversations/${conversationId}/draft`),
+  }).data?.draft;
 
   const patch = (cmid: string, status: PendingReply["status"]) =>
     setPending((list) => list.map((p) => (p.cmid === cmid ? { ...p, status } : p)));
 
-  const deliver = async (cmid: string, text: string) => {
+  const deliver = async (cmid: string, text: string, draftId?: string | null) => {
     for (let attempt = 0; ; attempt++) {
       try {
         await apiFetch(`/api/v1/conversations/${conversationId}/messages`, {
           method: "POST",
-          body: { client_message_id: cmid, text },
+          body: { client_message_id: cmid, text, ...(draftId ? { draft_id: draftId } : {}) },
         });
+        void qc.invalidateQueries({ queryKey: draftKey });
         await qc.invalidateQueries({ queryKey: messageKeys.timeline(conversationId) });
         void qc.invalidateQueries({ queryKey: conversationKeys.list });
         setError(null);
@@ -56,7 +68,19 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
     const cmid = crypto.randomUUID();
     setPending((list) => [...list, { cmid, text, status: "sending" }]);
     setDraft("");
-    void deliver(cmid, text);
+    void deliver(cmid, text, usingDraft);
+    setUsingDraft(null);
+  };
+
+  const sendBotDraft = (d: BotDraft) => {
+    const cmid = crypto.randomUUID();
+    setPending((list) => [...list, { cmid, text: d.text, status: "sending" }]);
+    void deliver(cmid, d.text, d.id);
+  };
+
+  const discardBotDraft = async (d: BotDraft) => {
+    await apiFetch(`/api/v1/conversations/${conversationId}/draft/${d.id}/discard`, { method: "POST" }).catch(() => null);
+    void qc.invalidateQueries({ queryKey: draftKey });
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -89,6 +113,35 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
               </button>
             ))}
         </p>
+      )}
+      {botDraft && usingDraft !== botDraft.id && !disabled && (
+        <section className="card" aria-label="Gợi ý của bot">
+          <small className="muted">
+            Gợi ý của bot{botDraft.needs_human && ` · bot cho rằng cần nhân viên${botDraft.reason ? ` (${botDraft.reason})` : ""}`}
+          </small>
+          <p className="pre">{botDraft.text}</p>
+          {botDraft.amounts.length > 0 && (
+            <small className="hint">Kiểm tra số tiền: {botDraft.amounts.map((a) => `${VND.format(a)}đ`).join(", ")}</small>
+          )}
+          <div className="row">
+            <button type="button" onClick={() => sendBotDraft(botDraft)}>
+              Dùng
+            </button>
+            <button
+              type="button"
+              className="link"
+              onClick={() => {
+                setDraft(botDraft.text);
+                setUsingDraft(botDraft.id);
+              }}
+            >
+              Sửa
+            </button>
+            <button type="button" className="link" onClick={() => void discardBotDraft(botDraft)}>
+              Bỏ
+            </button>
+          </div>
+        </section>
       )}
       <label htmlFor="reply" className="sr-only">
         Trả lời khách

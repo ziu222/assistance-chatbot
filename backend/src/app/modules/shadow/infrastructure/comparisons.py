@@ -30,7 +30,7 @@ MAX_MESSAGES_AFTER = 50  # câu tham chiếu nằm ngay sau nháp; không cần 
 _DRAFTS = text(
     """
     SELECT d.id, d.tenant_id, d.conversation_id, d.run_id, d.based_on_sequence, d.text,
-           d.sources, d.grounded, d.needs_human, d.created_at,
+           d.sources, d.grounded, d.needs_human, d.created_at, d.shown_at,
            r.intents, r.knowledge_hash, r.prompt_version,
            v.config->>'key' AS template_key, v.config->>'version' AS template_version,
            (SELECT st.detail->>'model' FROM agent_run_steps st
@@ -120,8 +120,9 @@ async def _compare(s: AsyncSession, d: Any, shop: _Shop, now: datetime) -> str |
         text(
             "INSERT INTO shadow_comparisons (id, tenant_id, conversation_id, draft_id, run_id, "
             "status, reference_from_seq, reference_to_seq, intent, config_version, code_checks, "
-            "code_verdict, bot_lead_seconds, final_verdict, sendable) VALUES (:id, :t, :c, :d, :r, "
-            ":st, :rf, :rt, :i, CAST(:cv AS jsonb), CAST(:cc AS jsonb), :v, :lead, :fv, :sd)"
+            "code_verdict, bot_lead_seconds, final_verdict, sendable, draft_exposure) "
+            "VALUES (:id, :t, :c, :d, :r, :st, :rf, :rt, :i, CAST(:cv AS jsonb), "
+            "CAST(:cc AS jsonb), :v, :lead, :fv, :sd, :exp)"
         ),
         {
             "id": uuid4(),
@@ -145,6 +146,8 @@ async def _compare(s: AsyncSession, d: Any, shop: _Shop, now: datetime) -> str |
             "cc": json.dumps(checks.as_dict()) if checks else None,
             "v": checks.verdict if checks else None,
             "fv": final[0],
+            # Nhân viên đã thấy nháp (Learning) ⇒ so sánh không còn "mù" (thiết kế 05 §7).
+            "exp": "shown" if d.shown_at else "hidden",
             "sd": final[1],
             "lead": int((p.first_reply_at - d.created_at).total_seconds())
             if p.first_reply_at
