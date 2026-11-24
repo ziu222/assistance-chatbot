@@ -57,18 +57,24 @@ async def record_usage(
 
 
 AUTHORING = "authoring"  # trợ lý viết có trần riêng, không ăn vào trần của nháp (§12.8)
+JUDGE = "judge"  # giám khảo so sánh shadow (thiết kế 04 §6.2): trần riêng
+OWN_CAPS = (AUTHORING, JUDGE)
 
 
-async def spent_today_micro(s: AsyncSession, tenant_id: UUID, *, authoring: bool = False) -> int:
+async def spent_today_micro(s: AsyncSession, tenant_id: UUID, *, purpose: str | None = None) -> int:
     """Chi tiêu LLM của tenant từ 00:00 UTC hôm nay (trần chi phí ngày, thiết kế §7.3).
 
-    `authoring=False`: mọi mục đích trừ trợ lý viết; `True`: chỉ trợ lý viết."""
-    op = "=" if authoring else "<>"
+    `purpose=None`: đường trả lời khách (mọi mục đích trừ những mục có trần riêng); có giá trị:
+    chỉ mục đích đó (trợ lý viết, giám khảo)."""
+    if purpose is None:
+        cond, params = "purpose <> ALL(:own)", {"own": list(OWN_CAPS)}
+    else:
+        cond, params = "purpose = :p", {"p": purpose}
     row = await s.execute(
         text(
             "SELECT coalesce(sum(cost_micro), 0) FROM usage_events "
-            f"WHERE tenant_id = :t AND created_at >= {_UTC_MIDNIGHT} AND purpose {op} :a"
+            f"WHERE tenant_id = :t AND created_at >= {_UTC_MIDNIGHT} AND {cond}"
         ),
-        {"t": tenant_id, "a": AUTHORING},
+        {"t": tenant_id} | params,
     )
     return int(row.scalar_one())

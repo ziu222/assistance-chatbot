@@ -19,6 +19,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.modules.agent_runtime.validation import extract_amounts
 from app.modules.shadow.domain.checks import Product, check
+from app.modules.shadow.domain.judge import finalize
 from app.modules.shadow.domain.pairing import Msg, pair
 from app.shared.infrastructure.metrics import SHADOW_COMPARISONS, SHADOW_PAIRING_LAG
 
@@ -114,12 +115,13 @@ async def _compare(s: AsyncSession, d: Any, shop: _Shop, now: datetime) -> str |
             known_amounts=shop.known,
             catalog=list(shop.by_id.values()),
         )
+    final = finalize(checks.verdict if checks else None, None)
     await s.execute(
         text(
             "INSERT INTO shadow_comparisons (id, tenant_id, conversation_id, draft_id, run_id, "
             "status, reference_from_seq, reference_to_seq, intent, config_version, code_checks, "
-            "code_verdict, bot_lead_seconds) VALUES (:id, :t, :c, :d, :r, :st, :rf, :rt, :i, "
-            "CAST(:cv AS jsonb), CAST(:cc AS jsonb), :v, :lead)"
+            "code_verdict, bot_lead_seconds, final_verdict, sendable) VALUES (:id, :t, :c, :d, :r, "
+            ":st, :rf, :rt, :i, CAST(:cv AS jsonb), CAST(:cc AS jsonb), :v, :lead, :fv, :sd)"
         ),
         {
             "id": uuid4(),
@@ -142,6 +144,8 @@ async def _compare(s: AsyncSession, d: Any, shop: _Shop, now: datetime) -> str |
             ),
             "cc": json.dumps(checks.as_dict()) if checks else None,
             "v": checks.verdict if checks else None,
+            "fv": final[0],
+            "sd": final[1],
             "lead": int((p.first_reply_at - d.created_at).total_seconds())
             if p.first_reply_at
             else None,

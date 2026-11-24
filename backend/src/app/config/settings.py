@@ -44,6 +44,10 @@ class Settings(BaseSettings):
     llm_disabled_providers: str = ""
     # Trần chi phí ngày của trợ lý viết, riêng với trần của nháp (micro-USD; 300000 = 0,3 USD).
     authoring_daily_cap_micro: int = 300_000
+    # Giám khảo so sánh shadow (thiết kế 04 §6.2): trần riêng mỗi tenant/ngày và lấy mẫu.
+    judge_daily_cap_micro: int = 200_000
+    judge_full_per_day: int = 100  # chấm mọi cặp tới mức này mỗi ngày
+    judge_per_intent_after: int = 10  # quá mức trên: mỗi ý định chấm thêm tối đa chừng này
 
     # Google Sheets (§13.2): JSON key của service account, chỉ quyền đọc. Rỗng = tắt nguồn Sheets.
     google_service_account_json: str = ""

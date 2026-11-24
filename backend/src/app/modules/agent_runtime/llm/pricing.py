@@ -14,7 +14,7 @@ from decimal import Decimal
 
 from app.modules.agent_runtime.llm.port import Usage
 
-PRICE_VERSION = "2026-11-22"
+PRICE_VERSION = "2026-11-24"
 
 
 @dataclass(frozen=True)
@@ -33,6 +33,7 @@ PRICES: dict[tuple[str, str], Price] = {
     # Anthropic (giá niêm yết đã ghi nhận 2026-11-03; cache ghi = 1,25x cho TTL 5 phút)
     ("anthropic", "claude-sonnet-5"): _p("2", "0.20", "2.50", "10"),
     ("anthropic", "claude-opus-5-5"): _p("4", "0.20", "5", "20"),
+    ("anthropic", "claude-sonnet-5-5"): _p("2", "0.10", "2.50", "10"),  # giám khảo (bước 3)
     ("anthropic", "claude-haiku-5-5"): _p("0.10", "0.01", "0.125", "0.50"),
     # OpenAI (giá niêm yết GPT-4.1, nhiều nguồn khớp nhau; CHƯA đối chiếu trang chính thức)
     ("openai", "gpt-4.1"): _p("2", "0.50", "0", "8"),

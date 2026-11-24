@@ -26,6 +26,19 @@ provider = "openai"
 model = "gpt-4.1"
 max_tokens = 2048
 
+# Giám khảo so sánh shadow (bước 3, thiết kế 04 §6): model KHÁC model soạn nháp để giảm thiên vị
+# tự chấm. Chạy nền; bộ vàng backend/evals/judge/ phải qua trước khi đổi model hay prompt.
+[[routes.judge.targets]]
+provider = "anthropic"
+model = "claude-sonnet-5-5"
+effort = "medium"
+max_tokens = 2048
+
+[[routes.judge.targets]]
+provider = "openai"
+model = "gpt-4.1"
+max_tokens = 512
+
 # Trợ lý viết (bước 2.11): model rẻ. Gợi ý luôn qua kiểm tra giữ sự thật bằng code và chủ shop
 # duyệt trước khi lưu, nên đích chưa qua eval chỉ ảnh hưởng chất lượng câu chữ, không lọt tới khách.
 [[routes.authoring.targets]]

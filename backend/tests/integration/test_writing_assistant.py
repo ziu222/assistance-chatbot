@@ -72,7 +72,7 @@ async def test_suggestions_are_fact_checked_and_feedback_recorded(app_client, se
         assert purposes == ["authoring"]
         # Chi phí trợ lý viết không ăn vào trần chi phí ngày của nháp.
         assert await spent_today_micro(s, ctx.tenant_id) == 0
-        assert await spent_today_micro(s, ctx.tenant_id, authoring=True) > 0
+        assert await spent_today_micro(s, ctx.tenant_id, purpose="authoring") > 0
 
 
 async def test_brand_profile_is_versioned_and_used_in_prompt(app_client, session_factory):

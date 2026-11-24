@@ -59,7 +59,7 @@ class AuthoringWorker:
             req = await repo.claim_next(s)
             if req is None:
                 return False
-            spent = await spent_today_micro(s, req.tenant_id, authoring=True)
+            spent = await spent_today_micro(s, req.tenant_id, purpose="authoring")
             found = await repo.current_profile(s, req.tenant_id)
         profile = found[1] if found else BrandProfile()
         if spent >= self._cap:
