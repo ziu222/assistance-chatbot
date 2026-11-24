@@ -101,6 +101,14 @@ def build_params(target: Target, req: LLMRequest) -> dict:
     return params
 
 
+def retry_after(exc: Exception) -> float | None:
+    """Giây chờ theo header Retry-After (dạng số giây); không có hoặc sai dạng ⇒ None."""
+    try:
+        return float(exc.response.headers.get("retry-after"))  # type: ignore[attr-defined]
+    except (AttributeError, TypeError, ValueError):
+        return None
+
+
 def classify_error(exc: Exception) -> Exception:
     """Dịch lỗi SDK sang lỗi trung lập. Theo mã HTTP: ổn định và gateway cũng tuân theo."""
     provider = AnthropicBackend.provider
@@ -119,7 +127,7 @@ def classify_error(exc: Exception) -> Exception:
         if status == 408:
             return ProviderUnavailable(provider, "timeout", status)
         if status == 429:
-            return ProviderUnavailable(provider, "rate_limited", status)
+            return ProviderUnavailable(provider, "rate_limited", status, retry_after(exc))
         if status in (503, 529):
             return ProviderUnavailable(provider, "overloaded", status)
         if status >= 500:

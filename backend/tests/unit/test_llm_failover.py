@@ -44,7 +44,12 @@ def request(**over) -> LLMRequest:
 def make(a_script, o_script, *, breaker=None):
     a, o = FakeBackend("anthropic", a_script), FakeBackend("openai", o_script)
     routes = {"draft": (A, O), "classify": (A, O)}
-    return FailoverLLM(routes, {"anthropic": a, "openai": o}, breaker=breaker), a, o
+    llm = FailoverLLM(routes, {"anthropic": a, "openai": o}, breaker=breaker, sleep=_no_sleep)
+    return llm, a, o
+
+
+async def _no_sleep(_: float) -> None:
+    return None
 
 
 def metric(name: str, **labels) -> float:
@@ -62,7 +67,9 @@ async def test_primary_serves_and_backup_is_untouched():
     "reason", ["timeout", "connection", "server_error", "overloaded", "rate_limited", "auth"]
 )
 async def test_provider_trouble_fails_over_and_records_why(reason):
-    llm, a, o = make([ProviderUnavailable("anthropic", reason)], [text_result("từ openai")])
+    # 429 được thử lại 2 lần trên cùng đích trước khi tính là lỗi.
+    tries = 3 if reason == "rate_limited" else 1
+    llm, a, o = make([ProviderUnavailable("anthropic", reason)] * tries, [text_result("từ openai")])
     before = metric(
         "llm_failover_total", from_provider="anthropic", to_provider="openai", reason=reason
     )
@@ -308,3 +315,34 @@ async def test_deadline_runs_out_between_targets():
     with pytest.raises(DeadlineExceeded):
         await llm.complete(request(deadline=time.monotonic() + 0.25))
     assert o.calls == []  # hết ngân sách thì dừng, không gọi tiếp
+
+
+async def test_rate_limit_waits_and_retries_the_same_target():
+    waits: list[float] = []
+
+    async def sleep(s: float) -> None:
+        waits.append(s)
+
+    a = FakeBackend(
+        "anthropic",
+        [
+            ProviderUnavailable("anthropic", "rate_limited", 429, retry_after=2.0),
+            ProviderUnavailable("anthropic", "rate_limited", 429),
+            text_result("từ claude"),
+        ],
+    )
+    o = FakeBackend("openai", [])
+    llm = FailoverLLM({"draft": (A, O)}, {"anthropic": a, "openai": o}, sleep=sleep)
+    result = await llm.complete(request())
+    assert (result.text, result.failover_from) == ("từ claude", ())
+    assert len(a.calls) == 3 and o.calls == []
+    assert 2.0 <= waits[0] <= 2.6 and 4.0 <= waits[1] <= 5.2  # Retry-After, rồi lùi dần
+
+
+async def test_rate_limit_retries_do_not_trip_the_circuit_when_they_succeed():
+    breaker = CircuitBreaker()
+    limited = [ProviderUnavailable("anthropic", "rate_limited")] * 2
+    llm, a, _ = make([*limited, text_result("ok")] * 3, [], breaker=breaker)
+    for _ in range(3):
+        assert (await llm.complete(request())).text == "ok"
+    assert not breaker.is_open("anthropic")

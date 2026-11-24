@@ -121,9 +121,16 @@ class LLMError(Exception):
 class ProviderUnavailable(LLMError):
     """Provider có vấn đề (không phải lỗi của yêu cầu) ⇒ failover được."""
 
-    def __init__(self, provider: str, reason: FailureReason, status: int | None = None) -> None:
+    def __init__(
+        self,
+        provider: str,
+        reason: FailureReason,
+        status: int | None = None,
+        retry_after: float | None = None,  # giây, từ header Retry-After (429) nếu có
+    ) -> None:
         super().__init__(f"{provider}: {reason}")  # không chứa nội dung prompt hay key
         self.provider, self.reason, self.status = provider, reason, status
+        self.retry_after = retry_after
 
 
 class BadRequest(LLMError):
