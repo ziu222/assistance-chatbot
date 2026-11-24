@@ -9,11 +9,12 @@ import { KnowledgePage } from "../knowledge/KnowledgePage";
 import { PolicyPage } from "../policy/PolicyPage";
 import { OrdersPage } from "../orders/OrdersPage";
 import { QueuePage } from "../queue/QueuePage";
+import { ShadowPage } from "../shadow/ShadowPage";
 import { useHandoffs } from "../../entities/handoff/api";
 import { TracePage } from "../trace/TracePage";
 
 // Màn hình, hội thoại và run đang chọn nằm trên URL để reload/chia sẻ link giữ nguyên chỗ.
-type View = "inbox" | "queue" | "orders" | "agent" | "policy" | "knowledge" | "trace";
+type View = "inbox" | "queue" | "orders" | "agent" | "policy" | "knowledge" | "shadow" | "trace";
 const VIEWS: { id: View; label: string }[] = [
   { id: "inbox", label: "Hộp thư" },
   { id: "queue", label: "Cần xử lý" },
@@ -21,6 +22,7 @@ const VIEWS: { id: View; label: string }[] = [
   { id: "agent", label: "Agent" },
   { id: "policy", label: "Tin tự động" },
   { id: "knowledge", label: "Kiến thức" },
+  { id: "shadow", label: "Chấm nháp" },
   { id: "trace", label: "Trace" },
 ];
 const param = (name: string) => new URLSearchParams(location.search).get(name);
@@ -127,6 +129,11 @@ export function InboxPage({ me, onUnauthorized }: { me: Me; onUnauthorized: () =
       {view === "knowledge" && (
         <main className="admin-main">
           <KnowledgePage canManage={canManage} />
+        </main>
+      )}
+      {view === "shadow" && (
+        <main className="admin-main">
+          {canManage ? <ShadowPage /> : <p className="muted">Chỉ chủ shop/admin gán nhãn.</p>}
         </main>
       )}
       {view === "trace" && (
