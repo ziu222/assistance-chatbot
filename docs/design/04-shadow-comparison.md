@@ -1,6 +1,6 @@
 # Thiết kế bước 3: so sánh nháp shadow với câu nhân viên thật sự gửi
 
-- Trạng thái: **S1 đã implement** (ghép cặp, chấm bằng code, việc định kỳ, metric); S2–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
+- Trạng thái: **S1 và S2 đã implement** (ghép cặp, chấm bằng code; giám khảo, trần chi phí, lấy mẫu, bộ vàng); S3–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (bất biến shadow, `agent_drafts`, §7.6 tri thức bền, §7.7 tầng "Học"), [03-order-flow-and-unified-inbox.md](03-order-flow-and-unified-inbox.md), [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md), [docs/evals/](../evals/).
 
@@ -114,6 +114,18 @@ JudgeOut
 - **Bộ vàng cho giám khảo** (`backend/evals/judge/`): khoảng 40 cặp viết tay gồm khách, nháp, câu tham chiếu và nhãn đúng, phủ các trường hợp khó: khác chữ cùng ý, thiếu một chi tiết, sai giá, chuyển người thừa, nhân viên sai. Chạy trong eval như mọi bộ khác; đổi prompt hay model giám khảo phải qua bộ này.
 - **Nhãn của chủ shop:** màn hình liệt kê một mẫu cặp đã chấm. Chủ shop bấm "gửi được / phải sửa / sai" cho mỗi cặp, mất vài giây một cặp. Từ đó đo mức đồng thuận (Cohen's kappa) giữa giám khảo và chủ shop **theo từng tenant**.
 - Kappa dưới 0,6 hoặc dưới 30 nhãn ⇒ màn hình hiển thị điểm giám khảo kèm cảnh báo "chưa hiệu chỉnh", và **không** đưa ra đề xuất bật tự trả lời.
+
+Đã implement (S2):
+
+- `shadow/domain/judge.py` gồm `JudgeOut`, prompt (`JUDGE_PROMPT_VERSION`) và `finalize`: code kết luận được thì thắng; `contradicts` ⇒ `wrong`.
+- `shadow/infrastructure/judging.py` (`JudgeWorker`) chạy trong agent worker:
+  - Chấm từng cặp một, nghỉ 2 s giữa các lần.
+  - Có trần chi phí riêng `JUDGE_DAILY_CAP_MICRO` (mặc định 0,2 USD/tenant/ngày) và lấy mẫu (`JUDGE_FULL_PER_DAY`, `JUDGE_PER_INTENT_AFTER`).
+  - Lỗi provider ⇒ thử lại tối đa 3 lần rồi `gave_up`.
+- `spent_today_micro` nhận `purpose`; trần chi phí của việc soạn nháp không còn tính tiền của trợ lý viết lẫn giám khảo.
+- Route `judge` dùng `claude-sonnet-5-5` (đã thêm giá, `PRICE_VERSION` 2026-11-24).
+- Migration 0019 thêm các cột của giám khảo và kết luận cuối (`final_verdict`, `sendable`).
+- Bộ vàng 32 ca: khớp gửi được/không **31/32**, khoảng 0,09 USD mỗi lần chạy. Xem [docs/evals/judge.md](../evals/judge.md). Bộ vàng do người thiết kế gán nhãn, nên nhãn của chủ shop ở S3 vẫn bắt buộc.
 
 ## 7. Tổng hợp và mức sẵn sàng
 
