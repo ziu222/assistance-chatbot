@@ -11,6 +11,7 @@ from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
 from app.modules.shadow.domain.calibration import MIN_KAPPA, MIN_LABELS, Label
 from app.modules.shadow.domain.judge import JUDGE_PROMPT_VERSION
 from app.modules.shadow.infrastructure.labels import calibration, list_for_labelling, set_label
+from app.modules.shadow.infrastructure.summary import summary
 from app.shared.presentation.http_errors import ApiError
 
 router = APIRouter(prefix="/api/v1/shadow")
@@ -67,3 +68,13 @@ async def get_calibration(request: Request, actor: CurrentStaff) -> dict:
         "calibrated": c.calibrated,
         "needs": {"labels": MIN_LABELS, "kappa": MIN_KAPPA},
     }
+
+
+@router.get("/summary")
+async def get_summary(
+    request: Request, actor: CurrentStaff, days: Annotated[int, Query(ge=1, le=90)] = 14
+) -> dict:
+    """Theo ý định: tỉ lệ gửi được/sai, chuyển người, bot nhanh hơn bao lâu, mức sẵn sàng."""
+    tenant_id = _require(actor, "agent.read")
+    async with request.app.state.session_factory() as s:
+        return await summary(s, tenant_id, days)
