@@ -1,6 +1,6 @@
 # Thiết kế bước 3: so sánh nháp shadow với câu nhân viên thật sự gửi
 
-- Trạng thái: **S1 và S2 đã implement** (ghép cặp, chấm bằng code; giám khảo, trần chi phí, lấy mẫu, bộ vàng); S3–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
+- Trạng thái: **S1–S3 đã implement** (ghép cặp, chấm bằng code; giám khảo, trần chi phí, lấy mẫu, bộ vàng; nhãn của chủ shop và kappa); S4–S5 là thiết kế. Quyết định chính: [ADR-0037](../adr/0037-shadow-comparison-and-calibrated-judge.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (bất biến shadow, `agent_drafts`, §7.6 tri thức bền, §7.7 tầng "Học"), [03-order-flow-and-unified-inbox.md](03-order-flow-and-unified-inbox.md), [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md), [docs/evals/](../evals/).
 
@@ -126,6 +126,17 @@ JudgeOut
 - Route `judge` dùng `claude-sonnet-5-5` (đã thêm giá, `PRICE_VERSION` 2026-11-24).
 - Migration 0019 thêm các cột của giám khảo và kết luận cuối (`final_verdict`, `sendable`).
 - Bộ vàng 32 ca: khớp gửi được/không **31/32**, khoảng 0,09 USD mỗi lần chạy. Xem [docs/evals/judge.md](../evals/judge.md). Bộ vàng do người thiết kế gán nhãn, nên nhãn của chủ shop ở S3 vẫn bắt buộc.
+
+Đã implement (S3):
+
+- `judge_labels` (migration 0020) lưu một nhãn mỗi cặp; gán lại thì ghi đè. Quyền `shadow.label` chỉ dành cho `owner` / `admin`.
+- `shadow/domain/calibration.py` có `cohen_kappa`, `calibrate` và quy đổi mức gửi được của giám khảo về thang ba nhãn của chủ shop (`sendable` / `rewrite` / `wrong`).
+- API:
+  - `GET /api/v1/shadow/comparisons`: cặp do bản prompt giám khảo hiện tại chấm; mặc định chỉ cặp chưa gán nhãn; nội dung đọc lúc hiển thị.
+  - `POST /api/v1/shadow/comparisons/{id}/label`: chỉ cặp đã được giám khảo chấm.
+  - `GET /api/v1/shadow/calibration`: số nhãn, kappa, tỉ lệ khớp gửi được/không, `calibrated`.
+- Hiệu chỉnh tính riêng cho từng `JUDGE_PROMPT_VERSION`: đổi prompt giám khảo thì phải gán nhãn lại.
+- Màn hình "Chấm nháp" trong admin là UI thử nghiệm.
 
 ## 7. Tổng hợp và mức sẵn sàng
 

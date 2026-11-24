@@ -20,6 +20,7 @@ from app.modules.integration.presentation.http.public_webchat import router as p
 from app.modules.knowledge.presentation.http.knowledge import router as knowledge_api
 from app.modules.orders.presentation.http.order_flow import router as order_flow_api
 from app.modules.orders.presentation.http.order_requests import router as order_requests_api
+from app.modules.shadow.presentation.http.shadow import router as shadow_api
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.metrics import OUTBOX_OLDEST_AGE, OUTBOX_UNPUBLISHED
 from app.shared.infrastructure.rate_limit import RateLimiter
@@ -75,6 +76,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(writing_api)
     app.include_router(order_flow_api)
     app.include_router(order_requests_api)
+    app.include_router(shadow_api)
     # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
     app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 

@@ -9,6 +9,8 @@ _ALLOWED_ROLES = {
     "agent.manage": {"owner", "admin"},  # tạo agent, đổi mode, bật/tắt AI
     "knowledge.read": {"owner", "admin", "agent"},
     "knowledge.manage": {"owner", "admin"},  # FAQ, tài liệu, import catalog
+    # Nhãn quyết định việc đề xuất bật tự trả lời (thiết kế 04 §6.3): chỉ chủ shop/admin.
+    "shadow.label": {"owner", "admin"},
 }
 
 
