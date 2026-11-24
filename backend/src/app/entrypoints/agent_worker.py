@@ -19,6 +19,7 @@ from app.modules.agent_runtime.llm.factory import build_llm
 from app.modules.agent_runtime.runner import AgentRunner
 from app.modules.authoring.worker import AuthoringWorker
 from app.modules.conversation_policy.stage import PolicyStage
+from app.modules.shadow.infrastructure.judging import JudgeWorker
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
 from app.workers.agent_worker import AgentWorker
@@ -33,6 +34,7 @@ async def main() -> None:
         for t in load_templates().values()
     }
     used_routes["authoring"] = {"authoring"}
+    used_routes["judge"] = {"judge"}
     llm, _ = build_llm(settings, used_routes)
     engine = create_engine(settings.database_url)
     factory = create_session_factory(engine)
@@ -54,9 +56,17 @@ async def main() -> None:
         authoring = AuthoringWorker(
             factory, llm, daily_cap_micro=settings.authoring_daily_cap_micro
         )
+        judge = JudgeWorker(
+            factory,
+            llm,
+            daily_cap_micro=settings.judge_daily_cap_micro,
+            full_per_day=settings.judge_full_per_day,
+            per_intent_after=settings.judge_per_intent_after,
+        )
         await asyncio.gather(
             worker.run(stop, concurrency=settings.agent_worker_concurrency),
             authoring.run(stop),
+            judge.run(stop),  # chấm nền so sánh shadow (thiết kế 04 S2)
         )
     finally:
         await engine.dispose()
