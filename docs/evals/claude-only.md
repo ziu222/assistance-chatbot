@@ -1,6 +1,6 @@
-# Chỉ dùng Claude qua gateway (tắt OpenAI dự phòng)
+# Chạy chỉ với Claude qua gateway (tạm khóa OpenAI dự phòng)
 
-Ngày 2026-11-24. Credit OpenAI sắp hết, nên chuyển sang chỉ dùng Claude (`LLM_DISABLED_PROVIDERS=openai`).
+Ngày 2026-11-24. Credit OpenAI sắp hết, nên **tạm khóa** OpenAI (`LLM_DISABLED_PROVIDERS=openai`). OpenAI vẫn là đích dự phòng trong `routes.toml` và sẽ được bật lại; trong lúc khóa, mọi lời gọi đi qua Claude.
 Key Claude chỉ dùng được qua UniversalAI Gateway (`LLM_BASE_URL`); gọi thẳng API chính thức của
 Anthropic bằng key đó thì nhận 401.
 
@@ -85,6 +85,6 @@ không trúng cache, 24 request mỗi mức, không thử lại):
 - Theo dõi `rate_limited_retry`. Nếu nhiều shop dùng chung một key gateway thì 2 run đồng thời là
   giới hạn của cả hệ thống, không phải của từng shop.
 - Cho phép tạm tính của phiếu đặt hàng làm số tiền hợp lệ trong nháp.
-- Bật lại OpenAI dự phòng khi có credit: xóa dòng `LLM_DISABLED_PROVIDERS=openai` trong `backend/.env`.
+- Bật lại OpenAI dự phòng khi có credit: xóa dòng `LLM_DISABLED_PROVIDERS=openai` trong `backend/.env`. Không cần đổi code hay route; template v5 và phần thử lại 429 vẫn áp dụng cho cả hai provider.
 
 Chạy lại: `uv run python backend/evals/run_eval.py --template-version 5 --per-category 4`.
