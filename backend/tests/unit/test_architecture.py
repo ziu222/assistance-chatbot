@@ -50,26 +50,55 @@ def test_runtime_never_writes_to_messages_table():
     assert offenders == []
 
 
+SHARED_DOMAIN = Path(__file__).parents[2] / "src" / "app" / "shared" / "domain"
 PURE_DOMAINS = [
-    RUNTIME.parent / m / "domain"
-    for m in ("conversation_policy", "authoring", "orders", "shadow", "learning")
+    SHARED_DOMAIN,
+    *(
+        RUNTIME.parent / m / "domain"
+        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning")
+    ),
 ]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
+
+
+def _imports_in(path: Path) -> list[str]:
+    names: list[str] = []
+    for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
+        if isinstance(node, ast.Import):
+            names.extend(a.name for a in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            names.append(node.module)
+    return names
 
 
 def test_policy_domain_is_pure():
     """`decide` và giờ làm việc là hàm thuần (§12.2): worker và trình mô phỏng gọi chung."""
     files = sorted(f for d in PURE_DOMAINS for f in d.rglob("*.py"))
     assert len({f.parent for f in files}) >= 2, "pure domain folders not found"
-    offenders = []
-    for path in files:
-        for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
-            names = []
-            if isinstance(node, ast.Import):
-                names = [a.name for a in node.names]
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                names = [node.module]
-            offenders += [f"{path.name}: {n}" for n in names if n.startswith(IO_IMPORTS)]
+    offenders = [
+        f"{path.name}: {n}" for path in files for n in _imports_in(path) if n.startswith(IO_IMPORTS)
+    ]
+    assert offenders == []
+
+
+RUNTIME_INTERNALS = (
+    "app.modules.agent_runtime.runner",
+    "app.modules.agent_runtime.context",
+    "app.modules.agent_runtime.llm",
+    "app.modules.agent_runtime.tools",
+    "app.modules.agent_runtime.validation",
+)
+
+
+def test_pure_domains_do_not_depend_on_outer_layers():
+    """Tầng `domain/` thuần không được chọc vào `infrastructure`, `presentation` hay runtime."""
+    files = sorted(f for d in PURE_DOMAINS for f in d.rglob("*.py"))
+    offenders = [
+        f"{path.relative_to(RUNTIME.parents[1])}: {n}"
+        for path in files
+        for n in _imports_in(path)
+        if _under(n, RUNTIME_INTERNALS) or ".infrastructure" in n or ".presentation" in n
+    ]
     assert offenders == []
 
 

@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 from difflib import SequenceMatcher
 from typing import Literal
 
-from app.modules.agent_runtime.validation import extract_amounts
+from app.shared.domain.text import extract_amounts
 
 Action = Literal["as_is", "edited", "discarded"]
 MINOR_EDIT = 0.2  # dưới mức này coi là sửa nhẹ (thiết kế 05 §7)

@@ -8,8 +8,7 @@ LLM chỉ được đổi câu chữ. Mọi "sự thật" trong bản gốc củ
 import re
 from dataclasses import dataclass, field
 
-from app.modules.agent_runtime.validation import extract_amounts
-from app.modules.knowledge.domain.text import fold
+from app.shared.domain.text import extract_amounts, fold
 
 _DURATION = re.compile(r"\b(\d+)\s*(ngay|tuan|thang|nam|gio|tieng|phut|h)\b")
 _UNIT = {"tieng": "gio", "h": "gio"}

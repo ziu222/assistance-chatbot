@@ -14,9 +14,10 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
-from app.modules.conversation_policy.infrastructure.handoffs import record_signal, transition
+from app.modules.conversation_policy.infrastructure.handoffs import transition
 from app.modules.orders.domain.order_flow import OrderFlowConfig, mask_phone, missing_fields, plan
 from app.modules.orders.infrastructure.repository import OrderRequest, save_request
+from app.shared.infrastructure.signals import record_signal
 
 log = logging.getLogger(__name__)
 
