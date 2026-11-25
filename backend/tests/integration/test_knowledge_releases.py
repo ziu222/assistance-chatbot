@@ -5,7 +5,7 @@ from sqlalchemy import text
 
 from app.modules.agent_runtime.context import build_context
 
-from .factories import seed_conversation, seed_message
+from .factories import insert_message, make_conversation, make_customer
 from .test_staff_api import CSRF, logged_in
 
 
@@ -18,8 +18,11 @@ async def test_manual_edits_publish_releases_and_restore_switches_context(
     new_client, session_factory
 ):
     client, ctx, _, conn = await logged_in(new_client, session_factory, role="owner")
-    conv_id = await seed_conversation(session_factory, ctx, conn)
-    await seed_message(session_factory, ctx, conv_id, sequence=1, text="Phí ship bao nhiêu?")
+    async with session_factory() as s, s.begin():
+        conv_id = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        await insert_message(
+            s, ctx, conv_id, conn, sequence=1, content="Phí ship bao nhiêu?"
+        )
 
     r1 = await client.post(
         "/api/v1/knowledge/faqs",
