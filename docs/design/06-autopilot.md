@@ -1,6 +1,6 @@
 # Thiết kế bước 5: Autopilot: bot tự trả lời theo từng ý định đã đủ tin cậy
 
-- Trạng thái: **A1 đã implement** (migration `sender_type = 'bot'` + `messages.draft_id`, hàm thuần `send_decision`, `outbound.send_ai_reply` kiểm lại dưới khóa + idempotent, test kiến trúc; chưa nối vào worker); A2–A6 là thiết kế. Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
+- Trạng thái: **A1–A2 đã implement** (A1: migration `sender_type = 'bot'` + `messages.draft_id`, `send_decision`, `outbound.send_ai_reply`; A2: `autopilot_intents`, quyền `autopilot.manage`, API bật/tắt có kiểm lại mức sẵn sàng, nút dừng `/pause` và nút trên "Chấm nháp"); A3–A6 là thiết kế. Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0033](../adr/0033-single-send-gate-for-automatic-messages.md) (một cổng gửi duy nhất cho tin tự động, module `outbound`);
