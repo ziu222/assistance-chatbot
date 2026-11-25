@@ -64,3 +64,43 @@ export function usePauseAutopilot() {
     },
   });
 }
+
+export type OwnerReplyLabel = "correct" | "minor_edit" | "wrong";
+
+export type AutopilotReply = {
+  message_id: string;
+  conversation_id: string;
+  agent_id: string;
+  intent: string;
+  customer_text: string;
+  bot_text: string;
+  occurred_at: string;
+  followups: { kind: string; detail: Record<string, unknown>; created_at: string }[];
+  owner_label: { label: OwnerReplyLabel; wrong_fact?: boolean } | null;
+};
+
+export const useAutopilotReplies = (days = 7) =>
+  useQuery({
+    queryKey: ["autopilot", "replies", days],
+    queryFn: () => apiFetch<{ days: number; items: AutopilotReply[] }>(`/api/v1/autopilot/replies?days=${days}`),
+  });
+
+export function useLabelAutopilotReply() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      messageId,
+      label,
+      wrongFact = false,
+    }: {
+      messageId: string;
+      label: OwnerReplyLabel;
+      wrongFact?: boolean;
+    }) =>
+      apiFetch(`/api/v1/autopilot/replies/${messageId}/label`, {
+        method: "POST",
+        body: { label, wrong_fact: wrongFact },
+      }),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ["autopilot"] }),
+  });
+}
