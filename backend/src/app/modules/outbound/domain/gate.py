@@ -29,6 +29,7 @@ class AiGateInput:
     grounded: bool = False
     validation_problems: tuple[str, ...] = ()
     needs_human: bool = True
+    order_active: bool = True  # lượt đang ở luồng đặt hàng (thiết kế 03)
     handling: str = ""
     conversation_status: str = ""
     based_on_sequence: int = 0
@@ -56,6 +57,8 @@ def send_decision(g: AiGateInput) -> str | None:
         return "not_grounded"
     if g.needs_human:
         return "needs_human"
+    if g.order_active:  # thu thập đơn hàng là việc của nhân viên ở bước 5 (thiết kế 06 §2, O6)
+        return "order_flow"
     if g.handling != "bot" or g.conversation_status != "open":
         return "handling"
     if (

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import {
   useAutopilotIntents,
+  useAutopilotReplies,
   useDisableAutopilot,
   useEnableAutopilot,
+  useLabelAutopilotReply,
   usePauseAutopilot,
   type AutopilotIntentItem,
 } from "../../entities/autopilot/api";
@@ -18,6 +20,8 @@ export function ShadowPage({ isOwner = false }: { isOwner?: boolean }) {
   const label = useLabel();
   const sum = useShadowSummary(14);
   const ap = useAutopilotIntents(14);
+  const apReplies = useAutopilotReplies(7);
+  const labelReply = useLabelAutopilotReply();
   const enableAp = useEnableAutopilot();
   const disableAp = useDisableAutopilot();
   const pauseAp = usePauseAutopilot();
@@ -178,6 +182,60 @@ export function ShadowPage({ isOwner = false }: { isOwner?: boolean }) {
           </tbody>
         </table>
       )}
+      <h2>Chấm mẫu tin bot đã tự gửi (7 ngày, tối đa 10 tin/ngày/ý định)</h2>
+      {apReplies.data && apReplies.data.items.length === 0 && (
+        <p className="muted">Chưa có tin bot tự gửi nào cần chấm mẫu.</p>
+      )}
+      <ul className="plain stack">
+        {apReplies.data?.items.map((r) => (
+          <li key={r.message_id}>
+            <article className="card">
+              <div className="row">
+                <small className="muted">{r.intent}</small>
+                {r.owner_label && <span className="badge">{r.owner_label.label}</span>}
+                {r.followups
+                  .filter((f) => f.kind !== "owner_label")
+                  .map((f) => (
+                    <span key={f.kind} className="badge">
+                      {f.kind}
+                    </span>
+                  ))}
+              </div>
+              <p className="pre">
+                <strong>Khách:</strong> {r.customer_text}
+              </p>
+              <p className="pre">
+                <strong>Trợ lý tự động:</strong> {r.bot_text}
+              </p>
+              <div className="row" role="group" aria-label="Chấm mẫu tin bot">
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() => labelReply.mutate({ messageId: r.message_id, label: "correct" })}
+                >
+                  Đúng
+                </button>
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() => labelReply.mutate({ messageId: r.message_id, label: "minor_edit" })}
+                >
+                  Gửi được nhưng nên sửa
+                </button>
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() =>
+                    labelReply.mutate({ messageId: r.message_id, label: "wrong", wrongFact: true })
+                  }
+                >
+                  Sai số tiền / sản phẩm
+                </button>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
       <h2>Gán nhãn</h2>
       {list.isPending && <p className="state">Đang tải…</p>}
       {list.data && list.data.items.length === 0 && <p className="muted">Chưa có cặp nào chờ gán nhãn.</p>}

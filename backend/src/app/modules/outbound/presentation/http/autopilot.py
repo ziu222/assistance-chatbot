@@ -8,7 +8,9 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
+from app.modules.outbound.domain.monitoring import OwnerReplyLabel
 from app.modules.outbound.infrastructure import autopilot as repo
+from app.modules.outbound.infrastructure import monitoring
 from app.shared.presentation.http_errors import ApiError
 
 router = APIRouter(prefix="/api/v1/autopilot")
@@ -24,6 +26,12 @@ class EnableIn(BaseModel):
 class DisableIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     agent_id: UUID | None = None
+
+
+class ReplyLabelIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    label: OwnerReplyLabel
+    wrong_fact: bool = False
 
 
 def _require(actor: StaffActor, action: str) -> UUID:
@@ -98,3 +106,40 @@ async def pause(request: Request, actor: CurrentStaff) -> dict:
     tenant_id = _require(actor, "autopilot.manage")
     async with request.app.state.session_factory() as s, s.begin():
         return await repo.pause_autopilot(s, tenant_id, user_id=actor.user_id)
+
+
+@router.get("/replies")
+async def get_replies(
+    request: Request,
+    actor: CurrentStaff,
+    intent: Annotated[str | None, Query(max_length=64)] = None,
+    days: Annotated[int, Query(ge=1, le=90)] = 7,
+) -> dict:
+    """Tin bot đã gửi (lấy mẫu tối đa 10 tin/ngày/ý định) kèm tín hiệu theo dõi để chấm mẫu."""
+    tenant_id = _require(actor, "shadow.label")
+    async with request.app.state.session_factory() as s:
+        items = await monitoring.list_replies_for_review(s, tenant_id, intent=intent, days=days)
+    return {"days": days, "items": items}
+
+
+@router.post("/replies/{message_id}/label", dependencies=[Csrf])
+async def label_reply(
+    message_id: UUID,
+    body: ReplyLabelIn,
+    request: Request,
+    actor: CurrentStaff,
+) -> dict:
+    """Chủ shop chấm mẫu tin bot; sai sự thật (số tiền/sản phẩm) ⇒ tự hạ cấp ngay."""
+    tenant_id = _require(actor, "shadow.label")
+    async with request.app.state.session_factory() as s, s.begin():
+        res = await monitoring.label_bot_reply(
+            s,
+            tenant_id,
+            message_id,
+            label=body.label,
+            wrong_fact=body.wrong_fact,
+            user_id=actor.user_id,
+        )
+    if res is None:
+        raise ApiError(404, "not_found", "Bot reply not found")
+    return res

@@ -160,3 +160,22 @@ async def test_autopilot_stage_blocked_falls_back_to_learning(session_factory):
         )
     stage3 = AutopilotStage(session_factory, runner3.handle)
     assert await stage3.try_send(req3) == "stale"
+
+
+async def test_autopilot_stage_blocks_reply_while_order_flow_is_active(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await runner.handle(req)
+    # Runner ghi bước này khi hội thoại có phiếu đặt hàng dở, dù ý định là gì.
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO agent_run_steps "
+                "(tenant_id, run_id, step_index, kind, name, status, latency_ms, detail) "
+                "SELECT tenant_id, id, 99, 'rule', 'order_flow', 'active', 0, '{}'::jsonb "
+                "FROM agent_runs WHERE tenant_id = :t AND conversation_id = :c"
+            ),
+            {"t": w.ctx.tenant_id, "c": req.conversation_id},
+        )
+    assert await AutopilotStage(session_factory, runner.handle).try_send(req) == "order_flow"
