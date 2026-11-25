@@ -21,6 +21,7 @@ from app.modules.agent_runtime.runner import AgentRunner
 from app.modules.authoring.worker import AuthoringWorker
 from app.modules.conversation_policy.stage import PolicyStage
 from app.modules.learning.infrastructure.candidates import LearningWorker
+from app.modules.outbound.stage import AutopilotStage
 from app.modules.shadow.infrastructure.judging import JudgeWorker
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
@@ -80,9 +81,10 @@ async def main(roles: tuple[str, ...] = ALL_ROLES) -> None:
 
     tasks = []
     if "agent" in roles:
+        autopilot = AutopilotStage(factory, AgentRunner(factory, llm).handle)
         worker = AgentWorker(
             factory,
-            PolicyStage(factory, AgentRunner(factory, llm).handle).handle,
+            PolicyStage(factory, autopilot.handle).handle,
             window=debounce_window(settings),
             lease=timedelta(seconds=settings.agent_lease_seconds),
             max_attempts=settings.agent_max_attempts,
