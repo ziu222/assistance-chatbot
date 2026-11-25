@@ -9,6 +9,7 @@ import json
 import logging
 import time
 from collections.abc import Callable
+from html import escape
 from uuid import UUID, uuid4
 
 from sqlalchemy import text
@@ -414,10 +415,17 @@ async def _active_autopilot_intents(s: AsyncSession, tenant_id: UUID) -> list[tu
     return [(r.agent_id, r.intent) for r in rows]
 
 
+CATALOG_EVAL_LIMIT = 30  # ponytail: chỉ 30 sản phẩm đầu theo tên; đủ cho 2 sản phẩm được hỏi
+
+
 async def _catalog_eval_context(
     s: AsyncSession, tenant_id: UUID
-) -> tuple[set[int], list[str], set[tuple[str, str]]]:
-    """Đọc giá, tên và nguồn sản phẩm đang bán để chấm hành vi ca chuẩn không bịa số."""
+) -> tuple[set[int], list[str], set[tuple[str, str]], str]:
+    """Giá, tên, nguồn và khối `<catalog>` của sản phẩm đang bán cho ca chuẩn.
+
+    Bot thật tra sản phẩm bằng tool; model eval không có tool, nên phải thấy catalog trong prompt.
+    Không có khối này, mọi ca `product_info`/`price_quote` đều thành "chuyển người" và trượt.
+    """
     rows = (
         await s.execute(
             text(
@@ -427,10 +435,15 @@ async def _catalog_eval_context(
             {"t": tenant_id},
         )
     ).all()
+    rows = rows[:CATALOG_EVAL_LIMIT]
     prices = {int(r.price_vnd) for r in rows if r.price_vnd is not None}
     names = [r.name for r in rows if r.name]
     sources = {("product", str(r.id)) for r in rows}
-    return prices, names, sources
+    lines = [
+        f'<product id="{r.id}" price_vnd="{r.price_vnd}">{escape(r.name)}</product>' for r in rows
+    ]
+    block = "\n".join(["<catalog>", *lines, "</catalog>"]) if rows else ""
+    return prices, names, sources, block
 
 
 async def _load_active_eval_cases(s: AsyncSession, tenant_id: UUID) -> list[EvalCaseSpec]:
@@ -462,6 +475,7 @@ async def _execute_specs(
     rendered_block: str,
     specs: list[EvalCaseSpec],
     *,
+    catalog_block: str = "",
     valid_sources: set[tuple[str, str]],
     known_amounts: set[int],
     clock: Callable[[], float],
@@ -477,7 +491,13 @@ async def _execute_specs(
                         route=LEARNING,
                         system_blocks=(STANDARD_EVAL_SYSTEM,),
                         turns=(
-                            Turn(role="user", text=eval_user_turn(rendered_block, spec.question)),
+                            Turn(
+                                role="user",
+                                text=eval_user_turn(
+                                    "\n".join(filter(None, (rendered_block, catalog_block))),
+                                    spec.question,
+                                ),
+                            ),
                         ),
                         output_schema=EvalDraftOut,
                         deadline=clock() + EVAL_DEADLINE_S,
@@ -558,10 +578,14 @@ async def run_eval_gate_for_candidate(
         catalog_prices: set[int] = set()
         catalog_names: list[str] = []
         catalog_sources: set[tuple[str, str]] = set()
+        catalog_block = ""
         if autopilot_rows:
-            catalog_prices, catalog_names, catalog_sources = await _catalog_eval_context(
-                s, tenant_id
-            )
+            (
+                catalog_prices,
+                catalog_names,
+                catalog_sources,
+                catalog_block,
+            ) = await _catalog_eval_context(s, tenant_id)
 
     old_answer: str | None = None
     if cand.replaces:
@@ -628,6 +652,7 @@ async def run_eval_gate_for_candidate(
         llm,
         rendered.block,
         specs,
+        catalog_block=catalog_block,
         valid_sources=valid_sources,
         known_amounts=known_amounts,
         clock=clock,
@@ -783,7 +808,12 @@ async def run_eval_for_release(
         if await spent_today_micro(s, tenant_id, purpose=LEARNING) >= daily_cap_micro:
             return None
         old_specs = await _load_active_eval_cases(s, tenant_id)
-        catalog_prices, catalog_names, catalog_sources = await _catalog_eval_context(s, tenant_id)
+        (
+            catalog_prices,
+            catalog_names,
+            catalog_sources,
+            catalog_block,
+        ) = await _catalog_eval_context(s, tenant_id)
 
     snapshot = KnowledgeSnapshot.from_dict(rel.snapshot)
     rendered = render_knowledge(snapshot)
@@ -819,6 +849,7 @@ async def run_eval_for_release(
         llm,
         rendered.block,
         specs,
+        catalog_block=catalog_block,
         valid_sources=valid_sources,
         known_amounts=known_amounts,
         clock=clock,

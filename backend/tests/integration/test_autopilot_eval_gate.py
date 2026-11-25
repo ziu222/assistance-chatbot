@@ -397,3 +397,51 @@ async def test_restore_release_retriggers_standard_eval(new_client, session_fact
     assert (
         await evaluate_manual_releases(session_factory, recheck_llm, daily_cap_micro=500_000) == 1
     )
+
+
+async def test_product_standard_cases_see_the_catalog(new_client, session_factory):
+    owner, ctx, owner_id, conn = await logged_in(new_client, session_factory, role="owner")
+    agent_id = await _enable_autopilot(session_factory, ctx, conn, owner_id, ("product_info",))
+    product_id = uuid4()
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO catalog_items (id, tenant_id, sku, name, price_vnd, search_text, "
+                "external_id) VALUES (:id, :t, 'AK-1', 'Áo khoác gió', 350000, 'ao khoac gio', "
+                "'AK-1')"
+            ),
+            {"id": product_id, "t": ctx.tenant_id},
+        )
+    r = await owner.post(
+        "/api/v1/knowledge/faqs",
+        json={"question": "Phí ship?", "answer": "Ship 30.000đ", "status": "approved"},
+        headers=CSRF,
+    )
+    assert r.status_code == 201, r.text
+
+    # Model eval không có tool: chỉ trả lời được nếu thấy sản phẩm trong prompt.
+    def answers_from_catalog(req: LLMRequest) -> LLMResult:
+        prompt = req.turns[0].text
+        if f'<product id="{product_id}" price_vnd="350000">Áo khoác gió</product>' not in prompt:
+            return _draft_res(EvalDraftOut(reply="Để nhân viên hỗ trợ ạ.", needs_human=True))
+        return _draft_res(
+            EvalDraftOut(
+                reply="Áo khoác gió giá 350.000đ ạ.",
+                sources=[EvalSource(type="product", id=str(product_id))],
+            )
+        )
+
+    assert (
+        await evaluate_manual_releases(
+            session_factory, FakeLLM([answers_from_catalog]), daily_cap_micro=500_000
+        )
+        == 1
+    )
+    async with session_factory() as s:
+        state = (
+            await s.execute(
+                text("SELECT state FROM autopilot_intents WHERE tenant_id = :t AND agent_id = :a"),
+                {"t": ctx.tenant_id, "a": agent_id},
+            )
+        ).scalar_one()
+    assert state == "autopilot"
