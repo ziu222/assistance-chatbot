@@ -4,7 +4,6 @@ Mô hình không nhớ gì; hệ thống nhớ. Cùng DB + cùng yêu cầu ⇒ 
 chừng không làm "bot quên". Khối ổn định (FAQ/tài liệu sắp theo ID) đặt trước phần thay đổi.
 """
 
-import hashlib
 from dataclasses import dataclass
 from html import escape
 from uuid import UUID
@@ -12,8 +11,8 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.modules.knowledge.domain.topics import covered, effective_topics, missing_line
-from app.modules.knowledge.infrastructure.content import list_entries
+from app.modules.knowledge.domain.releases import render_knowledge
+from app.modules.knowledge.infrastructure.releases import active_snapshot
 
 HISTORY_TURNS = 10
 MAX_NEW_MESSAGES = 50
@@ -91,32 +90,12 @@ async def build_context(
     )
     history = tuple(reversed([_line(r) for r in history_rows]))
 
-    faqs = sorted(
-        (e for e in await list_entries(s, "faq", tenant_id) if e.status == "approved"),
-        key=lambda e: str(e.id),
-    )
-    docs = sorted(
-        (e for e in await list_entries(s, "doc", tenant_id) if e.status == "approved"),
-        key=lambda e: str(e.id),
-    )
-    parts = [f'<faq id="{e.id}">\nQ: {e.first}\nA: {e.second}\n</faq>' for e in faqs]
-    parts += [f'<doc id="{e.id}" title="{escape(e.first)}">\n{e.second}\n</doc>' for e in docs]
-    # Shop không cần viết đủ mọi thứ: chủ đề chưa có thì nói rõ để bot nhờ người thay vì đoán
-    # (§13.3). Nằm trong khối ổn định nên vào knowledge_hash và được cache như phần còn lại.
-    entries = [*faqs, *docs]
-    gap = missing_line(
-        covered(effective_topics(e.topics, f"{e.first} {e.second}") for e in entries)
-    )
-    if gap:
-        parts.append(f"<missing>{gap}</missing>")
-    block = "<knowledge>\n" + "\n".join(parts) + "\n</knowledge>"
+    rendered = render_knowledge(await active_snapshot(s, tenant_id))
     return RunContext(
-        knowledge_block=block,
-        knowledge_hash=hashlib.sha256(block.encode()).hexdigest(),
-        knowledge_sources=frozenset(
-            [("faq", str(e.id)) for e in faqs] + [("doc", str(e.id)) for e in docs]
-        ),
-        knowledge_text="\n".join(f"{e.first} {e.second}" for e in [*faqs, *docs]),
+        knowledge_block=rendered.block,
+        knowledge_hash=rendered.hash,
+        knowledge_sources=rendered.sources,
+        knowledge_text=rendered.text,
         history=history,
         new=tuple(_line(r) for r in new_rows),
         last_sequence=last_sequence,

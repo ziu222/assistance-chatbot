@@ -7,6 +7,8 @@ import {
   useEntries,
   useGaps,
   useImportCatalog,
+  useKnowledgeReleases,
+  useRestoreKnowledgeRelease,
   useUpdateEntry,
   type DocEntry,
   type FaqEntry,
@@ -279,14 +281,60 @@ function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: () 
   );
 }
 
-const TABS: { id: "faq" | "doc" | "catalog"; label: string }[] = [
+function ReleasesTab({ canManage }: { canManage: boolean }) {
+  const list = useKnowledgeReleases();
+  const restore = useRestoreKnowledgeRelease();
+  const items = list.data?.items ?? [];
+
+  return (
+    <div className="stack">
+      {list.isPending && <p className="state">Đang tải…</p>}
+      {list.isError && (
+        <p className="error" role="alert">
+          Không tải được lịch sử bản phát hành.
+        </p>
+      )}
+      {list.data && items.length === 0 && (
+        <p className="muted">Chưa có bản phát hành nào. Thêm hoặc sửa FAQ/tài liệu để tạo bản đầu tiên.</p>
+      )}
+      <ul className="plain">
+        {items.map((r) => (
+          <li key={r.id} className="card">
+            <div className="row">
+              <strong>Bản #{r.number}</strong>
+              {r.is_current && <span className="badge approved">Đang dùng</span>}
+              <span className="muted">{r.reason === "lesson" ? "Bài học" : "Chỉnh tay"}</span>
+              <span className="muted">
+                {r.faq_count} FAQ · {r.doc_count} tài liệu
+              </span>
+              <small className="muted">{new Date(r.created_at).toLocaleString("vi-VN")}</small>
+              {canManage && !r.is_current && (
+                <button
+                  type="button"
+                  className="link"
+                  disabled={restore.isPending}
+                  onClick={() => restore.mutate(r.number)}
+                >
+                  Quay lại bản này
+                </button>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const TABS: { id: "faq" | "doc" | "catalog" | "releases"; label: string }[] = [
   { id: "faq", label: "FAQ" },
   { id: "doc", label: "Tài liệu" },
   { id: "catalog", label: "Catalog" },
+  { id: "releases", label: "Phiên bản" },
 ];
 
 export function KnowledgePage({ canManage }: { canManage: boolean }) {
-  const [tab, setTab] = useState<"faq" | "doc" | "catalog">("faq");
+  const [tab, setTab] = useState<"faq" | "doc" | "catalog" | "releases">("faq");
   return (
     <div className="admin-page">
       <h1>Kiến thức</h1>
@@ -307,7 +355,13 @@ export function KnowledgePage({ canManage }: { canManage: boolean }) {
         ))}
       </div>
       <div role="tabpanel">
-        {tab === "catalog" ? <CatalogTab canManage={canManage} /> : <ContentTab key={tab} kind={tab} canManage={canManage} />}
+        {tab === "catalog" ? (
+          <CatalogTab canManage={canManage} />
+        ) : tab === "releases" ? (
+          <ReleasesTab canManage={canManage} />
+        ) : (
+          <ContentTab key={tab} kind={tab} canManage={canManage} />
+        )}
       </div>
     </div>
   );

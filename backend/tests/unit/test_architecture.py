@@ -55,7 +55,7 @@ PURE_DOMAINS = [
     SHARED_DOMAIN,
     *(
         RUNTIME.parent / m / "domain"
-        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning")
+        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning", "knowledge")
     ),
 ]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
