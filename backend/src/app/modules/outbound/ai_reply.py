@@ -25,6 +25,7 @@ from app.modules.conversation.application.receive_inbound_message import (
     EVENT_SCHEMA_VERSION,
     PREVIEW_LENGTH,
 )
+from app.modules.outbound.domain.channels import check_channel_send
 from app.modules.outbound.domain.gate import AI_SEND_PROVIDERS, DEFAULT_MAX_BOT_STREAK
 
 RecheckFn = Callable[[AsyncSession], Awaitable[str | None]]
@@ -61,7 +62,7 @@ async def send_ai_reply(
         await s.execute(
             text(
                 "SELECT c.channel_connection_id, c.customer_id, c.status, c.handling, "
-                "       c.last_sequence, cc.provider, ci.scoped_external_id "
+                "       c.last_sequence, cc.provider, cc.config, ci.scoped_external_id "
                 "FROM conversations c "
                 "JOIN channel_connections cc "
                 "  ON cc.tenant_id = c.tenant_id AND cc.id = c.channel_connection_id "
@@ -77,7 +78,16 @@ async def send_ai_reply(
     if conv is None:
         return SendAiResult(sent=False, blocked_reason="handling")
 
-    connection_id, customer_id, status, handling, last_sequence, provider, visitor_id = conv
+    (
+        connection_id,
+        customer_id,
+        status,
+        handling,
+        last_sequence,
+        provider,
+        cc_config,
+        visitor_id,
+    ) = conv
     ext_id = f"ai:{draft_id}"
 
     # 1. Idempotent trước tiên: nếu worker chạy lại cho nháp đã gửi thì không gửi thêm.
@@ -107,15 +117,17 @@ async def send_ai_reply(
         return SendAiResult(sent=False, blocked_reason="handling")
 
     # 4. Kiểm lại tin mới của khách và việc nhân viên đã trả lời hay chưa dưới khóa.
-    latest_customer_seq = (
+    cust_row = (
         await s.execute(
             text(
-                "SELECT coalesce(max(sequence), 0) FROM messages "
+                "SELECT coalesce(max(sequence), 0) AS max_seq, max(occurred_at) AS last_at "
+                "FROM messages "
                 "WHERE tenant_id = :t AND conversation_id = :c AND sender_type = 'customer'"
             ),
             {"t": tenant_id, "c": conversation_id},
         )
-    ).scalar_one()
+    ).one()
+    latest_customer_seq, latest_customer_at = cust_row.max_seq, cust_row.last_at
     if based_on_sequence <= 0 or latest_customer_seq > based_on_sequence:
         return SendAiResult(sent=False, blocked_reason="stale")
 
@@ -132,25 +144,35 @@ async def send_ai_reply(
     if human_after is not None:
         return SendAiResult(sent=False, blocked_reason="stale")
 
-    # 5. Kiểm số tin bot liên tiếp kể từ tin khách cuối cùng.
-    bot_streak = (
+    # 5. Kiểm số tin bot liên tiếp kể từ tin khách cuối cùng (và tổng tin phản hồi cho adapter).
+    streak_row = (
         await s.execute(
             text(
-                "SELECT count(*) FROM messages "
-                "WHERE tenant_id = :t AND conversation_id = :c "
-                "  AND sender_type = 'bot' AND sequence > :last_cust"
+                "SELECT "
+                "  count(*) FILTER (WHERE sender_type = 'bot') AS bot_streak, "
+                "  count(*) FILTER (WHERE direction = 'outbound') AS outbound_since "
+                "FROM messages "
+                "WHERE tenant_id = :t AND conversation_id = :c AND sequence > :last_cust"
             ),
             {"t": tenant_id, "c": conversation_id, "last_cust": latest_customer_seq},
         )
-    ).scalar_one()
-    if bot_streak >= max_bot_streak:
+    ).one()
+    if streak_row.bot_streak >= max_bot_streak:
         return SendAiResult(sent=False, blocked_reason="bot_streak")
 
-    # 6. Kiểm kênh được phép gửi.
-    if provider not in AI_SEND_PROVIDERS or not channel_allowed:
+    # 6. Kiểm kênh được phép gửi qua adapter kênh (webchat, Messenger 24h, Zalo OA §5.4).
+    now = datetime.now(UTC)
+    channel_decision = check_channel_send(
+        provider,
+        last_customer_at=latest_customer_at,
+        now=now,
+        replies_since_customer=streak_row.outbound_since,
+        config=cc_config if isinstance(cc_config, dict) else None,
+    )
+    if provider not in AI_SEND_PROVIDERS or not channel_allowed or not channel_decision.allowed:
         return SendAiResult(sent=False, blocked_reason="channel")
 
-    sequence, now, message_id = last_sequence + 1, datetime.now(UTC), uuid4()
+    sequence, message_id = last_sequence + 1, uuid4()
     inserted = (
         await s.execute(
             text(

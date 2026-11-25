@@ -13,14 +13,15 @@ def test_extract_config_key_drops_model_and_knowledge_hash():
     assert extract_config_key({"template": "x"}) is None
 
 
-def test_forbidden_and_unopened_intents_are_rejected():
+def test_forbidden_and_opened_intents():
     ready = ReadinessSnapshot(True, (), _CFG)
     for bad in ("complaint", "human_request", "discount_request", "order_intent", "other"):
         res = can_enable_intent(bad, current_config_key=_CFG, blind=ready, shown=ready)
         assert not res.allowed
 
+    # A6 mở `price_quote` khi đủ mức sẵn sàng (đi kèm kiểm `catalog_stale` ở cổng gửi).
     price = can_enable_intent("price_quote", current_config_key=_CFG, blind=ready, shown=ready)
-    assert not price.allowed
+    assert price.allowed and price.source == "blind"
 
     handoff = can_enable_intent(
         "faq",
