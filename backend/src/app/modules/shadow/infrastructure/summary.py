@@ -1,7 +1,7 @@
 """Tổng hợp so sánh shadow theo ý định và mức sẵn sàng (thiết kế 04 S4 & 05 §7 S5).
 
 Tách riêng hai nguồn đo:
-- **mù** (`draft_exposure = 'blind'`, Shadow): chấm bằng code + giám khảo đã hiệu chỉnh;
+- **mù** (`draft_exposure = 'hidden'`, Shadow): chấm bằng code + giám khảo đã hiệu chỉnh;
 - **đã thấy** (`draft_exposure = 'shown'`, Learning): đo trực tiếp theo mức sửa (`draft_uses`).
 
 Mỗi ý định chỉ tính các cặp thuộc phiên bản cấu hình AI HIỆN TẠI của nó (template, phiên bản
@@ -32,13 +32,13 @@ _SUMMARY = text(
     WITH latest AS (
       SELECT DISTINCT ON (intent) intent, config_version - 'model' AS key
       FROM shadow_comparisons
-      WHERE tenant_id = :t AND draft_exposure = 'blind'
+      WHERE tenant_id = :t AND draft_exposure = 'hidden'
       ORDER BY intent, created_at DESC
     ), c AS (
       SELECT sc.*, l.key FROM shadow_comparisons sc
       JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
        AND (sc.config_version - 'model') = l.key
-      WHERE sc.tenant_id = :t AND sc.draft_exposure = 'blind'
+      WHERE sc.tenant_id = :t AND sc.draft_exposure = 'hidden'
         AND sc.created_at > now() - make_interval(days => :d)
     )
     SELECT intent, min(key::text) AS config,

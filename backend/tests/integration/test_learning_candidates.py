@@ -53,8 +53,7 @@ async def test_two_consistent_price_edits_create_candidate_and_respect_cap(
         run1 = (
             await s.execute(
                 text(
-                    "SELECT agent_id, agent_version_id, template_key, template_version, "
-                    "       prompt_version, knowledge_hash, intents "
+                    "SELECT agent_id, agent_version_id, prompt_version, knowledge_hash, intents "
                     "FROM agent_runs WHERE tenant_id = :t LIMIT 1"
                 ),
                 {"t": w.ctx.tenant_id},
@@ -65,9 +64,8 @@ async def test_two_consistent_price_edits_create_candidate_and_respect_cap(
             text(
                 "INSERT INTO agent_runs "
                 "(id, tenant_id, agent_id, agent_version_id, conversation_id, from_sequence, "
-                " to_sequence, status, template_key, template_version, prompt_version, "
-                " knowledge_hash, intents) "
-                "VALUES (:id, :t, :aid, :avid, :c, 2, 2, 'completed', :tk, :tv, :pv, :kh, :intents)"
+                " to_sequence, status, prompt_version, knowledge_hash, intents) "
+                "VALUES (:id, :t, :aid, :avid, :c, 2, 2, 'completed', :pv, :kh, :intents)"
             ),
             {
                 "id": run2_id,
@@ -75,8 +73,6 @@ async def test_two_consistent_price_edits_create_candidate_and_respect_cap(
                 "aid": run1.agent_id,
                 "avid": run1.agent_version_id,
                 "c": conv1,
-                "tk": run1.template_key,
-                "tv": run1.template_version,
                 "pv": run1.prompt_version,
                 "kh": run1.knowledge_hash,
                 "intents": run1.intents,
