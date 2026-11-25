@@ -9,8 +9,7 @@ import re
 from dataclasses import asdict, dataclass
 from typing import Literal
 
-from app.modules.agent_runtime.validation import extract_amounts
-from app.modules.knowledge.domain.text import fold
+from app.shared.domain.text import extract_amounts, fold
 
 _URL = re.compile(r"https?://[^\s<>\"']+")
 # ponytail: nhận diện "để em kiểm tra" bằng cụm từ; đủ để ước lượng chuyển người ở S1.

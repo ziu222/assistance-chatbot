@@ -7,31 +7,13 @@ bản nháp vẫn được lưu để phân tích nhưng không bao giờ đủ 
 import re
 
 from app.modules.agent_runtime.schemas import DraftOut
-from app.modules.knowledge.domain.text import fold
 from app.modules.orders.domain.order_flow import claims_order_placed
+from app.shared.domain.text import extract_amounts
 
 MAX_REPLY = 1200
 _HTML = re.compile(r"<\s*/?\s*[a-z!]", re.IGNORECASE)
 _URL = re.compile(r"(?:https?://|www\.)[^\s<>\"']+", re.IGNORECASE)
 _URL_TAIL = ".,;:!?)]}…"  # dấu câu/ngoặc đóng ngay sau link
-# Số tiền: "350.000đ", "350k", "1,2 triệu", hoặc số có dấu phân cách nghìn dù thiếu đơn vị.
-_AMOUNT = re.compile(
-    r"(?<![\w.,])(\d{1,3}(?:[.,]\d{3})+|\d+(?:[.,]\d+)?)\s*(nghin|ngan|trieu|tr|k|vnd|dong|d)?(?![a-z0-9])"
-)
-_THOUSANDS = re.compile(r"\d{1,3}(?:[.,]\d{3})+")
-_MULTIPLIER = {"k": 1_000, "nghin": 1_000, "ngan": 1_000, "tr": 1_000_000, "trieu": 1_000_000}
-
-
-def extract_amounts(text: str) -> set[int]:
-    """Các số tiền (VND) xuất hiện trong `text`. Số trần như "size 38" hay "7 ngày" bị bỏ qua."""
-    found: set[int] = set()
-    for number, unit in _AMOUNT.findall(fold(text)):
-        thousands = bool(_THOUSANDS.fullmatch(number))
-        if not unit and not thousands:
-            continue
-        value = int(re.sub(r"[.,]", "", number)) if thousands else float(number.replace(",", "."))
-        found.add(round(value * _MULTIPLIER.get(unit, 1)))
-    return found
 
 
 def validate_draft(

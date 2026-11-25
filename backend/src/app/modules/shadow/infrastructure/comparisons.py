@@ -17,10 +17,10 @@ from uuid import UUID, uuid4
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
-from app.modules.agent_runtime.validation import extract_amounts
 from app.modules.shadow.domain.checks import Product, check
 from app.modules.shadow.domain.judge import finalize
 from app.modules.shadow.domain.pairing import Msg, pair
+from app.shared.domain.text import extract_amounts
 from app.shared.infrastructure.metrics import SHADOW_COMPARISONS, SHADOW_PAIRING_LAG
 
 log = logging.getLogger(__name__)

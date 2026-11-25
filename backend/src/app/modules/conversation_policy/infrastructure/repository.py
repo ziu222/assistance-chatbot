@@ -265,3 +265,18 @@ async def set_handling(
 
 def config_json(config: PolicyConfig) -> dict:
     return json.loads(config.model_dump_json())
+
+
+async def tenant_name(s: AsyncSession, tenant_id: UUID) -> str:
+    return (
+        await s.execute(text("SELECT name FROM tenants WHERE id = :t"), {"t": tenant_id})
+    ).scalar_one()
+
+
+async def conversation_exists(s: AsyncSession, tenant_id: UUID, conversation_id: UUID) -> bool:
+    return (
+        await s.execute(
+            text("SELECT 1 FROM conversations WHERE tenant_id = :t AND id = :c"),
+            {"t": tenant_id, "c": conversation_id},
+        )
+    ).first() is not None

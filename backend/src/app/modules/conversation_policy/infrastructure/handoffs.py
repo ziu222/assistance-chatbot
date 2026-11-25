@@ -11,6 +11,8 @@ from uuid import UUID, uuid4
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.shared.infrastructure.signals import record_signal
+
 Source = Literal["customer_button", "phrase", "topic", "staff", "order"]
 Action = Literal["claim", "resolve", "dismiss"]
 EVENT_SCHEMA_VERSION = 1
@@ -33,19 +35,6 @@ async def _outbox(
             "payload) VALUES (:t, 'conversation', :c, :e, CAST(:p AS jsonb))"
         ),
         {"t": tenant_id, "c": conversation_id, "e": event_type, "p": json.dumps(payload)},
-    )
-
-
-async def record_signal(
-    s: AsyncSession, tenant_id: UUID, conversation_id: UUID | None, kind: str, payload: dict
-) -> None:
-    """`learning_signals` append-only (§12.9). Payload đã chiếu: id/nhãn, không nội dung khách."""
-    await s.execute(
-        text(
-            "INSERT INTO learning_signals (tenant_id, conversation_id, kind, payload) "
-            "VALUES (:t, :c, :k, CAST(:p AS jsonb))"
-        ),
-        {"t": tenant_id, "c": conversation_id, "k": kind, "p": json.dumps(payload)},
     )
 
 

@@ -1,4 +1,5 @@
 import logging
+import time
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
@@ -82,16 +83,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # check_dir=False: CI/backend-only chạy được khi chưa build widget (khi đó /widget/* trả 404).
     app.mount("/widget", WidgetStatic(directory=settings.widget_dist_dir, check_dir=False))
 
+    outbox_metrics_ttl_s = 10.0
+    outbox_metrics_refreshed_at: float | None = None
+
     @app.get("/metrics", include_in_schema=False)
     async def metrics(request: Request) -> Response:
         # ponytail: endpoint nội bộ; reverse proxy KHÔNG được mở /metrics ra Internet (runbook).
-        try:
-            async with request.app.state.session_factory() as s:
-                count, age = await outbox_backlog(s)
-            OUTBOX_UNPUBLISHED.set(count)
-            OUTBOX_OLDEST_AGE.set(age)
-        except Exception:
-            log.warning("metrics: outbox backlog unavailable")
+        # Cache ngắn hạn để Prometheus scrape dày hoặc nhiều replica không dội query lên Postgres.
+        nonlocal outbox_metrics_refreshed_at
+        now = time.monotonic()
+        if (
+            outbox_metrics_refreshed_at is None
+            or now - outbox_metrics_refreshed_at >= outbox_metrics_ttl_s
+        ):
+            try:
+                async with request.app.state.session_factory() as s:
+                    count, age = await outbox_backlog(s)
+                OUTBOX_UNPUBLISHED.set(count)
+                OUTBOX_OLDEST_AGE.set(age)
+                outbox_metrics_refreshed_at = now
+            except Exception:
+                log.warning("metrics: outbox backlog unavailable")
         return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
     @app.get("/health")
