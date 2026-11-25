@@ -55,7 +55,15 @@ PURE_DOMAINS = [
     SHARED_DOMAIN,
     *(
         RUNTIME.parent / m / "domain"
-        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning", "knowledge")
+        for m in (
+            "conversation_policy",
+            "authoring",
+            "orders",
+            "shadow",
+            "learning",
+            "knowledge",
+            "outbound",
+        )
     ),
 ]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
@@ -120,6 +128,17 @@ def test_only_outbound_writes_messages_with_raw_sql():
 def test_outbound_sends_only_system_messages():
     src = (MODULES / "outbound" / "canned.py").read_text(encoding="utf-8")
     assert "'outbound', 'system'" in src and "'bot'" not in src
+
+
+def test_only_outbound_ai_reply_writes_bot_messages():
+    """Thiết kế 06 §3.1: chỉ `outbound/ai_reply.py` được ghi tin `sender_type = 'bot'`."""
+    offenders = [
+        str(p.relative_to(MODULES))
+        for p in sorted(MODULES.rglob("*.py"))
+        if p != MODULES / "outbound" / "ai_reply.py"
+        and "'outbound', 'bot'" in " ".join(p.read_text(encoding="utf-8").lower().split())
+    ]
+    assert offenders == []
 
 
 def test_presentation_does_not_use_raw_sql():
