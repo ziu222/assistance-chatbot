@@ -30,6 +30,8 @@ from app.modules.agent_runtime.llm.port import (
     Turn,
 )
 from app.modules.agent_runtime.llm.pricing import UnknownPrice
+from app.modules.authoring.domain.writing import BrandProfile
+from app.modules.authoring.infrastructure.repository import current_profile, save_profile
 from app.modules.knowledge.domain.releases import render_knowledge
 from app.modules.knowledge.infrastructure.releases import active_snapshot, publish_snapshot
 from app.modules.learning.domain.candidates import strip_pii
@@ -43,7 +45,10 @@ from app.modules.learning.domain.eval_gate import (
     grade_reply,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
+from app.modules.orders.domain.order_flow import FIELDS, OrderFlowConfig
+from app.modules.orders.infrastructure.repository import current_flow, publish_flow
 from app.modules.shadow.domain.readiness import intent_priority_score
+from app.shared.domain.text import fold
 from app.shared.infrastructure.signals import record_signal
 
 log = logging.getLogger(__name__)
@@ -232,11 +237,33 @@ async def approve_candidate(
     if not checks_dict.get("passed"):
         raise CandidateBlocked(checks_dict)
 
+    next_status = "approved"
+    if row.kind == "brand_example":
+        sample = str(proposal.get("body") or proposal.get("answer") or "").strip()
+        prof = await current_profile(s, tenant_id)
+        base_profile = prof[1] if prof else BrandProfile()
+        existing = {fold(x) for x in base_profile.samples}
+        if sample and fold(sample) not in existing and len(base_profile.samples) < 10:
+            updated_profile = base_profile.model_copy(
+                update={"samples": [*base_profile.samples, sample]}
+            )
+            await save_profile(s, tenant_id, updated_profile, created_by=reviewer_id)
+        next_status = "published"
+    elif row.kind == "order_flow":
+        field_name = str(proposal.get("field") or row.topic or "").strip()
+        flow = await current_flow(s, tenant_id)
+        base_cfg = flow.config if flow else OrderFlowConfig()
+        if field_name in FIELDS and field_name not in base_cfg.required_fields:
+            new_required = [f for f in FIELDS if f in base_cfg.required_fields or f == field_name]
+            updated_cfg = base_cfg.model_copy(update={"required_fields": new_required})
+            await publish_flow(s, tenant_id, updated_cfg, reviewer_id)
+        next_status = "published"
+
     updated = (
         await s.execute(
             text(
                 "UPDATE knowledge_candidates "
-                "SET status = 'approved', proposal = CAST(:prop AS jsonb), "
+                "SET status = :st, proposal = CAST(:prop AS jsonb), "
                 "    checks = CAST(:chk AS jsonb), reviewed_by = :by, reviewed_at = now(), "
                 "    eval_report = NULL, updated_at = now() "
                 "WHERE tenant_id = :t AND id = :id "
@@ -245,6 +272,7 @@ async def approve_candidate(
                 "          created_at"
             ),
             {
+                "st": next_status,
                 "t": tenant_id,
                 "id": candidate_id,
                 "prop": json.dumps(proposal, ensure_ascii=False),

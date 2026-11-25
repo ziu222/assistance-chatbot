@@ -31,6 +31,7 @@ from app.modules.agent_runtime.llm.port import (
     Turn,
 )
 from app.modules.agent_runtime.llm.pricing import UnknownPrice
+from app.modules.authoring.infrastructure.repository import current_profile
 from app.modules.knowledge.domain.topics import suggest_topics
 from app.modules.knowledge.infrastructure.releases import active_snapshot
 from app.modules.learning.domain.candidates import (
@@ -43,8 +44,16 @@ from app.modules.learning.domain.candidates import (
     strip_pii,
     user_turn,
 )
+from app.modules.learning.domain.suggestions import (
+    BrandUseItem,
+    OrderSignalItem,
+    pick_brand_examples,
+    suggest_order_flow_fields,
+)
 from app.modules.learning.infrastructure.checks import verify_candidate
 from app.modules.learning.infrastructure.review import process_approved_candidates
+from app.modules.orders.domain.order_flow import OrderFlowConfig
+from app.modules.orders.infrastructure.repository import current_flow
 
 log = logging.getLogger(__name__)
 DEADLINE_S = 60
@@ -241,6 +250,169 @@ async def build_candidates_once(
     return created
 
 
+_AS_IS_USES = text(
+    """
+    SELECT u.draft_id, u.tenant_id, u.conversation_id, u.message_id, r.intents,
+           m.content AS staff_text
+    FROM draft_uses u
+    JOIN agent_drafts d ON d.tenant_id = u.tenant_id AND d.id = u.draft_id
+    JOIN agent_runs r ON r.tenant_id = d.tenant_id AND r.id = d.run_id
+    JOIN messages m
+      ON m.tenant_id = u.tenant_id AND m.id = u.message_id AND m.sender_type = 'human'
+    WHERE u.action = 'as_is'
+      AND u.created_at > now() - make_interval(days => :days)
+      AND m.content IS NOT NULL AND m.content <> ''
+    ORDER BY u.created_at ASC
+    """
+)
+
+_ORDER_CONFIRMED_SIGNALS = text(
+    """
+    SELECT tenant_id, conversation_id, payload
+    FROM learning_signals
+    WHERE kind = 'order_confirmed'
+      AND created_at > now() - make_interval(days => :days)
+    ORDER BY created_at ASC
+    """
+)
+
+
+async def build_brand_examples_once(session_factory: async_sessionmaker[AsyncSession]) -> int:
+    """Đề xuất câu mẫu giọng văn (`brand_example`) từ các nháp được dùng nguyên văn nhiều lần."""
+    async with session_factory() as s:
+        rows = (await s.execute(_AS_IS_USES, {"days": LOOKBACK_DAYS})).all()
+
+    by_tenant: dict[UUID, list[BrandUseItem]] = defaultdict(list)
+    for r in rows:
+        intent = r.intents[0] if r.intents else "other"
+        by_tenant[r.tenant_id].append(
+            BrandUseItem(
+                draft_id=str(r.draft_id),
+                conversation_id=str(r.conversation_id),
+                message_id=str(r.message_id) if r.message_id else None,
+                intent=intent,
+                staff_text=r.staff_text,
+            )
+        )
+
+    created = 0
+    for tenant_id, items in by_tenant.items():
+        async with session_factory() as s, s.begin():
+            prof = await current_profile(s, tenant_id)
+            existing_samples = prof[1].samples if prof else []
+            specs = pick_brand_examples(items, existing_samples=existing_samples)
+            for spec in specs:
+                fp = fingerprint("brand_example", spec.intent, "brand", spec.sample)
+                if await _fingerprint_blocked(s, tenant_id, fp):
+                    continue
+                conv_ids = [UUID(e["conversation_id"]) for e in spec.evidence]
+                checks = await verify_candidate(
+                    s,
+                    tenant_id,
+                    conv_ids,
+                    proposal_text=spec.sample,
+                    staff_texts=[spec.sample],
+                )
+                proposal = {
+                    "title": f"Câu mẫu giọng văn ({spec.intent})",
+                    "body": spec.sample,
+                }
+                await s.execute(
+                    text(
+                        "INSERT INTO knowledge_candidates "
+                        "(id, tenant_id, kind, intent, topic, fingerprint, proposal, replaces, "
+                        " evidence, checks, status) "
+                        "VALUES (:id, :t, 'brand_example', :intent, 'brand', :fp, "
+                        " CAST(:prop AS jsonb), NULL, CAST(:ev AS jsonb), "
+                        " CAST(:chk AS jsonb), 'pending')"
+                    ),
+                    {
+                        "id": uuid4(),
+                        "t": tenant_id,
+                        "intent": spec.intent,
+                        "fp": fp,
+                        "prop": json.dumps(proposal, ensure_ascii=False),
+                        "ev": json.dumps(list(spec.evidence)),
+                        "chk": json.dumps(checks.as_dict(), ensure_ascii=False),
+                    },
+                )
+                created += 1
+    return created
+
+
+async def build_order_flow_candidates_once(
+    session_factory: async_sessionmaker[AsyncSession],
+) -> int:
+    """Đề xuất thêm trường vào quy trình đặt hàng từ tín hiệu `order_confirmed` (03 O6, 05 L6)."""
+    async with session_factory() as s:
+        rows = (await s.execute(_ORDER_CONFIRMED_SIGNALS, {"days": LOOKBACK_DAYS})).all()
+
+    by_tenant: dict[UUID, list[OrderSignalItem]] = defaultdict(list)
+    for r in rows:
+        payload = r.payload or {}
+        edited = tuple(str(x) for x in (payload.get("staff_edited") or ()))
+        if not edited:
+            continue
+        by_tenant[r.tenant_id].append(
+            OrderSignalItem(
+                conversation_id=str(r.conversation_id) if r.conversation_id else "",
+                order_request_id=str(payload.get("order_request_id") or ""),
+                staff_edited=edited,
+            )
+        )
+
+    created = 0
+    for tenant_id, signals in by_tenant.items():
+        async with session_factory() as s, s.begin():
+            flow = await current_flow(s, tenant_id)
+            current_required = (
+                list(flow.config.required_fields)
+                if flow
+                else list(OrderFlowConfig().required_fields)
+            )
+            specs = suggest_order_flow_fields(signals, current_required=current_required)
+            for spec in specs:
+                fp = fingerprint("order_flow", "order_intent", spec.field, spec.field)
+                if await _fingerprint_blocked(s, tenant_id, fp):
+                    continue
+                proposal = {
+                    "field": spec.field,
+                    "label": spec.label,
+                    "title": f"Thêm trường '{spec.label}' vào quy trình đặt hàng",
+                    "body": (
+                        f"Nhân viên đã điền/sửa thêm trường '{spec.label}' {spec.count} lần "
+                        "khi xác nhận đơn trong 14 ngày qua."
+                    ),
+                }
+                checks = {
+                    "passed": True,
+                    "ungrounded_facts": {},
+                    "pii": [],
+                    "customer_overlap": False,
+                }
+                await s.execute(
+                    text(
+                        "INSERT INTO knowledge_candidates "
+                        "(id, tenant_id, kind, intent, topic, fingerprint, proposal, replaces, "
+                        " evidence, checks, status) "
+                        "VALUES (:id, :t, 'order_flow', 'order_intent', :topic, :fp, "
+                        " CAST(:prop AS jsonb), NULL, CAST(:ev AS jsonb), "
+                        " CAST(:chk AS jsonb), 'pending')"
+                    ),
+                    {
+                        "id": uuid4(),
+                        "t": tenant_id,
+                        "topic": spec.field,
+                        "fp": fp,
+                        "prop": json.dumps(proposal, ensure_ascii=False),
+                        "ev": json.dumps(list(spec.evidence)),
+                        "chk": json.dumps(checks),
+                    },
+                )
+                created += 1
+    return created
+
+
 class LearningWorker:
     """Việc định kỳ (mỗi giờ) gom bản ghi sửa thành ứng viên tri thức (thiết kế 05 §6.2)."""
 
@@ -269,6 +441,8 @@ class LearningWorker:
                 created = await build_candidates_once(
                     self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
                 )
+                created += await build_brand_examples_once(self._factory)
+                created += await build_order_flow_candidates_once(self._factory)
                 await process_approved_candidates(
                     self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
                 )
