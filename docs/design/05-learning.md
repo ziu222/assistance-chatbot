@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1–L5 đã implement** (L1: chế độ Learning, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, `ContextBuilder` snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker`; L4: màn hình "Bot muốn học", `eval_cases` + cổng eval; L5: S5 đo theo mức sửa cho cặp `shown`, tách nguồn mù/đã thấy, ưu tiên ứng viên theo ý định); L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L6 đã implement** (hoàn tất Bước 4 — Learning: L1 chế độ Learning & `draft_uses`; L2 `knowledge_releases` & `ContextBuilder` snapshot; L3 `knowledge_candidates` & `LearningWorker`; L4 màn hình "Bot muốn học" & cổng eval `eval_cases`; L5/S5 tách nguồn mù/đã thấy & ưu tiên ứng viên; L6 ứng viên `brand_example` & `order_flow`). Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -244,6 +244,13 @@ Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần 
 | L4 | Màn hình "Bot muốn học", duyệt/sửa/bỏ, ca hồi quy + cổng eval + phát hành | L3 |
 | L5 | S5: đo theo mức sửa cho cặp đã thấy, tách nguồn trong tổng hợp; ưu tiên ứng viên theo ý định | L1, bước 3 S4 |
 | L6 | Ứng viên `brand_example` và `order_flow` (thiết kế 03 O6) | L4 |
+
+Đã implement (L6):
+
+- Domain thuần `learning/domain/suggestions.py`: `pick_brand_examples` (câu `as_is` lặp lại ≥ 3 lần, sạch PII, chưa có trong `BrandProfile.samples`) và `suggest_order_flow_fields` (trường trong `order_confirmed.staff_edited` lặp lại ≥ 3 lần chưa có trong `OrderFlowConfig.required_fields`).
+- `learning/infrastructure/candidates.py`: `build_brand_examples_once`, `build_order_flow_candidates_once` gắn vào `LearningWorker.process_once()` (xác định bằng code, không tốn LLM).
+- `learning/infrastructure/review.py`: khi chủ shop duyệt `brand_example` ⇒ lưu phiên bản mới của `brand_profiles`; khi duyệt `order_flow` ⇒ phát hành phiên bản mới của `order_flow_releases` (`publish_flow`), chuyển ứng viên sang `published`.
+- `LearningPage.tsx`: hỗ trợ hiển thị & duyệt/sửa/bỏ `brand_example` và `order_flow`.
 
 ## 11. Rủi ro và câu hỏi mở
 
