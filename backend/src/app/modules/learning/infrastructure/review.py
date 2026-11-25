@@ -43,6 +43,7 @@ from app.modules.learning.domain.eval_gate import (
     grade_reply,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
+from app.modules.shadow.domain.readiness import intent_priority_score
 from app.shared.infrastructure.signals import record_signal
 
 log = logging.getLogger(__name__)
@@ -104,6 +105,41 @@ def _row_json(row, current_entry: dict | None = None) -> dict:
     }
 
 
+async def _intent_priorities(s: AsyncSession, tenant_id: UUID) -> dict[str, float]:
+    """Tính điểm ưu tiên theo ý định từ tỉ lệ sai/bỏ 14 ngày gần nhất (thiết kế 05 §7)."""
+    rows = (
+        await s.execute(
+            text(
+                "SELECT r.intents[1] AS intent, "
+                "  count(*) AS total, "
+                "  count(*) FILTER (WHERE u.action = 'discarded') AS discarded, "
+                "  count(*) FILTER ("
+                "    WHERE u.action = 'edited' AND ("
+                "      jsonb_array_length(coalesce(u.diff_features->'amounts_added','[]')) > 0 "
+                "      OR jsonb_array_length("
+                "        coalesce(u.diff_features->'amounts_removed','[]')) > 0"
+                "    )"
+                "  ) AS wrong "
+                "FROM draft_uses u "
+                "JOIN agent_drafts d ON d.tenant_id = u.tenant_id AND d.id = u.draft_id "
+                "JOIN agent_runs r ON r.tenant_id = d.tenant_id AND r.id = d.run_id "
+                "WHERE u.tenant_id = :t AND u.created_at > now() - interval '14 days' "
+                "  AND r.intents IS NOT NULL AND array_length(r.intents, 1) >= 1 "
+                "GROUP BY 1"
+            ),
+            {"t": tenant_id},
+        )
+    ).all()
+    return {
+        r.intent: intent_priority_score(
+            r.wrong / r.total if r.total else 0.0,
+            r.discarded / r.total if r.total else 0.0,
+        )
+        for r in rows
+        if r.intent
+    }
+
+
 async def list_candidates(
     s: AsyncSession, tenant_id: UUID, *, status: str | None = None, limit: int = 50
 ) -> list[dict]:
@@ -123,10 +159,14 @@ async def list_candidates(
             params,
         )
     ).all()
+    priorities = await _intent_priorities(s, tenant_id)
     items: list[dict] = []
     for r in rows:
         cur = await _current_entry(s, tenant_id, r.kind, r.replaces)
-        items.append(_row_json(r, cur))
+        items.append(_row_json(r, cur) | {"priority_score": priorities.get(r.intent, 0.0)})
+    if status in (None, "pending", "eval_failed"):
+        items.sort(key=lambda x: (-x["priority_score"], x["created_at"]), reverse=False)
+        items.sort(key=lambda x: x["priority_score"], reverse=True)
     return items
 
 

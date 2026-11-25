@@ -48,7 +48,8 @@ _NEXT = text(
     FROM shadow_comparisons c
     JOIN agent_runs r ON r.tenant_id = c.tenant_id AND r.id = c.run_id
     JOIN agent_drafts d ON d.tenant_id = c.tenant_id AND d.id = c.draft_id
-    WHERE c.status = 'paired' AND c.code_verdict IS NULL AND c.judged_at IS NULL
+    WHERE c.status = 'paired' AND c.draft_exposure = 'blind'
+      AND c.code_verdict IS NULL AND c.judged_at IS NULL
       AND c.judge_skipped IS NULL AND c.judge_attempts < :max
     ORDER BY c.created_at
     LIMIT 1

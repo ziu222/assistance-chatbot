@@ -70,7 +70,10 @@ async def approve(
             )
     except CandidateBlocked as exc:
         raise ApiError(
-            422, "candidate_blocked", "Ứng viên chưa đạt kiểm tra sự thật/PII/chữ khách", exc.checks
+            422,
+            "candidate_blocked",
+            "Ứng viên chưa đạt kiểm tra sự thật/PII/chữ khách",
+            details=exc.checks,
         ) from exc
     if item is None:
         raise ApiError(404, "not_found", "Candidate not found or already reviewed")
