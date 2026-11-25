@@ -86,7 +86,7 @@ async def test_autopilot_enable_disable_pause_and_permissions(new_client, sessio
                 intent="faq",
                 config=cfg,
                 verdict="incomplete",
-                sendable="needs_rewrite",
+                sendable="rewrite",
                 label="rewrite",
                 when=now,
             )
