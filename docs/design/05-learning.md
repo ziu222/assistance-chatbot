@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1–L4 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker`; L4: màn hình "Bot muốn học", duyệt/sửa/bỏ, `eval_cases` + cổng eval trước khi phát hành); L5–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L5 đã implement** (L1: chế độ Learning, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, `ContextBuilder` snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker`; L4: màn hình "Bot muốn học", `eval_cases` + cổng eval; L5: S5 đo theo mức sửa cho cặp `shown`, tách nguồn mù/đã thấy, ưu tiên ứng viên theo ý định); L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -184,6 +184,14 @@ Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần 
   - "sai" = `edited` có đổi số tiền hay sản phẩm.
 - Bảng tổng hợp theo ý định tách hai nguồn: **mù** (Shadow) và **đã thấy** (Learning). Mức sẵn sàng cho bước 5 có thể dùng một trong hai, nhưng ghi rõ dùng nguồn nào.
 - Ý định có tỉ lệ sai hoặc tỉ lệ bỏ cao được ưu tiên trong hàng ứng viên.
+
+Đã implement (L5 / S5):
+
+- Domain thuần `shadow/domain/readiness.py`: `classify_shown_use` ("gửi được" = `as_is` hoặc sửa nhẹ `< 0,2` không đổi số tiền; "sai" = sửa đổi số tiền hoặc mâu thuẫn số tiền), `intent_priority_score`, và `readiness(..., source="shown")` không đòi hỏi hiệu chỉnh giám khảo.
+- `shadow/infrastructure/judging.py`: `JudgeWorker` chỉ chấm cặp `draft_exposure = 'blind'`, không gọi giám khảo cho cặp đã hiện.
+- `shadow/infrastructure/summary.py`: tách hai nguồn `intents` (`source = "blind"`) và `learning_intents` (`source = "shown"`, kèm `as_is_rate`, `minor_edit_rate`, `discarded_rate`).
+- `learning/infrastructure/review.py`: `list_candidates` sắp xếp ưu tiên theo ý định có tỉ lệ sai/bỏ cao (`priority_score`).
+- Admin UI (`ShadowPage.tsx`): hiển thị rõ hai bảng **Nguồn mù — Shadow** và **Nguồn đã thấy — Learning**.
 
 ## 8. Dữ liệu và API (dự kiến)
 
