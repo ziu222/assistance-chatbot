@@ -63,12 +63,21 @@ async def test_staff_amount_corrections_above_threshold_auto_demote(session_fact
         req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
         await stage.handle(req)
         async with session_factory() as s, s.begin():
+            seq = (
+                await s.execute(
+                    text(
+                        "UPDATE conversations SET last_sequence = last_sequence + 1 "
+                        "WHERE id = :c RETURNING last_sequence"
+                    ),
+                    {"c": req.conversation_id},
+                )
+            ).scalar_one()
             await s.execute(
                 text(
                     "INSERT INTO messages (id, tenant_id, channel_connection_id, conversation_id, "
                     "external_message_id, direction, sender_type, content, status, sequence, "
                     "occurred_at) VALUES (:id, :t, :conn, :c, :ext, 'outbound', 'human', "
-                    "'Xin lỗi chị, phí đổi là 30.000đ nhé.', 'sent', 3, now())"
+                    "'Xin lỗi chị, phí đổi là 30.000đ nhé.', 'sent', :seq, now())"
                 ),
                 {
                     "id": uuid4(),
@@ -76,13 +85,14 @@ async def test_staff_amount_corrections_above_threshold_auto_demote(session_fact
                     "conn": w.conn,
                     "c": req.conversation_id,
                     "ext": str(uuid4()),
+                    "seq": seq,
                 },
             )
             await record_staff_correction_if_applicable(
                 s,
                 w.ctx.tenant_id,
                 req.conversation_id,
-                staff_sequence=3,
+                staff_sequence=seq,
                 staff_text="Xin lỗi chị, phí đổi là 30.000đ nhé.",
             )
 

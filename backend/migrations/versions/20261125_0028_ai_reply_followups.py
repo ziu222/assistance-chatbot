@@ -13,6 +13,8 @@ branch_labels = None
 depends_on = None
 
 UP = [
+    # FK (tenant_id, message_id) cần khóa unique trên đúng cặp cột này của messages.
+    "ALTER TABLE messages ADD CONSTRAINT uq_messages_tenant_id UNIQUE (tenant_id, id)",
     """
     CREATE TABLE ai_reply_followups (
       id         uuid PRIMARY KEY,
@@ -34,6 +36,7 @@ UP = [
 
 DOWN = [
     "DROP TABLE IF EXISTS ai_reply_followups",
+    "ALTER TABLE messages DROP CONSTRAINT IF EXISTS uq_messages_tenant_id",
 ]
 
 
