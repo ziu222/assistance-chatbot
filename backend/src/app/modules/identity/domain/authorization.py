@@ -12,6 +12,8 @@ _ALLOWED_ROLES = {
     "knowledge.approve": {"owner", "admin"},  # duyệt/bỏ ứng viên tri thức (thiết kế 05 §6.3)
     # Nhãn quyết định việc đề xuất bật tự trả lời (thiết kế 04 §6.3): chỉ chủ shop/admin.
     "shadow.label": {"owner", "admin"},
+    # Bật/tắt tự trả lời theo ý định và nút dừng khẩn cấp (thiết kế 06 §4.1): chỉ chủ shop.
+    "autopilot.manage": {"owner"},
 }
 
 

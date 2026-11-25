@@ -75,6 +75,7 @@ CORE_TABLES = {
     "agent_runs",
     "agent_run_steps",
     "agent_drafts",
+    "autopilot_intents",
 }
 
 
