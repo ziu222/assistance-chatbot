@@ -44,3 +44,4 @@ class MessageModel(Base):
     occurred_at: Mapped[datetime]
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     trace_id: Mapped[str | None]
+    draft_id: Mapped[uuid.UUID | None]
