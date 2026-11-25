@@ -43,6 +43,8 @@ def test_default_input_is_blocked_fail_closed():
 def test_passing_input_allows_send():
     assert send_decision(_passing()) is None
     assert send_decision(_passing(intents=("greeting", "faq"))) is None
+    assert send_decision(_passing(provider="messenger", channel_allowed=True)) is None
+    assert send_decision(_passing(provider="zalo_oa", channel_allowed=True)) is None
 
 
 @pytest.mark.parametrize(

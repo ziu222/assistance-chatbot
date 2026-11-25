@@ -7,8 +7,8 @@ Không có cờ nào bỏ qua cổng.
 from dataclasses import dataclass, field
 
 DEFAULT_MAX_BOT_STREAK = 3
-# Kênh cho phép bot tự gửi ở A1–A3; Messenger/Zalo bổ sung ở A6 qua adapter kênh.
-AI_SEND_PROVIDERS = frozenset({"webchat"})
+# Kênh hỗ trợ bot tự gửi (thiết kế 06 §5.4: webchat từ A3; Messenger 24h & Zalo OA ở A6).
+AI_SEND_PROVIDERS = frozenset({"webchat", "messenger", "zalo_oa"})
 # Các ý định không bao giờ được bật Autopilot (thiết kế 06 §2, §4.1).
 NEVER_AUTOPILOT_INTENTS = frozenset(
     {"other", "order_intent", "complaint", "human_request", "discount_request"}
