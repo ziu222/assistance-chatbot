@@ -18,6 +18,11 @@ from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
 from app.modules.outbound.ai_reply import send_ai_reply
 from app.modules.outbound.domain.gate import AiGateInput, send_decision
 from app.modules.outbound.infrastructure.autopilot import tenant_switches
+from app.modules.outbound.infrastructure.monitoring import (
+    check_bot_reply_amounts,
+    demote_on_config_change,
+    record_customer_reaction_if_applicable,
+)
 from app.shared.infrastructure.metrics import AUTOPILOT_BLOCKED, AUTOPILOT_SENT
 
 log = logging.getLogger(__name__)
@@ -97,7 +102,49 @@ class AutopilotStage:
 
     async def handle(self, req: RunRequest) -> None:
         await self._runner(req)
+        await self._record_reaction(req)
         await self.try_send(req)
+
+    async def _record_reaction(self, req: RunRequest) -> None:
+        """Ghi tín hiệu phản ứng xấu của khách nếu lượt mới ngay sau một tin bot (06 §6.1)."""
+        async with self._factory() as s, s.begin():
+            run = (
+                await s.execute(
+                    text(
+                        "SELECT intents FROM agent_runs "
+                        "WHERE tenant_id = :t AND conversation_id = :c AND to_sequence = :to "
+                        "ORDER BY started_at DESC LIMIT 1"
+                    ),
+                    {"t": req.tenant_id, "c": req.conversation_id, "to": req.to_sequence},
+                )
+            ).first()
+            if run is None:
+                return
+            cust_rows = (
+                await s.execute(
+                    text(
+                        "SELECT content FROM messages "
+                        "WHERE tenant_id = :t AND conversation_id = :c "
+                        "  AND sender_type = 'customer' "
+                        "  AND sequence BETWEEN :frm AND :to AND content IS NOT NULL "
+                        "ORDER BY sequence"
+                    ),
+                    {
+                        "t": req.tenant_id,
+                        "c": req.conversation_id,
+                        "frm": req.from_sequence,
+                        "to": req.to_sequence,
+                    },
+                )
+            ).all()
+            await record_customer_reaction_if_applicable(
+                s,
+                req.tenant_id,
+                req.conversation_id,
+                next_intents=tuple(run.intents or ()),
+                next_customer_texts=[r[0] for r in cust_rows],
+                run_from_sequence=req.from_sequence,
+            )
 
     async def try_send(self, req: RunRequest) -> str | None:
         """Trả `'sent'`, `'duplicate'`, lý do chặn, hoặc `None` nếu không có nháp Learning."""
@@ -187,6 +234,15 @@ class AutopilotStage:
                 )
                 primary = intents[0] if intents else "unknown"
                 AUTOPILOT_SENT.labels(intent=primary).inc()
+                if res.message_id is not None:
+                    await check_bot_reply_amounts(
+                        s,
+                        req.tenant_id,
+                        message_id=res.message_id,
+                        agent_id=draft.agent_id,
+                        intent=primary,
+                        content=draft.text,
+                    )
                 log.info(
                     "autopilot sent reply",
                     extra={
@@ -198,6 +254,10 @@ class AutopilotStage:
                 return "sent"
 
             reason = res.blocked_reason or "unknown"
+            if reason == "config_changed":
+                await demote_on_config_change(
+                    s, req.tenant_id, draft.agent_id, current_config_key=run_config_key
+                )
             await _append_gate_step(
                 s,
                 req.tenant_id,
