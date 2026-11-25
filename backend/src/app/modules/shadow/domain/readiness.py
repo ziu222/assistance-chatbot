@@ -5,10 +5,43 @@ prompt, tri thức) không nói gì về phiên bản khác, nên mỗi phiên b
 """
 
 from dataclasses import dataclass, field
+from typing import Literal
 
 MIN_SCORED = 30
 MAX_WRONG_RATE = 0.02
 MIN_SENDABLE_RATE = 0.85
+SHOWN_MINOR_EDIT_MAX = 0.2
+
+MeasurementSource = Literal["blind", "shown"]
+
+
+@dataclass(frozen=True)
+class ShownUseGrade:
+    sendable: bool
+    wrong: bool
+
+
+def classify_shown_use(
+    action: str,
+    edit_ratio: float,
+    diff_features: dict | None,
+    *,
+    amount_conflict: bool = False,
+) -> ShownUseGrade:
+    """Đánh giá một cặp `draft_exposure = 'shown'` theo mức sửa (thiết kế 05 §7, S5)."""
+    df = diff_features or {}
+    amount_changed = bool(df.get("amounts_added") or df.get("amounts_removed"))
+    wrong = amount_conflict or (action == "edited" and amount_changed)
+    sendable = not wrong and (
+        action == "as_is"
+        or (action == "edited" and edit_ratio < SHOWN_MINOR_EDIT_MAX and not amount_changed)
+    )
+    return ShownUseGrade(sendable=sendable, wrong=wrong)
+
+
+def intent_priority_score(wrong_rate: float | None, discard_rate: float | None) -> float:
+    """Điểm ưu tiên ứng viên theo ý định: tỉ lệ sai và tỉ lệ bỏ càng cao càng ưu tiên (05 §7)."""
+    return round(2.0 * (wrong_rate or 0.0) + (discard_rate or 0.0), 4)
 
 
 @dataclass(frozen=True)
@@ -36,7 +69,12 @@ def rate(part: int, whole: int) -> float | None:
     return part / whole if whole else None
 
 
-def readiness(s: IntentStats, *, judge_calibrated: bool) -> Readiness:
+def readiness(
+    s: IntentStats,
+    *,
+    judge_calibrated: bool,
+    source: MeasurementSource = "blind",
+) -> Readiness:
     reasons: list[str] = []
     if s.scored < MIN_SCORED:
         reasons.append(f"chưa đủ mẫu ({s.scored}/{MIN_SCORED} cặp được chấm)")
@@ -48,6 +86,6 @@ def readiness(s: IntentStats, *, judge_calibrated: bool) -> Readiness:
             reasons.append(f"tỉ lệ gửi được {sendable:.0%} (cần ≥ {MIN_SENDABLE_RATE:.0%})")
     if s.amount_conflicts_7d:
         reasons.append(f"{s.amount_conflicts_7d} lần báo giá mâu thuẫn trong 7 ngày")
-    if not judge_calibrated:
+    if source == "blind" and not judge_calibrated:
         reasons.append("giám khảo chưa được hiệu chỉnh với nhãn của chủ shop")
     return Readiness(not reasons, reasons)
