@@ -3,7 +3,7 @@ import { StrictMode, useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import { LoginForm } from "../features/authenticate-user/LoginForm";
 import { meKey, useMe } from "../features/authenticate-user/api";
-import { InboxPage } from "../pages/inbox/InboxPage";
+import { AppShell } from "./AppShell";
 import "./styles.css";
 
 const queryClient = new QueryClient({
@@ -22,7 +22,7 @@ function App() {
         Không kết nối được máy chủ.
       </p>
     );
-  return me.data ? <InboxPage me={me.data} onUnauthorized={onUnauthorized} /> : <LoginForm />;
+  return me.data ? <AppShell me={me.data} onUnauthorized={onUnauthorized} /> : <LoginForm />;
 }
 
 createRoot(document.getElementById("root")!).render(
