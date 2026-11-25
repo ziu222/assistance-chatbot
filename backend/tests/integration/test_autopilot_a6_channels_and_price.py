@@ -10,7 +10,7 @@ from sqlalchemy import text
 from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.outbound.ai_reply import send_ai_reply
-from app.modules.outbound.stage import AutopilotStage
+from app.modules.outbound.stage import AutopilotStage, _check_catalog_stale
 
 from .factories import make_conversation, make_customer, make_tenant
 from .test_agent_runtime import classify, draft_out, make_runner, request_for
@@ -264,7 +264,7 @@ async def test_price_quote_enables_when_ready_and_checks_catalog_freshness(
                 "INSERT INTO catalog_items "
                 "(id, tenant_id, source, external_id, sku, name, price_vnd, variants, "
                 " search_text, active, synced_at) "
-                "VALUES (:id, :t, 'csv', 'AK-01', 'AK-01', 'Áo khoác gió', 320000, '[]'::jsonb, "
+                "VALUES (:id, :t, 'sheets', 'AK-01', 'AK-01', 'Áo khoác gió', 320000, '[]'::jsonb, "
                 " 'ao khoac gio ak-01', true, now() - interval '30 hours')"
             ),
             {"id": product_id, "t": w.ctx.tenant_id},
@@ -313,3 +313,25 @@ async def test_price_quote_enables_when_ready_and_checks_catalog_freshness(
         )
     res_fresh = await stage_stale.try_send(req_stale)
     assert res_fresh == "sent"
+
+
+async def test_owner_uploaded_csv_catalog_never_goes_stale(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    product_id = uuid4()
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO catalog_items (id, tenant_id, source, external_id, sku, name, "
+                "price_vnd, search_text, synced_at) VALUES (:id, :t, 'csv', 'Q-1', 'Q-1', "
+                "'Quần jean', 420000, 'quan jean', now() - interval '30 days')"
+            ),
+            {"id": product_id, "t": w.ctx.tenant_id},
+        )
+        stale = await _check_catalog_stale(
+            s,
+            w.ctx.tenant_id,
+            reply_text="Quần jean giá 420.000đ ạ.",
+            sources=[{"type": "product", "id": str(product_id)}],
+            max_age_hours=24,
+        )
+    assert stale is False

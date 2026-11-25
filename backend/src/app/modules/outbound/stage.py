@@ -76,7 +76,7 @@ async def _check_catalog_stale(
     rows = (
         await s.execute(
             text(
-                "SELECT id, synced_at FROM catalog_items "
+                "SELECT id, source, synced_at FROM catalog_items "
                 "WHERE tenant_id = :t AND active AND id = ANY(:ids)"
             ),
             {"t": tenant_id, "ids": parsed_ids},
@@ -86,7 +86,9 @@ async def _check_catalog_stale(
         missing = True
     return is_catalog_stale(
         reply_text=reply_text,
-        cited_product_synced_at=[r.synced_at for r in rows],
+        # CSV do chủ shop tải lên là nguồn sự thật, không có gì để "lệch"; `synced_at` của nó chỉ
+        # là lúc tải. Chỉ nguồn đồng bộ từ ngoài (Sheets, sàn) mới cũ đi theo thời gian.
+        cited_product_synced_at=[r.synced_at for r in rows if r.source != "csv"],
         missing_products=missing,
         now=datetime.now(UTC),
         max_age_hours=max_age_hours,
