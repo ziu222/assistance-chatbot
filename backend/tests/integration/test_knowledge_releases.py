@@ -20,9 +20,7 @@ async def test_manual_edits_publish_releases_and_restore_switches_context(
     client, ctx, _, conn = await logged_in(new_client, session_factory, role="owner")
     async with session_factory() as s, s.begin():
         conv_id = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
-        await insert_message(
-            s, ctx, conv_id, conn, sequence=1, content="Phí ship bao nhiêu?"
-        )
+        await insert_message(s, ctx, conv_id, conn, sequence=1, content="Phí ship bao nhiêu?")
 
     r1 = await client.post(
         "/api/v1/knowledge/faqs",
