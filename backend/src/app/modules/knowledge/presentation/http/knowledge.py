@@ -12,8 +12,9 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
 from app.modules.knowledge.domain.catalog_csv import CatalogCsvError, parse_catalog_csv
+from app.modules.knowledge.domain.releases import render_knowledge
 from app.modules.knowledge.domain.topics import TOPICS, effective_topics
-from app.modules.knowledge.infrastructure import content
+from app.modules.knowledge.infrastructure import content, releases
 from app.modules.knowledge.infrastructure.catalog import (
     SyncResult,
     get_catalog_item,
@@ -112,6 +113,9 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
             entry = await content.create_entry(
                 s, kind, tenant_id, getattr(body, a), getattr(body, b), body.status, body.topics
             )
+            await releases.publish_from_tables(
+                s, tenant_id, reason="manual_edit", created_by=actor.user_id
+            )
         return JSONResponse(as_json(entry), status_code=201)
 
     @router.patch(path + "/{entry_id}", dependencies=[Csrf], name=f"update_{kind}")
@@ -131,6 +135,10 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
                 topics=body.topics,
                 set_topics="topics" in body.model_fields_set,
             )
+            if entry is not None:
+                await releases.publish_from_tables(
+                    s, tenant_id, reason="manual_edit", created_by=actor.user_id
+                )
         if entry is None:
             raise ApiError(404, "not_found", "Not found")
         return as_json(entry)
@@ -145,6 +153,10 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
             entry = await content.update_entry(
                 s, kind, tenant_id, entry_id, first=None, second=None, status="archived"
             )
+            if entry is not None:
+                await releases.publish_from_tables(
+                    s, tenant_id, reason="manual_edit", created_by=actor.user_id
+                )
         if entry is None:
             raise ApiError(404, "not_found", "Not found")
         return Response(status_code=204)
@@ -152,6 +164,42 @@ def _register(kind: content.Kind, path: str, names: tuple[str, str], create_mode
 
 _register("faq", "/knowledge/faqs", ("question", "answer"), FaqIn, FaqPatch)
 _register("doc", "/knowledge/docs", ("title", "body"), DocIn, DocPatch)
+
+
+# ---------- bản phát hành tri thức (thiết kế 05 L2) ----------
+
+
+def _release_json(r: releases.KnowledgeRelease) -> dict:
+    return {
+        "id": str(r.id),
+        "number": r.number,
+        "reason": r.reason,
+        "is_current": r.is_current,
+        "faq_count": len(r.snapshot.faqs),
+        "doc_count": len(r.snapshot.docs),
+        "knowledge_hash": render_knowledge(r.snapshot).hash,
+        "created_by": str(r.created_by) if r.created_by else None,
+        "eval_run_id": str(r.eval_run_id) if r.eval_run_id else None,
+        "created_at": r.created_at.isoformat(),
+    }
+
+
+@router.get("/knowledge/releases")
+async def list_knowledge_releases(request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "knowledge.read")
+    async with request.app.state.session_factory() as s:
+        items = await releases.list_releases(s, tenant_id)
+    return {"items": [_release_json(r) for r in items]}
+
+
+@router.post("/knowledge/releases/{number}/restore", dependencies=[Csrf])
+async def restore_knowledge_release(number: int, request: Request, actor: CurrentStaff) -> dict:
+    tenant_id = _require(actor, "knowledge.manage")
+    async with request.app.state.session_factory() as s, s.begin():
+        restored = await releases.restore_release(s, tenant_id, number, restored_by=actor.user_id)
+    if restored is None:
+        raise ApiError(404, "not_found", "Release not found")
+    return _release_json(restored)
 
 
 # ---------- độ phủ + chỗ thiếu (§13.3) ----------
