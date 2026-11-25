@@ -19,6 +19,7 @@ from app.modules.outbound.domain.autopilot import (
     can_enable_intent,
     extract_config_key,
 )
+from app.modules.outbound.domain.channels import DEFAULT_CATALOG_MAX_AGE_HOURS
 from app.modules.outbound.domain.gate import DEFAULT_MAX_BOT_STREAK
 from app.modules.shadow.infrastructure.summary import summary as shadow_summary
 from app.shared.infrastructure.signals import record_signal
@@ -75,6 +76,17 @@ async def tenant_switches(s: AsyncSession, tenant_id: UUID) -> tuple[bool, bool,
         bool(pol.auto_send) if pol is not None else False,
         int(pol.max_bot_streak) if pol is not None else DEFAULT_MAX_BOT_STREAK,
     )
+
+
+async def catalog_max_age_hours(s: AsyncSession, tenant_id: UUID) -> int:
+    """Ngưỡng độ mới catalog (giờ) của tenant để kiểm `catalog_stale` cho `price_quote`."""
+    val = (
+        await s.execute(
+            text("SELECT catalog_max_age_hours FROM tenant_policy WHERE tenant_id = :t"),
+            {"t": tenant_id},
+        )
+    ).scalar_one_or_none()
+    return int(val) if val is not None else DEFAULT_CATALOG_MAX_AGE_HOURS
 
 
 def _snapshot_map(rows: list[dict]) -> dict[str, ReadinessSnapshot]:
