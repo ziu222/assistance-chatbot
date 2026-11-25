@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1–L2 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot); L3–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L3 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker` lọc PII + kiểm tra sự thật & chữ khách + trần chi phí); L4–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -139,6 +139,16 @@ Một việc định kỳ (mỗi giờ) gom bản ghi sửa của 14 ngày theo 
 5. Ghi `knowledge_candidates` gồm loại, nội dung, bằng chứng (id các bản ghi sửa), kết quả kiểm tra, trạng thái `pending`.
 
 Trần chi phí riêng `learning` theo tenant mỗi ngày, như trợ lý viết và giám khảo.
+
+Đã implement (L3):
+
+- Migration 0023: tạo bảng `knowledge_candidates` (loại, ý định, chủ đề, `fingerprint` chống đề xuất lặp trong 30 ngày, `proposal jsonb`, `replaces`, `evidence jsonb`, `checks jsonb`, `status`).
+- Route `learning` trong `routes.toml` (model rẻ, tách riêng khỏi soạn nháp và giám khảo) và trần chi phí riêng `LEARNING` (`learning_daily_cap_micro`) trong `usage.py` / `settings.py`.
+- Domain thuần `learning/domain/candidates.py`: `is_significant`, `has_enough_evidence` (≥ 2 lần sửa cùng hướng), `detect_pii` / `strip_pii`, `has_customer_overlap` (> 8 từ), `check_candidate` (số tiền/thời hạn/giờ/link có trong bằng chứng nhân viên), `fingerprint`, `user_turn` (chỉ chữ nhân viên + FAQ).
+- Infrastructure tách biệt hai vai trò để khóa cứng E17:
+  - `learning/infrastructure/candidates.py` (`build_candidates_once`, `LearningWorker` kèm Postgres advisory lock): chỉ truy vấn tin `human`, không bao giờ đọc tin `customer` (được khóa bởi `test_architecture.py`).
+  - `learning/infrastructure/checks.py`: hậu kiểm bằng code sau khi LLM sinh xong (chỉ đọc tin `customer` để kiểm tra trùng chuỗi > 8 từ, không gọi LLM).
+- Gắn vai trò `learning` vào `entrypoints/agent_worker.py` (`--roles`).
 
 ### 6.3. Chủ shop duyệt
 
