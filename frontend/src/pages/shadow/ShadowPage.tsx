@@ -19,8 +19,8 @@ export function ShadowPage() {
           {c.calibrated ? " · giám khảo đã hiệu chỉnh" : " · chưa đủ để tin điểm giám khảo"}
         </p>
       )}
-      <h2>Theo ý định (14 ngày, phiên bản cấu hình hiện tại)</h2>
-      {sum.data && sum.data.intents.length === 0 && <p className="muted">Chưa có cặp nào.</p>}
+      <h2>Nguồn mù — Shadow (14 ngày, phiên bản cấu hình hiện tại)</h2>
+      {sum.data && sum.data.intents.length === 0 && <p className="muted">Chưa có cặp mù nào.</p>}
       {sum.data && sum.data.intents.length > 0 && (
         <table>
           <thead>
@@ -31,7 +31,7 @@ export function ShadowPage() {
               <th>Sai</th>
               <th>Chưa ai trả lời</th>
               <th>Bot nhanh hơn</th>
-              <th>Tự trả lời</th>
+              <th>Tự trả lời (nguồn mù)</th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +46,44 @@ export function ShadowPage() {
                 <td>{i.unanswered}</td>
                 <td>{i.median_bot_lead_s === null ? "—" : `${Math.round(i.median_bot_lead_s / 60)} phút`}</td>
                 <td title={i.not_ready_because.join("; ")}>{i.ready ? "Đủ điều kiện đề xuất" : i.not_ready_because[0]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+      <h2>Nguồn đã thấy — Learning (đo theo mức sửa, 14 ngày)</h2>
+      {sum.data && (sum.data.learning_intents ?? []).length === 0 && (
+        <p className="muted">Chưa có nháp đã hiện cho nhân viên.</p>
+      )}
+      {sum.data && (sum.data.learning_intents ?? []).length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Ý định</th>
+              <th>Đã chọn</th>
+              <th>Dùng nguyên</th>
+              <th>Sửa nhẹ</th>
+              <th>Bỏ</th>
+              <th>Gửi được</th>
+              <th>Sai</th>
+              <th>Tự trả lời (nguồn Learning)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(sum.data.learning_intents ?? []).map((i) => (
+              <tr key={i.intent ?? "-"}>
+                <td>{i.intent ?? "—"}</td>
+                <td>
+                  {i.scored}/{i.total}
+                </td>
+                <td>{pct(i.as_is_rate)}</td>
+                <td>{pct(i.minor_edit_rate)}</td>
+                <td>{pct(i.discarded_rate)}</td>
+                <td>{pct(i.sendable_rate)}</td>
+                <td>{pct(i.wrong_rate)}</td>
+                <td title={i.not_ready_because.join("; ")}>
+                  {i.ready ? "Đủ điều kiện đề xuất" : i.not_ready_because[0]}
+                </td>
               </tr>
             ))}
           </tbody>

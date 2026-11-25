@@ -23,6 +23,7 @@ export type Calibration = {
 
 export type IntentSummary = {
   intent: string | null;
+  source?: "blind" | "shown";
   models: string[];
   total: number;
   unanswered: number;
@@ -36,11 +37,23 @@ export type IntentSummary = {
   not_ready_because: string[];
 };
 
+export type LearningIntentSummary = IntentSummary & {
+  source: "shown";
+  as_is_rate: number | null;
+  minor_edit_rate: number | null;
+  discarded_rate: number | null;
+};
+
 export const useShadowSummary = (days = 14) =>
   useQuery({
     queryKey: ["shadow", "summary", days],
     queryFn: () =>
-      apiFetch<{ days: number; judge_calibrated: boolean; intents: IntentSummary[] }>(`/api/v1/shadow/summary?days=${days}`),
+      apiFetch<{
+        days: number;
+        judge_calibrated: boolean;
+        intents: IntentSummary[];
+        learning_intents?: LearningIntentSummary[];
+      }>(`/api/v1/shadow/summary?days=${days}`),
   });
 
 export const LABELS: Record<Label, string> = { sendable: "Gửi được", rewrite: "Phải sửa", wrong: "Sai" };
