@@ -8,7 +8,13 @@ from collections.abc import Sequence
 from dataclasses import asdict, dataclass
 from html import escape
 
-from app.modules.knowledge.domain.releases import KnowledgeSnapshot, SnapshotItem, build_snapshot
+from app.modules.knowledge.domain.releases import (
+    KnowledgeSnapshot,
+    SnapshotItem,
+    build_snapshot,
+    entry_hash,
+    find_item,
+)
 from app.shared.domain.text import extract_amounts, fold
 
 EVAL_SYSTEM = """Bạn là nhân viên CSKH trả lời câu hỏi của khách CHỈ dựa trên khối `<knowledge>`.
@@ -27,6 +33,8 @@ class EvalCaseSpec:
     forbidden_amounts: tuple[int, ...] = ()
     forbidden_terms: tuple[str, ...] = ()
     is_new: bool = False
+    entry_id: str | None = None  # mục tri thức ca này kiểm tra (None: ca thủ công / ca cũ)
+    entry_hash: str | None = None  # vân tay nội dung mục đó lúc tạo ca
 
     def expected_dict(self) -> dict:
         return {
@@ -37,8 +45,17 @@ class EvalCaseSpec:
         }
 
     @classmethod
-    def from_row(cls, case_id: str, question: str, expected: dict) -> "EvalCaseSpec":
+    def from_row(
+        cls,
+        case_id: str,
+        question: str,
+        expected: dict,
+        entry_id: str | None = None,
+        entry_hash: str | None = None,
+    ) -> "EvalCaseSpec":
         return cls(
+            entry_id=entry_id,
+            entry_hash=entry_hash,
             case_id=case_id,
             question=question,
             must_include_amounts=tuple(int(x) for x in expected.get("must_include_amounts", ())),
@@ -132,6 +149,19 @@ def evaluate_gate(outcomes: Sequence[CaseOutcome]) -> GateDecision:
     return GateDecision(
         passed=len(failed) == 0 and len(outcomes) > 0, total=len(outcomes), failed_cases=failed
     )
+
+
+def still_valid(spec: EvalCaseSpec, snapshot: KnowledgeSnapshot) -> bool:
+    """Ca hồi quy còn hiệu lực trên `snapshot` không.
+
+    Ca gắn với một mục chỉ có nghĩa khi mục đó còn đúng nội dung lúc tạo ca. Bài học sau đổi giá
+    lần nữa, hay chủ shop sửa/lưu trữ mục đó ⇒ ca cũ hết hiệu lực (nếu không, ca đòi giá cũ sẽ
+    chặn mãi mọi lần cập nhật giá). Ca không gắn mục (thủ công) hoặc thiếu vân tay thì luôn chạy.
+    """
+    if spec.entry_id is None or spec.entry_hash is None:
+        return True
+    item = find_item(snapshot, spec.entry_id)
+    return item is not None and entry_hash(item) == spec.entry_hash
 
 
 def apply_candidate_to_snapshot(

@@ -8,8 +8,9 @@ from sqlalchemy import text
 
 from app.modules.agent_runtime.context import build_context
 from app.modules.agent_runtime.llm.fake import FakeLLM
-from app.modules.agent_runtime.llm.port import LLMResult, Target, Usage
-from app.modules.knowledge.infrastructure.releases import publish_from_tables
+from app.modules.agent_runtime.llm.port import LLMResult, ProviderUnavailable, Target, Usage
+from app.modules.knowledge.domain.releases import render_knowledge
+from app.modules.knowledge.infrastructure.releases import active_snapshot, publish_from_tables
 from app.modules.learning.infrastructure.review import run_eval_gate_for_candidate
 
 from .factories import insert_message, make_conversation, make_customer
@@ -145,3 +146,136 @@ async def test_reject_candidate_records_reason_and_signal(new_client, session_fa
     assert r.status_code == 200
     assert r.json()["status"] == "rejected"
     assert r.json()["reject_reason"] == "Giá khuyến mãi tạm thời"
+
+
+async def _approved(session_factory, tenant_id, **kw):
+    cid = await _seed_candidate(session_factory, tenant_id, **kw)
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE knowledge_candidates SET status = 'approved', reviewed_at = now() "
+                "WHERE id = :id"
+            ),
+            {"id": cid},
+        )
+    return cid
+
+
+async def _faq_tenant(new_client, session_factory, answer="Áo khoác gió giá 350.000đ"):
+    _, ctx, _, conn = await logged_in(new_client, session_factory, role="owner")
+    faq_id = uuid4()
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO faq_entries (id, tenant_id, question, answer, status) "
+                "VALUES (:id, :t, 'Giá áo khoác gió?', :a, 'approved')"
+            ),
+            {"id": faq_id, "t": ctx.tenant_id, "a": answer},
+        )
+        await publish_from_tables(s, ctx.tenant_id, reason="manual_edit", created_by=None)
+    return ctx, faq_id
+
+
+async def _gate(session_factory, llm, tenant_id, cid):
+    return await run_eval_gate_for_candidate(
+        session_factory, llm, tenant_id=tenant_id, candidate_id=cid, daily_cap_micro=500_000
+    )
+
+
+async def _status(session_factory, cid):
+    async with session_factory() as s:
+        return (
+            await s.execute(
+                text("SELECT status, eval_attempts FROM knowledge_candidates WHERE id = :id"),
+                {"id": cid},
+            )
+        ).one()
+
+
+async def test_second_price_update_retires_previous_lesson_case(new_client, session_factory):
+    ctx, faq_id = await _faq_tenant(new_client, session_factory)
+    first = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
+    ok = FakeLLM([_eval_reply("Dạ áo khoác gió hiện giảm còn 320.000đ ạ.")])
+    assert (await _gate(session_factory, ok, ctx.tenant_id, first))["passed"] is True
+
+    second = await _approved(
+        session_factory, ctx.tenant_id, replaces=faq_id, answer="Áo khoác gió còn 300.000đ."
+    )
+    llm = FakeLLM([_eval_reply("Dạ áo khoác gió còn 300.000đ ạ.")])
+    report = await _gate(session_factory, llm, ctx.tenant_id, second)
+
+    # Ca cũ đòi 320.000đ không chạy nữa (chỉ 1 lời gọi) và bị tắt khi phát hành.
+    assert report is not None and report["passed"] is True
+    assert len(llm.requests) == 1
+    async with session_factory() as s:
+        cases = (
+            await s.execute(
+                text("SELECT candidate_id, active FROM eval_cases WHERE tenant_id = :t"),
+                {"t": ctx.tenant_id},
+            )
+        ).all()
+    assert sorted((c.candidate_id == second, c.active) for c in cases) == [
+        (False, False),
+        (True, True),
+    ]
+
+
+async def test_knowledge_change_during_eval_does_not_publish_stale_snapshot(
+    new_client, session_factory
+):
+    ctx, faq_id = await _faq_tenant(new_client, session_factory)
+    cid = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
+
+    async def owner_edits_meanwhile(_req):
+        async with session_factory() as s, s.begin():
+            await s.execute(
+                text(
+                    "INSERT INTO faq_entries (id, tenant_id, question, answer, status) "
+                    "VALUES (:id, :t, 'Phí ship?', 'Ship 30.000đ', 'approved')"
+                ),
+                {"id": uuid4(), "t": ctx.tenant_id},
+            )
+            await publish_from_tables(s, ctx.tenant_id, reason="manual_edit", created_by=None)
+        return _eval_reply("Dạ áo khoác gió hiện giảm còn 320.000đ ạ.")
+
+    assert (
+        await _gate(session_factory, FakeLLM([owner_edits_meanwhile]), ctx.tenant_id, cid) is None
+    )
+    assert (await _status(session_factory, cid)).status == "approved"  # lượt sau chạy lại
+
+    rerun = FakeLLM([_eval_reply("Dạ áo khoác gió hiện giảm còn 320.000đ ạ.")])
+    assert (await _gate(session_factory, rerun, ctx.tenant_id, cid))["passed"] is True
+    async with session_factory() as s:
+        block = render_knowledge(await active_snapshot(s, ctx.tenant_id)).block
+    assert "320.000đ" in block and "Ship 30.000đ" in block
+
+
+async def test_llm_failure_records_partial_usage_and_caps_retries(new_client, session_factory):
+    ctx, faq_id = await _faq_tenant(new_client, session_factory)
+    # Một ca "giá sách" còn hiệu lực ⇒ cổng chạy 2 ca; ca thứ hai lỗi provider.
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO eval_cases (id, tenant_id, source, question, expected, active) "
+                "VALUES (:id, :t, 'lesson', 'Sách giá bao nhiêu?', '{}'::jsonb, true)"
+            ),
+            {"id": uuid4(), "t": ctx.tenant_id},
+        )
+    cid = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
+
+    for attempt in (1, 2, 3):
+        llm = FakeLLM(
+            [_eval_reply("Dạ còn 320.000đ ạ."), ProviderUnavailable("anthropic", "server_error")]
+        )
+        assert await _gate(session_factory, llm, ctx.tenant_id, cid) is None
+        row = await _status(session_factory, cid)
+        assert row.eval_attempts == attempt
+    assert row.status == "eval_failed"
+    async with session_factory() as s:
+        used = (
+            await s.execute(
+                text("SELECT count(*) FROM usage_events WHERE tenant_id = :t"),
+                {"t": ctx.tenant_id},
+            )
+        ).scalar_one()
+    assert used == 3  # lời gọi thành công của mỗi lượt vẫn bị tính vào trần chi phí

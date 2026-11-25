@@ -60,6 +60,15 @@ async def snapshot_from_tables(s: AsyncSession, tenant_id: UUID) -> KnowledgeSna
     return build_snapshot(faqs, docs)
 
 
+async def current_release_id(s: AsyncSession, tenant_id: UUID) -> UUID | None:
+    return (
+        await s.execute(
+            text("SELECT current_release_id FROM tenant_knowledge WHERE tenant_id = :t"),
+            {"t": tenant_id},
+        )
+    ).scalar_one_or_none()
+
+
 async def active_snapshot(s: AsyncSession, tenant_id: UUID) -> KnowledgeSnapshot:
     """Ảnh chụp của bản phát hành đang hiệu lực; nếu tenant chưa có bản nào thì đọc từ bảng."""
     row = (
@@ -205,6 +214,9 @@ async def restore_release(
     ).first()
     if row is None:
         return None
+    await s.execute(text("SELECT 1 FROM tenants WHERE id = :t FOR UPDATE"), {"t": tenant_id})
+    snapshot = KnowledgeSnapshot.from_dict(row.snapshot)
+    await _sync_tables_to(s, tenant_id, snapshot)
     await s.execute(
         text(
             "INSERT INTO tenant_knowledge (tenant_id, current_release_id) "
@@ -237,3 +249,40 @@ async def restore_release(
         created_at=row.created_at,
         is_current=True,
     )
+
+
+_TABLES = (
+    ("faqs", "faq_entries", "question", "answer"),
+    ("docs", "knowledge_docs", "title", "body"),
+)
+
+
+async def _sync_tables_to(s: AsyncSession, tenant_id: UUID, snapshot: KnowledgeSnapshot) -> None:
+    """Đưa bảng soạn thảo về đúng ảnh chụp. Lần sửa tay kế tiếp dựng lại từ bảng, nên nếu chỉ đổi
+    con trỏ thì nội dung vừa quay lại sẽ bị lần sửa đó lặng lẽ ghi đè."""
+    for attr, table, first, second in _TABLES:
+        items = getattr(snapshot, attr)
+        await s.execute(
+            text(
+                f"UPDATE {table} SET status = 'archived', updated_at = now() "  # noqa: S608 - tên bảng cố định
+                "WHERE tenant_id = :t AND status = 'approved' AND NOT (id = ANY(:ids))"
+            ),
+            {"t": tenant_id, "ids": [UUID(e.id) for e in items]},
+        )
+        for e in items:
+            await s.execute(
+                text(
+                    f"INSERT INTO {table} AS x (id, tenant_id, {first}, {second}, status, topics) "  # noqa: S608
+                    "VALUES (:id, :t, :a, :b, 'approved', :tp) ON CONFLICT (id) DO UPDATE SET "
+                    f"{first} = EXCLUDED.{first}, {second} = EXCLUDED.{second}, "
+                    "status = 'approved', topics = EXCLUDED.topics, updated_at = now() "
+                    "WHERE x.tenant_id = EXCLUDED.tenant_id"
+                ),
+                {
+                    "id": UUID(e.id),
+                    "t": tenant_id,
+                    "a": e.first,
+                    "b": e.second,
+                    "tp": list(e.topics) if e.topics is not None else None,
+                },
+            )

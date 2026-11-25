@@ -30,8 +30,14 @@ from app.modules.agent_runtime.llm.port import (
     Turn,
 )
 from app.modules.agent_runtime.llm.pricing import UnknownPrice
-from app.modules.knowledge.domain.releases import render_knowledge
-from app.modules.knowledge.infrastructure.releases import active_snapshot, publish_snapshot
+from app.modules.authoring.domain.writing import BrandProfile
+from app.modules.authoring.infrastructure.repository import current_profile, save_profile
+from app.modules.knowledge.domain.releases import entry_hash, find_item, render_knowledge
+from app.modules.knowledge.infrastructure.releases import (
+    active_snapshot,
+    current_release_id,
+    publish_snapshot,
+)
 from app.modules.learning.domain.candidates import strip_pii
 from app.modules.learning.domain.eval_gate import (
     EVAL_SYSTEM,
@@ -41,13 +47,18 @@ from app.modules.learning.domain.eval_gate import (
     eval_user_turn,
     evaluate_gate,
     grade_reply,
+    still_valid,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
+from app.modules.orders.domain.order_flow import FIELDS, OrderFlowConfig
+from app.modules.orders.infrastructure.repository import current_flow, publish_flow
 from app.modules.shadow.domain.readiness import intent_priority_score
+from app.shared.domain.text import fold
 from app.shared.infrastructure.signals import record_signal
 
 log = logging.getLogger(__name__)
 EVAL_DEADLINE_S = 60
+MAX_EVAL_ATTEMPTS = 3  # lỗi LLM liên tiếp trước khi đánh dấu eval_failed
 
 
 class CandidateBlocked(Exception):
@@ -232,11 +243,33 @@ async def approve_candidate(
     if not checks_dict.get("passed"):
         raise CandidateBlocked(checks_dict)
 
+    next_status = "approved"
+    if row.kind == "brand_example":
+        sample = str(proposal.get("body") or proposal.get("answer") or "").strip()
+        prof = await current_profile(s, tenant_id)
+        base_profile = prof[1] if prof else BrandProfile()
+        existing = {fold(x) for x in base_profile.samples}
+        if sample and fold(sample) not in existing and len(base_profile.samples) < 10:
+            updated_profile = base_profile.model_copy(
+                update={"samples": [*base_profile.samples, sample]}
+            )
+            await save_profile(s, tenant_id, updated_profile, created_by=reviewer_id)
+        next_status = "published"
+    elif row.kind == "order_flow":
+        field_name = str(proposal.get("field") or row.topic or "").strip()
+        flow = await current_flow(s, tenant_id)
+        base_cfg = flow.config if flow else OrderFlowConfig()
+        if field_name in FIELDS and field_name not in base_cfg.required_fields:
+            new_required = [f for f in FIELDS if f in base_cfg.required_fields or f == field_name]
+            updated_cfg = base_cfg.model_copy(update={"required_fields": new_required})
+            await publish_flow(s, tenant_id, updated_cfg, reviewer_id)
+        next_status = "published"
+
     updated = (
         await s.execute(
             text(
                 "UPDATE knowledge_candidates "
-                "SET status = 'approved', proposal = CAST(:prop AS jsonb), "
+                "SET status = :st, proposal = CAST(:prop AS jsonb), "
                 "    checks = CAST(:chk AS jsonb), reviewed_by = :by, reviewed_at = now(), "
                 "    eval_report = NULL, updated_at = now() "
                 "WHERE tenant_id = :t AND id = :id "
@@ -245,6 +278,7 @@ async def approve_candidate(
                 "          created_at"
             ),
             {
+                "st": next_status,
                 "t": tenant_id,
                 "id": candidate_id,
                 "prop": json.dumps(proposal, ensure_ascii=False),
@@ -378,11 +412,12 @@ async def run_eval_gate_for_candidate(
             return None
         if await spent_today_micro(s, tenant_id, purpose=LEARNING) >= daily_cap_micro:
             return None
+        base_release = await current_release_id(s, tenant_id)
         snapshot = await active_snapshot(s, tenant_id)
         existing_cases = (
             await s.execute(
                 text(
-                    "SELECT id, question, expected FROM eval_cases "
+                    "SELECT id, question, expected, entry_id, entry_hash FROM eval_cases "
                     "WHERE tenant_id = :t AND active ORDER BY created_at"
                 ),
                 {"t": tenant_id},
@@ -411,12 +446,27 @@ async def run_eval_gate_for_candidate(
     new_spec = build_lesson_case(
         cand.proposal, kind=cand.kind, case_id=str(new_case_id), old_answer=old_answer
     )
-    specs = [new_spec] + [
-        EvalCaseSpec.from_row(str(r.id), r.question, r.expected or {}) for r in existing_cases
+    target_id = str(cand.replaces) if cand.replaces else str(new_item_id)
+    target = find_item(draft_snapshot, target_id)
+    old_specs = [
+        EvalCaseSpec.from_row(
+            str(r.id),
+            r.question,
+            r.expected or {},
+            entry_id=str(r.entry_id) if r.entry_id else None,
+            entry_hash=r.entry_hash,
+        )
+        for r in existing_cases
     ]
+    # Ca của bài học cũ cho đúng mục này (hay mục chủ shop đã sửa) không còn hiệu lực: không chạy,
+    # và tắt đi khi phát hành. Nếu không, ca đòi giá cũ chặn mãi lần đổi giá kế tiếp.
+    kept = [c for c in old_specs if still_valid(c, draft_snapshot)]
+    retired = [c.case_id for c in old_specs if not still_valid(c, draft_snapshot)]
+    specs = [new_spec, *kept]
 
     outcomes = []
     usage_results = []
+    failed_call = False
     for spec in specs:
         try:
             res = await llm.complete(
@@ -439,9 +489,33 @@ async def run_eval_gate_for_candidate(
                 "learning eval gate call failed",
                 extra={"candidate_id": str(candidate_id), "error": type(exc).__name__},
             )
-            return None
+            failed_call = True
+            break
         usage_results.append(res)
         outcomes.append(grade_reply(spec, res.text or ""))
+
+    if failed_call:
+        # Ghi chi phí các lời gọi đã chạy (để trần chi phí đúng), rồi thử lại có giới hạn.
+        async with session_factory() as s, s.begin():
+            for res in usage_results:
+                await _record_usage_safe(s, tenant_id, res)
+            await s.execute(
+                text(
+                    "UPDATE knowledge_candidates SET eval_attempts = eval_attempts + 1, "
+                    "status = CASE WHEN eval_attempts + 1 >= :max THEN 'eval_failed' "
+                    "ELSE status END, "
+                    "eval_report = CASE WHEN eval_attempts + 1 >= :max "
+                    "THEN CAST(:rep AS jsonb) ELSE eval_report END, updated_at = now() "
+                    "WHERE tenant_id = :t AND id = :id"
+                ),
+                {
+                    "max": MAX_EVAL_ATTEMPTS,
+                    "rep": json.dumps({"passed": False, "error": "llm_unavailable"}),
+                    "t": tenant_id,
+                    "id": candidate_id,
+                },
+            )
+        return None
 
     decision = evaluate_gate(outcomes)
     eval_run_id = uuid4()
@@ -449,7 +523,14 @@ async def run_eval_gate_for_candidate(
 
     async with session_factory() as s, s.begin():
         for res in usage_results:
-            await record_usage(s, tenant_id=tenant_id, run_id=None, route=LEARNING, result=res)
+            await _record_usage_safe(s, tenant_id, res)
+        # Khóa tenant trước khi so con trỏ (publish_snapshot cũng khóa đúng dòng này).
+        await s.execute(text("SELECT 1 FROM tenants WHERE id = :t FOR UPDATE"), {"t": tenant_id})
+        if decision.passed and await current_release_id(s, tenant_id) != base_release:
+            # Tri thức đã đổi trong lúc chạy eval (chủ shop sửa FAQ, bài học khác): không phát
+            # hành bản dựng trên ảnh chụp cũ, kẻo đè mất thay đổi đó. Lượt sau chạy lại.
+            log.info("knowledge changed during eval", extra={"candidate_id": str(candidate_id)})
+            return None
         if decision.passed:
             await _sync_entry_table(
                 s,
@@ -470,9 +551,9 @@ async def run_eval_gate_for_candidate(
             )
             await s.execute(
                 text(
-                    "INSERT INTO eval_cases "
-                    "(id, tenant_id, source, candidate_id, question, expected, active) "
-                    "VALUES (:id, :t, 'lesson', :cid, :q, CAST(:exp AS jsonb), true)"
+                    "INSERT INTO eval_cases (id, tenant_id, source, candidate_id, question, "
+                    "expected, active, entry_id, entry_hash) VALUES (:id, :t, 'lesson', :cid, "
+                    ":q, CAST(:exp AS jsonb), true, :eid, :eh)"
                 ),
                 {
                     "id": new_case_id,
@@ -480,8 +561,18 @@ async def run_eval_gate_for_candidate(
                     "cid": candidate_id,
                     "q": new_spec.question,
                     "exp": json.dumps(new_spec.expected_dict(), ensure_ascii=False),
+                    "eid": UUID(target_id),
+                    "eh": entry_hash(target) if target else None,
                 },
             )
+            if retired:
+                await s.execute(
+                    text(
+                        "UPDATE eval_cases SET active = false "
+                        "WHERE tenant_id = :t AND id = ANY(:ids)"
+                    ),
+                    {"t": tenant_id, "ids": [UUID(c) for c in retired]},
+                )
             await s.execute(
                 text(
                     "UPDATE knowledge_candidates "
@@ -509,6 +600,13 @@ async def run_eval_gate_for_candidate(
     return report
 
 
+async def _record_usage_safe(s: AsyncSession, tenant_id: UUID, res) -> None:
+    try:
+        await record_usage(s, tenant_id=tenant_id, run_id=None, route=LEARNING, result=res)
+    except UnknownPrice:  # cấu hình route sai: phải thấy trong log, không làm hỏng cổng eval
+        log.error("learning model has no price", extra={"model": res.served_by.model})
+
+
 async def process_approved_candidates(
     session_factory: async_sessionmaker[AsyncSession],
     llm: LLMPort,
@@ -521,8 +619,10 @@ async def process_approved_candidates(
             await s.execute(
                 text(
                     "SELECT tenant_id, id FROM knowledge_candidates "
-                    "WHERE status = 'approved' ORDER BY reviewed_at ASC LIMIT 20"
-                )
+                    "WHERE status = 'approved' AND eval_attempts < :max "
+                    "ORDER BY reviewed_at ASC LIMIT 20"
+                ),
+                {"max": MAX_EVAL_ATTEMPTS},
             )
         ).all()
     processed = 0
