@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1 đã implement** (chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`); L2–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L2 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot); L3–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -103,6 +103,15 @@ Hiện FAQ và tài liệu được sửa trực tiếp và có hiệu lực nga
 - **Chủ shop sửa FAQ trong admin** ⇒ tạo bản phát hành mới ngay (`manual_edit`), không qua eval. Chủ shop chịu trách nhiệm chữ mình viết, và hành vi giống hiện nay. Có nút quay lại bản trước.
 - **Bài học từ ứng viên** ⇒ bản nháp phát hành, chạy eval, đạt mới chuyển con trỏ (§6.4).
 - Bảng FAQ/tài liệu vẫn là nơi soạn thảo; bản phát hành là thứ bot dùng. Bước 3 lấy `known_amounts` từ ảnh chụp đúng lúc soạn nháp, nên lỗi "nghi nhầm câu nhân viên khi giá vừa đổi" của S1 cũng hết.
+
+Đã implement (L2):
+
+- Migration 0022: tạo `knowledge_releases` (`snapshot jsonb`, `reason`, `created_by`, `eval_run_id`) và con trỏ `tenant_knowledge`.
+- Domain thuần `knowledge/domain/releases.py`: `KnowledgeSnapshot`, `build_snapshot`, `render_knowledge` (sắp xếp cố định theo ID, bảo đảm cùng ảnh chụp ⇒ cùng `<knowledge>` và cùng `knowledge_hash`).
+- `knowledge/infrastructure/releases.py`: `publish_snapshot`, `publish_from_tables`, `active_snapshot` (fallback đọc từ bảng nếu tenant chưa có bản phát hành nào), `list_releases`, `restore_release` (đổi con trỏ + ghi tín hiệu `release_published` chỉ gồm id/nhãn).
+- `ContextBuilder` đọc từ `active_snapshot` và dựng `<knowledge>` / `knowledge_hash` qua `render_knowledge`.
+- API: tạo/sửa/lưu trữ FAQ hoặc tài liệu tự phát hành bản mới (`manual_edit`) trong cùng transaction; thêm `GET /api/v1/knowledge/releases` và `POST /api/v1/knowledge/releases/{number}/restore`.
+- Admin UI: tab **"Phiên bản"** trong `KnowledgePage` hiện danh sách bản phát hành và nút "Quay lại bản này".
 
 ## 6. Từ bản ghi sửa tới ứng viên
 
