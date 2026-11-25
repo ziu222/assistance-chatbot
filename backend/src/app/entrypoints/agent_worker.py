@@ -1,13 +1,14 @@
-"""Chạy agent worker: `uv run python -m app.entrypoints.agent_worker`.
+"""Chạy agent worker: `uv run python -m app.entrypoints.agent_worker [--roles ...]`."""
 
-Handler: tầng chính sách hội thoại (2.7) rồi agent runtime (2.5). Thiếu route hoặc giá cho
-model trong route ⇒ dừng ngay lúc khởi động, không đợi khách đầu tiên nhắn tin.
-"""
+# Vai trò hợp lệ: agent, authoring, judge (mặc định chạy tất cả).
+# Thiếu route hoặc giá cho model trong các vai trò được bật ⇒ dừng ngay lúc khởi động.
 
+import argparse
 import asyncio
 import contextlib
 import logging
 import signal
+from collections.abc import Iterable
 from datetime import timedelta
 
 from prometheus_client import start_http_server
@@ -26,25 +27,46 @@ from app.workers.agent_worker import AgentWorker
 
 log = logging.getLogger(__name__)
 
+ALL_ROLES: tuple[str, ...] = ("agent", "authoring", "judge")
 
-async def main() -> None:
+
+def parse_roles(raw: str | None) -> tuple[str, ...]:
+    """Chuẩn hóa danh sách vai trò worker từ `--roles`. Rỗng/None ⇒ chạy tất cả."""
+    if not raw or not raw.strip():
+        return ALL_ROLES
+    seen: list[str] = []
+    for part in raw.split(","):
+        role = part.strip().lower()
+        if not role:
+            continue
+        if role not in ALL_ROLES:
+            raise ValueError(f"unknown worker role: {role!r} (valid: {', '.join(ALL_ROLES)})")
+        if role not in seen:
+            seen.append(role)
+    if not seen:
+        raise ValueError("at least one worker role is required")
+    return tuple(seen)
+
+
+def routes_for_roles(roles: Iterable[str]) -> dict[str, set[str]]:
+    """Tập route LLM cần kiểm tra lúc khởi động, tương ứng với các vai trò được bật."""
+    role_set = set(roles)
+    used: dict[str, set[str]] = {}
+    if "agent" in role_set:
+        for t in load_templates().values():
+            used[f"{t.key}.v{t.version}"] = {t.routes.classify, t.routes.draft}
+    if "authoring" in role_set:
+        used["authoring"] = {"authoring"}
+    if "judge" in role_set:
+        used["judge"] = {"judge"}
+    return used
+
+
+async def main(roles: tuple[str, ...] = ALL_ROLES) -> None:
     settings = get_settings()
-    used_routes = {
-        f"{t.key}.v{t.version}": {t.routes.classify, t.routes.draft}
-        for t in load_templates().values()
-    }
-    used_routes["authoring"] = {"authoring"}
-    used_routes["judge"] = {"judge"}
-    llm, _ = build_llm(settings, used_routes)
+    llm, _ = build_llm(settings, routes_for_roles(roles))
     engine = create_engine(settings.database_url)
     factory = create_session_factory(engine)
-    worker = AgentWorker(
-        factory,
-        PolicyStage(factory, AgentRunner(factory, llm).handle).handle,
-        window=debounce_window(settings),
-        lease=timedelta(seconds=settings.agent_lease_seconds),
-        max_attempts=settings.agent_max_attempts,
-    )
     start_http_server(settings.agent_worker_metrics_port)
 
     stop = asyncio.Event()
@@ -52,10 +74,23 @@ async def main() -> None:
     for sig in (signal.SIGINT, signal.SIGTERM):
         with contextlib.suppress(NotImplementedError):  # Windows: Ctrl+C qua KeyboardInterrupt
             loop.add_signal_handler(sig, stop.set)
-    try:
+
+    tasks = []
+    if "agent" in roles:
+        worker = AgentWorker(
+            factory,
+            PolicyStage(factory, AgentRunner(factory, llm).handle).handle,
+            window=debounce_window(settings),
+            lease=timedelta(seconds=settings.agent_lease_seconds),
+            max_attempts=settings.agent_max_attempts,
+        )
+        tasks.append(worker.run(stop, concurrency=settings.agent_worker_concurrency))
+    if "authoring" in roles:
         authoring = AuthoringWorker(
             factory, llm, daily_cap_micro=settings.authoring_daily_cap_micro
         )
+        tasks.append(authoring.run(stop))
+    if "judge" in roles:
         judge = JudgeWorker(
             factory,
             llm,
@@ -63,16 +98,28 @@ async def main() -> None:
             full_per_day=settings.judge_full_per_day,
             per_intent_after=settings.judge_per_intent_after,
         )
-        await asyncio.gather(
-            worker.run(stop, concurrency=settings.agent_worker_concurrency),
-            authoring.run(stop),
-            judge.run(stop),  # chấm nền so sánh shadow (thiết kế 04 S2)
-        )
+        tasks.append(judge.run(stop))  # chấm nền so sánh shadow (thiết kế 04 S2)
+
+    log.info("starting agent worker", extra={"roles": list(roles)})
+    try:
+        await asyncio.gather(*tasks)
     finally:
         await engine.dispose()
 
 
-if __name__ == "__main__":
+def _cli() -> None:
+    parser = argparse.ArgumentParser(description="Run Atlas background AI workers.")
+    parser.add_argument(
+        "--roles",
+        default=None,
+        help=f"Comma-separated roles to run (default: {','.join(ALL_ROLES)})",
+    )
+    args = parser.parse_args()
+    roles = parse_roles(args.roles)
     configure_logging()
     with contextlib.suppress(KeyboardInterrupt):
-        asyncio.run(main())
+        asyncio.run(main(roles))
+
+
+if __name__ == "__main__":
+    _cli()
