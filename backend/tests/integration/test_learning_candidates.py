@@ -50,12 +50,38 @@ async def test_two_consistent_price_edits_create_candidate_and_respect_cap(
 
     # Tạo thêm 1 bản ghi sửa thứ 2 cùng hướng (350k -> 320k) trong cùng tenant
     async with session_factory() as s, s.begin():
-        run_id = (
+        run1 = (
             await s.execute(
-                text("SELECT id FROM agent_runs WHERE tenant_id = :t LIMIT 1"),
+                text(
+                    "SELECT agent_id, agent_version_id, template_key, template_version, "
+                    "       prompt_version, knowledge_hash, intents "
+                    "FROM agent_runs WHERE tenant_id = :t LIMIT 1"
+                ),
                 {"t": w.ctx.tenant_id},
             )
-        ).scalar_one()
+        ).one()
+        run2_id = uuid4()
+        await s.execute(
+            text(
+                "INSERT INTO agent_runs "
+                "(id, tenant_id, agent_id, agent_version_id, conversation_id, from_sequence, "
+                " to_sequence, status, template_key, template_version, prompt_version, "
+                " knowledge_hash, intents) "
+                "VALUES (:id, :t, :aid, :avid, :c, 2, 2, 'completed', :tk, :tv, :pv, :kh, :intents)"
+            ),
+            {
+                "id": run2_id,
+                "t": w.ctx.tenant_id,
+                "aid": run1.agent_id,
+                "avid": run1.agent_version_id,
+                "c": conv1,
+                "tk": run1.template_key,
+                "tv": run1.template_version,
+                "pv": run1.prompt_version,
+                "kh": run1.knowledge_hash,
+                "intents": run1.intents,
+            },
+        )
         draft2 = uuid4()
         await s.execute(
             text(
@@ -64,7 +90,7 @@ async def test_two_consistent_price_edits_create_candidate_and_respect_cap(
                 " grounded, needs_human) "
                 "VALUES (:id, :t, :r, :c, 2, 'Dạ áo khoác gió giá 350.000đ ạ', '[]', true, false)"
             ),
-            {"id": draft2, "t": w.ctx.tenant_id, "r": run_id, "c": conv1},
+            {"id": draft2, "t": w.ctx.tenant_id, "r": run2_id, "c": conv1},
         )
     await send(client, conv1, "Áo khoác gió đang bán 320.000đ nhé chị.", draft_id=str(draft2))
 
