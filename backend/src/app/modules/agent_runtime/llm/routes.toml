@@ -51,11 +51,11 @@ provider = "openai"
 model = "gpt-4.1-mini"
 max_tokens = 1024
 
-# Học từ bản ghi sửa của nhân viên (bước 4 L3, thiết kế 05 §6.2): model rẻ, tách khỏi nháp và
-# giám khảo. Ứng viên luôn qua kiểm tra sự thật/PII/chữ khách bằng code, chủ shop duyệt và eval.
+# Học từ bản ghi sửa của nhân viên (bước 4 L3, thiết kế 05 §6.2), tách khỏi nháp và giám khảo.
+# Haiku 5.5 qua gateway trả invalid_output với schema ứng viên (đo 2026-11-25) nên dùng Sonnet 5.5. Ứng viên luôn qua kiểm tra sự thật/PII/chữ khách bằng code, chủ shop duyệt và eval.
 [[routes.learning.targets]]
 provider = "anthropic"
-model = "claude-haiku-5-5"
+model = "claude-sonnet-5-5"
 max_tokens = 2048
 
 [[routes.learning.targets]]

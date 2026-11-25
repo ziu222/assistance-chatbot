@@ -79,6 +79,19 @@ async def test_manual_edits_publish_releases_and_restore_switches_context(
     for _, payload in signals:
         assert "30.000đ" not in str(payload) and "25.000đ" not in str(payload)
 
+    # Lần sửa tay kế tiếp (không liên quan) không được làm sống lại nội dung trước khi quay lại.
+    r3 = await client.post(
+        "/api/v1/knowledge/faqs",
+        json={"question": "Đổi trả?", "answer": "Đổi trong 7 ngày", "status": "approved"},
+        headers=CSRF,
+    )
+    assert r3.status_code == 201, r3.text
+    async with session_factory() as s:
+        ctx_next = await build_context(s, ctx.tenant_id, conv_id, 1, 1)
+    assert "30.000đ toàn quốc" in ctx_next.knowledge_block
+    assert "25.000đ nội thành" not in ctx_next.knowledge_block
+    assert "Đổi trong 7 ngày" in ctx_next.knowledge_block
+
 
 async def test_restore_guards_not_found_and_permissions(new_client, session_factory):
     owner, *_ = await logged_in(new_client, session_factory, role="owner")
