@@ -72,3 +72,15 @@ def test_apply_candidate_to_snapshot_replaces_or_adds():
     assert len(added.docs) == 1
     assert added.docs[0].id == "d1"
     assert added.docs[0].topics == ("return_policy",)
+
+
+def test_still_valid_follows_entry_content():
+    from app.modules.knowledge.domain.releases import SnapshotItem, build_snapshot, entry_hash
+    from app.modules.learning.domain.eval_gate import EvalCaseSpec, still_valid
+
+    item = SnapshotItem("f1", "Giá áo?", "320.000đ")
+    case = EvalCaseSpec.from_row("c1", "Giá áo?", {}, entry_id="f1", entry_hash=entry_hash(item))
+    assert still_valid(case, build_snapshot([item], []))
+    assert not still_valid(case, build_snapshot([SnapshotItem("f1", "Giá áo?", "300.000đ")], []))
+    assert not still_valid(case, build_snapshot([], []))
+    assert still_valid(EvalCaseSpec.from_row("c2", "Q", {}), build_snapshot([], []))

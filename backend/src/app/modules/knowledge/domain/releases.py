@@ -58,6 +58,15 @@ class KnowledgeSnapshot:
         return cls(faqs=tuple(faqs), docs=tuple(docs))
 
 
+def entry_hash(item: SnapshotItem) -> str:
+    """Vân tay nội dung một mục: ca hồi quy chỉ còn hiệu lực khi mục còn đúng vân tay này."""
+    return hashlib.sha256("\n".join((item.first, item.second)).encode()).hexdigest()[:16]
+
+
+def find_item(snapshot: "KnowledgeSnapshot", item_id: str) -> SnapshotItem | None:
+    return next((e for e in (*snapshot.faqs, *snapshot.docs) if e.id == item_id), None)
+
+
 @dataclass(frozen=True)
 class RenderedKnowledge:
     block: str
