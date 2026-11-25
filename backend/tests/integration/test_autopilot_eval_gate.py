@@ -203,7 +203,7 @@ async def test_manual_edit_publishes_and_demotes_only_regressed_intent(new_clien
     # Cổng eval chạy bộ ca chuẩn: `faq` hỏng (chuyển người thừa, thiếu nguồn), `greeting` đạt
     def mixed_handler(req: LLMRequest) -> LLMResult:
         prompt = req.turns[0].text
-        if "Chính sách đổi trả?" in prompt:
+        if "<question>Chính sách đổi trả?</question>" in prompt:
             return _draft_res(
                 EvalDraftOut(
                     reply="Để nhân viên kiểm tra giúp bạn nhé.",
