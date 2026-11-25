@@ -180,6 +180,7 @@ def _release_json(r: releases.KnowledgeRelease) -> dict:
         "knowledge_hash": render_knowledge(r.snapshot).hash,
         "created_by": str(r.created_by) if r.created_by else None,
         "eval_run_id": str(r.eval_run_id) if r.eval_run_id else None,
+        "eval_report": r.eval_report,
         "created_at": r.created_at.isoformat(),
     }
 

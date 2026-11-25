@@ -51,7 +51,10 @@ from app.modules.learning.domain.suggestions import (
     suggest_order_flow_fields,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
-from app.modules.learning.infrastructure.review import process_approved_candidates
+from app.modules.learning.infrastructure.review import (
+    evaluate_manual_releases,
+    process_approved_candidates,
+)
 from app.modules.orders.domain.order_flow import OrderFlowConfig
 from app.modules.orders.infrastructure.repository import current_flow
 
@@ -444,6 +447,9 @@ class LearningWorker:
                 created += await build_brand_examples_once(self._factory)
                 created += await build_order_flow_candidates_once(self._factory)
                 await process_approved_candidates(
+                    self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
+                )
+                await evaluate_manual_releases(
                     self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
                 )
                 return created
