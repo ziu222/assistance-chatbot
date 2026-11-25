@@ -73,6 +73,19 @@ async def _append_gate_step(
     )
 
 
+async def _order_active(s: AsyncSession, tenant_id: UUID, run_id: UUID) -> bool:
+    """Runner ghi bước `order_flow` khi lượt vào luồng đặt hàng, dù ý định là gì."""
+    return (
+        await s.execute(
+            text(
+                "SELECT 1 FROM agent_run_steps WHERE tenant_id = :t AND run_id = :r "
+                "AND kind = 'rule' AND name = 'order_flow' LIMIT 1"
+            ),
+            {"t": tenant_id, "r": run_id},
+        )
+    ).first() is not None
+
+
 async def _validation_problems(s: AsyncSession, tenant_id: UUID, run_id: UUID) -> tuple[str, ...]:
     row = (
         await s.execute(
@@ -158,6 +171,7 @@ class AutopilotStage:
             if draft is None or draft.mode != "learning":
                 return None
             problems = await _validation_problems(s, req.tenant_id, draft.run_id)
+            order_active = await _order_active(s, req.tenant_id, draft.run_id)
 
         tpl = get_template(draft.template_key, draft.template_version)
         handoff_intents = frozenset(tpl.handoff_intents) if tpl else frozenset()
@@ -196,6 +210,7 @@ class AutopilotStage:
                         grounded=bool(draft.grounded),
                         validation_problems=problems,
                         needs_human=bool(draft.needs_human),
+                        order_active=order_active,
                         # handling/status/stale/bot_streak/channel được `send_ai_reply` kiểm lại
                         # trực tiếp dưới khóa `FOR UPDATE OF c` ngay sau callback này.
                         handling="bot",

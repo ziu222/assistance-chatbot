@@ -92,6 +92,7 @@ tin khách ─▶ PolicyStage ─▶ AgentRunner (lưu nháp như bước 4)
 | `config_changed` | `config_key` của run khác khóa lúc bật (nối với §6.3) |
 | `not_grounded` | `grounded = false`, hoặc `validate_draft` có vấn đề |
 | `needs_human` | nháp đề xuất chuyển người |
+| `order_flow` | lượt đang ở luồng đặt hàng (có phiếu dở), dù ý định là gì |
 | `handling` | hội thoại không ở `handling = bot`, hoặc đã đóng |
 | `stale` | có tin khách mới hơn `based_on_sequence`, hoặc nhân viên đã trả lời |
 | `bot_streak` | đã có 3 tin bot liên tiếp chưa được khách trả lời |
