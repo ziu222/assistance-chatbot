@@ -149,6 +149,14 @@ async def evaluate_and_demote(
     return reason
 
 
+async def evaluate_intents(
+    s: AsyncSession, tenant_id: UUID, agent_id: UUID, intents: Sequence[str]
+) -> str | None:
+    """Tin bot chỉ được gửi khi MỌI ý định của lượt đã bật, nên tín hiệu xấu tính cho tất cả."""
+    reasons = [await evaluate_and_demote(s, tenant_id, agent_id, i) for i in dict.fromkeys(intents)]
+    return next((r for r in reasons if r), None)
+
+
 async def record_staff_correction_if_applicable(
     s: AsyncSession,
     tenant_id: UUID,
@@ -205,7 +213,7 @@ async def record_staff_correction_if_applicable(
             "det": json.dumps(detail, ensure_ascii=False),
         },
     )
-    return await evaluate_and_demote(s, tenant_id, bot_msg.agent_id, intent)
+    return await evaluate_intents(s, tenant_id, bot_msg.agent_id, bot_msg.intents or [intent])
 
 
 async def record_customer_reaction_if_applicable(
@@ -279,7 +287,7 @@ async def record_customer_reaction_if_applicable(
             "det": json.dumps(detail, ensure_ascii=False),
         },
     )
-    return await evaluate_and_demote(s, tenant_id, bot_msg.agent_id, intent)
+    return await evaluate_intents(s, tenant_id, bot_msg.agent_id, bot_msg.intents or [intent])
 
 
 async def check_bot_reply_amounts(
@@ -288,7 +296,7 @@ async def check_bot_reply_amounts(
     *,
     message_id: UUID,
     agent_id: UUID,
-    intent: str,
+    intents: Sequence[str],
     content: str,
 ) -> bool:
     """Kiểm số tiền sau gửi đối chiếu catalog và tri thức hiện hành; lệch ⇒ hạ cấp ngay."""
@@ -318,11 +326,11 @@ async def check_bot_reply_amounts(
             "t": tenant_id,
             "mid": message_id,
             "aid": agent_id,
-            "i": intent,
+            "i": intents[0] if intents else "other",
             "det": json.dumps({"unknown_amounts": unknown}),
         },
     )
-    await evaluate_and_demote(s, tenant_id, agent_id, intent)
+    await evaluate_intents(s, tenant_id, agent_id, intents)
     return True
 
 
@@ -422,7 +430,7 @@ async def label_bot_reply(
     row = (
         await s.execute(
             text(
-                "SELECT m.id, r.agent_id, coalesce(r.intents[1], 'other') AS intent "
+                "SELECT m.id, r.agent_id, r.intents, coalesce(r.intents[1], 'other') AS intent "
                 "FROM messages m "
                 "JOIN agent_drafts d ON d.tenant_id = m.tenant_id AND d.id = m.draft_id "
                 "JOIN agent_runs r ON r.tenant_id = d.tenant_id AND r.id = d.run_id "
@@ -452,7 +460,7 @@ async def label_bot_reply(
             "det": json.dumps(detail, ensure_ascii=False),
         },
     )
-    demoted = await evaluate_and_demote(s, tenant_id, row.agent_id, row.intent)
+    demoted = await evaluate_intents(s, tenant_id, row.agent_id, row.intents or [row.intent])
     return {
         "message_id": str(message_id),
         "intent": row.intent,

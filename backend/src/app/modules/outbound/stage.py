@@ -240,7 +240,7 @@ class AutopilotStage:
                         req.tenant_id,
                         message_id=res.message_id,
                         agent_id=draft.agent_id,
-                        intent=primary,
+                        intents=intents,
                         content=draft.text,
                     )
                 log.info(

@@ -1,11 +1,15 @@
 """Theo dõi sau gửi (`ai_reply_followups`), chấm mẫu và tự hạ cấp (thiết kế 06 A4)."""
 
+import json
 from uuid import uuid4
 
 import pytest
 from sqlalchemy import text
 
+from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.outbound.infrastructure.monitoring import (
+    label_bot_reply,
     record_customer_reaction_if_applicable,
     record_staff_correction_if_applicable,
 )
@@ -157,3 +161,41 @@ async def test_owner_review_replies_and_wrong_fact_label_demotes_immediately(
         ).one()
     assert row.state == "learning"
     assert row.demote_reason == "owner_label_wrong"
+
+
+async def test_bad_signal_demotes_every_intent_of_the_reply(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    tpl = get_template("faq_sales_quote")
+    cfg = {"template": tpl.key, "template_version": tpl.version, "prompt_version": PROMPT_VERSION}
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO autopilot_intents (tenant_id, agent_id, intent, state, config_key, "
+                "source) VALUES (:t, :a, 'greeting', 'autopilot', CAST(:cfg AS jsonb), 'blind')"
+            ),
+            {"t": w.ctx.tenant_id, "a": w.agent_id, "cfg": json.dumps(cfg)},
+        )
+    runner, _ = make_runner(session_factory, [classify("greeting", "faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Chào shop, đổi trả thế nào?",))
+    await AutopilotStage(session_factory, runner.handle).handle(req)
+
+    async with session_factory() as s, s.begin():
+        mid = (
+            await s.execute(
+                text("SELECT id FROM messages WHERE tenant_id = :t AND sender_type = 'bot'"),
+                {"t": w.ctx.tenant_id},
+            )
+        ).scalar_one()
+        await label_bot_reply(
+            s, w.ctx.tenant_id, mid, label="wrong", wrong_fact=True, user_id=w.agent_id
+        )
+    async with session_factory() as s:
+        states = dict(
+            (
+                await s.execute(
+                    text("SELECT intent, state FROM autopilot_intents WHERE tenant_id = :t"),
+                    {"t": w.ctx.tenant_id},
+                )
+            ).all()
+        )
+    assert states == {"greeting": "learning", "faq": "learning"}
