@@ -235,6 +235,7 @@ export function App({ publicKey }: { publicKey: string }) {
   const accent = safeColor(config.theme?.color);
   const privacyUrl = safeHttpUrl(config.privacy_url);
   const greeting = typeof config.greeting === "string" && config.greeting ? config.greeting : t.defaultGreeting;
+  const botLabel = typeof config.bot_label === "string" && config.bot_label.trim() ? config.bot_label.trim() : t.bot;
 
   return (
     <div
@@ -272,8 +273,27 @@ export function App({ publicKey }: { publicKey: string }) {
       >
         <li className="msg them">{greeting}</li>
         {chat.messages.map((m) => (
-          <li key={m.id} className={m.direction === "inbound" ? "msg me" : "msg them"}>
-            <span className="sr-only">{m.direction === "inbound" ? t.you : m.sender_type === "system" ? t.auto : t.staff}: </span>
+          <li
+            key={m.id}
+            className={
+              m.direction === "inbound"
+                ? "msg me"
+                : m.sender_type === "bot"
+                  ? "msg them bot"
+                  : "msg them"
+            }
+          >
+            <span className="sr-only">
+              {m.direction === "inbound"
+                ? t.you
+                : m.sender_type === "bot"
+                  ? botLabel
+                  : m.sender_type === "system"
+                    ? t.auto
+                    : t.staff}
+              :{" "}
+            </span>
+            {m.sender_type === "bot" && <span className="bot-badge">{botLabel}</span>}
             {m.text /* chỉ text: React escape, không HTML/markdown/linkify (thiết kế §9.3) */}
           </li>
         ))}

@@ -1,6 +1,6 @@
 # Thiết kế bước 5: Autopilot: bot tự trả lời theo từng ý định đã đủ tin cậy
 
-- Trạng thái: **đề xuất** (chưa implement). Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
+- Trạng thái: **A1–A4 đã implement** (A1: `sender_type = 'bot'`, `send_decision`, `outbound.send_ai_reply`; A2: `autopilot_intents`, `autopilot.manage`, API bật/tắt + `/pause`; A3: `AutopilotStage`, gửi webchat, nhãn widget/inbox; A4: `ai_reply_followups`, theo dõi đính chính/phản ứng/kiểm số tiền, chấm mẫu `/autopilot/replies`, tự hạ cấp & hạ cấp khi đổi cấu hình AI); A5–A6 là thiết kế. Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0033](../adr/0033-single-send-gate-for-automatic-messages.md) (một cổng gửi duy nhất cho tin tự động, module `outbound`);
@@ -92,6 +92,7 @@ tin khách ─▶ PolicyStage ─▶ AgentRunner (lưu nháp như bước 4)
 | `config_changed` | `config_key` của run khác khóa lúc bật (nối với §6.3) |
 | `not_grounded` | `grounded = false`, hoặc `validate_draft` có vấn đề |
 | `needs_human` | nháp đề xuất chuyển người |
+| `order_flow` | lượt đang ở luồng đặt hàng (có phiếu dở), dù ý định là gì |
 | `handling` | hội thoại không ở `handling = bot`, hoặc đã đóng |
 | `stale` | có tin khách mới hơn `based_on_sequence`, hoặc nhân viên đã trả lời |
 | `bot_streak` | đã có 3 tin bot liên tiếp chưa được khách trả lời |

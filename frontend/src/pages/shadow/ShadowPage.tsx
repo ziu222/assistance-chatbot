@@ -1,17 +1,65 @@
+import { useState } from "react";
+import {
+  useAutopilotIntents,
+  useAutopilotReplies,
+  useDisableAutopilot,
+  useEnableAutopilot,
+  useLabelAutopilotReply,
+  usePauseAutopilot,
+  type AutopilotIntentItem,
+} from "../../entities/autopilot/api";
 import { LABELS, useCalibration, useComparisons, useLabel, useShadowSummary, type Label } from "../../entities/shadow/api";
+import { ApiError } from "../../shared/api/client";
 
 const pct = (x: number | null) => (x === null ? "—" : `${Math.round(x * 100)}%`);
 
-/** Chủ shop gán nhãn cặp nháp ↔ câu nhân viên để hiệu chỉnh giám khảo (thiết kế 04 §6.3). UI thử nghiệm. */
-export function ShadowPage() {
+/** Chủ shop gán nhãn cặp nháp ↔ câu nhân viên và bật/tắt tự trả lời theo ý định (thiết kế 04 & 06 A2). */
+export function ShadowPage({ isOwner = false }: { isOwner?: boolean }) {
   const cal = useCalibration();
   const list = useComparisons();
   const label = useLabel();
   const sum = useShadowSummary(14);
+  const ap = useAutopilotIntents(14);
+  const apReplies = useAutopilotReplies(7);
+  const labelReply = useLabelAutopilotReply();
+  const enableAp = useEnableAutopilot();
+  const disableAp = useDisableAutopilot();
+  const pauseAp = usePauseAutopilot();
+  const [apError, setApError] = useState<string | null>(null);
+  const apByIntent = new Map<string, AutopilotIntentItem>(
+    (ap.data?.items ?? []).map((x) => [x.intent, x]),
+  );
+  const hasAutopilot = (ap.data?.items ?? []).some((x) => x.state === "autopilot");
   const c = cal.data;
   return (
     <div className="admin-page">
-      <h1>Chấm nháp</h1>
+      <div className="row">
+        <h1>Chấm nháp</h1>
+        {isOwner && (hasAutopilot || ap.data?.auto_send) && (
+          <button
+            type="button"
+            disabled={pauseAp.isPending}
+            onClick={() => {
+              setApError(null);
+              pauseAp.mutate(undefined, {
+                onError: (e) => setApError(e instanceof ApiError ? e.message : "Không dừng được."),
+              });
+            }}
+          >
+            Dừng tất cả tự trả lời
+          </button>
+        )}
+      </div>
+      {apError && (
+        <p className="error" role="alert">
+          {apError}
+        </p>
+      )}
+      {ap.data && !ap.data.auto_send && hasAutopilot && (
+        <p className="muted" role="status">
+          Công tắc gửi tự động của shop đang tắt (chỉ lưu nháp Learning).
+        </p>
+      )}
       {c && (
         <p className={c.calibrated ? "" : "muted"} role="status">
           Đã gán {c.labels}/{c.needs.labels} nhãn
@@ -45,7 +93,52 @@ export function ShadowPage() {
                 <td>{pct(i.wrong_rate)}</td>
                 <td>{i.unanswered}</td>
                 <td>{i.median_bot_lead_s === null ? "—" : `${Math.round(i.median_bot_lead_s / 60)} phút`}</td>
-                <td title={i.not_ready_because.join("; ")}>{i.ready ? "Đủ điều kiện đề xuất" : i.not_ready_because[0]}</td>
+                <td title={i.not_ready_because.join("; ")}>
+                  {(() => {
+                    const item = i.intent ? apByIntent.get(i.intent) : undefined;
+                    if (item?.state === "autopilot") {
+                      return (
+                        <span className="row">
+                          <span className="badge approved">Đang tự trả lời</span>
+                          {isOwner && i.intent && (
+                            <button
+                              type="button"
+                              className="link"
+                              disabled={disableAp.isPending}
+                              onClick={() => disableAp.mutate(i.intent!)}
+                            >
+                              Tắt
+                            </button>
+                          )}
+                        </span>
+                      );
+                    }
+                    if (isOwner && i.intent && item?.can_enable) {
+                      return (
+                        <button
+                          type="button"
+                          disabled={enableAp.isPending}
+                          onClick={() => {
+                            setApError(null);
+                            enableAp.mutate(
+                              { intent: i.intent!, source: item.enable_source ?? undefined },
+                              {
+                                onError: (e) =>
+                                  setApError(e instanceof ApiError ? e.message : "Không bật được."),
+                              },
+                            );
+                          }}
+                        >
+                          Bật tự trả lời
+                        </button>
+                      );
+                    }
+                    if (item?.demote_reason) {
+                      return `Đã hạ cấp: ${item.demote_reason}`;
+                    }
+                    return i.ready ? "Đủ điều kiện đề xuất" : i.not_ready_because[0];
+                  })()}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -89,6 +182,60 @@ export function ShadowPage() {
           </tbody>
         </table>
       )}
+      <h2>Chấm mẫu tin bot đã tự gửi (7 ngày, tối đa 10 tin/ngày/ý định)</h2>
+      {apReplies.data && apReplies.data.items.length === 0 && (
+        <p className="muted">Chưa có tin bot tự gửi nào cần chấm mẫu.</p>
+      )}
+      <ul className="plain stack">
+        {apReplies.data?.items.map((r) => (
+          <li key={r.message_id}>
+            <article className="card">
+              <div className="row">
+                <small className="muted">{r.intent}</small>
+                {r.owner_label && <span className="badge">{r.owner_label.label}</span>}
+                {r.followups
+                  .filter((f) => f.kind !== "owner_label")
+                  .map((f) => (
+                    <span key={f.kind} className="badge">
+                      {f.kind}
+                    </span>
+                  ))}
+              </div>
+              <p className="pre">
+                <strong>Khách:</strong> {r.customer_text}
+              </p>
+              <p className="pre">
+                <strong>Trợ lý tự động:</strong> {r.bot_text}
+              </p>
+              <div className="row" role="group" aria-label="Chấm mẫu tin bot">
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() => labelReply.mutate({ messageId: r.message_id, label: "correct" })}
+                >
+                  Đúng
+                </button>
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() => labelReply.mutate({ messageId: r.message_id, label: "minor_edit" })}
+                >
+                  Gửi được nhưng nên sửa
+                </button>
+                <button
+                  type="button"
+                  disabled={labelReply.isPending}
+                  onClick={() =>
+                    labelReply.mutate({ messageId: r.message_id, label: "wrong", wrongFact: true })
+                  }
+                >
+                  Sai số tiền / sản phẩm
+                </button>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
       <h2>Gán nhãn</h2>
       {list.isPending && <p className="state">Đang tải…</p>}
       {list.data && list.data.items.length === 0 && <p className="muted">Chưa có cặp nào chờ gán nhãn.</p>}

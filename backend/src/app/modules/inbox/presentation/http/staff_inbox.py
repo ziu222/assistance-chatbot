@@ -29,6 +29,7 @@ from app.modules.integration.domain.normalization import (
     validate_client_message_id,
 )
 from app.modules.learning.infrastructure.drafts import discard_shown_draft, record_use
+from app.modules.outbound.infrastructure.monitoring import record_staff_correction_if_applicable
 from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
 from app.shared.presentation.http_errors import ApiError
@@ -165,6 +166,13 @@ async def reply(
                         s, ctx.tenant_id, conversation_id, result.message_id, result.sequence,
                         actor.user_id,
                     )  # fmt: skip
+                await record_staff_correction_if_applicable(
+                    s,
+                    ctx.tenant_id,
+                    conversation_id,
+                    staff_sequence=result.sequence,
+                    staff_text=text,
+                )
         except Exception:
             log.exception("could not record draft use")
     return JSONResponse(

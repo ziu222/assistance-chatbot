@@ -752,6 +752,16 @@ textarea {
   color: var(--muted);
 }
 
+.bubble.out.bot {
+  background: #eaf5ef;
+  border-color: #b7dec9;
+  color: var(--text);
+}
+
+.bubble.out.bot time {
+  color: #2f5d47;
+}
+
 /* --- Trợ lý viết (2.11) --- */
 .suggest {
   display: flex;

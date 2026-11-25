@@ -135,7 +135,11 @@ export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () =>
       )}
       {view === "shadow" && (
         <main className="admin-main">
-          {canManage ? <ShadowPage /> : <p className="muted">Chỉ chủ shop/admin gán nhãn.</p>}
+          {canManage ? (
+            <ShadowPage isOwner={me.role === "owner"} />
+          ) : (
+            <p className="muted">Chỉ chủ shop/admin gán nhãn.</p>
+          )}
         </main>
       )}
       {view === "trace" && (
