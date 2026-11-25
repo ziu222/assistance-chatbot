@@ -48,6 +48,8 @@ class Settings(BaseSettings):
     judge_daily_cap_micro: int = 200_000
     judge_full_per_day: int = 100  # chấm mọi cặp tới mức này mỗi ngày
     judge_per_intent_after: int = 10  # quá mức trên: mỗi ý định chấm thêm tối đa chừng này
+    # Dựng ứng viên tri thức và eval bài học (thiết kế 05 §6.2): trần riêng mỗi tenant/ngày.
+    learning_daily_cap_micro: int = 200_000
 
     # Google Sheets (§13.2): JSON key của service account, chỉ quyền đọc. Rỗng = tắt nguồn Sheets.
     google_service_account_json: str = ""

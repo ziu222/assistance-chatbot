@@ -19,6 +19,18 @@ export type Product = {
 export type Coverage = { topic: string; label: string; covered: boolean; sources: { type: Kind; id: string; title: string }[] };
 export type Gap = { topic: string; label: string; count: number };
 export type ImportResult = { items: number; created: number; updated: number };
+export type KnowledgeRelease = {
+  id: string;
+  number: number;
+  reason: "manual_edit" | "lesson";
+  is_current: boolean;
+  faq_count: number;
+  doc_count: number;
+  knowledge_hash: string;
+  created_by: string | null;
+  eval_run_id: string | null;
+  created_at: string;
+};
 
 const PATH: Record<Kind, string> = { faq: "/api/v1/knowledge/faqs", doc: "/api/v1/knowledge/docs" };
 const key = (kind: Kind) => ["knowledge", kind] as const;
@@ -85,3 +97,19 @@ export const useGaps = (days = 7) =>
     queryKey: ["knowledge", "gaps", days],
     queryFn: () => apiFetch<{ days: number; items: Gap[] }>(`/api/v1/knowledge/gaps?days=${days}`),
   });
+
+/** Lịch sử bản phát hành tri thức có phiên bản (thiết kế 05 L2). */
+export const useKnowledgeReleases = () =>
+  useQuery({
+    queryKey: ["knowledge", "releases"],
+    queryFn: () => apiFetch<{ items: KnowledgeRelease[] }>("/api/v1/knowledge/releases"),
+  });
+
+export function useRestoreKnowledgeRelease() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (number: number) =>
+      apiFetch<KnowledgeRelease>(`/api/v1/knowledge/releases/${number}/restore`, { method: "POST" }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }),
+  });
+}

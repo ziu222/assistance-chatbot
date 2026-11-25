@@ -25,4 +25,8 @@ def test_routes_for_roles_only_includes_enabled_roles():
 
     agent_only = routes_for_roles(("agent",))
     assert "judge" not in agent_only and "authoring" not in agent_only
+    assert "learning" not in agent_only
     assert agent_only, "agent role must include template routes"
+
+    learning_only = routes_for_roles(("learning",))
+    assert learning_only == {"learning": {"learning"}}

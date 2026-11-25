@@ -55,7 +55,7 @@ PURE_DOMAINS = [
     SHARED_DOMAIN,
     *(
         RUNTIME.parent / m / "domain"
-        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning")
+        for m in ("conversation_policy", "authoring", "orders", "shadow", "learning", "knowledge")
     ),
 ]
 IO_IMPORTS = ("sqlalchemy", "fastapi", "httpx", "redis", "asyncpg", "app.shared.infrastructure")
@@ -136,3 +136,9 @@ def test_presentation_does_not_use_raw_sql():
             ):
                 offenders.append(str(path.relative_to(MODULES)))
     assert offenders == []
+
+
+def test_candidate_generator_never_reads_customer_messages():
+    """Bất biến E17 (thiết kế 05 §9): bộ sinh ứng viên không đọc tin `customer`."""
+    src = (MODULES / "learning" / "infrastructure" / "candidates.py").read_text(encoding="utf-8")
+    assert "'customer'" not in src.lower() and '"customer"' not in src.lower()

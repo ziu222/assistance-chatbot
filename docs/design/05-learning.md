@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1 đã implement** (chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`); L2–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L6 đã implement** (hoàn tất Bước 4 — Learning: L1 chế độ Learning & `draft_uses`; L2 `knowledge_releases` & `ContextBuilder` snapshot; L3 `knowledge_candidates` & `LearningWorker`; L4 màn hình "Bot muốn học" & cổng eval `eval_cases`; L5/S5 tách nguồn mù/đã thấy & ưu tiên ứng viên; L6 ứng viên `brand_example` & `order_flow`). Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -104,6 +104,15 @@ Hiện FAQ và tài liệu được sửa trực tiếp và có hiệu lực nga
 - **Bài học từ ứng viên** ⇒ bản nháp phát hành, chạy eval, đạt mới chuyển con trỏ (§6.4).
 - Bảng FAQ/tài liệu vẫn là nơi soạn thảo; bản phát hành là thứ bot dùng. Bước 3 lấy `known_amounts` từ ảnh chụp đúng lúc soạn nháp, nên lỗi "nghi nhầm câu nhân viên khi giá vừa đổi" của S1 cũng hết.
 
+Đã implement (L2):
+
+- Migration 0022: tạo `knowledge_releases` (`snapshot jsonb`, `reason`, `created_by`, `eval_run_id`) và con trỏ `tenant_knowledge`.
+- Domain thuần `knowledge/domain/releases.py`: `KnowledgeSnapshot`, `build_snapshot`, `render_knowledge` (sắp xếp cố định theo ID, bảo đảm cùng ảnh chụp ⇒ cùng `<knowledge>` và cùng `knowledge_hash`).
+- `knowledge/infrastructure/releases.py`: `publish_snapshot`, `publish_from_tables`, `active_snapshot` (fallback đọc từ bảng nếu tenant chưa có bản phát hành nào), `list_releases`, `restore_release` (đổi con trỏ + ghi tín hiệu `release_published` chỉ gồm id/nhãn).
+- `ContextBuilder` đọc từ `active_snapshot` và dựng `<knowledge>` / `knowledge_hash` qua `render_knowledge`.
+- API: tạo/sửa/lưu trữ FAQ hoặc tài liệu tự phát hành bản mới (`manual_edit`) trong cùng transaction; thêm `GET /api/v1/knowledge/releases` và `POST /api/v1/knowledge/releases/{number}/restore`.
+- Admin UI: tab **"Phiên bản"** trong `KnowledgePage` hiện danh sách bản phát hành và nút "Quay lại bản này".
+
 ## 6. Từ bản ghi sửa tới ứng viên
 
 ### 6.1. Loại ứng viên
@@ -131,6 +140,16 @@ Một việc định kỳ (mỗi giờ) gom bản ghi sửa của 14 ngày theo 
 
 Trần chi phí riêng `learning` theo tenant mỗi ngày, như trợ lý viết và giám khảo.
 
+Đã implement (L3):
+
+- Migration 0023: tạo bảng `knowledge_candidates` (loại, ý định, chủ đề, `fingerprint` chống đề xuất lặp trong 30 ngày, `proposal jsonb`, `replaces`, `evidence jsonb`, `checks jsonb`, `status`).
+- Route `learning` trong `routes.toml` (model rẻ, tách riêng khỏi soạn nháp và giám khảo) và trần chi phí riêng `LEARNING` (`learning_daily_cap_micro`) trong `usage.py` / `settings.py`.
+- Domain thuần `learning/domain/candidates.py`: `is_significant`, `has_enough_evidence` (≥ 2 lần sửa cùng hướng), `detect_pii` / `strip_pii`, `has_customer_overlap` (> 8 từ), `check_candidate` (số tiền/thời hạn/giờ/link có trong bằng chứng nhân viên), `fingerprint`, `user_turn` (chỉ chữ nhân viên + FAQ).
+- Infrastructure tách biệt hai vai trò để khóa cứng E17:
+  - `learning/infrastructure/candidates.py` (`build_candidates_once`, `LearningWorker` kèm Postgres advisory lock): chỉ truy vấn tin `human`, không bao giờ đọc tin `customer` (được khóa bởi `test_architecture.py`).
+  - `learning/infrastructure/checks.py`: hậu kiểm bằng code sau khi LLM sinh xong (chỉ đọc tin `customer` để kiểm tra trùng chuỗi > 8 từ, không gọi LLM).
+- Gắn vai trò `learning` vào `entrypoints/agent_worker.py` (`--roles`).
+
 ### 6.3. Chủ shop duyệt
 
 - Màn hình **"Bot muốn học"** liệt kê ứng viên. Mỗi ứng viên có nội dung đề xuất, chỗ khác so với tri thức hiện tại, số lần nhân viên đã sửa, và link tới các hội thoại làm bằng chứng.
@@ -149,6 +168,15 @@ Duyệt xong, hệ thống:
 
 Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần `learning`.
 
+Đã implement (L4):
+
+- Migration 0024: tạo bảng `eval_cases` và thêm cột `eval_report jsonb` vào `knowledge_candidates`.
+- Quyền `knowledge.approve` (`owner`/`admin`) trong `identity/domain/authorization.py`.
+- Domain thuần `learning/domain/eval_gate.py`: `build_lesson_case`, `grade_reply`, `evaluate_gate`, `apply_candidate_to_snapshot`.
+- Infrastructure `learning/infrastructure/review.py`: `list_candidates`, `approve_candidate` (chặn duyệt nếu chưa qua kiểm tra sự thật/PII/chữ khách, ghi `candidate_approved`), `reject_candidate` (ghi `candidate_rejected`), `run_eval_gate_for_candidate` & `process_approved_candidates` (gắn vào `LearningWorker`: đạt ⇒ đồng bộ bảng FAQ/tài liệu + `publish_snapshot(reason="lesson")` + lưu `eval_cases`; hỏng ⇒ `eval_failed` kèm ca lỗi).
+- API: `GET /api/v1/learning/candidates`, `POST /api/v1/learning/candidates/{id}/approve`, `POST /api/v1/learning/candidates/{id}/reject`.
+- Admin UI: màn hình **"Bot muốn học"** (`LearningPage.tsx`) gắn vào `AppShell`, hiện chỗ khác so với FAQ hiện tại, bằng chứng hội thoại, lỗi kiểm tra/eval và 3 nút Duyệt / Sửa rồi duyệt / Bỏ.
+
 ## 7. Nối với bước 3 (S5)
 
 - Cặp có `draft_exposure = 'shown'` không được so độc lập nữa: nhân viên có thể đã chép nháp. Với các cặp này, bước 3 dùng `draft_uses`:
@@ -156,6 +184,14 @@ Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần 
   - "sai" = `edited` có đổi số tiền hay sản phẩm.
 - Bảng tổng hợp theo ý định tách hai nguồn: **mù** (Shadow) và **đã thấy** (Learning). Mức sẵn sàng cho bước 5 có thể dùng một trong hai, nhưng ghi rõ dùng nguồn nào.
 - Ý định có tỉ lệ sai hoặc tỉ lệ bỏ cao được ưu tiên trong hàng ứng viên.
+
+Đã implement (L5 / S5):
+
+- Domain thuần `shadow/domain/readiness.py`: `classify_shown_use` ("gửi được" = `as_is` hoặc sửa nhẹ `< 0,2` không đổi số tiền; "sai" = sửa đổi số tiền hoặc mâu thuẫn số tiền), `intent_priority_score`, và `readiness(..., source="shown")` không đòi hỏi hiệu chỉnh giám khảo.
+- `shadow/infrastructure/judging.py`: `JudgeWorker` chỉ chấm cặp `draft_exposure = 'blind'`, không gọi giám khảo cho cặp đã hiện.
+- `shadow/infrastructure/summary.py`: tách hai nguồn `intents` (`source = "blind"`) và `learning_intents` (`source = "shown"`, kèm `as_is_rate`, `minor_edit_rate`, `discarded_rate`).
+- `learning/infrastructure/review.py`: `list_candidates` sắp xếp ưu tiên theo ý định có tỉ lệ sai/bỏ cao (`priority_score`).
+- Admin UI (`ShadowPage.tsx`): hiển thị rõ hai bảng **Nguồn mù — Shadow** và **Nguồn đã thấy — Learning**.
 
 ## 8. Dữ liệu và API (dự kiến)
 
@@ -208,6 +244,13 @@ Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần 
 | L4 | Màn hình "Bot muốn học", duyệt/sửa/bỏ, ca hồi quy + cổng eval + phát hành | L3 |
 | L5 | S5: đo theo mức sửa cho cặp đã thấy, tách nguồn trong tổng hợp; ưu tiên ứng viên theo ý định | L1, bước 3 S4 |
 | L6 | Ứng viên `brand_example` và `order_flow` (thiết kế 03 O6) | L4 |
+
+Đã implement (L6):
+
+- Domain thuần `learning/domain/suggestions.py`: `pick_brand_examples` (câu `as_is` lặp lại ≥ 3 lần, sạch PII, chưa có trong `BrandProfile.samples`) và `suggest_order_flow_fields` (trường trong `order_confirmed.staff_edited` lặp lại ≥ 3 lần chưa có trong `OrderFlowConfig.required_fields`).
+- `learning/infrastructure/candidates.py`: `build_brand_examples_once`, `build_order_flow_candidates_once` gắn vào `LearningWorker.process_once()` (xác định bằng code, không tốn LLM).
+- `learning/infrastructure/review.py`: khi chủ shop duyệt `brand_example` ⇒ lưu phiên bản mới của `brand_profiles`; khi duyệt `order_flow` ⇒ phát hành phiên bản mới của `order_flow_releases` (`publish_flow`), chuyển ứng viên sang `published`.
+- `LearningPage.tsx`: hỗ trợ hiển thị & duyệt/sửa/bỏ `brand_example` và `order_flow`.
 
 ## 11. Rủi ro và câu hỏi mở
 

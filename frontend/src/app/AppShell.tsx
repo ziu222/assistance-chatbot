@@ -5,6 +5,7 @@ import { useLogout } from "../features/authenticate-user/api";
 import { AgentPage } from "../pages/agent/AgentPage";
 import { InboxPage } from "../pages/inbox/InboxPage";
 import { KnowledgePage } from "../pages/knowledge/KnowledgePage";
+import { LearningPage } from "../pages/learning/LearningPage";
 import { OrdersPage } from "../pages/orders/OrdersPage";
 import { PolicyPage } from "../pages/policy/PolicyPage";
 import { QueuePage } from "../pages/queue/QueuePage";
@@ -13,7 +14,16 @@ import { TracePage } from "../pages/trace/TracePage";
 import { useEventSignals } from "../shared/lib/useEventSignals";
 
 // Màn hình, hội thoại và run đang chọn nằm trên URL để reload/chia sẻ link giữ nguyên chỗ.
-type View = "inbox" | "queue" | "orders" | "agent" | "policy" | "knowledge" | "shadow" | "trace";
+type View =
+  | "inbox"
+  | "queue"
+  | "orders"
+  | "agent"
+  | "policy"
+  | "knowledge"
+  | "learning"
+  | "shadow"
+  | "trace";
 const VIEWS: { id: View; label: string }[] = [
   { id: "inbox", label: "Hộp thư" },
   { id: "queue", label: "Cần xử lý" },
@@ -21,6 +31,7 @@ const VIEWS: { id: View; label: string }[] = [
   { id: "agent", label: "Agent" },
   { id: "policy", label: "Tin tự động" },
   { id: "knowledge", label: "Kiến thức" },
+  { id: "learning", label: "Bot muốn học" },
   { id: "shadow", label: "Chấm nháp" },
   { id: "trace", label: "Trace" },
 ];
@@ -115,6 +126,11 @@ export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () =>
       {view === "knowledge" && (
         <main className="admin-main">
           <KnowledgePage canManage={canManage} />
+        </main>
+      )}
+      {view === "learning" && (
+        <main className="admin-main">
+          <LearningPage canManage={canManage} onOpenConversation={openConversation} />
         </main>
       )}
       {view === "shadow" && (
