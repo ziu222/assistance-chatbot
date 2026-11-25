@@ -8,7 +8,6 @@ import httpx
 from fastapi import APIRouter, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
-from sqlalchemy import text
 
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
@@ -185,20 +184,9 @@ async def gaps(
     """Bot phải nhờ nhân viên vì thiếu nguồn: đếm theo chủ đề trong `days` ngày gần nhất."""
     tenant_id = _require(actor, "knowledge.read")
     async with request.app.state.session_factory() as s:
-        rows = await s.execute(
-            text(
-                "SELECT COALESCE(t.topic, 'other') AS topic, count(*) AS n "
-                "FROM learning_signals ls "
-                "LEFT JOIN LATERAL jsonb_array_elements_text(ls.payload->'topics') AS t(topic) "
-                "ON true "
-                "WHERE ls.tenant_id = :t AND ls.kind = 'knowledge_gap' "
-                "AND ls.created_at > now() - make_interval(days => :d) "
-                "GROUP BY 1 ORDER BY n DESC, topic"
-            ),
-            {"t": tenant_id, "d": days},
-        )
+        rows = await content.list_knowledge_gaps(s, tenant_id, days)
         items = [
-            {"topic": r.topic, "label": TOPICS.get(r.topic, "khác"), "count": r.n} for r in rows
+            {"topic": topic, "label": TOPICS.get(topic, "khác"), "count": n} for topic, n in rows
         ]
     return {"days": days, "items": items}
 

@@ -6,7 +6,6 @@ from uuid import UUID
 
 from fastapi import APIRouter, Query, Request
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field
-from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
 
 from app.modules.conversation_policy.domain.escalation import report
@@ -123,9 +122,7 @@ async def simulate(body: SimulateIn, request: Request, actor: CurrentStaff) -> d
         if config is None:
             release = await repo.current_release(s, tenant_id)
             config = release.config if release else suggested_config()
-        shop = (
-            await s.execute(text("SELECT name FROM tenants WHERE id = :t"), {"t": tenant_id})
-        ).scalar_one()
+        shop = await repo.tenant_name(s, tenant_id)
     prev: datetime | None = None
     if body.minutes_since_last_message is not None:
         prev = body.at - timedelta(minutes=body.minutes_since_last_message)
@@ -202,13 +199,7 @@ async def open_handoff_by_staff(
     """Nhân viên tự đánh dấu hội thoại cần xử lý (vd đồng nghiệp nhờ xem giúp)."""
     tenant_id = _require(actor, "conversation.reply")
     async with request.app.state.session_factory() as s, s.begin():
-        exists = (
-            await s.execute(
-                text("SELECT 1 FROM conversations WHERE tenant_id = :t AND id = :c"),
-                {"t": tenant_id, "c": conversation_id},
-            )
-        ).first()
-        if exists is None:
+        if not await repo.conversation_exists(s, tenant_id, conversation_id):
             raise ApiError(404, "not_found", "Conversation not found")
         handoff_id, created = await handoffs.open_handoff(
             s, tenant_id, conversation_id, source="staff"

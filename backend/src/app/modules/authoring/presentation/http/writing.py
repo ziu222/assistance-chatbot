@@ -14,9 +14,9 @@ from sqlalchemy.exc import IntegrityError
 
 from app.modules.authoring.domain.writing import BrandProfile, Kind, Level
 from app.modules.authoring.infrastructure import repository as repo
-from app.modules.conversation_policy.infrastructure.handoffs import record_signal
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
+from app.shared.infrastructure.signals import record_signal
 from app.shared.presentation.http_errors import ApiError
 
 router = APIRouter(prefix="/api/v1")

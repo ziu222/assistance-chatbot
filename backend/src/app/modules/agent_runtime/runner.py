@@ -185,9 +185,18 @@ class AgentRunner:
     # --- các bước của một run (§7.3) ---
 
     async def _execute(self, run: _Run) -> None:
+        await self._check_gate(run)
+        ctx = await self._prepare_context(run)
+        self._apply_deterministic_rules(run, ctx)
+        await self._classify(run, ctx)
+        await self._load_order_stage(run, ctx)
+        out, prices, product_ids = await self._draft(run, ctx)
+        self._validate_and_finalize(run, ctx, out, prices, product_ids)
+
+    async def _check_gate(self, run: _Run) -> None:
+        """0. Cổng: không gọi LLM, không đọc dữ liệu khách."""
         settings, spent = await self._load_gate_inputs(run)
-        tpl, agent = run.agent.template, run.agent
-        # 0. Cổng: không gọi LLM, không đọc dữ liệu khách.
+        agent = run.agent
         gate = None
         if agent.handling != "bot":  # người đang/sắp xử lý: bot im (§12.3)
             gate = "handling_human" if agent.handling == "human" else "handling_waiting"
@@ -208,7 +217,8 @@ class AgentRunner:
             run.guard = False
             raise _Stop("skipped", skip_reason=gate)
 
-        # 1. Ngữ cảnh (xác định, chỉ text).
+    async def _prepare_context(self, run: _Run) -> RunContext:
+        """1. Ngữ cảnh xác định (chỉ text) + tín hiệu hành vi (chỉ ghi để đo, §12.7)."""
         async with self._factory() as s:
             ctx = run.ctx = await build_context(
                 s, run.tenant_id, run.conversation_id, run.from_sequence, run.to_sequence
@@ -230,7 +240,6 @@ class AgentRunner:
             run.guard = False
             raise _Stop("skipped", skip_reason="no_customer_message")
 
-        # Tín hiệu leo thang theo hành vi: chỉ ghi để đo (§12.7), không đổi luồng.
         behavior = behavior_signals(
             [m.content for m in ctx.history if m.who == "khach"],
             ctx.customer_texts,
@@ -241,8 +250,10 @@ class AgentRunner:
                 "signal", "behavior", "recorded", 0, {"signals": behavior, "score": score(behavior)}
             )
         )
+        return ctx
 
-        # 2. Rule: không tốn LLM.
+    def _apply_deterministic_rules(self, run: _Run, ctx: RunContext) -> None:
+        """2. Rule xác định: không tốn LLM."""
         outcome = apply_rules(ctx.customer_texts)
         if outcome is not None:
             run.steps.append(Step("rule", outcome.kind, "matched", 0, {"match": outcome.matched}))
@@ -251,7 +262,9 @@ class AgentRunner:
             raise _Stop("completed", draft=DraftToSave(outcome.reply, [], True, False, None))
         run.steps.append(Step("rule", "router", "no_match", 0))
 
-        # 3. Phân loại.
+    async def _classify(self, run: _Run, ctx: RunContext) -> None:
+        """3. Phân loại ý định + tín hiệu ngữ nghĩa."""
+        tpl = run.agent.template
         classify = await self._call(
             run,
             "classify",
@@ -294,10 +307,14 @@ class AgentRunner:
         if set(run.intents) & set(tpl.handoff_intents):
             raise _Stop("handoff_suggested")
 
-        # 3b. Đặt hàng: shop đã bật quy trình và khách muốn đặt (hoặc đang có phiếu dở).
+    async def _load_order_stage(self, run: _Run, ctx: RunContext) -> None:
+        """3b. Đặt hàng: shop đã bật quy trình và khách muốn đặt (hoặc đang có phiếu dở)."""
         async with self._factory() as s:
             run.order = await load_order(
-                s, run.tenant_id, run.conversation_id, order_intent="order_intent" in run.intents
+                s,
+                run.tenant_id,
+                run.conversation_id,
+                order_intent="order_intent" in (run.intents or ()),
             )
         if run.order:
             with_phone(run.order, ctx.customer_texts)
@@ -307,10 +324,15 @@ class AgentRunner:
                 Step("rule", "order_flow", "active", 0, {"missing": run.order.request.missing})
             )
 
-        # 4. Soạn nháp (vòng tool read-only).
-        out, prices, product_ids = await self._draft(run, ctx)
-
-        # 5. Kiểm tra bằng quy tắc xác định.
+    def _validate_and_finalize(
+        self,
+        run: _Run,
+        ctx: RunContext,
+        out: DraftOut,
+        prices: set[int],
+        product_ids: set[str],
+    ) -> None:
+        """5. Kiểm tra bằng quy tắc xác định và dựng DraftToSave."""
         started = time.monotonic()
         problems = validate_draft(
             out,
@@ -358,6 +380,7 @@ class AgentRunner:
         raise _Stop("handoff_suggested" if needs_human else "completed", draft=draft)
 
     async def _draft(self, run: _Run, ctx: RunContext) -> tuple[DraftOut, set[int], set[str]]:
+        """4. Soạn nháp (vòng tool read-only)."""
         tpl = run.agent.template
         budget = tpl.budget
         instructions = tpl.instructions.replace("{shop_name}", run.agent.shop_name)
@@ -395,52 +418,57 @@ class AgentRunner:
                 if not isinstance(res.parsed, DraftOut):
                     raise InvalidOutput("draft: no parsed output")
                 return res.parsed, prices, product_ids
-            # tool_use: backend validate, ép tenant từ run, trả kết quả như dữ liệu.
             if run.totals.tool_calls + len(res.tool_calls) > budget.max_tool_calls:
                 raise _Stop("failed", error_code="budget_exceeded")
-            results: list[LLMToolResult] = []
-            for call in res.tool_calls:
-                run.totals.tool_calls += 1
-                started = time.monotonic()
-                if call.name in tpl.tools:
-                    async with self._factory() as s:
-                        tr = await run_tool(s, run.tenant_id, call.name, call.arguments)
-                else:
-                    tr = None
-                ok = tr is not None and tr.ok
-                if ok:
-                    for item in tr.data if isinstance(tr.data, list) else [tr.data]:
-                        product_ids.add(item["id"])
-                        prices.add(int(item["price_vnd"]))
-                        run.products[item["sku"]] = item
-                        if item.get("url"):
-                            run.urls.add(item["url"])
-                error = "unknown_tool" if tr is None else tr.error
-                results.append(
-                    LLMToolResult(
-                        call.id,
-                        json.dumps(tr.data, ensure_ascii=False) if ok else str(error),
-                        is_error=not ok,
-                    )
-                )
-                run.steps.append(
-                    Step(
-                        "tool",
-                        call.name,
-                        "ok" if ok else str(error),
-                        int((time.monotonic() - started) * 1000),
-                        # Đã chiếu: tên tham số + số bản ghi, không lưu nội dung khách gõ.
-                        {
-                            "arg_keys": sorted(call.arguments),
-                            "records": len(tr.data)
-                            if ok and isinstance(tr.data, list)
-                            else int(ok),
-                        }
-                        | ({"stale_catalog": True} if tr is not None and tr.stale else {}),
-                    )
-                )
+            results = await self._run_tool_calls(run, res.tool_calls, prices, product_ids)
             turns.append(Turn(role="assistant", text=res.text, tool_calls=res.tool_calls))
             turns.append(Turn(role="tool_results", tool_results=tuple(results)))
+
+    async def _run_tool_calls(
+        self, run: _Run, tool_calls, prices: set[int], product_ids: set[str]
+    ) -> list[LLMToolResult]:
+        """Thực thi tool read-only: backend ép tenant từ run và trả kết quả như dữ liệu."""
+        tpl = run.agent.template
+        results: list[LLMToolResult] = []
+        for call in tool_calls:
+            run.totals.tool_calls += 1
+            started = time.monotonic()
+            if call.name in tpl.tools:
+                async with self._factory() as s:
+                    tr = await run_tool(s, run.tenant_id, call.name, call.arguments)
+            else:
+                tr = None
+            ok = tr is not None and tr.ok
+            if ok:
+                for item in tr.data if isinstance(tr.data, list) else [tr.data]:
+                    product_ids.add(item["id"])
+                    prices.add(int(item["price_vnd"]))
+                    run.products[item["sku"]] = item
+                    if item.get("url"):
+                        run.urls.add(item["url"])
+            error = "unknown_tool" if tr is None else tr.error
+            results.append(
+                LLMToolResult(
+                    call.id,
+                    json.dumps(tr.data, ensure_ascii=False) if ok else str(error),
+                    is_error=not ok,
+                )
+            )
+            run.steps.append(
+                Step(
+                    "tool",
+                    call.name,
+                    "ok" if ok else str(error),
+                    int((time.monotonic() - started) * 1000),
+                    # Đã chiếu: tên tham số + số bản ghi, không lưu nội dung khách gõ.
+                    {
+                        "arg_keys": sorted(call.arguments),
+                        "records": len(tr.data) if ok and isinstance(tr.data, list) else int(ok),
+                    }
+                    | ({"stale_catalog": True} if tr is not None and tr.stale else {}),
+                )
+            )
+        return results
 
     async def _call(self, run: _Run, kind: str, req: LLMRequest) -> LLMResult:
         started = time.monotonic()

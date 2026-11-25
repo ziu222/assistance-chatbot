@@ -11,9 +11,9 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.modules.agent_runtime.validation import extract_amounts
-from app.modules.conversation_policy.infrastructure.handoffs import record_signal
 from app.modules.learning.domain.draft_use import compare
+from app.shared.domain.text import extract_amounts
+from app.shared.infrastructure.signals import record_signal
 
 # Nháp hợp lệ: của agent đang ở Learning, đã qua kiểm tra, ứng với tin khách cuối, chưa ai trả lời
 # sau nó, và nhân viên chưa chọn gì. `before_seq` loại trừ tin nhân viên vừa gửi (bỏ ngầm).
