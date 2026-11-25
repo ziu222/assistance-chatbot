@@ -57,7 +57,7 @@ async def test_autopilot_enable_disable_pause_and_permissions(new_client, sessio
     # 2. Chưa đủ mẫu / cấm bật ⇒ 422
     r_not_ready = await owner.post("/api/v1/autopilot/intents/faq/enable", headers=CSRF)
     assert r_not_ready.status_code == 422
-    for forbidden in ("complaint", "order_intent", "other", "price_quote"):
+    for forbidden in ("complaint", "order_intent", "other"):
         assert (
             await owner.post(f"/api/v1/autopilot/intents/{forbidden}/enable", headers=CSRF)
         ).status_code == 422

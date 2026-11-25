@@ -13,8 +13,8 @@ from typing import Literal
 
 from app.modules.outbound.domain.gate import NEVER_AUTOPILOT_INTENTS
 
-# Ý định được phép bật tự trả lời ở A2–A5 (`price_quote` mở ở A6 cùng kiểm độ mới catalog).
-ENABLEABLE_INTENTS = frozenset({"greeting", "faq", "product_info"})
+# Ý định được phép bật tự trả lời (06 §4.1: mở `price_quote` ở A6 kèm kiểm `catalog_stale`).
+ENABLEABLE_INTENTS = frozenset({"greeting", "faq", "product_info", "price_quote"})
 Source = Literal["blind", "shown"]
 
 

@@ -8,6 +8,7 @@
 import json
 import logging
 from collections.abc import Awaitable, Callable
+from datetime import UTC, datetime
 from uuid import UUID
 
 from sqlalchemy import text
@@ -16,13 +17,15 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
 from app.modules.outbound.ai_reply import send_ai_reply
+from app.modules.outbound.domain.channels import is_catalog_stale
 from app.modules.outbound.domain.gate import AiGateInput, send_decision
-from app.modules.outbound.infrastructure.autopilot import tenant_switches
+from app.modules.outbound.infrastructure.autopilot import catalog_max_age_hours, tenant_switches
 from app.modules.outbound.infrastructure.monitoring import (
     check_bot_reply_amounts,
     demote_on_config_change,
     record_customer_reaction_if_applicable,
 )
+from app.shared.domain.text import extract_amounts
 from app.shared.infrastructure.metrics import AUTOPILOT_BLOCKED, AUTOPILOT_SENT
 
 log = logging.getLogger(__name__)
@@ -32,7 +35,7 @@ Handler = Callable[[RunRequest], Awaitable[None]]
 _LATEST_DRAFT = text(
     """
     SELECT r.id AS run_id, r.agent_id, r.intents, r.prompt_version,
-           d.id AS draft_id, d.text, d.grounded, d.needs_human, d.based_on_sequence,
+           d.id AS draft_id, d.text, d.sources, d.grounded, d.needs_human, d.based_on_sequence,
            a.template_key, a.template_version, a.mode
     FROM agent_runs r
     JOIN agent_drafts d ON d.tenant_id = r.tenant_id AND d.run_id = r.id
@@ -43,6 +46,53 @@ _LATEST_DRAFT = text(
     LIMIT 1
     """
 )
+
+
+async def _check_catalog_stale(
+    s: AsyncSession,
+    tenant_id: UUID,
+    *,
+    reply_text: str,
+    sources: list | None,
+    max_age_hours: int,
+) -> bool:
+    """Kiểm độ mới của mọi sản phẩm catalog được nháp trích nguồn khi nháp có số tiền (06 A6)."""
+    if not extract_amounts(reply_text):
+        return False
+    raw_ids = [
+        str(src["id"])
+        for src in (sources or ())
+        if isinstance(src, dict) and src.get("type") == "product" and src.get("id")
+    ]
+    if not raw_ids:
+        return False
+    parsed_ids: list[UUID] = []
+    missing = False
+    for raw in dict.fromkeys(raw_ids):
+        try:
+            parsed_ids.append(UUID(raw))
+        except ValueError:
+            missing = True
+    rows = (
+        await s.execute(
+            text(
+                "SELECT id, source, synced_at FROM catalog_items "
+                "WHERE tenant_id = :t AND active AND id = ANY(:ids)"
+            ),
+            {"t": tenant_id, "ids": parsed_ids},
+        )
+    ).all()
+    if len(rows) < len(parsed_ids):
+        missing = True
+    return is_catalog_stale(
+        reply_text=reply_text,
+        # CSV do chủ shop tải lên là nguồn sự thật, không có gì để "lệch"; `synced_at` của nó chỉ
+        # là lúc tải. Chỉ nguồn đồng bộ từ ngoài (Sheets, sàn) mới cũ đi theo thời gian.
+        cited_product_synced_at=[r.synced_at for r in rows if r.source != "csv"],
+        missing_products=missing,
+        now=datetime.now(UTC),
+        max_age_hours=max_age_hours,
+    )
 
 
 async def _append_gate_step(
@@ -198,6 +248,14 @@ class AutopilotStage:
                 ).all()
                 enabled = frozenset(r.intent for r in rows)
                 cfg_keys = {r.intent: r.config_key for r in rows}
+                max_age = await catalog_max_age_hours(tx, req.tenant_id)
+                stale_catalog = await _check_catalog_stale(
+                    tx,
+                    req.tenant_id,
+                    reply_text=draft.text,
+                    sources=draft.sources,
+                    max_age_hours=max_age,
+                )
                 return send_decision(
                     AiGateInput(
                         ai_enabled=ai_enabled,
@@ -222,7 +280,7 @@ class AutopilotStage:
                         max_bot_streak=streak_limit,
                         provider="webchat",
                         channel_allowed=True,
-                        catalog_stale=False,
+                        catalog_stale=stale_catalog,
                     )
                 )
 
