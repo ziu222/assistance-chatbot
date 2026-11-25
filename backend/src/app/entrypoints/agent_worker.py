@@ -20,6 +20,7 @@ from app.modules.agent_runtime.llm.factory import build_llm
 from app.modules.agent_runtime.runner import AgentRunner
 from app.modules.authoring.worker import AuthoringWorker
 from app.modules.conversation_policy.stage import PolicyStage
+from app.modules.learning.infrastructure.candidates import LearningWorker
 from app.modules.shadow.infrastructure.judging import JudgeWorker
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
@@ -27,7 +28,7 @@ from app.workers.agent_worker import AgentWorker
 
 log = logging.getLogger(__name__)
 
-ALL_ROLES: tuple[str, ...] = ("agent", "authoring", "judge")
+ALL_ROLES: tuple[str, ...] = ("agent", "authoring", "judge", "learning")
 
 
 def parse_roles(raw: str | None) -> tuple[str, ...]:
@@ -59,6 +60,8 @@ def routes_for_roles(roles: Iterable[str]) -> dict[str, set[str]]:
         used["authoring"] = {"authoring"}
     if "judge" in role_set:
         used["judge"] = {"judge"}
+    if "learning" in role_set:
+        used["learning"] = {"learning"}
     return used
 
 
@@ -99,6 +102,9 @@ async def main(roles: tuple[str, ...] = ALL_ROLES) -> None:
             per_intent_after=settings.judge_per_intent_after,
         )
         tasks.append(judge.run(stop))  # chấm nền so sánh shadow (thiết kế 04 S2)
+    if "learning" in roles:
+        learning = LearningWorker(factory, llm, daily_cap_micro=settings.learning_daily_cap_micro)
+        tasks.append(learning.run(stop))  # gom bản ghi sửa thành ứng viên tri thức (05 L3)
 
     log.info("starting agent worker", extra={"roles": list(roles)})
     try:
