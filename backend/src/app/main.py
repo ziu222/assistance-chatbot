@@ -23,6 +23,7 @@ from app.modules.learning.presentation.http.candidates import router as learning
 from app.modules.learning.presentation.http.drafts import router as learning_drafts_api
 from app.modules.orders.presentation.http.order_flow import router as order_flow_api
 from app.modules.orders.presentation.http.order_requests import router as order_requests_api
+from app.modules.outbound.presentation.http.autopilot import router as autopilot_api
 from app.modules.shadow.presentation.http.shadow import router as shadow_api
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.metrics import OUTBOX_OLDEST_AGE, OUTBOX_UNPUBLISHED
@@ -79,6 +80,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(writing_api)
     app.include_router(order_flow_api)
     app.include_router(order_requests_api)
+    app.include_router(autopilot_api)
     app.include_router(shadow_api)
     app.include_router(learning_drafts_api)
     app.include_router(learning_candidates_api)
