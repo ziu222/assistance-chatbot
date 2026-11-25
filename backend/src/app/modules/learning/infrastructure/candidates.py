@@ -44,6 +44,7 @@ from app.modules.learning.domain.candidates import (
     user_turn,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
+from app.modules.learning.infrastructure.review import process_approved_candidates
 
 log = logging.getLogger(__name__)
 DEADLINE_S = 60
@@ -265,9 +266,13 @@ class LearningWorker:
             if not locked:
                 return 0
             try:
-                return await build_candidates_once(
+                created = await build_candidates_once(
                     self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
                 )
+                await process_approved_candidates(
+                    self._factory, self._llm, daily_cap_micro=self._cap, clock=self._clock
+                )
+                return created
             finally:
                 await lock_s.execute(
                     text("SELECT pg_advisory_unlock(:k)"), {"k": _ADVISORY_LOCK_KEY}

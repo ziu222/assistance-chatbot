@@ -61,6 +61,7 @@ CORE_TABLES = {
     "knowledge_releases",
     "tenant_knowledge",
     "knowledge_candidates",
+    "eval_cases",
     "catalog_items",
     "catalog_sources",
     "catalog_sync_runs",
