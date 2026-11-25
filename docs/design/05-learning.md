@@ -1,6 +1,6 @@
 # Thiết kế bước 4: Learning: nhân viên dùng và sửa nháp, bot học qua bản phát hành tri thức
 
-- Trạng thái: **L1–L3 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker` lọc PII + kiểm tra sự thật & chữ khách + trần chi phí); L4–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
+- Trạng thái: **L1–L4 đã implement** (L1: chế độ Learning, nháp trong ô soạn tin, `draft_uses`, `draft_exposure`; L2: `knowledge_releases`, `tenant_knowledge`, quay lại bản trước, `ContextBuilder` đọc snapshot; L3: route `learning`, `knowledge_candidates`, `LearningWorker`; L4: màn hình "Bot muốn học", duyệt/sửa/bỏ, `eval_cases` + cổng eval trước khi phát hành); L5–L6 là thiết kế. Quyết định chính: [ADR-0038](../adr/0038-learning-through-reviewed-knowledge-releases.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0030](../adr/0030-stateless-model-durable-knowledge.md) (tri thức bền trong Postgres, mục 5);
@@ -167,6 +167,15 @@ Duyệt xong, hệ thống:
 5. **Không đạt:** ứng viên thành `eval_failed`, kèm ca hỏng và câu bot trả lời, để chủ shop sửa lại.
 
 Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần `learning`.
+
+Đã implement (L4):
+
+- Migration 0024: tạo bảng `eval_cases` và thêm cột `eval_report jsonb` vào `knowledge_candidates`.
+- Quyền `knowledge.approve` (`owner`/`admin`) trong `identity/domain/authorization.py`.
+- Domain thuần `learning/domain/eval_gate.py`: `build_lesson_case`, `grade_reply`, `evaluate_gate`, `apply_candidate_to_snapshot`.
+- Infrastructure `learning/infrastructure/review.py`: `list_candidates`, `approve_candidate` (chặn duyệt nếu chưa qua kiểm tra sự thật/PII/chữ khách, ghi `candidate_approved`), `reject_candidate` (ghi `candidate_rejected`), `run_eval_gate_for_candidate` & `process_approved_candidates` (gắn vào `LearningWorker`: đạt ⇒ đồng bộ bảng FAQ/tài liệu + `publish_snapshot(reason="lesson")` + lưu `eval_cases`; hỏng ⇒ `eval_failed` kèm ca lỗi).
+- API: `GET /api/v1/learning/candidates`, `POST /api/v1/learning/candidates/{id}/approve`, `POST /api/v1/learning/candidates/{id}/reject`.
+- Admin UI: màn hình **"Bot muốn học"** (`LearningPage.tsx`) gắn vào `AppShell`, hiện chỗ khác so với FAQ hiện tại, bằng chứng hội thoại, lỗi kiểm tra/eval và 3 nút Duyệt / Sửa rồi duyệt / Bỏ.
 
 ## 7. Nối với bước 3 (S5)
 
