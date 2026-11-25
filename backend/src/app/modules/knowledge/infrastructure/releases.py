@@ -33,6 +33,7 @@ class KnowledgeRelease:
     eval_run_id: UUID | None
     created_at: datetime
     is_current: bool
+    eval_report: dict | None = None
 
 
 async def snapshot_from_tables(s: AsyncSession, tenant_id: UUID) -> KnowledgeSnapshot:
@@ -95,6 +96,7 @@ async def publish_snapshot(
     reason: ReleaseReason,
     created_by: UUID | None,
     eval_run_id: UUID | None = None,
+    eval_report: dict | None = None,
 ) -> KnowledgeRelease:
     """Tạo bản phát hành mới và chuyển con trỏ `tenant_knowledge` tới bản đó."""
     await s.execute(text("SELECT 1 FROM tenants WHERE id = :t FOR UPDATE"), {"t": tenant_id})
@@ -111,10 +113,10 @@ async def publish_snapshot(
         await s.execute(
             text(
                 "INSERT INTO knowledge_releases "
-                "(id, tenant_id, number, snapshot, reason, created_by, eval_run_id) "
-                "VALUES (:id, :t, :n, CAST(:snap AS jsonb), :r, :by, :ev) "
+                "(id, tenant_id, number, snapshot, reason, created_by, eval_run_id, eval_report) "
+                "VALUES (:id, :t, :n, CAST(:snap AS jsonb), :r, :by, :ev, CAST(:rep AS jsonb)) "
                 "RETURNING id, tenant_id, number, snapshot, reason, created_by, eval_run_id, "
-                "created_at"
+                "eval_report, created_at"
             ),
             {
                 "id": release_id,
@@ -124,6 +126,9 @@ async def publish_snapshot(
                 "r": reason,
                 "by": created_by,
                 "ev": eval_run_id,
+                "rep": json.dumps(eval_report, ensure_ascii=False)
+                if eval_report is not None
+                else None,
             },
         )
     ).one()
@@ -153,6 +158,7 @@ async def publish_snapshot(
         eval_run_id=row.eval_run_id,
         created_at=row.created_at,
         is_current=True,
+        eval_report=row.eval_report,
     )
 
 
@@ -173,7 +179,7 @@ async def list_releases(
     rows = await s.execute(
         text(
             "SELECT r.id, r.tenant_id, r.number, r.snapshot, r.reason, r.created_by, "
-            "       r.eval_run_id, r.created_at, "
+            "       r.eval_run_id, r.eval_report, r.created_at, "
             "       (tk.current_release_id = r.id) AS is_current "
             "FROM knowledge_releases r "
             "LEFT JOIN tenant_knowledge tk ON tk.tenant_id = r.tenant_id "
@@ -193,6 +199,7 @@ async def list_releases(
             eval_run_id=r.eval_run_id,
             created_at=r.created_at,
             is_current=bool(r.is_current),
+            eval_report=r.eval_report,
         )
         for r in rows
     ]
@@ -206,7 +213,7 @@ async def restore_release(
         await s.execute(
             text(
                 "SELECT id, tenant_id, number, snapshot, reason, created_by, eval_run_id, "
-                "       created_at "
+                "       eval_report, created_at "
                 "FROM knowledge_releases WHERE tenant_id = :t AND number = :n"
             ),
             {"t": tenant_id, "n": number},
@@ -217,6 +224,15 @@ async def restore_release(
     await s.execute(text("SELECT 1 FROM tenants WHERE id = :t FOR UPDATE"), {"t": tenant_id})
     snapshot = KnowledgeSnapshot.from_dict(row.snapshot)
     await _sync_tables_to(s, tenant_id, snapshot)
+    # Xóa dấu eval cũ để cổng eval chạy lại bộ ca chuẩn với tập ý định Autopilot hiện hành.
+    await s.execute(
+        text(
+            "UPDATE knowledge_releases "
+            "SET eval_run_id = NULL, eval_report = NULL, eval_attempts = 0 "
+            "WHERE tenant_id = :t AND id = :id"
+        ),
+        {"t": tenant_id, "id": row.id},
+    )
     await s.execute(
         text(
             "INSERT INTO tenant_knowledge (tenant_id, current_release_id) "
@@ -245,9 +261,10 @@ async def restore_release(
         snapshot=KnowledgeSnapshot.from_dict(row.snapshot),
         reason=row.reason,
         created_by=row.created_by,
-        eval_run_id=row.eval_run_id,
+        eval_run_id=None,
         created_at=row.created_at,
         is_current=True,
+        eval_report=None,
     )
 
 

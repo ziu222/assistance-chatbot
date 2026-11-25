@@ -32,7 +32,12 @@ from app.modules.agent_runtime.llm.port import (
 from app.modules.agent_runtime.llm.pricing import UnknownPrice
 from app.modules.authoring.domain.writing import BrandProfile
 from app.modules.authoring.infrastructure.repository import current_profile, save_profile
-from app.modules.knowledge.domain.releases import entry_hash, find_item, render_knowledge
+from app.modules.knowledge.domain.releases import (
+    KnowledgeSnapshot,
+    entry_hash,
+    find_item,
+    render_knowledge,
+)
 from app.modules.knowledge.infrastructure.releases import (
     active_snapshot,
     current_release_id,
@@ -41,19 +46,26 @@ from app.modules.knowledge.infrastructure.releases import (
 from app.modules.learning.domain.candidates import strip_pii
 from app.modules.learning.domain.eval_gate import (
     EVAL_SYSTEM,
+    STANDARD_EVAL_SYSTEM,
+    CaseOutcome,
     EvalCaseSpec,
+    EvalDraftOut,
     apply_candidate_to_snapshot,
     build_lesson_case,
+    build_standard_cases,
     eval_user_turn,
     evaluate_gate,
     grade_reply,
+    grade_standard_reply,
+    regressed_intents,
     still_valid,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
 from app.modules.orders.domain.order_flow import FIELDS, OrderFlowConfig
 from app.modules.orders.infrastructure.repository import current_flow, publish_flow
+from app.modules.outbound.infrastructure.monitoring import demote_intent
 from app.modules.shadow.domain.readiness import intent_priority_score
-from app.shared.domain.text import fold
+from app.shared.domain.text import extract_amounts, fold
 from app.shared.infrastructure.signals import record_signal
 
 log = logging.getLogger(__name__)
@@ -388,6 +400,133 @@ async def _sync_entry_table(
         )
 
 
+async def _active_autopilot_intents(s: AsyncSession, tenant_id: UUID) -> list[tuple[UUID, str]]:
+    """Danh sách `(agent_id, intent)` đang ở trạng thái `autopilot` của tenant."""
+    rows = (
+        await s.execute(
+            text(
+                "SELECT agent_id, intent FROM autopilot_intents "
+                "WHERE tenant_id = :t AND state = 'autopilot' ORDER BY agent_id, intent"
+            ),
+            {"t": tenant_id},
+        )
+    ).all()
+    return [(r.agent_id, r.intent) for r in rows]
+
+
+async def _catalog_eval_context(
+    s: AsyncSession, tenant_id: UUID
+) -> tuple[set[int], list[str], set[tuple[str, str]]]:
+    """Đọc giá, tên và nguồn sản phẩm đang bán để chấm hành vi ca chuẩn không bịa số."""
+    rows = (
+        await s.execute(
+            text(
+                "SELECT id, name, price_vnd FROM catalog_items "
+                "WHERE tenant_id = :t AND active ORDER BY name"
+            ),
+            {"t": tenant_id},
+        )
+    ).all()
+    prices = {int(r.price_vnd) for r in rows if r.price_vnd is not None}
+    names = [r.name for r in rows if r.name]
+    sources = {("product", str(r.id)) for r in rows}
+    return prices, names, sources
+
+
+async def _load_active_eval_cases(s: AsyncSession, tenant_id: UUID) -> list[EvalCaseSpec]:
+    rows = (
+        await s.execute(
+            text(
+                "SELECT id, source, intent, question, expected, entry_id, entry_hash "
+                "FROM eval_cases WHERE tenant_id = :t AND active ORDER BY created_at"
+            ),
+            {"t": tenant_id},
+        )
+    ).all()
+    return [
+        EvalCaseSpec.from_row(
+            str(r.id),
+            r.question,
+            r.expected or {},
+            entry_id=str(r.entry_id) if r.entry_id else None,
+            entry_hash=r.entry_hash,
+            source=r.source,
+            intent=r.intent,
+        )
+        for r in rows
+    ]
+
+
+async def _execute_specs(
+    llm: LLMPort,
+    rendered_block: str,
+    specs: list[EvalCaseSpec],
+    *,
+    valid_sources: set[tuple[str, str]],
+    known_amounts: set[int],
+    clock: Callable[[], float],
+    log_context: dict,
+) -> tuple[list[CaseOutcome], list, bool]:
+    outcomes: list[CaseOutcome] = []
+    usage_results = []
+    for spec in specs:
+        try:
+            if spec.check_behavior:
+                res = await llm.complete(
+                    LLMRequest(
+                        route=LEARNING,
+                        system_blocks=(STANDARD_EVAL_SYSTEM,),
+                        turns=(
+                            Turn(role="user", text=eval_user_turn(rendered_block, spec.question)),
+                        ),
+                        output_schema=EvalDraftOut,
+                        deadline=clock() + EVAL_DEADLINE_S,
+                    )
+                )
+            else:
+                res = await llm.complete(
+                    LLMRequest(
+                        route=LEARNING,
+                        system_blocks=(EVAL_SYSTEM,),
+                        turns=(
+                            Turn(role="user", text=eval_user_turn(rendered_block, spec.question)),
+                        ),
+                        deadline=clock() + EVAL_DEADLINE_S,
+                    )
+                )
+        except (
+            AllTargetsFailed,
+            ProviderUnavailable,
+            DeadlineExceeded,
+            BadRequest,
+            InvalidOutput,
+            UnknownPrice,
+        ) as exc:
+            log.warning(
+                "learning eval gate call failed",
+                extra=log_context | {"error": type(exc).__name__},
+            )
+            return outcomes, usage_results, True
+        usage_results.append(res)
+        if spec.check_behavior:
+            draft = (
+                res.parsed
+                if isinstance(res.parsed, EvalDraftOut)
+                else EvalDraftOut(reply=res.text or "")
+            )
+            outcomes.append(
+                grade_standard_reply(
+                    spec,
+                    draft,
+                    valid_sources=valid_sources,
+                    known_amounts=known_amounts,
+                )
+            )
+        else:
+            outcomes.append(grade_reply(spec, res.text or ""))
+    return outcomes, usage_results, False
+
+
 async def run_eval_gate_for_candidate(
     session_factory: async_sessionmaker[AsyncSession],
     llm: LLMPort,
@@ -414,15 +553,15 @@ async def run_eval_gate_for_candidate(
             return None
         base_release = await current_release_id(s, tenant_id)
         snapshot = await active_snapshot(s, tenant_id)
-        existing_cases = (
-            await s.execute(
-                text(
-                    "SELECT id, question, expected, entry_id, entry_hash FROM eval_cases "
-                    "WHERE tenant_id = :t AND active ORDER BY created_at"
-                ),
-                {"t": tenant_id},
+        old_specs = await _load_active_eval_cases(s, tenant_id)
+        autopilot_rows = await _active_autopilot_intents(s, tenant_id)
+        catalog_prices: set[int] = set()
+        catalog_names: list[str] = []
+        catalog_sources: set[tuple[str, str]] = set()
+        if autopilot_rows:
+            catalog_prices, catalog_names, catalog_sources = await _catalog_eval_context(
+                s, tenant_id
             )
-        ).all()
 
     old_answer: str | None = None
     if cand.replaces:
@@ -444,55 +583,56 @@ async def run_eval_gate_for_candidate(
     rendered = render_knowledge(draft_snapshot)
     new_case_id = uuid4()
     new_spec = build_lesson_case(
-        cand.proposal, kind=cand.kind, case_id=str(new_case_id), old_answer=old_answer
+        cand.proposal,
+        kind=cand.kind,
+        case_id=str(new_case_id),
+        old_answer=old_answer,
+        intent=cand.intent,
     )
     target_id = str(cand.replaces) if cand.replaces else str(new_item_id)
     target = find_item(draft_snapshot, target_id)
-    old_specs = [
-        EvalCaseSpec.from_row(
-            str(r.id),
-            r.question,
-            r.expected or {},
-            entry_id=str(r.entry_id) if r.entry_id else None,
-            entry_hash=r.entry_hash,
-        )
-        for r in existing_cases
-    ]
-    # Ca của bài học cũ cho đúng mục này (hay mục chủ shop đã sửa) không còn hiệu lực: không chạy,
-    # và tắt đi khi phát hành. Nếu không, ca đòi giá cũ chặn mãi lần đổi giá kế tiếp.
-    kept = [c for c in old_specs if still_valid(c, draft_snapshot)]
-    retired = [c.case_id for c in old_specs if not still_valid(c, draft_snapshot)]
-    specs = [new_spec, *kept]
 
-    outcomes = []
-    usage_results = []
-    failed_call = False
-    for spec in specs:
-        try:
-            res = await llm.complete(
-                LLMRequest(
-                    route=LEARNING,
-                    system_blocks=(EVAL_SYSTEM,),
-                    turns=(Turn(role="user", text=eval_user_turn(rendered.block, spec.question)),),
-                    deadline=clock() + EVAL_DEADLINE_S,
-                )
-            )
-        except (
-            AllTargetsFailed,
-            ProviderUnavailable,
-            DeadlineExceeded,
-            BadRequest,
-            InvalidOutput,
-            UnknownPrice,
-        ) as exc:
-            log.warning(
-                "learning eval gate call failed",
-                extra={"candidate_id": str(candidate_id), "error": type(exc).__name__},
-            )
-            failed_call = True
-            break
-        usage_results.append(res)
-        outcomes.append(grade_reply(spec, res.text or ""))
+    active_intent_set = {intent for _, intent in autopilot_rows}
+    # Ca của bài học cũ cho đúng mục này (hay mục chủ shop đã sửa) không còn hiệu lực: không chạy,
+    # và tắt đi khi phát hành. Ca chuẩn lưu sẵn chỉ chạy cho ý định đang Autopilot.
+    kept: list[EvalCaseSpec] = []
+    retired: list[str] = []
+    covered_std_entries: set[str] = set()
+    for c in old_specs:
+        if not still_valid(c, draft_snapshot):
+            retired.append(c.case_id)
+            continue
+        if c.source == "standard":
+            if c.intent in active_intent_set:
+                kept.append(c)
+                if c.entry_id:
+                    covered_std_entries.add(c.entry_id)
+        else:
+            kept.append(c)
+
+    standard_specs = (
+        build_standard_cases(
+            sorted(active_intent_set),
+            draft_snapshot,
+            catalog_names=catalog_names,
+            covered_entry_ids=frozenset(covered_std_entries),
+        )
+        if active_intent_set
+        else []
+    )
+    specs = [new_spec, *kept, *standard_specs]
+    valid_sources = set(rendered.sources) | catalog_sources
+    known_amounts = extract_amounts(rendered.text) | catalog_prices
+
+    outcomes, usage_results, failed_call = await _execute_specs(
+        llm,
+        rendered.block,
+        specs,
+        valid_sources=valid_sources,
+        known_amounts=known_amounts,
+        clock=clock,
+        log_context={"candidate_id": str(candidate_id)},
+    )
 
     if failed_call:
         # Ghi chi phí các lời gọi đã chạy (để trần chi phí đúng), rồi thử lại có giới hạn.
@@ -548,16 +688,19 @@ async def run_eval_gate_for_candidate(
                 reason="lesson",
                 created_by=cand.reviewed_by,
                 eval_run_id=eval_run_id,
+                eval_report=report,
             )
             await s.execute(
                 text(
-                    "INSERT INTO eval_cases (id, tenant_id, source, candidate_id, question, "
-                    "expected, active, entry_id, entry_hash) VALUES (:id, :t, 'lesson', :cid, "
-                    ":q, CAST(:exp AS jsonb), true, :eid, :eh)"
+                    "INSERT INTO eval_cases (id, tenant_id, source, intent, candidate_id, "
+                    "question, expected, active, entry_id, entry_hash) "
+                    "VALUES (:id, :t, 'lesson', :intent, :cid, :q, CAST(:exp AS jsonb), "
+                    "true, :eid, :eh)"
                 ),
                 {
                     "id": new_case_id,
                     "t": tenant_id,
+                    "intent": cand.intent,
                     "cid": candidate_id,
                     "q": new_spec.question,
                     "exp": json.dumps(new_spec.expected_dict(), ensure_ascii=False),
@@ -598,6 +741,194 @@ async def run_eval_gate_for_candidate(
                 {"t": tenant_id, "id": candidate_id, "rep": json.dumps(report, ensure_ascii=False)},
             )
     return report
+
+
+async def run_eval_for_release(
+    session_factory: async_sessionmaker[AsyncSession],
+    llm: LLMPort,
+    *,
+    tenant_id: UUID,
+    release_id: UUID,
+    daily_cap_micro: int,
+    clock: Callable[[], float] = time.monotonic,
+) -> dict | None:
+    """Chạy bộ ca chuẩn cho bản phát hành thủ công khi tenant có ý định Autopilot (06 §6.3, A5).
+
+    Bản sửa tay của chủ shop LUÔN giữ hiệu lực (chủ shop là nguồn sự thật); chỉ những ý định có
+    ca chuẩn bị hỏng mới tự hạ cấp về Learning kèm `demote_reason = 'eval_regressed'`.
+    """
+    async with session_factory() as s:
+        rel = (
+            await s.execute(
+                text(
+                    "SELECT r.id, r.snapshot, r.eval_run_id, r.eval_attempts, "
+                    "       tk.current_release_id "
+                    "FROM knowledge_releases r "
+                    "JOIN tenant_knowledge tk ON tk.tenant_id = r.tenant_id "
+                    "WHERE r.tenant_id = :t AND r.id = :id"
+                ),
+                {"t": tenant_id, "id": release_id},
+            )
+        ).first()
+        if (
+            rel is None
+            or rel.current_release_id != release_id
+            or rel.eval_run_id is not None
+            or rel.eval_attempts >= MAX_EVAL_ATTEMPTS
+        ):
+            return None
+        autopilot_rows = await _active_autopilot_intents(s, tenant_id)
+        if not autopilot_rows:
+            return None
+        if await spent_today_micro(s, tenant_id, purpose=LEARNING) >= daily_cap_micro:
+            return None
+        old_specs = await _load_active_eval_cases(s, tenant_id)
+        catalog_prices, catalog_names, catalog_sources = await _catalog_eval_context(s, tenant_id)
+
+    snapshot = KnowledgeSnapshot.from_dict(rel.snapshot)
+    rendered = render_knowledge(snapshot)
+    active_intent_set = {intent for _, intent in autopilot_rows}
+
+    kept_std: list[EvalCaseSpec] = []
+    retired: list[str] = []
+    covered_std_entries: set[str] = set()
+    for c in old_specs:
+        if c.source != "standard":
+            continue
+        if not still_valid(c, snapshot):
+            retired.append(c.case_id)
+            continue
+        if c.intent in active_intent_set:
+            kept_std.append(c)
+            if c.entry_id:
+                covered_std_entries.add(c.entry_id)
+
+    dynamic_std = build_standard_cases(
+        sorted(active_intent_set),
+        snapshot,
+        catalog_names=catalog_names,
+        covered_entry_ids=frozenset(covered_std_entries),
+    )
+    specs = [*kept_std, *dynamic_std]
+    if not specs:
+        return None
+
+    valid_sources = set(rendered.sources) | catalog_sources
+    known_amounts = extract_amounts(rendered.text) | catalog_prices
+    outcomes, usage_results, failed_call = await _execute_specs(
+        llm,
+        rendered.block,
+        specs,
+        valid_sources=valid_sources,
+        known_amounts=known_amounts,
+        clock=clock,
+        log_context={"release_id": str(release_id)},
+    )
+
+    if failed_call:
+        async with session_factory() as s, s.begin():
+            for res in usage_results:
+                await _record_usage_safe(s, tenant_id, res)
+            await s.execute(
+                text(
+                    "UPDATE knowledge_releases SET eval_attempts = eval_attempts + 1, "
+                    "eval_report = CASE WHEN eval_attempts + 1 >= :max "
+                    "THEN CAST(:rep AS jsonb) ELSE eval_report END "
+                    "WHERE tenant_id = :t AND id = :id"
+                ),
+                {
+                    "max": MAX_EVAL_ATTEMPTS,
+                    "rep": json.dumps({"passed": False, "error": "llm_unavailable"}),
+                    "t": tenant_id,
+                    "id": release_id,
+                },
+            )
+        return None
+
+    decision = evaluate_gate(outcomes)
+    bad_intents = regressed_intents(outcomes)
+    eval_run_id = uuid4()
+    demoted: list[str] = []
+
+    async with session_factory() as s, s.begin():
+        for res in usage_results:
+            await _record_usage_safe(s, tenant_id, res)
+        await s.execute(text("SELECT 1 FROM tenants WHERE id = :t FOR UPDATE"), {"t": tenant_id})
+        still_current = await current_release_id(s, tenant_id) == release_id
+        if still_current:
+            if retired:
+                await s.execute(
+                    text(
+                        "UPDATE eval_cases SET active = false "
+                        "WHERE tenant_id = :t AND id = ANY(:ids)"
+                    ),
+                    {"t": tenant_id, "ids": [UUID(c) for c in retired]},
+                )
+            for agent_id, intent in autopilot_rows:
+                if intent in bad_intents and await demote_intent(
+                    s, tenant_id, agent_id, intent, reason="eval_regressed"
+                ):
+                    demoted.append(intent)
+        report = decision.as_dict() | {
+            "eval_run_id": str(eval_run_id),
+            "demoted_intents": sorted(set(demoted)),
+        }
+        await s.execute(
+            text(
+                "UPDATE knowledge_releases "
+                "SET eval_run_id = :ev, eval_report = CAST(:rep AS jsonb) "
+                "WHERE tenant_id = :t AND id = :id"
+            ),
+            {
+                "ev": eval_run_id,
+                "rep": json.dumps(report, ensure_ascii=False),
+                "t": tenant_id,
+                "id": release_id,
+            },
+        )
+    return report
+
+
+async def evaluate_manual_releases(
+    session_factory: async_sessionmaker[AsyncSession],
+    llm: LLMPort,
+    *,
+    daily_cap_micro: int,
+    clock: Callable[[], float] = time.monotonic,
+) -> int:
+    """Chạy bộ ca chuẩn cho các bản phát hành hiện hành chưa có `eval_run_id` ở tenant Autopilot."""
+    async with session_factory() as s:
+        rows = (
+            await s.execute(
+                text(
+                    "SELECT tk.tenant_id, r.id AS release_id "
+                    "FROM tenant_knowledge tk "
+                    "JOIN knowledge_releases r "
+                    "  ON r.tenant_id = tk.tenant_id AND r.id = tk.current_release_id "
+                    "WHERE r.eval_run_id IS NULL "
+                    "  AND r.eval_attempts < :max "
+                    "  AND EXISTS ("
+                    "    SELECT 1 FROM autopilot_intents ai "
+                    "    WHERE ai.tenant_id = tk.tenant_id AND ai.state = 'autopilot'"
+                    "  ) "
+                    "ORDER BY r.created_at ASC LIMIT 20"
+                ),
+                {"max": MAX_EVAL_ATTEMPTS},
+            )
+        ).all()
+    evaluated = 0
+    for tenant_id, release_id in rows:
+        report = await run_eval_for_release(
+            session_factory,
+            llm,
+            tenant_id=tenant_id,
+            release_id=release_id,
+            daily_cap_micro=daily_cap_micro,
+            clock=clock,
+        )
+        if report is not None:
+            evaluated += 1
+    return evaluated
 
 
 async def _record_usage_safe(s: AsyncSession, tenant_id: UUID, res) -> None:
