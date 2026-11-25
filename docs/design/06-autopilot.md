@@ -1,6 +1,6 @@
 # Thiết kế bước 5: Autopilot: bot tự trả lời theo từng ý định đã đủ tin cậy
 
-- Trạng thái: **A1–A6 đã implement** (hoàn tất Bước 5 — Autopilot: A1 `sender_type = 'bot'`, `send_decision`, `outbound.send_ai_reply`; A2 `autopilot_intents`, `autopilot.manage`, API bật/tắt + `/pause`; A3 `AutopilotStage`, gửi webchat, nhãn widget/inbox; A4 `ai_reply_followups`, theo dõi đính chính/phản ứng/kiểm số tiền, chấm mẫu `/autopilot/replies`, tự hạ cấp & hạ cấp khi đổi cấu hình AI; A5 bộ ca chuẩn kiểm hành vi theo ý định Autopilot trong cổng eval, chặn phát hành từ Learning khi hỏng, hạ cấp `eval_regressed` cho ý định hỏng khi chủ shop sửa tay, ca kiểm số tiền gắn `entry_id` + `entry_hash` tránh hạ cấp oan; A6 adapter kênh Messenger 24h & Zalo OA, mở `price_quote` kèm kiểm độ mới catalog `catalog_stale`). Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
+- Trạng thái: **A1–A6 đã implement** (hoàn tất Bước 5 — Autopilot: A1 `sender_type = 'bot'`, `send_decision`, `outbound.send_ai_reply`; A2 `autopilot_intents`, `autopilot.manage`, API bật/tắt + `/pause`; A3 `AutopilotStage`, gửi webchat, nhãn widget/inbox; A4 `ai_reply_followups`, theo dõi đính chính/phản ứng/kiểm số tiền, chấm mẫu `/autopilot/replies`, tự hạ cấp & hạ cấp khi đổi cấu hình AI; A5 bộ ca chuẩn kiểm hành vi theo ý định Autopilot trong cổng eval, chặn phát hành từ Learning khi hỏng, hạ cấp `eval_regressed` cho ý định hỏng khi chủ shop sửa tay, ca kiểm số tiền gắn `entry_id` + `entry_hash` tránh hạ cấp oan; A6 quy tắc cửa sổ Messenger 24h & Zalo OA (chưa bật gửi: chưa có adapter giao tin), mở `price_quote` kèm kiểm độ mới catalog `catalog_stale`). Quyết định chính: [ADR-0039](../adr/0039-per-intent-autopilot-behind-send-gate.md).
 - Ngày: 2026-11-25
 - Liên quan:
   - [ADR-0033](../adr/0033-single-send-gate-for-automatic-messages.md) (một cổng gửi duy nhất cho tin tự động, module `outbound`);
@@ -111,6 +111,8 @@ tin khách ─▶ PolicyStage ─▶ AgentRunner (lưu nháp như bước 4)
 - **Webchat** (A3): gửi được ngay.
 - **Messenger** (A6): chỉ trong cửa sổ 24 giờ kể từ tin khách cuối; bot luôn trả lời một tin khách vừa tới nên gần như luôn trong cửa sổ, nhưng vẫn kiểm.
 - **Zalo OA** (A6): theo quy định gửi tin của Zalo OA cho tin trả lời; kiểm trong adapter kênh, không trong cổng.
+- **Hiện trạng:** quy tắc cửa sổ của Messenger và Zalo OA đã có (`outbound/domain/channels.py`), nhưng repo chưa có adapter giao tin cho hai kênh này. Bot chỉ tự gửi trên webchat (`AI_SEND_PROVIDERS`); thêm kênh vào đó cùng lúc với adapter gửi.
+- **Độ mới catalog:** chỉ áp cho sản phẩm đồng bộ từ ngoài (Sheets, sàn). Catalog chủ shop tải lên bằng CSV là nguồn sự thật, không bao giờ bị coi là cũ.
 - Kênh khác: `channel`, lùi về Learning.
 
 ## 6. Sau khi gửi: theo dõi và tự hạ cấp

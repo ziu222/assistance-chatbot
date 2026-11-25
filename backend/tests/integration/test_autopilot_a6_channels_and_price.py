@@ -94,7 +94,7 @@ async def _setup_channel_conv(
     return ctx, conv
 
 
-async def test_messenger_24h_window_allows_fresh_and_blocks_expired(session_factory):
+async def test_messenger_blocked_until_a_delivery_adapter_exists(session_factory):
     now = datetime.now(UTC)
 
     # Trong 24h ⇒ gửi thành công
@@ -111,7 +111,9 @@ async def test_messenger_24h_window_allows_fresh_and_blocks_expired(session_fact
             based_on_sequence=1,
             content="Dạ shop mở cửa 8h-21h ạ.",
         )
-    assert ok.sent is True
+    # Trong cửa sổ nhưng chưa có adapter giao tin cho kênh này ⇒ vẫn chặn (quy tắc cửa sổ được
+    # kiểm ở test_autopilot_channels.py).
+    assert ok.sent is False and ok.blocked_reason == "channel"
 
     # Quá 24h ⇒ chặn bằng `channel`
     ctx_old, conv_old = await _setup_channel_conv(
@@ -130,7 +132,7 @@ async def test_messenger_24h_window_allows_fresh_and_blocks_expired(session_fact
     assert blocked.sent is False and blocked.blocked_reason == "channel"
 
 
-async def test_zalo_oa_window_reply_limit_and_quota(session_factory):
+async def test_zalo_oa_blocked_until_a_delivery_adapter_exists(session_factory):
     now = datetime.now(UTC)
 
     # Trong 48h & dưới 8 tin phản hồi ⇒ gửi thành công
@@ -147,7 +149,9 @@ async def test_zalo_oa_window_reply_limit_and_quota(session_factory):
             based_on_sequence=1,
             content="Dạ shop hỗ trợ đổi trong 7 ngày ạ.",
         )
-    assert ok.sent is True
+    # Trong cửa sổ nhưng chưa có adapter giao tin cho kênh này ⇒ vẫn chặn (quy tắc cửa sổ được
+    # kiểm ở test_autopilot_channels.py).
+    assert ok.sent is False and ok.blocked_reason == "channel"
 
     # Quá 48h ⇒ chặn bằng `channel`
     ctx_old, conv_old = await _setup_channel_conv(
