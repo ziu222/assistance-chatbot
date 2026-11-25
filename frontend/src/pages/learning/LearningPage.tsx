@@ -33,7 +33,7 @@ function CandidateCard({
   canManage: boolean;
   onOpenConversation: (id: string) => void;
 }) {
-  const isDoc = c.kind === "doc_section";
+  const isDoc = c.kind === "doc_section" || c.kind === "brand_example" || c.kind === "order_flow";
   const titleKey = isDoc ? "title" : "question";
   const bodyKey = isDoc ? "body" : "answer";
   const currentTitle = c.proposal[titleKey] ?? "";
