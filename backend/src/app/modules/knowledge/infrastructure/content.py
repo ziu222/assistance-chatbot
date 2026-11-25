@@ -104,3 +104,20 @@ async def update_entry(
         )
     ).first()
     return Entry(*row) if row else None
+
+
+async def list_knowledge_gaps(s: AsyncSession, tenant_id: UUID, days: int) -> list[tuple[str, int]]:
+    """Đếm tín hiệu `knowledge_gap` theo chủ đề trong `days` ngày gần nhất."""
+    rows = await s.execute(
+        text(
+            "SELECT COALESCE(t.topic, 'other') AS topic, count(*) AS n "
+            "FROM learning_signals ls "
+            "LEFT JOIN LATERAL jsonb_array_elements_text(ls.payload->'topics') AS t(topic) "
+            "ON true "
+            "WHERE ls.tenant_id = :t AND ls.kind = 'knowledge_gap' "
+            "AND ls.created_at > now() - make_interval(days => :d) "
+            "GROUP BY 1 ORDER BY n DESC, topic"
+        ),
+        {"t": tenant_id, "d": days},
+    )
+    return [(r.topic, r.n) for r in rows]

@@ -120,3 +120,19 @@ def test_only_outbound_writes_messages_with_raw_sql():
 def test_outbound_sends_only_system_messages():
     src = (MODULES / "outbound" / "canned.py").read_text(encoding="utf-8")
     assert "'outbound', 'system'" in src and "'bot'" not in src
+
+
+def test_presentation_does_not_use_raw_sql():
+    """Tầng `presentation/` không dùng `sqlalchemy.text`; truy vấn phải nằm ở `infrastructure/`."""
+    files = sorted(p for p in MODULES.rglob("*.py") if "presentation" in p.parts)
+    assert files, "presentation files not found"
+    offenders = []
+    for path in files:
+        for node in ast.walk(ast.parse(path.read_text(encoding="utf-8"))):
+            if (
+                isinstance(node, ast.ImportFrom)
+                and node.module == "sqlalchemy"
+                and any(a.name == "text" for a in node.names)
+            ):
+                offenders.append(str(path.relative_to(MODULES)))
+    assert offenders == []
