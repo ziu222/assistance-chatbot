@@ -177,6 +177,19 @@ Eval tốn tiền LLM (vài lời gọi mỗi bài học) và tính vào trần 
 - API: `GET /api/v1/learning/candidates`, `POST /api/v1/learning/candidates/{id}/approve`, `POST /api/v1/learning/candidates/{id}/reject`.
 - Admin UI: màn hình **"Bot muốn học"** (`LearningPage.tsx`) gắn vào `AppShell`, hiện chỗ khác so với FAQ hiện tại, bằng chứng hội thoại, lỗi kiểm tra/eval và 3 nút Duyệt / Sửa rồi duyệt / Bỏ.
 
+Sửa sau review (migration 0025):
+
+- Mỗi ca bài học ghi `entry_id` + `entry_hash` (vân tay nội dung mục nó kiểm). Khi mục đó đổi (bài học mới, chủ shop sửa) hay bị xóa, ca cũ không chạy nữa và bị tắt lúc phát hành. Nếu không, ca đòi giá cũ chặn mãi lần đổi giá kế tiếp.
+- Phát hành chỉ khi con trỏ tri thức vẫn là bản lúc bắt đầu eval (so dưới khóa tenant). Đổi giữa chừng ⇒ không phát hành, lượt sau chạy lại trên bản mới.
+- Lỗi LLM giữa chừng: vẫn ghi chi phí các lời gọi đã chạy; `eval_attempts` tăng, tới 3 thì `eval_failed` (`llm_unavailable`).
+- Quay lại bản phát hành cũ cũng đưa bảng FAQ/tài liệu về đúng ảnh chụp đó, để lần sửa tay sau không làm sống lại nội dung vừa bỏ.
+
+Giới hạn hiện tại của cổng eval (chưa đúng bước 3 ở trên):
+
+- Chưa có "mẫu ca chuẩn theo ý định": chỉ chạy ca bài học mới và các ca bài học cũ còn hiệu lực.
+- Chấm bằng code (số tiền phải có / số tiền cũ cấm nói). Bài học không có số tiền gần như luôn đạt, nên với loại này cổng eval chỉ là lưới an toàn mỏng; chủ shop duyệt vẫn là chốt chính.
+- Câu trả lời eval dùng prompt CSKH chung chứ không phải template soạn nháp thật của tenant.
+
 ## 7. Nối với bước 3 (S5)
 
 - Cặp có `draft_exposure = 'shown'` không được so độc lập nữa: nhân viên có thể đã chép nháp. Với các cặp này, bước 3 dùng `draft_uses`:
