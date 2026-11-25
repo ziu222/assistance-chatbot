@@ -37,7 +37,9 @@ def classify_staff_correction(bot_text: str, staff_text: str) -> dict:
     """So tin nhân viên đính chính với tin bot bằng `diff_features` (không lưu chữ)."""
     use = compare(bot_text, staff_text, used=True)
     features = use.features()
-    amount_changed = bool(features.get("amounts_added") or features.get("amounts_removed"))
+    # Chỉ tính khi nhân viên đưa ra số tiền KHÁC. Câu hỏi thăm không nhắc lại giá của bot
+    # ("chị cần gì thêm ạ") làm `amounts_removed` khác rỗng nhưng không phải đính chính.
+    amount_changed = bool(features.get("amounts_added"))
     return {
         "edit_ratio": use.edit_ratio,
         "amount_changed": amount_changed,

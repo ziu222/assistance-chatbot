@@ -26,6 +26,11 @@ def test_classify_staff_correction_flags_amount_changes():
     )
     assert same["amount_changed"] is False
 
+    follow_up = classify_staff_correction(
+        "Dạ phí ship nội thành là 30.000đ ạ.", "Dạ chị cần em hỗ trợ gì thêm không ạ?"
+    )
+    assert follow_up["amount_changed"] is False
+
 
 def test_demotion_reason_thresholds():
     # An toàn dưới ngưỡng
