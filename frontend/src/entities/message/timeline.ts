@@ -2,7 +2,7 @@ export type Message = {
   id: string;
   sequence: number;
   direction: "inbound" | "outbound";
-  sender_type: "customer" | "human" | "system";
+  sender_type: "customer" | "human" | "system" | "bot";
   sender_ref: string | null;
   text: string;
   status: "received" | "sent";

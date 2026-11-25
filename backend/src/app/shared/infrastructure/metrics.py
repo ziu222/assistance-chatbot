@@ -74,3 +74,14 @@ SHADOW_PAIRING_LAG = Histogram(
     "Time from the staff reply to its comparison",
     buckets=(60, 180, 600, 1800, 3600, 21600, 86400),
 )
+
+# Bước 5: Autopilot (thiết kế 06 §7)
+AUTOPILOT_SENT = Counter(
+    "atlas_autopilot_sent_total", "Autopilot replies sent to customers", ["intent"]
+)
+AUTOPILOT_BLOCKED = Counter(
+    "atlas_autopilot_blocked_total", "Autopilot drafts blocked by the send gate", ["reason"]
+)
+AUTOPILOT_DEMOTED = Counter(
+    "atlas_autopilot_demoted_total", "Autopilot intents demoted back to learning", ["reason"]
+)

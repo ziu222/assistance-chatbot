@@ -10,7 +10,12 @@ export class ApiError extends Error {
   }
 }
 
-export type WidgetConfig = { greeting?: string; theme?: { color?: unknown }; privacy_url?: unknown };
+export type WidgetConfig = {
+  greeting?: string;
+  bot_label?: unknown;
+  theme?: { color?: unknown };
+  privacy_url?: unknown;
+};
 export type Session = { token: string; expires_at: string; config: WidgetConfig };
 export type MessagePage = { conversation_id: string | null; messages: ServerMessage[]; has_more: boolean };
 export type SendResult = { message_id: string; sequence: number; conversation_id: string };

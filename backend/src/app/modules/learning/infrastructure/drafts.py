@@ -25,6 +25,8 @@ _VALID = """
     JOIN agents a ON a.tenant_id = c.tenant_id AND a.channel_connection_id = c.channel_connection_id
     WHERE d.tenant_id = :t AND d.conversation_id = :c AND a.mode = 'learning' AND d.grounded
       AND NOT EXISTS (SELECT 1 FROM draft_uses u WHERE u.draft_id = d.id)
+      AND NOT EXISTS (
+        SELECT 1 FROM messages m WHERE m.tenant_id = d.tenant_id AND m.draft_id = d.id)
       AND d.based_on_sequence >= (
         SELECT coalesce(max(m.sequence), 0) FROM messages m
         WHERE m.tenant_id = d.tenant_id AND m.conversation_id = d.conversation_id

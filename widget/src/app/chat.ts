@@ -4,7 +4,7 @@ export type ServerMessage = {
   id: string;
   sequence: number;
   direction: "inbound" | "outbound";
-  sender_type: "customer" | "human" | "system";
+  sender_type: "customer" | "human" | "system" | "bot";
   text: string;
   occurred_at: string;
   client_message_id: string | null;

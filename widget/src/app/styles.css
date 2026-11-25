@@ -118,6 +118,14 @@ button:disabled {
   border-bottom-left-radius: 4px;
 }
 
+.bot-badge {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #2f5d47;
+}
+
 .msg.me {
   align-self: flex-end;
   background: var(--accent);
