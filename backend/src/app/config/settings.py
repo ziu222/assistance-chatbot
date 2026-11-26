@@ -55,6 +55,10 @@ class Settings(BaseSettings):
     google_service_account_json: str = ""
     catalog_sync_interval_minutes: int = 60  # lịch sync tự động các nguồn ngoài
 
+    # Mã hóa credentials kênh ngoài (O5 / ADR-0036): khóa Fernet base64 32-byte.
+    channel_credentials_key: str = ""
+    messenger_graph_base_url: str = "https://graph.facebook.com/v21.0"
+
 
 @lru_cache
 def get_settings() -> Settings:
