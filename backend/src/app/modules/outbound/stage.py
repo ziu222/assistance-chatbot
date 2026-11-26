@@ -19,6 +19,11 @@ from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
 from app.modules.outbound.ai_reply import send_ai_reply
 from app.modules.outbound.domain.channels import is_catalog_stale
 from app.modules.outbound.domain.gate import AiGateInput, send_decision
+from app.modules.outbound.domain.product_match import (
+    CatalogName,
+    named_products,
+    product_mismatch,
+)
 from app.modules.outbound.infrastructure.autopilot import catalog_max_age_hours, tenant_switches
 from app.modules.outbound.infrastructure.monitoring import (
     check_bot_reply_amounts,
@@ -123,6 +128,43 @@ async def _append_gate_step(
     )
 
 
+async def _product_mismatch(
+    s: AsyncSession, req: RunRequest, *, reply_text: str, sources: list | None
+) -> bool:
+    """Khách gọi đúng tên/mã sản phẩm mà nháp không trích nguồn sản phẩm đó (đo Autopilot)."""
+    texts = (
+        await s.execute(
+            text(
+                "SELECT content FROM messages WHERE tenant_id = :t AND conversation_id = :c "
+                "AND sender_type = 'customer' AND sequence BETWEEN :lo AND :hi "
+                "AND content IS NOT NULL"
+            ),
+            {
+                "t": req.tenant_id,
+                "c": req.conversation_id,
+                "lo": req.from_sequence,
+                "hi": req.to_sequence,
+            },
+        )
+    ).scalars()
+    # ponytail: đọc tên mọi sản phẩm đang bán mỗi lượt; catalog vài nghìn mục trở lên thì lọc
+    # trước bằng chỉ mục trigram `ix_catalog_search`.
+    catalog = [
+        CatalogName(str(r.id), r.sku, r.name)
+        for r in await s.execute(
+            text("SELECT id, sku, name FROM catalog_items WHERE tenant_id = :t AND active"),
+            {"t": req.tenant_id},
+        )
+    ]
+    named = named_products(" ".join(texts), catalog)
+    cited = {
+        str(src["id"])
+        for src in (sources or ())
+        if isinstance(src, dict) and src.get("type") == "product" and src.get("id")
+    }
+    return product_mismatch(named, cited, reply_text)
+
+
 async def _order_active(s: AsyncSession, tenant_id: UUID, run_id: UUID) -> bool:
     """Runner ghi bước `order_flow` khi lượt vào luồng đặt hàng, dù ý định là gì."""
     return (
@@ -222,6 +264,7 @@ class AutopilotStage:
                 return None
             problems = await _validation_problems(s, req.tenant_id, draft.run_id)
             order_active = await _order_active(s, req.tenant_id, draft.run_id)
+            mismatch = await _product_mismatch(s, req, reply_text=draft.text, sources=draft.sources)
 
         tpl = get_template(draft.template_key, draft.template_version)
         handoff_intents = frozenset(tpl.handoff_intents) if tpl else frozenset()
@@ -269,6 +312,7 @@ class AutopilotStage:
                         validation_problems=problems,
                         needs_human=bool(draft.needs_human),
                         order_active=order_active,
+                        product_mismatch=mismatch,
                         # handling/status/stale/bot_streak/channel được `send_ai_reply` kiểm lại
                         # trực tiếp dưới khóa `FOR UPDATE OF c` ngay sau callback này.
                         handling="bot",
