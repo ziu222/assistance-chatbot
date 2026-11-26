@@ -167,6 +167,40 @@ async def customer_texts(
     return [r[0] for r in rows]
 
 
+DEFERRED = "deferred_autopilot"  # câu ngoài giờ chờ xem bot có tự trả lời không (thiết kế 06)
+
+
+async def autopilot_active(s: AsyncSession, tenant_id: UUID, conversation_id: UUID) -> bool:
+    """Agent của kênh hội thoại đang ở Learning và có ít nhất một ý định đang tự gửi."""
+    row = await s.execute(
+        text(
+            "SELECT 1 FROM conversations c "
+            "JOIN agents a ON a.tenant_id = c.tenant_id "
+            " AND a.channel_connection_id = c.channel_connection_id AND a.mode = 'learning' "
+            "JOIN autopilot_intents ai ON ai.tenant_id = a.tenant_id AND ai.agent_id = a.id "
+            " AND ai.state = 'autopilot' "
+            "WHERE c.tenant_id = :t AND c.id = :c LIMIT 1"
+        ),
+        {"t": tenant_id, "c": conversation_id},
+    )
+    return row.first() is not None
+
+
+async def deferred_decision(
+    s: AsyncSession, tenant_id: UUID, conversation_id: UUID, to_sequence: int
+):
+    return (
+        await s.execute(
+            text(
+                "SELECT situation, canned_text, policy_release_id FROM policy_decisions "
+                "WHERE tenant_id = :t AND conversation_id = :c AND to_sequence = :q "
+                "AND send_block = :b AND NOT sent"
+            ),
+            {"t": tenant_id, "c": conversation_id, "q": to_sequence, "b": DEFERRED},
+        )
+    ).first()
+
+
 async def decision_exists(
     s: AsyncSession, tenant_id: UUID, conversation_id: UUID, to_sequence: int
 ) -> bool:

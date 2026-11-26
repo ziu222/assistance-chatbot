@@ -7,8 +7,14 @@ from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
-from app.modules.conversation_policy.domain.policy import suggested_config
+from app.modules.conversation_policy.domain.hours import BusinessHours
+from app.modules.conversation_policy.domain.policy import (
+    PolicyConfig,
+    SituationConfig,
+    suggested_config,
+)
 from app.modules.conversation_policy.infrastructure.repository import publish, set_auto_send
+from app.modules.conversation_policy.stage import PolicyStage
 from app.modules.learning.infrastructure.drafts import current_draft
 from app.modules.outbound.stage import AutopilotStage
 
@@ -228,3 +234,48 @@ async def test_autopilot_blocks_reply_about_a_different_product(session_factory)
             {"t": w.ctx.tenant_id, "src": json.dumps([{"type": "product", "id": str(mini)}])},
         )
     assert await stage.try_send(req) == "sent"
+
+
+async def _after_hours_shop(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    closed = PolicyConfig(  # không khai báo ngày mở cửa nào ⇒ luôn ngoài giờ
+        hours=BusinessHours(),
+        after_hours=SituationConfig(enabled=True, text="Dạ shop mở lại {next_open} ạ."),
+    )
+    async with session_factory() as s, s.begin():
+        await publish(s, w.ctx.tenant_id, closed, created_by=w.agent_id)
+        await set_auto_send(s, w.ctx.tenant_id, True)
+    return w
+
+
+async def _senders(session_factory, w, conversation_id):
+    async with session_factory() as s:
+        return [
+            r[0]
+            for r in await s.execute(
+                text(
+                    "SELECT sender_type FROM messages WHERE tenant_id = :t "
+                    "AND conversation_id = :c ORDER BY sequence"
+                ),
+                {"t": w.ctx.tenant_id, "c": conversation_id},
+            )
+        ]
+
+
+async def test_after_hours_message_is_dropped_when_the_bot_answers(session_factory):
+    w = await _after_hours_shop(session_factory)
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    autopilot = AutopilotStage(session_factory, runner.handle)
+    await PolicyStage(session_factory, autopilot.handle).handle(req)
+    # Không có "shop mở lại…" trước câu trả lời của bot.
+    assert await _senders(session_factory, w, req.conversation_id) == ["customer", "bot"]
+
+
+async def test_after_hours_message_is_sent_when_the_bot_does_not_answer(session_factory):
+    w = await _after_hours_shop(session_factory)
+    runner, _ = make_runner(session_factory, [classify("discount_request")])
+    req = await request_for(session_factory, w, texts=("Giảm giá cho em được không?",))
+    autopilot = AutopilotStage(session_factory, runner.handle)
+    await PolicyStage(session_factory, autopilot.handle).handle(req)
+    assert await _senders(session_factory, w, req.conversation_id) == ["customer", "system"]

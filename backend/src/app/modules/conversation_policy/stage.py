@@ -77,6 +77,15 @@ class PolicyStage:
         )
         if decision.text is not None:
             block = send_block(GateInput(release.auto_send, conv.provider, conv.status, handling))
+            if (
+                block is None
+                and decision.run_agent
+                and decision.situation in ("paused", "after_hours")
+                and await repo.autopilot_active(s, req.tenant_id, req.conversation_id)
+            ):
+                # "Shop tạm nghỉ / mở lại lúc…" rồi bot trả lời ngay nghe mâu thuẫn. Hoãn câu này:
+                # bot tự trả lời được thì bỏ; không trả lời thì AutopilotStage gửi nó thay.
+                block = repo.DEFERRED
             sent = block is None and await send_canned(
                 s,
                 tenant_id=req.tenant_id,
