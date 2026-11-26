@@ -199,3 +199,109 @@ async def test_bad_signal_demotes_every_intent_of_the_reply(session_factory):
             ).all()
         )
     assert states == {"greeting": "learning", "faq": "learning"}
+
+
+async def test_customer_reaction_ignores_bot_reply_older_than_24h(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await AutopilotStage(session_factory, runner.handle).handle(req)
+
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE messages SET occurred_at = now() - interval '25 hours' "
+                "WHERE tenant_id = :t AND conversation_id = :c AND sender_type = 'bot'"
+            ),
+            {"t": w.ctx.tenant_id, "c": req.conversation_id},
+        )
+        res = await record_customer_reaction_if_applicable(
+            s,
+            w.ctx.tenant_id,
+            req.conversation_id,
+            next_intents=("complaint",),
+            next_customer_texts=("Giao hàng trễ quá!",),
+            run_from_sequence=3,
+        )
+        cnt = (
+            await s.execute(
+                text(
+                    "SELECT count(*) FROM ai_reply_followups "
+                    "WHERE tenant_id = :t AND kind = 'customer_reaction'"
+                ),
+                {"t": w.ctx.tenant_id},
+            )
+        ).scalar_one()
+    assert res is None
+    assert cnt == 0
+
+
+async def test_customer_reaction_ignores_non_adjacent_turn_after_bot_reply(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await AutopilotStage(session_factory, runner.handle).handle(req)
+
+    # Một lượt khách bình thường xen giữa (sequence=3) trước lượt phàn nàn (sequence=4)
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "INSERT INTO messages (id, tenant_id, channel_connection_id, conversation_id, "
+                "external_message_id, direction, sender_type, content, status, sequence, "
+                "occurred_at) VALUES (:id, :t, :conn, :c, :ext, 'inbound', 'customer', "
+                "'Cảm ơn shop nhé', 'received', 3, now())"
+            ),
+            {
+                "id": uuid4(),
+                "t": w.ctx.tenant_id,
+                "conn": w.conn,
+                "c": req.conversation_id,
+                "ext": str(uuid4()),
+            },
+        )
+        res = await record_customer_reaction_if_applicable(
+            s,
+            w.ctx.tenant_id,
+            req.conversation_id,
+            next_intents=("complaint",),
+            next_customer_texts=("Đơn trước bị lỗi rồi!",),
+            run_from_sequence=4,
+        )
+        cnt = (
+            await s.execute(
+                text(
+                    "SELECT count(*) FROM ai_reply_followups "
+                    "WHERE tenant_id = :t AND kind = 'customer_reaction'"
+                ),
+                {"t": w.ctx.tenant_id},
+            )
+        ).scalar_one()
+    assert res is None
+    assert cnt == 0
+
+
+async def test_customer_reaction_records_immediate_complaint_within_24h(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await AutopilotStage(session_factory, runner.handle).handle(req)
+
+    async with session_factory() as s, s.begin():
+        await record_customer_reaction_if_applicable(
+            s,
+            w.ctx.tenant_id,
+            req.conversation_id,
+            next_intents=("complaint",),
+            next_customer_texts=("Trả lời sai rồi!",),
+            run_from_sequence=3,
+        )
+        cnt = (
+            await s.execute(
+                text(
+                    "SELECT count(*) FROM ai_reply_followups "
+                    "WHERE tenant_id = :t AND kind = 'customer_reaction'"
+                ),
+                {"t": w.ctx.tenant_id},
+            )
+        ).scalar_one()
+    assert cnt == 1

@@ -14,6 +14,7 @@ from app.modules.outbound.domain.monitoring import (
     CORRECTION_WINDOW_SECONDS,
     DAILY_SAMPLE_LIMIT_PER_INTENT,
     DEMOTE_WINDOW_REPLIES,
+    REACTION_WINDOW_SECONDS,
     OwnerReplyLabel,
     classify_staff_correction,
     demotion_reason,
@@ -235,15 +236,27 @@ async def record_customer_reaction_if_applicable(
                 "JOIN agent_runs r ON r.tenant_id = d.tenant_id AND r.id = d.run_id "
                 "WHERE m.tenant_id = :t AND m.conversation_id = :c "
                 "  AND m.sender_type = 'bot' AND m.sequence < :frm "
+                "  AND m.occurred_at >= now() - make_interval(secs => :win) "
                 "  AND NOT EXISTS ("
                 "    SELECT 1 FROM messages h WHERE h.tenant_id = m.tenant_id "
                 "      AND h.conversation_id = m.conversation_id "
                 "      AND h.sender_type = 'human' "
                 "      AND h.sequence > m.sequence AND h.sequence < :frm"
                 "  ) "
+                "  AND NOT EXISTS ("
+                "    SELECT 1 FROM messages c2 WHERE c2.tenant_id = m.tenant_id "
+                "      AND c2.conversation_id = m.conversation_id "
+                "      AND c2.sender_type = 'customer' "
+                "      AND c2.sequence > m.sequence AND c2.sequence < :frm"
+                "  ) "
                 "ORDER BY m.sequence DESC LIMIT 1"
             ),
-            {"t": tenant_id, "c": conversation_id, "frm": run_from_sequence},
+            {
+                "t": tenant_id,
+                "c": conversation_id,
+                "frm": run_from_sequence,
+                "win": REACTION_WINDOW_SECONDS,
+            },
         )
     ).first()
     if bot_msg is None:
