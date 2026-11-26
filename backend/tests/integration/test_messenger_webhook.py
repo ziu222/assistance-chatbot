@@ -281,3 +281,32 @@ async def test_post_webhook_ignores_echo_and_non_text_events(msg_client, session
     assert r.json() == {"ok": True, "received": 0}
     async with session_factory() as s:
         assert (await s.execute(text("SELECT count(*) FROM messages"))).scalar_one() == 0
+
+
+async def test_corrupted_credentials_return_403_instead_of_500(msg_client, session_factory):
+    _, conn_id = await _seed_messenger_connection(session_factory, with_hash=False)
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE channel_connections SET credentials_encrypted = 'corrupted' WHERE id = :id"
+            ),
+            {"id": conn_id},
+        )
+
+    get_res = await msg_client.get(
+        "/webhooks/messenger",
+        params={
+            "hub.mode": "subscribe",
+            "hub.verify_token": VERIFY_TOKEN,
+            "hub.challenge": "CHALLENGE_123",
+        },
+    )
+    assert get_res.status_code == 403
+
+    raw = json.dumps(_meta_payload()).encode("utf-8")
+    post_res = await msg_client.post(
+        "/webhooks/messenger",
+        content=raw,
+        headers={"Content-Type": "application/json", "X-Hub-Signature-256": _sign(raw)},
+    )
+    assert post_res.status_code == 403

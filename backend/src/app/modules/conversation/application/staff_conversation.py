@@ -10,6 +10,7 @@ from app.modules.conversation.application.receive_inbound_message import (
     PREVIEW_LENGTH,
     ReceiveResult,
 )
+from app.modules.outbound.domain.channels import check_channel_send
 from app.shared.application.errors import RetryableConflict
 from app.shared.application.retry import retry_conflicts
 from app.shared.domain.tenant import TenantContext
@@ -25,6 +26,14 @@ class ConversationClosed(Exception):
 
 class DuplicateClientMessageId(Exception):
     """client_message_id đã dùng cho tin ở conversation khác."""
+
+
+class ChannelSendBlocked(Exception):
+    """Kênh không cho phép gửi tin theo `ChannelCapabilities` / cửa sổ trả lời."""
+
+    def __init__(self, reason: str) -> None:
+        self.reason = reason
+        super().__init__(reason)
 
 
 class SendStaffMessage:
@@ -76,6 +85,19 @@ class SendStaffMessage:
                 raise ConversationClosed
 
             now = datetime.now(UTC)
+            channel_state = await uow.conversations.channel_reply_state(ctx, conv.id)
+            if channel_state is not None:
+                decision = check_channel_send(
+                    channel_state.provider,
+                    last_customer_at=channel_state.last_customer_at,
+                    now=now,
+                    replies_since_customer=channel_state.outbound_since_customer,
+                    config=channel_state.config,
+                    text_length=len(text),
+                )
+                if not decision.allowed:
+                    raise ChannelSendBlocked(decision.reason or "channel_blocked")
+
             sequence = conv.last_sequence + 1
             message = await uow.messages.add(
                 ctx,
@@ -128,13 +150,12 @@ class SendStaffMessage:
                 },
                 trace_id=trace_id,
             )
-            provider = await uow.conversations.connection_provider(ctx, conv.channel_connection_id)
-            if provider and provider != "webchat" and identity is not None:
+            if channel_state is not None and channel_state.provider != "webchat" and identity:
                 await uow.deliveries.enqueue(
                     ctx,
                     message_id=message.id,
                     connection_id=conv.channel_connection_id,
-                    provider=provider,
+                    provider=channel_state.provider,
                     recipient_external_id=identity.scoped_external_id,
                     content=text,
                 )

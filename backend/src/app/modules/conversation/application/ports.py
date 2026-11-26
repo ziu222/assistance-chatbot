@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Protocol, Self
 from uuid import UUID
@@ -5,6 +6,14 @@ from uuid import UUID
 from app.modules.conversation.domain.entities import Conversation, Message
 from app.modules.customer.application.resolve_customer import CustomerStore
 from app.shared.domain.tenant import TenantContext
+
+
+@dataclass(frozen=True)
+class ChannelReplyState:
+    provider: str
+    config: dict[str, Any]
+    last_customer_at: datetime | None
+    outbound_since_customer: int
 
 
 class ConversationStore(Protocol):
@@ -37,7 +46,9 @@ class ConversationStore(Protocol):
         """Nhân viên trả lời ⇒ nhận luôn ticket đang mở của hội thoại (bước 2 §12.5)."""
         ...
 
-    async def connection_provider(self, ctx: TenantContext, connection_id: UUID) -> str | None: ...
+    async def channel_reply_state(
+        self, ctx: TenantContext, conversation_id: UUID
+    ) -> ChannelReplyState | None: ...
 
 
 class MessageStore(Protocol):

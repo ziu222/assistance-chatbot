@@ -1,9 +1,7 @@
 """Read model của inbox: SQL thẳng, mọi truy vấn lọc tenant_id từ session nhân viên."""
 
 import base64
-from dataclasses import dataclass
 from datetime import datetime
-from typing import Any
 from uuid import UUID
 
 from sqlalchemy import text
@@ -108,47 +106,3 @@ async def get_conversation(s: AsyncSession, ctx: TenantContext, conversation_id:
             text(_SELECT + "AND c.id = :id"), {"t": ctx.tenant_id, "id": conversation_id}
         )
     ).first()
-
-
-@dataclass(frozen=True)
-class ChannelReplyState:
-    provider: str
-    config: dict[str, Any]
-    last_customer_at: datetime | None
-    outbound_since_customer: int
-
-
-async def channel_reply_state(
-    s: AsyncSession, ctx: TenantContext, conversation_id: UUID
-) -> ChannelReplyState | None:
-    """Lấy trạng thái cửa sổ/hạn mức kênh của hội thoại để kiểm trước khi nhân viên gửi."""
-    row = (
-        await s.execute(
-            text(
-                "SELECT ch.provider, ch.config, "
-                "  (SELECT max(m.occurred_at) FROM messages m "
-                "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
-                "     AND m.sender_type = 'customer') AS last_customer_at, "
-                "  (SELECT count(*) FROM messages m "
-                "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
-                "     AND m.direction = 'outbound' "
-                "     AND m.sequence > COALESCE("
-                "       (SELECT max(mc.sequence) FROM messages mc "
-                "        WHERE mc.tenant_id = c.tenant_id AND mc.conversation_id = c.id "
-                "          AND mc.sender_type = 'customer'), 0)) AS outbound_since "
-                "FROM conversations c "
-                "JOIN channel_connections ch "
-                "  ON (ch.tenant_id, ch.id) = (c.tenant_id, c.channel_connection_id) "
-                "WHERE c.tenant_id = :t AND c.id = :id"
-            ),
-            {"t": ctx.tenant_id, "id": conversation_id},
-        )
-    ).first()
-    if row is None:
-        return None
-    return ChannelReplyState(
-        provider=row.provider,
-        config=row.config if isinstance(row.config, dict) else {},
-        last_customer_at=row.last_customer_at,
-        outbound_since_customer=int(row.outbound_since or 0),
-    )

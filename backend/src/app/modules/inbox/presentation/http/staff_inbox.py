@@ -4,7 +4,6 @@ Conversation của tenant khác trả 404 (không phải 403) để không lộ 
 """
 
 import logging
-from datetime import UTC, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
@@ -13,6 +12,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.conversation.application.staff_conversation import (
+    ChannelSendBlocked,
     ConversationClosed,
     ConversationNotFound,
     DuplicateClientMessageId,
@@ -30,7 +30,6 @@ from app.modules.integration.domain.normalization import (
     validate_client_message_id,
 )
 from app.modules.learning.infrastructure.drafts import discard_shown_draft, record_use
-from app.modules.outbound.domain.channels import check_channel_send
 from app.modules.outbound.infrastructure.monitoring import record_staff_correction_if_applicable
 from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
@@ -136,22 +135,6 @@ async def reply(
         text = normalize_text(body.text)
     except InvalidInboundMessage as exc:
         raise ApiError(422, "invalid_request", str(exc)) from exc
-    async with request.app.state.session_factory() as s:
-        channel_state = await queries.channel_reply_state(s, ctx, conversation_id)
-    if channel_state is not None:
-        decision = check_channel_send(
-            channel_state.provider,
-            last_customer_at=channel_state.last_customer_at,
-            now=datetime.now(UTC),
-            replies_since_customer=channel_state.outbound_since_customer,
-            config=channel_state.config,
-            text_length=len(text),
-        )
-        if not decision.allowed:
-            reason = decision.reason or "channel_blocked"
-            if reason == "message_too_long":
-                raise ApiError(422, "message_too_long", "Message exceeds channel max length")
-            raise ApiError(409, reason, f"Channel blocked send: {reason}")
     try:
         result = await SendStaffMessage(_uow(request))(
             ctx,
@@ -165,6 +148,10 @@ async def reply(
         raise _not_found() from exc
     except ConversationClosed as exc:
         raise ApiError(409, "conversation_closed", "Conversation is closed") from exc
+    except ChannelSendBlocked as exc:
+        if exc.reason == "message_too_long":
+            raise ApiError(422, "message_too_long", "Message exceeds channel max length") from exc
+        raise ApiError(409, exc.reason, f"Channel blocked send: {exc.reason}") from exc
     except DuplicateClientMessageId as exc:
         raise ApiError(409, "duplicate_client_message_id", "client_message_id reused") from exc
     except TransientDatabaseError as exc:

@@ -2,13 +2,20 @@
 
 import hashlib
 import hmac
+import logging
 from dataclasses import dataclass
 from uuid import UUID
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.shared.infrastructure.crypto import decrypt_json
+from app.shared.infrastructure.crypto import (
+    CredentialsKeyNotConfigured,
+    InvalidEncryptedPayload,
+    decrypt_json,
+)
+
+log = logging.getLogger(__name__)
 
 # Chỉ lấy kết nối Messenger đang active thuộc tenant đang active.
 _ACTIVE = (
@@ -38,7 +45,14 @@ def verify_token_hash(verify_token: str) -> str:
 def _to_connection(row, credentials_key: str) -> MessengerConnection | None:
     if row is None or not row.credentials_encrypted:
         return None
-    creds = decrypt_json(row.credentials_encrypted, credentials_key)
+    try:
+        creds = decrypt_json(row.credentials_encrypted, credentials_key)
+    except (CredentialsKeyNotConfigured, InvalidEncryptedPayload):
+        log.warning(
+            "failed to decrypt messenger credentials",
+            extra={"connection_id": str(row.id)},
+        )
+        return None
     return MessengerConnection(
         id=row.id,
         tenant_id=row.tenant_id,

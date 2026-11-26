@@ -176,3 +176,59 @@ async def test_staff_reply_messenger_window_and_length_enforcement(new_client, s
         ).scalar_one()
     assert ok_count == 2
     assert exp_count == 1
+
+
+async def test_staff_reply_idempotent_after_window_expires_and_closed_wins(
+    new_client, session_factory
+):
+    client, ctx, _, _ = await logged_in(new_client, session_factory)
+    now = datetime.now(UTC)
+    _, conv_id = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=now - timedelta(hours=2)
+    )
+    cmid = str(uuid4())
+
+    # 1. Gửi thành công khi vẫn còn trong cửa sổ 24h.
+    first = await client.post(
+        f"/api/v1/conversations/{conv_id}/messages",
+        json={"client_message_id": cmid, "text": "Dạ em gửi thông tin ạ."},
+        headers=CSRF,
+    )
+    assert first.status_code == 201, first.text
+
+    # Kéo tin khách về quá 24h; retry cùng client_message_id vẫn trả 200 OK (idempotent).
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE messages SET occurred_at = :old "
+                "WHERE tenant_id = :t AND conversation_id = :c AND sender_type = 'customer'"
+            ),
+            {"old": now - timedelta(hours=25), "t": ctx.tenant_id, "c": conv_id},
+        )
+    retry = await client.post(
+        f"/api/v1/conversations/{conv_id}/messages",
+        json={"client_message_id": cmid, "text": "Nội dung khác nếu retry"},
+        headers=CSRF,
+    )
+    assert retry.status_code == 200, retry.text
+    assert retry.json() == first.json()
+
+    # 2. Hội thoại vừa closed vừa quá 24h ⇒ trả 409 conversation_closed (ưu tiên trước cửa sổ).
+    _, conv_closed_expired = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=now - timedelta(hours=25)
+    )
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE conversations SET status = 'closed', closed_at = now() "
+                "WHERE tenant_id = :t AND id = :c"
+            ),
+            {"t": ctx.tenant_id, "c": conv_closed_expired},
+        )
+    r_closed = await client.post(
+        f"/api/v1/conversations/{conv_closed_expired}/messages",
+        json={"client_message_id": str(uuid4()), "text": "Xin chào"},
+        headers=CSRF,
+    )
+    assert r_closed.status_code == 409
+    assert r_closed.json()["error"]["code"] == "conversation_closed"

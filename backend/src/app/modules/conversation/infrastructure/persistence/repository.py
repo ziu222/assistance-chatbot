@@ -5,6 +5,7 @@ from sqlalchemy import func, select, text, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.conversation.application.ports import ChannelReplyState
 from app.modules.conversation.domain.entities import Conversation, Message
 from app.modules.conversation.infrastructure.persistence.models import (
     ConversationModel,
@@ -132,13 +133,40 @@ class ConversationRepository:
             {"t": ctx.tenant_id, "c": conversation_id, "u": user_id},
         )
 
-    async def connection_provider(self, ctx: TenantContext, connection_id: UUID) -> str | None:
-        return (
+    async def channel_reply_state(
+        self, ctx: TenantContext, conversation_id: UUID
+    ) -> ChannelReplyState | None:
+        """Đọc trạng thái cửa sổ/hạn mức kênh của hội thoại (lọc `tenant_id`)."""
+        row = (
             await self._s.execute(
-                text("SELECT provider FROM channel_connections WHERE tenant_id = :t AND id = :id"),
-                {"t": ctx.tenant_id, "id": connection_id},
+                text(
+                    "SELECT ch.provider, ch.config, "
+                    "  (SELECT max(m.occurred_at) FROM messages m "
+                    "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
+                    "     AND m.sender_type = 'customer') AS last_customer_at, "
+                    "  (SELECT count(*) FROM messages m "
+                    "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
+                    "     AND m.direction = 'outbound' "
+                    "     AND m.sequence > COALESCE("
+                    "       (SELECT max(mc.sequence) FROM messages mc "
+                    "        WHERE mc.tenant_id = c.tenant_id AND mc.conversation_id = c.id "
+                    "          AND mc.sender_type = 'customer'), 0)) AS outbound_since "
+                    "FROM conversations c "
+                    "JOIN channel_connections ch "
+                    "  ON (ch.tenant_id, ch.id) = (c.tenant_id, c.channel_connection_id) "
+                    "WHERE c.tenant_id = :t AND c.id = :id"
+                ),
+                {"t": ctx.tenant_id, "id": conversation_id},
             )
-        ).scalar_one_or_none()
+        ).first()
+        if row is None:
+            return None
+        return ChannelReplyState(
+            provider=row.provider,
+            config=row.config if isinstance(row.config, dict) else {},
+            last_customer_at=row.last_customer_at,
+            outbound_since_customer=int(row.outbound_since or 0),
+        )
 
     async def get(
         self, ctx: TenantContext, conversation_id: UUID, *, lock: bool = False

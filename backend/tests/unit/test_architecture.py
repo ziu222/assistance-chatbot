@@ -63,6 +63,7 @@ PURE_DOMAINS = [
             "learning",
             "knowledge",
             "outbound",
+            "integration",
         )
     ),
 ]

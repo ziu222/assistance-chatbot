@@ -33,6 +33,8 @@ from app.shared.infrastructure.crypto import (
 
 log = logging.getLogger(__name__)
 
+_CLAIM_LEASE = timedelta(seconds=300)
+
 _CLAIM_DUE = text(
     """
     UPDATE outbound_deliveries d
@@ -53,17 +55,17 @@ _MARK_DELIVERED = text(
     "UPDATE outbound_deliveries "
     "SET status = 'delivered', provider_message_id = :pmid, "
     "    last_error = NULL, delivered_at = now() "
-    "WHERE tenant_id = :t AND id = :id"
+    "WHERE tenant_id = :t AND id = :id AND status = 'pending' AND attempts = :attempts"
 )
 _MARK_FAILED = text(
     "UPDATE outbound_deliveries "
     "SET status = 'failed', last_error = :err "
-    "WHERE tenant_id = :t AND id = :id"
+    "WHERE tenant_id = :t AND id = :id AND status = 'pending' AND attempts = :attempts"
 )
 _MARK_RETRY = text(
     "UPDATE outbound_deliveries "
     "SET next_attempt_at = now() + :delay, last_error = :err "
-    "WHERE tenant_id = :t AND id = :id"
+    "WHERE tenant_id = :t AND id = :id AND status = 'pending' AND attempts = :attempts"
 )
 
 
@@ -128,14 +130,66 @@ class DeliveryWorker:
         self._batch_size = batch_size
         self._idle_sleep = idle_sleep
 
+    async def _persist_outcome(self, item: _ClaimedDelivery, outcome: DeliveryOutcome) -> None:
+        async with self._factory() as s, s.begin():
+            if outcome.ok:
+                res = await s.execute(
+                    _MARK_DELIVERED,
+                    {
+                        "t": item.tenant_id,
+                        "id": item.id,
+                        "attempts": item.attempts,
+                        "pmid": outcome.provider_message_id,
+                    },
+                )
+            elif not outcome.retryable or item.attempts >= MAX_DELIVERY_ATTEMPTS:
+                res = await s.execute(
+                    _MARK_FAILED,
+                    {
+                        "t": item.tenant_id,
+                        "id": item.id,
+                        "attempts": item.attempts,
+                        "err": (outcome.error or "delivery_failed")[:500],
+                    },
+                )
+                if res.rowcount:
+                    log.warning(
+                        "outbound delivery failed",
+                        extra={
+                            "delivery_id": str(item.id),
+                            "provider": item.provider,
+                            "attempts": item.attempts,
+                        },
+                    )
+            else:
+                res = await s.execute(
+                    _MARK_RETRY,
+                    {
+                        "t": item.tenant_id,
+                        "id": item.id,
+                        "attempts": item.attempts,
+                        "delay": next_retry_delay(item.attempts),
+                        "err": (outcome.error or "retryable_error")[:500],
+                    },
+                )
+            if res.rowcount == 0:
+                log.warning(
+                    "outbound delivery fencing lost",
+                    extra={
+                        "delivery_id": str(item.id),
+                        "provider": item.provider,
+                        "attempts": item.attempts,
+                    },
+                )
+
     async def run_once(self) -> int:
-        """Nhận tối đa `batch_size` bản ghi tới hạn, gọi HTTP ngoài transaction rồi lưu kết quả."""
+        """Nhận tối đa `batch_size` bản ghi tới hạn, gọi HTTP ngoài transaction và lưu từng tin."""
         claimed: list[tuple[_ClaimedDelivery, MessengerConnection | None, str | None]] = []
         async with self._factory() as s, s.begin():
             rows = (
                 await s.execute(
                     _CLAIM_DUE,
-                    {"batch": self._batch_size, "lease": timedelta(seconds=60)},
+                    {"batch": self._batch_size, "lease": _CLAIM_LEASE},
                 )
             ).all()
             for r in rows:
@@ -157,82 +211,32 @@ class DeliveryWorker:
         if not claimed:
             return 0
 
-        outcomes: list[tuple[_ClaimedDelivery, DeliveryOutcome]] = []
         for item, conn, load_error in claimed:
             sender = self._senders.get(item.provider)
             if sender is None:
-                outcomes.append(
-                    (
-                        item,
-                        DeliveryOutcome(
-                            ok=False,
-                            retryable=False,
-                            error=f"unsupported_provider:{item.provider}",
-                        ),
+                outcome = DeliveryOutcome(
+                    ok=False,
+                    retryable=False,
+                    error=f"unsupported_provider:{item.provider}",
+                )
+            elif load_error is not None or conn is None:
+                outcome = DeliveryOutcome(
+                    ok=False,
+                    retryable=False,
+                    error=load_error or "connection_unavailable",
+                )
+            else:
+                try:
+                    outcome = await sender.send(
+                        recipient_id=item.recipient_external_id,
+                        text=item.content,
+                        access_token=conn.page_access_token,
                     )
-                )
-                continue
-            if load_error is not None or conn is None:
-                outcomes.append(
-                    (
-                        item,
-                        DeliveryOutcome(
-                            ok=False,
-                            retryable=False,
-                            error=load_error or "connection_unavailable",
-                        ),
-                    )
-                )
-                continue
-            try:
-                outcome = await sender.send(
-                    recipient_id=item.recipient_external_id,
-                    text=item.content,
-                    access_token=conn.page_access_token,
-                )
-            except Exception as exc:
-                outcome = DeliveryOutcome(ok=False, retryable=True, error=type(exc).__name__)
-            outcomes.append((item, outcome))
+                except Exception as exc:
+                    outcome = DeliveryOutcome(ok=False, retryable=True, error=type(exc).__name__)
+            await self._persist_outcome(item, outcome)
 
-        async with self._factory() as s, s.begin():
-            for item, outcome in outcomes:
-                if outcome.ok:
-                    await s.execute(
-                        _MARK_DELIVERED,
-                        {
-                            "t": item.tenant_id,
-                            "id": item.id,
-                            "pmid": outcome.provider_message_id,
-                        },
-                    )
-                elif not outcome.retryable or item.attempts >= MAX_DELIVERY_ATTEMPTS:
-                    await s.execute(
-                        _MARK_FAILED,
-                        {
-                            "t": item.tenant_id,
-                            "id": item.id,
-                            "err": (outcome.error or "delivery_failed")[:500],
-                        },
-                    )
-                    log.warning(
-                        "outbound delivery failed",
-                        extra={
-                            "delivery_id": str(item.id),
-                            "provider": item.provider,
-                            "attempts": item.attempts,
-                        },
-                    )
-                else:
-                    await s.execute(
-                        _MARK_RETRY,
-                        {
-                            "t": item.tenant_id,
-                            "id": item.id,
-                            "delay": next_retry_delay(item.attempts),
-                            "err": (outcome.error or "retryable_error")[:500],
-                        },
-                    )
-        return len(outcomes)
+        return len(claimed)
 
     async def run(self, stop: asyncio.Event) -> None:
         while not stop.is_set():

@@ -314,3 +314,102 @@ async def test_send_canned_enqueues_delivery_for_messenger(session_factory):
     assert rows[0].recipient_external_id == "psid_99"
     assert rows[0].content == "Cảm ơn bạn đã nhắn tin!"
     assert rows[0].status == "pending"
+
+
+async def test_delivery_worker_fencing_prevents_stale_overwrite(session_factory):
+    # Case 1: worker khác đã mark 'delivered' trong lúc HTTP call đang chạy ⇒ không bị ghi đè.
+    ctx1, _conn1, conv1 = await _setup_messenger_conv(session_factory, hours_ago=1)
+    async with session_factory() as s, s.begin():
+        res1 = await send_ai_reply(
+            s,
+            tenant_id=ctx1.tenant_id,
+            conversation_id=conv1,
+            draft_id=uuid4(),
+            run_id=uuid4(),
+            based_on_sequence=1,
+            content="Tin 1",
+        )
+    assert res1.sent is True and res1.message_id is not None
+
+    async def _mark_concurrent_delivered() -> None:
+        async with session_factory() as s, s.begin():
+            await s.execute(
+                text(
+                    "UPDATE outbound_deliveries "
+                    "SET status = 'delivered', provider_message_id = 'mid.$winner', "
+                    "    delivered_at = now() "
+                    "WHERE tenant_id = :t AND message_id = :m"
+                ),
+                {"t": ctx1.tenant_id, "m": res1.message_id},
+            )
+
+    class _ConcurrentDeliveredSender:
+        async def send(self, *, recipient_id: str, text: str, access_token: str) -> DeliveryOutcome:
+            await _mark_concurrent_delivered()
+            return DeliveryOutcome(ok=True, retryable=False, provider_message_id="mid.$stale")
+
+    worker1 = DeliveryWorker(
+        session_factory, TEST_CRED_KEY, {"messenger": _ConcurrentDeliveredSender()}
+    )
+    assert await worker1.run_once() == 1
+
+    async with session_factory() as s:
+        row1 = (
+            await s.execute(
+                text(
+                    "SELECT status, provider_message_id FROM outbound_deliveries "
+                    "WHERE tenant_id = :t AND message_id = :m"
+                ),
+                {"t": ctx1.tenant_id, "m": res1.message_id},
+            )
+        ).one()
+    assert row1.status == "delivered"
+    assert row1.provider_message_id == "mid.$winner"
+
+    # Case 2: worker khác đã tăng `attempts` trong lúc HTTP call đang chạy ⇒ không mark 'failed'.
+    ctx2, _conn2, conv2 = await _setup_messenger_conv(session_factory, hours_ago=1)
+    async with session_factory() as s, s.begin():
+        res2 = await send_ai_reply(
+            s,
+            tenant_id=ctx2.tenant_id,
+            conversation_id=conv2,
+            draft_id=uuid4(),
+            run_id=uuid4(),
+            based_on_sequence=1,
+            content="Tin 2",
+        )
+    assert res2.sent is True and res2.message_id is not None
+
+    async def _bump_concurrent_attempts() -> None:
+        async with session_factory() as s, s.begin():
+            await s.execute(
+                text(
+                    "UPDATE outbound_deliveries SET attempts = attempts + 1 "
+                    "WHERE tenant_id = :t AND message_id = :m"
+                ),
+                {"t": ctx2.tenant_id, "m": res2.message_id},
+            )
+
+    class _ConcurrentAttemptSender:
+        async def send(self, *, recipient_id: str, text: str, access_token: str) -> DeliveryOutcome:
+            await _bump_concurrent_attempts()
+            return DeliveryOutcome(ok=False, retryable=False, error="stale_400")
+
+    worker2 = DeliveryWorker(
+        session_factory, TEST_CRED_KEY, {"messenger": _ConcurrentAttemptSender()}
+    )
+    assert await worker2.run_once() == 1
+
+    async with session_factory() as s:
+        row2 = (
+            await s.execute(
+                text(
+                    "SELECT status, attempts, last_error FROM outbound_deliveries "
+                    "WHERE tenant_id = :t AND message_id = :m"
+                ),
+                {"t": ctx2.tenant_id, "m": res2.message_id},
+            )
+        ).one()
+    assert row2.status == "pending"
+    assert row2.attempts == 2
+    assert row2.last_error is None
