@@ -39,11 +39,13 @@ provider = "openai"
 model = "gpt-4.1"
 max_tokens = 512
 
-# Trợ lý viết (bước 2.11): model rẻ. Gợi ý luôn qua kiểm tra giữ sự thật bằng code và chủ shop
-# duyệt trước khi lưu, nên đích chưa qua eval chỉ ảnh hưởng chất lượng câu chữ, không lọt tới khách.
+# Trợ lý viết (bước 2.11): gợi ý luôn qua kiểm tra giữ sự thật bằng code và chủ shop duyệt trước
+# khi lưu, nên đích chưa qua eval chỉ ảnh hưởng chất lượng câu chữ, không lọt tới khách.
+# Haiku 5.5 qua gateway trả invalid_output với schema WritingOut (0/5, đo 2026-11-26) nên dùng
+# Sonnet 5.5.
 [[routes.authoring.targets]]
 provider = "anthropic"
-model = "claude-haiku-5-5"
+model = "claude-sonnet-5-5"
 max_tokens = 2048
 
 [[routes.authoring.targets]]
