@@ -34,12 +34,20 @@ _SUMMARY = text(
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'hidden'
       ORDER BY intent, created_at DESC
+    ), anchor AS (
+      -- Cặp mù chỉ có ở Shadow. Rời Shadow sang Learning thì cửa sổ tính ngược từ cặp mù cuối,
+      -- không phải từ hôm nay, để số đo không tự hết hạn sau 14 ngày (lần bật đầu cần nguồn mù).
+      -- Trần 60 ngày: số đo mù cũ hơn thế thì hết hiệu lực như thường.
+      SELECT CASE WHEN max(created_at) >= now() - interval '60 days'
+                  THEN max(created_at) ELSE now() END AS at
+      FROM shadow_comparisons WHERE tenant_id = :t AND draft_exposure = 'hidden'
     ), c AS (
-      SELECT sc.*, l.key FROM shadow_comparisons sc
+      SELECT sc.*, l.key, a.at AS anchor_at FROM shadow_comparisons sc
       JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
        AND (sc.config_version - 'model') = l.key
+      CROSS JOIN anchor a
       WHERE sc.tenant_id = :t AND sc.draft_exposure = 'hidden'
-        AND sc.created_at > now() - make_interval(days => :d)
+        AND sc.created_at > a.at - make_interval(days => :d)
     )
     SELECT intent, min(key::text) AS config,
       count(*) AS total,
@@ -50,7 +58,7 @@ _SUMMARY = text(
         AND (final_verdict = 'wrong' OR sendable = 'must_not_send')) AS wrong,
       count(*) FILTER (WHERE code_checks->>'amounts' = 'conflict'
         AND NOT coalesce((code_checks->>'reference_suspect')::boolean, false)
-        AND created_at > now() - interval '7 days') AS conflicts,
+        AND created_at > anchor_at - interval '7 days') AS conflicts,
       count(*) FILTER (WHERE code_checks->>'handoff' = 'extra') AS handoff_extra,
       count(*) FILTER (WHERE code_checks->>'handoff' = 'missing') AS handoff_missing,
       percentile_cont(0.5) WITHIN GROUP (ORDER BY bot_lead_seconds)

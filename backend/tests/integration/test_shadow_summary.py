@@ -99,3 +99,33 @@ async def test_summary_counts_only_the_current_config_and_explains_readiness(
     )
     assert not price["ready"]
     assert "1 lần báo giá mâu thuẫn trong 7 ngày" in price["not_ready_because"]
+
+
+async def test_blind_window_is_anchored_at_the_last_blind_pair(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        # Shop rời Shadow 20 ngày trước, sau 10 ngày đo đủ 30 cặp mù (nay đã ở Learning).
+        left_shadow = datetime.now(UTC) - timedelta(days=20)
+        for i in range(30):
+            await add(s, ctx, conv, intent="faq", config=NEW, label="sendable",
+                      when=left_shadow - timedelta(hours=i * 8))  # fmt: skip
+
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    faq = next(i for i in body["intents"] if i["intent"] == "faq")
+    assert faq["scored"] == 30 and faq["ready"] is True
+
+
+async def test_blind_pairs_older_than_60_days_expire(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        for i in range(30):
+            await add(s, ctx, conv, intent="faq", config=NEW, label="sendable",
+                      when=datetime.now(UTC) - timedelta(days=70, hours=i))  # fmt: skip
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    assert all(i["intent"] != "faq" for i in body["intents"])
