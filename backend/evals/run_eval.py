@@ -32,7 +32,15 @@ sys.path.insert(0, str(ROOT))
 
 from alembic import command  # noqa: E402
 from alembic.config import Config  # noqa: E402
-from scoring import DIMENSIONS, Outcome, as_json, rate, score, summary  # noqa: E402
+from scoring import (  # noqa: E402
+    DIMENSIONS,
+    Outcome,
+    as_json,
+    autopilot_verdict,
+    rate,
+    score,
+    summary,
+)
 from sqlalchemy import text  # noqa: E402
 from sqlalchemy.engine import make_url  # noqa: E402
 from sqlalchemy.ext.asyncio import create_async_engine  # noqa: E402
@@ -61,7 +69,10 @@ from app.modules.conversation_policy.domain.policy import (  # noqa: E402
     PolicyConfig,
     SituationConfig,
 )
-from app.modules.conversation_policy.infrastructure.repository import publish  # noqa: E402
+from app.modules.conversation_policy.infrastructure.repository import (  # noqa: E402
+    publish,
+    set_auto_send,
+)
 from app.modules.conversation_policy.stage import PolicyStage  # noqa: E402
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent  # noqa: E402
 from app.modules.knowledge.domain.catalog_csv import parse_catalog_csv  # noqa: E402
@@ -71,11 +82,14 @@ from app.modules.knowledge.infrastructure.catalog_sync import market_items  # no
 from app.modules.knowledge.infrastructure.content import create_entry  # noqa: E402
 from app.modules.orders.domain.order_flow import OrderFlowConfig  # noqa: E402
 from app.modules.orders.infrastructure.repository import publish_flow  # noqa: E402
+from app.modules.outbound.stage import AutopilotStage  # noqa: E402
 from app.shared.infrastructure.db import create_session_factory  # noqa: E402
 
 SIM = ROOT / "sim_shop"
 TEMPLATE = "faq_sales_quote"
 TEMPLATE_VERSION: int | None = None  # None = bản mới nhất; đặt bằng --template-version
+# Ý định bật Autopilot (`--autopilot`); rỗng = đo nháp như Shadow (bước 2.12).
+AUTOPILOT: frozenset[str] = frozenset()
 ALL_SECTIONS = {
     "hours",
     "shipping",
@@ -156,7 +170,10 @@ async def load_shop(factory, key: str) -> Shop:
             config=json.loads(tpl.model_dump_json()),
             created_by=uuid4(),
         )
-        await s.execute(text("UPDATE agents SET mode = 'shadow' WHERE id = :a"), {"a": agent_id})
+        mode = "learning" if AUTOPILOT else "shadow"  # Autopilot chỉ chạy trên agent Learning
+        await s.execute(
+            text("UPDATE agents SET mode = :m WHERE id = :a"), {"m": mode, "a": agent_id}
+        )
         # Trần ngày rộng: eval không được dừng giữa chừng vì trần của shop demo.
         await upsert_ai_settings(s, tenant, ai_enabled=True, daily_cost_cap_micro=100_000_000)
         # Quy trình đặt hàng mặc định (nhân viên xác nhận) cho mọi shop giả lập.
@@ -191,6 +208,23 @@ async def load_shop(factory, key: str) -> Shop:
             ),
             uuid4(),
         )
+        if AUTOPILOT:
+            # Đo cổng gửi + chất lượng câu gửi, không đo mức sẵn sàng: bật thẳng các ý định.
+            await set_auto_send(s, tenant, True)
+            cfg = {
+                "template": tpl.key,
+                "template_version": tpl.version,
+                "prompt_version": PROMPT_VERSION,
+            }
+            for intent in sorted(AUTOPILOT):
+                await s.execute(
+                    text(
+                        "INSERT INTO autopilot_intents (tenant_id, agent_id, intent, state, "
+                        "config_key, source) VALUES (:t, :a, :i, 'autopilot', CAST(:c AS jsonb), "
+                        "'blind')"
+                    ),
+                    {"t": tenant, "a": agent_id, "i": intent, "c": json.dumps(cfg)},
+                )
         rows = await s.execute(
             text("SELECT id, sku FROM catalog_items WHERE tenant_id = :t"), {"t": tenant}
         )
@@ -327,6 +361,26 @@ async def read_outcome(factory, shop: Shop, req: RunRequest, latency: int) -> Ou
                 text("SELECT count(*) FROM handoff_requests WHERE conversation_id = :c"), p
             )
         ).scalar_one()
+        gate = None
+        if run:
+            sent = (
+                await s.execute(
+                    text(
+                        "SELECT 1 FROM messages WHERE conversation_id = :c AND sender_type = 'bot'"
+                    ),
+                    p,
+                )
+            ).first()
+            step = (
+                await s.execute(
+                    text(
+                        "SELECT detail->>'reason' FROM agent_run_steps "
+                        "WHERE run_id = :r AND name = 'send_gate' AND status = 'blocked'"
+                    ),
+                    {"r": run[0]},
+                )
+            ).scalar()
+            gate = "sent" if sent else step
         situation = (
             await s.execute(
                 text(
@@ -357,6 +411,7 @@ async def read_outcome(factory, shop: Shop, req: RunRequest, latency: int) -> Ou
         latency_ms=latency,
         cost_micro=run[4] if run else 0,
         served_by=served,
+        autopilot=gate,
     )
 
 
@@ -476,6 +531,8 @@ def report(rows, shops: dict[str, Shop], args, elapsed: float, mode: str) -> str
         or s.no_source_safe is False
         or not s.situation
     ]
+    if AUTOPILOT:
+        md += autopilot_report(rows)
     md += ["## Ca sai (tối đa 15)", "", "| Ca | Kỳ vọng | Thực tế |", "|---|---|---|"]
     for t, o, _ in fails[:15]:
         want = f"chuyển người={t['expected']['needs_human']} {t['expected']['reason']}".strip()
@@ -485,6 +542,51 @@ def report(rows, shops: dict[str, Shop], args, elapsed: float, mode: str) -> str
         )
         md.append(f"| `{t['id']}` | {want} | {got} |")
     return "\n".join(md) + "\n"
+
+
+def autopilot_report(rows) -> list[str]:
+    """Bot tự gửi (thiết kế 06): lỗi lọt tới khách, phần tự động hóa, và lý do cổng chặn."""
+    verdicts = [(t, o, autopilot_verdict(t["expected"], o, s, AUTOPILOT)) for t, o, s in rows]
+    count = Counter(v for _, _, v in verdicts)
+    sent = count["sent_ok"] + count["sent_bad"]
+    eligible = count["sent_ok"] + count["missed"]
+    md = [
+        "## Autopilot",
+        "",
+        f"Ý định bật: {', '.join(sorted(AUTOPILOT))}. Bật thẳng, không qua mức sẵn sàng: đo cổng "
+        "gửi và chất lượng câu đã gửi.",
+        "",
+        "| Chỉ số | Kết quả |",
+        "|---|---|",
+        f"| Bot tự gửi | {pct(sent, len(rows))} |",
+        f"| **Gửi sai** (cần người, sai số tiền, điều cấm, bịa khi thiếu căn cứ) | "
+        f"{pct(count['sent_bad'], sent)} |",
+        f"| Tự động hóa: ca nên tự gửi đã gửi đúng | {pct(count['sent_ok'], eligible)} |",
+        f"| Giữ lại đúng (không nên tự gửi) | {count['held']} |",
+        "",
+        "### Theo nhóm nhiệm vụ",
+        "",
+        "| Nhóm | Ca | Gửi đúng | Gửi sai | Bỏ lỡ | Giữ lại |",
+        "|---|---|---|---|---|---|",
+    ]
+    by_cat: dict[str, Counter] = defaultdict(Counter)
+    for t, _, v in verdicts:
+        by_cat[t["category"]][v] += 1
+    for cat, c in sorted(by_cat.items()):
+        md.append(
+            f"| {cat} | {sum(c.values())} | {c['sent_ok']} | {c['sent_bad']} | "
+            f"{c['missed']} | {c['held']} |"
+        )
+    reasons = Counter(o.autopilot or "no_draft" for _, o, v in verdicts if v == "missed")
+    md += ["", "### Vì sao bỏ lỡ", "", "| Lý do | Ca |", "|---|---|"]
+    md += [f"| `{k}` | {n} |" for k, n in reasons.most_common()]
+    md += ["", "### Ca gửi sai", "", "| Ca | Kỳ vọng | Bot đã gửi |", "|---|---|---|"]
+    for t, o, v in verdicts:
+        if v == "sent_bad":
+            want = f"chuyển người={t['expected']['needs_human']} {t['expected']['reason']}".strip()
+            got = (o.draft_text or "")[:110].replace("|", "/").replace(chr(10), " ")
+            md.append(f"| `{t['id']}` | {want} | {got} |")
+    return [*md, ""]
 
 
 def _group(rows, key) -> dict[str, list]:
@@ -506,12 +608,17 @@ async def main() -> int:
     ap.add_argument("--raw", help="ghi kết quả từng ca (jsonl)")
     ap.add_argument("--template-version", type=int, default=None, help="so sánh các bản template")
     ap.add_argument(
+        "--autopilot",
+        help="đo bot tự gửi: danh sách ý định bật, vd 'greeting,faq,product_info,price_quote'",
+    )
+    ap.add_argument(
         "--match",
         help="chỉ chạy ca có tin khách khớp regex (trên chữ đã bỏ dấu), vd 'doi|tra hang'",
     )
     args = ap.parse_args()
-    global TEMPLATE_VERSION
+    global TEMPLATE_VERSION, AUTOPILOT
     TEMPLATE_VERSION = args.template_version
+    AUTOPILOT = frozenset(x.strip() for x in (args.autopilot or "").split(",") if x.strip())
 
     settings = get_settings()
     url = eval_url(settings.database_url)
@@ -538,6 +645,9 @@ async def main() -> int:
         )
         mode = "LLM thật"
     handler = AgentRunner(factory, llm).handle
+    if AUTOPILOT:
+        handler = AutopilotStage(factory, handler).handle
+        mode += " + Autopilot"
     cap = int(args.max_cost_usd * 1e6)
     spent = 0
     lock = asyncio.Semaphore(args.concurrency)

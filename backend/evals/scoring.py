@@ -33,6 +33,8 @@ class Outcome:
     latency_ms: int | None
     cost_micro: int
     served_by: list[str] = field(default_factory=list)
+    # Chế độ Autopilot: "sent" (bot đã tự gửi), lý do cổng chặn, hoặc None (không có nháp).
+    autopilot: str | None = None
 
 
 @dataclass(frozen=True)
@@ -116,6 +118,27 @@ DIMENSIONS = [
     "no_source_safe",
     "link",
 ]
+
+
+def autopilot_verdict(expected: dict, o: Outcome, s: Score, enabled: frozenset[str]) -> str:
+    """Bot tự gửi có đúng không (thiết kế 06): đánh giá cổng gửi + chất lượng câu đã gửi.
+
+    - `sent_bad`: đã gửi nhưng ca cần người, sai/thiếu số tiền, nói điều cấm, hay bịa khi thiếu
+      căn cứ. Đây là lỗi lọt tới khách, chỉ số quan trọng nhất.
+    - `sent_ok`: đã gửi và không có lỗi nào ở trên.
+    - `missed`: không gửi dù ca không cần người và thuộc ý định đã bật (mất phần tự động hóa).
+    - `held`: không gửi, và đúng là không nên tự gửi (cần người, hoặc ý định chưa bật).
+    """
+    if o.autopilot == "sent":
+        bad = (
+            expected["needs_human"]
+            or s.amounts is False
+            or s.forbidden is False
+            or s.no_source_safe is False
+        )
+        return "sent_bad" if bad else "sent_ok"
+    eligible = not expected["needs_human"] and bool(set(expected["intents_any"]) & enabled)
+    return "missed" if eligible else "held"
 
 
 def rate(scores: list[Score], dim: str) -> tuple[int, int]:
