@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parents[2] / "evals"))
 
-from scoring import Outcome, rate, score, summary  # noqa: E402
+from scoring import Outcome, autopilot_verdict, rate, score, summary  # noqa: E402
 
 
 def outcome(**over) -> Outcome:
@@ -111,3 +111,16 @@ def test_rates_skip_dimensions_that_do_not_apply():
     report = summary(rows)
     assert report["tasks"] == 2 and report["dimensions"]["amounts"] == (1, 2)
     assert report["latency_ms"]["p50"] == 1200
+
+
+def test_autopilot_verdict():
+    on = frozenset({"price_quote"})
+    sent = outcome(autopilot="sent")
+    assert autopilot_verdict(PRICE, sent, score(PRICE, sent), on) == "sent_ok"
+    wrong = outcome(autopilot="sent", draft_text="Dạ áo giá 1.000đ ạ")
+    assert autopilot_verdict(PRICE, wrong, score(PRICE, wrong), on) == "sent_bad"
+    human = PRICE | {"needs_human": True, "reason": "discount"}
+    assert autopilot_verdict(human, sent, score(human, sent), on) == "sent_bad"
+    blocked = outcome(autopilot="not_grounded")
+    assert autopilot_verdict(PRICE, blocked, score(PRICE, blocked), on) == "missed"
+    assert autopilot_verdict(PRICE, blocked, score(PRICE, blocked), frozenset()) == "held"
