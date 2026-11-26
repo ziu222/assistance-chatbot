@@ -5,7 +5,7 @@ Tách riêng hai nguồn đo:
 - **đã thấy** (`draft_exposure = 'shown'`, Learning): đo trực tiếp theo mức sửa (`draft_uses`).
 
 Mỗi ý định chỉ tính các cặp thuộc phiên bản cấu hình AI HIỆN TẠI của nó (template, phiên bản
-template, `PROMPT_VERSION`, `knowledge_hash`).
+template, `PROMPT_VERSION`; nguồn mù tính cả `knowledge_hash`).
 """
 
 from collections import defaultdict
@@ -34,12 +34,20 @@ _SUMMARY = text(
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'hidden'
       ORDER BY intent, created_at DESC
+    ), anchor AS (
+      -- Cặp mù chỉ có ở Shadow. Rời Shadow sang Learning thì cửa sổ tính ngược từ cặp mù cuối,
+      -- không phải từ hôm nay, để số đo không tự hết hạn sau 14 ngày (lần bật đầu cần nguồn mù).
+      -- Trần 60 ngày: số đo mù cũ hơn thế thì hết hiệu lực như thường.
+      SELECT CASE WHEN max(created_at) >= now() - interval '60 days'
+                  THEN max(created_at) ELSE now() END AS at
+      FROM shadow_comparisons WHERE tenant_id = :t AND draft_exposure = 'hidden'
     ), c AS (
-      SELECT sc.*, l.key FROM shadow_comparisons sc
+      SELECT sc.*, l.key, a.at AS anchor_at FROM shadow_comparisons sc
       JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
        AND (sc.config_version - 'model') = l.key
+      CROSS JOIN anchor a
       WHERE sc.tenant_id = :t AND sc.draft_exposure = 'hidden'
-        AND sc.created_at > now() - make_interval(days => :d)
+        AND sc.created_at > a.at - make_interval(days => :d)
     )
     SELECT intent, min(key::text) AS config,
       count(*) AS total,
@@ -50,7 +58,7 @@ _SUMMARY = text(
         AND (final_verdict = 'wrong' OR sendable = 'must_not_send')) AS wrong,
       count(*) FILTER (WHERE code_checks->>'amounts' = 'conflict'
         AND NOT coalesce((code_checks->>'reference_suspect')::boolean, false)
-        AND created_at > now() - interval '7 days') AS conflicts,
+        AND created_at > anchor_at - interval '7 days') AS conflicts,
       count(*) FILTER (WHERE code_checks->>'handoff' = 'extra') AS handoff_extra,
       count(*) FILTER (WHERE code_checks->>'handoff' = 'missing') AS handoff_missing,
       percentile_cont(0.5) WITHIN GROUP (ORDER BY bot_lead_seconds)
@@ -60,10 +68,13 @@ _SUMMARY = text(
     """
 )
 
+# Nguồn "đã thấy" (Learning) không tính `knowledge_hash` vào khóa: ở Learning tri thức đổi gần như
+# hằng ngày, nên đếm lại từ đầu mỗi lần thì không bao giờ đủ mẫu để bật lại sau khi hạ cấp. Đổi tri
+# thức đã có bộ ca chuẩn của cổng eval canh (thiết kế 06 §6.3).
 _SHOWN_ROWS = text(
     """
     WITH latest AS (
-      SELECT DISTINCT ON (intent) intent, config_version - 'model' AS key
+      SELECT DISTINCT ON (intent) intent, config_version - 'model' - 'knowledge_hash' AS key
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'shown'
       ORDER BY intent, created_at DESC
@@ -73,7 +84,7 @@ _SHOWN_ROWS = text(
            u.action, u.edit_ratio, u.diff_features
     FROM shadow_comparisons sc
     JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
-     AND (sc.config_version - 'model') = l.key
+     AND (sc.config_version - 'model' - 'knowledge_hash') = l.key
     LEFT JOIN draft_uses u ON u.tenant_id = sc.tenant_id AND u.draft_id = sc.draft_id
     WHERE sc.tenant_id = :t AND sc.draft_exposure = 'shown'
       AND sc.created_at > now() - make_interval(days => :d)

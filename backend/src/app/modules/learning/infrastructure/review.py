@@ -59,6 +59,7 @@ from app.modules.learning.domain.eval_gate import (
     grade_reply,
     grade_standard_reply,
     regressed_intents,
+    select_regression_cases,
     still_valid,
 )
 from app.modules.learning.infrastructure.checks import verify_candidate
@@ -72,6 +73,10 @@ from app.shared.infrastructure.signals import record_signal
 log = logging.getLogger(__name__)
 EVAL_DEADLINE_S = 60
 MAX_EVAL_ATTEMPTS = 3  # lỗi LLM liên tiếp trước khi đánh dấu eval_failed
+EVAL_CALL_RETRIES = 1  # thử lại một lời gọi eval lỗi tạm thời trước khi bỏ lượt
+# ponytail: chạy lại tối đa 10 ca bài học cũ (cùng ý định trước, mới nhất trước), không phải mọi
+# ca: số ca tăng theo mỗi bài học. Ca bị bỏ qua vẫn chạy khi bài học cùng ý định tới.
+MAX_LESSON_CASES = 10
 
 
 class CandidateBlocked(Exception):
@@ -483,49 +488,38 @@ async def _execute_specs(
 ) -> tuple[list[CaseOutcome], list, bool]:
     outcomes: list[CaseOutcome] = []
     usage_results = []
+    standard_block = "\n".join(filter(None, (rendered_block, catalog_block)))
     for spec in specs:
-        try:
-            if spec.check_behavior:
+        behavior = spec.check_behavior
+        system = STANDARD_EVAL_SYSTEM if behavior else EVAL_SYSTEM
+        turn = eval_user_turn(standard_block if behavior else rendered_block, spec.question)
+        res = None
+        for attempt in range(1 + EVAL_CALL_RETRIES):
+            try:
                 res = await llm.complete(
                     LLMRequest(
                         route=LEARNING,
-                        system_blocks=(STANDARD_EVAL_SYSTEM,),
-                        turns=(
-                            Turn(
-                                role="user",
-                                text=eval_user_turn(
-                                    "\n".join(filter(None, (rendered_block, catalog_block))),
-                                    spec.question,
-                                ),
-                            ),
-                        ),
-                        output_schema=EvalDraftOut,
+                        system_blocks=(system,),
+                        turns=(Turn(role="user", text=turn),),
+                        output_schema=EvalDraftOut if behavior else None,
                         deadline=clock() + EVAL_DEADLINE_S,
                     )
                 )
-            else:
-                res = await llm.complete(
-                    LLMRequest(
-                        route=LEARNING,
-                        system_blocks=(EVAL_SYSTEM,),
-                        turns=(
-                            Turn(role="user", text=eval_user_turn(rendered_block, spec.question)),
-                        ),
-                        deadline=clock() + EVAL_DEADLINE_S,
-                    )
+                break
+            except (AllTargetsFailed, ProviderUnavailable, DeadlineExceeded, InvalidOutput) as exc:
+                # Lỗi tạm thời của một lời gọi: thử lại chính lời gọi đó, không bỏ cả lượt eval
+                # (bỏ cả lượt thì tốn lại tiền mọi ca đã chạy, và hay hỏng khi có nhiều ca).
+                log.warning(
+                    "learning eval gate call failed",
+                    extra=log_context | {"error": type(exc).__name__, "attempt": attempt + 1},
                 )
-        except (
-            AllTargetsFailed,
-            ProviderUnavailable,
-            DeadlineExceeded,
-            BadRequest,
-            InvalidOutput,
-            UnknownPrice,
-        ) as exc:
-            log.warning(
-                "learning eval gate call failed",
-                extra=log_context | {"error": type(exc).__name__},
-            )
+            except (BadRequest, UnknownPrice) as exc:  # lỗi cấu hình: thử lại vô ích
+                log.warning(
+                    "learning eval gate call failed",
+                    extra=log_context | {"error": type(exc).__name__},
+                )
+                break
+        if res is None:
             return outcomes, usage_results, True
         usage_results.append(res)
         if spec.check_behavior:
@@ -620,6 +614,7 @@ async def run_eval_gate_for_candidate(
     # Ca của bài học cũ cho đúng mục này (hay mục chủ shop đã sửa) không còn hiệu lực: không chạy,
     # và tắt đi khi phát hành. Ca chuẩn lưu sẵn chỉ chạy cho ý định đang Autopilot.
     kept: list[EvalCaseSpec] = []
+    lesson_cases: list[EvalCaseSpec] = []
     retired: list[str] = []
     covered_std_entries: set[str] = set()
     for c in old_specs:
@@ -632,7 +627,8 @@ async def run_eval_gate_for_candidate(
                 if c.entry_id:
                     covered_std_entries.add(c.entry_id)
         else:
-            kept.append(c)
+            lesson_cases.append(c)
+    kept += select_regression_cases(lesson_cases, intent=cand.intent, limit=MAX_LESSON_CASES)
 
     standard_specs = (
         build_standard_cases(

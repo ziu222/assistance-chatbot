@@ -264,9 +264,8 @@ async def test_llm_failure_records_partial_usage_and_caps_retries(new_client, se
     cid = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
 
     for attempt in (1, 2, 3):
-        llm = FakeLLM(
-            [_eval_reply("Dạ còn 320.000đ ạ."), ProviderUnavailable("anthropic", "server_error")]
-        )
+        down = ProviderUnavailable("anthropic", "server_error")
+        llm = FakeLLM([_eval_reply("Dạ còn 320.000đ ạ."), down, down])  # lỗi cả lần thử lại
         assert await _gate(session_factory, llm, ctx.tenant_id, cid) is None
         row = await _status(session_factory, cid)
         assert row.eval_attempts == attempt
@@ -279,3 +278,41 @@ async def test_llm_failure_records_partial_usage_and_caps_retries(new_client, se
             )
         ).scalar_one()
     assert used == 3  # lời gọi thành công của mỗi lượt vẫn bị tính vào trần chi phí
+
+
+async def test_transient_failure_is_retried_without_losing_the_run(new_client, session_factory):
+    ctx, faq_id = await _faq_tenant(new_client, session_factory)
+    cid = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
+    llm = FakeLLM(
+        [
+            ProviderUnavailable("anthropic", "server_error"),
+            _eval_reply("Dạ áo khoác gió hiện giảm còn 320.000đ ạ."),
+        ]
+    )
+    report = await _gate(session_factory, llm, ctx.tenant_id, cid)
+    assert report is not None and report["passed"] is True
+    assert (await _status(session_factory, cid)).eval_attempts == 0
+
+
+async def test_old_lesson_cases_are_capped_same_intent_first(new_client, session_factory):
+    ctx, faq_id = await _faq_tenant(new_client, session_factory)
+    async with session_factory() as s, s.begin():
+        for i in range(25):
+            await s.execute(
+                text(
+                    "INSERT INTO eval_cases (id, tenant_id, source, intent, question, expected, "
+                    "active) VALUES (:id, :t, 'lesson', :i, :q, '{}'::jsonb, true)"
+                ),
+                {
+                    "id": uuid4(),
+                    "t": ctx.tenant_id,
+                    "i": "price_quote" if i < 3 else "faq",
+                    "q": f"Câu hỏi {i}?",
+                },
+            )
+    cid = await _approved(session_factory, ctx.tenant_id, replaces=faq_id)
+    llm = FakeLLM([_eval_reply("Dạ áo khoác gió hiện giảm còn 320.000đ ạ.")] * 11)
+    assert (await _gate(session_factory, llm, ctx.tenant_id, cid))["passed"] is True
+    asked = [r.turns[0].text for r in llm.requests]
+    assert len(asked) == 11  # ca mới + tối đa 10 ca cũ, không phải 26
+    assert all(any(f"Câu hỏi {i}?" in q for q in asked) for i in range(3))  # cùng ý định

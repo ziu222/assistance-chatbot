@@ -99,3 +99,71 @@ async def test_summary_counts_only_the_current_config_and_explains_readiness(
     )
     assert not price["ready"]
     assert "1 lần báo giá mâu thuẫn trong 7 ngày" in price["not_ready_because"]
+
+
+async def test_blind_window_is_anchored_at_the_last_blind_pair(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        # Shop rời Shadow 20 ngày trước, sau 10 ngày đo đủ 30 cặp mù (nay đã ở Learning).
+        left_shadow = datetime.now(UTC) - timedelta(days=20)
+        for i in range(30):
+            await add(s, ctx, conv, intent="faq", config=NEW, label="sendable",
+                      when=left_shadow - timedelta(hours=i * 8))  # fmt: skip
+
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    faq = next(i for i in body["intents"] if i["intent"] == "faq")
+    assert faq["scored"] == 30 and faq["ready"] is True
+
+
+async def test_blind_pairs_older_than_60_days_expire(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        for i in range(30):
+            await add(s, ctx, conv, intent="faq", config=NEW, label="sendable",
+                      when=datetime.now(UTC) - timedelta(days=70, hours=i))  # fmt: skip
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    assert all(i["intent"] != "faq" for i in body["intents"])
+
+
+async def test_shown_readiness_survives_knowledge_changes(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        for i in range(30):  # Learning: tri thức đổi giữa chừng (k1 → k2), nhân viên gửi nguyên văn
+            draft_id = uuid4()
+            cfg = NEW | {"knowledge_hash": "k1" if i < 15 else "k2"}
+            await s.execute(
+                text(
+                    "INSERT INTO shadow_comparisons (id, tenant_id, conversation_id, draft_id, "
+                    "run_id, status, intent, config_version, code_checks, draft_exposure, "
+                    "created_at) VALUES (:id, :t, :c, :d, :r, 'paired', 'faq', "
+                    "CAST(:cv AS jsonb), '{}'::jsonb, 'shown', :at)"
+                ),
+                {
+                    "id": uuid4(),
+                    "t": ctx.tenant_id,
+                    "c": conv,
+                    "d": draft_id,
+                    "r": uuid4(),
+                    "cv": json.dumps(cfg),
+                    "at": datetime.now(UTC) - timedelta(hours=30 - i),
+                },
+            )
+            await s.execute(
+                text(
+                    "INSERT INTO draft_uses (draft_id, tenant_id, conversation_id, action, "
+                    "edit_ratio, user_id) VALUES (:d, :t, :c, 'as_is', 0, :u)"
+                ),
+                {"d": draft_id, "t": ctx.tenant_id, "c": conv, "u": uuid4()},
+            )
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    faq = next(i for i in body["learning_intents"] if i["intent"] == "faq")
+    assert faq["scored"] == 30 and faq["ready"] is True
