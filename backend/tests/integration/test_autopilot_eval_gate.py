@@ -7,8 +7,10 @@ import pytest
 from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.repository import insert_agent
+from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.llm.fake import FakeLLM
 from app.modules.agent_runtime.llm.port import LLMRequest, LLMResult, Target, Usage
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.knowledge.domain.releases import SnapshotItem, render_knowledge
 from app.modules.knowledge.infrastructure.releases import active_snapshot, publish_from_tables
@@ -21,6 +23,7 @@ from app.modules.learning.infrastructure.review import (
     evaluate_manual_releases,
     run_eval_gate_for_candidate,
 )
+from app.modules.outbound.domain.autopilot import primary_models
 
 from .test_staff_api import CSRF, logged_in
 
@@ -63,6 +66,7 @@ async def _enable_autopilot(
             "template": "faq_sales_quote",
             "template_version": 5,
             "prompt_version": PROMPT_VERSION,
+            "models": primary_models(load_routes(), get_template("faq_sales_quote", 5)),
         }
         for intent in intents:
             await s.execute(

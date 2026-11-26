@@ -6,9 +6,12 @@ import pytest
 from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.repository import insert_agent
+from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.conversation_policy.domain.policy import suggested_config
 from app.modules.conversation_policy.infrastructure.repository import publish, set_auto_send
+from app.modules.outbound.domain.autopilot import primary_models
 
 from .factories import make_conversation, make_customer
 from .test_shadow_summary import add
@@ -105,6 +108,7 @@ async def test_autopilot_enable_disable_pause_and_permissions(new_client, sessio
         "template": "faq_sales_quote",
         "template_version": 5,
         "prompt_version": PROMPT_VERSION,
+        "models": primary_models(load_routes(), get_template("faq_sales_quote", 5)),
     }
 
     # 5. Tắt ý định ⇒ state = learning + demote_reason

@@ -14,6 +14,7 @@ from app.modules.learning.domain.draft_use import compare
 from app.shared.domain.text import fold
 
 CORRECTION_WINDOW_SECONDS = 600  # 10 phút sau tin bot
+REACTION_WINDOW_SECONDS = 24 * 3600  # phản ứng cách tin bot quá 24 giờ thì không tính cho tin đó
 DEMOTE_WINDOW_REPLIES = 50  # cửa sổ 50 tin bot gần nhất
 MAX_STAFF_AMOUNT_CORRECTION_RATE = 0.02  # > 2% ⇒ hạ cấp
 MAX_CUSTOMER_REACTION_RATE = 0.05  # > 5% ⇒ hạ cấp

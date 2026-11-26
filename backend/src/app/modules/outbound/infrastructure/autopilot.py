@@ -11,6 +11,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.outbound.domain.autopilot import (
     ENABLEABLE_INTENTS,
@@ -18,6 +19,7 @@ from app.modules.outbound.domain.autopilot import (
     Source,
     can_enable_intent,
     extract_config_key,
+    primary_models,
 )
 from app.modules.outbound.domain.channels import DEFAULT_CATALOG_MAX_AGE_HOURS
 from app.modules.outbound.domain.gate import DEFAULT_MAX_BOT_STREAK
@@ -147,12 +149,20 @@ async def list_autopilot_intents(
 
     tpl = get_template(agent.template_key, agent.template_version)
     handoff_intents = frozenset(tpl.handoff_intents) if tpl else frozenset()
-    current_cfg = {
-        "template": agent.template_key,
-        "template_version": agent.template_version,
-        "prompt_version": PROMPT_VERSION,
-    }
-    sum_data = await shadow_summary(s, tenant_id, days)
+    models = primary_models(load_routes(), tpl)
+    current_cfg = (
+        {
+            "template": agent.template_key,
+            "template_version": agent.template_version,
+            "prompt_version": PROMPT_VERSION,
+            "models": models,
+        }
+        if models is not None
+        else None
+    )
+    sum_data = await shadow_summary(
+        s, tenant_id, days, model=models["draft"] if models is not None else None
+    )
     blind_map = _snapshot_map(sum_data["intents"])
     shown_map = _snapshot_map(sum_data.get("learning_intents") or [])
     existing = await _load_rows(s, tenant_id, agent.id)
@@ -211,12 +221,20 @@ async def enable_intent(
 
     tpl = get_template(agent.template_key, agent.template_version)
     handoff_intents = frozenset(tpl.handoff_intents) if tpl else frozenset()
-    current_cfg = {
-        "template": agent.template_key,
-        "template_version": agent.template_version,
-        "prompt_version": PROMPT_VERSION,
-    }
-    sum_data = await shadow_summary(s, tenant_id, days)
+    models = primary_models(load_routes(), tpl)
+    current_cfg = (
+        {
+            "template": agent.template_key,
+            "template_version": agent.template_version,
+            "prompt_version": PROMPT_VERSION,
+            "models": models,
+        }
+        if models is not None
+        else None
+    )
+    sum_data = await shadow_summary(
+        s, tenant_id, days, model=models["draft"] if models is not None else None
+    )
     blind_map = _snapshot_map(sum_data["intents"])
     shown_map = _snapshot_map(sum_data.get("learning_intents") or [])
     existing = await _load_rows(s, tenant_id, agent.id)

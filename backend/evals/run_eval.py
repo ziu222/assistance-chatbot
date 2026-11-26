@@ -55,6 +55,7 @@ from app.modules.agent_management.infrastructure.templates import get_template  
 from app.modules.agent_runtime.infrastructure.run_requests import RunRequest  # noqa: E402
 from app.modules.agent_runtime.llm.factory import build_llm  # noqa: E402
 from app.modules.agent_runtime.llm.port import LLMRequest, LLMResult, Target, Usage  # noqa: E402
+from app.modules.agent_runtime.llm.routes import load_routes  # noqa: E402
 from app.modules.agent_runtime.prompts import PROMPT_VERSION  # noqa: E402
 from app.modules.agent_runtime.runner import AgentRunner  # noqa: E402
 from app.modules.agent_runtime.schemas import ClassifyOut, DraftOut  # noqa: E402
@@ -82,6 +83,7 @@ from app.modules.knowledge.infrastructure.catalog_sync import market_items  # no
 from app.modules.knowledge.infrastructure.content import create_entry  # noqa: E402
 from app.modules.orders.domain.order_flow import OrderFlowConfig  # noqa: E402
 from app.modules.orders.infrastructure.repository import publish_flow  # noqa: E402
+from app.modules.outbound.domain.autopilot import primary_models  # noqa: E402
 from app.modules.outbound.stage import AutopilotStage  # noqa: E402
 from app.shared.infrastructure.db import create_session_factory  # noqa: E402
 
@@ -215,6 +217,7 @@ async def load_shop(factory, key: str) -> Shop:
                 "template": tpl.key,
                 "template_version": tpl.version,
                 "prompt_version": PROMPT_VERSION,
+                "models": primary_models(load_routes(), tpl),
             }
             for intent in sorted(AUTOPILOT):
                 await s.execute(

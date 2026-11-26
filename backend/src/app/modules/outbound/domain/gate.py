@@ -28,6 +28,7 @@ class AiGateInput:
     handoff_intents: frozenset[str] = frozenset()
     run_config_key: dict | None = None
     enabled_config_keys: dict[str, dict] = field(default_factory=dict)
+    served_model_ok: bool = False  # model thực sự viết nháp phải là đích chính của route draft
     grounded: bool = False
     validation_problems: tuple[str, ...] = ()
     needs_human: bool = True
@@ -56,6 +57,8 @@ def send_decision(g: AiGateInput) -> str | None:
         g.enabled_config_keys.get(i) != g.run_config_key for i in g.intents
     ):
         return "config_changed"
+    if not g.served_model_ok:
+        return "model_not_primary"
     if not g.grounded or g.validation_problems:
         return "not_grounded"
     if g.needs_human:
