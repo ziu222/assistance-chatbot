@@ -93,6 +93,7 @@ tin khách ─▶ PolicyStage ─▶ AgentRunner (lưu nháp như bước 4)
 | `not_grounded` | `grounded = false`, hoặc `validate_draft` có vấn đề |
 | `needs_human` | nháp đề xuất chuyển người |
 | `order_flow` | lượt đang ở luồng đặt hàng (có phiếu dở), dù ý định là gì |
+| `product_mismatch` | khách gọi đúng tên/mã một sản phẩm (tên dài nhất thắng, tên chung tính cả dòng), mà nháp nói về sản phẩm hay giá mà không trích nguồn sản phẩm đó. Thêm sau lượt đo 515 ca: lỗi gửi sai duy nhất là nhầm hai sản phẩm tên gần giống |
 | `handling` | hội thoại không ở `handling = bot`, hoặc đã đóng |
 | `stale` | có tin khách mới hơn `based_on_sequence`, hoặc nhân viên đã trả lời |
 | `bot_streak` | đã có 3 tin bot liên tiếp chưa được khách trả lời |

@@ -1,6 +1,7 @@
 """Tầng `AutopilotStage` sau `AgentRunner` (thiết kế 06 A3): gửi webchat và lùi Learning."""
 
 import json
+from uuid import uuid4
 
 from sqlalchemy import text
 
@@ -179,3 +180,51 @@ async def test_autopilot_stage_blocks_reply_while_order_flow_is_active(session_f
             {"t": w.ctx.tenant_id, "c": req.conversation_id},
         )
     assert await AutopilotStage(session_factory, runner.handle).try_send(req) == "order_flow"
+
+
+async def test_autopilot_blocks_reply_about_a_different_product(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    plain, mini = uuid4(), uuid4()
+    async with session_factory() as s, s.begin():
+        for pid, sku, name, price in (
+            (plain, "KN-006", "Bình giữ nhiệt mini", 190000),
+            (mini, "KN-008", "Bình giữ nhiệt mini Mini", 130000),
+        ):
+            await s.execute(
+                text(
+                    "INSERT INTO catalog_items (id, tenant_id, sku, name, price_vnd, search_text, "
+                    "external_id) VALUES (:id, :t, :sku, :n, :p, :n, :sku)"
+                ),
+                {"id": pid, "t": w.ctx.tenant_id, "sku": sku, "n": name, "p": price},
+            )
+    # Ca gửi sai đo được: khách hỏi "mini Mini", nháp trả lời bằng giá thật của "mini".
+    wrong = draft_out(
+        "Dạ bình giữ nhiệt mini loại 500ml giá 190.000đ ạ.",
+        sources=[("product", str(plain))],
+        needs_human=False,
+    )
+    runner, _ = make_runner(session_factory, [classify("faq"), wrong])
+    asked = ("Cho minh hoi gia Binh giu nhiet mini Mini",)
+    req = await request_for(session_factory, w, texts=asked)
+    await runner.handle(req)
+    async with session_factory() as s, s.begin():  # bỏ qua kiểm nguồn để tới đúng bước này
+        await s.execute(
+            text("UPDATE agent_drafts SET grounded = true WHERE tenant_id = :t"),
+            {"t": w.ctx.tenant_id},
+        )
+        await s.execute(
+            text(
+                "UPDATE agent_run_steps SET detail = '{\"problems\": []}'::jsonb "
+                "WHERE tenant_id = :t AND kind = 'validate' AND name = 'draft'"
+            ),
+            {"t": w.ctx.tenant_id},
+        )
+    stage = AutopilotStage(session_factory, runner.handle)
+    assert await stage.try_send(req) == "product_mismatch"
+
+    async with session_factory() as s, s.begin():  # nháp trích đúng sản phẩm khách gọi ⇒ gửi
+        await s.execute(
+            text("UPDATE agent_drafts SET sources = CAST(:src AS jsonb) WHERE tenant_id = :t"),
+            {"t": w.ctx.tenant_id, "src": json.dumps([{"type": "product", "id": str(mini)}])},
+        )
+    assert await stage.try_send(req) == "sent"
