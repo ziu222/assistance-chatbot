@@ -1,0 +1,178 @@
+"""Kiểm thử inbox đa kênh (O5.4): lọc theo provider, trả capabilities, kiểm cửa sổ & độ dài."""
+
+from datetime import UTC, datetime, timedelta
+from uuid import uuid4
+
+import pytest
+from sqlalchemy import text
+
+from .factories import make_customer
+from .test_staff_api import CSRF, inbound, logged_in
+
+
+@pytest.fixture
+def new_client(app_client):
+    return lambda **over: app_client("https://api.test", **over)
+
+
+async def _seed_messenger_conversation(
+    session_factory,
+    ctx,
+    *,
+    last_customer_at: datetime,
+):
+    async with session_factory() as s, s.begin():
+        conn_id = uuid4()
+        await s.execute(
+            text(
+                "INSERT INTO channel_connections "
+                "(id, tenant_id, provider, external_account_id, status, config) "
+                "VALUES (:id, :t, 'messenger', :ext, 'active', '{}'::jsonb)"
+            ),
+            {"id": conn_id, "t": ctx.tenant_id, "ext": f"page_{conn_id.hex[:8]}"},
+        )
+        cust_id = await make_customer(s, ctx)
+        await s.execute(
+            text(
+                "INSERT INTO channel_identities "
+                "(id, tenant_id, customer_id, channel_connection_id, provider, scoped_external_id) "
+                "VALUES (:id, :t, :cu, :conn, 'messenger', :psid)"
+            ),
+            {
+                "id": uuid4(),
+                "t": ctx.tenant_id,
+                "cu": cust_id,
+                "conn": conn_id,
+                "psid": f"psid_{cust_id.hex[:6]}",
+            },
+        )
+        conv_id = uuid4()
+        await s.execute(
+            text(
+                "INSERT INTO conversations "
+                "(id, tenant_id, customer_id, channel_connection_id, status, "
+                " last_sequence, last_message_at, last_message_preview, unread_count) "
+                "VALUES (:id, :t, :cu, :conn, 'open', 1, :at, 'Chào shop', 1)"
+            ),
+            {
+                "id": conv_id,
+                "t": ctx.tenant_id,
+                "cu": cust_id,
+                "conn": conn_id,
+                "at": last_customer_at,
+            },
+        )
+        await s.execute(
+            text(
+                "INSERT INTO messages "
+                "(id, tenant_id, channel_connection_id, conversation_id, external_message_id, "
+                " direction, sender_type, content, status, sequence, occurred_at) "
+                "VALUES (:id, :t, :conn, :c, :ext, 'inbound', 'customer', 'Chào shop', 'received', "
+                " 1, :at)"
+            ),
+            {
+                "id": uuid4(),
+                "t": ctx.tenant_id,
+                "conn": conn_id,
+                "c": conv_id,
+                "ext": f"mid_{uuid4()}",
+                "at": last_customer_at,
+            },
+        )
+    return conn_id, conv_id
+
+
+async def test_list_conversations_filters_provider_and_includes_capabilities(
+    new_client, session_factory
+):
+    client, ctx, _, web_conn = await logged_in(new_client, session_factory)
+    web_res = await inbound(session_factory, ctx, web_conn, "Tin webchat", visitor="v1")
+    now = datetime.now(UTC)
+    _, msg_conv = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=now - timedelta(minutes=10)
+    )
+
+    all_res = await client.get("/api/v1/conversations")
+    assert all_res.status_code == 200
+    assert len(all_res.json()["items"]) == 2
+
+    msg_only = await client.get("/api/v1/conversations", params={"provider": "messenger"})
+    assert msg_only.status_code == 200
+    items = msg_only.json()["items"]
+    assert len(items) == 1
+    assert items[0]["id"] == str(msg_conv)
+    assert items[0]["connection"]["provider"] == "messenger"
+    assert items[0]["capabilities"] == {
+        "reply_window_seconds": 86400,
+        "supports_links": True,
+        "supports_buttons": True,
+        "max_text_length": 2000,
+    }
+
+    web_only = await client.get("/api/v1/conversations", params={"provider": "webchat"})
+    assert web_only.status_code == 200
+    web_items = web_only.json()["items"]
+    assert len(web_items) == 1
+    assert web_items[0]["id"] == str(web_res.conversation_id)
+    assert web_items[0]["capabilities"] == {
+        "reply_window_seconds": None,
+        "supports_links": True,
+        "supports_buttons": False,
+        "max_text_length": 16000,
+    }
+
+    bad = await client.get("/api/v1/conversations", params={"provider": "shopee"})
+    assert bad.status_code == 422
+
+
+async def test_staff_reply_messenger_window_and_length_enforcement(new_client, session_factory):
+    client, ctx, _, _ = await logged_in(new_client, session_factory)
+    now = datetime.now(UTC)
+    _, conv_ok = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=now - timedelta(hours=2)
+    )
+    _, conv_expired = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=now - timedelta(hours=25)
+    )
+
+    # Trong 24h và <= 2000 ký tự ⇒ 201 thành công
+    r_ok = await client.post(
+        f"/api/v1/conversations/{conv_ok}/messages",
+        json={"client_message_id": str(uuid4()), "text": "Dạ shop còn hàng ạ."},
+        headers=CSRF,
+    )
+    assert r_ok.status_code == 201, r_ok.text
+
+    # Quá 2000 ký tự trên Messenger ⇒ 422 message_too_long, không ghi thêm tin
+    r_long = await client.post(
+        f"/api/v1/conversations/{conv_ok}/messages",
+        json={"client_message_id": str(uuid4()), "text": "a" * 2001},
+        headers=CSRF,
+    )
+    assert r_long.status_code == 422
+    assert r_long.json()["error"]["code"] == "message_too_long"
+
+    # Quá 24h trên Messenger ⇒ 409 messenger_window_expired, không ghi thêm tin
+    r_exp = await client.post(
+        f"/api/v1/conversations/{conv_expired}/messages",
+        json={"client_message_id": str(uuid4()), "text": "Xin chào ạ"},
+        headers=CSRF,
+    )
+    assert r_exp.status_code == 409
+    assert r_exp.json()["error"]["code"] == "messenger_window_expired"
+
+    async with session_factory() as s:
+        ok_count = (
+            await s.execute(
+                text("SELECT count(*) FROM messages WHERE tenant_id = :t AND conversation_id = :c"),
+                {"t": ctx.tenant_id, "c": conv_ok},
+            )
+        ).scalar_one()
+        exp_count = (
+            await s.execute(
+                text("SELECT count(*) FROM messages WHERE tenant_id = :t AND conversation_id = :c"),
+                {"t": ctx.tenant_id, "c": conv_expired},
+            )
+        ).scalar_one()
+    assert ok_count == 2
+    assert exp_count == 1

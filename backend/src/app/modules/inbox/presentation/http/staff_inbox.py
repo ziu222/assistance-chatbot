@@ -4,6 +4,7 @@ Conversation của tenant khác trả 404 (không phải 403) để không lộ 
 """
 
 import logging
+from datetime import UTC, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
@@ -29,6 +30,7 @@ from app.modules.integration.domain.normalization import (
     validate_client_message_id,
 )
 from app.modules.learning.infrastructure.drafts import discard_shown_draft, record_use
+from app.modules.outbound.domain.channels import check_channel_send
 from app.modules.outbound.infrastructure.monitoring import record_staff_correction_if_applicable
 from app.shared.application.errors import TransientDatabaseError
 from app.shared.domain.tenant import TenantContext
@@ -65,6 +67,7 @@ async def list_conversations(
     request: Request,
     actor: CurrentStaff,
     status: Literal["open", "closed"] | None = None,
+    provider: Literal["webchat", "messenger", "zalo_oa"] | None = None,
     cursor: Annotated[str | None, Query(max_length=200)] = None,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict:
@@ -72,7 +75,7 @@ async def list_conversations(
     async with request.app.state.session_factory() as s:
         try:
             rows, next_cursor = await queries.list_conversations(
-                s, ctx, status=status, cursor=cursor, limit=limit
+                s, ctx, status=status, provider=provider, cursor=cursor, limit=limit
             )
         except queries.InvalidCursor as exc:
             raise ApiError(422, "invalid_request", "Invalid cursor") from exc
@@ -133,6 +136,22 @@ async def reply(
         text = normalize_text(body.text)
     except InvalidInboundMessage as exc:
         raise ApiError(422, "invalid_request", str(exc)) from exc
+    async with request.app.state.session_factory() as s:
+        channel_state = await queries.channel_reply_state(s, ctx, conversation_id)
+    if channel_state is not None:
+        decision = check_channel_send(
+            channel_state.provider,
+            last_customer_at=channel_state.last_customer_at,
+            now=datetime.now(UTC),
+            replies_since_customer=channel_state.outbound_since_customer,
+            config=channel_state.config,
+            text_length=len(text),
+        )
+        if not decision.allowed:
+            reason = decision.reason or "channel_blocked"
+            if reason == "message_too_long":
+                raise ApiError(422, "message_too_long", "Message exceeds channel max length")
+            raise ApiError(409, reason, f"Channel blocked send: {reason}")
     try:
         result = await SendStaffMessage(_uow(request))(
             ctx,

@@ -1,12 +1,15 @@
 """Read model của inbox: SQL thẳng, mọi truy vấn lọc tenant_id từ session nhân viên."""
 
 import base64
+from dataclasses import dataclass
 from datetime import datetime
+from typing import Any
 from uuid import UUID
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.outbound.domain.channels import capabilities_for
 from app.shared.domain.tenant import TenantContext
 
 _SELECT = (
@@ -37,6 +40,20 @@ def decode_cursor(cursor: str) -> tuple[datetime, UUID]:
         raise InvalidCursor from exc
 
 
+def _capabilities_json(provider: str) -> dict | None:
+    caps = capabilities_for(provider)
+    if caps is None:
+        return None
+    return {
+        "reply_window_seconds": (
+            int(caps.reply_window.total_seconds()) if caps.reply_window is not None else None
+        ),
+        "supports_links": caps.supports_links,
+        "supports_buttons": caps.supports_buttons,
+        "max_text_length": caps.max_text_length,
+    }
+
+
 def conversation_json(r) -> dict:
     return {
         "id": str(r.id),
@@ -51,17 +68,27 @@ def conversation_json(r) -> dict:
         "closed_at": r.closed_at.isoformat() if r.closed_at else None,
         "customer": {"id": str(r.customer_id), "display_name": r.customer_name},
         "connection": {"id": str(r.connection_id), "provider": r.provider},
+        "capabilities": _capabilities_json(r.provider),
     }
 
 
 async def list_conversations(
-    s: AsyncSession, ctx: TenantContext, *, status: str | None, cursor: str | None, limit: int
+    s: AsyncSession,
+    ctx: TenantContext,
+    *,
+    status: str | None,
+    cursor: str | None,
+    limit: int,
+    provider: str | None = None,
 ) -> tuple[list, str | None]:
     sql = _SELECT + "AND c.last_message_at IS NOT NULL "  # chỉ hội thoại đã có tin
     params: dict = {"t": ctx.tenant_id, "limit": limit + 1}
     if status:
         sql += "AND c.status = :status "
         params["status"] = status
+    if provider:
+        sql += "AND ch.provider = :provider "
+        params["provider"] = provider
     if cursor:
         params["at"], params["cid"] = decode_cursor(cursor)
         sql += "AND (c.last_message_at, c.id) < (:at, :cid) "
@@ -81,3 +108,47 @@ async def get_conversation(s: AsyncSession, ctx: TenantContext, conversation_id:
             text(_SELECT + "AND c.id = :id"), {"t": ctx.tenant_id, "id": conversation_id}
         )
     ).first()
+
+
+@dataclass(frozen=True)
+class ChannelReplyState:
+    provider: str
+    config: dict[str, Any]
+    last_customer_at: datetime | None
+    outbound_since_customer: int
+
+
+async def channel_reply_state(
+    s: AsyncSession, ctx: TenantContext, conversation_id: UUID
+) -> ChannelReplyState | None:
+    """Lấy trạng thái cửa sổ/hạn mức kênh của hội thoại để kiểm trước khi nhân viên gửi."""
+    row = (
+        await s.execute(
+            text(
+                "SELECT ch.provider, ch.config, "
+                "  (SELECT max(m.occurred_at) FROM messages m "
+                "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
+                "     AND m.sender_type = 'customer') AS last_customer_at, "
+                "  (SELECT count(*) FROM messages m "
+                "   WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
+                "     AND m.direction = 'outbound' "
+                "     AND m.sequence > COALESCE("
+                "       (SELECT max(mc.sequence) FROM messages mc "
+                "        WHERE mc.tenant_id = c.tenant_id AND mc.conversation_id = c.id "
+                "          AND mc.sender_type = 'customer'), 0)) AS outbound_since "
+                "FROM conversations c "
+                "JOIN channel_connections ch "
+                "  ON (ch.tenant_id, ch.id) = (c.tenant_id, c.channel_connection_id) "
+                "WHERE c.tenant_id = :t AND c.id = :id"
+            ),
+            {"t": ctx.tenant_id, "id": conversation_id},
+        )
+    ).first()
+    if row is None:
+        return None
+    return ChannelReplyState(
+        provider=row.provider,
+        config=row.config if isinstance(row.config, dict) else {},
+        last_customer_at=row.last_customer_at,
+        outbound_since_customer=int(row.outbound_since or 0),
+    )

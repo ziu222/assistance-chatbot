@@ -1,6 +1,6 @@
 # Thiết kế: quy trình đặt hàng theo từng shop và inbox hợp nhất nhiều kênh
 
-- Trạng thái: **O2–O4 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval; màn hình đơn chờ xác nhận, xác nhận/sửa/hủy, hết hạn, xóa dữ liệu cá nhân; link trang sản phẩm); O5–O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
+- Trạng thái: **O2–O5 đã implement** (cấu hình quy trình + phát hành, phiếu đặt hàng, template v4, eval; màn hình đơn chờ xác nhận, xác nhận/sửa/hủy, hết hạn, xóa dữ liệu cá nhân; link trang sản phẩm; O5 adapter Facebook Messenger hai chiều + `ChannelCapabilities` trong `SendGate` và inbox hợp nhất, Zalo OA làm sau); O6 là thiết kế. Quyết định chính: [ADR-0035](../adr/0035-order-flow-and-order-requests.md), [ADR-0036](../adr/0036-unified-multichannel-inbox.md).
 - Ngày: 2026-11-24
 - Liên quan: [02-agent-from-template.md](02-agent-from-template.md) (§12 chính sách hội thoại, ticket, `SendGate`; §13 nguồn tri thức linh hoạt), [docs/evals/return-questions.md](../evals/return-questions.md).
 
@@ -146,7 +146,7 @@ Khối `<order_flow>` thay đổi theo từng hội thoại, nên đặt **sau**
 
 ### 6.1. Nền đã có
 
-Bước 1 đã thiết kế cho nhiều kênh: mọi tin vào được chuẩn hóa thành `NormalizedChannelEvent`, gắn với `channel_connections` và `channel_identities`, rồi đi qua cùng một use case `ReceiveInboundMessage`, cùng outbox, chính sách hội thoại, agent và ticket. Webchat là kênh duy nhất hiện có (`channel_connections.provider IN ('webchat')`).
+Bước 1 đã thiết kế cho nhiều kênh: mọi tin vào được chuẩn hóa thành `NormalizedChannelEvent`, gắn với `channel_connections` và `channel_identities`, rồi đi qua cùng một use case `ReceiveInboundMessage`, cùng outbox, chính sách hội thoại, agent và ticket. Hiện đã có **webchat** và **Facebook Messenger** (O5: webhook xác minh HMAC-SHA256 tại `/webhooks/messenger`, mã hóa credentials Fernet, hàng đợi `outbound_deliveries` + `MessengerSender` / `DeliveryWorker`, `ChannelCapabilities` trong `SendGate` và inbox nhân viên). Zalo OA làm sau.
 
 ### 6.2. Thêm một kênh
 
@@ -244,7 +244,7 @@ Thứ tự kênh đề xuất: **Zalo OA hoặc Facebook Messenger trước** (n
 | O2 | `OrderFlowConfig` + phát hành, `order_requests`, template v4, tách số điện thoại, kiểm tra "đã đặt thành công", đổi nhãn eval và đo | O1 |
 | O3 | Inbox: mục "Đơn chờ xác nhận", xác nhận/sửa/hủy, ticket `source = 'order'`, xóa dữ liệu cá nhân quá hạn | O2 |
 | O4 | `catalog_items.url` + cho phép link từ catalog; `destination = product_link / marketplace_link` | O2, adapter nguồn |
-| O5 | Adapter kênh đầu tiên (Zalo OA hoặc Messenger) + `ChannelCapabilities` trong `SendGate` | O3 |
+| O5 | Adapter Facebook Messenger hai chiều + `ChannelCapabilities` trong `SendGate` và inbox (đã implement); Zalo OA làm sau | O3 |
 | O6 | Gợi ý chỉnh quy trình từ `order_confirmed`; bot đề xuất đơn, nhân viên duyệt một chạm | bước 4 (Learning), bước 5 (Autopilot) |
 
 ## 10. Rủi ro và câu hỏi mở
