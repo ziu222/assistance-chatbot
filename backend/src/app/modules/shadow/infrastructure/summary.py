@@ -5,7 +5,7 @@ Tách riêng hai nguồn đo:
 - **đã thấy** (`draft_exposure = 'shown'`, Learning): đo trực tiếp theo mức sửa (`draft_uses`).
 
 Mỗi ý định chỉ tính các cặp thuộc phiên bản cấu hình AI HIỆN TẠI của nó (template, phiên bản
-template, `PROMPT_VERSION`, `knowledge_hash`).
+template, `PROMPT_VERSION`; nguồn mù tính cả `knowledge_hash`).
 """
 
 from collections import defaultdict
@@ -68,10 +68,13 @@ _SUMMARY = text(
     """
 )
 
+# Nguồn "đã thấy" (Learning) không tính `knowledge_hash` vào khóa: ở Learning tri thức đổi gần như
+# hằng ngày, nên đếm lại từ đầu mỗi lần thì không bao giờ đủ mẫu để bật lại sau khi hạ cấp. Đổi tri
+# thức đã có bộ ca chuẩn của cổng eval canh (thiết kế 06 §6.3).
 _SHOWN_ROWS = text(
     """
     WITH latest AS (
-      SELECT DISTINCT ON (intent) intent, config_version - 'model' AS key
+      SELECT DISTINCT ON (intent) intent, config_version - 'model' - 'knowledge_hash' AS key
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'shown'
       ORDER BY intent, created_at DESC
@@ -81,7 +84,7 @@ _SHOWN_ROWS = text(
            u.action, u.edit_ratio, u.diff_features
     FROM shadow_comparisons sc
     JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
-     AND (sc.config_version - 'model') = l.key
+     AND (sc.config_version - 'model' - 'knowledge_hash') = l.key
     LEFT JOIN draft_uses u ON u.tenant_id = sc.tenant_id AND u.draft_id = sc.draft_id
     WHERE sc.tenant_id = :t AND sc.draft_exposure = 'shown'
       AND sc.created_at > now() - make_interval(days => :d)
