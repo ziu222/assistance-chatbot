@@ -37,6 +37,8 @@ class ConversationStore(Protocol):
         """Nhân viên trả lời ⇒ nhận luôn ticket đang mở của hội thoại (bước 2 §12.5)."""
         ...
 
+    async def connection_provider(self, ctx: TenantContext, connection_id: UUID) -> str | None: ...
+
 
 class MessageStore(Protocol):
     async def add(self, ctx: TenantContext, **fields: Any) -> Message | None: ...
@@ -59,6 +61,19 @@ class OutboxPort(Protocol):
     ) -> None: ...
 
 
+class DeliveryPort(Protocol):
+    async def enqueue(
+        self,
+        ctx: TenantContext,
+        *,
+        message_id: UUID,
+        connection_id: UUID,
+        provider: str,
+        recipient_external_id: str,
+        content: str,
+    ) -> None: ...
+
+
 class ConversationUnitOfWork(Protocol):
     """Một transaction. Thoát khối `async with` mà chưa commit() thì rollback.
 
@@ -69,6 +84,7 @@ class ConversationUnitOfWork(Protocol):
     conversations: ConversationStore
     messages: MessageStore
     outbox: OutboxPort
+    deliveries: DeliveryPort
 
     async def __aenter__(self) -> Self: ...
 

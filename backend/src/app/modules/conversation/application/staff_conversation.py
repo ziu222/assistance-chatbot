@@ -128,6 +128,16 @@ class SendStaffMessage:
                 },
                 trace_id=trace_id,
             )
+            provider = await uow.conversations.connection_provider(ctx, conv.channel_connection_id)
+            if provider and provider != "webchat" and identity is not None:
+                await uow.deliveries.enqueue(
+                    ctx,
+                    message_id=message.id,
+                    connection_id=conv.channel_connection_id,
+                    provider=provider,
+                    recipient_external_id=identity.scoped_external_id,
+                    content=text,
+                )
             await uow.commit()
             return ReceiveResult(message.id, conv.id, sequence, True)
 

@@ -132,6 +132,14 @@ class ConversationRepository:
             {"t": ctx.tenant_id, "c": conversation_id, "u": user_id},
         )
 
+    async def connection_provider(self, ctx: TenantContext, connection_id: UUID) -> str | None:
+        return (
+            await self._s.execute(
+                text("SELECT provider FROM channel_connections WHERE tenant_id = :t AND id = :id"),
+                {"t": ctx.tenant_id, "id": connection_id},
+            )
+        ).scalar_one_or_none()
+
     async def get(
         self, ctx: TenantContext, conversation_id: UUID, *, lock: bool = False
     ) -> Conversation | None:

@@ -9,6 +9,7 @@ import signal
 from datetime import timedelta
 from functools import partial
 
+import httpx
 import redis.asyncio as aioredis
 from prometheus_client import start_http_server
 
@@ -17,6 +18,8 @@ from app.modules.agent_runtime.infrastructure.config import debounce_window
 from app.modules.agent_runtime.infrastructure.run_requests import enqueue_from_outbox
 from app.modules.knowledge.infrastructure.catalog_sync import run_catalog_scheduler
 from app.modules.orders.infrastructure.staff_actions import run_order_maintenance
+from app.modules.outbound.infrastructure.deliveries import DeliveryWorker
+from app.modules.outbound.infrastructure.messenger_sender import MessengerSender
 from app.modules.shadow.infrastructure.comparisons import run_shadow_comparisons
 from app.shared.infrastructure.db import create_engine, create_session_factory
 from app.shared.infrastructure.logging import configure_logging
@@ -55,9 +58,18 @@ async def main() -> None:
         tasks.append(
             run_catalog_scheduler(factory, settings.google_service_account_json, interval, stop)
         )
+    delivery_http: httpx.AsyncClient | None = None
+    if settings.channel_credentials_key:
+        delivery_http = httpx.AsyncClient(timeout=10.0)
+        senders = {
+            "messenger": MessengerSender(settings.messenger_graph_base_url, client=delivery_http)
+        }
+        tasks.append(DeliveryWorker(factory, settings.channel_credentials_key, senders).run(stop))
     try:
         await asyncio.gather(*tasks)
     finally:
+        if delivery_http is not None:
+            await delivery_http.aclose()
         await client.aclose()
         await engine.dispose()
 

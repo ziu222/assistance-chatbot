@@ -17,6 +17,7 @@ from app.modules.conversation.application.receive_inbound_message import (
     EVENT_SCHEMA_VERSION,
     PREVIEW_LENGTH,
 )
+from app.modules.outbound.infrastructure.deliveries import enqueue_delivery
 
 # Kênh gửi chủ động được. ponytail: chỉ webchat; Messenger/Zalo cần kiểm cửa sổ 24 giờ trước.
 PROACTIVE_PROVIDERS = frozenset({"webchat"})
@@ -63,7 +64,9 @@ async def send_canned(
         await s.execute(
             text(
                 "SELECT c.channel_connection_id, c.customer_id, c.last_sequence, "
-                "ci.scoped_external_id FROM conversations c "
+                "cc.provider, ci.scoped_external_id FROM conversations c "
+                "JOIN channel_connections cc ON cc.tenant_id = c.tenant_id "
+                "  AND cc.id = c.channel_connection_id "
                 "LEFT JOIN channel_identities ci ON ci.tenant_id = c.tenant_id "
                 "  AND ci.customer_id = c.customer_id "
                 "  AND ci.channel_connection_id = c.channel_connection_id "
@@ -72,7 +75,7 @@ async def send_canned(
             {"t": tenant_id, "c": conversation_id},
         )
     ).one()
-    connection_id, customer_id, last_sequence, visitor_id = conv
+    connection_id, customer_id, last_sequence, provider, visitor_id = conv
     sequence, now, message_id = last_sequence + 1, datetime.now(UTC), uuid4()
     inserted = (
         await s.execute(
@@ -135,4 +138,14 @@ async def send_canned(
         ),
         {"t": tenant_id, "c": conversation_id, "p": json.dumps(payload)},
     )
+    if provider != "webchat" and visitor_id:
+        await enqueue_delivery(
+            s,
+            tenant_id=tenant_id,
+            message_id=message_id,
+            connection_id=connection_id,
+            provider=provider,
+            recipient_external_id=visitor_id,
+            content=content,
+        )
     return True
