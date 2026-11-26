@@ -18,6 +18,7 @@ def _passing(**overrides) -> AiGateInput:
         handoff_intents=frozenset({"complaint", "human_request"}),
         run_config_key=_CFG,
         enabled_config_keys={"faq": _CFG, "greeting": _CFG},
+        served_model_ok=True,
         grounded=True,
         validation_problems=(),
         needs_human=False,
@@ -70,6 +71,7 @@ def test_passing_input_allows_send():
         ({"run_config_key": None}, "config_changed"),
         ({"run_config_key": _CFG | {"prompt_version": "v2"}}, "config_changed"),
         ({"enabled_config_keys": {}}, "config_changed"),
+        ({"served_model_ok": False}, "model_not_primary"),
         ({"grounded": False}, "not_grounded"),
         ({"validation_problems": ("amount_mismatch",)}, "not_grounded"),
         ({"needs_human": True}, "needs_human"),
@@ -104,4 +106,11 @@ def test_block_priority_order_cheap_checks_first():
     assert (
         send_decision(_passing(intents=("other",), run_config_key=None, grounded=False))
         == "intent_not_enabled"
+    )
+    # config_changed thắng model_not_primary
+    assert (
+        send_decision(
+            _passing(run_config_key=_CFG | {"prompt_version": "v2"}, served_model_ok=False)
+        )
+        == "config_changed"
     )

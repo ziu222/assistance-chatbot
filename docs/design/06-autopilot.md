@@ -49,7 +49,7 @@ Rủi ro đổi bản chất: tới bước 4, một nháp sai chỉ tốn vài 
 
 - Ý định bật được: `greeting`, `faq`, `product_info` (ở A3); `price_quote` sau khi có kiểm độ mới catalog (A6). Không bao giờ: ý định trong `handoff_intents`, `order_intent`, `other`.
 - Màn hình "Chấm nháp" đã có bảng mức sẵn sàng theo ý định (`GET /shadow/summary`). Thêm nút **Bật tự trả lời** cạnh ý định có `ready = true`. Ý định chưa đạt hiện lý do (ví dụ "chưa đủ mẫu 12/30").
-- Bật dùng quyền mới `autopilot.manage` (`owner`). Server kiểm lại mức sẵn sàng lúc bật, không tin client. Lưu khóa cấu hình lúc đạt (`config_key`: template, phiên bản, `PROMPT_VERSION`) và nguồn đo (`blind` hay `shown`).
+- Bật dùng quyền mới `autopilot.manage` (`owner`). Server kiểm lại mức sẵn sàng lúc bật, không tin client. Lưu khóa cấu hình lúc đạt (`config_key`: template, phiên bản, `PROMPT_VERSION`, và `models` gồm model chính của route `classify`/`draft`) và nguồn đo (`blind` hay `shown`). Mức sẵn sàng chỉ đếm những nháp do model chính hiện tại của route `draft` viết.
 - Dùng lại công tắc tenant `tenant_policy.auto_send` (đã có cho tin của chủ shop từ 2.9) và ngưỡng mặc định:
   - tối đa 3 tin bot liên tiếp trong một hội thoại khi khách chưa trả lời (chặn vòng lặp);
   - chỉ gửi trong giờ được cấu hình hay luôn gửi (mặc định: luôn gửi).
@@ -90,6 +90,7 @@ tin khách ─▶ PolicyStage ─▶ AgentRunner (lưu nháp như bước 4)
 | `kill_switch` | `ai_enabled = false` hoặc `auto_send = false` của tenant |
 | `intent_not_enabled` | có ý định nào của lượt chưa ở trạng thái `autopilot` |
 | `config_changed` | `config_key` của run khác khóa lúc bật (nối với §6.3) |
+| `model_not_primary` | model thực sự viết nháp khác model chính của route `draft` (failover tạm thời ⇒ lùi Learning, không hạ cấp) |
 | `not_grounded` | `grounded = false`, hoặc `validate_draft` có vấn đề |
 | `needs_human` | nháp đề xuất chuyển người |
 | `order_flow` | lượt đang ở luồng đặt hàng (có phiếu dở), dù ý định là gì |
@@ -139,7 +140,7 @@ Hạ cấp không xóa gì: các tin sau rơi về Learning, chủ shop thấy l
 
 ### 6.3. Đổi cấu hình và tri thức
 
-- Đổi template, phiên bản template, `PROMPT_VERSION`, route model ⇒ hạ cấp mọi ý định của agent (`config_changed`). Bước 3 bắt đầu đếm lại từ đầu với cấu hình mới.
+- Đổi template, phiên bản template, `PROMPT_VERSION`, hay model chính của route `classify`/`draft` ⇒ hạ cấp mọi ý định của agent (`config_changed`). Khóa cấu hình gồm cả `models` (`classify` và `draft`), và mức sẵn sàng bước 3 chỉ đếm những nháp do model chính hiện tại của route `draft` viết nên số đo tự bắt đầu lại từ đầu. Nếu đích chính lỗi tạm thời và đích dự phòng viết nháp, cổng chặn bằng `model_not_primary` (rơi về Learning, không hạ cấp).
 - Đổi **tri thức** (bản phát hành mới) không hạ cấp, vì tri thức đổi hằng ngày nhờ Learning. Đổi lại, bản phát hành phải qua cổng eval có **bộ ca chuẩn theo ý định** cho mọi ý định đang Autopilot (A5). Đây là chỗ sửa giới hạn ghi ở thiết kế 05 §6.4: cổng hiện chỉ chạy ca bài học.
 - Chủ shop sửa FAQ bằng tay cũng đi qua cổng này nếu tenant có ý định đang Autopilot; eval không đạt thì bản mới vẫn phát hành (chủ shop là nguồn sự thật) nhưng ý định liên quan bị hạ cấp kèm lý do `eval_regressed`.
 

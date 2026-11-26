@@ -1,11 +1,14 @@
 """Tầng `AutopilotStage` sau `AgentRunner` (thiết kế 06 A3): gửi webchat và lùi Learning."""
 
+import dataclasses
 import json
 from uuid import uuid4
 
 from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.port import Target
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.conversation_policy.domain.hours import BusinessHours
 from app.modules.conversation_policy.domain.policy import (
@@ -16,6 +19,7 @@ from app.modules.conversation_policy.domain.policy import (
 from app.modules.conversation_policy.infrastructure.repository import publish, set_auto_send
 from app.modules.conversation_policy.stage import PolicyStage
 from app.modules.learning.infrastructure.drafts import current_draft
+from app.modules.outbound.domain.autopilot import primary_models
 from app.modules.outbound.stage import AutopilotStage
 
 from .factories import insert_message
@@ -32,9 +36,11 @@ async def _setup_learning_shop(
     enable_faq: bool = True,
     auto_send: bool = True,
     prompt_ver_in_row: str = PROMPT_VERSION,
+    models_in_row: dict[str, str] | None = None,
 ):
     w = await make_world(session_factory, rate="1.00")
     tpl = get_template("faq_sales_quote")
+    models = models_in_row if models_in_row is not None else primary_models(load_routes(), tpl)
     async with session_factory() as s, s.begin():
         await s.execute(
             text("UPDATE agents SET mode = 'learning' WHERE tenant_id = :t AND id = :a"),
@@ -47,6 +53,7 @@ async def _setup_learning_shop(
                 "template": tpl.key,
                 "template_version": tpl.version,
                 "prompt_version": prompt_ver_in_row,
+                "models": models,
             }
             await s.execute(
                 text(
@@ -279,3 +286,75 @@ async def test_after_hours_message_is_sent_when_the_bot_does_not_answer(session_
     autopilot = AutopilotStage(session_factory, runner.handle)
     await PolicyStage(session_factory, autopilot.handle).handle(req)
     assert await _senders(session_factory, w, req.conversation_id) == ["customer", "system"]
+
+
+async def test_fallback_model_draft_blocks_without_demoting_intent(session_factory):
+    w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
+    backup = Target("openai", "gpt-4.1", max_tokens=2048)
+    backup_draft = dataclasses.replace(_faq_draft(w.faq_id), served_by=backup)
+    runner, _ = make_runner(session_factory, [classify("faq"), backup_draft])
+    stage = AutopilotStage(session_factory, runner.handle)
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await stage.handle(req)
+
+    async with session_factory() as s:
+        step = (
+            await s.execute(
+                text(
+                    "SELECT status, detail FROM agent_run_steps "
+                    "WHERE tenant_id = :t AND name = 'send_gate'"
+                ),
+                {"t": w.ctx.tenant_id},
+            )
+        ).one()
+        row = (
+            await s.execute(
+                text(
+                    "SELECT state, demote_reason FROM autopilot_intents "
+                    "WHERE tenant_id = :t AND agent_id = :a AND intent = 'faq'"
+                ),
+                {"t": w.ctx.tenant_id, "a": w.agent_id},
+            )
+        ).one()
+    assert step.status == "blocked"
+    assert step.detail["reason"] == "model_not_primary"
+    # Lỗi tạm thời của đích chính chỉ rơi về Learning, KHÔNG hạ cấp ý định.
+    assert row.state == "autopilot"
+    assert row.demote_reason is None
+
+
+async def test_changed_route_models_demotes_intent_with_config_changed(session_factory):
+    w = await _setup_learning_shop(
+        session_factory,
+        enable_faq=True,
+        auto_send=True,
+        models_in_row={"classify": "claude-sonnet-5", "draft": "claude-sonnet-4"},
+    )
+    runner, _ = make_runner(session_factory, [classify("faq"), _faq_draft(w.faq_id)])
+    stage = AutopilotStage(session_factory, runner.handle)
+    req = await request_for(session_factory, w, texts=("Đổi trả thế nào?",))
+    await stage.handle(req)
+
+    async with session_factory() as s:
+        step = (
+            await s.execute(
+                text(
+                    "SELECT status, detail FROM agent_run_steps "
+                    "WHERE tenant_id = :t AND name = 'send_gate'"
+                ),
+                {"t": w.ctx.tenant_id},
+            )
+        ).one()
+        row = (
+            await s.execute(
+                text(
+                    "SELECT state, demote_reason FROM autopilot_intents "
+                    "WHERE tenant_id = :t AND agent_id = :a AND intent = 'faq'"
+                ),
+                {"t": w.ctx.tenant_id, "a": w.agent_id},
+            )
+        ).one()
+    assert step.status == "blocked"
+    assert step.detail["reason"] == "config_changed"
+    assert row.state == "learning"
+    assert row.demote_reason == "config_changed"

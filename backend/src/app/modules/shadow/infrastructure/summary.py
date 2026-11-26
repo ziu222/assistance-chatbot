@@ -16,6 +16,8 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.shadow.domain.readiness import (
     SHOWN_MINOR_EDIT_MAX,
     IntentStats,
@@ -33,6 +35,7 @@ _SUMMARY = text(
       SELECT DISTINCT ON (intent) intent, config_version - 'model' AS key
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'hidden'
+        AND config_version->>'model' = :model
       ORDER BY intent, created_at DESC
     ), anchor AS (
       -- Cặp mù chỉ có ở Shadow. Rời Shadow sang Learning thì cửa sổ tính ngược từ cặp mù cuối,
@@ -40,13 +43,16 @@ _SUMMARY = text(
       -- Trần 60 ngày: số đo mù cũ hơn thế thì hết hiệu lực như thường.
       SELECT CASE WHEN max(created_at) >= now() - interval '60 days'
                   THEN max(created_at) ELSE now() END AS at
-      FROM shadow_comparisons WHERE tenant_id = :t AND draft_exposure = 'hidden'
+      FROM shadow_comparisons
+      WHERE tenant_id = :t AND draft_exposure = 'hidden'
+        AND config_version->>'model' = :model
     ), c AS (
       SELECT sc.*, l.key, a.at AS anchor_at FROM shadow_comparisons sc
       JOIN latest l ON sc.intent IS NOT DISTINCT FROM l.intent
        AND (sc.config_version - 'model') = l.key
       CROSS JOIN anchor a
       WHERE sc.tenant_id = :t AND sc.draft_exposure = 'hidden'
+        AND sc.config_version->>'model' = :model
         AND sc.created_at > a.at - make_interval(days => :d)
     )
     SELECT intent, min(key::text) AS config,
@@ -77,6 +83,7 @@ _SHOWN_ROWS = text(
       SELECT DISTINCT ON (intent) intent, config_version - 'model' - 'knowledge_hash' AS key
       FROM shadow_comparisons
       WHERE tenant_id = :t AND draft_exposure = 'shown'
+        AND config_version->>'model' = :model
       ORDER BY intent, created_at DESC
     )
     SELECT sc.intent, l.key::text AS config, sc.config_version->>'model' AS model,
@@ -87,9 +94,29 @@ _SHOWN_ROWS = text(
      AND (sc.config_version - 'model' - 'knowledge_hash') = l.key
     LEFT JOIN draft_uses u ON u.tenant_id = sc.tenant_id AND u.draft_id = sc.draft_id
     WHERE sc.tenant_id = :t AND sc.draft_exposure = 'shown'
+      AND sc.config_version->>'model' = :model
       AND sc.created_at > now() - make_interval(days => :d)
     """
 )
+
+
+async def _primary_draft_model(s: AsyncSession, tenant_id: UUID) -> str:
+    """Model chính của route `draft` theo template agent của tenant (mặc định route `draft`)."""
+    routes = load_routes()
+    row = (
+        await s.execute(
+            text(
+                "SELECT template_key, template_version FROM agents "
+                "WHERE tenant_id = :t ORDER BY created_at ASC LIMIT 1"
+            ),
+            {"t": tenant_id},
+        )
+    ).first()
+    if row is not None:
+        tpl = get_template(row.template_key, row.template_version)
+        if tpl is not None and routes.get(tpl.routes.draft):
+            return routes[tpl.routes.draft][0].model
+    return routes["draft"][0].model
 
 
 def _json(s: IntentStats, r: Readiness, config: str, *, source: MeasurementSource) -> dict:
@@ -112,8 +139,8 @@ def _json(s: IntentStats, r: Readiness, config: str, *, source: MeasurementSourc
     }
 
 
-async def _shown_summary(s: AsyncSession, tenant_id: UUID, days: int) -> list[dict]:
-    rows = (await s.execute(_SHOWN_ROWS, {"t": tenant_id, "d": days})).all()
+async def _shown_summary(s: AsyncSession, tenant_id: UUID, days: int, *, model: str) -> list[dict]:
+    rows = (await s.execute(_SHOWN_ROWS, {"t": tenant_id, "d": days, "model": model})).all()
     by_intent: dict[str | None, list] = defaultdict(list)
     for r in rows:
         by_intent[r.intent].append(r)
@@ -178,9 +205,10 @@ async def _shown_summary(s: AsyncSession, tenant_id: UUID, days: int) -> list[di
     return out
 
 
-async def summary(s: AsyncSession, tenant_id: UUID, days: int) -> dict:
+async def summary(s: AsyncSession, tenant_id: UUID, days: int, *, model: str | None = None) -> dict:
+    draft_model = model or await _primary_draft_model(s, tenant_id)
     cal = await calibration(s, tenant_id)
-    rows = await s.execute(_SUMMARY, {"t": tenant_id, "d": days})
+    rows = await s.execute(_SUMMARY, {"t": tenant_id, "d": days, "model": draft_model})
     intents = []
     for row in rows:
         st = IntentStats(
@@ -204,7 +232,7 @@ async def summary(s: AsyncSession, tenant_id: UUID, days: int) -> dict:
                 source="blind",
             )
         )
-    learning_intents = await _shown_summary(s, tenant_id, days)
+    learning_intents = await _shown_summary(s, tenant_id, days, model=draft_model)
     return {
         "days": days,
         "judge_calibrated": cal.calibrated,

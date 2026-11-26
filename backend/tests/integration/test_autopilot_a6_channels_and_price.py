@@ -8,8 +8,10 @@ import pytest
 from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
 from app.modules.outbound.ai_reply import send_ai_reply
+from app.modules.outbound.domain.autopilot import primary_models
 from app.modules.outbound.stage import AutopilotStage, _check_catalog_stale
 
 from .factories import make_conversation, make_customer, make_tenant
@@ -259,6 +261,7 @@ async def test_price_quote_enables_when_ready_and_checks_catalog_freshness(
                         "template": tpl.key,
                         "template_version": tpl.version,
                         "prompt_version": PROMPT_VERSION,
+                        "models": primary_models(load_routes(), tpl),
                     }
                 ),
             },

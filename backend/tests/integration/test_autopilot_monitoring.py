@@ -7,7 +7,9 @@ import pytest
 from sqlalchemy import text
 
 from app.modules.agent_management.infrastructure.templates import get_template
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.agent_runtime.prompts import PROMPT_VERSION
+from app.modules.outbound.domain.autopilot import primary_models
 from app.modules.outbound.infrastructure.monitoring import (
     label_bot_reply,
     record_customer_reaction_if_applicable,
@@ -166,7 +168,12 @@ async def test_owner_review_replies_and_wrong_fact_label_demotes_immediately(
 async def test_bad_signal_demotes_every_intent_of_the_reply(session_factory):
     w = await _setup_learning_shop(session_factory, enable_faq=True, auto_send=True)
     tpl = get_template("faq_sales_quote")
-    cfg = {"template": tpl.key, "template_version": tpl.version, "prompt_version": PROMPT_VERSION}
+    cfg = {
+        "template": tpl.key,
+        "template_version": tpl.version,
+        "prompt_version": PROMPT_VERSION,
+        "models": primary_models(load_routes(), tpl),
+    }
     async with session_factory() as s, s.begin():
         await s.execute(
             text(

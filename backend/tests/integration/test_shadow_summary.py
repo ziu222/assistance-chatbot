@@ -167,3 +167,54 @@ async def test_shown_readiness_survives_knowledge_changes(app_client, session_fa
     body = (await client.get("/api/v1/shadow/summary?days=14")).json()
     faq = next(i for i in body["learning_intents"] if i["intent"] == "faq")
     assert faq["scored"] == 30 and faq["ready"] is True
+
+
+async def test_summary_excludes_comparisons_from_other_models(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda: app_client("https://api.test"), session_factory, role="owner"
+    )
+    fallback_cfg = NEW | {"model": "gpt-4.1"}
+    async with session_factory() as s, s.begin():
+        conv = await make_conversation(s, ctx, await make_customer(s, ctx), conn)
+        # 30 cặp mù của model dự phòng (gpt-4.1) không được tính vào sẵn sàng của model chính
+        for i in range(30):
+            await add(s, ctx, conv, intent="faq", config=fallback_cfg, label="sendable",
+                      when=datetime.now(UTC) - timedelta(hours=30 - i))  # fmt: skip
+        # 5 cặp mù của model chính (claude-sonnet-5)
+        for i in range(5):
+            await add(s, ctx, conv, intent="faq", config=NEW,
+                      when=datetime.now(UTC) - timedelta(hours=5 - i))  # fmt: skip
+        # 30 cặp đã thấy (shown) của model dự phòng cũng bị lọc ra
+        for i in range(30):
+            draft_id = uuid4()
+            await s.execute(
+                text(
+                    "INSERT INTO shadow_comparisons (id, tenant_id, conversation_id, draft_id, "
+                    "run_id, status, intent, config_version, code_checks, draft_exposure, "
+                    "created_at) VALUES (:id, :t, :c, :d, :r, 'paired', 'faq', "
+                    "CAST(:cv AS jsonb), '{}'::jsonb, 'shown', :at)"
+                ),
+                {
+                    "id": uuid4(),
+                    "t": ctx.tenant_id,
+                    "c": conv,
+                    "d": draft_id,
+                    "r": uuid4(),
+                    "cv": json.dumps(fallback_cfg),
+                    "at": datetime.now(UTC) - timedelta(hours=30 - i),
+                },
+            )
+            await s.execute(
+                text(
+                    "INSERT INTO draft_uses (draft_id, tenant_id, conversation_id, action, "
+                    "edit_ratio, user_id) VALUES (:d, :t, :c, 'as_is', 0, :u)"
+                ),
+                {"d": draft_id, "t": ctx.tenant_id, "c": conv, "u": uuid4()},
+            )
+
+    body = (await client.get("/api/v1/shadow/summary?days=14")).json()
+    faq = next(i for i in body["intents"] if i["intent"] == "faq")
+    assert faq["scored"] == 5
+    assert faq["ready"] is False
+    assert faq["models"] == ["claude-sonnet-5"]
+    assert all(i["intent"] != "faq" for i in body["learning_intents"])

@@ -16,9 +16,11 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
+from app.modules.agent_runtime.llm.routes import load_routes
 from app.modules.conversation_policy.infrastructure import repository as policy_repo
 from app.modules.outbound.ai_reply import send_ai_reply
 from app.modules.outbound.canned import send_canned
+from app.modules.outbound.domain.autopilot import primary_models
 from app.modules.outbound.domain.channels import is_catalog_stale
 from app.modules.outbound.domain.gate import AiGateInput, send_decision
 from app.modules.outbound.domain.product_match import (
@@ -43,7 +45,10 @@ _LATEST_DRAFT = text(
     """
     SELECT r.id AS run_id, r.agent_id, r.intents, r.prompt_version,
            d.id AS draft_id, d.text, d.sources, d.grounded, d.needs_human, d.based_on_sequence,
-           a.template_key, a.template_version, a.mode
+           a.template_key, a.template_version, a.mode,
+           (SELECT st.detail->>'model' FROM agent_run_steps st
+             WHERE st.tenant_id = r.tenant_id AND st.run_id = r.id AND st.kind = 'llm'
+             ORDER BY st.step_index DESC LIMIT 1) AS served_model
     FROM agent_runs r
     JOIN agent_drafts d ON d.tenant_id = r.tenant_id AND d.run_id = r.id
     JOIN agents a ON a.tenant_id = r.tenant_id AND a.id = r.agent_id
@@ -302,11 +307,18 @@ class AutopilotStage:
         tpl = get_template(draft.template_key, draft.template_version)
         handoff_intents = frozenset(tpl.handoff_intents) if tpl else frozenset()
         intents = tuple(draft.intents or ())
-        run_config_key = {
-            "template": draft.template_key,
-            "template_version": draft.template_version,
-            "prompt_version": draft.prompt_version,
-        }
+        models = primary_models(load_routes(), tpl)
+        run_config_key = (
+            {
+                "template": draft.template_key,
+                "template_version": draft.template_version,
+                "prompt_version": draft.prompt_version,
+                "models": models,
+            }
+            if models is not None
+            else None
+        )
+        served_model_ok = models is not None and draft.served_model == models["draft"]
 
         async with self._factory() as s, s.begin():
             _, _, max_bot_streak = await tenant_switches(s, req.tenant_id)
@@ -341,6 +353,7 @@ class AutopilotStage:
                         handoff_intents=handoff_intents,
                         run_config_key=run_config_key,
                         enabled_config_keys=cfg_keys,
+                        served_model_ok=served_model_ok,
                         grounded=bool(draft.grounded),
                         validation_problems=problems,
                         needs_human=bool(draft.needs_human),
@@ -404,7 +417,7 @@ class AutopilotStage:
                 return "sent"
 
             reason = res.blocked_reason or "unknown"
-            if reason == "config_changed":
+            if reason == "config_changed" and run_config_key is not None:
                 await demote_on_config_change(
                     s, req.tenant_id, draft.agent_id, current_config_key=run_config_key
                 )

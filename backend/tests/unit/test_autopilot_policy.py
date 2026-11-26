@@ -1,7 +1,10 @@
+from types import SimpleNamespace
+
 from app.modules.outbound.domain.autopilot import (
     ReadinessSnapshot,
     can_enable_intent,
     extract_config_key,
+    primary_models,
 )
 
 _CFG = {"template": "faq_sales_quote", "template_version": 5, "prompt_version": "2026-11-23.1"}
@@ -58,3 +61,20 @@ def test_first_enable_requires_blind_ready_matching_current_config():
     old = can_enable_intent("faq", current_config_key=_CFG, blind=stale_cfg, shown=None)
     assert not old.allowed
     assert any("cấu hình AI cũ" in r for r in old.reasons)
+
+    # Khóa hiện tại có thêm `models` vẫn bật được khi 3 trường gốc khớp và lưu đủ khóa có `models`
+    cfg_with_models = _CFG | {"models": {"classify": "claude-sonnet-5", "draft": "claude-sonnet-5"}}
+    with_m = can_enable_intent("faq", current_config_key=cfg_with_models, blind=ready, shown=None)
+    assert with_m.allowed and with_m.config_key == cfg_with_models
+
+
+def test_primary_models_picks_first_target_per_template_route():
+    routes = {
+        "fast_cls": (SimpleNamespace(model="cls-primary"), SimpleNamespace(model="cls-backup")),
+        "smart_draft": (SimpleNamespace(model="draft-primary"), SimpleNamespace(model="draft-fb")),
+    }
+    tpl = SimpleNamespace(routes=SimpleNamespace(classify="fast_cls", draft="smart_draft"))
+    assert primary_models(routes, tpl) == {"classify": "cls-primary", "draft": "draft-primary"}
+    assert primary_models(routes, None) is None
+    missing_tpl = SimpleNamespace(routes=SimpleNamespace(classify="fast_cls", draft="missing"))
+    assert primary_models(routes, missing_tpl) is None
