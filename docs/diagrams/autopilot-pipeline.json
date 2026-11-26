@@ -1,0 +1,175 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Message & Autopilot Send-Gate Pipeline",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "happy-path",
+        "label": "Auto-reply path",
+        "focus": ["inbound", "policy", "runner", "gate", "send_ai", "monitor"],
+        "note": "Follow an eligible customer turn from intake to verified bot reply and post-send monitoring."
+      },
+      {
+        "id": "fallback-path",
+        "label": "Blocked -> Learning",
+        "focus": ["gate", "learning_inbox", "staff_reply"],
+        "note": "Any failed gate check falls back to the Learning inbox composer so staff answer safely."
+      },
+      {
+        "id": "demotion-path",
+        "label": "Auto-demotion",
+        "focus": ["monitor", "demote"],
+        "note": "Post-send signals automatically demote an intent back to Learning on regression."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "intake", "label": "Channel & Policy" },
+    { "id": "runtime", "label": "Agent & Send Gate" },
+    { "id": "fallback", "label": "Human Fallback & Demotion", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "p_intake", "label": "Intake & Policy", "fromCol": 0, "toCol": 1 },
+    { "id": "p_ai", "label": "Draft & Gate", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "p_out", "label": "Send & Monitor", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": ["inbound", "policy", "runner", "gate", "send_ai", "monitor"],
+  "nodes": [
+    {
+      "id": "inbound",
+      "lane": "intake",
+      "col": 0,
+      "type": "frontend",
+      "label": "Inbound Turn",
+      "sublabel": "debounced messages",
+      "width": 136
+    },
+    {
+      "id": "policy",
+      "lane": "intake",
+      "col": 1,
+      "type": "security",
+      "label": "PolicyStage",
+      "sublabel": "hours, paused, handoff",
+      "width": 136
+    },
+    {
+      "id": "runner",
+      "lane": "runtime",
+      "col": 2,
+      "type": "backend",
+      "label": "AgentRunner",
+      "sublabel": "classify, tools, draft",
+      "tag": "no msg write",
+      "width": 136
+    },
+    {
+      "id": "gate",
+      "lane": "runtime",
+      "col": 3,
+      "type": "security",
+      "label": "Send Gate",
+      "sublabel": "13 fail-closed checks",
+      "tag": "pure code",
+      "width": 136
+    },
+    {
+      "id": "send_ai",
+      "lane": "runtime",
+      "col": 4,
+      "type": "database",
+      "label": "send_ai_reply",
+      "sublabel": "FOR UPDATE + outbox",
+      "tag": "idempotent",
+      "width": 136
+    },
+    {
+      "id": "monitor",
+      "lane": "runtime",
+      "col": 5,
+      "type": "backend",
+      "label": "Post-Send Check",
+      "sublabel": "followups & amounts",
+      "width": 136
+    },
+    {
+      "id": "learning_inbox",
+      "lane": "fallback",
+      "col": 3,
+      "type": "frontend",
+      "label": "Learning Inbox",
+      "sublabel": "draft shown to staff",
+      "width": 136
+    },
+    {
+      "id": "staff_reply",
+      "lane": "fallback",
+      "col": 4,
+      "type": "external",
+      "label": "Staff Sends",
+      "sublabel": "use, edit, or discard",
+      "width": 136
+    },
+    {
+      "id": "demote",
+      "lane": "fallback",
+      "col": 5,
+      "type": "security",
+      "label": "Auto-Demote",
+      "sublabel": "back to Learning",
+      "width": 136
+    }
+  ],
+  "edges": [
+    { "id": "e1", "from": "inbound", "to": "policy", "variant": "default" },
+    { "id": "e2", "from": "policy", "to": "runner", "label": "eligible", "variant": "emphasis" },
+    { "id": "e3", "from": "runner", "to": "gate", "label": "saved draft", "variant": "emphasis" },
+    { "id": "e4", "from": "gate", "to": "send_ai", "label": "all pass", "variant": "emphasis" },
+    { "id": "e5", "from": "send_ai", "to": "monitor", "label": "bot msg", "variant": "default" },
+    {
+      "id": "e6",
+      "from": "gate",
+      "to": "learning_inbox",
+      "label": "blocked",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "e7",
+      "from": "learning_inbox",
+      "to": "staff_reply",
+      "label": "human review",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "id": "e8",
+      "from": "monitor",
+      "to": "demote",
+      "label": "bad signal",
+      "variant": "security",
+      "role": "error"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Fail-Closed Send Gate",
+      "items": [
+        "Checks kill switch, intent enabled, config + route models, primary draft model, grounding, product match, stale turn, streak, channel, and catalog freshness",
+        "Re-checks race conditions under FOR UPDATE conversation lock with idempotent key ai:<draft_id>"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Graceful Fallback & Monitoring",
+      "items": [
+        "Every blocked draft falls back seamlessly to the Learning inbox for staff review",
+        "Staff corrections (10m), customer reactions (24h adjacent), owner labels, and amount conflicts auto-demote the intent"
+      ]
+    }
+  ]
+}

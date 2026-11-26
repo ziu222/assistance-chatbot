@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Atlas System Architecture",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "realtime-chat",
+        "label": "Webchat & Inbox",
+        "focus": ["widget", "inbox", "api", "postgres", "relay", "redis"],
+        "note": "Exact-once message storage, transactional outbox, and ID-only Redis SSE fan-out."
+      },
+      {
+        "id": "ai-pipeline",
+        "label": "Agent & Autopilot",
+        "focus": ["postgres", "relay", "agent_worker", "llm_gateway"],
+        "note": "Debounced run requests flow through PolicyStage, AgentRunner, and the fail-closed AutopilotStage."
+      },
+      {
+        "id": "learning-loop",
+        "label": "Shadow & Learning",
+        "focus": ["postgres", "bg_workers", "llm_gateway"],
+        "note": "Background Shadow Judge and Learning Eval Gate score drafts and guard versioned knowledge releases."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "widget",
+      "type": "frontend",
+      "label": "Customer Widget",
+      "sublabel": "loader.js + iframe /w/key",
+      "tag": "Bearer JWT",
+      "brand": "react",
+      "pos": [40, 120],
+      "size": [170, 68]
+    },
+    {
+      "id": "inbox",
+      "type": "frontend",
+      "label": "Admin Inbox",
+      "sublabel": "React + TanStack Query",
+      "tag": "__Host-sid",
+      "brand": "react",
+      "pos": [40, 310],
+      "size": [170, 68]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "FastAPI API + SSE",
+      "sublabel": "REST & Realtime Hub",
+      "tag": ":8000",
+      "brand": "fastapi",
+      "pos": [340, 215],
+      "size": [175, 68]
+    },
+    {
+      "id": "redis",
+      "type": "messagebus",
+      "label": "Redis Pub/Sub",
+      "sublabel": "ID-only signals + limits",
+      "brand": "redis",
+      "pos": [340, 60],
+      "size": [175, 64]
+    },
+    {
+      "id": "postgres",
+      "type": "database",
+      "label": "PostgreSQL 17",
+      "sublabel": "Messages, outbox, releases",
+      "tag": "Single-tx",
+      "brand": "postgresql",
+      "pos": [650, 215],
+      "size": [180, 68]
+    },
+    {
+      "id": "relay",
+      "type": "backend",
+      "label": "Outbox Relay",
+      "sublabel": "SKIP LOCKED dispatcher",
+      "pos": [650, 60],
+      "size": [180, 64]
+    },
+    {
+      "id": "agent_worker",
+      "type": "backend",
+      "label": "Agent Worker",
+      "sublabel": "Policy -> Runner -> Autopilot",
+      "tag": "Send Gate",
+      "pos": [650, 390],
+      "size": [180, 68]
+    },
+    {
+      "id": "bg_workers",
+      "type": "backend",
+      "label": "Shadow & Learning",
+      "sublabel": "Judge, candidates, eval gate",
+      "pos": [340, 390],
+      "size": [175, 68]
+    },
+    {
+      "id": "llm_gateway",
+      "type": "external",
+      "label": "LLM Failover",
+      "sublabel": "Anthropic / OpenAI routes",
+      "tag": "Cost-capped",
+      "pos": [960, 390],
+      "size": [175, 68]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Atlas Modular Monolith (Backend & Workers)",
+      "wraps": ["api", "redis", "postgres", "relay", "agent_worker", "bg_workers"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "widget-api",
+      "from": "widget",
+      "to": "api",
+      "label": "REST + SSE",
+      "variant": "emphasis"
+    },
+    {
+      "id": "inbox-api",
+      "from": "inbox",
+      "to": "api",
+      "label": "REST + SSE",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-pg",
+      "from": "api",
+      "to": "postgres",
+      "label": "1 tx: msg + outbox",
+      "variant": "emphasis"
+    },
+    {
+      "id": "relay-pg",
+      "from": "relay",
+      "to": "postgres",
+      "label": "SKIP LOCKED",
+      "variant": "default",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 30
+    },
+    {
+      "id": "relay-redis",
+      "from": "relay",
+      "to": "redis",
+      "label": "ID signal",
+      "variant": "dashed"
+    },
+    {
+      "id": "redis-api",
+      "from": "redis",
+      "to": "api",
+      "label": "SSE fan-out",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 30
+    },
+    {
+      "id": "agent-pg",
+      "from": "agent_worker",
+      "to": "postgres",
+      "label": "drafts & bot send",
+      "variant": "security"
+    },
+    {
+      "id": "agent-llm",
+      "from": "agent_worker",
+      "to": "llm_gateway",
+      "label": "classify / draft",
+      "variant": "default"
+    },
+    {
+      "id": "bg-pg",
+      "from": "bg_workers",
+      "to": "postgres",
+      "label": "eval & releases",
+      "variant": "dashed"
+    },
+    {
+      "id": "bg-llm",
+      "from": "bg_workers",
+      "to": "llm_gateway",
+      "label": "judge / eval",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [[427.5, 505], [1047.5, 505]]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Edge & Realtime",
+      "items": [
+        "Isolated iframe widget with signed Bearer JWT and frame-ancestors allowlist",
+        "Admin inbox authenticates via DB-backed __Host-sid cookies",
+        "SSE streams carry ID-only signals; REST remains the source of truth"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Transactional Core",
+      "items": [
+        "Inbound messages stored exactly once with gapless per-conversation sequence",
+        "Outbox events committed in the same PostgreSQL transaction as messages",
+        "Tenant isolation enforced server-side with composite (tenant_id, id) keys"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Safety Boundary",
+      "items": [
+        "AgentRunner writes only drafts and never imports outbound or writes messages",
+        "AutopilotStage enforces a pure fail-closed send gate before outbound.send_ai_reply",
+        "Shadow Judge and Learning Eval Gate run asynchronously with per-tenant cost caps"
+      ]
+    }
+  ]
+}
