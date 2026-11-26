@@ -200,6 +200,13 @@ Mỗi phần một nhánh, nhiều commit nhỏ, merge commit.
 - **Giờ gửi:** khách nhắn lúc 2 giờ sáng được bot trả lời ngay là lợi ích lớn nhất của Autopilot, nhưng cũng là lúc không ai đính chính được. Mặc định luôn gửi; có thể chặn `price_quote` ngoài giờ.
 - **Gateway** chỉ chịu khoảng 2 request đồng thời: Autopilot không thêm lời gọi LLM, nhưng khách chờ trả lời nên ưu tiên đường soạn nháp hơn giám khảo và learning worker càng quan trọng.
 - **Pháp lý và minh bạch:** nhãn "Trợ lý tự động" luôn hiện. Có cần hỏi ý khách trước không? Chưa; xem lại theo kênh.
+- **Tin ngoài giờ rồi bot trả lời ngay:** câu ngoài giờ "nhân viên sẽ trả lời khi mở cửa" với lựa chọn "bot tư vấn tiếp", rồi bot tự trả lời ngay, nghe mâu thuẫn. Chưa xử lý; chủ shop nên đổi câu ngoài giờ khi bật Autopilot.
+
+Sửa sau review cả bước 5:
+
+- Cổng eval chạy lại tối đa 10 ca bài học cũ (cùng ý định trước, mới nhất trước) thay vì mọi ca, và thử lại riêng một lời gọi lỗi tạm thời. Trước đó một bài học sau 40 bài khác tốn 41 lời gọi, và một lỗi tạm thời bỏ cả lượt.
+- Cửa sổ 14 ngày của số đo mù tính ngược từ cặp mù cuối (trần 60 ngày), để rời Shadow sang Learning không làm số đo tự hết hạn trước khi chủ shop kịp bật.
+- Số đo "đã thấy" không đếm lại khi `knowledge_hash` đổi, để bật lại được sau khi hạ cấp; đổi tri thức đã có bộ ca chuẩn canh.
 
 ## 11. Tóm tắt một dòng
 
