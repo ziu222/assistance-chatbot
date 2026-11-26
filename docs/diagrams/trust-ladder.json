@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Atlas Trust Ladder & Per-Intent Autopilot Lifecycle",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [1040, 570],
+    "views": [
+      {
+        "id": "promotion-ladder",
+        "label": "Trust ladder",
+        "focus": ["manual", "shadow", "learning", "readiness", "autopilot"],
+        "note": "Each shop climbs from Manual to per-intent Autopilot backed by measured accuracy."
+      },
+      {
+        "id": "guards-and-demotion",
+        "label": "Eval & auto-demotion",
+        "focus": ["autopilot", "eval_gate", "demoted", "paused", "learning"],
+        "note": "Knowledge updates pass standard behavioral evals; regressions or config changes demote safely."
+      }
+    ]
+  },
+  "lanes": [
+    { "id": "main", "label": "Trust ladder" },
+    { "id": "waiting", "label": "Continuous guards" },
+    { "id": "exceptions", "label": "Demotion & stop" }
+  ],
+  "states": [
+    {
+      "id": "manual",
+      "type": "start",
+      "label": "Manual",
+      "sublabel": "staff only",
+      "lane": "main",
+      "col": 0,
+      "step": "01",
+      "tag": "default"
+    },
+    {
+      "id": "shadow",
+      "type": "active",
+      "label": "Shadow",
+      "sublabel": "blind drafts + judge",
+      "lane": "main",
+      "col": 1,
+      "step": "02",
+      "tag": "measure"
+    },
+    {
+      "id": "learning",
+      "type": "active",
+      "label": "Learning",
+      "sublabel": "staff edits -> releases",
+      "lane": "main",
+      "col": 2,
+      "step": "03",
+      "tag": "improve"
+    },
+    {
+      "id": "readiness",
+      "type": "decision",
+      "label": "Readiness Gate",
+      "sublabel": "30 pairs, <=2% wrong",
+      "lane": "main",
+      "col": 3,
+      "step": "04",
+      "tag": "owner enable"
+    },
+    {
+      "id": "autopilot",
+      "type": "success",
+      "label": "Autopilot",
+      "sublabel": "per-intent auto-reply",
+      "lane": "main",
+      "col": 4,
+      "step": "05",
+      "tag": "gated"
+    },
+    {
+      "id": "eval_gate",
+      "type": "waiting",
+      "label": "Eval Gate",
+      "sublabel": "standard intent suite",
+      "lane": "waiting",
+      "col": 1,
+      "tag": "on release"
+    },
+    {
+      "id": "demoted",
+      "type": "failure",
+      "label": "Auto-Demoted",
+      "sublabel": "config / eval / signals",
+      "lane": "exceptions",
+      "col": 0,
+      "yOffset": 55,
+      "tag": "recoverable"
+    },
+    {
+      "id": "paused",
+      "type": "failure",
+      "label": "Kill Switch",
+      "sublabel": "auto_send = false",
+      "lane": "exceptions",
+      "col": 2,
+      "yOffset": 55,
+      "tag": "instant stop"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t-eval",
+      "from": "autopilot",
+      "to": "eval_gate",
+      "label": "knowledge release",
+      "variant": "default",
+      "route": "drop"
+    },
+    {
+      "id": "t-demote",
+      "from": "eval_gate",
+      "to": "demoted",
+      "label": "regressed / signal",
+      "variant": "security",
+      "route": "drop",
+      "labelAt": [535, 362]
+    },
+    {
+      "id": "t-recover",
+      "from": "demoted",
+      "to": "learning",
+      "label": "falls back",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "route": "straight"
+    },
+    {
+      "id": "t-pause",
+      "from": "autopilot",
+      "to": "paused",
+      "label": "owner pause",
+      "variant": "security",
+      "route": "straight",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [710, 260]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Measured Promotion",
+      "items": [
+        "First enable needs blind Shadow readiness on primary draft model",
+        ">=30 pairs, calibrated judge, >=85% sendable, <=2% wrong, 0 conflicts"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Knowledge & Model Guards",
+      "items": [
+        "Template, prompt, or classify/draft model changes trigger config_changed",
+        "Knowledge releases run behavioral evals with entry_hash staleness guard"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Instant Safety Net",
+      "items": [
+        "Auto-demoted intents drop to Learning without losing history",
+        "Kill switch (/autopilot/pause) halts auto-sending immediately"
+      ]
+    }
+  ]
+}
