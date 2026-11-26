@@ -437,6 +437,17 @@ def evaluate_gate(outcomes: Sequence[CaseOutcome]) -> GateDecision:
     )
 
 
+def select_regression_cases(
+    cases: Sequence[EvalCaseSpec], *, intent: str | None, limit: int
+) -> list[EvalCaseSpec]:
+    """Chọn ca bài học cũ để chạy lại: cùng ý định trước, rồi mới nhất trước (`cases` theo thứ tự
+    tạo, cũ trước). Giữ số lời gọi LLM mỗi bài học có giới hạn khi số bài học tăng."""
+    newest_first = list(reversed(cases))
+    same = [c for c in newest_first if intent is not None and c.intent == intent]
+    rest = [c for c in newest_first if c not in same]
+    return (same + rest)[:limit]
+
+
 def regressed_intents(outcomes: Sequence[CaseOutcome]) -> tuple[str, ...]:
     """Các ý định có ít nhất một ca chuẩn bị hỏng ⇒ cần hạ cấp với `eval_regressed`."""
     return tuple(sorted({o.intent for o in outcomes if not o.passed and o.intent}))
