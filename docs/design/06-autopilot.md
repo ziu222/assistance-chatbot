@@ -201,7 +201,7 @@ Mỗi phần một nhánh, nhiều commit nhỏ, merge commit.
 - **Giờ gửi:** khách nhắn lúc 2 giờ sáng được bot trả lời ngay là lợi ích lớn nhất của Autopilot, nhưng cũng là lúc không ai đính chính được. Mặc định luôn gửi; có thể chặn `price_quote` ngoài giờ.
 - **Gateway** chỉ chịu khoảng 2 request đồng thời: Autopilot không thêm lời gọi LLM, nhưng khách chờ trả lời nên ưu tiên đường soạn nháp hơn giám khảo và learning worker càng quan trọng.
 - **Pháp lý và minh bạch:** nhãn "Trợ lý tự động" luôn hiện. Có cần hỏi ý khách trước không? Chưa; xem lại theo kênh.
-- **Tin ngoài giờ rồi bot trả lời ngay:** câu ngoài giờ "nhân viên sẽ trả lời khi mở cửa" với lựa chọn "bot tư vấn tiếp", rồi bot tự trả lời ngay, nghe mâu thuẫn. Chưa xử lý; chủ shop nên đổi câu ngoài giờ khi bật Autopilot.
+- **Tin ngoài giờ rồi bot trả lời ngay** (đã xử lý): khi có ý định đang Autopilot, tầng chính sách hoãn câu "tạm nghỉ / ngoài giờ" có lựa chọn "bot tư vấn tiếp" (`send_block = 'deferred_autopilot'`). Bot tự trả lời được thì câu đó bỏ; bot không trả lời (bị chặn, cần người, không có nháp, lỗi) thì `AutopilotStage` gửi nó thay. Câu chào (`welcome`) không hoãn: chào rồi trả lời không mâu thuẫn. Nháp vẫn có thể tự nhắc giờ làm việc lấy từ FAQ của shop.
 
 Sửa sau review cả bước 5:
 

@@ -16,7 +16,9 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.modules.agent_management.infrastructure.templates import get_template
 from app.modules.agent_runtime.infrastructure.run_requests import RunRequest
+from app.modules.conversation_policy.infrastructure import repository as policy_repo
 from app.modules.outbound.ai_reply import send_ai_reply
+from app.modules.outbound.canned import send_canned
 from app.modules.outbound.domain.channels import is_catalog_stale
 from app.modules.outbound.domain.gate import AiGateInput, send_decision
 from app.modules.outbound.domain.product_match import (
@@ -206,9 +208,40 @@ class AutopilotStage:
         self._runner = runner_handler
 
     async def handle(self, req: RunRequest) -> None:
-        await self._runner(req)
+        try:
+            await self._runner(req)
+        except Exception:
+            await self.send_deferred(req)  # bot không trả lời được: khách vẫn nhận câu ngoài giờ
+            raise
         await self._record_reaction(req)
-        await self.try_send(req)
+        if await self.try_send(req) not in ("sent", "duplicate"):
+            await self.send_deferred(req)
+
+    async def send_deferred(self, req: RunRequest) -> bool:
+        """Gửi câu "tạm nghỉ / ngoài giờ" mà tầng chính sách đã hoãn vì Autopilot đang bật, khi
+        bot không tự trả lời lượt này (bị chặn, cần người, không có nháp, lỗi)."""
+        async with self._factory() as s, s.begin():
+            conv = await policy_repo.lock_conversation(s, req.tenant_id, req.conversation_id)
+            if conv is None or conv.status != "open":
+                return False
+            d = await policy_repo.deferred_decision(
+                s, req.tenant_id, req.conversation_id, req.to_sequence
+            )
+            if d is None:
+                return False
+            await send_canned(
+                s,
+                tenant_id=req.tenant_id,
+                conversation_id=req.conversation_id,
+                to_sequence=req.to_sequence,
+                situation=d.situation,
+                release_id=d.policy_release_id,
+                content=d.canned_text,
+            )
+            await policy_repo.mark_send(
+                s, req.tenant_id, req.conversation_id, req.to_sequence, sent=True, block=None
+            )
+            return True
 
     async def _record_reaction(self, req: RunRequest) -> None:
         """Ghi tín hiệu phản ứng xấu của khách nếu lượt mới ngay sau một tin bot (06 §6.1)."""
