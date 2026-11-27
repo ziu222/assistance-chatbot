@@ -1,6 +1,8 @@
-"""Quy tắc adapter kênh (Messenger 24h, Zalo OA) và độ mới catalog (thiết kế 06 §5.2, §5.4, A6).
+"""Quy tắc adapter kênh (Messenger 24h, Zalo OA), `ChannelCapabilities` và độ mới catalog
+(thiết kế 03 §6, ADR-0036, thiết kế 06 §5.2, §5.4, A6).
 
 Hàm thuần, không I/O:
+- `ChannelCapabilities`: khai báo cửa sổ trả lời, hỗ trợ link/nút bấm, độ dài tối đa của từng kênh.
 - Messenger: chỉ cho phép tự gửi trong cửa sổ 24 giờ kể từ tin khách cuối.
 - Zalo OA: theo quy định tin phản hồi của Zalo OA (trong 48 giờ kể từ tin khách cuối, tối đa 8 tin
   phản hồi liên tiếp, và chưa hết hạn mức cấu hình trên kết nối).
@@ -23,6 +25,41 @@ DEFAULT_CATALOG_MAX_AGE_HOURS = 24
 
 
 @dataclass(frozen=True)
+class ChannelCapabilities:
+    reply_window: timedelta | None
+    supports_links: bool
+    supports_buttons: bool
+    max_text_length: int
+
+
+CHANNEL_CAPABILITIES: dict[str, ChannelCapabilities] = {
+    "webchat": ChannelCapabilities(
+        reply_window=None,
+        supports_links=True,
+        supports_buttons=False,
+        max_text_length=16_000,
+    ),
+    "messenger": ChannelCapabilities(
+        reply_window=MESSENGER_WINDOW,
+        supports_links=True,
+        supports_buttons=True,
+        max_text_length=2_000,
+    ),
+    "zalo_oa": ChannelCapabilities(
+        reply_window=ZALO_OA_WINDOW,
+        supports_links=True,
+        supports_buttons=True,
+        max_text_length=2_000,
+    ),
+}
+
+
+def capabilities_for(provider: str) -> ChannelCapabilities | None:
+    """Trả `ChannelCapabilities` của kênh, hoặc `None` nếu kênh chưa được hỗ trợ."""
+    return CHANNEL_CAPABILITIES.get(provider)
+
+
+@dataclass(frozen=True)
 class ChannelDecision:
     allowed: bool
     reason: str | None = None
@@ -35,17 +72,17 @@ def check_channel_send(
     now: datetime,
     replies_since_customer: int = 0,
     config: Mapping[str, Any] | None = None,
+    text_length: int | None = None,
 ) -> ChannelDecision:
-    """Kiểm tra điều kiện gửi tin trả lời tự động theo từng adapter kênh (§5.4)."""
-    if provider == "webchat":
-        return ChannelDecision(True)
+    """Kiểm tra điều kiện gửi tin theo từng adapter kênh (cửa sổ, hạn mức, độ dài tối đa)."""
+    capabilities = capabilities_for(provider)
+    if capabilities is None:
+        return ChannelDecision(False, "unsupported_provider")
 
     if provider == "messenger":
         if last_customer_at is None or (now - last_customer_at) > MESSENGER_WINDOW:
             return ChannelDecision(False, "messenger_window_expired")
-        return ChannelDecision(True)
-
-    if provider == "zalo_oa":
+    elif provider == "zalo_oa":
         cfg = config or {}
         if cfg.get("quota_exhausted"):
             return ChannelDecision(False, "zalo_quota_exhausted")
@@ -53,9 +90,10 @@ def check_channel_send(
             return ChannelDecision(False, "zalo_window_expired")
         if replies_since_customer >= ZALO_OA_MAX_REPLIES:
             return ChannelDecision(False, "zalo_reply_limit")
-        return ChannelDecision(True)
 
-    return ChannelDecision(False, "unsupported_provider")
+    if text_length is not None and text_length > capabilities.max_text_length:
+        return ChannelDecision(False, "message_too_long")
+    return ChannelDecision(True)
 
 
 def is_catalog_stale(

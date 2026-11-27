@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Protocol, Self
 from uuid import UUID
@@ -5,6 +6,14 @@ from uuid import UUID
 from app.modules.conversation.domain.entities import Conversation, Message
 from app.modules.customer.application.resolve_customer import CustomerStore
 from app.shared.domain.tenant import TenantContext
+
+
+@dataclass(frozen=True)
+class ChannelReplyState:
+    provider: str
+    config: dict[str, Any]
+    last_customer_at: datetime | None
+    outbound_since_customer: int
 
 
 class ConversationStore(Protocol):
@@ -37,6 +46,10 @@ class ConversationStore(Protocol):
         """Nhân viên trả lời ⇒ nhận luôn ticket đang mở của hội thoại (bước 2 §12.5)."""
         ...
 
+    async def channel_reply_state(
+        self, ctx: TenantContext, conversation_id: UUID
+    ) -> ChannelReplyState | None: ...
+
 
 class MessageStore(Protocol):
     async def add(self, ctx: TenantContext, **fields: Any) -> Message | None: ...
@@ -59,6 +72,19 @@ class OutboxPort(Protocol):
     ) -> None: ...
 
 
+class DeliveryPort(Protocol):
+    async def enqueue(
+        self,
+        ctx: TenantContext,
+        *,
+        message_id: UUID,
+        connection_id: UUID,
+        provider: str,
+        recipient_external_id: str,
+        content: str,
+    ) -> None: ...
+
+
 class ConversationUnitOfWork(Protocol):
     """Một transaction. Thoát khối `async with` mà chưa commit() thì rollback.
 
@@ -69,6 +95,7 @@ class ConversationUnitOfWork(Protocol):
     conversations: ConversationStore
     messages: MessageStore
     outbox: OutboxPort
+    deliveries: DeliveryPort
 
     async def __aenter__(self) -> Self: ...
 

@@ -77,6 +77,7 @@ CORE_TABLES = {
     "agent_drafts",
     "autopilot_intents",
     "ai_reply_followups",
+    "outbound_deliveries",
 }
 
 

@@ -12,6 +12,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.modules.conversation.application.staff_conversation import (
+    ChannelSendBlocked,
     ConversationClosed,
     ConversationNotFound,
     DuplicateClientMessageId,
@@ -65,6 +66,7 @@ async def list_conversations(
     request: Request,
     actor: CurrentStaff,
     status: Literal["open", "closed"] | None = None,
+    provider: Literal["webchat", "messenger", "zalo_oa"] | None = None,
     cursor: Annotated[str | None, Query(max_length=200)] = None,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict:
@@ -72,7 +74,7 @@ async def list_conversations(
     async with request.app.state.session_factory() as s:
         try:
             rows, next_cursor = await queries.list_conversations(
-                s, ctx, status=status, cursor=cursor, limit=limit
+                s, ctx, status=status, provider=provider, cursor=cursor, limit=limit
             )
         except queries.InvalidCursor as exc:
             raise ApiError(422, "invalid_request", "Invalid cursor") from exc
@@ -146,6 +148,10 @@ async def reply(
         raise _not_found() from exc
     except ConversationClosed as exc:
         raise ApiError(409, "conversation_closed", "Conversation is closed") from exc
+    except ChannelSendBlocked as exc:
+        if exc.reason == "message_too_long":
+            raise ApiError(422, "message_too_long", "Message exceeds channel max length") from exc
+        raise ApiError(409, exc.reason, f"Channel blocked send: {exc.reason}") from exc
     except DuplicateClientMessageId as exc:
         raise ApiError(409, "duplicate_client_message_id", "client_message_id reused") from exc
     except TransientDatabaseError as exc:

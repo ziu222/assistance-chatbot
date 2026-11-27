@@ -45,8 +45,8 @@ def test_default_input_is_blocked_fail_closed():
 def test_passing_input_allows_send():
     assert send_decision(_passing()) is None
     assert send_decision(_passing(intents=("greeting", "faq"))) is None
-    # Chưa có adapter giao tin cho Messenger/Zalo OA ⇒ chặn dù đang trong cửa sổ.
-    assert send_decision(_passing(provider="messenger", channel_allowed=True)) == "channel"
+    # Messenger đã có adapter gửi; Zalo OA chưa có nên vẫn bị chặn ở cổng.
+    assert send_decision(_passing(provider="messenger", channel_allowed=True)) is None
     assert send_decision(_passing(provider="zalo_oa", channel_allowed=True)) == "channel"
 
 

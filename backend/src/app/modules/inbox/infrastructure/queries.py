@@ -7,6 +7,7 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.outbound.domain.channels import capabilities_for
 from app.shared.domain.tenant import TenantContext
 
 _SELECT = (
@@ -37,6 +38,20 @@ def decode_cursor(cursor: str) -> tuple[datetime, UUID]:
         raise InvalidCursor from exc
 
 
+def _capabilities_json(provider: str) -> dict | None:
+    caps = capabilities_for(provider)
+    if caps is None:
+        return None
+    return {
+        "reply_window_seconds": (
+            int(caps.reply_window.total_seconds()) if caps.reply_window is not None else None
+        ),
+        "supports_links": caps.supports_links,
+        "supports_buttons": caps.supports_buttons,
+        "max_text_length": caps.max_text_length,
+    }
+
+
 def conversation_json(r) -> dict:
     return {
         "id": str(r.id),
@@ -51,17 +66,27 @@ def conversation_json(r) -> dict:
         "closed_at": r.closed_at.isoformat() if r.closed_at else None,
         "customer": {"id": str(r.customer_id), "display_name": r.customer_name},
         "connection": {"id": str(r.connection_id), "provider": r.provider},
+        "capabilities": _capabilities_json(r.provider),
     }
 
 
 async def list_conversations(
-    s: AsyncSession, ctx: TenantContext, *, status: str | None, cursor: str | None, limit: int
+    s: AsyncSession,
+    ctx: TenantContext,
+    *,
+    status: str | None,
+    cursor: str | None,
+    limit: int,
+    provider: str | None = None,
 ) -> tuple[list, str | None]:
     sql = _SELECT + "AND c.last_message_at IS NOT NULL "  # chỉ hội thoại đã có tin
     params: dict = {"t": ctx.tenant_id, "limit": limit + 1}
     if status:
         sql += "AND c.status = :status "
         params["status"] = status
+    if provider:
+        sql += "AND ch.provider = :provider "
+        params["provider"] = provider
     if cursor:
         params["at"], params["cid"] = decode_cursor(cursor)
         sql += "AND (c.last_message_at, c.id) < (:at, :cid) "

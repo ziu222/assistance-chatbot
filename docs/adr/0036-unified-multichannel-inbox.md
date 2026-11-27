@@ -1,6 +1,6 @@
 # ADR-0036: Mọi kênh bán hàng đổ về một pipeline và một inbox
 
-- Status: proposed (thiết kế `docs/design/03-order-flow-and-unified-inbox.md`, chưa implement)
+- Status: accepted (O5 đã implement cho Facebook Messenger theo thiết kế `docs/design/03-order-flow-and-unified-inbox.md`: webhook HMAC, `MessengerSender` + `DeliveryWorker`, `ChannelCapabilities` trong `SendGate` và lọc kênh trong inbox; Zalo OA làm sau)
 - Date: 2026-11-24
 
 ## Context

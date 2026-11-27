@@ -27,6 +27,7 @@ from app.modules.conversation.application.receive_inbound_message import (
 )
 from app.modules.outbound.domain.channels import check_channel_send
 from app.modules.outbound.domain.gate import AI_SEND_PROVIDERS, DEFAULT_MAX_BOT_STREAK
+from app.modules.outbound.infrastructure.deliveries import enqueue_delivery
 
 RecheckFn = Callable[[AsyncSession], Awaitable[str | None]]
 
@@ -168,6 +169,7 @@ async def send_ai_reply(
         now=now,
         replies_since_customer=streak_row.outbound_since,
         config=cc_config if isinstance(cc_config, dict) else None,
+        text_length=len(content),
     )
     if provider not in AI_SEND_PROVIDERS or not channel_allowed or not channel_decision.allowed:
         return SendAiResult(sent=False, blocked_reason="channel")
@@ -238,4 +240,14 @@ async def send_ai_reply(
         ),
         {"t": tenant_id, "c": conversation_id, "p": json.dumps(payload)},
     )
+    if provider != "webchat" and visitor_id:
+        await enqueue_delivery(
+            s,
+            tenant_id=tenant_id,
+            message_id=message_id,
+            connection_id=connection_id,
+            provider=provider,
+            recipient_external_id=visitor_id,
+            content=content,
+        )
     return SendAiResult(sent=True, message_id=message_id, sequence=sequence)

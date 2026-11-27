@@ -17,6 +17,7 @@ from app.modules.identity.presentation.http.auth import router as staff_auth
 from app.modules.inbox.presentation.http.events import router as staff_events
 from app.modules.inbox.presentation.http.staff_inbox import router as staff_inbox
 from app.modules.integration.infrastructure.webchat.token import TokenSigner
+from app.modules.integration.presentation.http.messenger_webhook import router as messenger_webhook
 from app.modules.integration.presentation.http.public_webchat import router as public_webchat
 from app.modules.knowledge.presentation.http.knowledge import router as knowledge_api
 from app.modules.learning.presentation.http.candidates import router as learning_candidates_api
@@ -70,6 +71,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title="assistance-chatbot", lifespan=lifespan)
     http_errors.install(app)
     app.include_router(public_webchat)
+    app.include_router(messenger_webhook)
     app.include_router(staff_auth)
     app.include_router(staff_inbox)
     app.include_router(staff_events)
