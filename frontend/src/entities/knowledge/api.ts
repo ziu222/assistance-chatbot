@@ -2,10 +2,13 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiFetch } from "../../shared/api/client";
 
 export type Kind = "faq" | "doc";
-export type Entry = { id: string; status: "draft" | "approved" | "archived"; updated_at: string } & (
-  | { question: string; answer: string }
-  | { title: string; body: string }
-);
+export type Entry = {
+  id: string;
+  status: "draft" | "approved" | "archived";
+  topics: string[] | null;
+  effective_topics: string[];
+  updated_at: string;
+} & ({ question: string; answer: string } | { title: string; body: string });
 export type FaqEntry = Extract<Entry, { question: string }>;
 export type DocEntry = Extract<Entry, { title: string }>;
 export type Product = {
@@ -41,7 +44,7 @@ export const useEntries = <T extends Entry>(kind: Kind) =>
 export function useCreateEntry(kind: Kind) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (body: Record<string, string>) => apiFetch<Entry>(PATH[kind], { method: "POST", body }),
+    mutationFn: (body: Record<string, unknown>) => apiFetch<Entry>(PATH[kind], { method: "POST", body }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }), // độ phủ đổi theo
   });
 }
@@ -49,7 +52,7 @@ export function useCreateEntry(kind: Kind) {
 export function useUpdateEntry(kind: Kind) {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, ...body }: { id: string } & Record<string, string>) =>
+    mutationFn: ({ id, ...body }: { id: string } & Record<string, unknown>) =>
       apiFetch<Entry>(`${PATH[kind]}/${id}`, { method: "PATCH", body }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["knowledge"] }), // độ phủ đổi theo
   });
