@@ -25,9 +25,26 @@ from app.modules.conversation_policy.domain.hours import (
 from app.modules.knowledge.domain.text import fold
 
 Handling = Literal["bot", "waiting_human", "human"]
-Situation = Literal["paused", "after_hours", "welcome"]
+Situation = Literal["paused", "after_hours", "welcome", "handoff_ack"]
 VARIABLES = frozenset({"shop_name", "next_open"})
 _VAR = re.compile(r"\{([^{}]*)\}")
+
+
+class HandoffAckConfig(BaseModel):
+    """Tin tự động xác nhận khi hội thoại chuyển sang nhân viên (không cần trường `next`)."""
+
+    model_config = ConfigDict(extra="forbid")
+    enabled: bool = False
+    text: str = Field(default="", max_length=500)
+
+    @model_validator(mode="after")
+    def _check(self) -> "HandoffAckConfig":
+        if self.enabled and not self.text.strip():
+            raise ValueError("enabled handoff_ack needs a text")
+        unknown = set(_VAR.findall(self.text)) - VARIABLES
+        if unknown:
+            raise ValueError(f"unknown variables: {', '.join(sorted(unknown))}")
+        return self
 
 
 class SituationConfig(BaseModel):
@@ -58,6 +75,7 @@ class PolicyConfig(BaseModel):
     paused: SituationConfig = Field(default_factory=SituationConfig)
     after_hours: SituationConfig = Field(default_factory=SituationConfig)
     welcome: WelcomeConfig = Field(default_factory=WelcomeConfig)
+    handoff_ack: HandoffAckConfig = Field(default_factory=HandoffAckConfig)
     # Chủ đề shop đánh dấu "luôn cần nhân viên" (vd "đổi size", "bảo hành"): khớp ⇒ mở ticket.
     handoff_topics: list[Annotated[str, Field(min_length=2, max_length=50)]] = Field(
         default_factory=list, max_length=30
@@ -127,6 +145,13 @@ def decide(cfg: PolicyConfig, state: PolicyState, now: datetime, *, shop_name: s
     return Decision(situation, text, None, True)
 
 
+def render_handoff_ack(cfg: PolicyConfig, now: datetime, *, shop_name: str) -> str | None:
+    """Câu xác nhận chuyển nhân viên đã thay biến; None nếu shop chưa bật."""
+    if not cfg.handoff_ack.enabled:
+        return None
+    return render(cfg.handoff_ack.text, shop_name=shop_name, hours=cfg.hours, now=now)
+
+
 def suggested_config() -> PolicyConfig:
     """Bản điền sẵn cho shop chưa cấu hình (onboarding). Chưa có hiệu lực tới khi chủ shop lưu."""
     day = [(time(8), time(21))]
@@ -143,6 +168,11 @@ def suggested_config() -> PolicyConfig:
         ),
         welcome=WelcomeConfig(
             enabled=True, text="Dạ {shop_name} chào bạn ạ! Bạn cần shop hỗ trợ gì ạ?"
+        ),
+        handoff_ack=HandoffAckConfig(
+            enabled=True,
+            text="Dạ {shop_name} đã chuyển yêu cầu của bạn tới nhân viên, shop sẽ phản hồi sớm "
+            "nhất ạ.",
         ),
     )
 

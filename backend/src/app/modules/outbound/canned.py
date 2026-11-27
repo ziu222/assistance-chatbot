@@ -29,6 +29,7 @@ class GateInput:
     provider: str
     conversation_status: str
     handling_before: str  # bot phải đang giữ hội thoại lúc quyết định
+    allow_waiting_human: bool = False  # chỉ mở cho tin `handoff_ack` ngay lúc vừa mở ticket
 
 
 def send_block(g: GateInput) -> str | None:
@@ -37,7 +38,9 @@ def send_block(g: GateInput) -> str | None:
         return "auto_send_off"
     if g.conversation_status != "open":
         return "conversation_closed"
-    if g.handling_before != "bot":
+    if g.handling_before != "bot" and not (
+        g.allow_waiting_human and g.handling_before == "waiting_human"
+    ):
         return "human_handling"
     if g.provider not in PROACTIVE_PROVIDERS:
         return "channel_not_supported"
@@ -53,6 +56,7 @@ async def send_canned(
     situation: str,
     release_id: UUID,
     content: str,
+    external_message_id: str | None = None,
 ) -> bool:
     """Ghi tin tự động + outbox trong transaction của người gọi. Người gọi PHẢI đang giữ khóa
     `FOR UPDATE` trên hội thoại (tầng chính sách giữ sẵn) để sequence không trùng/gap.
@@ -91,7 +95,7 @@ async def send_canned(
                 "t": tenant_id,
                 "conn": connection_id,
                 "c": conversation_id,
-                "ext": f"policy:{conversation_id}:{to_sequence}",
+                "ext": external_message_id or f"policy:{conversation_id}:{to_sequence}",
                 "ref": f"policy:{situation}:{release_id}",
                 "content": content,
                 "seq": sequence,

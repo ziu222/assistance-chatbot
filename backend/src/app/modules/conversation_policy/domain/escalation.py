@@ -7,7 +7,19 @@ cao nhất của hội thoại ≥ ngưỡng của độ nhạy. Chỉ để ch�
 
 from dataclasses import asdict, dataclass
 
-from app.modules.agent_runtime.signals import THRESHOLDS
+from app.modules.agent_runtime.signals import THRESHOLDS, Sensitivity
+
+
+def ticket_priority(source: str, escalation_score: int, sensitivity: Sensitivity = "low") -> int:
+    """Tính mức ưu tiên ticket (0: thường, 1: cao, 2: khẩn cấp) từ nguồn mở và điểm leo thang.
+
+    Chỉ sắp xếp hàng đợi nhân viên, không tự động mở ticket (giữ bất biến E14).
+    """
+    if escalation_score >= THRESHOLDS[sensitivity]:
+        return 2
+    if source in ("customer_button", "phrase") or escalation_score >= 2:
+        return 1
+    return 0
 
 
 @dataclass(frozen=True)

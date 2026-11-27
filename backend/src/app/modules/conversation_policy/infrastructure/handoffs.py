@@ -45,6 +45,7 @@ async def open_handoff(
     *,
     source: Source,
     reason: str | None = None,
+    priority: int = 0,
 ) -> tuple[UUID, bool]:
     """Mở ticket nếu hội thoại chưa có ticket đang hoạt động. Trả (id, mới_tạo).
 
@@ -54,12 +55,20 @@ async def open_handoff(
     row = (
         await s.execute(
             text(
-                "INSERT INTO handoff_requests (id, tenant_id, conversation_id, source, reason) "
-                "VALUES (:id, :t, :c, :src, :r) "
+                "INSERT INTO handoff_requests "
+                "(id, tenant_id, conversation_id, source, reason, priority) "
+                "VALUES (:id, :t, :c, :src, :r, :p) "
                 "ON CONFLICT (tenant_id, conversation_id) WHERE status IN ('open','claimed') "
                 "DO NOTHING RETURNING id"
             ),
-            {"id": uuid4(), "t": tenant_id, "c": conversation_id, "src": source, "r": reason},
+            {
+                "id": uuid4(),
+                "t": tenant_id,
+                "c": conversation_id,
+                "src": source,
+                "r": reason,
+                "p": priority,
+            },
         )
     ).first()
     if row is None:
@@ -90,6 +99,21 @@ async def open_handoff(
         {"handoff_id": str(handoff_id), "source": source},
     )
     return handoff_id, True
+
+
+async def bump_priority(
+    s: AsyncSession, tenant_id: UUID, conversation_id: UUID, priority: int
+) -> None:
+    """Chỉ tăng mức ưu tiên của ticket đang mở khi tín hiệu leo thang cao hơn."""
+    if priority <= 0:
+        return
+    await s.execute(
+        text(
+            "UPDATE handoff_requests SET priority = GREATEST(priority, :p) "
+            "WHERE tenant_id = :t AND conversation_id = :c AND status IN ('open', 'claimed')"
+        ),
+        {"p": priority, "t": tenant_id, "c": conversation_id},
+    )
 
 
 _TRANSITIONS: dict[Action, tuple[str, str]] = {

@@ -20,7 +20,11 @@ from app.modules.conversation.infrastructure.persistence.repository import (
     MessageRepository,
 )
 from app.modules.conversation.infrastructure.unit_of_work import SqlConversationUnitOfWork
+from app.modules.conversation_policy.domain.escalation import ticket_priority
+from app.modules.conversation_policy.domain.policy import PolicyConfig
+from app.modules.conversation_policy.infrastructure import repository as policy_repo
 from app.modules.conversation_policy.infrastructure.handoffs import open_handoff
+from app.modules.conversation_policy.stage import send_handoff_ack_if_enabled
 from app.modules.customer.infrastructure.persistence.repository import CustomerRepository
 from app.modules.integration.domain.channel_event import NormalizedChannelEvent
 from app.modules.integration.domain.normalization import (
@@ -241,7 +245,26 @@ async def request_human(request: Request, visitor: CurrentVisitor) -> dict:
         )
         if conv is None or conv.status != "open":  # chưa nhắn tin nào: chưa có gì để chuyển
             raise ApiError(409, "no_conversation", "Send a message first")
-        _, created = await open_handoff(s, visitor.ctx.tenant_id, conv.id, source="customer_button")
+        locked = await policy_repo.lock_conversation(s, visitor.ctx.tenant_id, conv.id)
+        if locked is None or locked.status != "open":
+            raise ApiError(409, "no_conversation", "Send a message first")
+        release = await policy_repo.current_release(s, visitor.ctx.tenant_id)
+        cfg = release.config if release else PolicyConfig()
+        esc_score = await policy_repo.latest_escalation_score(s, visitor.ctx.tenant_id, conv.id)
+        prio = ticket_priority("customer_button", esc_score, cfg.escalation_sensitivity)
+        handoff_id, created = await open_handoff(
+            s, visitor.ctx.tenant_id, conv.id, source="customer_button", priority=prio
+        )
+        if created:
+            await send_handoff_ack_if_enabled(
+                s,
+                tenant_id=visitor.ctx.tenant_id,
+                conversation_id=conv.id,
+                handoff_id=handoff_id,
+                conv=locked,
+                release=release,
+                now=datetime.now(UTC),
+            )
     return {"status": "open", "created": created}
 
 

@@ -6,6 +6,8 @@ from zoneinfo import ZoneInfo
 import pytest
 from pydantic import ValidationError
 
+from app.modules.agent_runtime.signals import THRESHOLDS
+from app.modules.conversation_policy.domain.escalation import ticket_priority
 from app.modules.conversation_policy.domain.hours import (
     BusinessHours,
     ClosedDay,
@@ -14,12 +16,15 @@ from app.modules.conversation_policy.domain.hours import (
     next_open,
 )
 from app.modules.conversation_policy.domain.policy import (
+    HandoffAckConfig,
     PolicyConfig,
     PolicyState,
     SituationConfig,
     WelcomeConfig,
     decide,
+    render_handoff_ack,
 )
+from app.modules.outbound.canned import GateInput, send_block
 
 VN = ZoneInfo("Asia/Ho_Chi_Minh")
 DAY = [(time(8), time(12)), (time(13, 30), time(21))]
@@ -181,3 +186,49 @@ def test_situation_validation():
     with pytest.raises(ValidationError):
         SituationConfig(enabled=True, text="Chào {customer_name}")
     assert SituationConfig(enabled=False, text="").text == ""
+
+
+def test_handoff_ack_config_and_render():
+    with pytest.raises(ValidationError):
+        HandoffAckConfig(enabled=True, text="   ")
+    with pytest.raises(ValidationError):
+        HandoffAckConfig(enabled=True, text="Xin chào {unknown}")
+
+    cfg = PolicyConfig(
+        hours=BusinessHours(weekly=WEEK),
+        handoff_ack=HandoffAckConfig(
+            enabled=True, text="Dạ {shop_name} đã chuyển nhân viên, mở lại {next_open} ạ."
+        ),
+    )
+    assert render_handoff_ack(PolicyConfig(), OPEN, shop_name="Áo Xinh") is None
+    assert (
+        render_handoff_ack(cfg, CLOSED, shop_name="Áo Xinh")
+        == "Dạ Áo Xinh đã chuyển nhân viên, mở lại 08:00 thứ Hai (23/11) ạ."
+    )
+
+
+def test_ticket_priority_levels():
+    assert ticket_priority("topic", 0, "low") == 0
+    assert ticket_priority("order", 1, "low") == 0
+    assert ticket_priority("customer_button", 0, "low") == 1
+    assert ticket_priority("phrase", 0, "low") == 1
+    assert ticket_priority("topic", 2, "low") == 1
+    assert ticket_priority("topic", THRESHOLDS["low"], "low") == 2
+    assert ticket_priority("topic", THRESHOLDS["medium"], "medium") == 2
+    assert ticket_priority("topic", THRESHOLDS["high"], "high") == 2
+
+
+def test_send_block_handoff_ack_fail_closed():
+    assert send_block(GateInput(True, "webchat", "open", "waiting_human")) == "human_handling"
+    assert (
+        send_block(GateInput(True, "webchat", "open", "waiting_human", allow_waiting_human=True))
+        is None
+    )
+    assert (
+        send_block(GateInput(True, "webchat", "open", "human", allow_waiting_human=True))
+        == "human_handling"
+    )
+    assert (
+        send_block(GateInput(False, "webchat", "open", "waiting_human", allow_waiting_human=True))
+        == "auto_send_off"
+    )

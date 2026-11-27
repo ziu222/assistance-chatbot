@@ -7,9 +7,9 @@ from sqlalchemy import text
 
 from app.modules.conversation.application.staff_conversation import SendStaffMessage
 from app.modules.conversation.infrastructure.unit_of_work import SqlConversationUnitOfWork
-from app.modules.conversation_policy.domain.policy import PolicyConfig
+from app.modules.conversation_policy.domain.policy import HandoffAckConfig, PolicyConfig
 from app.modules.conversation_policy.infrastructure.handoffs import open_handoff
-from app.modules.conversation_policy.infrastructure.repository import publish
+from app.modules.conversation_policy.infrastructure.repository import publish, set_auto_send
 
 from .test_agent_runtime import make_runner, make_world, one_run, request_for
 from .test_conversation_policy import SAT_MORNING, handling, stage
@@ -175,3 +175,77 @@ async def test_other_tenant_cannot_touch_ticket(app_client, session_factory):
     assert r.status_code == 409
     other = await client.post(f"/api/v1/conversations/{req.conversation_id}/handoff", headers=CSRF)
     assert other.status_code == 404
+
+
+async def test_handoff_ack_sent_once_when_auto_send_enabled(session_factory):
+    w = await make_world(session_factory)
+    cfg = PolicyConfig(
+        handoff_ack=HandoffAckConfig(
+            enabled=True, text="Dạ {shop_name} đã chuyển nhân viên hỗ trợ bạn ạ."
+        )
+    )
+    async with session_factory() as s, s.begin():
+        await publish(s, w.tenant_id, cfg, uuid4())
+        await set_auto_send(s, w.tenant_id, True)
+    runner, _ = make_runner(session_factory, [])
+    req = await request_for(session_factory, w, ("cho em gặp nhân viên với",))
+    await stage(session_factory, runner, SAT_MORNING).handle(req)
+    # Retry cùng cụm tin: không gửi lặp handoff_ack.
+    await stage(session_factory, runner, SAT_MORNING).handle(req)
+
+    async with session_factory() as s:
+        sys_msgs = (
+            await s.execute(
+                text(
+                    "SELECT content, sender_ref FROM messages "
+                    "WHERE conversation_id = :c AND sender_type = 'system' ORDER BY sequence"
+                ),
+                {"c": req.conversation_id},
+            )
+        ).all()
+    assert len(sys_msgs) == 1
+    assert "đã chuyển nhân viên hỗ trợ bạn ạ." in sys_msgs[0][0]
+    assert sys_msgs[0][1].startswith("policy:handoff_ack:")
+
+
+async def test_handoff_ack_blocked_when_auto_send_off(session_factory):
+    w = await make_world(session_factory)
+    cfg = PolicyConfig(
+        handoff_ack=HandoffAckConfig(enabled=True, text="Dạ {shop_name} đã chuyển nhân viên ạ.")
+    )
+    async with session_factory() as s, s.begin():
+        await publish(s, w.tenant_id, cfg, uuid4())
+        # auto_send mặc định False
+    runner, _ = make_runner(session_factory, [])
+    req = await request_for(session_factory, w, ("cho em gặp nhân viên với",))
+    await stage(session_factory, runner, SAT_MORNING).handle(req)
+
+    async with session_factory() as s:
+        count = (
+            await s.execute(
+                text(
+                    "SELECT count(*) FROM messages "
+                    "WHERE conversation_id = :c AND sender_type = 'system'"
+                ),
+                {"c": req.conversation_id},
+            )
+        ).scalar_one()
+    assert count == 0
+
+
+async def test_queue_orders_higher_priority_first(app_client, session_factory):
+    client, ctx, _, conn = await logged_in(
+        lambda **o: app_client("https://api.test", **o), session_factory, role="agent"
+    )
+    low = await inbound(session_factory, ctx, conn, visitor="v_low")
+    high = await inbound(session_factory, ctx, conn, visitor="v_high")
+    async with session_factory() as s, s.begin():
+        await open_handoff(s, ctx.tenant_id, low.conversation_id, source="topic", priority=0)
+        await open_handoff(s, ctx.tenant_id, high.conversation_id, source="phrase", priority=2)
+
+    items = (await client.get("/api/v1/handoffs")).json()["items"]
+    assert [i["conversation_id"] for i in items] == [
+        str(high.conversation_id),
+        str(low.conversation_id),
+    ]
+    assert [i["priority"] for i in items] == [2, 0]
