@@ -9,6 +9,7 @@ import {
   useSimulation,
   type BusinessHours,
   type Day,
+  type HandoffAckConfig,
   type PolicyConfig,
   type SituationConfig,
   type Span,
@@ -26,6 +27,7 @@ const EMPTY_HOURS: BusinessHours = { timezone: "Asia/Ho_Chi_Minh", weekly: {}, c
 function normalize(raw: PolicyConfig): PolicyConfig {
   const c = {
     ...raw,
+    handoff_ack: raw.handoff_ack ?? { enabled: false, text: "" },
     handoff_topics: raw.handoff_topics ?? [],
     escalation_sensitivity: raw.escalation_sensitivity ?? "low",
   };
@@ -226,6 +228,36 @@ function SituationCard({
   );
 }
 
+function HandoffAckCard({ value, onChange }: { value: HandoffAckConfig; onChange: (v: HandoffAckConfig) => void }) {
+  const insert = (v: string) => onChange({ ...value, text: `${value.text}${value.text.endsWith(" ") || !value.text ? "" : " "}${v}` });
+  return (
+    <article className="card stack" aria-label="Xác nhận chuyển nhân viên">
+      <label className="row">
+        <input type="checkbox" checked={value.enabled} onChange={(e) => onChange({ ...value, enabled: e.target.checked })} />
+        <strong>Xác nhận chuyển nhân viên</strong>
+      </label>
+      <small className="muted">Gửi ngay khi khách bấm "Nhờ nhân viên" hoặc yêu cầu gặp người.</small>
+      <textarea
+        aria-label="Nội dung: Xác nhận chuyển nhân viên"
+        rows={3}
+        maxLength={500}
+        value={value.text}
+        onChange={(e) => onChange({ ...value, text: e.target.value })}
+      />
+      <div className="row">
+        <small className="muted">Chèn:</small>
+        <button type="button" className="link" onClick={() => insert("{shop_name}")}>
+          Tên shop
+        </button>
+        <button type="button" className="link" onClick={() => insert("{next_open}")}>
+          Giờ mở cửa lại
+        </button>
+      </div>
+      <SuggestPanel text={value.text} kind="auto_message" onUse={(t) => onChange({ ...value, text: t })} />
+    </article>
+  );
+}
+
 function Preview({ config }: { config: PolicyConfig }) {
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [minutes, setMinutes] = useState(() => new Date().getHours() * 60);
@@ -345,6 +377,7 @@ function Editor({ initial, canManage, currentNumber }: { initial: PolicyConfig; 
               }
             />
           ))}
+          <HandoffAckCard value={draft.handoff_ack} onChange={(v) => set("handoff_ack", v)} />
         </div>
       </section>
 

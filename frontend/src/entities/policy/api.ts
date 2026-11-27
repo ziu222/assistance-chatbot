@@ -12,11 +12,13 @@ export type BusinessHours = {
   pause_until: string | null;
 };
 export type SituationConfig = { enabled: boolean; text: string; next: "bot" | "waiting_human" };
+export type HandoffAckConfig = { enabled: boolean; text: string };
 export type PolicyConfig = {
   hours: BusinessHours | null;
   paused: SituationConfig;
   after_hours: SituationConfig;
   welcome: SituationConfig & { gap_hours: number };
+  handoff_ack: HandoffAckConfig;
   handoff_topics: string[];
   escalation_sensitivity: "low" | "medium" | "high";
 };

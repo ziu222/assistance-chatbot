@@ -6,7 +6,7 @@ export type Ticket = {
   id: string;
   conversation_id: string;
   status: "open" | "claimed";
-  source: "customer_button" | "phrase" | "topic" | "staff";
+  source: "customer_button" | "phrase" | "topic" | "staff" | "order";
   reason: string | null;
   priority: number;
   opened_at: string;
@@ -14,6 +14,8 @@ export type Ticket = {
   customer_name: string | null;
   last_message_preview: string | null;
   handling: Handling;
+  summary: string | null;
+  summary_status: "pending" | "done" | "failed" | "skipped";
 };
 export type TicketAction = "claim" | "resolve" | "dismiss";
 
@@ -53,7 +55,14 @@ const SOURCE: Record<Ticket["source"], string> = {
   phrase: "Khách đòi gặp người",
   topic: "Chủ đề cần nhân viên",
   staff: "Nhân viên đánh dấu",
+  order: "Đơn chờ xác nhận",
 };
+
+export function priorityBadge(priority: number): { label: string; className: string } | null {
+  if (priority >= 2) return { label: "Khẩn cấp", className: "badge failed" };
+  if (priority >= 1) return { label: "Ưu tiên cao", className: "badge handoff_suggested" };
+  return null;
+}
 
 export function sourceLabel(t: Pick<Ticket, "source" | "reason">): string {
   return t.source === "topic" && t.reason ? `${SOURCE.topic}: ${t.reason}` : SOURCE[t.source];

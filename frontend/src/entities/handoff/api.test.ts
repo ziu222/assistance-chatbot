@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { sourceLabel, waitingLabel } from "./api";
+import { priorityBadge, sourceLabel, waitingLabel } from "./api";
 
 describe("handoff labels", () => {
   const now = new Date("2026-11-23T10:00:00Z");
@@ -13,5 +13,10 @@ describe("handoff labels", () => {
   it("names the topic that triggered the ticket", () => {
     expect(sourceLabel({ source: "topic", reason: "Đổi size" })).toBe("Chủ đề cần nhân viên: Đổi size");
     expect(sourceLabel({ source: "customer_button", reason: null })).toBe("Khách bấm nút");
+  });
+  it("maps ticket priority to badge labels", () => {
+    expect(priorityBadge(0)).toBeNull();
+    expect(priorityBadge(1)?.label).toBe("Ưu tiên cao");
+    expect(priorityBadge(2)?.label).toBe("Khẩn cấp");
   });
 });
