@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import {
   useArchiveEntry,
   useCatalogSearch,
@@ -14,6 +14,13 @@ import {
   type FaqEntry,
   type Kind,
 } from "../../entities/knowledge/api";
+import {
+  KNOWLEDGE_TOPICS,
+  gapDraftTemplate,
+  topicLabel,
+  type GapDraftSeed,
+} from "../../entities/knowledge/topics";
+import { SuggestPanel } from "../../features/suggest-writing/SuggestPanel";
 import { ApiError } from "../../shared/api/client";
 
 const VND = new Intl.NumberFormat("vi-VN");
@@ -23,32 +30,76 @@ const FIELDS: Record<Kind, { first: string; second: string; firstLabel: string; 
   doc: { first: "title", second: "body", firstLabel: "Tiêu đề", secondLabel: "Nội dung", empty: "Chưa có tài liệu nào." },
 };
 
-type Row = (FaqEntry | DocEntry) & Record<string, string>;
+type Row = (FaqEntry | DocEntry) & Record<string, unknown>;
+
+function TopicSelector({
+  value,
+  onChange,
+}: {
+  value: string[] | null;
+  onChange: (next: string[] | null) => void;
+}) {
+  const auto = value === null;
+  const selected = new Set(value ?? []);
+  const toggle = (id: string) => {
+    const next = new Set(selected);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    onChange([...next]);
+  };
+  return (
+    <fieldset className="stack">
+      <legend>Chủ đề</legend>
+      <label className="row">
+        <input
+          type="checkbox"
+          checked={auto}
+          onChange={(e) => onChange(e.target.checked ? null : [])}
+        />
+        Tự đoán từ nội dung
+      </label>
+      {!auto && (
+        <div className="row">
+          {KNOWLEDGE_TOPICS.map((t) => (
+            <label key={t.id} className="row">
+              <input type="checkbox" checked={selected.has(t.id)} onChange={() => toggle(t.id)} />
+              {t.label}
+            </label>
+          ))}
+        </div>
+      )}
+    </fieldset>
+  );
+}
 
 function EntryForm({
   kind,
   initial,
+  placeholderSecond,
   submitLabel,
   pending,
   onSubmit,
   onCancel,
 }: {
   kind: Kind;
-  initial?: { first: string; second: string };
+  initial?: { first: string; second: string; topics: string[] | null };
+  placeholderSecond?: string;
   submitLabel: string;
   pending: boolean;
-  onSubmit: (first: string, second: string) => void;
+  onSubmit: (first: string, second: string, topics: string[] | null) => void;
   onCancel?: () => void;
 }) {
   const f = FIELDS[kind];
   const [first, setFirst] = useState(initial?.first ?? "");
   const [second, setSecond] = useState(initial?.second ?? "");
+  const [topics, setTopics] = useState<string[] | null>(initial ? initial.topics : null);
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit(first.trim(), second.trim());
+    onSubmit(first.trim(), second.trim(), topics);
     if (!initial) {
       setFirst("");
       setSecond("");
+      setTopics(null);
     }
   };
   return (
@@ -64,9 +115,12 @@ function EntryForm({
           required
           rows={kind === "faq" ? 3 : 8}
           maxLength={kind === "faq" ? 4000 : 20000}
+          placeholder={placeholderSecond}
           onChange={(e) => setSecond(e.target.value)}
         />
       </label>
+      <SuggestPanel text={second} kind={kind === "faq" ? "faq" : "policy"} onUse={setSecond} />
+      <TopicSelector value={topics} onChange={setTopics} />
       <div className="row">
         <button type="submit" disabled={pending || !first.trim() || !second.trim()}>
           {submitLabel}
@@ -81,13 +135,27 @@ function EntryForm({
   );
 }
 
-function ContentTab({ kind, canManage }: { kind: Kind; canManage: boolean }) {
+function ContentTab({
+  kind,
+  canManage,
+  draftSeed,
+  onClearSeed,
+}: {
+  kind: Kind;
+  canManage: boolean;
+  draftSeed?: GapDraftSeed | null;
+  onClearSeed?: () => void;
+}) {
   const f = FIELDS[kind];
   const list = useEntries<FaqEntry | DocEntry>(kind);
   const create = useCreateEntry(kind);
   const update = useUpdateEntry(kind);
   const archive = useArchiveEntry(kind);
   const [editing, setEditing] = useState<string | null>(null);
+  const createRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (draftSeed) createRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [draftSeed]);
 
   const rows = ((list.data?.items ?? []) as Row[]).filter((e) => e.status !== "archived");
   return (
@@ -100,45 +168,59 @@ function ContentTab({ kind, canManage }: { kind: Kind; canManage: boolean }) {
       )}
       {list.data && rows.length === 0 && <p className="muted">{f.empty}</p>}
       <ul className="plain">
-        {rows.map((e) => (
-          <li key={e.id} className="card">
-            {editing === e.id ? (
-              <EntryForm
-                kind={kind}
-                initial={{ first: e[f.first], second: e[f.second] }}
-                submitLabel="Lưu thay đổi"
-                pending={update.isPending}
-                onCancel={() => setEditing(null)}
-                onSubmit={(first, second) =>
-                  update.mutate({ id: e.id, [f.first]: first, [f.second]: second }, { onSuccess: () => setEditing(null) })
-                }
-              />
-            ) : (
-              <>
-                <strong>{e[f.first]}</strong>
-                <p className="pre">{e[f.second]}</p>
-                <div className="row">
-                  <span className={`badge ${e.status}`}>{e.status === "approved" ? "Đã duyệt" : "Nháp"}</span>
-                  {canManage && (
-                    <>
-                      <button type="button" className="link" onClick={() => setEditing(e.id)}>
-                        Sửa
-                      </button>
-                      <button
-                        type="button"
-                        className="link"
-                        disabled={archive.isPending}
-                        onClick={() => archive.mutate(e.id)}
-                      >
-                        Lưu trữ
-                      </button>
-                    </>
-                  )}
-                </div>
-              </>
-            )}
-          </li>
-        ))}
+        {rows.map((e) => {
+          const firstVal = String(e[f.first] ?? "");
+          const secondVal = String(e[f.second] ?? "");
+          const effective = e.effective_topics ?? [];
+          return (
+            <li key={e.id} className="card">
+              {editing === e.id ? (
+                <EntryForm
+                  kind={kind}
+                  initial={{ first: firstVal, second: secondVal, topics: e.topics ?? null }}
+                  submitLabel="Lưu thay đổi"
+                  pending={update.isPending}
+                  onCancel={() => setEditing(null)}
+                  onSubmit={(first, second, topics) =>
+                    update.mutate(
+                      { id: e.id, [f.first]: first, [f.second]: second, topics },
+                      { onSuccess: () => setEditing(null) },
+                    )
+                  }
+                />
+              ) : (
+                <>
+                  <strong>{firstVal}</strong>
+                  <p className="pre">{secondVal}</p>
+                  <div className="row">
+                    <span className={`badge ${e.status}`}>{e.status === "approved" ? "Đã duyệt" : "Nháp"}</span>
+                    {effective.map((t) => (
+                      <span key={t} className="badge">
+                        {topicLabel(t)}
+                      </span>
+                    ))}
+                    {e.topics === null && effective.length > 0 && <small className="muted">(tự đoán)</small>}
+                    {canManage && (
+                      <>
+                        <button type="button" className="link" onClick={() => setEditing(e.id)}>
+                          Sửa
+                        </button>
+                        <button
+                          type="button"
+                          className="link"
+                          disabled={archive.isPending}
+                          onClick={() => archive.mutate(e.id)}
+                        >
+                          Lưu trữ
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+            </li>
+          );
+        })}
       </ul>
       {(update.isError || archive.isError || create.isError) && (
         <p className="error" role="alert">
@@ -146,13 +228,22 @@ function ContentTab({ kind, canManage }: { kind: Kind; canManage: boolean }) {
         </p>
       )}
       {canManage && (
-        <section className="card" aria-label={`Thêm ${f.firstLabel.toLowerCase()}`}>
+        <section ref={createRef} className="card" aria-label={`Thêm ${f.firstLabel.toLowerCase()}`}>
           <h3>{kind === "faq" ? "Thêm FAQ" : "Thêm tài liệu"}</h3>
           <EntryForm
+            key={draftSeed ? `seed-${draftSeed.key}` : "new"}
             kind={kind}
+            initial={draftSeed ? { first: draftSeed.question, second: "", topics: draftSeed.topics } : undefined}
+            placeholderSecond={draftSeed?.hint}
             submitLabel="Thêm"
             pending={create.isPending}
-            onSubmit={(first, second) => create.mutate({ [f.first]: first, [f.second]: second })}
+            onCancel={draftSeed ? onClearSeed : undefined}
+            onSubmit={(first, second, topics) =>
+              create.mutate(
+                { [f.first]: first, [f.second]: second, ...(topics !== null ? { topics } : {}) },
+                { onSuccess: () => onClearSeed?.() },
+              )
+            }
           />
         </section>
       )}
@@ -238,7 +329,7 @@ function CatalogTab({ canManage }: { canManage: boolean }) {
 }
 
 /** Shop không cần viết đủ mọi thứ; chỉ cần biết chỗ nào còn thiếu và bot sẽ làm gì ở đó. */
-function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: () => void }) {
+function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: (topic: string) => void }) {
   const coverage = useCoverage();
   const gaps = useGaps(7);
   if (!coverage.data) return null;
@@ -249,9 +340,16 @@ function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: () 
       <h3 id="coverage">Độ phủ kiến thức</h3>
       <ul className="plain">
         {coverage.data.items.map((c) => (
-          <li key={c.topic}>
-            {c.covered ? "✓" : "○"} {c.label}
-            {c.covered && <small className="muted"> — {c.sources.map((x) => x.title).join(", ")}</small>}
+          <li key={c.topic} className="row">
+            <span>
+              {c.covered ? "✓" : "○"} {c.label}
+              {c.covered && <small className="muted"> — {c.sources.map((x) => x.title).join(", ")}</small>}
+            </span>
+            {!c.covered && canManage && (
+              <button type="button" className="link" onClick={() => onWrite(c.topic)}>
+                Viết câu trả lời
+              </button>
+            )}
           </li>
         ))}
       </ul>
@@ -265,16 +363,18 @@ function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: () 
           <h4>Khách hỏi mà bot chưa có nguồn (7 ngày qua)</h4>
           <ul className="plain">
             {asked.map((g) => (
-              <li key={g.topic}>
-                {g.label}: {g.count} lần
+              <li key={g.topic} className="row">
+                <span>
+                  {g.label}: {g.count} lần
+                </span>
+                {canManage && (
+                  <button type="button" className="link" onClick={() => onWrite(g.topic)}>
+                    Viết câu trả lời
+                  </button>
+                )}
               </li>
             ))}
           </ul>
-          {canManage && (
-            <button type="button" onClick={onWrite}>
-              Viết câu trả lời
-            </button>
-          )}
         </>
       )}
     </section>
@@ -335,11 +435,16 @@ const TABS: { id: "faq" | "doc" | "catalog" | "releases"; label: string }[] = [
 
 export function KnowledgePage({ canManage }: { canManage: boolean }) {
   const [tab, setTab] = useState<"faq" | "doc" | "catalog" | "releases">("faq");
+  const [draftSeed, setDraftSeed] = useState<GapDraftSeed | null>(null);
+  const handleWriteGap = (topic: string) => {
+    setDraftSeed(gapDraftTemplate(topic));
+    setTab("faq");
+  };
   return (
     <div className="admin-page">
       <h1>Kiến thức</h1>
       {!canManage && <p className="muted">Bạn chỉ có quyền xem.</p>}
-      <CoverageCard canManage={canManage} onWrite={() => setTab("faq")} />
+      <CoverageCard canManage={canManage} onWrite={handleWriteGap} />
       <div role="tablist" className="tabs">
         {TABS.map((t) => (
           <button
@@ -360,7 +465,13 @@ export function KnowledgePage({ canManage }: { canManage: boolean }) {
         ) : tab === "releases" ? (
           <ReleasesTab canManage={canManage} />
         ) : (
-          <ContentTab key={tab} kind={tab} canManage={canManage} />
+          <ContentTab
+            key={tab}
+            kind={tab}
+            canManage={canManage}
+            draftSeed={tab === "faq" ? draftSeed : null}
+            onClearSeed={() => setDraftSeed(null)}
+          />
         )}
       </div>
     </div>
