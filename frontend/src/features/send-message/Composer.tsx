@@ -44,7 +44,7 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
         });
         void qc.invalidateQueries({ queryKey: draftKey });
         await qc.invalidateQueries({ queryKey: messageKeys.timeline(conversationId) });
-        void qc.invalidateQueries({ queryKey: conversationKeys.list });
+        void qc.invalidateQueries({ queryKey: conversationKeys.all });
         setError(null);
         return;
       } catch (e) {

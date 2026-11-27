@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { parseChannelProvider, type ChannelProvider } from "../entities/conversation/channel";
 import { useHandoffs } from "../entities/handoff/api";
 import type { Me } from "../features/authenticate-user/api";
 import { useLogout } from "../features/authenticate-user/api";
@@ -37,10 +38,19 @@ const VIEWS: { id: View; label: string }[] = [
 ];
 const param = (name: string) => new URLSearchParams(location.search).get(name);
 const readView = (): View => VIEWS.find((v) => v.id === param("view"))?.id ?? "inbox";
+const readProvider = (): ChannelProvider | null => parseChannelProvider(param("provider"));
+const inboxUrl = (provider: ChannelProvider | null, c: string | null) => {
+  const sp = new URLSearchParams();
+  if (provider) sp.set("provider", provider);
+  if (c) sp.set("c", c);
+  const q = sp.toString();
+  return q ? `?${q}` : "?";
+};
 
 export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () => void }) {
   const [view, setView] = useState<View>(readView);
   const [selected, setSelected] = useState<string | null>(() => param("c"));
+  const [provider, setProvider] = useState<ChannelProvider | null>(readProvider);
   const [run, setRun] = useState<string | null>(() => param("run"));
   const live = useEventSignals(onUnauthorized); // onUnauthorized đã ổn định (useCallback ở App)
   const logout = useLogout();
@@ -51,6 +61,7 @@ export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () =>
     const onPop = () => {
       setView(readView());
       setSelected(param("c"));
+      setProvider(readProvider());
       setRun(param("run"));
     };
     window.addEventListener("popstate", onPop);
@@ -61,15 +72,22 @@ export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () =>
     history.pushState(null, "", next === "inbox" ? "?" : `?view=${next}`);
     setView(next);
     setSelected(null);
+    setProvider(null);
     setRun(null);
   };
   const select = (id: string) => {
-    history.pushState(null, "", `?c=${encodeURIComponent(id)}`);
+    history.pushState(null, "", inboxUrl(provider, id));
     setSelected(id);
   };
+  const selectProvider = (next: ChannelProvider | null) => {
+    history.pushState(null, "", inboxUrl(next, selected));
+    setProvider(next);
+  };
   const openConversation = (id: string) => {
+    history.pushState(null, "", inboxUrl(null, id));
     setView("inbox");
-    select(id);
+    setProvider(null);
+    setSelected(id);
   };
   const selectRun = (id: string | null) => {
     history.pushState(null, "", id ? `?view=trace&run=${encodeURIComponent(id)}` : "?view=trace");
@@ -102,7 +120,14 @@ export function AppShell({ me, onUnauthorized }: { me: Me; onUnauthorized: () =>
           Đăng xuất
         </button>
       </header>
-      {view === "inbox" && <InboxPage selectedId={selected} onSelect={select} />}
+      {view === "inbox" && (
+        <InboxPage
+          selectedId={selected}
+          onSelect={select}
+          provider={provider}
+          onProviderChange={selectProvider}
+        />
+      )}
       {view === "queue" && (
         <main className="admin-main">
           <QueuePage onOpen={openConversation} />

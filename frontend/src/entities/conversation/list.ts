@@ -1,3 +1,10 @@
+export type ChannelCapabilities = {
+  reply_window_seconds: number | null;
+  supports_links: boolean;
+  supports_buttons: boolean;
+  max_text_length: number;
+};
+
 export type Conversation = {
   id: string;
   status: "open" | "closed";
@@ -11,6 +18,8 @@ export type Conversation = {
   closed_at: string | null;
   customer: { id: string; display_name: string };
   connection: { id: string; provider: string };
+  capabilities?: ChannelCapabilities | null;
+  reply_window_expires_at?: string | null;
 };
 
 export type ConversationPage = { items: Conversation[]; next_cursor: string | null };

@@ -789,3 +789,66 @@ textarea {
   padding-left: 18px;
   font-size: 0.85rem;
 }
+
+/* --- Inbox đa kênh (O5) --- */
+.channel-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.channel-filter button {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.channel-filter button[aria-pressed="true"],
+.channel-filter button.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.conv .name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.channel-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #eef0ef;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.channel-badge.channel-webchat,
+.channel-badge.webchat {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.channel-badge.channel-messenger,
+.channel-badge.messenger {
+  background: #e7f0ff;
+  color: #0a58ca;
+}
+
+.channel-badge.channel-zalo_oa,
+.channel-badge.zalo_oa {
+  background: #e0f4ff;
+  color: #0068b5;
+}

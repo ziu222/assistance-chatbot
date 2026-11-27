@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { channelLabel } from "../../entities/conversation/channel";
 import { FIELD_LABELS, useOrderAction, useOrderRequest, useOrderRequests, type OrderRequest } from "../../entities/order/api";
 import { ApiError } from "../../shared/api/client";
 
@@ -44,7 +45,7 @@ function Card({ o, open, onToggle }: { o: OrderRequest; open: boolean; onToggle:
               ? "Đủ thông tin, chờ xác nhận"
               : "Đã gửi link, khách tự đặt"}
         </span>
-        <small className="muted">{o.channel}</small>
+        <span className={`channel-badge channel-${o.channel}`}>{channelLabel(o.channel)}</span>
       </div>
       <ul className="plain">
         {o.items.map((i) => (
