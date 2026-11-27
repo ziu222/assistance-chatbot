@@ -71,24 +71,38 @@ hoàn tiền, cam kết…).
 - Trường "changes": một câu ngắn nói đã đổi gì."""
 
 
-def system_blocks(profile: BrandProfile, level: Level, kind: Kind) -> tuple[str, ...]:
-    """Khối ổn định trước (quy tắc, giọng), khối thay đổi theo yêu cầu sau: cache được phần đầu."""
+def render_brand_voice(profile: BrandProfile, *, max_samples: int = 10) -> str:
+    """Dựng mô tả giọng thương hiệu ổn định; escape `< >` trên các chuỗi do chủ shop nhập."""
     voice = [
         f'Giọng thương hiệu: xưng "{profile.shop_pronoun}", gọi khách '
         f'"{profile.customer_pronoun}"; giọng {TONE[profile.tone]}; '
         + ("được dùng emoji vừa phải." if profile.emoji else "không dùng emoji."),
     ]
     if profile.preferred_terms:
-        voice.append("Từ nên dùng: " + ", ".join(profile.preferred_terms) + ".")
+        terms = ", ".join(escape(t, quote=False) for t in profile.preferred_terms)
+        voice.append(f"Từ nên dùng: {terms}.")
     if profile.banned_terms:
-        voice.append("Từ không được dùng: " + ", ".join(profile.banned_terms) + ".")
+        banned = ", ".join(escape(t, quote=False) for t in profile.banned_terms)
+        voice.append(f"Từ không được dùng: {banned}.")
     if profile.samples:
-        voice.append("Câu mẫu của shop (học giọng, KHÔNG chép thông tin):")
-        voice += [f"- {s}" for s in profile.samples]
+        voice.append("Câu mẫu của shop (chỉ học giọng điệu, KHÔNG chép thông tin/giá/chính sách):")
+        voice += [f"- {escape(s, quote=False)}" for s in profile.samples[:max_samples]]
+    return "\n".join(voice)
+
+
+def brand_voice_block(profile: BrandProfile | None) -> str:
+    """Khối `<brand_voice>` cho prompt runtime của agent; rỗng nếu shop chưa thiết lập giọng."""
+    if profile is None:
+        return ""
+    return f"<brand_voice>\n{render_brand_voice(profile, max_samples=5)}\n</brand_voice>"
+
+
+def system_blocks(profile: BrandProfile, level: Level, kind: Kind) -> tuple[str, ...]:
+    """Khối ổn định trước (quy tắc, giọng), khối thay đổi theo yêu cầu sau: cache được phần đầu."""
     count = 3 if level == "alternatives" else 1
     task = (f"Việc cần làm: viết lại {KIND[kind]}. {LEVEL[level]} "
             f"Trả về đúng {count} phương án.")  # fmt: skip
-    return RULES, "\n".join(voice), task
+    return RULES, render_brand_voice(profile), task
 
 
 def user_turn(text: str) -> str:

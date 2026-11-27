@@ -8,9 +8,11 @@ from dataclasses import dataclass
 from html import escape
 from uuid import UUID
 
+from pydantic import ValidationError
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.authoring.domain.writing import BrandProfile, brand_voice_block
 from app.modules.knowledge.domain.releases import render_knowledge
 from app.modules.knowledge.infrastructure.releases import active_snapshot
 
@@ -35,6 +37,7 @@ class RunContext:
     history: tuple[Line, ...]
     new: tuple[Line, ...]
     last_sequence: int  # conversations.last_sequence lúc bắt đầu (bất biến 3)
+    brand_voice_block: str = ""
 
     @property
     def customer_texts(self) -> list[str]:
@@ -91,6 +94,21 @@ async def build_context(
     history = tuple(reversed([_line(r) for r in history_rows]))
 
     rendered = render_knowledge(await active_snapshot(s, tenant_id))
+    brand_row = (
+        await s.execute(
+            text(
+                "SELECT config FROM brand_profiles WHERE tenant_id = :t "
+                "ORDER BY number DESC LIMIT 1"
+            ),
+            {"t": tenant_id},
+        )
+    ).first()
+    profile: BrandProfile | None = None
+    if brand_row is not None:
+        try:
+            profile = BrandProfile.model_validate(brand_row[0])
+        except ValidationError:
+            profile = None
     return RunContext(
         knowledge_block=rendered.block,
         knowledge_hash=rendered.hash,
@@ -99,4 +117,5 @@ async def build_context(
         history=history,
         new=tuple(_line(r) for r in new_rows),
         last_sequence=last_sequence,
+        brand_voice_block=brand_voice_block(profile),
     )

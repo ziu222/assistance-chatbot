@@ -3,7 +3,7 @@
 Không đưa thời gian hiện tại hay ID ngẫu nhiên vào các khối này: làm vậy phá prompt cache.
 """
 
-PROMPT_VERSION = "2026-11-24.2"
+PROMPT_VERSION = "2026-11-28.1"
 
 SAFETY = """\
 Quy tắc bất biến:
