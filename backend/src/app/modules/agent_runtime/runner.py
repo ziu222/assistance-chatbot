@@ -384,7 +384,10 @@ class AgentRunner:
         tpl = run.agent.template
         budget = tpl.budget
         instructions = tpl.instructions.replace("{shop_name}", run.agent.shop_name)
-        system = (SAFETY + "\n" + DRAFT, instructions, ctx.knowledge_block)
+        system: tuple[str, ...] = (SAFETY + "\n" + DRAFT, instructions)
+        if ctx.brand_voice_block:  # ổn định theo tenant: đặt trước <knowledge> để giữ prompt cache
+            system += (ctx.brand_voice_block,)
+        system += (ctx.knowledge_block,)
         schema: type[DraftOut] = DraftOut
         if run.order:  # khối đổi theo hội thoại: sau khối tri thức đã cache (ADR-0028)
             system += (run.order.block(),)
