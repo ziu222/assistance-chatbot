@@ -11,7 +11,7 @@ export function useMarkRead(conversationId: string, unread: number | undefined) 
     void apiFetch(`/api/v1/conversations/${conversationId}/read`, { method: "POST" })
       .then(() =>
         Promise.all([
-          qc.invalidateQueries({ queryKey: conversationKeys.list }),
+          qc.invalidateQueries({ queryKey: conversationKeys.all }),
           qc.invalidateQueries({ queryKey: conversationKeys.detail(conversationId) }),
         ]),
       )

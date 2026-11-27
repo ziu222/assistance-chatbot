@@ -1,6 +1,14 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useState, type FormEvent, type KeyboardEvent } from "react";
 import { conversationKeys } from "../../entities/conversation/api";
+import {
+  channelErrorMessage,
+  channelLabel,
+  channelWindowState,
+  formatRemainingWindow,
+  isNonRetryableChannelError,
+} from "../../entities/conversation/channel";
+import type { ChannelCapabilities } from "../../entities/conversation/list";
 import { messageKeys } from "../../entities/message/api";
 import type { PendingReply } from "../../entities/message/timeline";
 import { ApiError, apiFetch } from "../../shared/api/client";
@@ -14,16 +22,42 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 type Props = {
   conversationId: string;
   disabled: boolean;
+  provider: string;
+  capabilities?: ChannelCapabilities | null;
+  replyWindowExpiresAt?: string | null;
   pending: PendingReply[];
   setPending: (update: (p: PendingReply[]) => PendingReply[]) => void;
 };
 
 /** Enter gửi, Shift+Enter xuống dòng; hiển thị lạc quan; gửi lại dùng CÙNG client_message_id. */
-export function Composer({ conversationId, disabled, pending, setPending }: Props) {
+export function Composer({
+  conversationId,
+  disabled,
+  provider,
+  capabilities,
+  replyWindowExpiresAt,
+  pending,
+  setPending,
+}: Props) {
   const qc = useQueryClient();
   const [draft, setDraft] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [usingDraft, setUsingDraft] = useState<string | null>(null); // nháp đang sửa trong ô soạn
+  const [nowMs, setNowMs] = useState(() => Date.now());
+
+  useEffect(() => {
+    if (!replyWindowExpiresAt) return;
+    setNowMs(Date.now());
+    const timer = window.setInterval(() => setNowMs(Date.now()), 60_000);
+    return () => window.clearInterval(timer);
+  }, [replyWindowExpiresAt]);
+
+  const windowState = channelWindowState(replyWindowExpiresAt, nowMs);
+  const windowExpired = windowState.status === "expired";
+  const locked = disabled || windowExpired;
+  const maxLength = Math.min(4000, capabilities?.max_text_length ?? 4000);
+  const showCharCount = draft.length >= Math.floor(maxLength * 0.8);
+
   // Chế độ Learning (thiết kế 05): nháp của bot hiện ở đây; người vẫn là người gửi.
   // Khóa nằm dưới ["conversation", id] nên tín hiệu SSE của hội thoại tự làm mới.
   const draftKey = ["conversation", conversationId, "draft"] as const;
@@ -44,7 +78,7 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
         });
         void qc.invalidateQueries({ queryKey: draftKey });
         await qc.invalidateQueries({ queryKey: messageKeys.timeline(conversationId) });
-        void qc.invalidateQueries({ queryKey: conversationKeys.list });
+        void qc.invalidateQueries({ queryKey: conversationKeys.all });
         setError(null);
         return;
       } catch (e) {
@@ -52,6 +86,14 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
         if (transient && attempt < MAX_RETRIES) {
           await sleep(500 * 2 ** attempt * (0.5 + Math.random() / 2));
           continue;
+        }
+        if (e instanceof ApiError && isNonRetryableChannelError(e.code)) {
+          setPending((list) => list.filter((p) => p.cmid !== cmid));
+          setError(channelErrorMessage(e.code) ?? "Kênh hiện không cho phép gửi tin nhắn này.");
+          if (e.code === "messenger_window_expired" || e.code === "zalo_window_expired") {
+            void qc.invalidateQueries({ queryKey: conversationKeys.detail(conversationId) });
+          }
+          return;
         }
         patch(cmid, "failed");
         if (e instanceof ApiError && e.code === "conversation_closed") setError("Hội thoại đã đóng.");
@@ -64,7 +106,7 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
   const submit = (e?: FormEvent) => {
     e?.preventDefault();
     const text = draft.trim();
-    if (!text || disabled) return;
+    if (!text || locked) return;
     const cmid = crypto.randomUUID();
     setPending((list) => [...list, { cmid, text, status: "sending" }]);
     setDraft("");
@@ -73,6 +115,7 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
   };
 
   const sendBotDraft = (d: BotDraft) => {
+    if (locked) return;
     const cmid = crypto.randomUUID();
     setPending((list) => [...list, { cmid, text: d.text, status: "sending" }]);
     void deliver(cmid, d.text, d.id);
@@ -87,8 +130,24 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
     if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) submit();
   };
 
+  const placeholder = disabled
+    ? "Hội thoại đã đóng"
+    : windowExpired
+      ? `Đã hết cửa sổ trả lời của ${channelLabel(provider)}`
+      : "Nhập trả lời… (Enter để gửi, Shift+Enter xuống dòng)";
+
   return (
     <form className="composer" onSubmit={submit}>
+      {!disabled && windowState.status === "expired" && (
+        <p className="window-banner expired" role="status">
+          Đã hết cửa sổ trả lời của {channelLabel(provider)}. Chỉ gửi được khi khách nhắn tin mới.
+        </p>
+      )}
+      {!disabled && windowState.status === "expiring" && windowState.remainingMinutes !== null && (
+        <p className="window-banner expiring" role="status">
+          Cửa sổ trả lời {channelLabel(provider)} còn {formatRemainingWindow(windowState.remainingMinutes)}.
+        </p>
+      )}
       {error && (
         <p className="error" role="alert">
           {error}
@@ -124,19 +183,23 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
             <small className="hint">Kiểm tra số tiền: {botDraft.amounts.map((a) => `${VND.format(a)}đ`).join(", ")}</small>
           )}
           <div className="row">
-            <button type="button" onClick={() => sendBotDraft(botDraft)}>
-              Dùng
-            </button>
-            <button
-              type="button"
-              className="link"
-              onClick={() => {
-                setDraft(botDraft.text);
-                setUsingDraft(botDraft.id);
-              }}
-            >
-              Sửa
-            </button>
+            {!windowExpired && (
+              <button type="button" onClick={() => sendBotDraft(botDraft)}>
+                Dùng
+              </button>
+            )}
+            {!windowExpired && (
+              <button
+                type="button"
+                className="link"
+                onClick={() => {
+                  setDraft(botDraft.text);
+                  setUsingDraft(botDraft.id);
+                }}
+              >
+                Sửa
+              </button>
+            )}
             <button type="button" className="link" onClick={() => void discardBotDraft(botDraft)}>
               Bỏ
             </button>
@@ -148,16 +211,21 @@ export function Composer({ conversationId, disabled, pending, setPending }: Prop
       </label>
       <textarea
         id="reply"
-        placeholder={disabled ? "Hội thoại đã đóng" : "Nhập trả lời… (Enter để gửi, Shift+Enter xuống dòng)"}
-        maxLength={4000}
+        placeholder={placeholder}
+        maxLength={maxLength}
         value={draft}
-        disabled={disabled}
+        disabled={locked}
         onChange={(e) => setDraft(e.target.value)}
         onKeyDown={onKeyDown}
       />
-      <button type="submit" disabled={disabled || !draft.trim()}>
+      <button type="submit" disabled={locked || !draft.trim()}>
         Gửi
       </button>
+      {showCharCount && (
+        <span className={`char-count${draft.length >= maxLength ? " limit" : ""}`}>
+          {draft.length}/{maxLength}
+        </span>
+      )}
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiFetch } from "../../shared/api/client";
 import type { Handling } from "../agent-run/trace";
+import { conversationKeys } from "../conversation/api";
 
 export type Day = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
 export type Span = [string, string]; // "08:00", "21:00"; end <= start ⇒ qua nửa đêm
@@ -115,7 +116,7 @@ export function useReturnToBot(conversationId: string) {
       }),
     onSettled: () => {
       void qc.invalidateQueries({ queryKey: ["conversation", conversationId] });
-      void qc.invalidateQueries({ queryKey: ["conversations"] });
+      void qc.invalidateQueries({ queryKey: conversationKeys.all });
     },
   });
 }

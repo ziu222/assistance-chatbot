@@ -19,7 +19,6 @@ from app.modules.conversation.application.staff_conversation import (
     MarkConversationRead,
     SendStaffMessage,
 )
-from app.modules.conversation.infrastructure.persistence.repository import MessageRepository
 from app.modules.conversation.infrastructure.unit_of_work import SqlConversationUnitOfWork
 from app.modules.identity.domain.authorization import StaffActor, authorize
 from app.modules.identity.presentation.http.auth import Csrf, CurrentStaff
@@ -103,9 +102,7 @@ async def list_messages(
     async with request.app.state.session_factory() as s:
         if await queries.get_conversation(s, ctx, conversation_id) is None:
             raise _not_found()
-        rows = await MessageRepository(s).list_after(
-            ctx, conversation_id, after_sequence, limit + 1
-        )
+        rows = await queries.list_messages(s, ctx, conversation_id, after_sequence, limit + 1)
     return {
         "messages": [
             {
@@ -116,6 +113,7 @@ async def list_messages(
                 "sender_ref": m.sender_ref,
                 "text": m.content,
                 "status": m.status,
+                "delivery_status": m.delivery_status,
                 "occurred_at": m.occurred_at.isoformat(),
                 "client_message_id": m.external_message_id,
             }

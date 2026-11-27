@@ -19,7 +19,7 @@ _TRACE_ID = re.compile(r"[A-Za-z0-9._-]{8,64}")
 
 MAX_PUBLIC_BODY_BYTES = 16 * 1024
 # Endpoint ai cũng gọi được: chặn body trước khi đọc.
-UNAUTHENTICATED_POSTS = ("/public/", "/api/v1/auth/login")
+UNAUTHENTICATED_POSTS = ("/public/", "/api/v1/auth/login", "/webhooks/messenger")
 
 
 class ApiError(Exception):
