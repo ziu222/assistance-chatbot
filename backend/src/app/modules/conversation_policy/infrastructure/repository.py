@@ -201,6 +201,26 @@ async def deferred_decision(
     ).first()
 
 
+async def latest_escalation_score(s: AsyncSession, tenant_id: UUID, conversation_id: UUID) -> int:
+    """Điểm tín hiệu leo thang cao nhất từng ghi nhận cho hội thoại (0 nếu chưa có)."""
+    val = (
+        await s.execute(
+            text(
+                "SELECT COALESCE(MAX(score), 0) FROM ("
+                "  SELECT SUM((st.detail->>'score')::int) AS score "
+                "  FROM agent_runs r "
+                "  JOIN agent_run_steps st "
+                "    ON st.tenant_id = r.tenant_id AND st.run_id = r.id AND st.kind = 'signal' "
+                "  WHERE r.tenant_id = :t AND r.conversation_id = :c "
+                "  GROUP BY r.id"
+                ") sub"
+            ),
+            {"t": tenant_id, "c": conversation_id},
+        )
+    ).scalar_one()
+    return int(val)
+
+
 async def decision_exists(
     s: AsyncSession, tenant_id: UUID, conversation_id: UUID, to_sequence: int
 ) -> bool:
