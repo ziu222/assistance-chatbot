@@ -1,6 +1,5 @@
 """Truy vấn kết nối Facebook Messenger và giải mã credentials theo yêu cầu (ADR-0036)."""
 
-import hashlib
 import hmac
 import logging
 from dataclasses import dataclass
@@ -9,6 +8,7 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.modules.integration.domain.channels import verify_token_hash
 from app.shared.infrastructure.crypto import (
     CredentialsKeyNotConfigured,
     InvalidEncryptedPayload,
@@ -35,11 +35,6 @@ class MessengerConnection:
     app_secret: str
     verify_token: str
     page_access_token: str
-
-
-def verify_token_hash(verify_token: str) -> str:
-    """Băm SHA-256 `verify_token` để tra nhanh ở `config->>'verify_token_hash'`."""
-    return hashlib.sha256(verify_token.encode("utf-8")).hexdigest()
 
 
 def _to_connection(row, credentials_key: str) -> MessengerConnection | None:

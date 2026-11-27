@@ -7,6 +7,7 @@ _ALLOWED_ROLES = {
     "conversation.reply": {"owner", "admin", "agent"},
     "agent.read": {"owner", "admin", "agent"},
     "agent.manage": {"owner", "admin"},  # tạo agent, đổi mode, bật/tắt AI
+    "channels.manage": {"owner", "admin"},  # quản lý kết nối kênh bán hàng, xoay vòng credentials
     "knowledge.read": {"owner", "admin", "agent"},
     "knowledge.manage": {"owner", "admin"},  # FAQ, tài liệu, import catalog
     "knowledge.approve": {"owner", "admin"},  # duyệt/bỏ ứng viên tri thức (thiết kế 05 §6.3)
