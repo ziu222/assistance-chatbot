@@ -14,6 +14,7 @@ import {
   type FaqEntry,
   type Kind,
 } from "../../entities/knowledge/api";
+import { buildOnboardingFaqs, missingOnboardingTopics } from "../../entities/knowledge/onboarding";
 import {
   KNOWLEDGE_TOPICS,
   gapDraftTemplate,
@@ -328,6 +329,94 @@ function CatalogTab({ canManage }: { canManage: boolean }) {
   );
 }
 
+/** Hỏi nhanh 4 chủ đề phổ biến khi shop mới thiết lập (bước 2 §13.3); để trống mục nào thì bỏ qua mục đó. */
+function QuickOnboardingCard({ canManage }: { canManage: boolean }) {
+  const coverage = useCoverage();
+  const create = useCreateEntry("faq");
+  const [hidden, setHidden] = useState(false);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [saving, setSaving] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [errMsg, setErrMsg] = useState<string | null>(null);
+
+  if (!canManage || !coverage.data) return null;
+  const missing = missingOnboardingTopics(coverage.data.items);
+  if (missing.length === 0) return null;
+
+  const payloads = buildOnboardingFaqs(answers);
+  const saveAll = async (e: FormEvent) => {
+    e.preventDefault();
+    if (payloads.length === 0) return;
+    setSaving(true);
+    setNotice(null);
+    setErrMsg(null);
+    let saved = 0;
+    try {
+      for (const item of payloads) {
+        await create.mutateAsync(item);
+        saved += 1;
+        setAnswers((prev) => ({ ...prev, [item.topics[0]]: "" }));
+      }
+      setNotice(`Đã lưu ${saved} FAQ cốt lõi.`);
+    } catch {
+      setErrMsg(saved > 0 ? `Đã lưu ${saved} mục, nhưng có mục tiếp theo bị lỗi.` : "Không lưu được, thử lại sau.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <section className="card stack" aria-labelledby="quick-onboarding">
+      <div className="row">
+        <h3 id="quick-onboarding">Thiết lập nhanh kiến thức shop</h3>
+        <button type="button" className="link" onClick={() => setHidden((h) => !h)}>
+          {hidden ? `Mở (${missing.length} mục chưa có)` : "Thu gọn"}
+        </button>
+      </div>
+      {!hidden && (
+        <form className="stack" onSubmit={saveAll}>
+          <p className="muted">
+            Trả lời nhanh các câu hỏi khách hay hỏi nhất (có thể bỏ qua mục chưa cần).
+          </p>
+          {missing.map((t) => {
+            const val = answers[t.id] ?? "";
+            return (
+              <div key={t.id} className="stack">
+                <label>
+                  <strong>{t.sampleQuestion}</strong>
+                  <textarea
+                    rows={2}
+                    maxLength={4000}
+                    placeholder={t.placeholderAnswer}
+                    value={val}
+                    onChange={(e) => setAnswers((prev) => ({ ...prev, [t.id]: e.target.value }))}
+                  />
+                </label>
+                <SuggestPanel
+                  text={val}
+                  kind="faq"
+                  onUse={(text) => setAnswers((prev) => ({ ...prev, [t.id]: text }))}
+                />
+              </div>
+            );
+          })}
+          {notice && <p role="status">{notice}</p>}
+          {errMsg && (
+            <p className="error" role="alert">
+              {errMsg}
+            </p>
+          )}
+          <div className="row">
+            <button type="submit" disabled={saving || payloads.length === 0}>
+              {saving ? "Đang lưu…" : `Lưu ${payloads.length || ""} mục đã điền`}
+            </button>
+          </div>
+        </form>
+      )}
+    </section>
+  );
+}
+
 /** Shop không cần viết đủ mọi thứ; chỉ cần biết chỗ nào còn thiếu và bot sẽ làm gì ở đó. */
 function CoverageCard({ canManage, onWrite }: { canManage: boolean; onWrite: (topic: string) => void }) {
   const coverage = useCoverage();
@@ -444,6 +533,7 @@ export function KnowledgePage({ canManage }: { canManage: boolean }) {
     <div className="admin-page">
       <h1>Kiến thức</h1>
       {!canManage && <p className="muted">Bạn chỉ có quyền xem.</p>}
+      <QuickOnboardingCard canManage={canManage} />
       <CoverageCard canManage={canManage} onWrite={handleWriteGap} />
       <div role="tablist" className="tabs">
         {TABS.map((t) => (
