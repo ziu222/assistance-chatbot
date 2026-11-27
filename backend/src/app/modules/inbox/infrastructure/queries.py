@@ -14,7 +14,10 @@ _SELECT = (
     "SELECT c.id, c.status, c.last_sequence, c.last_message_at, c.last_message_preview, "
     "c.unread_count, c.version, c.handling, c.created_at, c.closed_at, "
     "cu.id AS customer_id, cu.display_name AS customer_name, "
-    "ch.id AS connection_id, ch.provider "
+    "ch.id AS connection_id, ch.provider, "
+    "(SELECT max(m.occurred_at) FROM messages m "
+    "WHERE m.tenant_id = c.tenant_id AND m.conversation_id = c.id "
+    "AND m.sender_type = 'customer') AS last_customer_at "
     "FROM conversations c "
     "JOIN customers cu ON (cu.tenant_id, cu.id) = (c.tenant_id, c.customer_id) "
     "JOIN channel_connections ch ON (ch.tenant_id, ch.id) = (c.tenant_id, c.channel_connection_id) "
@@ -52,6 +55,13 @@ def _capabilities_json(provider: str) -> dict | None:
     }
 
 
+def _reply_window_expires_at(provider: str, last_customer_at: datetime | None) -> str | None:
+    caps = capabilities_for(provider)
+    if caps is None or caps.reply_window is None or last_customer_at is None:
+        return None
+    return (last_customer_at + caps.reply_window).isoformat()
+
+
 def conversation_json(r) -> dict:
     return {
         "id": str(r.id),
@@ -67,6 +77,7 @@ def conversation_json(r) -> dict:
         "customer": {"id": str(r.customer_id), "display_name": r.customer_name},
         "connection": {"id": str(r.connection_id), "provider": r.provider},
         "capabilities": _capabilities_json(r.provider),
+        "reply_window_expires_at": _reply_window_expires_at(r.provider, r.last_customer_at),
     }
 
 
@@ -106,3 +117,36 @@ async def get_conversation(s: AsyncSession, ctx: TenantContext, conversation_id:
             text(_SELECT + "AND c.id = :id"), {"t": ctx.tenant_id, "id": conversation_id}
         )
     ).first()
+
+
+async def list_messages(
+    s: AsyncSession,
+    ctx: TenantContext,
+    conversation_id: UUID,
+    after_sequence: int = 0,
+    limit: int = 100,
+) -> list:
+    """Liệt kê tin nhắn sau `after_sequence`, kèm trạng thái giao tin kênh ngoài (nếu có)."""
+    sql = (
+        "SELECT m.id, m.sequence, m.direction, m.sender_type, m.sender_ref, "
+        "m.content, m.status, m.occurred_at, m.external_message_id, "
+        "d.status AS delivery_status "
+        "FROM messages m "
+        "LEFT JOIN outbound_deliveries d "
+        "  ON d.tenant_id = m.tenant_id AND d.message_id = m.id "
+        "WHERE m.tenant_id = :t AND m.conversation_id = :c AND m.sequence > :after "
+        "ORDER BY m.sequence ASC LIMIT :limit"
+    )
+    return list(
+        (
+            await s.execute(
+                text(sql),
+                {
+                    "t": ctx.tenant_id,
+                    "c": conversation_id,
+                    "after": after_sequence,
+                    "limit": limit,
+                },
+            )
+        ).all()
+    )

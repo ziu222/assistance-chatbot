@@ -37,7 +37,7 @@ CHANNEL_CAPABILITIES: dict[str, ChannelCapabilities] = {
         reply_window=None,
         supports_links=True,
         supports_buttons=False,
-        max_text_length=16_000,
+        max_text_length=4_000,
     ),
     "messenger": ChannelCapabilities(
         reply_window=MESSENGER_WINDOW,

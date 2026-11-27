@@ -310,3 +310,14 @@ async def test_corrupted_credentials_return_403_instead_of_500(msg_client, sessi
         headers={"Content-Type": "application/json", "X-Hub-Signature-256": _sign(raw)},
     )
     assert post_res.status_code == 403
+
+
+async def test_post_webhook_rejects_oversized_body(msg_client):
+    big = json.dumps(_meta_payload(text_="x" * 17_000)).encode("utf-8")
+    r = await msg_client.post(
+        "/webhooks/messenger",
+        content=big,
+        headers={"Content-Type": "application/json", "X-Hub-Signature-256": _sign(big)},
+    )
+    assert r.status_code == 413
+    assert r.json()["error"]["code"] == "payload_too_large"

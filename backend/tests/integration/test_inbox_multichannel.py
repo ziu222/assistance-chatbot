@@ -118,7 +118,7 @@ async def test_list_conversations_filters_provider_and_includes_capabilities(
         "reply_window_seconds": None,
         "supports_links": True,
         "supports_buttons": False,
-        "max_text_length": 16000,
+        "max_text_length": 4000,
     }
 
     bad = await client.get("/api/v1/conversations", params={"provider": "shopee"})
@@ -232,3 +232,83 @@ async def test_staff_reply_idempotent_after_window_expires_and_closed_wins(
     )
     assert r_closed.status_code == 409
     assert r_closed.json()["error"]["code"] == "conversation_closed"
+
+
+async def test_conversation_returns_reply_window_expires_at_and_message_delivery_status(
+    new_client, session_factory
+):
+    client, ctx, _, web_conn = await logged_in(new_client, session_factory)
+    web_res = await inbound(session_factory, ctx, web_conn, "Tin webchat", visitor="v-win")
+    last_customer_at = (datetime.now(UTC) - timedelta(hours=3)).replace(microsecond=0)
+    _, msg_conv = await _seed_messenger_conversation(
+        session_factory, ctx, last_customer_at=last_customer_at
+    )
+
+    web_detail = (await client.get(f"/api/v1/conversations/{web_res.conversation_id}")).json()
+    assert web_detail["reply_window_expires_at"] is None
+
+    msg_detail = (await client.get(f"/api/v1/conversations/{msg_conv}")).json()
+    assert msg_detail["reply_window_expires_at"] is not None
+    assert datetime.fromisoformat(
+        msg_detail["reply_window_expires_at"]
+    ) == last_customer_at + timedelta(hours=24)
+
+    # Nhân viên trả lời Webchat ⇒ delivery_status luôn là None
+    web_reply = await client.post(
+        f"/api/v1/conversations/{web_res.conversation_id}/messages",
+        json={"client_message_id": str(uuid4()), "text": "Chào khách web"},
+        headers=CSRF,
+    )
+    assert web_reply.status_code == 201
+    web_msgs = (
+        await client.get(f"/api/v1/conversations/{web_res.conversation_id}/messages")
+    ).json()["messages"]
+    assert [m["delivery_status"] for m in web_msgs] == [None, None]
+
+    # Nhân viên trả lời Messenger ⇒ delivery_status = "pending"; cửa sổ vẫn neo theo tin khách cuối
+    msg_reply = await client.post(
+        f"/api/v1/conversations/{msg_conv}/messages",
+        json={"client_message_id": str(uuid4()), "text": "Chào khách FB"},
+        headers=CSRF,
+    )
+    assert msg_reply.status_code == 201
+    reply_id = msg_reply.json()["message_id"]
+
+    msg_detail_after = (await client.get(f"/api/v1/conversations/{msg_conv}")).json()
+    assert datetime.fromisoformat(
+        msg_detail_after["reply_window_expires_at"]
+    ) == last_customer_at + timedelta(hours=24)
+
+    msgs_pending = (await client.get(f"/api/v1/conversations/{msg_conv}/messages")).json()[
+        "messages"
+    ]
+    assert [m["delivery_status"] for m in msgs_pending] == [None, "pending"]
+
+    # Khi outbound_deliveries chuyển delivered/failed ⇒ API phản ánh ngay và không lộ last_error
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE outbound_deliveries SET status = 'delivered', delivered_at = now() "
+                "WHERE tenant_id = :t AND message_id = :m"
+            ),
+            {"t": ctx.tenant_id, "m": reply_id},
+        )
+    msgs_delivered = (await client.get(f"/api/v1/conversations/{msg_conv}/messages")).json()[
+        "messages"
+    ]
+    assert msgs_delivered[1]["delivery_status"] == "delivered"
+
+    async with session_factory() as s, s.begin():
+        await s.execute(
+            text(
+                "UPDATE outbound_deliveries SET status = 'failed', "
+                "last_error = 'secret_token_leak' "
+                "WHERE tenant_id = :t AND message_id = :m"
+            ),
+            {"t": ctx.tenant_id, "m": reply_id},
+        )
+    msgs_failed = (await client.get(f"/api/v1/conversations/{msg_conv}/messages")).json()[
+        "messages"
+    ]
+    assert msgs_failed[1]["delivery_status"] == "failed"
+    assert "last_error" not in msgs_failed[1]
