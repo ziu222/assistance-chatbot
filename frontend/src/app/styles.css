@@ -852,3 +852,55 @@ textarea {
   background: #e0f4ff;
   color: #0068b5;
 }
+
+.bubble-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.delivery-status.failed {
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #fdecea;
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.composer .card {
+  grid-column: 1 / -1;
+  width: auto;
+}
+
+.window-banner {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.window-banner.expiring {
+  background: #fff4db;
+  border: 1px solid #f0cf85;
+  color: #7a4f01;
+}
+
+.window-banner.expired {
+  background: #fdecea;
+  border: 1px solid #f3c2bd;
+  color: var(--danger);
+}
+
+.char-count {
+  grid-column: 1 / -1;
+  justify-self: end;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.char-count.limit {
+  color: var(--danger);
+  font-weight: 600;
+}
