@@ -166,6 +166,8 @@ def _ticket_json(t: handoffs.Ticket) -> dict:
         "customer_name": t.customer_name,
         "last_message_preview": t.last_message_preview,
         "handling": t.handling,
+        "summary": t.summary,
+        "summary_status": t.summary_status,
     }
 
 

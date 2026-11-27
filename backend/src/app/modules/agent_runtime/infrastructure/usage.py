@@ -59,7 +59,8 @@ async def record_usage(
 AUTHORING = "authoring"  # trợ lý viết có trần riêng, không ăn vào trần của nháp (§12.8)
 JUDGE = "judge"  # giám khảo so sánh shadow (thiết kế 04 §6.2): trần riêng
 LEARNING = "learning"  # dựng ứng viên + eval bài học (thiết kế 05 §6.2): trần riêng
-OWN_CAPS = (AUTHORING, JUDGE, LEARNING)
+HANDOFF_SUMMARY = "handoff_summary"  # tóm tắt ticket 3 dòng (bước 2 §12.5): trần riêng
+OWN_CAPS = (AUTHORING, JUDGE, LEARNING, HANDOFF_SUMMARY)
 
 
 async def spent_today_micro(s: AsyncSession, tenant_id: UUID, *, purpose: str | None = None) -> int:
