@@ -176,6 +176,8 @@ class Ticket:
     customer_name: str | None
     last_message_preview: str | None
     handling: str
+    summary: str | None = None
+    summary_status: str = "pending"
 
 
 async def list_active(s: AsyncSession, tenant_id: UUID, limit: int = 100) -> list[Ticket]:
@@ -183,7 +185,8 @@ async def list_active(s: AsyncSession, tenant_id: UUID, limit: int = 100) -> lis
     rows = await s.execute(
         text(
             "SELECT h.id, h.conversation_id, h.status, h.source, h.reason, h.priority, "
-            "h.opened_at, h.claimed_by, cu.display_name, c.last_message_preview, c.handling "
+            "h.opened_at, h.claimed_by, cu.display_name, c.last_message_preview, c.handling, "
+            "h.summary, h.summary_status "
             "FROM handoff_requests h "
             "JOIN conversations c ON c.tenant_id = h.tenant_id AND c.id = h.conversation_id "
             "JOIN customers cu ON cu.tenant_id = c.tenant_id AND cu.id = c.customer_id "

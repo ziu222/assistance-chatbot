@@ -19,6 +19,7 @@ from app.modules.agent_runtime.infrastructure.config import debounce_window
 from app.modules.agent_runtime.llm.factory import build_llm
 from app.modules.agent_runtime.runner import AgentRunner
 from app.modules.authoring.worker import AuthoringWorker
+from app.modules.conversation_policy.infrastructure.summary import HandoffSummaryWorker
 from app.modules.conversation_policy.stage import PolicyStage
 from app.modules.learning.infrastructure.candidates import LearningWorker
 from app.modules.outbound.stage import AutopilotStage
@@ -90,6 +91,10 @@ async def main(roles: tuple[str, ...] = ALL_ROLES) -> None:
             max_attempts=settings.agent_max_attempts,
         )
         tasks.append(worker.run(stop, concurrency=settings.agent_worker_concurrency))
+        summary_worker = HandoffSummaryWorker(
+            factory, llm, daily_cap_micro=settings.handoff_summary_daily_cap_micro
+        )
+        tasks.append(summary_worker.run(stop))
     if "authoring" in roles:
         authoring = AuthoringWorker(
             factory, llm, daily_cap_micro=settings.authoring_daily_cap_micro
